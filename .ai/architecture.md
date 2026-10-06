@@ -11,7 +11,7 @@
 
 This document defines the target architecture for the Online Examination Platform NestJS modular monolith, with API and worker runtimes.
 
-PostgreSQL is the source of truth. Database-specific schema mapping, SQL, locking behavior, and error translation stay in Infrastructure and are verified against the actual PostgreSQL behavior. The project owns a versioned SQL migration toolchain under `apps/api/migrations`; ADR-001 defines deployment ordering and compatibility. See the [project profile](../docs/project-profile.md).
+PostgreSQL is the source of truth. Database-specific schema mapping, SQL, locking behavior, and error translation stay in Infrastructure and are verified against the actual PostgreSQL behavior. The project owns a versioned SQL migration toolchain; ADR-001 defines deployment ordering and compatibility. Its target bundle placement is `apps/api/src/infrastructure/database/migrations`; current `apps/api/migrations` remains during the explicit ADR-006 transition. See the [project profile](../docs/project-profile.md).
 
 The reference model combines:
 
@@ -149,41 +149,143 @@ Module A -> Module B ORM entity
 
 # 5. Target Project Structure
 
-This is a placement guide, not a requirement to create every folder/file. Domain and application classes are plain TypeScript.
+The tree is a placement guide. Create only the modules and infrastructure integrations that the adopting project actually needs. In this repository, `src/` maps to `apps/api/src/`; this is not a repository-flattening instruction. Domain and Application remain plain TypeScript.
 
 ```text
-apps/
-  api/
-    migrations/                       # versioned SQL migration bundle
-    src/
-      main.ts                         # API composition root
-      worker.ts                       # independent worker composition root
-      modules/
-        identity/
-        catalog/
-        assessment/
-          domain/
-          application/
-          infrastructure/
-          presentation/
-        reporting/
-      platform/
-        application/                  # technical ports, created only when needed
-        domain/                       # transport-independent shared error semantics
-        infrastructure/               # DB/UoW/outbox/SQS/telemetry/security mechanisms
-        presentation/                 # HTTP/security/worker inbound adapters
-  web/                                # browser client, planned
-infra/terraform/                      # AWS, planned
-load-tests/                           # k6, planned
-experiments/                          # hypothesis/config/evidence/decision
-scripts/                              # validation/seed/migration/cost tooling as implemented
-apps/api/tests/integration/           # real PostgreSQL/API; SQS cases when implemented
-docs/
+src/
+|-- main.ts
+|-- app.module.ts
+|-- config/
+|   |-- app.config.ts
+|   |-- database.config.ts
+|   |-- redis.config.ts
+|   |-- kafka.config.ts
+|   |-- observability.config.ts
+|   |-- config.validation.ts
+|   `-- config.module.ts
+|-- shared/
+|   |-- domain/
+|   |   |-- entity.ts
+|   |   |-- aggregate-root.ts
+|   |   |-- value-object.ts
+|   |   |-- domain-event.ts
+|   |   `-- exceptions/
+|   |-- application/
+|   |   |-- unit-of-work/
+|   |   |   |-- unit-of-work.port.ts
+|   |   |   `-- unit-of-work.constants.ts
+|   |   |-- pagination/
+|   |   |   |-- page-request.ts
+|   |   |   |-- page-result.ts
+|   |   |   `-- index.ts
+|   |   `-- ports/
+|   `-- common/
+|       |-- decorators/
+|       |-- guards/
+|       |-- interceptors/
+|       |-- filters/
+|       |-- pipes/
+|       |-- errors/
+|       `-- utils/
+|-- modules/
+|   |-- invoice/
+|   |   |-- invoice.module.ts
+|   |   |-- domain/
+|   |   |   |-- entities/
+|   |   |   |-- value-objects/
+|   |   |   |-- repositories/
+|   |   |   |-- services/
+|   |   |   |-- events/
+|   |   |   |-- enums/
+|   |   |   `-- errors/
+|   |   |-- application/
+|   |   |   |-- commands/
+|   |   |   |-- queries/
+|   |   |   |-- services/
+|   |   |   |-- facades/
+|   |   |   |-- dto/
+|   |   |   `-- ports/
+|   |   |-- infrastructure/
+|   |   |   `-- persistence/
+|   |   |       `-- typeorm/
+|   |   |           |-- entities/
+|   |   |           |-- repositories/
+|   |   |           `-- mappers/
+|   |   `-- presentation/
+|   |       `-- http/
+|   |           |-- invoice.controller.ts
+|   |           `-- dto/
+|   |-- member/
+|   |-- promotion/
+|   |-- loyalty/
+|   |-- room/
+|   |-- shift/
+|   |-- store/
+|   `-- reporting/
+|-- infrastructure/
+|   |-- database/
+|   |   |-- database.module.ts
+|   |   |-- data-source.ts
+|   |   |-- migrations/
+|   |   `-- transaction/
+|   |       |-- typeorm-transaction-context.ts
+|   |       |-- typeorm-unit-of-work.ts
+|   |       `-- typeorm-repository-provider.ts
+|   |-- messaging/
+|   |   `-- kafka/
+|   |       |-- kafka.module.ts
+|   |       |-- kafka.producer.ts
+|   |       |-- kafka.consumer.ts
+|   |       |-- serializers/
+|   |       `-- retry/
+|   |-- outbox/
+|   |   |-- outbox.module.ts
+|   |   |-- outbox.port.ts
+|   |   `-- persistence/
+|   |-- cache/
+|   |   `-- redis/
+|   |       |-- redis.module.ts
+|   |       |-- redis-cache.adapter.ts
+|   |       |-- redis-lock.adapter.ts
+|   |       `-- redis-key.factory.ts
+|   |-- security/
+|   |   |-- authentication/
+|   |   `-- authorization/
+|   |-- integrations/
+|   |-- observability/
+|   |   |-- logging/
+|   |   |-- tracing/
+|   |   |-- metrics/
+|   |   `-- audit/
+|   `-- resilience/
+|       |-- retry/
+|       |-- timeout/
+|       `-- circuit-breaker/
+`-- workers/
+    |-- kafka/
+    |-- outbox/
+    |-- scheduler/
+    `-- reconciliation/
 ```
 
-Each capability uses only the layers it needs. Published question snapshots remain Catalog-owned; attempt/results/projections remain Assessment-owned; technical schema/migrations do not become business modules. Infrastructure imports application ports and domain types, never the reverse. Composition roots wire factories; SQS/Redis adapters remain conditional on the project contracts, not on the existence of template folders.
+### Placement and dependency contract
 
-The project placement guide groups Identity ports/errors and persistence/security/mail/HTTP adapters as described in conventions §173. Platform remains technical and cannot import business modules; Presentation depends on inbound application/HTTP ports and never the Infrastructure implementation. Module-level composition factories are the wiring boundary. This folder specialization preserves the existing dependency contract rather than changing business ownership.
+Invoice/member/POS names above are teaching examples. The examination project uses `modules/{identity,catalog,assessment,reporting}` with the same placement rules. `apps/web`, repository `infra/terraform`, `load-tests`, `experiments`, `scripts` and `apps/api/tests/integration` retain their separate responsibilities. No empty folders, base entities, generic repositories or integrations are required by this tree.
+
+- `shared/domain` is pure, capability-neutral domain code. `shared/application` contains pure shared contracts/ports, UnitOfWork and pagination when needed. Aggregate write repository ports live in module `domain/repositories`; query/projection, crypto, delivery and application workflow ports live in `application/ports`. Domain ports cannot import application DTOs or infrastructure types.
+- `shared/common` is the outer reusable Nest/transport helper area. Domain/Application MUST NOT import `shared/common`, `config`, `workers` or technical implementations, including via barrels. Shared pure code cannot import business modules. Module-owned policies/errors stay in their module.
+- `config` owns typed settings, validation and Nest composition. Secret file/provider I/O belongs to infrastructure security/integration adapters. Business logic receives plain values or ports; it does not read environment variables or import ConfigService/config implementations.
+- Global `infrastructure` owns reusable technical adapters and MUST NOT import business modules. Module-specific persistence/crypto/mail integrations stay in the owning module. Nest module factories, `main.ts` and worker composition roots may bind adapters; this wiring permission does not extend to business classes.
+- `workers` owns process/queue/scheduler inbound orchestration and lifecycle. Business rules stay in module Application/Domain. Worker roots consume a module's public worker factory/facade/port, without exporting private repositories. Add SQS/email/health/HTTP/idempotency/shutdown groups only when required; the tree is extensible by responsibility.
+- A business-facing outbox port lives in shared or module `application/ports`. The illustrated `infrastructure/outbox/outbox.port.ts` is only an infrastructure-internal relay/storage contract if needed. It does not authorize Application → Infrastructure imports.
+- TypeORM filenames are used if that adapter is selected; current pg adapters remain until a recorded persistence decision. Both implementations resolve the active transaction manager/client per operation. Raw SQL/projections are allowed in Infrastructure under the same transaction/ownership/security contract. Do not hydrate full aggregates for read-only projections by default.
+- Kafka and Redis are optional; SQS remains the selected scoring integration. Cursor pagination is adopted under ADR-002: the page-based filenames above are illustrative, not permission to add OFFSET/count queries or an unused pagination framework.
+
+### Explicit transition
+
+[ADR-006](../docs/adr/006-source-layout-normalization.md) adopts this target. Current code still uses `platform/`, root `worker.ts` and `apps/api/migrations`; [normalization plan](../docs/architecture-normalization-plan.md) enumerates the scope, dependencies and unchecked runtime tasks. No new legacy placement is allowed. Boundary checks must cover old and new layouts during migration, then reject legacy placement. Complete normalization gates before extending Catalog. This is an explicit temporary placement transition, not an exception to dependency or transaction boundaries.
+
+Target SQL migration placement is `apps/api/src/infrastructure/database/migrations`; preserve the existing bundle names, checksums, receipt history and artifact inclusion. SQL schema `platform` is not renamed because the source folder is removed. ORM selection is a separate evidence-based decision; no performance gain is claimed from folder moves.
 
 ---
 
@@ -1309,7 +1411,7 @@ unitOfWork.transaction(async () => {
 
 TypeORM requires transaction operations to use the transaction-scoped `EntityManager`.
 
-A TypeORM adapter propagates its active manager internally through `AsyncLocalStorage`. This project adopts the equivalent transaction-scoped `pg` connection under ADR-001; the TypeORM code below is an alternative adapter example, not an instruction to install TypeORM.
+A TypeORM adapter propagates its active manager internally through `AsyncLocalStorage`. The current runtime uses the equivalent transaction-scoped `pg` connection under ADR-001. The TypeORM code below is an allowed adapter example; the revised layout does not select or install an ORM. See ADR-006 and the persistence comparison gate in the normalization plan.
 
 Example:
 
@@ -1622,7 +1724,7 @@ Business-module dependency
 
 Module composition roots register owned infrastructure adapters and bind plain Application constructors with factory providers. Domain/Application have no Nest imports or decorators. Nest `exports` exposes deliberate public capabilities only. [Module template §22](module-template.md#22-nestjs-module-template) shows complete illustrative factory wiring.
 
-With the adopted `pg` adapters, a module registers its SQL repository/query adapters and port bindings. A TypeORM alternative may register its module-owned entities via `TypeOrmModule.forFeature` and `autoLoadEntities: true` in main configuration. Do not create a global business entity directory or move DI decorators into Application merely to simplify registration.
+With the current `pg` adapters, a module registers its SQL repository/query adapters and port bindings. A TypeORM alternative may register its module-owned entities via `TypeOrmModule.forFeature` and `autoLoadEntities: true` in main configuration. Do not create a global business entity directory or move DI decorators into Application merely to simplify registration.
 
 ---
 
@@ -2999,9 +3101,9 @@ Optimize lowest cost satisfying correctness, security, durability, SLO and capac
 
 The target is a single modular monolith with separate API and worker entry points, not separate services/databases. Identity owns User, Role, permission assignments and Session. Catalog owns Exam, ExamSection, Question, QuestionOption and immutable ExamQuestion snapshots. Assessment owns ExamAttempt/AttemptAnswer/ExamResult and derived Leaderboard/question statistics. Reporting owns read-only admin/business queries across explicitly declared source schemas. AuditLog is an append-only technical port used in the same transaction as admin mutations. This does not create one module per table.
 
-`apps/api/src/modules/<capability>/{domain,application,infrastructure,presentation}` holds behavior and adapters. Shared technical ports are in `platform/application`; implementations in `platform/infrastructure`; security/HTTP adapters in `platform/presentation`. `main.ts` and `worker.ts` are composition roots. Browser code is in `apps/web`. SQL migrations are in `apps/api/migrations`. Shared code must remain technical; do not put scoring, attempt or publication policy in a global utility.
+`apps/api/src/modules/<capability>/{domain,application,infrastructure,presentation}` holds behavior and owned adapters. Apply §5: pure shared contracts in `shared/{domain,application}`, reusable Nest helpers in `shared/common`, typed settings in `config`, global technical adapters in `infrastructure` and process/inbound adapters in `workers`. Domain write repositories use `domain/repositories`; read/technical workflow ports use `application/ports`. `main.ts` and worker entry points are composition roots. Browser code stays in `apps/web`; migration target placement and the explicit current-layout transition are recorded in §5/ADR-006. Do not put scoring, attempt, Identity or publication policy into shared/global technical folders.
 
-The supplied TypeORM examples illustrate an allowed adapter. ADR-001 adopts parameterized `pg` SQL behind repository/query ports. Domain/Application cannot import `pg`, NestJS, Redis, AWS SDK or transport implementations. Transaction connections remain in infrastructure AsyncLocalStorage and are resolved for every operation. Nested work joins the transaction; any joined failure makes it rollback-only even if accidentally caught. Connection acquisition, statement/lock/idle transaction limits and pool headroom are explicit.
+The supplied TypeORM examples illustrate an allowed adapter. ADR-001 records the current parameterized `pg` implementation behind repository/query ports; it is not a measured performance/cost preference over ORM. TypeORM/Sequelize may implement those ports after a documented comparison and decision. Domain/Application cannot import `pg`, NestJS, Redis, AWS SDK or transport implementations. Transaction connections remain in infrastructure AsyncLocalStorage and are resolved for every operation. Nested work joins the transaction; any joined failure makes it rollback-only even if accidentally caught. Connection acquisition, statement/lock/idle transaction limits and pool headroom are explicit.
 
 # 78. Attempt Lifecycle and Concurrency Contract
 

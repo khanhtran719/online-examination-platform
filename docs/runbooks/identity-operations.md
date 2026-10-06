@@ -1,5 +1,7 @@
 # Identity operations
 
+Source entry-point/CLI placement is changing under [ADR-006](../adr/006-source-layout-normalization.md); the commands below still describe the current runtime. Update and smoke them together at N-08/N-09 before closing the transition.
+
 2026-10-06. Local API/email-worker/operator implemented; AWS drills pending. [Review](../phase-04-review.md) and [acceptance](../production-acceptance.md) record evidence.
 
 ## Local setup

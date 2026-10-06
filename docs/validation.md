@@ -1,6 +1,6 @@
 # Validation log
 
-Updated 2026-10-06. Latest scope: Phase04 local Identity/API/email-worker and user-adjusted source folders. ID-07/browser and ID-11/live SES remain PARTIAL. Initial sections record historical checks; latest results are in the final Phase04 runtime section. No AWS capacity/cost/production claim.
+Updated 2026-10-06. Latest scope: revised architecture §5 documentation, API review and normalization plan; no runtime relocation or ORM implementation. Phase04 local Identity/API/email-worker is the prior runtime evidence. ID-07/browser and ID-11/live SES remain PARTIAL. Initial sections record historical checks; new checks are in the final architecture-normalization section. No AWS capacity/cost/production claim.
 
 | Check / command | Result | Detail |
 | --- | --- | --- |
@@ -129,3 +129,22 @@ Benchmark initially sent application/json with empty bodies causing96 refresh/lo
 No Git diff/commit/PR claimed; repository still has no Git remote. No AWS deploy/price saving/production acceptance claimed. Remaining browser/live-provider/production gates are explicit in roadmap and acceptance ledger; test/script existence alone never ticks them.
 
 Final manifest/lock dependency comparison matched; roadmap count CLI confirmed50/166/216. Final document/source quality and contract validation passed after report updates. Actual API/worker smoke processes exited; PostgreSQL/Mailpit stopped through Compose with PostgreSQL data volume retained. No implementation or test task remains running in the background.
+
+
+## Architecture §5 normalization — documentation/review increment
+
+2026-10-06. [ADR-006](adr/006-source-layout-normalization.md), [API review](api-architecture-review.md) and [marked plan](architecture-normalization-plan.md) deliver the user-requested standards adjustment before further implementation. Updated architecture §5/15/24/77, rules R-76, related conventions/workflow/examples/overview/AGENTS/profile/README/roadmap/database/runbooks. Seven actionable review findings record placement/guard gaps and remaining browser/SES/observability acceptance. The pg choice is documented as an implementation decision without an ORM comparison; TypeORM/raw projections is a proposed candidate, not an installed dependency or measured winner.
+
+| Fresh check | Actual result / limit |
+| --- | --- |
+| `npm run quality` | PASS local Markdown links/anchors, section/context, current source import/test placement; new-layout guard extension remains N-04 |
+| `contracts:check` through quality | PASS46 operations/425 examples and event boundary metadata; only9 Identity business routes implemented |
+| `node --test scripts/__tests__/*.unit.spec.mjs` | **26 PASS**,0 failures/0 skipped:16 contract +10 quality tooling regressions |
+| `git diff --check` | PASS whitespace review; source/build/package/SQL/HTTP contract files unchanged |
+| Git inspection | Repository now exists, baseline commit `cac9416`, remote name `origin`; network/PR workflow not tested, BOOT-09 updated PARTIAL without changing product completed count |
+| Runtime unit/integration/build/browser/smoke/load | NOT RERUN for docs-only increment; prior142 PASS stays historical runtime evidence, not a fresh test result |
+| ORM/ARM64/AWS comparison, cost, sustainable capacity | NOT RUN; raw local diagnostics do not establish an ORM or AWS performance/cost winner |
+
+Self-review distinguishes target layout from the explicit legacy-source transition, pure shared ports from Nest common, business outbox port from infrastructure relay port, domain write models from application projection/crypto types, worker factories from private repositories and SQL schema names from source folders. Preserve eight immutable migration checksums and build-asset inclusion at N-09; no database change is made here.
+
+Normalization **N-01–03 complete (3/12)**, N-04–12 pending; ORM evaluation0/4. Product status remains50/216. No new runtime package, source relocation, infrastructure resource or fabricated benchmark is included. Historical validation/experiment artifacts remain unchanged.

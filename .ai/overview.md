@@ -2,6 +2,8 @@
 
 This file is a navigation map. Normative boundaries and flows live in [architecture](architecture.md), enforceable constraints in [rules](rules.md), code shape in [conventions](conventions.md), and execution process in [workflow](workflow.md). [AGENTS.md](../AGENTS.md) defines precedence.
 
+Placement: [architecture §5](architecture.md#5-target-project-structure) adopts backend `config/shared/modules/infrastructure/workers`. [ADR-006](../docs/adr/006-source-layout-normalization.md) and the [normalization checklist](../docs/architecture-normalization-plan.md) record the explicit pending runtime transition; [API review](../docs/api-architecture-review.md) records findings and the unmeasured ORM comparison.
+
 Target: one modular monolith, independent API/worker scaling, business capabilities Identity, Catalog, Assessment and Reporting. Presentation → Application → Domain/Ports; Infrastructure implements ports. PostgreSQL owns durable state. DDD-lite protects attempt/publication invariants; CQRS-lite allows optimized read projections. No per-table modules or distributed services by default.
 
 Writes use UnitOfWork and transaction context. Submission + outbox commit together. SQS delivery is at least once; inbox + grading/result/projection commit before acknowledgement. Redis and Kafka are optional integrations requiring evidence. Schema evolution uses versioned SQL migrations; rules remain independent of `pg`/TypeORM adapters.

@@ -1062,7 +1062,7 @@ Run existing tests; add focused use-case unit tests when the selection criteria 
 Use-case tests
 ```
 
-Place each new unit test in `__tests__/` beside its source file's directory, using `<subject>.unit.spec.ts`. For example, `application/use-cases/pay-invoice.use-case.ts` is tested at `application/use-cases/__tests__/pay-invoice.use-case.unit.spec.ts`. Keep integration and E2E tests under their own project conventions.
+Place each new unit test in `__tests__/` beside its source file's directory, using `<subject>.unit.spec.ts`. For example, `application/commands/pay-invoice.use-case.ts` is tested at `application/commands/__tests__/pay-invoice.use-case.unit.spec.ts`. Keep integration and E2E tests under their own project conventions.
 
 ### Repository / SQL change
 
@@ -1604,6 +1604,8 @@ changes
 ---
 
 ## 52. Architecture Change Workflow
+
+For a user-requested documentation/review/plan increment, adopt the target through an ADR and enumerate existing implementation drift explicitly; do not silently call pending source compliant. The present layout transition is scoped by [ADR-006](../docs/adr/006-source-layout-normalization.md) and [normalization checklist](../docs/architecture-normalization-plan.md). Extend architecture guard regression fixtures before relocation; keep legacy and new boundaries enforced together. Update build/CLI/test/worker/migration-asset paths with source moves. Preserve SQL schema names, checksums and auth/transaction semantics. Separate placement changes from ORM/schema/behavior changes. Close the transition only after actual regression, entry-point smoke/drain and comparable diagnostic checks; plans/scripts are not measurements. This explicit transition supplements, not relaxes, the architecture-change obligations below.
 
 If the task changes an architectural rule:
 

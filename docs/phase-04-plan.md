@@ -13,7 +13,7 @@
 - [ ] **ID-11 — PARTIAL** Outbox/worker/SMTP/SES adapter, retries/park/replay/retention đã kiểm chứng local; live sender/quota/bounce/complaint/metrics chưa triển khai.
 - [ ] **ID-12, ID-13 — LATER** Magic link và GitHub. Chưa thêm endpoint/SDK/provider credential trong phase hiện tại.
 
-Các checkbox runtime được cập nhật trong [roadmap](implementation-roadmap.md), không chỉ từ specification. DB-12 vẫn chờ old/new image drill; BOOT-09 vẫn thiếu Git/remote. Không cần domain để kiểm thử local; gửi email AWS cần account/region/sender được chọn. WEB-02 chưa có `/verify-email` page: link local chưa hoàn tất được bằng browser.
+Các checkbox runtime được cập nhật trong [roadmap](implementation-roadmap.md), không chỉ từ specification. DB-12 vẫn chờ old/new image drill; Git/origin đã hiện diện ở review mới; BOOT-09 branch/PR workflow vẫn chưa kiểm chứng. Không cần domain để kiểm thử local; gửi email AWS cần account/region/sender được chọn. WEB-02 chưa có `/verify-email` page: link local chưa hoàn tất được bằng browser.
 
 ## 2. Ownership, luồng và atomicity
 
@@ -47,6 +47,8 @@ Lock order chung: user → family hoặc challenge → session/email intent. Ada
 Không dựng generic provider registry cho provider chưa tồn tại. Sau này password, magic link, GitHub sẽ cùng gọi Identity capability tạo session sau khi chứng minh danh tính; external OAuth adapter không được cấp quyền riêng hoặc bypass verified/disabled policy.
 
 ## 4. File/dependency impact
+
+Phần dưới ghi implementation đã bàn giao trước thay đổi §5. Target mới và runtime moves pending nằm ở [ADR-006](adr/006-source-layout-normalization.md) và [normalization checklist](architecture-normalization-plan.md). Không tiếp tục tạo folder platform hoặc coi layout hiện tại đã conform target.
 
 Đã áp dụng folder bạn chỉnh: Identity có `application/ports`, `domain/errors`, `infrastructure/{persistence,security,mail,http}` và `presentation/http/dto`. Crypto/email policy adapter thuộc Identity; database, idempotency, rate/audit mechanisms và reusable HTTP filter/interceptor/health thuộc platform. `AppModule`/IdentityModule/DatabaseModule/HealthModule là composition factories; platform không import module business, Presentation không import Infrastructure. SQL adapter dùng `PostgresDatabase`/UoW. Build xóa riêng generated `dist` trước compile để loại output theo folder cũ.
 

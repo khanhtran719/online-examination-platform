@@ -2,12 +2,14 @@
 
 Cập nhật: 2026-10-06. Đã bàn giao/review **quy chuẩn, bootstrap/domain, contracts, DB-01–11 và lõi Identity/API/email-worker local** theo [ADR-005](adr/005-email-verification-and-signed-tokens.md). **50/216 mục hoàn thành,166 mục chưa hoàn thành.** ID-07/browser HTTPS, ID-11/live SES và DB-12/image compatibility còn PARTIAL; magic link/GitHub LATER. AWS chưa triển khai/đo.
 
-Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. BOOT-09 thiếu Git/remote; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
+Ưu tiên hiện tại: [chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới. **3/12 normalization deliverables hoàn thành** (quy chuẩn/review/kế hoạch), 9 runtime tasks pending; ORM evaluation0/4. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) ghi findings và persistence recommendation; chưa đổi code/ORM, chưa sang Catalog.
+
+Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. Git và origin remote hiện đã có, BOOT-09 branch/PR workflow chưa kiểm chứng; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
 
 | Nhóm | Trạng thái hiện tại | Điều kiện chuyển bước |
 | --- | --- | --- |
-| 00: Bộ quy chuẩn | Hoàn tất, đã kiểm tra và review lại | Không còn quyết định POS mâu thuẫn, có contract/ADR và checklist |
-| 01: Bootstrap | Runtime API/email-worker local đã có; Git còn pending | Unit/typecheck/build/lint/quality, actual entry-point health/drain |
+| 00: Bộ quy chuẩn | Cập nhật §5/ADR-006 hoàn tất tài liệu; source normalization pending riêng | Không còn quyết định POS mâu thuẫn, có contract/ADR và checklist |
+| 01: Bootstrap | Runtime API/email-worker local và Git/origin đã có; branch/PR workflow còn pending | Unit/typecheck/build/lint/quality, actual entry-point health/drain |
 | 02: Product/public contracts | Hoàn tất specification + local contract checks | Policy/schema/permissions/workload nhất quán; runtime evidence pending |
 | 03: Database | DB-01–11 hoàn tất nền persistence; DB-12 chưa drill | Business adapters/races và old/new images cần evidence riêng |
 | 04: Identity | Lõi local hoàn tất; ID-07/11 PARTIAL, ID-12/13 LATER | Browser HTTPS/live SES operations trước đóng phase |
@@ -44,10 +46,10 @@ Mục đích: bootstrap/dependencies/domain và composition roots; Git/remote v�
 - [x] **BOOT-06** Hoàn tất pure [Attempt](../apps/api/src/modules/assessment/domain/attempt.ts), [scoring](../apps/api/src/modules/assessment/domain/scoring.ts) và unit tests; chạy GREEN.
 - [x] **BOOT-07** Chạy typecheck/build/lint/quality; ghi kết quả vào [validation log](validation.md).
 - [x] **BOOT-08** Kiểm tra health PostgreSQL và queue local; đây chỉ là dependency check, chưa phải integration test hệ thống.
-- [ ] **BOOT-09** Khởi tạo Git và cấu hình remote/branch/PR khi bắt đầu phase implementation tiếp theo.
+- [ ] **BOOT-09** PARTIAL — Git đã có, baseline commit `cac9416`, remote name `origin` hiện diện; delivery branch/PR workflow và remote connectivity chưa kiểm chứng trong scope docs. Không tạo PR chỉ để đóng checklist.
 - [x] **BOOT-10** Nest composition root/API/email-worker entry points, config fail-fast, health/correlation/error mapper và graceful drain; actual local smoke PASS.
 
-BOOT-06–08 có [bootstrap evidence lịch sử](completed-checklist-review.md). BOOT-10 có [runtime review](phase-04-review.md): actual API/worker live/ready/SIGTERM PASS. Hiện90 unit/tooling +52 integration PASS, runtime audit0,20 moderate dev findings. BOOT-09 chưa làm; không suy ra Docker/AWS readiness từ local roots.
+BOOT-06–08 có [bootstrap evidence lịch sử](completed-checklist-review.md). BOOT-10 có [runtime review](phase-04-review.md): actual API/worker live/ready/SIGTERM PASS. Hiện90 unit/tooling +52 integration PASS, runtime audit0,20 moderate dev findings. BOOT-09 PARTIAL; không suy ra Docker/AWS readiness từ local roots.
 
 ## 02. Chốt product specification và public contracts
 

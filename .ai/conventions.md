@@ -1988,8 +1988,8 @@ Examples:
 ```text
 domain/entities/invoice.ts
 domain/entities/__tests__/invoice.unit.spec.ts
-application/use-cases/pay-invoice.use-case.ts
-application/use-cases/__tests__/pay-invoice.use-case.unit.spec.ts
+application/commands/pay-invoice.use-case.ts
+application/commands/__tests__/pay-invoice.use-case.unit.spec.ts
 ```
 
 Write unit tests for complex or important behavior, not for every source file. Integration tests are separate and may use `<subject>.integration.spec.ts` in the repository's integration-test area; the unit-test location rule does not apply to them.
@@ -2608,6 +2608,8 @@ Domain entities should not inherit from ORM base entities.
 ---
 
 # 107. Shared Folder Rule
+
+For placement, apply architecture §5 and §173 below. Pure `shared/domain` and `shared/application` cannot import `shared/common`, config/workers/infrastructure or business modules. Shared common is an outer transport/framework area, not a shortcut for business dependencies.
 
 `shared/` is not a dumping ground.
 
@@ -3736,7 +3738,11 @@ Local memoization may be acceptable for immutable/process-local technical data w
 
 Within one business module, use the same convention for similar features.
 
-For this project, the adopted Identity shape uses `application/ports`, `application/errors` for technical application failures, `domain/errors` for semantic business errors, `infrastructure/{persistence,security,mail,http}` and `presentation/http/dto`. Module composition factories bind adapters; presentation consumes its inbound HTTP port rather than importing infrastructure. Technical platform has application/domain/infrastructure/presentation and does not import business modules. Follow this grouping when adding related code; do not create empty groups for future capabilities. See [project module guide](../docs/examination-module-guide.md).
+Follow architecture §5: backend `apps/api/src/{config,shared,modules,infrastructure,workers}`. `shared/domain` and `shared/application` are pure; `shared/common` is outer Nest/transport code and cannot be imported by Domain/Application. Global infrastructure/config/shared do not import business modules; worker composition uses public module capabilities. Module-owned integrations stay under their owning module.
+
+Use module `domain/repositories` for aggregate write ports and `application/ports` for read/projection/crypto/delivery contracts. Domain ports cannot import application types. Put cohesive application services in `application/services`, write use cases in `application/commands`, reads in `application/queries`, and public capabilities in `application/facades` or a named public factory. Do not create command+handler+service wrappers for the same trivial call. Owned semantic errors stay in `domain/errors`; shared exception bases stay pure. ORM entities/mappers/repositories are conditional under `infrastructure/persistence/typeorm`; existing SQL adapters normalize under `persistence/postgres`. Presentation keeps `http/dto` and inbound transport ports.
+
+Typed settings/validation live in `config`; secret I/O lives in infrastructure. Migration target is `infrastructure/database/migrations`; SQL schema names and immutable checksums do not follow folder renames. Business outbox ports live on the Application side; `infrastructure/outbox/outbox.port.ts` is only a technical relay/storage contract. Cursor contracts follow ADR-002, not illustrative page filenames. The existing platform/root-worker placement is an explicit temporary [ADR-006 transition](../docs/adr/006-source-layout-normalization.md), tracked in the [normalization plan](../docs/architecture-normalization-plan.md); no new legacy files. See [project module guide](../docs/examination-module-guide.md).
 
 Do not mix:
 
@@ -3892,7 +3898,7 @@ modules/invoice/
 │       └── invoice.repository.ts
 │
 ├── application/
-│   ├── use-cases/
+│   ├── commands/
 │   │   └── pay-invoice.use-case.ts
 │   └── dto/
 │       └── pay-invoice.result.ts

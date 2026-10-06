@@ -2,6 +2,10 @@
 
 Scope: DB-01–11 foundation plus Phase04 Identity adapters/operations. PostgreSQL17, parameterized pg infrastructure (ADR-001). Eight migrations applied local; Identity real-PG/HTTP/retention tests and [local diagnostic](../experiments/identity-local/README.md) exist. Catalog/Assessment persistence flows/AWS saturation remain pending. [Foundation review](phase-03-review.md), [Identity review](phase-04-review.md), [migration runbook](runbooks/database-migrations.md), [decision](adr/004-postgresql-durability.md).
 
+## Placement and persistence decision
+
+The current commands below execute pg adapters and migrations from existing paths. [ADR-006](adr/006-source-layout-normalization.md) adopts `src/infrastructure/database/{migrations,transaction}` as the target; implementation moves and build asset copy remain N-06/N-09. Keep SQL schema `platform`, grants, eight migration names/checksums and one migration history unchanged. Folder normalization is separate from [TypeORM/Sequelize evaluation](api-architecture-review.md#5-typeorm-và-sequelize-có-phù-hợp-không); pg is not a measured performance/cost winner. Any ORM/raw SQL implementation uses the active UoW manager/connection and the same pooling/security/timeouts/rollback-only gates.
+
 ## Local execution
 
 ```sh

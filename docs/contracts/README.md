@@ -1,5 +1,7 @@
 # HTTP and integration contract v1
 
+[Source-layout normalization](../architecture-normalization-plan.md) does not change HTTP/event contracts. [API review](../api-architecture-review.md) distinguishes the nine implemented Identity routes from the 46 specified operations; keep status/cookies/CSRF/idempotency behavior stable during moves or ORM evaluation.
+
 Status: specified, not served by an application. SPEC-10 deliverables: [OpenAPI](openapi.yaml), [event schema](attempt-submitted.v1.schema.json), [acceptance matrix](../contract-tests.md). Implementation must also follow [product](../product-specification.md), [permissions](../security-and-permissions.md), [SLO/workload](../slo-and-workload.md) and architecture.
 
 ## HTTP conventions

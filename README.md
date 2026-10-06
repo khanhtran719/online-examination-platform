@@ -2,6 +2,7 @@
 
 **Phase04: lõi Identity và API/email-worker chạy được trên local. 50/216 đầu mục hoàn tất.** Email/password, link xác thực một lần, JWT ES256 access/refresh, rotation/revocation, profile receipt và operator admin đã triển khai. Browser HTTPS và live SES còn PARTIAL. Magic link/GitHub để sau. Chưa đạt production acceptance trên AWS.
 
+- [Chuẩn hóa kiến trúc — checklist 3/12](docs/architecture-normalization-plan.md), [review API và lựa chọn pg/ORM](docs/api-architecture-review.md), [ADR-006](docs/adr/006-source-layout-normalization.md): quy chuẩn đã cập nhật, source moves còn pending.
 - [Architecture Contract](architecture.md) và [AGENTS.md](AGENTS.md): boundaries và quy trình.
 - [Roadmap có đánh dấu](docs/implementation-roadmap.md), [review Phần04](docs/phase-04-review.md), [profile](docs/project-profile.md): trạng thái/evidence.
 - [Product](docs/product-specification.md), [permissions](docs/security-and-permissions.md), [OpenAPI](docs/contracts/openapi.yaml), [SLO/workload](docs/slo-and-workload.md): contracts.

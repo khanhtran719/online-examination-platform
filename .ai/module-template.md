@@ -1,5 +1,7 @@
 # Module Template
 
+Placement follows [architecture §5](architecture.md#5-target-project-structure). `src/` is `apps/api/src` here; POS modules and TypeORM/Kafka/Redis snippets are examples, not required integrations. Read [ADR-006](../docs/adr/006-source-layout-normalization.md) and the [normalization plan](../docs/architecture-normalization-plan.md) for current-to-target placement. Write use-case classes may live in `application/commands` without adding a mediator/handler framework.
+
 > **Status:** Illustrative module blueprint.  
 > The named domains, fields, tables, and code snippets are teaching examples. Follow [rules](rules.md), [architecture](architecture.md), and the [project profile](../docs/project-profile.md) for required behavior; adapt each example to the actual owning module and PostgreSQL schema.  
 > For this project, use the [examination module guide](../docs/examination-module-guide.md) to specialize the examples. Invoice/POS snippets are illustrative and do not define the product. SQS replaces Kafka only at the adapter boundary; outbox/inbox contracts remain mandatory. Redis examples do not authorize enabling a cache. Read the task-specific guidance in [AGENTS.md](../AGENTS.md). Related documents:
@@ -140,7 +142,7 @@ modules/<module>/
 │       └── <problem>.error.ts
 │
 ├── application/
-│   ├── use-cases/
+│   ├── commands/
 │   │   ├── <write-action>.use-case.ts
 │   │   └── __tests__/
 │   │       └── <write-action>.use-case.unit.spec.ts
@@ -184,6 +186,8 @@ modules/<module>/
             └── <resource>.response-mapper.ts
 ```
 
+Create `application/services` for cohesive services only when needed. Read/technical ports live in Application; aggregate write ports live in Domain and cannot import application DTO/crypto types. Module-specific mail/security/HTTP integrations remain in that module; they are not moved to global infrastructure simply because this tree shows persistence only.
+
 The unit-test entries illustrate placement when behavior is complex or important. Do not create empty directories or one test per file just to match this tree.
 
 ---
@@ -214,7 +218,7 @@ modules/invoice/
 │       └── invoice-already-paid.error.ts
 │
 ├── application/
-│   ├── use-cases/
+│   ├── commands/
 │   │   └── pay-invoice.use-case.ts
 │   ├── queries/
 │   │   └── get-invoice-detail.query.ts
@@ -401,7 +405,7 @@ QueryBuilder
 File:
 
 ```text
-application/use-cases/pay-invoice.use-case.ts
+application/commands/pay-invoice.use-case.ts
 ```
 
 Example:
@@ -1374,6 +1378,8 @@ Document source table/view dependencies, migration compatibility, data-access sc
 
 # 35. Integration / Technical Module
 
+Pure shared ports belong to `shared/application/ports` and UnitOfWork to `shared/application/unit-of-work`; shared semantic bases belong to `shared/domain`. Framework helpers belong to `shared/common`, forbidden to Domain/Application. Configuration belongs to `config`; global worker process/inbound adapters belong to `workers` and call public module capabilities. A business outbox port never lives in Infrastructure; the illustrated infrastructure outbox port is technical relay/storage only.
+
 Pure technical mechanisms do not belong in `modules/`.
 
 Examples:
@@ -1432,7 +1438,7 @@ modules/payment/
 │   └── errors/
 │
 ├── application/
-│   ├── use-cases/
+│   ├── commands/
 │   └── ports/
 │       └── payment.gateway.ts
 │
@@ -1757,7 +1763,7 @@ modules/invoice/
 │           └── invoice.unit.spec.ts
 │
 ├── application/
-│   └── use-cases/
+│   └── commands/
 │       ├── pay-invoice.use-case.ts
 │       └── __tests__/
 │           └── pay-invoice.use-case.unit.spec.ts

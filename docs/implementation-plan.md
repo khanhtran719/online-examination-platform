@@ -1,6 +1,16 @@
 # Implementation plan
 
-The [marked roadmap](implementation-roadmap.md) is the delivery-status source. Initial narrowed work delivered standards/bootstrap, then user authorized contracts, PostgreSQL and Phase04 Identity runtime. Historical sections below record those increments; current outcome is the final Phase04 runtime section. AWS production acceptance remains pending.
+## Active scope — architecture normalization review, 2026-10-06
+
+The user requests updating architecture §5 and related standards, reviewing the existing API, explaining the `pg` choice, and planning normalization before further runtime work. Deliver documents and review only in this increment; source relocation and ORM installation are subsequent unchecked tasks.
+
+Plan: (1) map `src/` to `apps/api/src`; reconcile shared pure contracts, Nest common helpers, repository ownership, infrastructure and worker entry points; (2) inspect Identity HTTP/application/persistence/UoW/config/worker code and regression tests; (3) adopt the requested placement guide through ADR-006 and update the owning standards/examples/profile; (4) record findings, current-to-target paths, dependency-ordered checklist, acceptance gates and persistence comparison protocol; (5) validate local links/anchors/contracts and review the documentation diff. Preserve API/session behavior, SQL schema names, immutable migration checksums and historical benchmark evidence. Do not claim an ORM performance/cost winner without a controlled comparison.
+
+Progress and final checks are recorded in [normalization plan](architecture-normalization-plan.md) and [API architecture review](api-architecture-review.md). The existing 50/216 product checklist remains separate from this normalization increment.
+
+Outcome: N-01–03 documentation/review/plan complete; runtime N-04–12 and persistence O-01–04 pending. Quality/contracts and26 tooling regressions pass; diff whitespace check passes. Source/SQL/package/HTTP contract unchanged. The next normalization step is the fail-first architecture guard extension before moving files.
+
+The [marked roadmap](implementation-roadmap.md) is the delivery-status source. Initial narrowed work delivered standards/bootstrap, then user authorized contracts, PostgreSQL and Phase04 Identity runtime. Historical sections below record those increments; the Phase04 section records the prior runtime outcome. The active scope above records the new architecture review/documentation increment. AWS production acceptance remains pending.
 
 Affected standards: AGENTS.md, architecture entry point, .ai architecture/rules/conventions/workflow/overview/module-template, project profile and ADR-001/002. New documentation: module guide, performance protocol, contract-test matrix, production acceptance ledger and experiment template.
 
