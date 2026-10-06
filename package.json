@@ -1,0 +1,27 @@
+{
+  "name": "online-examination-platform",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "jest --runInBand && node --test scripts/__tests__/quality.unit.spec.mjs",
+    "quality": "node scripts/quality.mjs",
+    "lint": "eslint apps scripts && npm run quality",
+    "format": "prettier --write apps scripts *.json *.cjs *.mjs *.yaml"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "jest": "^30.1.3",
+    "ts-jest": "^29.4.4",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.5.2",
+    "eslint": "^9.36.0",
+    "typescript-eslint": "^8.44.0",
+    "prettier": "^3.6.2"
+  }
+}

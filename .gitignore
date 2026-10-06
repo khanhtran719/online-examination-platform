@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+*.tfstate*
+.terraform/
+coverage/
+experiments/results/*.json
+!experiments/results/acceptance.json
