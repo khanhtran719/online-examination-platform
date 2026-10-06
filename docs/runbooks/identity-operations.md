@@ -1,6 +1,6 @@
 # Identity operations
 
-Source entry-point/CLI placement is changing under [ADR-006](../adr/006-source-layout-normalization.md); the commands below still describe the current runtime. Update and smoke them together at N-08/N-09 before closing the transition.
+[ADR-006](../adr/006-source-layout-normalization.md) source placement is implemented. Email worker starts at `dist/workers/outbox/verification.main.js`; the operator CLI uses `dist/workers/operator/operator-admin.main.js` and a dedicated database role. Both roots compose public Identity factories. API/worker smoke/drain and actual operator bootstrap/grant/revoke/repeated-bootstrap rejection passed on isolated local PostgreSQL; see [normalization evidence](../../experiments/architecture-normalization/README.md).
 
 2026-10-06. Local API/email-worker/operator implemented; AWS drills pending. [Review](../phase-04-review.md) and [acceptance](../production-acceptance.md) record evidence.
 
@@ -15,9 +15,9 @@ Worker config excludes JWT/CSRF files and uses mail DB role. Operator config req
 Use an existing enabled verified account UUID and set OPERATOR_IDENTITY/OPERATOR_REASON in the authorized environment. Production operator role must be attributed/short-lived. Actual compiled CLI:
 
 ```sh
-node --env-file=.env.operator.example dist/operator-admin.js bootstrap USER_UUID
-node --env-file=.env.operator.example dist/operator-admin.js grant USER_UUID
-node --env-file=.env.operator.example dist/operator-admin.js revoke USER_UUID
+node --env-file=.env.operator.example dist/workers/operator/operator-admin.main.js bootstrap USER_UUID
+node --env-file=.env.operator.example dist/workers/operator/operator-admin.main.js grant USER_UUID
+node --env-file=.env.operator.example dist/workers/operator/operator-admin.main.js revoke USER_UUID
 ```
 
 Replace USER_UUID; no default admin/password. Bootstrap globally once, including after revocation. DB function grants/audits with session_user/reason in one transaction. API cannot execute or DML assignments. CLI prints safe completed/failed only. Current permissions take effect on next request; no cache flush.

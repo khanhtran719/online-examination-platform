@@ -1,0 +1,7 @@
+{
+  "event": "identity.smoke.completed",
+  "api": true,
+  "worker": true,
+  "shutdownMs": 581.813833,
+  "scope": "actual compiled API and worker live/ready and SIGTERM; isolated local dependencies"
+}

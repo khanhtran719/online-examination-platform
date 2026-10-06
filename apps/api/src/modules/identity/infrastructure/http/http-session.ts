@@ -1,10 +1,10 @@
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { IdentityService } from "../../application/identity.service";
+import { IdentityService } from "../../application/services/identity.service";
 import { IssuedTokens } from "../../application/ports/identity-crypto.ports";
-import { SecurityControls } from "../../../../platform/application/security";
-import { DomainError } from "../../../../platform/domain/domain-error";
-import { forbidden, rateLimited, unauthenticated } from "../../domain/errors";
+import { SecurityControls } from "../../../../shared/application/ports/security";
+import { DomainError } from "../../../../shared/domain/exceptions/domain-error";
+import { forbidden, rateLimited, unauthenticated } from "../../domain/errors/index";
 export class HttpSession {
   constructor(
     private readonly identity: IdentityService,

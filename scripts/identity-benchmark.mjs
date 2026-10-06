@@ -5,34 +5,34 @@ import { performance } from "node:perf_hooks";
 import os from "node:os";
 import pg from "pg";
 const require = createRequire(import.meta.url);
+const artifact = process.env.IDENTITY_BENCH_OUTPUT ?? "experiments/identity-local/latest.json";
+if (!/^experiments\/[a-z0-9_-]+\/[a-z0-9_-]+\.json$/.test(artifact))
+  throw new Error("Benchmark artifact must be a named JSON file under experiments");
 const { Module } = require("@nestjs/common");
 const {
   PostgresDatabase,
-} = require("../dist/platform/infrastructure/database/postgres-database.js");
-const { databaseConfig } = require("../dist/platform/infrastructure/database/database-config.js");
-const {
-  loadMigrations,
-  migrate,
-} = require("../dist/platform/infrastructure/database/migration-runner.js");
+} = require("../dist/infrastructure/database/transaction/postgres-database.js");
+const { databaseConfig } = require("../dist/config/database.config.js");
+const { loadMigrations, migrate } = require("../dist/infrastructure/database/migration-runner.js");
 const {
   PostgresSecurity,
-} = require("../dist/platform/infrastructure/security/postgres-security.js");
+} = require("../dist/infrastructure/security/authorization/postgres-security.js");
 const {
   PostgresIdempotency,
-} = require("../dist/platform/infrastructure/database/postgres-idempotency.js");
-const { ShutdownGate } = require("../dist/platform/application/shutdown-gate.js");
-const { READINESS } = require("../dist/platform/application/readiness.js");
+} = require("../dist/infrastructure/idempotency/postgres-idempotency.js");
+const { ShutdownGate } = require("../dist/infrastructure/resilience/shutdown/shutdown-gate.js");
+const { READINESS } = require("../dist/shared/application/ports/readiness.js");
 const {
   createHttpApplication,
-} = require("../dist/platform/presentation/http/configure-http-application.js");
-const { LiveController } = require("../dist/platform/presentation/http/health/live.controller.js");
+} = require("../dist/infrastructure/http/configure-http-application.js");
+const { LiveController } = require("../dist/infrastructure/health/http/live.controller.js");
+const { ReadyController } = require("../dist/infrastructure/health/http/ready.controller.js");
 const {
-  ReadyController,
-} = require("../dist/platform/presentation/http/health/ready.controller.js");
-const { IdentityService } = require("../dist/modules/identity/application/identity.service.js");
+  IdentityService,
+} = require("../dist/modules/identity/application/services/identity.service.js");
 const {
   PostgresIdentityRepository,
-} = require("../dist/modules/identity/infrastructure/persistence/postgres-identity.repository.js");
+} = require("../dist/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.js");
 const {
   ArgonPasswords,
   JwtSessionTokens,
@@ -43,6 +43,18 @@ const {
 } = require("../dist/modules/identity/presentation/http/identity.controller.js");
 const { HTTP_SESSION } = require("../dist/modules/identity/presentation/http/http-session.port.js");
 const { HttpSession } = require("../dist/modules/identity/infrastructure/http/http-session.js");
+const {
+  VerificationWorker,
+} = require("../dist/modules/identity/application/services/verification-worker.js");
+const {
+  PostgresVerificationDelivery,
+} = require("../dist/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.js");
+const {
+  MailDeliveryError,
+} = require("../dist/modules/identity/application/ports/verification-delivery.port.js");
+const {
+  PostgresIdentityQuery,
+} = require("../dist/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.js");
 const base = new URL(process.env.TEST_DATABASE_ADMIN_URL ?? "");
 if (process.env.NODE_ENV === "production" || !["127.0.0.1", "localhost"].includes(base.hostname))
   throw new Error("Disposable local benchmark only");
@@ -150,7 +162,7 @@ try {
   await admin.query(`GRANT examination_runtime TO ${runtime}`);
   await migrate(
     databaseConfig({ NODE_ENV: "test", DATABASE_URL: ddlUrl.toString() }),
-    await loadMigrations("apps/api/migrations"),
+    await loadMigrations("dist/infrastructure/database/migrations"),
   );
   report.database = (await fixture.query("SELECT version() version")).rows[0].version;
   const identities = [];
@@ -170,6 +182,7 @@ try {
         dummy,
         security,
         new PostgresIdempotency(db),
+        new PostgresIdentityQuery(db),
       );
     identities.push(identity);
     class BenchModule {}
@@ -298,18 +311,65 @@ try {
       rssBytes: process.memoryUsage().rss,
     };
   }
+  const delivery = new PostgresVerificationDelivery(databases[0]);
+  const mailSuccess = { send: async () => undefined };
+  const successWorker = new VerificationWorker(delivery, codec, mailSuccess, origin);
+  for (let i = 0; i < 32; i++)
+    await identities[0].register({
+      email: `delivery${i}@example.test`,
+      displayName: "Delivery",
+      password: "delivery fixture password",
+    });
+  await measure("worker.accepted", 32, async () => {
+    if (!(await successWorker.runOnce())) throw new Error("Missing delivery job");
+  });
+  if (
+    (
+      await fixture.query(
+        "SELECT count(*)::int n FROM identity.email_intents WHERE delivered_at IS NOT NULL",
+      )
+    ).rows[0].n !== 32
+  )
+    throw new Error("Delivery result not durable");
+  for (let i = 0; i < 16; i++)
+    await identities[0].register({
+      email: `retry${i}@example.test`,
+      displayName: "Retry",
+      password: "delivery fixture password",
+    });
+  const retryWorker = new VerificationWorker(
+    delivery,
+    codec,
+    {
+      send: async () => {
+        throw new MailDeliveryError(true);
+      },
+    },
+    origin,
+  );
+  await measure("worker.retry", 16, async () => {
+    if (!(await retryWorker.runOnce())) throw new Error("Missing retry job");
+  });
+  if (
+    (
+      await fixture.query(
+        "SELECT count(*)::int n FROM identity.email_intents WHERE delivered_at IS NULL AND attempts=1 AND lease_token IS NULL AND parked_at IS NULL",
+      )
+    ).rows[0].n !== 16
+  )
+    throw new Error("Retry disposition not durable");
   report.cost = {
     awsCostPerHour: null,
     costPerMillionRequests: null,
     reason: "No AWS resources or bill measurement",
   };
-  await mkdir("experiments/identity-local", { recursive: true });
-  await writeFile("experiments/identity-local/latest.json", JSON.stringify(report, null, 2) + "\n");
+  await mkdir(artifact.slice(0, artifact.lastIndexOf("/")), { recursive: true });
+  await writeFile(artifact, JSON.stringify(report, null, 2) + "\n");
   const errors = Object.values(report.measurements).reduce((n, r) => n + (r.errors ?? 0), 0);
   process.stdout.write(
     JSON.stringify({
       event: "identity.benchmark.completed",
-      artifact: "experiments/identity-local/latest.json",
+      artifact,
       operations: Object.keys(report.measurements),
       errors,
     }) + "\n",

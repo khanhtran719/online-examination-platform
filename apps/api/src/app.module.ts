@@ -1,8 +1,8 @@
 import { DynamicModule, Module } from "@nestjs/common";
 import { IdentityModule } from "./modules/identity/identity.module";
-import { DatabaseModule } from "./platform/infrastructure/database/database.module";
-import { HealthModule } from "./platform/infrastructure/health/health.module";
-import { ApiConfig } from "./platform/infrastructure/security/runtime-config";
+import { DatabaseModule } from "./infrastructure/database/database.module";
+import { HealthModule } from "./infrastructure/health/health.module";
+import { ApiConfig } from "./config/app.config";
 
 @Module({})
 export class AppModule {

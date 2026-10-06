@@ -1,3 +1,4 @@
+import { copyMigrationBundle } from "./migration-assets.mjs";
 import { rm, lstat } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import { resolve } from "node:path";
@@ -18,3 +19,9 @@ const result = spawnSync(
 );
 if (result.error) throw new Error("Compiler failed to start");
 process.exitCode = result.status ?? 1;
+
+if (process.exitCode === 0)
+  await copyMigrationBundle(
+    resolve("apps/api/src/infrastructure/database/migrations"),
+    resolve("dist/infrastructure/database/migrations"),
+  );

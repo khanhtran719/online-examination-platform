@@ -1,9 +1,9 @@
 import { Body, Controller, Get, HttpCode, Inject, Post, Put, Req, Res } from "@nestjs/common";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { IdentityService } from "../../application/identity.service";
-import { HTTP_SESSION, HttpSessionPort } from "./http-session.port";
+import { IdentityService } from "../../application/services/identity.service";
+import { invalidRequest } from "../../domain/errors/index";
 import { body, email, password, profileInput, text } from "./dto/identity.dto";
-import { invalidRequest } from "../../domain/errors";
+import { HTTP_SESSION, HttpSessionPort } from "./http-session.port";
 @Controller("v1")
 export class IdentityController {
   constructor(

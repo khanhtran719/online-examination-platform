@@ -1,6 +1,6 @@
 # Module Template
 
-Placement follows [architecture §5](architecture.md#5-target-project-structure). `src/` is `apps/api/src` here; POS modules and TypeORM/Kafka/Redis snippets are examples, not required integrations. Read [ADR-006](../docs/adr/006-source-layout-normalization.md) and the [normalization plan](../docs/architecture-normalization-plan.md) for current-to-target placement. Write use-case classes may live in `application/commands` without adding a mediator/handler framework.
+Placement follows [architecture §5](architecture.md#5-target-project-structure). `src/` is `apps/api/src` here; POS modules and TypeORM/Kafka/Redis snippets are examples, not required integrations. Read [ADR-006](../docs/adr/006-source-layout-normalization.md) and the [normalization plan](../docs/architecture-normalization-plan.md) for implemented placement and historical mapping. Write use-case classes may live in `application/commands` without adding a mediator/handler framework.
 
 > **Status:** Illustrative module blueprint.  
 > The named domains, fields, tables, and code snippets are teaching examples. Follow [rules](rules.md), [architecture](architecture.md), and the [project profile](../docs/project-profile.md) for required behavior; adapt each example to the actual owning module and PostgreSQL schema.  

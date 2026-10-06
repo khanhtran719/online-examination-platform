@@ -1,6 +1,6 @@
 # Validation log
 
-Updated 2026-10-06. Latest scope: revised architecture §5 documentation, API review and normalization plan; no runtime relocation or ORM implementation. Phase04 local Identity/API/email-worker is the prior runtime evidence. ID-07/browser and ID-11/live SES remain PARTIAL. Initial sections record historical checks; new checks are in the final architecture-normalization section. No AWS capacity/cost/production claim.
+Updated 2026-10-06. Latest scope: architecture §5 source/tooling normalization, complete12/12 with fresh152 test cases and actual API/worker/operator/migration checks. No ORM implementation. ID-07/browser and ID-11/live SES remain PARTIAL. Initial sections record historical checks; fresh evidence is in the final source-normalization section. No AWS capacity/cost/production claim.
 
 | Check / command | Result | Detail |
 | --- | --- | --- |
@@ -148,3 +148,32 @@ Final manifest/lock dependency comparison matched; roadmap count CLI confirmed50
 Self-review distinguishes target layout from the explicit legacy-source transition, pure shared ports from Nest common, business outbox port from infrastructure relay port, domain write models from application projection/crypto types, worker factories from private repositories and SQL schema names from source folders. Preserve eight immutable migration checksums and build-asset inclusion at N-09; no database change is made here.
 
 Normalization **N-01–03 complete (3/12)**, N-04–12 pending; ORM evaluation0/4. Product status remains50/216. No new runtime package, source relocation, infrastructure resource or fabricated benchmark is included. Historical validation/experiment artifacts remain unchanged.
+
+## Architecture §5 normalization — source/tooling closure
+
+2026-10-06. User authorized completion after the documentation increment. [Checklist](architecture-normalization-plan.md) **N-01–12 complete**, [ADR-006](adr/006-source-layout-normalization.md) implemented locally, [API review](api-architecture-review.md#7-closure-sau-source-normalization) RV-01–05 CLOSED. Product remains50/216; ORM evaluation0/4, RV-06/07 pending.
+
+| Fresh check / command | Actual result / scope |
+| --- | --- |
+| Guard regressions RED → GREEN | Four new boundary tests failed before checker extension; legacy/root-barrel regressions then failed before closure guard. Final self-review reproduced a controller→public composition factory bypass and repaired it before acceptance.16 quality cases PASS; imports/type imports/barrels/private cross-module boundaries and factory caller scope checked |
+| Pure config RED → GREEN | New settings suite failed before config.validation existed; now2 PASS, preserving existing secret/key/TLS/config suites |
+| Migration assets RED → GREEN | Missing module failed before copy implementation;2 cases PASS for byte copy and absent/empty/symlink rejection |
+| Public factory SMTP RED → GREEN | New factory import failed before implementation; actual SMTP integration now calls the public worker factory and retains consumed-job assertions |
+| `npm test` | **100 PASS**,0 skipped:66 Jest/12 suites +34 Node (16 quality +16 contracts +2 migration assets) |
+| Actual PG integration command | `node --experimental-vm-modules --env-file=/tmp/examination-normalization-api.env node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand`: **52 PASS**,0 skipped,2 suites (30 foundation +22 Identity); PostgreSQL17.11 ARM64/restricted roles, real HTTP/SMTP. Fixture DBs/logins cleaned after sockets closed |
+| `npm run typecheck` / `npm run build` | PASS strict TypeScript and clean build; all new compiled API/worker/operator/DB entry points present; legacy generated paths absent |
+| `npm run lint` / quality/contracts | PASS;46 operations/425 example occurrences remain contract inventory,9 Identity business routes implemented |
+| Migration checksums |8 source +8 built SQL files match baseline SHA-256 exactly; no schema/content/grant/history change |
+| Actual compiled migration CLI | Fresh task-owned database:8 applied. Rerun compiled CLI from `/tmp`:0 applied, exit0; bundle resolution is independent of cwd. DB-12 Linux image compatibility drill remains pending |
+| Actual API/worker smoke | Compiled main and worker `/live`/`/ready` PASS, both SIGTERM exit0; combined idle shutdown581.813833ms. [Record](../experiments/architecture-normalization/smoke.json); no deployment-under-load claim |
+| Actual operator CLI | Moved root bootstrap/grant/revoke exit0 through dedicated operator login;3 audit records,0 admin roles after revoke; repeated bootstrap rejected with exit1 and no extra audit. [Record](../experiments/architecture-normalization/operator-cli.json), isolated test DB only |
+| Before/after diagnostic |3 before +3 after runs, same pool/security/dataset/traffic,13 operations. Ten explicit error counters report0 errors;3 completed Argon microbenchmarks have no separate error field. [Raw comparison/report](../experiments/architecture-normalization/README.md) retains percentiles, sequential RPS, CPU/RSS/query/pool/transaction observations |
+| Source self-review | [Record](../experiments/architecture-normalization/self-review.json): six moved runtime/controller non-import bodies unchanged;24 Identity SQL literals unchanged across write/query split; same executor preserved; no legacy source/build paths |
+| Dependencies/contracts/history | No new runtime dependency or lockfile/HTTP/event schema change; prior audit results remain historical, not a fresh scan |
+| Browser HTTPS/live SES/AWS/ORM/k6/image/restore/cost | NOT RUN; no production acceptance, sustainable capacity, optimum pool, ORM winner or AWS savings inferred |
+
+Baseline runtime is `cac9416`; existing docs were committed by the user during work as `9cc07bc`. This source increment does not create a commit/PR or modify staging. The new experiment stores a current source worktree digest and baseline migration digests; historical Identity JSON is preserved. Operator placement was corrected from the proposed global infrastructure path to `workers/operator`, avoiding technical infrastructure→business imports; ADR-006 explains the decision. No empty module/config wrapper/integration was created.
+
+Query counts remain identical; median-of-run p95 increases on me/refresh/logout are recorded alongside decreases elsewhere. Shared-host noise, development activity during baseline runs, sequential non-interleaved execution and small samples prevent a causal performance conclusion. Worker measurements use a provider stub; CPU includes client/API in one process; RSS delta is not allocation/request. Accept the structure/correctness adjustment with observed local behavior; retain concurrency/AWS SLO and performance–cost verification as separate open gates.
+
+Final `npm test` passed100 again after factory-caller guard repair; `npm run lint` including quality/contracts and `git diff --check` passed after documentation updates. Roadmap count verified50 checked/166 unchecked; normalization12 checked and ORM4 unchecked. Task-owned `examination-normalization` PostgreSQL and the Mailpit started for this run were stopped through Compose, with volumes retained; the existing service on55432 was not touched. All smoke/test/benchmark child processes had exited; no task remains running.

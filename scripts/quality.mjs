@@ -50,8 +50,25 @@ export function inspectImports(path, code) {
   const domainLayer = /\/domain\//.test(path);
   const errors = [];
   const dependencies = [];
+  const globalTechnical = /^apps\/api\/src\/(?:shared|config|infrastructure)(?:\/|$)/.test(path);
+  const workerRoot = /^apps\/api\/src\/workers\//.test(path);
+  const compositionCaller =
+    workerRoot ||
+    /^apps\/api\/src\/(?:main|app\.module)\.ts$/.test(path) ||
+    /^apps\/api\/src\/modules\/[^/]+\/[^/]+\.(?:module|factory)\.ts$/.test(path);
+  // Reviewed public entry points; never permit arbitrary private application imports.
+  const publicApplication = new Set([
+    "catalog/application/catalog.facade",
+    "catalog/application/facades/catalog.facade",
+    "identity/application/facades/identity.facade",
+  ]);
+  const publicComposition = new Set([
+    "identity/identity.module",
+    "identity/identity-worker.factory",
+    "identity/identity-operator.factory",
+  ]);
   const forbidden =
-    /^(?:@nestjs\/|@aws-sdk\/|@opentelemetry\/|(?:pg|typeorm|redis|ioredis|kafkajs|aws-sdk|axios|express|fastify)(?:\/|$)|(?:node:)?(?:http|https|net|tls)(?:\/|$))/;
+    /^(?:@nestjs\/|@aws-sdk\/|@opentelemetry\/|@fastify\/|(?:pg|typeorm|sequelize|jose|argon2|nodemailer|redis|ioredis|kafkajs|aws-sdk|axios|express|fastify)(?:\/|$)|(?:node:)?(?:http|https|net|tls)(?:\/|$))/;
   function visit(node) {
     if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) {
       if (node.moduleSpecifier && ts.isStringLiteralLike(node.moduleSpecifier))
@@ -75,19 +92,24 @@ export function inspectImports(path, code) {
     ) {
       const argument = node.arguments[0];
       if (argument && ts.isStringLiteralLike(argument)) dependencies.push(argument.text);
-      else if (protectedLayer)
+      else if (protectedLayer || globalTechnical || workerRoot)
         errors.push("Non-literal runtime dependency cannot be checked statically");
     }
     ts.forEachChild(node, visit);
   }
   visit(source);
   for (const dependency of dependencies) {
+    if (/^@(?:shared|config|infrastructure|modules|workers|platform)(?:\/|$)/.test(dependency))
+      errors.push(`Source alias is not configured for boundary resolution: ${dependency}`);
     const target = dependency.startsWith(".")
       ? posix.normalize(posix.join(posix.dirname(path), dependency))
       : dependency;
     if (
       protectedLayer &&
-      (forbidden.test(dependency) || /\/(infrastructure|presentation)(?:\/|$)/.test(target))
+      (forbidden.test(dependency) ||
+        /\/(infrastructure|presentation|config|workers)(?:\/|$)/.test(target) ||
+        /\/shared\/common(?:\/|$)/.test(target) ||
+        /\/shared(?:$|\/index(?:\.[^/]*)?$)/.test(target))
     ) {
       errors.push(`Protected business layer imports technical dependency: ${dependency}`);
     }
@@ -97,10 +119,25 @@ export function inspectImports(path, code) {
     if (/\/presentation\//.test(path) && /\/infrastructure(?:\/|$)/.test(target)) {
       errors.push(`Presentation imports infrastructure: ${dependency}`);
     }
-    if (/\/platform\//.test(path) && /(?:^|\/)modules\//.test(target)) {
+    if ((/\/platform\//.test(path) || globalTechnical) && /(?:^|\/)modules\//.test(target)) {
       errors.push(`Platform imports a business module: ${dependency}`);
     }
-    const targetModule = target.match(/(?:^|\/)modules\/([^/]+)\//)?.[1];
+    const moduleTarget = target.match(/(?:^|\/)modules\/(.+)/)?.[1]?.replace(/\.(?:ts|js)$/, "");
+    const targetModule = moduleTarget?.split("/")[0];
+    if (publicComposition.has(moduleTarget) && !compositionCaller)
+      errors.push(
+        `Module composition factory is not an inbound application capability: ${dependency}`,
+      );
+    if (moduleTarget && ((module && module !== targetModule) || workerRoot)) {
+      const permitted =
+        publicApplication.has(moduleTarget) ||
+        (compositionCaller && publicComposition.has(moduleTarget));
+      // Private domain/infra/presentation are reported by the existing rule below.
+      if (!permitted && !/\/(domain|infrastructure|presentation)(?:\/|$)/.test(target))
+        errors.push(`Private module contract is not a public entry point: ${dependency}`);
+      if (workerRoot && !permitted && /\/(domain|infrastructure|presentation)(?:\/|$)/.test(target))
+        errors.push(`Worker imports a private module adapter: ${dependency}`);
+    }
     if (
       module &&
       targetModule &&
@@ -111,6 +148,12 @@ export function inspectImports(path, code) {
     }
   }
   return errors;
+}
+
+export function inspectPlacement(path) {
+  return /^apps\/api\/src\/(?:platform(?:\/|$)|(?:worker|operator-admin)\.ts$)/.test(path)
+    ? ["Legacy source placement is closed; use shared/config/infrastructure/workers"]
+    : [];
 }
 
 function filesIn(root) {
@@ -167,13 +210,14 @@ export function checkRepository(root) {
     if (!new RegExp(`^# ${section}\\. `, "m").test(architecture))
       errors.push(`Missing examination architecture section ${section}`);
   }
-  for (let rule = 63; rule <= 75; rule += 1) {
+  for (let rule = 63; rule <= 76; rule += 1) {
     if (!rules.includes(`(R-${rule})`)) errors.push(`Missing project rule R-${rule}`);
   }
   for (const file of files.filter((path) => /\.(?:ts|mjs)$/.test(path))) {
     const name = relative(root, file);
     if (name.startsWith("apps/api/src/"))
       errors.push(
+        ...inspectPlacement(name),
         ...inspectImports(name, readFileSync(file, "utf8")).map((error) => `${name}: ${error}`),
       );
     if (/\.unit\.spec\.(?:ts|mjs)$/.test(name) && !name.includes("/__tests__/"))

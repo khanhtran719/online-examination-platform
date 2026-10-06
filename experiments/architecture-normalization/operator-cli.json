@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-10-06T09:59:01.052Z",
+  "scope": "isolated local PostgreSQL 17 on port 55433; no production operator action",
+  "actions": {
+    "bootstrap": "PASS",
+    "grant": "PASS",
+    "revoke": "PASS"
+  },
+  "repeatedBootstrap": "REJECTED",
+  "successfulAuditRows": 3,
+  "adminRoleAfterRevoke": 0
+}

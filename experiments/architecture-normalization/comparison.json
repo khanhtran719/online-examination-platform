@@ -1,0 +1,1572 @@
+{
+  "scope": "local regression diagnostic, not sustainable capacity or performance/cost optimization proof",
+  "statistic": "median/min/max across three per-run observations; percentiles are not pooled distribution percentiles",
+  "configuration": {
+    "apiInstances": 2,
+    "poolPerInstance": 4,
+    "argon": {
+      "memoryKiB": 19456,
+      "timeCost": 2,
+      "parallelism": 1,
+      "concurrency": 2
+    },
+    "users": 32,
+    "redis": false,
+    "tls": "loopback HTTP with explicit client cookie jar; browser HTTPS gate pending"
+  },
+  "machine": {
+    "arch": "arm64",
+    "platform": "darwin",
+    "cpus": 8,
+    "node": "v24.17.0"
+  },
+  "runFiles": {
+    "before": [
+      "before-1.json",
+      "before-2.json",
+      "before-3.json"
+    ],
+    "after": [
+      "after-1.json",
+      "after-2.json",
+      "after-3.json"
+    ]
+  },
+  "measurements": {
+    "login.http": {
+      "before": {
+        "samples": {
+          "median": 64,
+          "min": 64,
+          "max": 64
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 24.831483388338224,
+          "min": 24.505685151435795,
+          "max": 26.45005085627735
+        },
+        "p50Ms": {
+          "median": 39.22020799999973,
+          "min": 36.402624999999716,
+          "max": 39.288290999999845
+        },
+        "p95Ms": {
+          "median": 48.09241699999984,
+          "min": 44.75724999999966,
+          "max": 53.413666999999805
+        },
+        "p99Ms": {
+          "median": 67.35245799999939,
+          "min": 55.15958299999966,
+          "max": 72.09466699999939
+        },
+        "cpuMsPerOperation": {
+          "median": 26.848046875,
+          "min": 26.1445625,
+          "max": 27.251921875
+        },
+        "rssBytes": {
+          "median": 165249024,
+          "min": 159399936,
+          "max": 167231488
+        },
+        "rssDeltaBytes": {
+          "median": -2621440,
+          "min": -11370496,
+          "max": 1130496
+        },
+        "dbQueriesPerOperation": {
+          "median": 19.5,
+          "min": 19.5,
+          "max": 19.5
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.04841699999997218,
+          "min": 0.04550000000017462,
+          "max": 0.051292000000103144
+        },
+        "dbTransactionP95Ms": {
+          "median": 7.472083999999995,
+          "min": 6.491665999999896,
+          "max": 7.857958000000508
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 64,
+          "min": 64,
+          "max": 64
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 27.081998268397342,
+          "min": 26.59446316457794,
+          "max": 27.425863124587874
+        },
+        "p50Ms": {
+          "median": 35.594874999999774,
+          "min": 35.58249999999953,
+          "max": 36.384000000000015
+        },
+        "p95Ms": {
+          "median": 43.96041699999978,
+          "min": 39.412874999999985,
+          "max": 48.31458300000031
+        },
+        "p99Ms": {
+          "median": 50.183292000000165,
+          "min": 46.796334000000115,
+          "max": 66.74575000000004
+        },
+        "cpuMsPerOperation": {
+          "median": 26.581796875,
+          "min": 26.558734375,
+          "max": 26.89434375
+        },
+        "rssBytes": {
+          "median": 184352768,
+          "min": 182566912,
+          "max": 184500224
+        },
+        "rssDeltaBytes": {
+          "median": 6979584,
+          "min": 6553600,
+          "max": 7962624
+        },
+        "dbQueriesPerOperation": {
+          "median": 19.5,
+          "min": 19.5,
+          "max": 19.5
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.04862499999944703,
+          "min": 0.04804199999944103,
+          "max": 0.05020799999965675
+        },
+        "dbTransactionP95Ms": {
+          "median": 5.7100829999999405,
+          "min": 5.638500000000022,
+          "max": 7.136582999999973
+        }
+      },
+      "p95MedianDeltaPercent": -8.591791092554313,
+      "queryCountsUnchanged": true
+    },
+    "me.http": {
+      "before": {
+        "samples": {
+          "median": 200,
+          "min": 200,
+          "max": 200
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 247.6554124671237,
+          "min": 207.27172254754802,
+          "max": 248.94397189173594
+        },
+        "p50Ms": {
+          "median": 3.959834000000228,
+          "min": 3.8664580000004207,
+          "max": 4.154958000000079
+        },
+        "p95Ms": {
+          "median": 5.474417000000358,
+          "min": 4.82141700000011,
+          "max": 7.543665999999575
+        },
+        "p99Ms": {
+          "median": 6.62866699999995,
+          "min": 5.8749589999997625,
+          "max": 20.009874999999738
+        },
+        "cpuMsPerOperation": {
+          "median": 1.4796850000000001,
+          "min": 1.469655,
+          "max": 1.551655
+        },
+        "rssBytes": {
+          "median": 167690240,
+          "min": 161464320,
+          "max": 182075392
+        },
+        "rssDeltaBytes": {
+          "median": 2441216,
+          "min": 2064384,
+          "max": 14827520
+        },
+        "dbQueriesPerOperation": {
+          "median": 2,
+          "min": 2,
+          "max": 2
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.016791999999441032,
+          "min": 0.016749999999774445,
+          "max": 0.018292000000656117
+        },
+        "dbTransactionP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 200,
+          "min": 200,
+          "max": 200
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 227.45381799003337,
+          "min": 225.79199364169753,
+          "max": 248.67419106360256
+        },
+        "p50Ms": {
+          "median": 3.9374169999991864,
+          "min": 3.8100420000000668,
+          "max": 4.092958000000181
+        },
+        "p95Ms": {
+          "median": 7.274833000000399,
+          "min": 5.68554099999983,
+          "max": 7.2752080000000205
+        },
+        "p99Ms": {
+          "median": 8.580333000000792,
+          "min": 7.557999999999993,
+          "max": 8.674750000000131
+        },
+        "cpuMsPerOperation": {
+          "median": 1.72248,
+          "min": 1.54465,
+          "max": 1.75456
+        },
+        "rssBytes": {
+          "median": 197918720,
+          "min": 192118784,
+          "max": 198000640
+        },
+        "rssDeltaBytes": {
+          "median": 13418496,
+          "min": 9551872,
+          "max": 13533184
+        },
+        "dbQueriesPerOperation": {
+          "median": 2,
+          "min": 2,
+          "max": 2
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.022958999999900698,
+          "min": 0.01616699999976845,
+          "max": 0.025042000000212283
+        },
+        "dbTransactionP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        }
+      },
+      "p95MedianDeltaPercent": 32.88781252871171,
+      "queryCountsUnchanged": true
+    },
+    "refresh.http": {
+      "before": {
+        "samples": {
+          "median": 64,
+          "min": 64,
+          "max": 64
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 112.70271092600277,
+          "min": 96.23793621944155,
+          "max": 120.2383820612089
+        },
+        "p50Ms": {
+          "median": 8.632249999999658,
+          "min": 8.013750000000073,
+          "max": 9.440999999999804
+        },
+        "p95Ms": {
+          "median": 11.229874999999083,
+          "min": 10.740999999999985,
+          "max": 15.199125000000095
+        },
+        "p99Ms": {
+          "median": 13.86279100000138,
+          "min": 13.636124999999993,
+          "max": 19.726957999999286
+        },
+        "cpuMsPerOperation": {
+          "median": 2.67596875,
+          "min": 2.52340625,
+          "max": 3.034953125
+        },
+        "rssBytes": {
+          "median": 176160768,
+          "min": 172343296,
+          "max": 193265664
+        },
+        "rssDeltaBytes": {
+          "median": 10797056,
+          "min": 8372224,
+          "max": 11091968
+        },
+        "dbQueriesPerOperation": {
+          "median": 10,
+          "min": 10,
+          "max": 10
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.01749999999992724,
+          "min": 0.015625,
+          "max": 0.022791999999753898
+        },
+        "dbTransactionP95Ms": {
+          "median": 6.0962499999996,
+          "min": 5.894624999998996,
+          "max": 8.563250000000153
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 64,
+          "min": 64,
+          "max": 64
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 111.84861290243651,
+          "min": 104.13502124726226,
+          "max": 112.00096950839225
+        },
+        "p50Ms": {
+          "median": 8.700332999999773,
+          "min": 7.925667000000431,
+          "max": 9.121957999999722
+        },
+        "p95Ms": {
+          "median": 12.830958000000464,
+          "min": 11.986332999999831,
+          "max": 13.0214160000005
+        },
+        "p99Ms": {
+          "median": 15.559624999999869,
+          "min": 15.261125000000902,
+          "max": 26.0107909999997
+        },
+        "cpuMsPerOperation": {
+          "median": 3.466046875,
+          "min": 2.9661875,
+          "max": 3.468578125
+        },
+        "rssBytes": {
+          "median": 208977920,
+          "min": 203669504,
+          "max": 209174528
+        },
+        "rssDeltaBytes": {
+          "median": 11075584,
+          "min": 10977280,
+          "max": 11452416
+        },
+        "dbQueriesPerOperation": {
+          "median": 10,
+          "min": 10,
+          "max": 10
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.02908300000035524,
+          "min": 0.02237500000046566,
+          "max": 0.030416999999943073
+        },
+        "dbTransactionP95Ms": {
+          "median": 6.625250000000051,
+          "min": 5.999875000000429,
+          "max": 7.81525000000056
+        }
+      },
+      "p95MedianDeltaPercent": 14.257353710540066,
+      "queryCountsUnchanged": true
+    },
+    "logout.http": {
+      "before": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 123.13254962697712,
+          "min": 120.49909202616196,
+          "max": 132.38857043300868
+        },
+        "p50Ms": {
+          "median": 8.004375000000437,
+          "min": 7.290917000000263,
+          "max": 8.175083000000086
+        },
+        "p95Ms": {
+          "median": 9.253375000000233,
+          "min": 9.25249999999869,
+          "max": 10.399583000000348
+        },
+        "p99Ms": {
+          "median": 10.92987499999981,
+          "min": 9.38433299999997,
+          "max": 11.009208000001308
+        },
+        "cpuMsPerOperation": {
+          "median": 2.27046875,
+          "min": 2.18340625,
+          "max": 2.32875
+        },
+        "rssBytes": {
+          "median": 183894016,
+          "min": 180027392,
+          "max": 200916992
+        },
+        "rssDeltaBytes": {
+          "median": 7618560,
+          "min": 7585792,
+          "max": 7667712
+        },
+        "dbQueriesPerOperation": {
+          "median": 9,
+          "min": 9,
+          "max": 9
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.016666999999870313,
+          "min": 0.016166000001248904,
+          "max": 0.01700000000073487
+        },
+        "dbTransactionP95Ms": {
+          "median": 4.9884170000004815,
+          "min": 4.700290999999197,
+          "max": 5.504084000000148
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 120.69338333640077,
+          "min": 109.00664546750855,
+          "max": 125.54995539543609
+        },
+        "p50Ms": {
+          "median": 8.188167000000249,
+          "min": 7.49370799999997,
+          "max": 9.356208000000152
+        },
+        "p95Ms": {
+          "median": 12.590167000000292,
+          "min": 10.392832999999882,
+          "max": 13.977708000000348
+        },
+        "p99Ms": {
+          "median": 12.6645410000001,
+          "min": 10.907333000000108,
+          "max": 14.963042000000314
+        },
+        "cpuMsPerOperation": {
+          "median": 3.44875,
+          "min": 2.5463125,
+          "max": 3.76225
+        },
+        "rssBytes": {
+          "median": 219512832,
+          "min": 211664896,
+          "max": 219856896
+        },
+        "rssDeltaBytes": {
+          "median": 10256384,
+          "min": 7929856,
+          "max": 10813440
+        },
+        "dbQueriesPerOperation": {
+          "median": 9,
+          "min": 9,
+          "max": 9
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.03366699999969569,
+          "min": 0.024541999999200925,
+          "max": 0.04566599999998289
+        },
+        "dbTransactionP95Ms": {
+          "median": 4.8634579999998095,
+          "min": 4.680124999999862,
+          "max": 8.134667000000263
+        }
+      },
+      "p95MedianDeltaPercent": 36.060269901522155,
+      "queryCountsUnchanged": true
+    },
+    "login.invalid.absent.http": {
+      "before": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 33.77181429264742,
+          "min": 32.424752093138096,
+          "max": 34.601112696094376
+        },
+        "p50Ms": {
+          "median": 28.998749999999745,
+          "min": 28.271832999998878,
+          "max": 30.118749999999636
+        },
+        "p95Ms": {
+          "median": 33.93804199999977,
+          "min": 33.44012500000099,
+          "max": 35.519542
+        },
+        "p99Ms": {
+          "median": 36.50774999999976,
+          "min": 34.891749999999774,
+          "max": 40.24508400000013
+        },
+        "cpuMsPerOperation": {
+          "median": 23.79290625,
+          "min": 23.24828125,
+          "max": 24.75515625
+        },
+        "rssBytes": {
+          "median": 188366848,
+          "min": 185090048,
+          "max": 204308480
+        },
+        "rssDeltaBytes": {
+          "median": 196608,
+          "min": -1802240,
+          "max": 1540096
+        },
+        "dbQueriesPerOperation": {
+          "median": 7,
+          "min": 7,
+          "max": 7
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.013500000000931323,
+          "min": 0.01204199999847333,
+          "max": 0.015291000000615895
+        },
+        "dbTransactionP95Ms": {
+          "median": 4.594833999999537,
+          "min": 4.266042000001107,
+          "max": 5.534958000000188
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 34.3238965682714,
+          "min": 33.68306562118741,
+          "max": 34.40765257332158
+        },
+        "p50Ms": {
+          "median": 28.62483400000019,
+          "min": 28.589458000000377,
+          "max": 29.058624999999665
+        },
+        "p95Ms": {
+          "median": 34.61012499999924,
+          "min": 33.95799999999963,
+          "max": 36.38887499999964
+        },
+        "p99Ms": {
+          "median": 34.97154199999932,
+          "min": 34.87037500000042,
+          "max": 40.753709000000526
+        },
+        "cpuMsPerOperation": {
+          "median": 23.94884375,
+          "min": 23.8634375,
+          "max": 25.37228125
+        },
+        "rssBytes": {
+          "median": 220168192,
+          "min": 219545600,
+          "max": 220446720
+        },
+        "rssDeltaBytes": {
+          "median": 442368,
+          "min": 393216,
+          "max": 3850240
+        },
+        "dbQueriesPerOperation": {
+          "median": 7,
+          "min": 7,
+          "max": 7
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.012875000000349246,
+          "min": 0.01212500000019645,
+          "max": 0.01320899999973335
+        },
+        "dbTransactionP95Ms": {
+          "median": 4.270582999999533,
+          "min": 3.252124999999978,
+          "max": 9.387375000000247
+        }
+      },
+      "p95MedianDeltaPercent": 1.9803234376322587,
+      "queryCountsUnchanged": true
+    },
+    "login.invalid.existing.http": {
+      "before": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 33.00640233953507,
+          "min": 32.56867207301468,
+          "max": 34.723471867829225
+        },
+        "p50Ms": {
+          "median": 30.00841599999876,
+          "min": 28.62095799999952,
+          "max": 30.020166000000245
+        },
+        "p95Ms": {
+          "median": 34.39495799999895,
+          "min": 32.658166999999594,
+          "max": 40.08025000000089
+        },
+        "p99Ms": {
+          "median": 35.7158330000002,
+          "min": 32.97841700000026,
+          "max": 42.20541599999888
+        },
+        "cpuMsPerOperation": {
+          "median": 24.52125,
+          "min": 23.7854375,
+          "max": 24.721125
+        },
+        "rssBytes": {
+          "median": 191692800,
+          "min": 190660608,
+          "max": 206733312
+        },
+        "rssDeltaBytes": {
+          "median": 3145728,
+          "min": 2326528,
+          "max": 5390336
+        },
+        "dbQueriesPerOperation": {
+          "median": 7,
+          "min": 7,
+          "max": 7
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.013708000000406173,
+          "min": 0.013249999999970896,
+          "max": 0.014166999999360996
+        },
+        "dbTransactionP95Ms": {
+          "median": 3.745542000000569,
+          "min": 3.3450420000008307,
+          "max": 4.355666999999812
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 33.58052623308085,
+          "min": 33.258338931655835,
+          "max": 33.739934692138924
+        },
+        "p50Ms": {
+          "median": 29.317541999998866,
+          "min": 29.131499999999505,
+          "max": 29.59795800000029
+        },
+        "p95Ms": {
+          "median": 33.99354200000016,
+          "min": 32.61591699999917,
+          "max": 34.20383299999958
+        },
+        "p99Ms": {
+          "median": 36.41816600000129,
+          "min": 35.120709000000716,
+          "max": 36.604833999999755
+        },
+        "cpuMsPerOperation": {
+          "median": 24.38246875,
+          "min": 24.17378125,
+          "max": 24.50590625
+        },
+        "rssBytes": {
+          "median": 221937664,
+          "min": 220725248,
+          "max": 222461952
+        },
+        "rssDeltaBytes": {
+          "median": 1572864,
+          "min": 1146880,
+          "max": 1867776
+        },
+        "dbQueriesPerOperation": {
+          "median": 7,
+          "min": 7,
+          "max": 7
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.013624999999592546,
+          "min": 0.012708000000202446,
+          "max": 0.014167000001179986
+        },
+        "dbTransactionP95Ms": {
+          "median": 4.356667000000016,
+          "min": 4.22295800000029,
+          "max": 5.701624999999694
+        }
+      },
+      "p95MedianDeltaPercent": -1.1670780350968912,
+      "queryCountsUnchanged": true
+    },
+    "jwt.sign": {
+      "before": {
+        "samples": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 8387.062955390491,
+          "min": 8023.535919324507,
+          "max": 8409.220239076141
+        },
+        "p50Ms": {
+          "median": 0.11095900000145775,
+          "min": 0.10487500000090222,
+          "max": 0.11529199999858974
+        },
+        "p95Ms": {
+          "median": 0.16808300000047893,
+          "min": 0.1494590000002063,
+          "max": 0.19095799999922747
+        },
+        "p99Ms": {
+          "median": 0.30212500000016007,
+          "min": 0.20441700000083074,
+          "max": 0.323499999998603
+        },
+        "cpuMsPerOperation": {
+          "median": 0.15863,
+          "min": 0.15237,
+          "max": 0.16376000000000002
+        },
+        "rssBytes": {
+          "median": 191758336,
+          "min": 190808064,
+          "max": 206831616
+        },
+        "rssDeltaBytes": {
+          "median": 98304,
+          "min": 65536,
+          "max": 131072
+        },
+        "dbQueriesPerOperation": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "dbTransactionP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 6208.015193248199,
+          "min": 5835.1425192712995,
+          "max": 8765.330453396082
+        },
+        "p50Ms": {
+          "median": 0.10587499999928696,
+          "min": 0.10420800000065356,
+          "max": 0.10883300000023155
+        },
+        "p95Ms": {
+          "median": 0.23962500000016007,
+          "min": 0.15383399999882386,
+          "max": 0.28020899999864923
+        },
+        "p99Ms": {
+          "median": 1.502042000000074,
+          "min": 0.20795799999905284,
+          "max": 1.9422500000000582
+        },
+        "cpuMsPerOperation": {
+          "median": 0.49429,
+          "min": 0.15089,
+          "max": 0.5107
+        },
+        "rssBytes": {
+          "median": 225296384,
+          "min": 220839936,
+          "max": 225476608
+        },
+        "rssDeltaBytes": {
+          "median": 3014656,
+          "min": 114688,
+          "max": 3358720
+        },
+        "dbQueriesPerOperation": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "dbTransactionP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        }
+      },
+      "p95MedianDeltaPercent": 42.56349541564424,
+      "queryCountsUnchanged": true
+    },
+    "jwt.verify": {
+      "before": {
+        "samples": {
+          "median": 200,
+          "min": 200,
+          "max": 200
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 7200.287925113526,
+          "min": 2265.680286139138,
+          "max": 7301.36855026756
+        },
+        "p50Ms": {
+          "median": 0.10087500000008731,
+          "min": 0.09900000000016007,
+          "max": 0.12162499999976717
+        },
+        "p95Ms": {
+          "median": 0.2762079999993148,
+          "min": 0.2406250000003638,
+          "max": 0.9376669999983278
+        },
+        "p99Ms": {
+          "median": 0.4711250000000291,
+          "min": 0.4117499999993015,
+          "max": 9.968042000000423
+        },
+        "cpuMsPerOperation": {
+          "median": 0.300545,
+          "min": 0.19798,
+          "max": 0.30479
+        },
+        "rssBytes": {
+          "median": 195166208,
+          "min": 194379776,
+          "max": 207585280
+        },
+        "rssDeltaBytes": {
+          "median": 3407872,
+          "min": 753664,
+          "max": 3571712
+        },
+        "dbQueriesPerOperation": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "dbTransactionP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 200,
+          "min": 200,
+          "max": 200
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 9998.145843853903,
+          "min": 9287.638153616901,
+          "max": 10474.65479204016
+        },
+        "p50Ms": {
+          "median": 0.0930419999986043,
+          "min": 0.09037499999976717,
+          "max": 0.09929200000078708
+        },
+        "p95Ms": {
+          "median": 0.13554199999998673,
+          "min": 0.125,
+          "max": 0.1511659999996482
+        },
+        "p99Ms": {
+          "median": 0.16316700000061246,
+          "min": 0.16225000000122236,
+          "max": 0.23337500000161526
+        },
+        "cpuMsPerOperation": {
+          "median": 0.10920999999999999,
+          "min": 0.105655,
+          "max": 0.11781000000000001
+        },
+        "rssBytes": {
+          "median": 225378304,
+          "min": 221249536,
+          "max": 225591296
+        },
+        "rssDeltaBytes": {
+          "median": 114688,
+          "min": 81920,
+          "max": 409600
+        },
+        "dbQueriesPerOperation": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "dbTransactionP95Ms": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        }
+      },
+      "p95MedianDeltaPercent": -50.9275618373389,
+      "queryCountsUnchanged": true
+    },
+    "argon.hash.c1": {
+      "before": {
+        "samples": {
+          "median": 8,
+          "min": 8,
+          "max": 8
+        },
+        "errors": null,
+        "achievedSequentialRps": null,
+        "p50Ms": {
+          "median": 22.1909169999999,
+          "min": 21.463791999998648,
+          "max": 26.281291000001147
+        },
+        "p95Ms": {
+          "median": 25.765583000000333,
+          "min": 23.058874999998807,
+          "max": 34.35883300000023
+        },
+        "p99Ms": {
+          "median": 25.765583000000333,
+          "min": 23.058874999998807,
+          "max": 34.35883300000023
+        },
+        "cpuMsPerOperation": {
+          "median": 22.670625,
+          "min": 21.454375,
+          "max": 25.594125
+        },
+        "rssBytes": {
+          "median": 195166208,
+          "min": 194428928,
+          "max": 198934528
+        },
+        "rssDeltaBytes": null,
+        "dbQueriesPerOperation": null,
+        "dbPoolWaitP95Ms": null,
+        "dbTransactionP95Ms": null
+      },
+      "after": {
+        "samples": {
+          "median": 8,
+          "min": 8,
+          "max": 8
+        },
+        "errors": null,
+        "achievedSequentialRps": null,
+        "p50Ms": {
+          "median": 22.14745799999946,
+          "min": 21.810915999998542,
+          "max": 22.18804099999943
+        },
+        "p95Ms": {
+          "median": 22.94816600000013,
+          "min": 22.456874999999854,
+          "max": 22.984208999998373
+        },
+        "p99Ms": {
+          "median": 22.94816600000013,
+          "min": 22.456874999999854,
+          "max": 22.984208999998373
+        },
+        "cpuMsPerOperation": {
+          "median": 22.109875,
+          "min": 21.776625,
+          "max": 22.27475
+        },
+        "rssBytes": {
+          "median": 225394688,
+          "min": 221265920,
+          "max": 225591296
+        },
+        "rssDeltaBytes": null,
+        "dbQueriesPerOperation": null,
+        "dbPoolWaitP95Ms": null,
+        "dbTransactionP95Ms": null
+      },
+      "p95MedianDeltaPercent": -10.934807879178088,
+      "queryCountsUnchanged": null
+    },
+    "argon.hash.c2": {
+      "before": {
+        "samples": {
+          "median": 16,
+          "min": 16,
+          "max": 16
+        },
+        "errors": null,
+        "achievedSequentialRps": null,
+        "p50Ms": {
+          "median": 23.442417000000205,
+          "min": 22.320332999999664,
+          "max": 24.903834000000643
+        },
+        "p95Ms": {
+          "median": 29.300457999999708,
+          "min": 25.47645900000134,
+          "max": 32.0252500000006
+        },
+        "p99Ms": {
+          "median": 29.300457999999708,
+          "min": 25.47645900000134,
+          "max": 32.0252500000006
+        },
+        "cpuMsPerOperation": {
+          "median": 23.3756875,
+          "min": 22.430625,
+          "max": 24.04175
+        },
+        "rssBytes": {
+          "median": 214368256,
+          "min": 213319680,
+          "max": 214990848
+        },
+        "rssDeltaBytes": null,
+        "dbQueriesPerOperation": null,
+        "dbPoolWaitP95Ms": null,
+        "dbTransactionP95Ms": null
+      },
+      "after": {
+        "samples": {
+          "median": 16,
+          "min": 16,
+          "max": 16
+        },
+        "errors": null,
+        "achievedSequentialRps": null,
+        "p50Ms": {
+          "median": 22.135541999999987,
+          "min": 21.973665999999866,
+          "max": 22.276292000000467
+        },
+        "p95Ms": {
+          "median": 26.526499999999942,
+          "min": 23.124041000000943,
+          "max": 26.939000000000306
+        },
+        "p99Ms": {
+          "median": 26.526499999999942,
+          "min": 23.124041000000943,
+          "max": 26.939000000000306
+        },
+        "cpuMsPerOperation": {
+          "median": 22.227125,
+          "min": 22.145875,
+          "max": 22.4420625
+        },
+        "rssBytes": {
+          "median": 245350400,
+          "min": 241205248,
+          "max": 245530624
+        },
+        "rssDeltaBytes": null,
+        "dbQueriesPerOperation": null,
+        "dbPoolWaitP95Ms": null,
+        "dbTransactionP95Ms": null
+      },
+      "p95MedianDeltaPercent": -9.467285460178786,
+      "queryCountsUnchanged": null
+    },
+    "argon.hash.c4": {
+      "before": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": null,
+        "achievedSequentialRps": null,
+        "p50Ms": {
+          "median": 25.162874999999985,
+          "min": 24.669040999999197,
+          "max": 31.7489170000008
+        },
+        "p95Ms": {
+          "median": 32.2193329999991,
+          "min": 29.185874999999214,
+          "max": 66.4635419999995
+        },
+        "p99Ms": {
+          "median": 35.191417,
+          "min": 29.895249999999578,
+          "max": 70.8033749999995
+        },
+        "cpuMsPerOperation": {
+          "median": 24.78784375,
+          "min": 24.2126875,
+          "max": 27.49653125
+        },
+        "rssBytes": {
+          "median": 254246912,
+          "min": 252837888,
+          "max": 254853120
+        },
+        "rssDeltaBytes": null,
+        "dbQueriesPerOperation": null,
+        "dbPoolWaitP95Ms": null,
+        "dbTransactionP95Ms": null
+      },
+      "after": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": null,
+        "achievedSequentialRps": null,
+        "p50Ms": {
+          "median": 23.60791600000084,
+          "min": 23.213458000000173,
+          "max": 24.017666000001554
+        },
+        "p95Ms": {
+          "median": 27.068959000000177,
+          "min": 25.216083000001163,
+          "max": 28.857833999998547
+        },
+        "p99Ms": {
+          "median": 27.3604579999992,
+          "min": 25.611375000000407,
+          "max": 29.48504099999991
+        },
+        "cpuMsPerOperation": {
+          "median": 23.53878125,
+          "min": 23.07965625,
+          "max": 23.999
+        },
+        "rssBytes": {
+          "median": 285229056,
+          "min": 281133056,
+          "max": 285409280
+        },
+        "rssDeltaBytes": null,
+        "dbQueriesPerOperation": null,
+        "dbPoolWaitP95Ms": null,
+        "dbTransactionP95Ms": null
+      },
+      "p95MedianDeltaPercent": -15.985352645255146,
+      "queryCountsUnchanged": null
+    },
+    "worker.accepted": {
+      "before": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 224.3977632115135,
+          "min": 113.3372402569003,
+          "max": 266.5200806223228
+        },
+        "p50Ms": {
+          "median": 4.29204099999879,
+          "min": 3.5969999999997526,
+          "max": 4.922292000001107
+        },
+        "p95Ms": {
+          "median": 5.816333999999188,
+          "min": 4.958208000000013,
+          "max": 19.561250000000655
+        },
+        "p99Ms": {
+          "median": 5.986167000000933,
+          "min": 4.983707999999751,
+          "max": 73.89366700000028
+        },
+        "cpuMsPerOperation": {
+          "median": 0.622375,
+          "min": 0.486,
+          "max": 0.8390625
+        },
+        "rssBytes": {
+          "median": 254361600,
+          "min": 240893952,
+          "max": 254935040
+        },
+        "rssDeltaBytes": {
+          "median": 49152,
+          "min": 32768,
+          "max": 98304
+        },
+        "dbQueriesPerOperation": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.010082999999212916,
+          "min": 0.007750000000669388,
+          "max": 0.019082999999227468
+        },
+        "dbTransactionP95Ms": {
+          "median": 2.8200419999993755,
+          "min": 2.1870839999992313,
+          "max": 14.780875000000378
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 249.44313768286634,
+          "min": 235.5104357139582,
+          "max": 261.09145890204894
+        },
+        "p50Ms": {
+          "median": 3.9547920000004524,
+          "min": 3.8372920000001614,
+          "max": 4.231334000000061
+        },
+        "p95Ms": {
+          "median": 4.60412499999984,
+          "min": 4.603042000000642,
+          "max": 5.447458000000552
+        },
+        "p99Ms": {
+          "median": 5.642832999999882,
+          "min": 4.611832999999024,
+          "max": 6.155291999999463
+        },
+        "cpuMsPerOperation": {
+          "median": 0.49728125,
+          "min": 0.48878125,
+          "max": 0.5328125
+        },
+        "rssBytes": {
+          "median": 285310976,
+          "min": 281247744,
+          "max": 285458432
+        },
+        "rssDeltaBytes": {
+          "median": 32768,
+          "min": 16384,
+          "max": 32768
+        },
+        "dbQueriesPerOperation": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.007583000000522588,
+          "min": 0.006083000000216998,
+          "max": 0.009000000000014552
+        },
+        "dbTransactionP95Ms": {
+          "median": 2.4047090000003664,
+          "min": 2.0460000000002765,
+          "max": 2.5070830000004207
+        }
+      },
+      "p95MedianDeltaPercent": -20.841461305343145,
+      "queryCountsUnchanged": true
+    },
+    "worker.retry": {
+      "before": {
+        "samples": {
+          "median": 16,
+          "min": 16,
+          "max": 16
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 216.26784870382522,
+          "min": 211.1118511754385,
+          "max": 249.53212726138887
+        },
+        "p50Ms": {
+          "median": 4.056792000001224,
+          "min": 3.7746250000000146,
+          "max": 4.594166000000769
+        },
+        "p95Ms": {
+          "median": 6.467542000000321,
+          "min": 5.775416000000405,
+          "max": 9.207915999999386
+        },
+        "p99Ms": {
+          "median": 6.467542000000321,
+          "min": 5.775416000000405,
+          "max": 9.207915999999386
+        },
+        "cpuMsPerOperation": {
+          "median": 0.647375,
+          "min": 0.5141875,
+          "max": 0.7213125
+        },
+        "rssBytes": {
+          "median": 254377984,
+          "min": 219070464,
+          "max": 255131648
+        },
+        "rssDeltaBytes": {
+          "median": 65536,
+          "min": 16384,
+          "max": 81920
+        },
+        "dbQueriesPerOperation": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.010250000001178705,
+          "min": 0.0069590000002790475,
+          "max": 0.010832999998456216
+        },
+        "dbTransactionP95Ms": {
+          "median": 2.9558339999985037,
+          "min": 2.2475830000003043,
+          "max": 2.9618329999993875
+        }
+      },
+      "after": {
+        "samples": {
+          "median": 16,
+          "min": 16,
+          "max": 16
+        },
+        "errors": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "achievedSequentialRps": {
+          "median": 227.5196927892615,
+          "min": 222.6152773212453,
+          "max": 259.57100764459653
+        },
+        "p50Ms": {
+          "median": 4.2213339999998425,
+          "min": 3.7475830000003043,
+          "max": 4.308375000000524
+        },
+        "p95Ms": {
+          "median": 5.600875000000087,
+          "min": 4.83416600000055,
+          "max": 6.1007079999999405
+        },
+        "p99Ms": {
+          "median": 5.600875000000087,
+          "min": 4.83416600000055,
+          "max": 6.1007079999999405
+        },
+        "cpuMsPerOperation": {
+          "median": 0.6026875,
+          "min": 0.497,
+          "max": 0.603125
+        },
+        "rssBytes": {
+          "median": 285523968,
+          "min": 281280512,
+          "max": 285638656
+        },
+        "rssDeltaBytes": {
+          "median": 81920,
+          "min": 16384,
+          "max": 98304
+        },
+        "dbQueriesPerOperation": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        },
+        "dbPoolWaitP95Ms": {
+          "median": 0.008124999998472049,
+          "min": 0.007541000000856002,
+          "max": 0.010290999998687766
+        },
+        "dbTransactionP95Ms": {
+          "median": 3.03650000000016,
+          "min": 2.1378749999985303,
+          "max": 3.123833999999988
+        }
+      },
+      "p95MedianDeltaPercent": -13.40025314099531,
+      "queryCountsUnchanged": true
+    }
+  },
+  "cost": {
+    "awsResources": [],
+    "costPerHour": null,
+    "costPerMillionRequests": null,
+    "jobsPerUsd": null
+  },
+  "limitations": [
+    "shared host; runs before then after, not interleaved",
+    "baseline host also ran development checks; no dedicated-host/warmup control",
+    "small sequential workloads; no saturation/concurrency/SLO acceptance",
+    "CPU includes client/API in same process, excludes PostgreSQL; RSS delta is not allocation/request",
+    "worker mail stub excludes SMTP/SES latency and throughput",
+    "Argon microbenchmarks do not report a separate error counter",
+    "no ORM or AWS comparison"
+  ]
+}

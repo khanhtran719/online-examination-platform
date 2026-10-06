@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "cac9416",
+  "migrations": {
+    "0001_capability_schema.sql": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+    "0002_query_indexes.sql": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+    "0003_runtime_privileges.sql": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+    "0004_durable_state_guards.sql": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+    "0005_frozen_category.sql": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+    "0006_immutable_submission.sql": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+    "0007_identity_runtime.sql": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+    "0008_identity_operations.sql": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67"
+  },
+  "sourceSha256": "d6b41fa16dea7a73b81aeba73fbb6ff1a36f6cb95d1fdf205c929d093d6ee401",
+  "baselineRuns": 3,
+  "databasePort": 55433,
+  "scope": "local loopback, not sustainable AWS capacity/cost; worker uses no-network provider stub"
+}

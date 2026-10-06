@@ -1,0 +1,90 @@
+{
+  "timestamp": "2026-10-06T10:04:47.441Z",
+  "runtimeBaselineCommit": "cac9416",
+  "runtimeWorktreeSha256": "c3eb81858478a4b3351bf03d68c43c4dd03a5a266316e0de3f7595a5b1a25b69",
+  "digestMethod": "sorted apps/api/src files; path + NUL + bytes + NUL",
+  "unitTooling": {
+    "jest": 66,
+    "node": 34,
+    "total": 100,
+    "skipped": 0
+  },
+  "realIntegration": {
+    "postgresFoundation": 30,
+    "identityHttpSmtp": 22,
+    "total": 52,
+    "skipped": 0
+  },
+  "checks": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "build": "PASS",
+    "contracts": "PASS",
+    "migrationsFreshApply": 8,
+    "migrationsRepeatFromTmp": 0,
+    "apiWorkerSmoke": "PASS",
+    "operatorCli": "PASS",
+    "quality": "PASS",
+    "diffWhitespace": "PASS",
+    "publicFactoryCallerRegression": "RED then PASS"
+  },
+  "migrationChecks": [
+    {
+      "name": "0001_capability_schema.sql",
+      "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+      "sourceMatches": true,
+      "builtMatches": true
+    },
+    {
+      "name": "0002_query_indexes.sql",
+      "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+      "sourceMatches": true,
+      "builtMatches": true
+    },
+    {
+      "name": "0003_runtime_privileges.sql",
+      "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+      "sourceMatches": true,
+      "builtMatches": true
+    },
+    {
+      "name": "0004_durable_state_guards.sql",
+      "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+      "sourceMatches": true,
+      "builtMatches": true
+    },
+    {
+      "name": "0005_frozen_category.sql",
+      "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+      "sourceMatches": true,
+      "builtMatches": true
+    },
+    {
+      "name": "0006_immutable_submission.sql",
+      "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+      "sourceMatches": true,
+      "builtMatches": true
+    },
+    {
+      "name": "0007_identity_runtime.sql",
+      "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+      "sourceMatches": true,
+      "builtMatches": true
+    },
+    {
+      "name": "0008_identity_operations.sql",
+      "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+      "sourceMatches": true,
+      "builtMatches": true
+    }
+  ],
+  "aws": "NOT RUN",
+  "ormComparison": "NOT RUN",
+  "cleanup": {
+    "taskOwnedPostgres": "STOPPED",
+    "taskStartedMailpit": "STOPPED",
+    "volumes": "RETAINED",
+    "preexistingPort55432Service": "UNTOUCHED",
+    "taskChildProcesses": "EXITED"
+  }
+}

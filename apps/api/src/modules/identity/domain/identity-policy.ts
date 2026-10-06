@@ -1,4 +1,4 @@
-import { IdempotencyKeyExpiredError, invalidRequest, unauthenticated } from "./errors";
+import { IdempotencyKeyExpiredError, invalidRequest, unauthenticated } from "./errors/index";
 export function requireLogin(account: { enabled: boolean; emailVerifiedAt: number | null }): void {
   if (!account.enabled || account.emailVerifiedAt === null) throw unauthenticated();
 }

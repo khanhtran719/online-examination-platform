@@ -1,4 +1,4 @@
-import { invalidRequest } from "../../../domain/errors";
+import { invalidRequest } from "../../../domain/errors/index";
 export function body(value: unknown, fields: string[]): Record<string, unknown> {
   if (
     !value ||

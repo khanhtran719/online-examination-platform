@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-10-06T14:58:24.355Z",
+  "baselineCommit": "cac9416",
+  "unchangedNonImportBodies": [
+    {
+      "path": "apps/api/src/infrastructure/database/transaction/postgres-database.ts",
+      "nonImportBodyUnchanged": true
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/services/verification-worker.ts",
+      "nonImportBodyUnchanged": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/idempotency/postgres-idempotency.ts",
+      "nonImportBodyUnchanged": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/security/authorization/postgres-security.ts",
+      "nonImportBodyUnchanged": true
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.ts",
+      "nonImportBodyUnchanged": true
+    },
+    {
+      "path": "apps/api/src/modules/identity/presentation/http/identity.controller.ts",
+      "nonImportBodyUnchanged": true
+    }
+  ],
+  "identitySqlLiteralsUnchanged": 24,
+  "legacySourceAndBuildPathsAbsent": true,
+  "review": "Read/write adapters share one executor; public factories preserve ownership; config and secret/CA I/O separated; HTTP/migrations/dependencies unchanged. Projection SQL and technical transaction/receipt/security/delivery/controller bodies compared with baseline."
+}

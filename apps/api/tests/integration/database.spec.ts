@@ -1,17 +1,17 @@
 import { randomUUID, createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { Pool } from "pg";
-import { databaseConfig } from "../../src/platform/infrastructure/database/database-config";
+import { databaseConfig } from "../../src/config/database.config";
 import {
   PostgresDatabase,
   DatabaseError,
   DatabaseObservation,
-} from "../../src/platform/infrastructure/database/postgres-database";
+} from "../../src/infrastructure/database/transaction/postgres-database";
 import {
   loadMigrations,
   migrate,
   SqlMigration,
-} from "../../src/platform/infrastructure/database/migration-runner";
+} from "../../src/infrastructure/database/migration-runner";
 
 // Explicit disposable DB names. Never truncate the main local development database.
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
@@ -74,7 +74,7 @@ beforeAll(async () => {
       "code" in error && typeof error.code === "string" ? error.code : "UNKNOWN",
     );
   });
-  migrations = await loadMigrations("apps/api/migrations");
+  migrations = await loadMigrations("apps/api/src/infrastructure/database/migrations");
   await migrate(migrationConfig, migrations);
   await fixture.query(await readFile("infra/database/observability.sql", "utf8"));
   await fixture.query(

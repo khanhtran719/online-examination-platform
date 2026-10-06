@@ -2,6 +2,8 @@
 
 Date2026-10-06; latest raw run started2026-10-06T08:32:02.222Z. **Executed local diagnostic, not AWS capacity/SLO/cost acceptance.** [Script](../../scripts/identity-benchmark.mjs), [runtime review](../../docs/phase-04-review.md), [latest raw samples](latest.json).
 
+This report and its raw JSON retain the historical11-operation Phase04 run. The current script uses normalized source paths and adds two provider-stub worker diagnostics (13 operations); new comparable runs are archived in [architecture-normalization](../architecture-normalization/README.md). Set `IDENTITY_BENCH_OUTPUT` to an allowed experiment path to avoid overwriting historical latest.json.
+
 Separate actual main/worker smoke after final maintenance fix: live/ready and SIGTERM exit0, combined idle shutdown640.6ms; [raw summary](smoke.json). This is not deployment-under-load or recovery evidence.
 
 ## Hypothesis and configuration

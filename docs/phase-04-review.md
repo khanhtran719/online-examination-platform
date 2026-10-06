@@ -42,7 +42,7 @@ Platform không import business module; Presentation không import Infrastructur
 | ID-11 | PARTIAL | Local SMTP/SES adapter boundary, lease/fence/retry/park/audited SQL replay/retention; live operations pending |
 | ID-12/13 | LATER | No magic-link/GitHub endpoint/provider framework |
 
-[Application](../apps/api/src/modules/identity/application/identity.service.ts), [repository](../apps/api/src/modules/identity/infrastructure/persistence/postgres-identity.repository.ts), [crypto](../apps/api/src/modules/identity/infrastructure/security/identity-crypto.ts), [HTTP session](../apps/api/src/modules/identity/infrastructure/http/http-session.ts), [worker](../apps/api/src/modules/identity/application/verification-worker.ts), [integration suite](../apps/api/tests/integration/identity.spec.ts).
+[Application](../apps/api/src/modules/identity/application/services/identity.service.ts), [repository](../apps/api/src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.ts), [crypto](../apps/api/src/modules/identity/infrastructure/security/identity-crypto.ts), [HTTP session](../apps/api/src/modules/identity/infrastructure/http/http-session.ts), [worker](../apps/api/src/modules/identity/application/services/verification-worker.ts), [integration suite](../apps/api/tests/integration/identity.spec.ts).
 
 ## Correctness và các lỗi đã sửa
 
@@ -59,7 +59,7 @@ Platform không import business module; Presentation không import Infrastructur
 
 ## Migration và quyền
 
-[0007](../apps/api/migrations/0007_identity_runtime.sql) expand verifiedAt/credential version/revision, JWT kid/jti, challenges/intents, request limits, Candidate/Admin permissions và narrow audited admin procedure. [0008](../apps/api/migrations/0008_identity_operations.sql) thêm mail-worker privileges, bounded maintenance và operator revoke-key/replay-mail. Tám migrations applied local; sáu checksums trước giữ nguyên. Existing accounts không tự verified; opaque legacy session không được coi là JWT.
+[0007](../apps/api/src/infrastructure/database/migrations/0007_identity_runtime.sql) expand verifiedAt/credential version/revision, JWT kid/jti, challenges/intents, request limits, Candidate/Admin permissions và narrow audited admin procedure. [0008](../apps/api/src/infrastructure/database/migrations/0008_identity_operations.sql) thêm mail-worker privileges, bounded maintenance và operator revoke-key/replay-mail. Tám migrations applied local; sáu checksums trước giữ nguyên. Existing accounts không tự verified; opaque legacy session không được coi là JWT.
 
 API không được trực tiếp DML role assignments. Mail worker column-limited user reads; không password/session/private signing key/catalog keys. Operator functions pinned search_path/no PUBLIC EXECUTE, DB audit lấy session_user. Production IAM/human attribution chưa triển khai. Không inject admin/migration/operator URLs vào API/worker production.
 

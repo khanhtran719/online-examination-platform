@@ -1,17 +1,18 @@
 import { DynamicModule, Module } from "@nestjs/common";
-import { DatabaseModule } from "../../platform/infrastructure/database/database.module";
-import { PostgresDatabase } from "../../platform/infrastructure/database/postgres-database";
-import { PostgresIdempotency } from "../../platform/infrastructure/database/postgres-idempotency";
-import { PostgresSecurity } from "../../platform/infrastructure/security/postgres-security";
-import { ApiConfig } from "../../platform/infrastructure/security/runtime-config";
-import { IdentityService } from "./application/identity.service";
+import { DatabaseModule } from "../../infrastructure/database/database.module";
+import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
+import { PostgresIdempotency } from "../../infrastructure/idempotency/postgres-idempotency";
+import { PostgresSecurity } from "../../infrastructure/security/authorization/postgres-security";
+import { ApiConfig } from "../../config/app.config";
+import { IdentityService } from "./application/services/identity.service";
 import { HttpSession } from "./infrastructure/http/http-session";
 import {
   createSessionCredentials,
   createVerificationSecrets,
 } from "./infrastructure/security/identity-runtime";
-import { PostgresIdentityRepository } from "./infrastructure/persistence/postgres-identity.repository";
+import { PostgresIdentityRepository } from "./infrastructure/persistence/postgres/repositories/postgres-identity.repository";
 import { HTTP_SESSION } from "./presentation/http/http-session.port";
+import { PostgresIdentityQuery } from "./infrastructure/persistence/postgres/queries/postgres-identity.query";
 import { IdentityController } from "./presentation/http/identity.controller";
 
 /**
@@ -60,6 +61,7 @@ export class IdentityModule {
               credentials.dummyHash,
               security,
               new PostgresIdempotency(database),
+              new PostgresIdentityQuery(database),
             );
           },
         },

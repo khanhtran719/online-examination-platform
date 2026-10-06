@@ -48,7 +48,7 @@ Không dựng generic provider registry cho provider chưa tồn tại. Sau này
 
 ## 4. File/dependency impact
 
-Phần dưới ghi implementation đã bàn giao trước thay đổi §5. Target mới và runtime moves pending nằm ở [ADR-006](adr/006-source-layout-normalization.md) và [normalization checklist](architecture-normalization-plan.md). Không tiếp tục tạo folder platform hoặc coi layout hiện tại đã conform target.
+Phần dưới ghi placement của implementation trước thay đổi §5, được giữ làm lịch sử bàn giao. Source hiện đã chuẩn hóa theo [ADR-006](adr/006-source-layout-normalization.md) và [normalization checklist12/12](architecture-normalization-plan.md); dùng mapping mới cho development, không tái tạo folder platform từ ví dụ lịch sử này.
 
 Đã áp dụng folder bạn chỉnh: Identity có `application/ports`, `domain/errors`, `infrastructure/{persistence,security,mail,http}` và `presentation/http/dto`. Crypto/email policy adapter thuộc Identity; database, idempotency, rate/audit mechanisms và reusable HTTP filter/interceptor/health thuộc platform. `AppModule`/IdentityModule/DatabaseModule/HealthModule là composition factories; platform không import module business, Presentation không import Infrastructure. SQL adapter dùng `PostgresDatabase`/UoW. Build xóa riêng generated `dist` trước compile để loại output theo folder cũ.
 

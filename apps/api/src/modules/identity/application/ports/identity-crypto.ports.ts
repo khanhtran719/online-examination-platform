@@ -1,27 +1,13 @@
+import { SessionLookup, PersistedSession } from "../../domain/entities/identity-state";
 export interface Passwords {
   hash(password: string): Promise<string>;
   verify(hash: string, password: string): Promise<boolean>;
 }
-export interface TokenClaims {
+export type TokenClaims = SessionLookup;
+export interface IssuedTokens extends PersistedSession {
   userId: string;
-  sessionId: string;
-  familyId: string;
-  jti: string;
-  kid: string;
-}
-export interface IssuedTokens {
-  userId: string;
-  sessionId: string;
-  familyId: string;
   access: string;
   refresh: string;
-  accessHash: Uint8Array;
-  refreshHash: Uint8Array;
-  accessJti: string;
-  refreshJti: string;
-  kid: string;
-  accessExpiresAt: number;
-  refreshExpiresAt: number;
   absoluteExpiresAt: number;
 }
 export interface SessionTokens {

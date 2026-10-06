@@ -2,32 +2,31 @@ import { generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { Module } from "@nestjs/common";
 import { Pool } from "pg";
-import { databaseConfig } from "../../src/platform/infrastructure/database/database-config";
-import { PostgresDatabase } from "../../src/platform/infrastructure/database/postgres-database";
-import {
-  loadMigrations,
-  migrate,
-} from "../../src/platform/infrastructure/database/migration-runner";
-import { IdentityService } from "../../src/modules/identity/application/identity.service";
-import { PostgresIdentityRepository } from "../../src/modules/identity/infrastructure/persistence/postgres-identity.repository";
+import { databaseConfig } from "../../src/config/database.config";
+import { PostgresDatabase } from "../../src/infrastructure/database/transaction/postgres-database";
+import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
+import { IdentityService } from "../../src/modules/identity/application/services/identity.service";
+import { PostgresIdentityRepository } from "../../src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository";
 import {
   ArgonPasswords,
   JwtSessionTokens,
   VerificationCodec,
 } from "../../src/modules/identity/infrastructure/security/identity-crypto";
-import { PostgresIdempotency } from "../../src/platform/infrastructure/database/postgres-idempotency";
-import { PostgresSecurity } from "../../src/platform/infrastructure/security/postgres-security";
-import { READINESS } from "../../src/platform/application/readiness";
-import { ShutdownGate } from "../../src/platform/application/shutdown-gate";
-import { createHttpApplication } from "../../src/platform/presentation/http/configure-http-application";
-import { LiveController } from "../../src/platform/presentation/http/health/live.controller";
-import { ReadyController } from "../../src/platform/presentation/http/health/ready.controller";
+import { PostgresIdempotency } from "../../src/infrastructure/idempotency/postgres-idempotency";
+import { PostgresSecurity } from "../../src/infrastructure/security/authorization/postgres-security";
+import { READINESS } from "../../src/shared/application/ports/readiness";
+import { ShutdownGate } from "../../src/infrastructure/resilience/shutdown/shutdown-gate";
+import { createHttpApplication } from "../../src/infrastructure/http/configure-http-application";
+import { LiveController } from "../../src/infrastructure/health/http/live.controller";
+import { ReadyController } from "../../src/infrastructure/health/http/ready.controller";
 import { HttpSession } from "../../src/modules/identity/infrastructure/http/http-session";
 import { IdentityController } from "../../src/modules/identity/presentation/http/identity.controller";
 import { HTTP_SESSION } from "../../src/modules/identity/presentation/http/http-session.port";
-import { VerificationWorker } from "../../src/modules/identity/application/verification-worker";
-import { PostgresVerificationDelivery } from "../../src/modules/identity/infrastructure/persistence/postgres-verification-delivery";
-import { SmtpVerificationMail } from "../../src/modules/identity/infrastructure/mail/verification-mail";
+import { VerificationWorker } from "../../src/modules/identity/application/services/verification-worker";
+import { PostgresVerificationDelivery } from "../../src/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery";
+import { createVerificationWorker } from "../../src/modules/identity/identity-worker.factory";
+
+import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
 
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
 if (!adminUrl) throw new Error("Local test administrator required");
@@ -54,6 +53,7 @@ let fixture: Pool,
   identity: IdentityService,
   second: IdentityService;
 let codec: VerificationCodec;
+let emailKey: Buffer;
 const originalPassword = "initial candidate password",
   finalPassword = "email owner final password";
 beforeAll(async () => {
@@ -70,7 +70,7 @@ beforeAll(async () => {
   await admin.query(`GRANT examination_mail_worker TO ${mailRole}`);
   await migrate(
     databaseConfig({ NODE_ENV: "test", DATABASE_URL: ddlUrl.toString() }),
-    await loadMigrations("apps/api/migrations"),
+    await loadMigrations("apps/api/src/infrastructure/database/migrations"),
   );
   fixture = new Pool({ connectionString: url.toString(), max: 3 });
   db = new PostgresDatabase(
@@ -92,7 +92,8 @@ beforeAll(async () => {
     publicPem: keys.publicKey.export({ type: "spki", format: "pem" }).toString(),
   };
   const jwt = await JwtSessionTokens.create("urn:test:identity", key, [key]);
-  codec = new VerificationCodec("mail", { mail: randomBytes(32) });
+  emailKey = randomBytes(32);
+  codec = new VerificationCodec("mail", { mail: emailKey });
   const passwords = new ArgonPasswords(2, 8),
     dummy = await passwords.hash("dummy fixture credential");
   const rateKey = randomBytes(32);
@@ -106,6 +107,7 @@ beforeAll(async () => {
       dummy,
       new PostgresSecurity(database, rateKey),
       new PostgresIdempotency(database),
+      new PostgresIdentityQuery(database),
     );
   identity = make(db);
   second = make(db2);
@@ -599,9 +601,24 @@ describe("Identity on real restricted PostgreSQL", () => {
   });
   it("delivers a captured SMTP verification link and never sends an already consumed job", async () => {
     const a = await register(),
-      delivery = new PostgresVerificationDelivery(mailDatabase),
-      smtp = new SmtpVerificationMail("127.0.0.1", 11025, "no-reply@example.test");
-    const worker = new VerificationWorker(delivery, codec, smtp, "http://127.0.0.1:3000");
+      delivery = new PostgresVerificationDelivery(mailDatabase);
+    const worker = createVerificationWorker(
+      {
+        origin: "http://127.0.0.1:3000",
+        port: 3001,
+        workerConcurrency: 1,
+        emailKeys: { activeKid: "mail", keys: { mail: emailKey } },
+        rateKey: randomBytes(32),
+        mail: {
+          adapter: "smtp",
+          host: "127.0.0.1",
+          port: 11025,
+          from: "no-reply@example.test",
+          region: "",
+        },
+      },
+      mailDatabase,
+    );
     // Drain earlier pending fixtures through local mailbox only.
     for (let i = 0; i < 30; i++) {
       if (!(await worker.runOnce())) break;
@@ -630,7 +647,7 @@ describe("Identity on real restricted PostgreSQL", () => {
     );
     while (await skipped.runOnce()) {}
     expect(sent).toBe(0);
-    smtp.close();
+    worker.close();
   });
   it("fences expired delivery leases and parks bounded retry failures", async () => {
     const a = await register(),

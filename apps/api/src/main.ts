@@ -1,7 +1,7 @@
 import { AppModule } from "./app.module";
-import { PostgresDatabase } from "./platform/infrastructure/database/postgres-database";
-import { loadRuntimeConfig } from "./platform/infrastructure/security/runtime-config";
-import { createHttpApplication } from "./platform/presentation/http/configure-http-application";
+import { PostgresDatabase } from "./infrastructure/database/transaction/postgres-database";
+import { loadRuntimeConfig } from "./infrastructure/security/authentication/secret-loader";
+import { createHttpApplication } from "./infrastructure/http/configure-http-application";
 
 async function main(): Promise<void> {
   const config = await loadRuntimeConfig(process.env, "api");

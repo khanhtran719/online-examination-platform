@@ -1,5 +1,5 @@
-import { DomainError } from "../../../platform/domain/domain-error";
-import { ErrorCategory } from "../../../platform/domain/error-category";
+import { DomainError } from "../../../shared/domain/exceptions/domain-error";
+import { ErrorCategory } from "../../../shared/domain/exceptions/error-category";
 
 export class AssessmentError extends DomainError {
   readonly code = "ASSESSMENT_RULE";

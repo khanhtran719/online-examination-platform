@@ -36,8 +36,12 @@ async function ready(item) {
 }
 const result = { api: false, worker: false, shutdownMs: null };
 try {
-  const api = start(".env.example", "dist/main.js", 13000),
-    worker = start(".env.worker.example", "dist/worker.js", 13001);
+  const api = start(process.env.SMOKE_API_ENV ?? ".env.example", "dist/main.js", 13000),
+    worker = start(
+      process.env.SMOKE_WORKER_ENV ?? ".env.worker.example",
+      "dist/workers/outbox/verification.main.js",
+      13001,
+    );
   await ready(api);
   await ready(worker);
   for (const item of [api, worker]) {

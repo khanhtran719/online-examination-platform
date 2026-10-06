@@ -2,7 +2,7 @@
 
 Status: runbook delivered; **DB-12 image compatibility drill NOT EXECUTED**. API/email-worker composition roots exist locally; old/new application images and their compatibility drill remain pending. Technical migration tests do not stand in for old/new runtime validation.
 
-Placement transition: [ADR-006](../adr/006-source-layout-normalization.md)/N-09 moves the SQL bundle to `apps/api/src/infrastructure/database/migrations` only after asset/checksum/CLI checks. The commands below use current paths until that step. Preserve SQL schema/history/roles; a folder move does not create a new migration.
+Placement implemented: [ADR-006](../adr/006-source-layout-normalization.md)/N-09 stores source SQL at `apps/api/src/infrastructure/database/migrations`, copied to `dist/infrastructure/database/migrations` during build. The CLI resolves this bundle relative to its compiled location, independent of working directory. Eight checksums, fresh apply and already-migrated rerun passed locally. Preserve SQL schema/history/roles; a folder move does not create a new migration. DB-12 image compatibility drill remains pending.
 
 ## Initial local bundle
 

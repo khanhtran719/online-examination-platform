@@ -4,7 +4,7 @@ Scope: DB-01–11 foundation plus Phase04 Identity adapters/operations. PostgreS
 
 ## Placement and persistence decision
 
-The current commands below execute pg adapters and migrations from existing paths. [ADR-006](adr/006-source-layout-normalization.md) adopts `src/infrastructure/database/{migrations,transaction}` as the target; implementation moves and build asset copy remain N-06/N-09. Keep SQL schema `platform`, grants, eight migration names/checksums and one migration history unchanged. Folder normalization is separate from [TypeORM/Sequelize evaluation](api-architecture-review.md#5-typeorm-và-sequelize-có-phù-hợp-không); pg is not a measured performance/cost winner. Any ORM/raw SQL implementation uses the active UoW manager/connection and the same pooling/security/timeouts/rollback-only gates.
+The commands below execute pg adapters under `src/infrastructure/database/transaction` and the compiled SQL bundle under `dist/infrastructure/database/migrations`. [ADR-006](adr/006-source-layout-normalization.md) N-06/N-09 are complete: eight source and built files match baseline checksums; the compiled CLI applied a fresh database and was rerun successfully from `/tmp` without applying a second migration. Keep SQL schema `platform`, grants, eight migration names/checksums and one migration history unchanged. Folder normalization is separate from [TypeORM/Sequelize evaluation](api-architecture-review.md#5-typeorm-và-sequelize-có-phù-hợp-không); pg is not a measured performance/cost winner. Any ORM/raw SQL implementation uses the active UoW manager/connection and the same pooling/security/timeouts/rollback-only gates.
 
 ## Local execution
 

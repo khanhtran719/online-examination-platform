@@ -23,7 +23,7 @@ import {
   VerificationSecrets,
 } from "../../application/ports/identity-crypto.ports";
 import { AdmissionSaturatedError } from "../../application/errors/admission-saturated.error";
-import { unauthenticated } from "../../domain/errors";
+import { unauthenticated } from "../../domain/errors/index";
 
 export interface SigningKey {
   kid: string;
