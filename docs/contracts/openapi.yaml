@@ -1,10 +1,30 @@
 openapi: 3.0.3
 info:
   title: Online Examination Platform
-  version: 1.0.0
+  version: 1.1.0
   description: >-
-    Phase 02 public contract only. No runtime deployment. Product/security/SLO requirements in docs; all
+    Pre-release public contract amended by ADR-005 for verified email and asymmetric session JWTs.
+    No runtime deployment. Product/security/SLO requirements in docs; all
     response examples are fixtures.
+x-session-token-contract:
+  format: JWT
+  algorithm: ES256
+  curve: P-256
+  keySource: trusted-keyring
+  authority: PostgreSQL
+  issuer: environment-specific typed configuration
+  requiredClaims: [iss, aud, sub, jti, sid, fid, iat, nbf, exp, token_use]
+  access:
+    typ: exam-access+jwt
+    audience: urn:online-exam:api:v1
+    tokenUse: access
+    ttlSeconds: 300
+  refresh:
+    typ: exam-refresh+jwt
+    audience: urn:online-exam:refresh:v1
+    tokenUse: refresh
+    idleTtlSeconds: 604800
+    familyAbsoluteTtlSeconds: 2592000
 servers:
   - url: /
     description: Same HTTPS viewer origin; account/region/domain/TLS deployment pending
@@ -70,7 +90,10 @@ paths:
   /v1/auth/register:
     post:
       operationId: register
-      summary: register
+      summary: Register a pending email/password account; always generic acknowledgement
+      description: >-
+        No session is issued. A new pending user, challenge and encrypted email intent commit atomically.
+        Existing credentials are never overwritten. Email confirmation chooses the final password.
       tags:
         - Identity
       security:
@@ -123,10 +146,12 @@ paths:
       x-owner: Identity
       x-flow: write
       x-permissions: []
-      x-transaction: identity
+      x-transaction: identity + verification challenge + encrypted email intent
       x-idempotency: false
       x-cases:
         - AC-20
+        - AC-33
+        - AC-35
         - AC-31
       requestBody:
         required: true
@@ -134,10 +159,127 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/RegisterRequest"
+  /v1/auth/email-verification/request:
+    post:
+      operationId: requestEmailVerification
+      summary: Request or resend a verification link with a generic acknowledgement
+      description: >-
+        Always 202 for eligible, absent, disabled or already verified accounts. Eligible pending
+        accounts use a 60s cooldown and bounded mail requests. Reuse the live challenge/link;
+        do not invalidate a valid link on an unauthenticated resend. No session or token in JSON.
+      tags: [Identity]
+      security:
+        - CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/Origin"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RequestEmailVerificationRequest"
+      responses:
+        "202":
+          description: Generic acknowledgement; eligible email intent durably accepted, inbox delivery not guaranteed
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                enum: [no-store]
+            X-Correlation-Id:
+              schema:
+                type: string
+                format: uuid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AcceptedEnvelope"
+              example:
+                {
+                  data: { accepted: true },
+                  errorCode: "",
+                  message: OK,
+                  status: true,
+                }
+        "400":
+          $ref: "#/components/responses/Http400"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Identity
+      x-flow: write
+      x-permissions: []
+      x-transaction: identity + verification challenge + encrypted email intent
+      x-idempotency: false
+      x-cases: [AC-20, AC-33, AC-35, AC-31]
+  /v1/auth/email-verification/confirm:
+    post:
+      operationId: confirmEmailVerification
+      summary: Consume the one-use link and activate the account with the email owner's final password
+      description: >-
+        An explicit user POST with anonymous CSRF is required. No GET activation or automatic login.
+        Invalid/expired/cancelled tokens return generic Invalid request. A retry of the same consumed
+        challenge before expiry returns verified=true without changing credentials again.
+      tags: [Identity]
+      security:
+        - CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/Origin"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConfirmEmailVerificationRequest"
+      responses:
+        "200":
+          description: Account activated or original consumed-challenge outcome confirmed; no auth cookies issued
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                enum: [no-store]
+            X-Correlation-Id:
+              schema:
+                type: string
+                format: uuid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VerifiedEnvelope"
+              example:
+                {
+                  data: { verified: true },
+                  errorCode: "",
+                  message: OK,
+                  status: true,
+                }
+        "400":
+          $ref: "#/components/responses/Http400"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Identity
+      x-flow: write
+      x-permissions: []
+      x-transaction: identity activation + challenge consumption + cancel other email intents
+      x-idempotency: false
+      x-cases: [AC-33, AC-31]
   /v1/auth/login:
     post:
       operationId: login
-      summary: login
+      summary: Email/password login for enabled accounts with verified email
+      description: Invalid, absent, disabled and unverified accounts return the same 401 Unauthenticated.
       tags:
         - Identity
       security:
@@ -189,6 +331,8 @@ paths:
       x-cases:
         - AC-20
         - AC-21
+        - AC-33
+        - AC-34
         - AC-31
       requestBody:
         required: true
@@ -251,6 +395,7 @@ paths:
       x-idempotency: false
       x-cases:
         - AC-21
+        - AC-34
         - AC-31
   /v1/auth/logout:
     post:
@@ -306,6 +451,7 @@ paths:
       x-idempotency: false
       x-cases:
         - AC-21
+        - AC-34
         - AC-31
   /v1/me:
     get:
@@ -3097,10 +3243,12 @@ components:
       type: apiKey
       in: cookie
       name: __Host-access
+      description: Asymmetric signed access JWT; strict purpose validation plus authoritative DB session/permissions check.
     RefreshCookie:
       type: apiKey
       in: cookie
       name: __Host-refresh
+      description: Asymmetric signed refresh JWT; single-use rotation and durable family revocation in PostgreSQL.
     CsrfHeader:
       type: apiKey
       in: header
@@ -3468,7 +3616,48 @@ components:
           minLength: 1
           maxLength: 128
           writeOnly: true
+    RequestEmailVerificationRequest:
+      type: object
+      additionalProperties: false
+      required: [email]
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 254
+      example:
+        email: candidate@example.com
+    ConfirmEmailVerificationRequest:
+      type: object
+      additionalProperties: false
+      required: [token, password]
+      properties:
+        token:
+          type: string
+          description: Separate 256-bit opaque verification capability, base64url without padding; not an access/refresh JWT.
+          minLength: 43
+          maxLength: 43
+          pattern: "^[A-Za-z0-9_-]{43}$"
+          writeOnly: true
+        password:
+          type: string
+          description: Final password chosen by the email owner during pending activation; never changes an already activated credential.
+          minLength: 15
+          maxLength: 128
+          writeOnly: true
+      example:
+        token: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        password: fixture-password-for-confirmation
+    Verified:
+      type: object
+      additionalProperties: false
+      required: [verified]
+      properties:
+        verified:
+          type: boolean
+          enum: [true]
     Session:
+      description: Session metadata only; access/refresh JWTs are transmitted only in HttpOnly cookies.
       type: object
       additionalProperties: false
       required:
@@ -3498,6 +3687,7 @@ components:
       required:
         - id
         - email
+        - emailVerifiedAt
         - displayName
         - leaderboardOptIn
         - revision
@@ -3509,6 +3699,10 @@ components:
           type: string
           format: email
           maxLength: 254
+        emailVerifiedAt:
+          type: string
+          format: date-time
+          pattern: Z$
         displayName:
           type: string
           minLength: 1
@@ -5013,6 +5207,22 @@ components:
           type: boolean
           enum:
             - true
+    VerifiedEnvelope:
+      type: object
+      additionalProperties: false
+      required: [data, errorCode, message, status]
+      properties:
+        data:
+          $ref: "#/components/schemas/Verified"
+        errorCode:
+          type: string
+          enum: [""]
+        message:
+          type: string
+          enum: [OK]
+        status:
+          type: boolean
+          enum: [true]
     RevokedEnvelope:
       type: object
       additionalProperties: false

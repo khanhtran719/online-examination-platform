@@ -1067,6 +1067,10 @@ Authentication belongs to security/presentation infrastructure.
 
 Business Domain code should not depend on transport-specific authentication mechanics.
 
+For this project, email/password login MUST require verified email ownership. Verification links MUST be time-limited, single-use and consumed by an explicit POST; a link scanner GET cannot activate an account. Verification is not a login credential. Future magic-link/GitHub login MUST use distinct purpose/provider validation and the same Identity session/permission policies. Registration cannot overwrite an existing account's credentials. Activation MUST prevent an attacker-pre-registered password from surviving email-owner activation; see [security contract](../docs/security-and-permissions.md) and [ADR-005](../docs/adr/005-email-verification-and-signed-tokens.md).
+
+Access and refresh credentials MUST be asymmetric signed JWTs, with private signing keys confined to issuer infrastructure and public verification keys selected from a trusted keyring. Enforce algorithm, issuer, audience, token type/use, required claims and expiry; access and refresh validators MUST reject each other's tokens. PostgreSQL remains authoritative for live sessions, token consumption, revocation, enabled/verified accounts and current permissions. A valid signature alone never authorizes a request. Persist token hashes, never plaintext credentials in generic receipts/logs. Planned key rotation/compromise drills and durable email intent delivery are required before production acceptance.
+
 ---
 
 ## 37. Authorization Rule (R-37)

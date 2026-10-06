@@ -1,0 +1,36 @@
+# ADR-005 — Verified email and asymmetric session credentials
+
+Status: accepted design amendment, 2026-10-06; implementation/operational evidence pending. Supersedes the opaque access/refresh format and deferred email-verification paragraph in the original Phase02 security specification. User selected single-use verification links now, passwordless email magic links and GitHub later. [Security contract](../security-and-permissions.md) owns exact policy; [Phase04 plan](../phase-04-plan.md) owns delivery order.
+
+## Context and decision
+
+Identity remains the account/session business capability inside the modular monolith. Login identifier is email; password login only creates sessions for enabled verified accounts. Registration creates a pending account; email verification does not automatically authenticate the browser. The email owner chooses the final password when confirming the link so an attacker cannot register the victim's address, let the victim click activation, then log in using the attacker's original password. Only pending activation can replace a pending password; registration/resend cannot replace verified credentials. Password recovery/email change are separate future scope.
+
+Access and refresh are compact JWS JWTs signed by the same environment-specific active private/public pair, initially **ES256, P-256**. A trusted local keyring may hold overlapping public keys during rotation. Private signs; public verifies; payload is readable and contains no email/password/roles. Separate `typ`, `aud`, `token_use` and random `jti` values prevent token substitution. Strict algorithm/key/claim validation follows [RFC8725](https://www.rfc-editor.org/rfc/rfc8725.html); ES256 is defined in [RFC7518 §3.4](https://www.rfc-editor.org/rfc/rfc7518.html#section-3.4). ES256 is a standards/compatibility design choice, not a measured performance-cost winner. Sign/verify CPU, serialized size and x86/ARM packaging must be measured.
+
+PostgreSQL still stores full-token SHA-256 fingerprints, session/family identities, expiry and consumption/revocation state. Every authenticated request checks current permissions/enabled/verified state. Asymmetric signatures do not provide immediate logout, prevent refresh reuse or eliminate the session DB lookup. Reuse revokes the family durably before responding 401. Tokens stay in Secure HttpOnly cookies; no localStorage/JSON credential response. Existing TTL/CSRF/transport rules remain, with explicit signature/key checks added.
+
+Verification token is a separate random 256-bit opaque capability, hashed for confirmation, bound to user/email/purpose and expires after30min. Email scanner GET is inert; the first successful POST atomically activates the account and consumes the challenge. Delivery needs durable intent so a restart after registration cannot silently lose email work. Add an **Identity-owned PostgreSQL email outbox**, read by the existing worker entry point, with leases/fencing and bounded retries. Do not reuse Assessment's attempt-specific outbox, add a queue merely to forward a small mail job, or put verification secrets in SQS. Encrypted delivery material is retained only until consume/expiry, using a separate email encryption key behind a port; plaintext confirmation lookup uses only a hash. This small encryption boundary is required because a hash cannot reconstruct the link for durable retries. It does not reuse the JWT private key.
+
+SES is the production delivery adapter candidate, justified by the new operational email requirement. Local integration uses a loopback mailbox adapter; no live outbound mail is a test default. Sender identity verification is separate from candidate account verification. SES supports verified email-address identities without requiring a custom domain; sandbox production access and sender setup still gate live delivery. See [SES identities](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html) and [sandbox requirements](https://docs.aws.amazon.com/ses/latest/dg/request-production-access.html). Costs/quota/network choices remain unmeasured and require a resource ledger before deployment.
+
+## Alternatives and tradeoffs
+
+- Opaque sessions are simpler and smaller but do not meet the newly requested asymmetric token format. Retaining server-side state preserves revocation/rotation correctness.
+- Signature-only authorization would save a DB call but fails immediate revocation/current-permission requirements, so it is ineligible.
+- Separate access/refresh signing pairs may later reduce issuer privilege blast radius. One trusted pair plus exclusive validation is sufficient for the current single issuer; no extra key/service is added without a requirement.
+- RS256 is a compatible alternative if a selected integration needs it. Algorithm changes need explicit key/validator rollout and comparable measurement; never accept a token-selected algorithm automatically.
+- Synchronous provider send after commit permits durable account creation but can lose email work on crash. Sending inside the transaction holds locks and cannot make SMTP/SES atomic with PostgreSQL. The email outbox closes intent loss; provider acceptance and delivery marking remain at least once, so duplicate mail is possible.
+- KMS per-request signing, Redis, a new notification service and a general OAuth provider framework are absent. Existing secret injection and worker/pool capacity must first be evaluated.
+
+## Compatibility and rollout
+
+No Identity runtime or external v1 clients have been shipped, so amend the pre-release `/v1` contract deliberately: new verification endpoints, Profile verification metadata and final-password confirmation requirement. Do not fabricate a legacy deployment migration. Once shipped, breaking auth/claims/activation semantics require a version/window.
+
+Add forward migrations; keep all six applied migration files/checksums unchanged. Existing users become unverified unless an audited proof establishes ownership; existing session hash columns remain usable for JWT fingerprints, while new jti/kid metadata is added. Unknown legacy opaque credentials are rejected and users log in again. Restrict role-grant privileges; verify expand/old-new compatibility against actual images when BOOT-10/CI makes them available. Future GitHub/magic-link credential schema changes, including nullable password for provider-only accounts, are separate migrations with explicit ownership/privacy constraints.
+
+Normal key rotation: deploy new public key everywhere, switch active signer, remove old private signing access, retain old public key until the latest token issued under it expires plus bounded clock tolerance. Compromise: deny affected kid across instances and revoke affected families; never preserve overlap for a compromised key. Verify these drills and missing/mismatched-key startup failures before production acceptance. No key material is committed or generated by this amendment.
+
+## Acceptance
+
+AC-20/21 plus AC-33–35 cover pending login rejection, email ownership/races/retry/pre-registration, JWT substitution/rotation/revocation and email outbox failure/recovery. Contract validation is not evidence of runtime crypto, SMTP/SES or session security. ID-01–11/BOOT-10, local tests, AWS key/delivery operations and performance checks remain unchecked until executed.

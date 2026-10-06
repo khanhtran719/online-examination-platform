@@ -1,6 +1,6 @@
 # Production acceptance ledger
 
-Updated 2026-10-06. **Production status: NOT ACCEPTED.** There is no application deployment, AWS benchmark or production recovery evidence. Phase 02 [product](product-specification.md), [permissions](security-and-permissions.md), [API/events](contracts/README.md) and [SLO/workload](slo-and-workload.md) are specified/locally validated; their implementation and measured production validation remain pending.
+Updated 2026-10-06. **Production status: NOT ACCEPTED.** There is no application deployment, AWS benchmark or production recovery evidence. Phase 02 [product](product-specification.md), [permissions](security-and-permissions.md), [API/events](contracts/README.md) and [SLO/workload](slo-and-workload.md) are specified/locally validated; their business runtime implementation and measured production validation remain pending. DB-01–11 [PostgreSQL foundation](phase-03-review.md) has local constraint/transaction/role evidence; this does not satisfy production correctness/security/SLO gates.
 
 | Hard gate | Proposed target / requirement | Status | Evidence needed |
 | --- | --- | --- | --- |

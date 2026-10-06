@@ -19,6 +19,18 @@ Monthly request error budget = eligible requests ×0.001; track burn at 1h/6h/24
 | GET leaderboard | <300ms | <600ms | Version/opt-in bound, unique keyset order |
 | GET browse/history | <300ms | <600ms | Page 20 default/100 max, no hidden total count |
 
+Auth targets added with ADR-005 for Phase04 measurement, also unverified:
+
+| Auth operation | p95 target | p99 target | Population / extra gate |
+| --- | --- | --- | --- |
+| Register / confirm verification | <1000ms | <2000ms | Valid eligible requests, hash + durable DB intent/activation; SMTP/SES outside HTTP request |
+| Email/password login | <1000ms | <2000ms | Real verified identities + Argon2/session commit; report failure/attack timing separately |
+| Refresh / logout | <300ms | <800ms | Signature/CSRF/authoritative session lock/commit included |
+| GET me | <250ms | <500ms | Signature + current enabled/verified/session/permissions projection |
+| Verification email dispatch | 99% provider-accepted within60s | not an HTTP percentile | Since eligible intent commit, including lease/retries/backlog; acceptance is not inbox delivery, expired/parked eligible jobs count as misses |
+
+These are provisional adopted latency objectives to evaluate hashing/admission/task capacity; none implies a measured hash setting or AWS winning configuration. Track mail requests, suppressed coalesced requests, provider attempts/acceptance, permanent failures, oldest live intent and expirations without email/user IDs in metric labels. Record sender quotas/bounce/complaint and actual SES cost separately; never count an API202 as provider delivery. Revisit objectives with evidence before production commitment while preserving security floors.
+
 Measure p50/p95/p99/sample count per route/state and successful/failed populations separately. Targets apply to viewer/client end-to-end HTTPS request durations, including auth, serialization, network/pool/locks; separately instrument internal spans. Location, payload and connection reuse must be recorded. All p99/remaining-route thresholds above are **adopted target choices**, not observed latency or a promise without verification.
 
 Capacity gate: 2,000 simultaneously active unique authenticated candidates through start → load → saves → synchronized submit → polling → leaderboard. Also run 2,400 candidates (+20%) as a headroom experiment and report first gate failure/saturation; it is not an invented extra minimum capacity or assumed spare CPU. Select operating headroom/scaling alarms from measured variation/saturation/reaction time, never arbitrary permanent overprovisioning. Find sustainable ceiling separately by stress/soak; do not call 2,000 maximum capacity. Scheduled/reactive scaling configurations are assessed separately with max-task DB budgets.
@@ -27,7 +39,7 @@ Scoring gate: ≥99% accepted submissions have durable results within 60s of sub
 
 ## 2. Dataset and protocol
 
-Seed: 100,000 distinct users; 1,000 exams; ≥500,000 bank questions; ≥1,000,000 historical attempts and ≥5,000,000 answers with valid version/ownership/choices/time distributions. Dataset version/seed/counts and hot-exam skew are recorded. Historical data is not counted as timed completions. Precreate credentials/sessions for hot API benchmarks; separately run real login/refresh/full lifecycle including CSRF. No bypassed auth or shared candidate identity.
+Seed: 100,000 distinct users; 1,000 exams; ≥500,000 bank questions; ≥1,000,000 historical attempts and ≥5,000,000 answers with valid version/ownership/choices/time distributions. Dataset version/seed/counts and hot-exam skew are recorded. Historical data is not counted as timed completions. Precreate **verified** identities/credentials/sessions for hot API benchmarks; separately run real registration/verification/login/refresh/full lifecycle including CSRF and asymmetric JWT validation. Local mail capture is labelled local, not AWS delivery evidence; no load test sends unsolicited live mail. No bypassed auth or shared candidate identity.
 
 Baseline hot publication: 100 questions, 2 sections ×50, types 60% single /30% multiple /10% true-false, 4 options except true-false=2, points=1, 600-character prompt/60-character option/300-character explanation (keys/explanations absent candidate questions). Metadata ≤8KiB, average question-page decoded payload target ≤160KiB; actual byte counts must be measured. Separate maximum-size fixture: 500 questions, type/text/option limits from product spec, page byte cap ≤256KiB, producing additional pages rather than unbounded response. UTF-8 decoded bytes, compressed bytes and TLS transfer are reported separately.
 

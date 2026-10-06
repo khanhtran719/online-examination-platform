@@ -18,6 +18,108 @@ test("validates the complete OpenAPI contract and its payload examples", () => {
   assert.ok(contracts.exampleCount >= 10);
 });
 
+test("verification is an explicit public POST with a bounded one-use token and final password", () => {
+  const confirm = contracts.api.paths["/v1/auth/email-verification/confirm"];
+  const resend = contracts.api.paths["/v1/auth/email-verification/request"];
+  assert.ok(confirm?.post);
+  assert.ok(resend?.post);
+  assert.equal(confirm.get, undefined);
+  const validate = contracts.schemas.ConfirmEmailVerificationRequest;
+  const sample = { token: "A".repeat(43), password: "a final safe password" };
+  assert.equal(validate(sample), true);
+  assert.equal(validate({ ...sample, token: "A".repeat(42) }), false);
+  assert.equal(validate({ ...sample, token: "/".repeat(43) }), false);
+  assert.equal(validate({ token: sample.token }), false);
+  assert.equal(validate({ ...sample, userId: "attacker" }), false);
+  const api = structuredClone(contracts.api);
+  api.paths["/v1/auth/email-verification/confirm"].post.security = [];
+  assert.ok(inspectOperations(api).some((error) => error.includes("CSRF")));
+});
+
+test("signed token contract keeps access and refresh separate and PostgreSQL authoritative", () => {
+  const policy = contracts.api["x-session-token-contract"];
+  assert.equal(policy?.algorithm, "ES256");
+  assert.equal(policy?.authority, "PostgreSQL");
+  assert.notEqual(policy.access.typ, policy.refresh.typ);
+  assert.notEqual(policy.access.audience, policy.refresh.audience);
+  for (const change of [
+    { algorithm: "HS256" },
+    { authority: "signature-only" },
+    { keySource: "token-supplied-url" },
+  ]) {
+    const api = structuredClone(contracts.api);
+    api["x-session-token-contract"] = { ...policy, ...change };
+    assert.ok(
+      inspectOperations(api).some((error) => error.includes("token contract")),
+      JSON.stringify(change),
+    );
+  }
+});
+
+test("contract checks reject a refresh audience reused for access", () => {
+  const api = structuredClone(contracts.api);
+  api["x-session-token-contract"] = {
+    format: "JWT",
+    algorithm: "ES256",
+    curve: "P-256",
+    keySource: "trusted-keyring",
+    authority: "PostgreSQL",
+    access: { typ: "exam-access+jwt", audience: "same", tokenUse: "access" },
+    refresh: { typ: "exam-refresh+jwt", audience: "same", tokenUse: "refresh" },
+  };
+  assert.ok(
+    inspectOperations(api).some((error) => error.includes("token contract")),
+  );
+});
+
+test("email login rejects alternate usernames and Session rejects raw credential fields", () => {
+  assert.equal(
+    contracts.schemas.LoginRequest({
+      username: "candidate",
+      password: "password",
+    }),
+    false,
+  );
+  const session = {
+    userId: "00000000-0000-4000-8000-000000000001",
+    accessExpiresAt: "2026-10-06T12:05:00.000Z",
+    refreshExpiresAt: "2026-10-13T12:00:00.000Z",
+    absoluteExpiresAt: "2026-11-05T12:00:00.000Z",
+  };
+  assert.equal(contracts.schemas.Session(session), true);
+  assert.equal(
+    contracts.schemas.Session({ ...session, access_token: "secret" }),
+    false,
+  );
+  assert.equal(
+    contracts.schemas.Session({ ...session, refresh_token: "secret" }),
+    false,
+  );
+});
+
+test("email schemas reject non-ASCII identifiers consistently with the PostgreSQL identity policy", () => {
+  const invalidEmail = "cándidate@example.com";
+  assert.equal(
+    contracts.schemas.LoginRequest({
+      email: invalidEmail,
+      password: "safe password",
+    }),
+    false,
+  );
+  assert.equal(
+    contracts.schemas.RegisterRequest({
+      email: invalidEmail,
+      displayName: "Candidate",
+      password: "a safe fixture password",
+    }),
+    false,
+  );
+  assert.equal(
+    contracts.schemas.RequestEmailVerificationRequest({ email: invalidEmail }),
+    false,
+  );
+});
+
 test("accepts a submitted event and rejects answer data anywhere in it", () => {
   const sample = contracts.event.examples[0];
   assert.deepEqual(validateEvent(contracts, sample), []);

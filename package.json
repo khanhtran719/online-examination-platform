@@ -12,12 +12,20 @@
     "contracts:check": "node scripts/contracts.mjs",
     "quality": "node scripts/quality.mjs && npm run contracts:check",
     "lint": "eslint apps scripts && npm run quality",
-    "format": "prettier --write apps scripts *.json *.cjs *.mjs *.yaml"
+    "format": "prettier --write apps scripts *.json *.cjs *.mjs *.yaml",
+    "test:integration": "jest --config jest.integration.cjs --runInBand",
+    "db:local": "node scripts/local-db.mjs",
+    "db:migrate": "npm run build && node dist/platform/infrastructure/database/migrate.js",
+    "db:budget": "npm run build && node dist/platform/infrastructure/database/connection-budget.js",
+    "test:integration:local": "node --env-file=.env.example node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand",
+    "db:migrate:local": "npm run build && node --env-file=.env.example dist/platform/infrastructure/database/migrate.js"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "^13.1.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.5.2",
+    "@types/nodemailer": "^8.0.2",
+    "@types/pg": "^8.23.1",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "eslint": "^9.36.0",
@@ -26,5 +34,19 @@
     "ts-jest": "^29.4.4",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.44.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sesv2": "^3.1146.0",
+    "@fastify/cookie": "^11.1.2",
+    "@nestjs/common": "^11.2.7",
+    "@nestjs/core": "^11.2.7",
+    "@nestjs/platform-fastify": "^11.2.7",
+    "argon2": "^0.45.1",
+    "fastify": "^5.12.5",
+    "jose": "^6.2.12",
+    "nodemailer": "^10.0.15",
+    "pg": "^8.23.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
   }
 }

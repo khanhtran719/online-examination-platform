@@ -1,15 +1,16 @@
 # Roadmap triển khai có đánh dấu
 
-Cập nhật: 2026-10-06. Phạm vi đã bàn giao và review: **bộ quy chuẩn, bootstrap/domain đã mở và Phần 02 product specification/public contracts**. Tổng **29/212 mục hoàn thành, 183 mục chưa hoàn thành**. Các phase runtime/AWS dưới đây chưa được triển khai.
+Cập nhật: 2026-10-06. Phạm vi đã bàn giao và review: **bộ quy chuẩn, bootstrap/domain, Phần 02 contracts và DB-01–11 nền PostgreSQL**. Auth contract đã được điều chỉnh theo [ADR-005](adr/005-email-verification-and-signed-tokens.md): email/password + verification link, asymmetric JWT; magic link/GitHub sau. Thêm ID-10–13 nên tổng hiện **40/216 mục hoàn thành, 176 mục chưa hoàn thành**. DB-12 còn image compatibility; business API/worker và AWS chưa triển khai.
 
-Quy ước: `[x]` = đầu mục cụ thể đã hoàn tất và có artifact/kiểm chứng; `[ ]` = chưa hoàn tất. Dòng có `IN PROGRESS` là đang làm, chưa được tick. “Đã viết tiêu chuẩn” không đồng nghĩa “đã triển khai control”; “đã tạo script” không đồng nghĩa “đã chạy benchmark”. 18 mục bootstrap đã [review](completed-checklist-review.md); 11 mục SPEC có [review/evidence](phase-02-review.md). Không còn review đang chạy. API/AWS/benchmark chưa bắt đầu, không có tác vụ triển khai chạy nền. Bước tiếp theo là Phần 03; BOOT-09/10 vẫn pending. Phần lớn đầu mục bên dưới cần tách thành PR nhỏ khi thực hiện. Mỗi PR cập nhật checklist + evidence + acceptance ledger.
+Quy ước: `[x]` = đầu mục cụ thể đã hoàn tất và có artifact/kiểm chứng; `[ ]` = chưa hoàn tất. Dòng có `IN PROGRESS` là đang làm, chưa được tick. “Đã viết tiêu chuẩn” không đồng nghĩa “đã triển khai control”; “đã tạo script” không đồng nghĩa “đã chạy benchmark”. 18 mục bootstrap đã [review](completed-checklist-review.md); 11 mục SPEC có [review/evidence](phase-02-review.md), auth amendment có [review/evidence](phase-04-contract-review.md). DB-01–11 đã có [review/evidence](phase-03-review.md); DB-12 đã có runbook, chưa chạy old/new image drill. Không còn tác vụ triển khai chạy nền. [Kế hoạch Phần 04](phase-04-plan.md) ghi thứ tự Identity và composition roots BOOT-10; BOOT-09 vẫn thiếu Git/remote. AWS/benchmark chưa bắt đầu. Phần lớn đầu mục bên dưới cần tách thành PR nhỏ khi thực hiện. Mỗi PR cập nhật checklist + evidence + acceptance ledger.
 
 | Nhóm | Trạng thái hiện tại | Điều kiện chuyển bước |
 | --- | --- | --- |
 | 00: Bộ quy chuẩn | Hoàn tất, đã kiểm tra và review lại | Không còn quyết định POS mâu thuẫn, có contract/ADR và checklist |
 | 01: Bootstrap | Phần đã mở đã hoàn tất; Git/Nest runtime để phase sau | Unit/typecheck/build/lint/quality và local dependency checks |
 | 02: Product/public contracts | Hoàn tất specification + local contract checks | Policy/schema/permissions/workload nhất quán; runtime evidence pending |
-| 03–13: Database/application/operations/AWS | Chưa triển khai | Correctness và security trước capacity tuning |
+| 03: Database | DB-01–11 hoàn tất nền persistence; DB-12 chưa drill | Business adapters/races và old/new images cần evidence riêng |
+| 04–13: Application/operations/AWS | Có kế hoạch Phần04 và auth contract; runtime chưa triển khai | Correctness và security trước capacity tuning |
 | 14–19: Dataset/load/failure/FinOps | Chưa đo | Có môi trường kiểm thử và raw evidence |
 | 20: Production acceptance | Chưa đạt | Toàn bộ hard gates và câu hỏi định lượng có evidence |
 
@@ -62,45 +63,49 @@ Phụ thuộc: 00. Artifact: product spec, permission matrix, API/OpenAPI, event
 - [x] **SPEC-07** [Product §8](product-specification.md): durable status/result/polling/frozen explanation gates và redaction.
 - [x] **SPEC-08** [Product §9](product-specification.md): best/ties/version/opt-in/privacy/cursor và statistic denominators.
 - [x] **SPEC-09** [Permissions/import/retention](security-and-permissions.md): Candidate/Admin/operator matrix, admin bootstrap, session/CSRF/audit/import/data retention.
-- [x] **SPEC-10** [OpenAPI/event guide](contracts/README.md), schemas và contract tooling: DTO/errors/envelope/cursor/version/compatibility, 44 operations.
+- [x] **SPEC-10** [OpenAPI/event guide](contracts/README.md), schemas và contract tooling: DTO/errors/envelope/cursor/version/compatibility, 46 operations sau auth amendment.
 - [x] **SPEC-11** [SLO/workload](slo-and-workload.md): hot-route p95/p99/query budgets, SLI/error populations, dataset/traffic/capacity targets; execution unmeasured.
 
-Gate đã đạt cho specification: có policies/examples/AC-01–32 và schema checks, không còn product decision chặn Phần 03. Implementation, security controls và benchmark/restore/cost vẫn chưa được kiểm chứng. Xem [validation](validation.md).
+Gate đã đạt cho specification: có policies/examples/AC-01–35 và schema checks sau auth amendment. Implementation, security controls và benchmark/restore/cost vẫn chưa được kiểm chứng. Xem [validation](validation.md).
 
 ## 03. Database, migration, Unit of Work
 
 Phụ thuộc: 01–02. Artifact: schema/migrations, transaction context, repository ports/adapters, DB integration tests.
 
-- [ ] **DB-01** Thiết kế PK/FK/unique/check constraints cho User/Role/Session, Catalog, Attempt/Answer/Result, Leaderboard/AuditLog và technical tables.
-- [ ] **DB-02** Thiết kế published version/snapshot và FK membership để đáp án không tham chiếu câu hỏi ngoài đề.
-- [ ] **DB-03** Chọn indexes theo từng query: browse/detail/active attempt/deadline sweep/history/result/leaderboard/outbox/inbox.
-- [ ] **DB-04** Tạo versioned SQL migration runner: advisory lock, checksum bất biến, migration ordering, failure atomicity.
-- [ ] **DB-05** Tách migration/admin role và runtime DML role; synchronize luôn tắt.
-- [ ] **DB-06** Implement UnitOfWork + infrastructure AsyncLocalStorage; resolve transaction client tại từng call.
-- [ ] **DB-07** Implement join/rollback-only nested semantics; không cho transaction được commit sau joined failure.
-- [ ] **DB-08** Thiết lập pool/acquire/statement/lock/idle transaction timeout và giới hạn admission.
-- [ ] **DB-09** Lập connection budget = max API tasks × pool + max worker tasks × pool + reserved maintenance/headroom.
-- [ ] **DB-10** Tích hợp pg_stat_statements, query/lock/pool timing và redaction; không đưa SQL parameters vào log/trace.
-- [ ] **DB-11** Viết PostgreSQL thật kiểm chứng constraints, transaction context, joined rollback, lock isolation và pool timeouts bằng technical fixtures. Tests start/save/submit và inbox thực tế được làm tại ATT-10/ASYNC-11 sau khi có application flows.
-- [ ] **DB-12** Viết expand/contract migration & application rollback runbook; chạy migration compatibility test với image cũ/mới.
+- [x] **DB-01** Thiết kế PK/FK/unique/check constraints cho User/Role/Session, Catalog, Attempt/Answer/Result, Leaderboard/AuditLog và technical tables.
+- [x] **DB-02** Thiết kế published version/snapshot và FK membership để đáp án không tham chiếu câu hỏi ngoài đề.
+- [x] **DB-03** Chọn indexes theo từng query: browse/detail/active attempt/deadline sweep/history/result/leaderboard/outbox/inbox.
+- [x] **DB-04** Tạo versioned SQL migration runner: advisory lock, checksum bất biến, migration ordering, failure atomicity.
+- [x] **DB-05** Tách migration/admin role và runtime DML role; synchronize luôn tắt.
+- [x] **DB-06** Implement UnitOfWork + infrastructure AsyncLocalStorage; resolve transaction client tại từng call.
+- [x] **DB-07** Implement join/rollback-only nested semantics; không cho transaction được commit sau joined failure.
+- [x] **DB-08** Thiết lập pool/acquire/statement/lock/idle transaction timeout và giới hạn admission.
+- [x] **DB-09** Lập connection budget = max API tasks × pool + max worker tasks × pool + reserved maintenance/headroom.
+- [x] **DB-10** Tích hợp pg_stat_statements, query/lock/pool timing và redaction; không đưa SQL parameters vào log/trace.
+- [x] **DB-11** Viết PostgreSQL thật kiểm chứng constraints, transaction context, joined rollback, lock isolation và pool timeouts bằng technical fixtures. Tests start/save/submit và inbox thực tế được làm tại ATT-10/ASYNC-11 sau khi có application flows.
+- [ ] **DB-12** PARTIAL — [runbook](runbooks/database-migrations.md) đã viết; old/new API/worker image compatibility test chưa chạy vì BOOT-10/CI images chưa có. Không có tác vụ chạy nền.
 
-Gate: durable state và concurrency đúng trước load testing/tuning.
+DB-01–11 đạt gate nền persistence: 30 real-PG cases PASS, restricted roles/constraints/context/timeout. Xem [database guide](database.md) và [review](phase-03-review.md). Gate business races/SQS/image compatibility và load/tuning vẫn pending; không chọn pool/index tối ưu từ fixtures.
 
 ## 04. Identity, authentication, session, permissions
 
-Phụ thuộc: 02–03.
+Phụ thuộc: 02–03. [Kế hoạch chi tiết](phase-04-plan.md), [security contract](security-and-permissions.md) và [ADR-005](adr/005-email-verification-and-signed-tokens.md) đã cập nhật; checkbox dưới đây là runtime deliverables, chưa hoàn tất từ việc viết kế hoạch.
 
-- [ ] **ID-01** Register: normalized unique email/username, input limits, strong password hash và chống enumeration.
-- [ ] **ID-02** Login: xác thực, bounded rate limit, session creation và safe audit metadata.
+- [ ] **ID-01** Register bằng email/password: normalized unique email, pending verification, input limits, strong password hash, atomic challenge/email intent và chống enumeration.
+- [ ] **ID-02** Login bằng email/password: chỉ enabled + verified, bounded hashing/rate limit, signed session creation và safe audit metadata.
 - [ ] **ID-03** Refresh rotation: hash token trong DB, atomic rotate, replay/family-revocation policy và concurrent refresh tests.
 - [ ] **ID-04** Logout/revoke: hiệu lực được định nghĩa và kiểm tra với API đang scale ngang.
-- [ ] **ID-05** Cấu hình access/refresh TTL, idle/absolute expiry, secret/credential rotation; không dùng session state cục bộ.
+- [ ] **ID-05** Access/refresh JWT ký bằng private key, verify bằng public key (ES256/P-256); strict alg/claims/type/audience/use, TTL/idle/absolute expiry, trusted kid/key rotation/compromise drill; DB revocation vẫn authoritative.
 - [ ] **ID-06** Tạo guard/principal infrastructure, permission matrix tập trung và actor ownership checks.
 - [ ] **ID-07** Chọn cookie/token transport, CSRF/CORS/SameSite/secure policy theo threat model và browser client.
 - [ ] **ID-08** Tạo quy trình cấp admin đầu tiên an toàn; không public endpoint tự cấp role.
-- [ ] **ID-09** Unit/integration/E2E: duplicate register, invalid credential, token reuse, expired/revoked session, forbidden/admin access.
+- [ ] **ID-09** Unit/integration/E2E: duplicate register, invalid/unverified credential, JWT substitution, token reuse, expired/revoked session, forbidden/admin access; đo hash/crypto/HTTP/query/pool và hai API instances.
+- [ ] **ID-10** Link xác thực email một lần30min, resend bounds/coalescing, POST activation + final email-owner password, race/expiry/retry, chống attacker pre-registration và ciphertext cleanup.
+- [ ] **ID-11** Identity email outbox + worker + local mailbox/SES adapters: encrypted token material, leases/fencing, bounded retry/parked/replay, sender/quota/bounce/complaint và delivery metrics; AWS delivery vẫn chờ account/region/sender.
+- [ ] **ID-12 — LATER** Passwordless email magic link: LOGIN_EMAIL purpose riêng, single-use/login CSRF/browser binding và session policy chung; không dùng VERIFY_EMAIL để login.
+- [ ] **ID-13 — LATER** GitHub OAuth code + state/PKCE, stable provider subject, explicit account linking, email ownership, provider-only schema migration và no privilege escalation.
 
-Gate: auth/permissions đã chạy thật; secrets/tokens không lộ trong response/log.
+Gate Phần04: BOOT-10 + ID-01–11 có runtime evidence; auth/verification/permissions chạy thật, token chỉ trong HttpOnly cookies, không lộ trong JSON/log. ID-12/13 để phase sau. Local evidence và SES/key-operations AWS evidence được đánh dấu riêng.
 
 ## 05. Catalog: exam và question bank
 
@@ -174,7 +179,7 @@ Phụ thuộc: 04–07.
 Phụ thuộc: public contracts + 04–08.
 
 - [ ] **WEB-01** Chọn frontend/build strategy, responsive/accessibility budget và S3/CloudFront static asset plan.
-- [ ] **WEB-02** Register/login/logout/refresh và an toàn với cookie/token policy đã chọn.
+- [ ] **WEB-02** Register/email verification/final password/login/logout/refresh: inert verification landing, resend UX và an toàn với cookie/token/CSRF policy đã chọn. Magic link/GitHub UI khi ID-12/13 triển khai sau.
 - [ ] **WEB-03** Browse exam/detail và lỗi open/close/attempt limit rõ ràng.
 - [ ] **WEB-04** Start/load questions/answer/mark, section navigation và answer-empty UX.
 - [ ] **WEB-05** Autosave debounce/batching theo query/write budget; hiển thị saving/saved/conflict/failure.

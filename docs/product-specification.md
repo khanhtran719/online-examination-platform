@@ -8,6 +8,7 @@ Identity owns accounts/sessions/permissions. Catalog owns exam drafts, sections,
 
 | Decision | Baseline / reason |
 | --- | --- |
+| Account access | Email/password only now; email ownership must be verified by a30min single-use link before login. Explicit confirmation selects the final password, never auto-login. Access/refresh are asymmetric signed JWTs with PostgreSQL session authority. Magic link/GitHub later; see [ADR-005](adr/005-email-verification-and-signed-tokens.md). |
 | Exam categories | TOEIC, IELTS, IT_CERTIFICATION, UNIVERSITY, RECRUITMENT, CORPORATE are labels. All initially use `EXACT_MATCH_V1`; labels do not assert official score equivalence. Listening media may link private assets; essays/speaking/free-text/manual grading are outside v1. |
 | Question types | SINGLE_CHOICE, MULTIPLE_CHOICE, TRUE_FALSE; positive integer points, no negative/partial credit. Small deterministic policy matches existing pure scoring helper and avoids unsupported conversions. |
 | Deadline | `min(startedAt + durationSeconds, frozenCloseAt)`; prevents late entry extending a scheduled exam. Partial time is displayed before candidate confirms start. |

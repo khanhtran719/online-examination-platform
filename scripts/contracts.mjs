@@ -24,6 +24,8 @@ const owners = new Set([
 const publicRoutes = new Set([
   "get /v1/auth/csrf",
   "post /v1/auth/register",
+  "post /v1/auth/email-verification/request",
+  "post /v1/auth/email-verification/confirm",
   "post /v1/auth/login",
   "post /v1/auth/refresh",
   "post /v1/auth/logout",
@@ -33,6 +35,26 @@ const publicRoutes = new Set([
 
 export function inspectOperations(api) {
   const errors = [];
+  const tokens = api["x-session-token-contract"];
+  if (
+    tokens?.format !== "JWT" ||
+    tokens.algorithm !== "ES256" ||
+    tokens.curve !== "P-256" ||
+    tokens.authority !== "PostgreSQL" ||
+    tokens.keySource !== "trusted-keyring" ||
+    tokens.access?.typ !== "exam-access+jwt" ||
+    tokens.refresh?.typ !== "exam-refresh+jwt" ||
+    tokens.access?.tokenUse !== "access" ||
+    tokens.refresh?.tokenUse !== "refresh" ||
+    typeof tokens.access?.audience !== "string" ||
+    !tokens.access.audience ||
+    typeof tokens.refresh?.audience !== "string" ||
+    !tokens.refresh.audience ||
+    tokens.access.audience === tokens.refresh.audience
+  )
+    errors.push(
+      "Identity: invalid signed token contract or token-purpose separation",
+    );
   const operationIds = new Set();
   for (const [path, item] of Object.entries(api.paths)) {
     for (const [method, operation] of Object.entries(item)) {

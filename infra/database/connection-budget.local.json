@@ -1,0 +1,11 @@
+{
+  "maxConnections": 100,
+  "apiTasks": 1,
+  "apiPool": 10,
+  "workerTasks": 1,
+  "workerPool": 5,
+  "surgeTasks": 2,
+  "surgePool": 10,
+  "migration": 1,
+  "reserved": 20
+}

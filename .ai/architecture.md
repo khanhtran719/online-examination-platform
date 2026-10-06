@@ -154,7 +154,7 @@ This is a placement guide, not a requirement to create every folder/file. Domain
 ```text
 apps/
   api/
-    migrations/                       # versioned SQL; not implemented yet
+    migrations/                       # versioned SQL migration bundle
     src/
       main.ts                         # API composition root, planned
       worker.ts                       # worker composition root, planned
@@ -2331,6 +2331,8 @@ if (user.role === 'ADMIN') {
 ```
 
 throughout business code.
+
+The examination Identity authentication contract is detailed in [security/permissions](../docs/security-and-permissions.md) and [ADR-005](../docs/adr/005-email-verification-and-signed-tokens.md): email/password requires email verification; access and refresh are asymmetric signed JWTs with mutually exclusive validators and authoritative PostgreSQL session/revocation checks. Crypto, key loading and transport are infrastructure; activation/session policy belongs to Identity Domain/Application through ports. Email ownership links are separate single-use capabilities, not access/refresh tokens or future magic-link login. Registration/activation and durable Identity email intent commit atomically; external email sends occur outside transactions. The email worker has no JWT signing private key. Magic link and GitHub are explicitly later work, not installed infrastructure.
 
 ---
 

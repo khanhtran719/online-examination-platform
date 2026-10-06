@@ -1,6 +1,6 @@
 # Required contract test matrix
 
-These scenarios are **planned**. Current unit tests validate only pure Attempt/scoring behavior; no system integration scenario below has run.
+These system scenarios are **planned**. Executed tests cover pure Attempt/scoring, technical DB/config/UoW fixtures and contract tooling; they do not prove the complete business/API/worker/browser cases below. AC-31/30 have partial technical evidence in Phase03, while their application/image drills remain pending.
 
 Phase 02 case IDs below are public-contract traceability, not assertions of executed tests. OpenAPI `x-cases` resolves to these IDs. Policy owners are [product](product-specification.md), [security/permissions](security-and-permissions.md), [HTTP/events](contracts/README.md) and [SLO/workload](slo-and-workload.md).
 
@@ -38,6 +38,9 @@ Phase 02 case IDs below are public-contract traceability, not assertions of exec
 | AC-30 | Health/migration/old-new compatibility/drain | Minimal health, critical readiness; versioned schema migration compatible; drain recovers uncommitted work | BOOT/DB/CI/ECS failure runs |
 | AC-31 | UoW joined failure/lock isolation/pool timeout | Caught joined failure remains rollback-only; no client leak/partial commit or unbounded acquire wait | DB-11 technical fixtures then ATT/ASYNC flows |
 | AC-32 | Redis if evidence adds it later | Versioned key/stale bound/invalidation/stampede/fallback; no invariant authority in cache | Optional CACHE/FAIL experiments; currently absent |
+| AC-33 | Email verification/activation/resend races and pre-registration | No unverified session;30min single-use token, GET inert, final email-owner password, duplicate outcome without credential rewrite, generic resend with bounds | ID-01/02/09/10, PostgreSQL + API + HTTPS browser |
+| AC-34 | Asymmetric JWT substitution/key lifecycle | Wrong key/alg/kid/issuer/type/audience/use/claims rejected; refresh not access; DB revocation/current permissions; overlapping normal rotation and compromise deny | ID-03/05/09, crypto + two API instances + operational drill |
+| AC-35 | Verification email intent/crash/retry/privacy | Account/challenge/intent atomic, fenced lease, no transaction during sends, duplicate mail safe, expiry/consume ciphertext cleanup, no credential leaks; SES failure/backlog visible | ID-11, PostgreSQL + loopback mailbox, AWS SES operations later |
 
 The older scenario-oriented matrix below remains an evidence-environment map; IDs above supply operation traceability. All system cases remain planned until their owning phases run them.
 
