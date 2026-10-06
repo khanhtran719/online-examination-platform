@@ -2,6 +2,45 @@
 
 These scenarios are **planned**. Current unit tests validate only pure Attempt/scoring behavior; no system integration scenario below has run.
 
+Phase 02 case IDs below are public-contract traceability, not assertions of executed tests. OpenAPI `x-cases` resolves to these IDs. Policy owners are [product](product-specification.md), [security/permissions](security-and-permissions.md), [HTTP/events](contracts/README.md) and [SLO/workload](slo-and-workload.md).
+
+| Case ID | Owner / scenario | Required outcome | Implementation/evidence phase |
+| --- | --- | --- | --- |
+| AC-01 | Catalog/Assessment scoring/type/option validation | Exact set, integer points, clear/unanswered, section sum/rounding; reject duplicate/foreign/invalid keys | CAT-03/ATT scoring; pure helper partial coverage only |
+| AC-02 | Catalog publish/edit/unpublish/start race | One complete frozen version; future edits never change attempt/release; archival preserves referenced snapshot | CAT-06/07/10 + ATT-10, PostgreSQL |
+| AC-03 | Start duplicate/key reuse/concurrent limit | One receipt/effect; no two active attempts or limit violation; other payload conflicts | ATT-01/10, PostgreSQL + API |
+| AC-04 | Resume/limit/FAILED/EXPIRED/republish | No reset clock/version/quota; replay same attempt consumes no extra slot | ATT-01/03/10, PostgreSQL + API |
+| AC-05 | UTC/open/close/deadline/long lock wait | Start inside window; clipped late-entry duration; DB time after lock; exact deadline rejects save | CAT/ATT-10, PostgreSQL |
+| AC-06 | Save batch/clear/mark/versions/reordered retry | All-or-nothing; mark not scoring input; original receipt cannot overwrite later answer | ATT-04/10, PostgreSQL + API |
+| AC-07 | Two tabs, stale expected versions | One accepted mutation, 409/refetch/reconcile; no silent lost update | ATT-04/10 + browser |
+| AC-08 | Receipt pruning/UUIDv7 clock/key conflict | Retry in window same durable outcome; old pruned key cannot become fresh mutation | ATT-10 + shared receipt PostgreSQL fixtures |
+| AC-09 | Submit/autosave/manual/expiry races | Save committed before submit included or rejected; one stable submission/outbox | ATT-06/07/10, PostgreSQL |
+| AC-10 | Commit then HTTP timeout/API restart | Same acknowledgement and durable answers; no memory-only accepted write | ATT-10/11 + task crash |
+| AC-11 | Deadline sweep/duplicate submit | Overdue attempts safely submitted/scored; expired provenance retained, one outbox | ATT-07/10 + ASYNC |
+| AC-12 | Outbox broker ACK then publisher crash | Recoverable claim; same event redelivered safely | ASYNC publisher, PostgreSQL + SQS |
+| AC-13 | Publisher stale lease owner/fencing | Stale owner cannot mark another claim complete; bounded retries/parked records visible | ASYNC publisher + fault injection |
+| AC-14 | Duplicate events/same eventId different payload | One business effect; inconsistent identity/content quarantined | ASYNC-11, PostgreSQL + SQS |
+| AC-15 | Inbox insert then result/statistic failure | All effects roll back; redelivery can complete | ASYNC-11, PostgreSQL + SQS |
+| AC-16 | Poison/DLQ/FAILED/audited replay | Bounded retry, durable quarantine, replay stable submission identity, no new quota/effect | ASYNC-11 + admin/API |
+| AC-17 | Commit then ACK loss/result projection atomicity | Durable result/leaderboard/statistics/inbox; duplicate ACK retry no-op; status shows durable state | ASYNC-06/07/11 + ATT-08 |
+| AC-18 | Ownership/permission/path/cursor tampering | Foreign attempts/results/history 404, missing action 403, no userId/body override | ID-06/09 + CAT/ATT E2E |
+| AC-19 | Frozen explanation release/redaction | No keys in candidate questions/early result/log/trace; admin access requires explicit permission/audit | CAT/ATT/browser/observability |
+| AC-20 | Register/login enumeration/duplicate/password bounds | Generic outcomes, no overwrite/escalation, bounded hashing/rate-limit resources | ID-01/02/09, API + DB |
+| AC-21 | Refresh rotation/race/reuse/logout/CSRF | Atomic token consumption; reused family revoked; cross-origin/forged CSRF denied; no token leak | ID-03/04/07/09 + browser |
+| AC-22 | Admin bootstrap/action permissions | No public self-grant or candidate impersonation; operator grant audited | ID-08/09 + admin E2E |
+| AC-23 | Import dry-run/invalid/partial failure/retry | ≤100 valid entries atomic; invalid report writes no bank rows; same key same IDs/report | CAT-05/10, PostgreSQL + API |
+| AC-24 | Audit transaction/read access/failure/redaction | Admin effect and audit commit together; sensitive read fails closed if audit fails; no secret/body logging | CAT/Reporting/Security integration |
+| AC-25 | Best attempt/tied score/version rankings | Version-scoped deterministic best/order/rank; duplicate/replay no second effect | ASYNC/Reporting PostgreSQL |
+| AC-26 | Leaderboard opt-in/opt-out/PII/restore | Opt-out suppressed in subsequent reads; pseudonym only; restore never revives deleted opt-in | browser/Reporting + restore |
+| AC-27 | Cursor/page bound/filter/watermark/payload | No OFFSET/hidden total; signed bounded cursor; byte-limited pages, no leaked rows/duplicates | CAT/ATT/Reporting integration + performance |
+| AC-28 | SLO/query/pool/CPU/memory/cost populations | Measured route budgets/latencies and achieved load; valid throttling counted; no invented capacity/cost | LOAD/DB/OBS/COST experiments |
+| AC-29 | Retention/backup/PITR/failover/privacy ledger | No purge of unresolved work; recovery meets measured RPO/RTO and deletion/opt-out consistency | OPS/FAIL/SEC experiments |
+| AC-30 | Health/migration/old-new compatibility/drain | Minimal health, critical readiness; versioned schema migration compatible; drain recovers uncommitted work | BOOT/DB/CI/ECS failure runs |
+| AC-31 | UoW joined failure/lock isolation/pool timeout | Caught joined failure remains rollback-only; no client leak/partial commit or unbounded acquire wait | DB-11 technical fixtures then ATT/ASYNC flows |
+| AC-32 | Redis if evidence adds it later | Versioned key/stale bound/invalidation/stampede/fallback; no invariant authority in cache | Optional CACHE/FAIL experiments; currently absent |
+
+The older scenario-oriented matrix below remains an evidence-environment map; IDs above supply operation traceability. All system cases remain planned until their owning phases run them.
+
 | Capability | Failure/concurrency scenario | Required durable outcome | Evidence environment |
 | --- | --- | --- | --- |
 | UnitOfWork | joined write fails; caller catches it | rollback-only, neither write committed | PostgreSQL |

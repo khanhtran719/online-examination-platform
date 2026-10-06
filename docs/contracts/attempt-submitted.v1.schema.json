@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:online-examination-platform:attempt-submitted:v1",
+  "title": "Attempt submitted v1",
+  "description": "Stable outbox intent; no answers, keys, email or token. Validate identifiers against authoritative DB state in the consumer.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "eventType",
+    "aggregateId",
+    "occurredAt",
+    "correlationId",
+    "causationId",
+    "source",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "eventType": {
+      "const": "attempt.submitted.v1"
+    },
+    "aggregateId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "occurredAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "correlationId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "causationId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "source": {
+      "const": "online-examination-platform.assessment"
+    },
+    "version": {
+      "const": 1
+    },
+    "traceparent": {
+      "type": "string",
+      "pattern": "^00-[0-9a-f]{32}-[0-9a-f]{16}-[0-9a-f]{2}$"
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attemptId",
+        "examId",
+        "publishedVersionId",
+        "submissionId",
+        "deadline",
+        "expired",
+        "submissionKind"
+      ],
+      "properties": {
+        "attemptId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "examId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "publishedVersionId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "submissionId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "deadline": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "expired": {
+          "type": "boolean"
+        },
+        "submissionKind": {
+          "enum": ["MANUAL", "DEADLINE"]
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "eventId": "00000000-0000-4000-8000-000000000006",
+      "eventType": "attempt.submitted.v1",
+      "aggregateId": "00000000-0000-4000-8000-000000000004",
+      "occurredAt": "2026-10-06T13:44:50.000Z",
+      "correlationId": "00000000-0000-4000-8000-000000000007",
+      "causationId": "00000000-0000-4000-8000-000000000008",
+      "source": "online-examination-platform.assessment",
+      "version": 1,
+      "payload": {
+        "attemptId": "00000000-0000-4000-8000-000000000004",
+        "examId": "00000000-0000-4000-8000-000000000001",
+        "publishedVersionId": "00000000-0000-4000-8000-000000000002",
+        "submissionId": "00000000-0000-4000-8000-000000000005",
+        "deadline": "2026-10-06T13:45:00.000Z",
+        "expired": false,
+        "submissionKind": "MANUAL"
+      }
+    },
+    {
+      "eventId": "00000000-0000-4000-8000-000000000016",
+      "eventType": "attempt.submitted.v1",
+      "aggregateId": "00000000-0000-4000-8000-000000000014",
+      "occurredAt": "2026-10-06T13:45:00.000Z",
+      "correlationId": "00000000-0000-4000-8000-000000000007",
+      "causationId": "00000000-0000-4000-8000-000000000008",
+      "source": "online-examination-platform.assessment",
+      "version": 1,
+      "payload": {
+        "attemptId": "00000000-0000-4000-8000-000000000014",
+        "examId": "00000000-0000-4000-8000-000000000001",
+        "publishedVersionId": "00000000-0000-4000-8000-000000000002",
+        "submissionId": "00000000-0000-4000-8000-000000000015",
+        "deadline": "2026-10-06T13:45:00.000Z",
+        "expired": true,
+        "submissionKind": "DEADLINE"
+      }
+    }
+  ]
+}

@@ -5,7 +5,7 @@ This specializes the illustrative [.ai/module-template.md](../.ai/module-templat
 | Capability | Owns | Write invariants | Read projections | Public boundary |
 | --- | --- | --- | --- | --- |
 | Identity | User, Role, permissions, Session | unique normalized identity, secure hash, session rotation/revocation | principal/session metadata, admin identity views | authenticate/authorize capability, no exported repository |
-| Catalog | Exam, ExamSection, Question, QuestionOption, ExamQuestion published snapshots | publication completeness, open/close/duration validity, immutable published versions | catalog/detail/question projections without keys | exam policy/version capability for Assessment |
+| Catalog | Exam, ExamSection, Question, QuestionOption, ExamQuestion published snapshots | publication completeness, open/close/duration validity, immutable published versions | catalog/detail/question projections without keys | published policy/version, frozen candidate page and trusted grading snapshot capabilities for Assessment |
 | Assessment | ExamAttempt, AttemptAnswer, ExamResult, Leaderboard, question statistics | ownership, attempt limit, deadline, answer version, submit/result idempotency | resume/status/result/history/ranking | candidate use cases and grading command |
 | Reporting | operational/business read contracts | no business writes | active candidates, submissions/scores/question stats/audit/system summaries | read-only admin queries with permission/data scope |
 
@@ -16,3 +16,5 @@ Use case specification before writing code: actor/permission, READ or WRITE, own
 A complex Assessment command uses Domain and ports. A simple Catalog list uses a query port and SQL projection. Infrastructure resolves the active transaction client at call time. Nest composition binds plain application classes to ports; decorators stay out of business code. Queue and scheduler inbound adapters validate a message and call an application use case.
 
 Current implementation is limited to pure Attempt lifecycle and exact-match scoring helpers. There is no persistence/authorization/queue/runtime yet. Those helpers do not prove system idempotency or concurrency correctness.
+
+Product/public contracts are in [product specification](product-specification.md), [permissions](security-and-permissions.md), [OpenAPI/events](contracts/README.md) and [SLO/workload](slo-and-workload.md). Catalog snapshot capabilities do not expose private repositories; Assessment authorizes its owned attempt before candidate page access, and grading-key capability never reaches a candidate DTO. Reporting declares read-only source columns and scope separately from these public write boundaries.

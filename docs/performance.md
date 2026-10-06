@@ -1,6 +1,6 @@
 # Performance and cost protocol
 
-This protocol is normative through architecture §§80–85 and rules R-63–R-75. No benchmark has run yet. Proposed SLOs are in the [profile](project-profile.md); the [acceptance ledger](production-acceptance.md) records missing evidence.
+This protocol is normative through architecture §§80–85 and rules R-63–R-75. No benchmark has run yet. Specified, unverified targets/traffic are in [SLO/workload](slo-and-workload.md); the [acceptance ledger](production-acceptance.md) records missing evidence.
 
 ## Feasibility before cost
 
@@ -8,7 +8,7 @@ A configuration is eligible only if correctness, security, durability, availabil
 
 ## Workload specification
 
-Capture exam size/sections/question types/options/payload, candidates/exam distribution, arrival pattern, exam duration, autosave interval/jitter/batch size, tab concurrency, retry probability, submit distribution, poll/backoff schedule and leaderboard/history requests. The initial scenario has 100→500→2,000 candidates, a 45-minute exam, synchronized submissions, five minutes of result polling and ranking burst. Interval/payload values still need product specification; do not invent a capacity result from undefined traffic.
+Capture exam size/sections/question types/options/payload, candidates/exam distribution, arrival pattern, exam duration, autosave interval/jitter/batch size, tab concurrency, retry probability, submit distribution, poll/backoff schedule and leaderboard/history requests. The initial scenario has 100→500→2,000 candidates, a 45-minute exam, synchronized submissions, five minutes of result polling and ranking burst. [SLO/workload](slo-and-workload.md) fixes interval/payload/tab/retry distributions for reproducible baseline; calibrate against observed real traffic later. Arithmetic offered-load inputs are not capacity results.
 
 Use unique identities and real attempts. Seed users/sessions before timed hot-path measurement unless registration/login itself is being tested. Include a separate end-to-end lifecycle run. Use smoke/baseline/normal/ramp/spike/stress/soak/mass-start/autosave/mass-submit/result-polling scenarios. Record offered and achieved load, dropped iterations, client timeouts/retries and load-generator CPU/network. Closed-loop VUs alone can conceal overload; use arrival-rate scenarios where appropriate and account for coordinated omission.
 

@@ -1,14 +1,15 @@
 # Roadmap triển khai có đánh dấu
 
-Cập nhật: 2026-10-06. Phạm vi lượt làm việc hiện tại: **chốt bộ quy chuẩn trước, lập danh sách chi tiết, hoàn tất phần bootstrap/domain đã bắt đầu**. Các phase ứng dụng/AWS dưới đây là kế hoạch, chưa được triển khai.
+Cập nhật: 2026-10-06. Phạm vi đã bàn giao và review: **bộ quy chuẩn, bootstrap/domain đã mở và Phần 02 product specification/public contracts**. Tổng **29/212 mục hoàn thành, 183 mục chưa hoàn thành**. Các phase runtime/AWS dưới đây chưa được triển khai.
 
-Quy ước: `[x]` = đầu mục cụ thể đã hoàn tất và có artifact/kiểm chứng; `[ ]` = chưa hoàn tất. Dòng có `IN PROGRESS` là đang làm, chưa được tick. “Đã viết tiêu chuẩn” không đồng nghĩa “đã triển khai control”; “đã tạo script” không đồng nghĩa “đã chạy benchmark”. Đang review lại các mục đã chốt; STD-10/BOOT-04/BOOT-06/BOOT-07 tạm mở lại để sửa và kiểm chứng các findings. API/AWS/benchmark đang ở trạng thái chưa bắt đầu, không có tác vụ triển khai chạy nền. Phần lớn đầu mục bên dưới cần tách thành PR nhỏ khi thực hiện. Mỗi PR cập nhật checklist + evidence + acceptance ledger.
+Quy ước: `[x]` = đầu mục cụ thể đã hoàn tất và có artifact/kiểm chứng; `[ ]` = chưa hoàn tất. Dòng có `IN PROGRESS` là đang làm, chưa được tick. “Đã viết tiêu chuẩn” không đồng nghĩa “đã triển khai control”; “đã tạo script” không đồng nghĩa “đã chạy benchmark”. 18 mục bootstrap đã [review](completed-checklist-review.md); 11 mục SPEC có [review/evidence](phase-02-review.md). Không còn review đang chạy. API/AWS/benchmark chưa bắt đầu, không có tác vụ triển khai chạy nền. Bước tiếp theo là Phần 03; BOOT-09/10 vẫn pending. Phần lớn đầu mục bên dưới cần tách thành PR nhỏ khi thực hiện. Mỗi PR cập nhật checklist + evidence + acceptance ledger.
 
 | Nhóm | Trạng thái hiện tại | Điều kiện chuyển bước |
 | --- | --- | --- |
-| 00: Bộ quy chuẩn | Hoàn tất và đã kiểm tra | Không còn quyết định POS mâu thuẫn, có contract/ADR và checklist |
+| 00: Bộ quy chuẩn | Hoàn tất, đã kiểm tra và review lại | Không còn quyết định POS mâu thuẫn, có contract/ADR và checklist |
 | 01: Bootstrap | Phần đã mở đã hoàn tất; Git/Nest runtime để phase sau | Unit/typecheck/build/lint/quality và local dependency checks |
-| 02–13: Product/application/operations/AWS | Chưa triển khai | Correctness và security trước capacity tuning |
+| 02: Product/public contracts | Hoàn tất specification + local contract checks | Policy/schema/permissions/workload nhất quán; runtime evidence pending |
+| 03–13: Database/application/operations/AWS | Chưa triển khai | Correctness và security trước capacity tuning |
 | 14–19: Dataset/load/failure/FinOps | Chưa đo | Có môi trường kiểm thử và raw evidence |
 | 20: Production acceptance | Chưa đạt | Toàn bộ hard gates và câu hỏi định lượng có evidence |
 
@@ -25,7 +26,7 @@ Mục đích: chuẩn hóa dự án thi trực tuyến trên contract đã cung 
 - [x] **STD-07** Viết [project profile](project-profile.md) và [module guide](examination-module-guide.md); phân ownership theo capability.
 - [x] **STD-08** Bổ sung R-63–R-75 và architecture §§76–85 về correctness, performance/cost, AWS, security/reliability và evidence.
 - [x] **STD-09** Viết [performance protocol](performance.md), [contract test matrix](contract-tests.md) và [production acceptance ledger](production-acceptance.md).
-- [ ] **STD-10 — IN PROGRESS (review)** Kiểm tra links/anchors, stale policy, imports/test naming và tự review quy chuẩn sau cập nhật.
+- [x] **STD-10** Kiểm tra links/anchors, stale policy, imports/test naming và tự review quy chuẩn sau cập nhật.
 
 Hoàn tất khi: tiêu chuẩn không tự mâu thuẫn, quyết định có ADR, target/measurement/implementation được phân biệt rõ. Những quyết định sizing/cache/TLS chưa đủ evidence phải còn ở trạng thái pending.
 
@@ -36,33 +37,35 @@ Mục đích: khép lại phần đang làm dở theo chỉ đạo mới; chưa 
 - [x] **BOOT-01** Tạo package metadata, TypeScript strict config, Jest không phụ thuộc Watchman, ESLint/Prettier và lockfile.
 - [x] **BOOT-02** Cài dependency phục vụ TypeScript/unit/lint. Loại dependency runtime chưa sử dụng khỏi bootstrap; sẽ thêm theo phase có nhu cầu.
 - [x] **BOOT-03** Tạo [compose.yaml](../compose.yaml), PostgreSQL local và ElasticMQ/SQS local chỉ bind localhost.
-- [ ] **BOOT-04 — IN PROGRESS (review)** Tạo [.env.example](../.env.example), ignore files; không đưa production secret vào repo.
+- [x] **BOOT-04** Tạo [.env.example](../.env.example), ignore files; không đưa production secret vào repo.
 - [x] **BOOT-05** Viết test trước cho deadline/submission/exact-match scoring; chạy RED xác nhận source chưa tồn tại.
-- [ ] **BOOT-06 — IN PROGRESS (review)** Hoàn tất pure [Attempt](../apps/api/src/modules/assessment/domain/attempt.ts), [scoring](../apps/api/src/modules/assessment/domain/scoring.ts) và unit tests; chạy GREEN.
-- [ ] **BOOT-07 — IN PROGRESS (review)** Chạy typecheck/build/lint/quality; ghi kết quả vào [validation log](validation.md).
+- [x] **BOOT-06** Hoàn tất pure [Attempt](../apps/api/src/modules/assessment/domain/attempt.ts), [scoring](../apps/api/src/modules/assessment/domain/scoring.ts) và unit tests; chạy GREEN.
+- [x] **BOOT-07** Chạy typecheck/build/lint/quality; ghi kết quả vào [validation log](validation.md).
 - [x] **BOOT-08** Kiểm tra health PostgreSQL và queue local; đây chỉ là dependency check, chưa phải integration test hệ thống.
 - [ ] **BOOT-09** Khởi tạo Git và cấu hình remote/branch/PR khi bắt đầu phase implementation tiếp theo.
 - [ ] **BOOT-10** Tạo Nest composition root/API/worker entry points và config validation khi bắt đầu application phase.
 
-BOOT-06–08 đã được kiểm chứng: 18 domain tests + 5 tooling tests pass; typecheck/build/lint/quality pass; PostgreSQL query và SQS ListQueues local thành công. Dependency audit còn 20 moderate trong tooling dev, 0 high/critical; chưa có runtime dependencies. Xem [validation log](validation.md). BOOT-09–10 thuộc phase sau, không phải việc đang chạy trong lượt này.
+BOOT-06–08 đã được kiểm chứng: 28 domain tests + 9 tooling tests pass; typecheck/build/lint/quality pass; PostgreSQL query và SQS ListQueues local thành công. Dependency audit còn 20 moderate trong tooling dev, 0 high/critical; chưa có runtime dependencies. Xem [validation log](validation.md). BOOT-09–10 thuộc phase sau, chưa bắt đầu. Kết luận review: đủ điều kiện chuyển sang phần 02 product contracts; xem [review report](completed-checklist-review.md).
 
 ## 02. Chốt product specification và public contracts
 
 Phụ thuộc: 00. Artifact: product spec, permission matrix, API/OpenAPI, event schema, ADR khi cần.
 
-- [ ] **SPEC-01** Xác định loại exam và scoring policy: exact-match ban đầu; TOEIC/IELTS quy đổi điểm/section rules phải có specification riêng.
-- [ ] **SPEC-02** Định nghĩa publish/version/unpublish: nội dung và release policy của attempt không đổi sau khi bắt đầu.
-- [ ] **SPEC-03** Định nghĩa open/close/duration, múi giờ, deadline, trường hợp vào muộn/đóng cửa giữa lượt thi.
-- [ ] **SPEC-04** Định nghĩa attempt limit, một active attempt, resume, tính các lượt FAILED/EXPIRED vào limit.
-- [ ] **SPEC-05** Định nghĩa autosave/mark, expected version, conflict UX, idempotency key/fingerprint/retention và retry sau retention.
-- [ ] **SPEC-06** Chốt state machine CREATED/IN_PROGRESS/SUBMITTED/PROCESSING/COMPLETED/EXPIRED/FAILED, nguyên nhân và replay.
-- [ ] **SPEC-07** Chốt scoring status/freshness, explanation release và đáp án không được lộ trước thời điểm cho phép.
-- [ ] **SPEC-08** Chốt leaderboard: best attempt/latest attempt, tie-breaker, visibility, pagination và privacy.
-- [ ] **SPEC-09** Chốt quyền Candidate/Admin, cấp quyền quản trị ban đầu, import/audit/data retention.
-- [ ] **SPEC-10** Chốt HTTP DTO/error/envelope/cursor, event version và backward compatibility.
-- [ ] **SPEC-11** Chốt SLI/SLO cho tất cả hot APIs và scoring, workload assumptions, error budget và capacity acceptance.
+[Kế hoạch Phần 02](phase-02-plan.md) đã được thực hiện; [review Phần 02](phase-02-review.md) đối chiếu artifacts và các findings đã sửa. 48 tests pass, typecheck/build/lint/quality pass; OpenAPI 44 operations và event/schema/examples được validate. Đây là specification gate, chưa có application/AWS work chạy nền.
 
-Gate: đủ specification để viết test hành vi, không để implementation tự quyết định chính sách sản phẩm quan trọng.
+- [x] **SPEC-01** [Product §2](product-specification.md): categories, exact-match, sections/points/rounding/examples; không công bố conversion TOEIC/IELTS chưa hỗ trợ.
+- [x] **SPEC-02** [Product §3](product-specification.md): immutable publish/version/unpublish/archive và public snapshot capability.
+- [x] **SPEC-03** [Product §4](product-specification.md): UTC/window/duration, clipped deadline, late entry và clock sau lock.
+- [x] **SPEC-04** [Product §5](product-specification.md): quota xuyên version, một active attempt, resume, FAILED/EXPIRED/replay.
+- [x] **SPEC-05** [Product §6](product-specification.md), [ADR-003](adr/003-idempotency-retention.md): batch/version/conflict UX, UUIDv7 fingerprint/receipt retention/retry.
+- [x] **SPEC-06** [Product §7](product-specification.md): bảy states, expiry, transaction-local PROCESSING, FAILED/replayPending và recovery.
+- [x] **SPEC-07** [Product §8](product-specification.md): durable status/result/polling/frozen explanation gates và redaction.
+- [x] **SPEC-08** [Product §9](product-specification.md): best/ties/version/opt-in/privacy/cursor và statistic denominators.
+- [x] **SPEC-09** [Permissions/import/retention](security-and-permissions.md): Candidate/Admin/operator matrix, admin bootstrap, session/CSRF/audit/import/data retention.
+- [x] **SPEC-10** [OpenAPI/event guide](contracts/README.md), schemas và contract tooling: DTO/errors/envelope/cursor/version/compatibility, 44 operations.
+- [x] **SPEC-11** [SLO/workload](slo-and-workload.md): hot-route p95/p99/query budgets, SLI/error populations, dataset/traffic/capacity targets; execution unmeasured.
+
+Gate đã đạt cho specification: có policies/examples/AC-01–32 và schema checks, không còn product decision chặn Phần 03. Implementation, security controls và benchmark/restore/cost vẫn chưa được kiểm chứng. Xem [validation](validation.md).
 
 ## 03. Database, migration, Unit of Work
 

@@ -3000,6 +3000,8 @@ The supplied TypeORM examples illustrate an allowed adapter. ADR-001 adopts para
 
 # 78. Attempt Lifecycle and Concurrency Contract
 
+The adopted v1 policy details and acceptance cases are in [product specification](../docs/product-specification.md), [permissions](../docs/security-and-permissions.md) and [HTTP/event contracts](../docs/contracts/README.md). [ADR-003](../docs/adr/003-idempotency-retention.md) supplies the bounded durable receipt/retry contract. These specialize the invariants below; specification validation is not runtime evidence.
+
 The lifecycle policy is CREATED → IN_PROGRESS → SUBMITTED → PROCESSING → COMPLETED. A deadline submission follows IN_PROGRESS → EXPIRED → PROCESSING → COMPLETED and preserves `expired=true`. Grading permanent/exhausted failure is FAILED; an audited replay may move FAILED → PROCESSING. Transient failures roll back their transaction and are retried; they must not permanently claim the inbox. PROCESSING may be a transaction-local transition in the first implementation. A durable visible processing state requires an explicit lease/fencing design and crash tests; do not infer a persisted state from a queue receive alone.
 
 Start: authenticate/authorize → application UnitOfWork → actor/exam serialization → Catalog public capability for current published version/open/close/duration/limit → select existing active attempt or check attempt count → create attempt referencing immutable published version → actor/key receipt → commit. Do not lock Identity repositories from Assessment. Reusing the key for another exam/payload is a conflict.

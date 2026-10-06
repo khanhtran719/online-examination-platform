@@ -1,6 +1,6 @@
 # Production acceptance ledger
 
-Updated 2026-10-06. **Production status: NOT ACCEPTED.** There is no application deployment, AWS benchmark or production recovery evidence. User-requested work in this turn is standards and a detailed checklist. Targets below are proposals requiring workload/SLI definition and measured validation.
+Updated 2026-10-06. **Production status: NOT ACCEPTED.** There is no application deployment, AWS benchmark or production recovery evidence. Phase 02 [product](product-specification.md), [permissions](security-and-permissions.md), [API/events](contracts/README.md) and [SLO/workload](slo-and-workload.md) are specified/locally validated; their implementation and measured production validation remain pending.
 
 | Hard gate | Proposed target / requirement | Status | Evidence needed |
 | --- | --- | --- | --- |
@@ -10,6 +10,7 @@ Updated 2026-10-06. **Production status: NOT ACCEPTED.** There is no application
 | GET exam | p95 <250ms at specified workload | unmeasured | per-route k6/telemetry |
 | Save answer | p95 <300ms at specified workload | unmeasured | latency + durable correctness |
 | Submit acknowledgement | p95 <500ms | unmeasured | submit commit latency, scoring separately |
+| Other hot reads / p99 | questions/status/result/leaderboard/browse/history targets in SLO contract | unmeasured | per-route latency/population/payload/query budgets |
 | Unexpected errors | <1% under committed load | unmeasured | include timeout/legitimate throttling |
 | Concurrent capacity | 2,000 active candidates across full lifecycle | unmeasured | start/save/submit/poll/rank scenario |
 | Scoring | 99% durable results ≤60s from commit, proposed | unmeasured | outbox+queue+grading latency |
@@ -37,6 +38,6 @@ Updated 2026-10-06. **Production status: NOT ACCEPTED.** There is no application
 | Impact of −20% full cost? | chưa đo | actual reduced-budget config with hard-gate rerun |
 | Optimal configuration/Performance–Cost Curve? | chưa chọn/chưa có curve | measured feasible/infeasible points and decision |
 
-Open inputs: AWS account/profile/region, actual workload save/poll/payload distributions, candidate/admin permission policy, explanation/ranking/attempt rules, remaining endpoint SLOs, audit/telemetry budget and origin TLS/certificate design. Domain is unavailable; default CloudFront viewer hostname is an option, not evidence of a deploy or waiver of origin TLS.
+Specified inputs: workload save/poll/payload distributions, permissions, explanation/ranking/attempt rules, all hot endpoint SLOs and audit/data retention. These are reproducible baseline choices, not proven optimal or real user traffic observations. Open deployment/evidence inputs: AWS account/profile/region, origin TLS/certificate design, compute/network/pool sizing, telemetry budget, workload calibration and measured feasibility/cost. Domain is unavailable; default CloudFront viewer hostname is an option, not evidence of a deploy or waiver of origin TLS.
 
 Only tick [roadmap](implementation-roadmap.md) production tasks when the corresponding raw artifacts, config provenance and validation exist. Code/templates/local checks are recorded separately in [validation log](validation.md).

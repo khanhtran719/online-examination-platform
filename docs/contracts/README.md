@@ -1,0 +1,41 @@
+# HTTP and integration contract v1
+
+Status: specified, not served by an application. SPEC-10 deliverables: [OpenAPI](openapi.yaml), [event schema](attempt-submitted.v1.schema.json), [acceptance matrix](../contract-tests.md). Implementation must also follow [product](../product-specification.md), [permissions](../security-and-permissions.md), [SLO/workload](../slo-and-workload.md) and architecture.
+
+## HTTP conventions
+
+Use `/v1` and JSON, IDs UUID, instants RFC3339 UTC `Z`. OpenAPI 3.0.3 is deliberately pinned for current validator/tool compatibility, not asserted newest; [official specification](https://spec.openapis.org/oas/v3.0.3.html) defines the syntax. Request schemas reject unknown fields; validate finite bounded numbers, body bytes and semantic membership/version rules in application/domain. No coercion of arbitrary string booleans. Browser session cookies/CSRF/Origin follow permissions document. `/live` and `/ready` are unversioned minimal health responses, outside envelope; readiness checks critical DB only and does not declare queue outage healthy/unhealthy on every API request.
+
+Success envelope: `{data:<DTO>,errorCode:"",message:"OK",status:true}`. Error: `{data:null,errorCode:<safe text>,message:<same safe text>,status:false}`. Stable text is part of v1 contract; no SQL/stack/domain class name/requestId fields. X-Correlation-Id and trace headers supply correlation; server generates a UUID if header absent/invalid and returns it. Error example: HTTP 409 with both text fields `Version conflict`; candidate refetches and reconciles, never blindly retries with a new version.
+
+| Category / boundary | HTTP | Stable text examples |
+| --- | --- | --- |
+| bad_input | 400 | Invalid request |
+| unauthorized | 401 | Unauthenticated |
+| forbidden | 403 | Permission denied |
+| not_found / foreign owned resource | 404 | Not found |
+| conflict | 409 | Version conflict; Idempotency key conflict; Idempotency key expired |
+| business_rule | 422 | Attempt is closed; Exam is unavailable; Attempt limit reached; Invalid publication |
+| rate_limited | 429 | Rate limit exceeded (Retry-After required) |
+| timeout/admission/dependency boundary | 503 | Service unavailable (Retry-After, bounded retry) |
+| unexpected presentation boundary | 500 | Internal error |
+
+Successful candidate start=201, saves=200, submit/replay=202; receipt retries return original HTTP/body plus `Idempotency-Replayed:true`. A repeat submit with a new key returns existing immutable accepted submission. Result pending=202 with status+Retry-After; ready=200. Register always 202 generic acknowledgement, login/refresh/logout=200. No 204 response silently drops the required envelope. Sensitive responses always Cache-Control no-store. Cookie-producing auth responses never stored in mutation receipts.
+
+Critical authenticated mutations require UUIDv7 Idempotency-Key under [ADR-003](../adr/003-idempotency-retention.md); admin edits additionally require `expectedRevision` in body. Object versions are numbers, not ETags masquerading as global state. Save conflicts return safe text only; fetch paged answers to obtain latest versions. Default body ceiling 64KiB, import ≤1MiB; enforce actual decoded bytes before business parsing, not just Content-Length. Request timeout initial 5s (import 15s), downstream/pool deadlines must fit it; final values need measurement in DB/API phases.
+
+Lists use signed opaque keyset `cursor`, pageSize default20/max100; envelope adds only `metadata:{next:null|string,pageSize:number}`. `pageSize` is requested maximum; byte cap may yield fewer items with next cursor. No total/page/lastPage or large OFFSET. Unknown/tampered/expired cursor returns Invalid request; bind actor/permissions/filter/version/order/pageSize/watermark as appropriate, expire 15min. Admin counts are explicit summary/report projections.
+
+OpenAPI extensions are implementation requirements: x-owner, x-flow, x-permissions, x-transaction, x-idempotency, x-cases; x-paginated and x-query-budget on relevant hot paths. They are not new Nest decorators or runtime abstractions. `npm run contracts:check` uses dev-only Swagger Parser/Ajv/format validation for schema/refs/examples and selected boundary metadata; real authorization/transaction performance still requires integration evidence. Cookie-producing csrf/login/refresh/logout responses emit separate Set-Cookie headers with the names/flags/expiry in permissions document; tokens never appear in Session DTO or generic receipts.
+
+## Event delivery, compatibility and recovery
+
+Outbox emits `attempt.submitted.v1` once per accepted submission, using stable eventId/submissionId and source/version metadata. Source aggregateId must equal payload.attemptId; occurredAt is authoritative accepted submit time; expired/submissionKind and deadline agree. Correlation/causation IDs are generated server-side, never authority. Runtime schema and semantic checks run before use case. Consumer loads attempt/version/answers from PostgreSQL and checks all identity/time/state fields against DB; payload is an integration intent, not trusted scoring data. Event JSON ≤8KiB; do not put names, answers, correct keys, credentials or raw request body in queue/trace attributes.
+
+SQS Standard initial parameters: main retention 4days, DLQ14days, maxReceiveCount5, visibility initially30s with bounded heartbeat at10s if job still active; provisional settings must pass measured grading/shutdown/crash runs. After transient rollback, adjust visibility to bounded jittered retry backoff rather than always waiting the full visibility period; failure to adjust remains safe redelivery. Poll long20s; bounded receive concurrency respects worker pool. Outbox lease target30s, claim batch≤100, token fencing and send outside claim transaction; retry exponential1..60s+jitter, park after10 attempts with operator visibility. These settings are requirements/hypotheses, not implemented queue configuration or throughput proof.
+
+Inbox `(consumer,eventId)` + result/submission uniqueness + statistics/ranking commit in one UoW; hash validated payload to detect same eventId with different content. ACK only after durable commit, confirmed durable duplicate or durable quarantine. Failed inbox write/result projection rolls back entirely. Quarantine is distinct from successful processing; audited replay authorizes reopening quarantined work under a lock and preserves immutable event/submission identity. Malformed/unknown-version payload is quarantined/DLQ and never coerced into v1; no attempt is FAILED from an untrusted arbitrary ID. Replays do not fabricate new attempts or successful inbox effects.
+
+Compatibility policy: request unknown fields rejected; response clients tolerate additive authorized fields but forbidden candidate keys are never an additive change. Endpoint field removal/type/semantics/required request field change requires v2 or migration window. Event v1 is closed (`additionalProperties:false`): even additive event fields require v2 plus consumer-first dual-schema rollout/outbox publisher switch and drain old backlog. Event name suffix and envelope version agree; no v2 producer until consumers can validate it. Published scoring/content version is independent of transport event version.
+
+Submit-to-result tracing links HTTP commit → outbox lease/send → SQS receive → grading commit; oldest outbox age is observed separately from queue age. Audit/replay uses required reason and trace IDs, no raw payload logging. Async tests AC-12–17 remain planned; local schema validation is not SQS durability proof.

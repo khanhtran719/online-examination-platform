@@ -1,0 +1,5674 @@
+openapi: 3.0.3
+info:
+  title: Online Examination Platform
+  version: 1.0.0
+  description: >-
+    Phase 02 public contract only. No runtime deployment. Product/security/SLO requirements in docs; all
+    response examples are fixtures.
+servers:
+  - url: /
+    description: Same HTTPS viewer origin; account/region/domain/TLS deployment pending
+tags:
+  - name: Identity
+  - name: Catalog
+  - name: Assessment
+  - name: Reporting
+  - name: Platform
+paths:
+  /v1/auth/csrf:
+    get:
+      operationId: getCsrf
+      summary: getCsrf
+      tags:
+        - Identity
+      security: []
+      parameters: []
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CsrfEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Identity
+      x-flow: read
+      x-permissions: []
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-21
+  /v1/auth/register:
+    post:
+      operationId: register
+      summary: register
+      tags:
+        - Identity
+      security:
+        - CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "202":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Retry-After:
+              description: Seconds before retry/poll.
+              schema:
+                type: integer
+                minimum: 1
+                maximum: 60
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AcceptedEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Identity
+      x-flow: write
+      x-permissions: []
+      x-transaction: identity
+      x-idempotency: false
+      x-cases:
+        - AC-20
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+  /v1/auth/login:
+    post:
+      operationId: login
+      summary: login
+      tags:
+        - Identity
+      security:
+        - CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SessionEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Identity
+      x-flow: write
+      x-permissions: []
+      x-transaction: identity
+      x-idempotency: false
+      x-cases:
+        - AC-20
+        - AC-21
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+  /v1/auth/refresh:
+    post:
+      operationId: refresh
+      summary: refresh
+      tags:
+        - Identity
+      security:
+        - RefreshCookie: []
+          CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SessionEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Identity
+      x-flow: write
+      x-permissions: []
+      x-transaction: identity
+      x-idempotency: false
+      x-cases:
+        - AC-21
+        - AC-31
+  /v1/auth/logout:
+    post:
+      operationId: logout
+      summary: Idempotent family revocation and cookie clearing; no access cookie required
+      tags:
+        - Identity
+      security:
+        - CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RevokedEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Identity
+      x-flow: write
+      x-permissions: []
+      x-transaction: identity
+      x-idempotency: false
+      x-cases:
+        - AC-21
+        - AC-31
+  /v1/me:
+    get:
+      operationId: getProfile
+      summary: getProfile
+      tags:
+        - Identity
+      security:
+        - AccessCookie: []
+      parameters: []
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfileEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Identity
+      x-flow: read
+      x-permissions:
+        - identity.self
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-18
+    put:
+      operationId: updateProfile
+      summary: updateProfile
+      tags:
+        - Identity
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MutationReceiptEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Identity
+      x-flow: write
+      x-permissions:
+        - identity.self
+      x-transaction: identity+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-18
+        - AC-24
+        - AC-27
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfileUpdate"
+  /v1/exams:
+    get:
+      operationId: browseExams
+      summary: browseExams
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+      parameters:
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/Category"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExamListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: read
+      x-permissions:
+        - catalog.read
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-02
+        - AC-27
+      x-paginated: true
+      x-query-budget: 3
+  /v1/exams/{examId}:
+    get:
+      operationId: getExam
+      summary: getExam
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExamEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: read
+      x-permissions:
+        - catalog.read
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-02
+        - AC-18
+      x-query-budget: 3
+  /v1/exams/{examId}/attempts:
+    post:
+      operationId: startAttempt
+      summary: Start current version or return existing active attempt without resetting time
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "201":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttemptEnvelope"
+              example:
+                data:
+                  id: 00000000-0000-4000-8000-000000000004
+                  examId: 00000000-0000-4000-8000-000000000001
+                  publishedVersionId: 00000000-0000-4000-8000-000000000002
+                  revision: 1
+                  status: IN_PROGRESS
+                  startedAt: "2026-10-06T13:00:00.000Z"
+                  deadline: "2026-10-06T13:45:00.000Z"
+                  submittedAt: null
+                  expired: false
+                  serverNow: "2026-10-06T13:10:00.000Z"
+                  canSave: true
+                  resultAvailable: false
+                  pollAfterSeconds: 0
+                  replayPending: false
+                errorCode: ""
+                message: OK
+                status: true
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: write
+      x-permissions:
+        - assessment.take
+      x-transaction: start+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-03
+        - AC-04
+        - AC-05
+        - AC-31
+      x-query-budget: 12
+  /v1/attempts/{attemptId}:
+    get:
+      operationId: resumeAttempt
+      summary: resumeAttempt
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttemptEnvelope"
+              example:
+                data:
+                  id: 00000000-0000-4000-8000-000000000004
+                  examId: 00000000-0000-4000-8000-000000000001
+                  publishedVersionId: 00000000-0000-4000-8000-000000000002
+                  revision: 1
+                  status: IN_PROGRESS
+                  startedAt: "2026-10-06T13:00:00.000Z"
+                  deadline: "2026-10-06T13:45:00.000Z"
+                  submittedAt: null
+                  expired: false
+                  serverNow: "2026-10-06T13:10:00.000Z"
+                  canSave: true
+                  resultAvailable: false
+                  pollAfterSeconds: 0
+                  replayPending: false
+                errorCode: ""
+                message: OK
+                status: true
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: read
+      x-permissions:
+        - assessment.take
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-04
+        - AC-05
+        - AC-18
+      x-query-budget: 3
+  /v1/attempts/{attemptId}/questions:
+    get:
+      operationId: getQuestions
+      summary: getQuestions
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CandidateQuestionListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: read
+      x-permissions:
+        - assessment.take
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-02
+        - AC-18
+        - AC-19
+        - AC-27
+      x-paginated: true
+      x-query-budget: 4
+  /v1/attempts/{attemptId}/answers:
+    get:
+      operationId: getAnswers
+      summary: getAnswers
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnswerListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: read
+      x-permissions:
+        - assessment.take
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-06
+        - AC-18
+        - AC-27
+      x-paginated: true
+      x-query-budget: 4
+    put:
+      operationId: saveAnswers
+      summary: saveAnswers
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SaveReceiptEnvelope"
+              example:
+                data:
+                  attemptId: 00000000-0000-4000-8000-000000000004
+                  acceptedAt: "2026-10-06T13:10:00.000Z"
+                  answers:
+                    - questionId: 00000000-0000-4000-8000-000000000010
+                      version: 1
+                errorCode: ""
+                message: OK
+                status: true
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: write
+      x-permissions:
+        - assessment.take
+      x-transaction: attempt-lock+answers+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-06
+        - AC-07
+        - AC-08
+        - AC-09
+        - AC-10
+        - AC-31
+      x-query-budget: 11
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SaveAnswersRequest"
+            example:
+              answers:
+                - questionId: 00000000-0000-4000-8000-000000000010
+                  selectedOptionIds:
+                    - 00000000-0000-4000-8000-000000000003
+                  marked: false
+                  expectedVersion: 0
+  /v1/attempts/{attemptId}/submit:
+    post:
+      operationId: submitAttempt
+      summary: submitAttempt
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "202":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+            Retry-After:
+              description: Seconds before retry/poll.
+              schema:
+                type: integer
+                minimum: 1
+                maximum: 60
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmitReceiptEnvelope"
+              example:
+                data:
+                  attemptId: 00000000-0000-4000-8000-000000000004
+                  submissionId: 00000000-0000-4000-8000-000000000005
+                  acceptedAt: "2026-10-06T13:44:50.000Z"
+                  acceptanceState: SUBMITTED
+                  expired: false
+                errorCode: ""
+                message: OK
+                status: true
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: write
+      x-permissions:
+        - assessment.take
+      x-transaction: attempt-lock+submission+outbox+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-09
+        - AC-10
+        - AC-11
+        - AC-31
+      x-query-budget: 10
+  /v1/attempts/{attemptId}/status:
+    get:
+      operationId: getAttemptStatus
+      summary: getAttemptStatus
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttemptEnvelope"
+              example:
+                data:
+                  id: 00000000-0000-4000-8000-000000000004
+                  examId: 00000000-0000-4000-8000-000000000001
+                  publishedVersionId: 00000000-0000-4000-8000-000000000002
+                  revision: 1
+                  status: IN_PROGRESS
+                  startedAt: "2026-10-06T13:00:00.000Z"
+                  deadline: "2026-10-06T13:45:00.000Z"
+                  submittedAt: null
+                  expired: false
+                  serverNow: "2026-10-06T13:10:00.000Z"
+                  canSave: true
+                  resultAvailable: false
+                  pollAfterSeconds: 0
+                  replayPending: false
+                errorCode: ""
+                message: OK
+                status: true
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: read
+      x-permissions:
+        - assessment.take
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-11
+        - AC-17
+        - AC-18
+      x-query-budget: 3
+  /v1/attempts/{attemptId}/result:
+    get:
+      operationId: getResult
+      summary: getResult
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultEnvelope"
+              example:
+                data:
+                  attemptId: 00000000-0000-4000-8000-000000000004
+                  publishedVersionId: 00000000-0000-4000-8000-000000000002
+                  submissionId: 00000000-0000-4000-8000-000000000005
+                  completedAt: "2026-10-06T13:45:10.000Z"
+                  earned: 5
+                  possible: 6
+                  correct: 2
+                  total: 3
+                  percentageBasisPoints: 8333
+                  expired: false
+                  scoringPolicy: EXACT_MATCH_V1
+                  sections:
+                    - sectionId: 00000000-0000-4000-8000-000000000011
+                      earned: 5
+                      possible: 5
+                      correct: 2
+                      total: 2
+                    - sectionId: 00000000-0000-4000-8000-000000000012
+                      earned: 0
+                      possible: 1
+                      correct: 0
+                      total: 1
+                  review: null
+                errorCode: ""
+                message: OK
+                status: true
+        "202":
+          description: Not completed; durable status, no fabricated score
+          headers:
+            Retry-After:
+              description: Seconds before retry/poll.
+              schema:
+                type: integer
+                minimum: 1
+                maximum: 60
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttemptEnvelope"
+              example:
+                data:
+                  id: 00000000-0000-4000-8000-000000000004
+                  examId: 00000000-0000-4000-8000-000000000001
+                  publishedVersionId: 00000000-0000-4000-8000-000000000002
+                  revision: 1
+                  status: IN_PROGRESS
+                  startedAt: "2026-10-06T13:00:00.000Z"
+                  deadline: "2026-10-06T13:45:00.000Z"
+                  submittedAt: null
+                  expired: false
+                  serverNow: "2026-10-06T13:10:00.000Z"
+                  canSave: true
+                  resultAvailable: false
+                  pollAfterSeconds: 0
+                  replayPending: false
+                errorCode: ""
+                message: OK
+                status: true
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: read
+      x-permissions:
+        - assessment.result.read
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-17
+        - AC-18
+        - AC-19
+      x-query-budget: 3
+  /v1/attempts/{attemptId}/review:
+    get:
+      operationId: getReleasedReview
+      summary: Completed owned attempt and frozen explanation release gate
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReviewQuestionListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: read
+      x-permissions:
+        - assessment.result.read
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-18
+        - AC-19
+        - AC-27
+      x-paginated: true
+  /v1/me/attempts:
+    get:
+      operationId: getHistory
+      summary: getHistory
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+      parameters:
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HistoryItemListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: read
+      x-permissions:
+        - assessment.take
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-18
+        - AC-27
+      x-paginated: true
+      x-query-budget: 3
+  /v1/exams/{examId}/versions/{versionId}/leaderboard:
+    get:
+      operationId: getLeaderboard
+      summary: getLeaderboard
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: versionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeaderboardEntryListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: read
+      x-permissions:
+        - leaderboard.read
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-17
+        - AC-25
+        - AC-26
+        - AC-27
+      x-paginated: true
+      x-query-budget: 4
+  /v1/admin/exams:
+    get:
+      operationId: listAdminExams
+      summary: listAdminExams
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+      parameters:
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminExamListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: read
+      x-permissions:
+        - catalog.manage
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-22
+        - AC-27
+      x-paginated: true
+    post:
+      operationId: createExam
+      summary: Create draft; expectedRevision must equal zero
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "201":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MutationReceiptEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: write
+      x-permissions:
+        - catalog.manage
+      x-transaction: catalog+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-02
+        - AC-22
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExamWriteRequest"
+  /v1/admin/exams/{examId}:
+    get:
+      operationId: getAdminExam
+      summary: getAdminExam
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminExamEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: read
+      x-permissions:
+        - catalog.manage
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-22
+    put:
+      operationId: replaceExamDraft
+      summary: Replace draft including sections/membership; expectedRevision >0
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MutationReceiptEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: write
+      x-permissions:
+        - catalog.manage
+      x-transaction: catalog+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-02
+        - AC-22
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExamWriteRequest"
+    delete:
+      operationId: archiveExam
+      summary: archiveExam
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MutationReceiptEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: write
+      x-permissions:
+        - catalog.manage
+      x-transaction: catalog+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-02
+        - AC-22
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RevisionRequest"
+            example:
+              expectedRevision: 1
+  /v1/admin/exams/{examId}/publish:
+    post:
+      operationId: publishExam
+      summary: publishExam
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MutationReceiptEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: write
+      x-permissions:
+        - catalog.manage
+      x-transaction: catalog+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-02
+        - AC-22
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RevisionRequest"
+            example:
+              expectedRevision: 1
+  /v1/admin/exams/{examId}/unpublish:
+    post:
+      operationId: unpublishExam
+      summary: unpublishExam
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MutationReceiptEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: write
+      x-permissions:
+        - catalog.manage
+      x-transaction: catalog+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-02
+        - AC-22
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RevisionRequest"
+            example:
+              expectedRevision: 1
+  /v1/admin/questions:
+    get:
+      operationId: listBankQuestions
+      summary: listBankQuestions
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+      parameters:
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminQuestionListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: read
+      x-permissions:
+        - catalog.keys.read
+      x-transaction: audit-read
+      x-idempotency: false
+      x-cases:
+        - AC-19
+        - AC-22
+        - AC-24
+        - AC-27
+        - AC-31
+      x-paginated: true
+    post:
+      operationId: createBankQuestion
+      summary: Create question; expectedRevision must equal zero
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "201":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MutationReceiptEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: write
+      x-permissions:
+        - catalog.manage
+      x-transaction: catalog+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-01
+        - AC-22
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuestionWriteRequest"
+            example:
+              type: SINGLE_CHOICE
+              prompt: Choose A.
+              options:
+                - position: 1
+                  text: A
+                - position: 2
+                  text: B
+              correctOptionPositions:
+                - 1
+              points: 1
+              explanation: A is correct.
+              expectedRevision: 0
+  /v1/admin/questions/{questionId}:
+    get:
+      operationId: getBankQuestion
+      summary: getBankQuestion
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: questionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminQuestionEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: read
+      x-permissions:
+        - catalog.keys.read
+      x-transaction: audit-read
+      x-idempotency: false
+      x-cases:
+        - AC-19
+        - AC-22
+        - AC-24
+        - AC-31
+    put:
+      operationId: replaceBankQuestion
+      summary: replaceBankQuestion
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: questionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MutationReceiptEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: write
+      x-permissions:
+        - catalog.manage
+      x-transaction: catalog+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-01
+        - AC-02
+        - AC-22
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuestionWriteRequest"
+            example:
+              type: SINGLE_CHOICE
+              prompt: Choose A.
+              options:
+                - position: 1
+                  text: A
+                - position: 2
+                  text: B
+              correctOptionPositions:
+                - 1
+              points: 1
+              explanation: A is correct.
+              expectedRevision: 0
+    delete:
+      operationId: archiveBankQuestion
+      summary: archiveBankQuestion
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: questionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MutationReceiptEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: write
+      x-permissions:
+        - catalog.manage
+      x-transaction: catalog+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-02
+        - AC-22
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RevisionRequest"
+            example:
+              expectedRevision: 1
+  /v1/admin/question-imports:
+    post:
+      operationId: importQuestions
+      summary: JSON <=1MiB; all-or-nothing <=100 questions; invalid report has valid=false,committed=false
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "200":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImportReportEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: write
+      x-permissions:
+        - catalog.import
+      x-transaction: catalog+import+audit+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-23
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImportRequest"
+            example:
+              schemaVersion: 1
+              dryRun: false
+              questions:
+                - clientRef: q1
+                  type: SINGLE_CHOICE
+                  prompt: Choose A.
+                  options:
+                    - position: 1
+                      text: A
+                    - position: 2
+                      text: B
+                  correctOptionPositions:
+                    - 1
+                  points: 1
+                  explanation: A is correct.
+  /v1/admin/question-imports/{importId}:
+    get:
+      operationId: getImportReport
+      summary: getImportReport
+      tags:
+        - Catalog
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: importId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImportReportEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Catalog
+      x-flow: read
+      x-permissions:
+        - catalog.import
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-22
+        - AC-23
+  /v1/admin/exams/{examId}/active-candidates:
+    get:
+      operationId: listActiveCandidates
+      summary: listActiveCandidates
+      tags:
+        - Reporting
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActiveCandidateListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Reporting
+      x-flow: read
+      x-permissions:
+        - reporting.read
+      x-transaction: audit-read
+      x-idempotency: false
+      x-cases:
+        - AC-18
+        - AC-22
+        - AC-27
+        - AC-31
+      x-paginated: true
+  /v1/admin/exams/{examId}/submissions:
+    get:
+      operationId: listSubmissions
+      summary: listSubmissions
+      tags:
+        - Reporting
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+        - $ref: "#/components/parameters/PublishedVersionFilter"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminSubmissionListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Reporting
+      x-flow: read
+      x-permissions:
+        - reporting.read
+      x-transaction: audit-read
+      x-idempotency: false
+      x-cases:
+        - AC-18
+        - AC-22
+        - AC-27
+        - AC-31
+      x-paginated: true
+  /v1/admin/attempts/{attemptId}/result:
+    get:
+      operationId: getAdminResult
+      summary: getAdminResult
+      tags:
+        - Reporting
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResultEnvelope"
+              example:
+                data:
+                  attemptId: 00000000-0000-4000-8000-000000000004
+                  publishedVersionId: 00000000-0000-4000-8000-000000000002
+                  submissionId: 00000000-0000-4000-8000-000000000005
+                  completedAt: "2026-10-06T13:45:10.000Z"
+                  earned: 5
+                  possible: 6
+                  correct: 2
+                  total: 3
+                  percentageBasisPoints: 8333
+                  expired: false
+                  scoringPolicy: EXACT_MATCH_V1
+                  sections:
+                    - sectionId: 00000000-0000-4000-8000-000000000011
+                      earned: 5
+                      possible: 5
+                      correct: 2
+                      total: 2
+                    - sectionId: 00000000-0000-4000-8000-000000000012
+                      earned: 0
+                      possible: 1
+                      correct: 0
+                      total: 1
+                  review: null
+                errorCode: ""
+                message: OK
+                status: true
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Reporting
+      x-flow: read
+      x-permissions:
+        - reporting.read
+      x-transaction: audit-read
+      x-idempotency: false
+      x-cases:
+        - AC-17
+        - AC-22
+        - AC-24
+        - AC-31
+  /v1/admin/attempts/{attemptId}/review:
+    get:
+      operationId: getAdminReview
+      summary: getAdminReview
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReviewQuestionListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: read
+      x-permissions:
+        - assessment.review.admin
+      x-transaction: audit-read
+      x-idempotency: false
+      x-cases:
+        - AC-19
+        - AC-22
+        - AC-24
+        - AC-31
+      x-paginated: true
+  /v1/admin/attempts/{attemptId}/replay:
+    post:
+      operationId: replayFailedAttempt
+      summary: replayFailedAttempt
+      tags:
+        - Assessment
+      security:
+        - AccessCookie: []
+          CsrfHeader: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/IdempotencyKey"
+        - $ref: "#/components/parameters/Origin"
+      responses:
+        "202":
+          description: Durable accepted outcome
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+            Idempotency-Replayed:
+              description: true for replay of durable original receipt.
+              schema:
+                type: boolean
+            Retry-After:
+              description: Seconds before retry/poll.
+              schema:
+                type: integer
+                minimum: 1
+                maximum: 60
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmitReceiptEnvelope"
+              example:
+                data:
+                  attemptId: 00000000-0000-4000-8000-000000000004
+                  submissionId: 00000000-0000-4000-8000-000000000005
+                  acceptedAt: "2026-10-06T13:44:50.000Z"
+                  acceptanceState: SUBMITTED
+                  expired: false
+                errorCode: ""
+                message: OK
+                status: true
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Assessment
+      x-flow: write
+      x-permissions:
+        - assessment.replay
+      x-transaction: replay+audit+outbox+receipt
+      x-idempotency: true
+      x-cases:
+        - AC-16
+        - AC-22
+        - AC-24
+        - AC-31
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReplayRequest"
+            example:
+              expectedRevision: 3
+              reason: Dependency recovered; retry original submission.
+  /v1/admin/exams/{examId}/versions/{versionId}/question-statistics:
+    get:
+      operationId: getQuestionStatistics
+      summary: getQuestionStatistics
+      tags:
+        - Reporting
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: versionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuestionStatisticListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Reporting
+      x-flow: read
+      x-permissions:
+        - reporting.read
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-17
+        - AC-22
+        - AC-27
+      x-paginated: true
+  /v1/admin/metrics:
+    get:
+      operationId: getSystemBusinessMetrics
+      summary: getSystemBusinessMetrics
+      tags:
+        - Reporting
+      security:
+        - AccessCookie: []
+      parameters: []
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetricsEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Reporting
+      x-flow: read
+      x-permissions:
+        - system.metrics.read
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-22
+        - AC-28
+  /v1/admin/audit:
+    get:
+      operationId: getAudit
+      summary: getAudit
+      tags:
+        - Reporting
+      security:
+        - AccessCookie: []
+      parameters:
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuditEntryListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Reporting
+      x-flow: read
+      x-permissions:
+        - audit.read
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-22
+        - AC-24
+        - AC-27
+      x-paginated: true
+  /live:
+    get:
+      operationId: liveness
+      summary: liveness
+      tags:
+        - Platform
+      security: []
+      parameters: []
+      responses:
+        "200":
+          description: Minimal health
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+              example:
+                status: ok
+      x-owner: Platform
+      x-flow: read
+      x-permissions: []
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-30
+  /ready:
+    get:
+      operationId: readiness
+      summary: readiness
+      tags:
+        - Platform
+      security: []
+      parameters: []
+      responses:
+        "200":
+          description: Minimal health
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+              example:
+                status: ok
+        "503":
+          description: Critical DB unavailable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+              example:
+                status: unavailable
+      x-owner: Platform
+      x-flow: read
+      x-permissions: []
+      x-transaction: none
+      x-idempotency: false
+      x-cases:
+        - AC-30
+components:
+  securitySchemes:
+    AccessCookie:
+      type: apiKey
+      in: cookie
+      name: __Host-access
+    RefreshCookie:
+      type: apiKey
+      in: cookie
+      name: __Host-refresh
+    CsrfHeader:
+      type: apiKey
+      in: header
+      name: X-CSRF-Token
+      description: Signed cookie echo plus exact Origin validation; not authentication.
+  responses:
+    Http400:
+      description: Invalid request
+      headers:
+        X-Correlation-Id:
+          description: Server-generated/validated UUID correlation ID.
+          schema:
+            type: string
+            format: uuid
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            data: null
+            errorCode: Invalid request
+            message: Invalid request
+            status: false
+    Http401:
+      description: Unauthenticated
+      headers:
+        X-Correlation-Id:
+          description: Server-generated/validated UUID correlation ID.
+          schema:
+            type: string
+            format: uuid
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            data: null
+            errorCode: Unauthenticated
+            message: Unauthenticated
+            status: false
+    Http403:
+      description: Permission denied
+      headers:
+        X-Correlation-Id:
+          description: Server-generated/validated UUID correlation ID.
+          schema:
+            type: string
+            format: uuid
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            data: null
+            errorCode: Permission denied
+            message: Permission denied
+            status: false
+    Http404:
+      description: Not found
+      headers:
+        X-Correlation-Id:
+          description: Server-generated/validated UUID correlation ID.
+          schema:
+            type: string
+            format: uuid
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            data: null
+            errorCode: Not found
+            message: Not found
+            status: false
+    Http409:
+      description: Version conflict
+      headers:
+        X-Correlation-Id:
+          description: Server-generated/validated UUID correlation ID.
+          schema:
+            type: string
+            format: uuid
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            data: null
+            errorCode: Version conflict
+            message: Version conflict
+            status: false
+    Http422:
+      description: Attempt is closed
+      headers:
+        X-Correlation-Id:
+          description: Server-generated/validated UUID correlation ID.
+          schema:
+            type: string
+            format: uuid
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            data: null
+            errorCode: Attempt is closed
+            message: Attempt is closed
+            status: false
+    Http429:
+      description: Rate limit exceeded
+      headers:
+        X-Correlation-Id:
+          description: Server-generated/validated UUID correlation ID.
+          schema:
+            type: string
+            format: uuid
+        Retry-After:
+          description: Seconds before retry/poll.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 60
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            data: null
+            errorCode: Rate limit exceeded
+            message: Rate limit exceeded
+            status: false
+    Http500:
+      description: Internal error
+      headers:
+        X-Correlation-Id:
+          description: Server-generated/validated UUID correlation ID.
+          schema:
+            type: string
+            format: uuid
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            data: null
+            errorCode: Internal error
+            message: Internal error
+            status: false
+    Http503:
+      description: Service unavailable
+      headers:
+        X-Correlation-Id:
+          description: Server-generated/validated UUID correlation ID.
+          schema:
+            type: string
+            format: uuid
+        Retry-After:
+          description: Seconds before retry/poll.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 60
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            data: null
+            errorCode: Service unavailable
+            message: Service unavailable
+            status: false
+  parameters:
+    Origin:
+      name: Origin
+      in: header
+      required: true
+      description: >-
+        Exact allowlisted HTTPS viewer origin; browser supplies it. Local development uses explicitly
+        configured localhost origin.
+      schema:
+        type: string
+        format: uri
+        maxLength: 512
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      description: >-
+        Canonical UUIDv7, first use within 24h and <=5min future skew; compact receipt retained >=7days.
+        ADR-003.
+      schema:
+        type: string
+        format: uuid
+        pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$
+    PageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+    Cursor:
+      name: cursor
+      in: query
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 2048
+      description: Signed keyset cursor bound to filter/version/order/actor/page size; expires 15min.
+    Category:
+      name: category
+      in: query
+      schema:
+        type: string
+        enum:
+          - TOEIC
+          - IELTS
+          - IT_CERTIFICATION
+          - UNIVERSITY
+          - RECRUITMENT
+          - CORPORATE
+    PublishedVersionFilter:
+      name: publishedVersionId
+      in: query
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    ErrorEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          type: object
+          nullable: true
+          enum:
+            - null
+        errorCode:
+          type: string
+          minLength: 1
+          maxLength: 100
+        message:
+          type: string
+          minLength: 1
+          maxLength: 100
+        status:
+          type: boolean
+          enum:
+            - false
+      example:
+        data: null
+        errorCode: Version conflict
+        message: Version conflict
+        status: false
+    Metadata:
+      type: object
+      additionalProperties: false
+      required:
+        - next
+        - pageSize
+      properties:
+        next:
+          type: string
+          minLength: 1
+          maxLength: 2048
+          nullable: true
+        pageSize:
+          type: integer
+          minimum: 1
+          maximum: 100
+    MutationReceipt:
+      type: object
+      additionalProperties: false
+      required:
+        - resourceId
+        - revision
+        - acceptedAt
+      properties:
+        resourceId:
+          type: string
+          format: uuid
+        revision:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        acceptedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+    Accepted:
+      type: object
+      additionalProperties: false
+      required:
+        - accepted
+      properties:
+        accepted:
+          type: boolean
+          enum:
+            - true
+    Revoked:
+      type: object
+      additionalProperties: false
+      required:
+        - revoked
+      properties:
+        revoked:
+          type: boolean
+          enum:
+            - true
+    Csrf:
+      type: object
+      additionalProperties: false
+      required:
+        - csrfToken
+        - expiresAt
+      properties:
+        csrfToken:
+          type: string
+          minLength: 32
+          maxLength: 512
+        expiresAt:
+          type: string
+          format: date-time
+          pattern: Z$
+    RegisterRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - email
+        - displayName
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        displayName:
+          type: string
+          minLength: 1
+          maxLength: 80
+        password:
+          type: string
+          minLength: 15
+          maxLength: 128
+          writeOnly: true
+    LoginRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        password:
+          type: string
+          minLength: 1
+          maxLength: 128
+          writeOnly: true
+    Session:
+      type: object
+      additionalProperties: false
+      required:
+        - userId
+        - accessExpiresAt
+        - refreshExpiresAt
+        - absoluteExpiresAt
+      properties:
+        userId:
+          type: string
+          format: uuid
+        accessExpiresAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        refreshExpiresAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        absoluteExpiresAt:
+          type: string
+          format: date-time
+          pattern: Z$
+    Profile:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - email
+        - displayName
+        - leaderboardOptIn
+        - revision
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        displayName:
+          type: string
+          minLength: 1
+          maxLength: 80
+        leaderboardOptIn:
+          type: boolean
+        revision:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+    ProfileUpdate:
+      type: object
+      additionalProperties: false
+      required:
+        - displayName
+        - leaderboardOptIn
+        - expectedRevision
+      properties:
+        displayName:
+          type: string
+          minLength: 1
+          maxLength: 80
+        leaderboardOptIn:
+          type: boolean
+        expectedRevision:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+    SectionSummary:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - title
+        - position
+        - questionCount
+        - possible
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+        position:
+          type: integer
+          minimum: 1
+          maximum: 20
+        questionCount:
+          type: integer
+          minimum: 0
+          maximum: 500
+        possible:
+          type: integer
+          minimum: 0
+          maximum: 500000
+    Exam:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - title
+        - category
+        - publishedVersionId
+        - version
+        - durationSeconds
+        - openAt
+        - closeAt
+        - displayTimezone
+        - attemptLimit
+        - questionCount
+        - scoringPolicy
+        - explanationPolicy
+        - leaderboardEnabled
+        - sections
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+        category:
+          type: string
+          enum:
+            - TOEIC
+            - IELTS
+            - IT_CERTIFICATION
+            - UNIVERSITY
+            - RECRUITMENT
+            - CORPORATE
+        publishedVersionId:
+          type: string
+          format: uuid
+        version:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        durationSeconds:
+          type: integer
+          minimum: 60
+          maximum: 14400
+        openAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        closeAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        displayTimezone:
+          type: string
+          minLength: 1
+          maxLength: 64
+        attemptLimit:
+          type: integer
+          minimum: 1
+          maximum: 10
+        questionCount:
+          type: integer
+          minimum: 1
+          maximum: 500
+        scoringPolicy:
+          type: string
+          enum:
+            - EXACT_MATCH_V1
+        explanationPolicy:
+          type: string
+          enum:
+            - NEVER
+            - AFTER_COMPLETION
+            - AFTER_EXAM_CLOSE
+        leaderboardEnabled:
+          type: boolean
+        sections:
+          type: array
+          items:
+            $ref: "#/components/schemas/SectionSummary"
+          minItems: 1
+          maxItems: 20
+    CandidateOption:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - position
+        - text
+      properties:
+        id:
+          type: string
+          format: uuid
+        position:
+          type: integer
+          minimum: 1
+          maximum: 10
+        text:
+          type: string
+          minLength: 1
+          maxLength: 2000
+    CandidateQuestion:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - sectionId
+        - position
+        - type
+        - prompt
+        - points
+        - options
+      properties:
+        id:
+          type: string
+          format: uuid
+        sectionId:
+          type: string
+          format: uuid
+        position:
+          type: integer
+          minimum: 1
+          maximum: 500
+        type:
+          type: string
+          enum:
+            - SINGLE_CHOICE
+            - MULTIPLE_CHOICE
+            - TRUE_FALSE
+        prompt:
+          type: string
+          minLength: 1
+          maxLength: 8000
+        points:
+          type: integer
+          minimum: 1
+          maximum: 1000
+        options:
+          type: array
+          items:
+            $ref: "#/components/schemas/CandidateOption"
+          minItems: 2
+          maxItems: 10
+      example:
+        id: 00000000-0000-4000-8000-000000000010
+        sectionId: 00000000-0000-4000-8000-000000000011
+        position: 1
+        type: SINGLE_CHOICE
+        prompt: Choose the correct option.
+        points: 1
+        options:
+          - id: 00000000-0000-4000-8000-000000000003
+            position: 1
+            text: A
+          - id: 00000000-0000-4000-8000-000000000009
+            position: 2
+            text: B
+    Attempt:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - examId
+        - publishedVersionId
+        - revision
+        - status
+        - startedAt
+        - deadline
+        - submittedAt
+        - expired
+        - serverNow
+        - canSave
+        - resultAvailable
+        - pollAfterSeconds
+        - replayPending
+      properties:
+        id:
+          type: string
+          format: uuid
+        examId:
+          type: string
+          format: uuid
+        publishedVersionId:
+          type: string
+          format: uuid
+        revision:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        status:
+          type: string
+          enum:
+            - CREATED
+            - IN_PROGRESS
+            - SUBMITTED
+            - PROCESSING
+            - COMPLETED
+            - EXPIRED
+            - FAILED
+        startedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        deadline:
+          type: string
+          format: date-time
+          pattern: Z$
+        submittedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+          nullable: true
+        expired:
+          type: boolean
+        serverNow:
+          type: string
+          format: date-time
+          pattern: Z$
+        canSave:
+          type: boolean
+        resultAvailable:
+          type: boolean
+        pollAfterSeconds:
+          type: integer
+          minimum: 0
+          maximum: 10
+        replayPending:
+          type: boolean
+      example:
+        id: 00000000-0000-4000-8000-000000000004
+        examId: 00000000-0000-4000-8000-000000000001
+        publishedVersionId: 00000000-0000-4000-8000-000000000002
+        revision: 1
+        status: IN_PROGRESS
+        startedAt: "2026-10-06T13:00:00.000Z"
+        deadline: "2026-10-06T13:45:00.000Z"
+        submittedAt: null
+        expired: false
+        serverNow: "2026-10-06T13:10:00.000Z"
+        canSave: true
+        resultAvailable: false
+        pollAfterSeconds: 0
+        replayPending: false
+    Answer:
+      type: object
+      additionalProperties: false
+      required:
+        - questionId
+        - selectedOptionIds
+        - marked
+        - version
+        - updatedAt
+      properties:
+        questionId:
+          type: string
+          format: uuid
+        selectedOptionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          maxItems: 10
+          uniqueItems: true
+        marked:
+          type: boolean
+        version:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        updatedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+          nullable: true
+    AnswerMutation:
+      type: object
+      additionalProperties: false
+      required:
+        - questionId
+        - selectedOptionIds
+        - marked
+        - expectedVersion
+      properties:
+        questionId:
+          type: string
+          format: uuid
+        selectedOptionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          maxItems: 10
+          uniqueItems: true
+        marked:
+          type: boolean
+        expectedVersion:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+    SaveAnswersRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - answers
+      properties:
+        answers:
+          type: array
+          items:
+            $ref: "#/components/schemas/AnswerMutation"
+          minItems: 1
+          maxItems: 20
+      example:
+        answers:
+          - questionId: 00000000-0000-4000-8000-000000000010
+            selectedOptionIds:
+              - 00000000-0000-4000-8000-000000000003
+            marked: false
+            expectedVersion: 0
+    AnswerVersion:
+      type: object
+      additionalProperties: false
+      required:
+        - questionId
+        - version
+      properties:
+        questionId:
+          type: string
+          format: uuid
+        version:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+    SaveReceipt:
+      type: object
+      additionalProperties: false
+      required:
+        - attemptId
+        - acceptedAt
+        - answers
+      properties:
+        attemptId:
+          type: string
+          format: uuid
+        acceptedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        answers:
+          type: array
+          items:
+            $ref: "#/components/schemas/AnswerVersion"
+          minItems: 1
+          maxItems: 20
+      example:
+        attemptId: 00000000-0000-4000-8000-000000000004
+        acceptedAt: "2026-10-06T13:10:00.000Z"
+        answers:
+          - questionId: 00000000-0000-4000-8000-000000000010
+            version: 1
+    SubmitReceipt:
+      type: object
+      additionalProperties: false
+      required:
+        - attemptId
+        - submissionId
+        - acceptedAt
+        - acceptanceState
+        - expired
+      properties:
+        attemptId:
+          type: string
+          format: uuid
+        submissionId:
+          type: string
+          format: uuid
+        acceptedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        acceptanceState:
+          type: string
+          enum:
+            - SUBMITTED
+            - EXPIRED
+        expired:
+          type: boolean
+      example:
+        attemptId: 00000000-0000-4000-8000-000000000004
+        submissionId: 00000000-0000-4000-8000-000000000005
+        acceptedAt: "2026-10-06T13:44:50.000Z"
+        acceptanceState: SUBMITTED
+        expired: false
+    SectionScore:
+      type: object
+      additionalProperties: false
+      required:
+        - sectionId
+        - earned
+        - possible
+        - correct
+        - total
+      properties:
+        sectionId:
+          type: string
+          format: uuid
+        earned:
+          type: integer
+          minimum: 0
+          maximum: 500000
+        possible:
+          type: integer
+          minimum: 1
+          maximum: 500000
+        correct:
+          type: integer
+          minimum: 0
+          maximum: 500
+        total:
+          type: integer
+          minimum: 1
+          maximum: 500
+    Result:
+      type: object
+      additionalProperties: false
+      required:
+        - attemptId
+        - publishedVersionId
+        - submissionId
+        - completedAt
+        - earned
+        - possible
+        - correct
+        - total
+        - percentageBasisPoints
+        - expired
+        - scoringPolicy
+        - sections
+        - review
+      properties:
+        attemptId:
+          type: string
+          format: uuid
+        publishedVersionId:
+          type: string
+          format: uuid
+        submissionId:
+          type: string
+          format: uuid
+        completedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        earned:
+          type: integer
+          minimum: 0
+          maximum: 500000
+        possible:
+          type: integer
+          minimum: 1
+          maximum: 500000
+        correct:
+          type: integer
+          minimum: 0
+          maximum: 500
+        total:
+          type: integer
+          minimum: 1
+          maximum: 500
+        percentageBasisPoints:
+          type: integer
+          minimum: 0
+          maximum: 10000
+        expired:
+          type: boolean
+        scoringPolicy:
+          type: string
+          enum:
+            - EXACT_MATCH_V1
+        sections:
+          type: array
+          items:
+            $ref: "#/components/schemas/SectionScore"
+          minItems: 1
+          maxItems: 20
+        review:
+          type: object
+          additionalProperties: false
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              minLength: 1
+              maxLength: 256
+          nullable: true
+      example:
+        attemptId: 00000000-0000-4000-8000-000000000004
+        publishedVersionId: 00000000-0000-4000-8000-000000000002
+        submissionId: 00000000-0000-4000-8000-000000000005
+        completedAt: "2026-10-06T13:45:10.000Z"
+        earned: 5
+        possible: 6
+        correct: 2
+        total: 3
+        percentageBasisPoints: 8333
+        expired: false
+        scoringPolicy: EXACT_MATCH_V1
+        sections:
+          - sectionId: 00000000-0000-4000-8000-000000000011
+            earned: 5
+            possible: 5
+            correct: 2
+            total: 2
+          - sectionId: 00000000-0000-4000-8000-000000000012
+            earned: 0
+            possible: 1
+            correct: 0
+            total: 1
+        review: null
+    ReviewQuestion:
+      type: object
+      additionalProperties: false
+      required:
+        - question
+        - selectedOptionIds
+        - correctOptionIds
+        - correct
+        - explanation
+      properties:
+        question:
+          $ref: "#/components/schemas/CandidateQuestion"
+        selectedOptionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 0
+          maxItems: 10
+          uniqueItems: true
+        correctOptionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+          maxItems: 10
+          uniqueItems: true
+        correct:
+          type: boolean
+        explanation:
+          type: string
+          minLength: 0
+          maxLength: 8000
+          nullable: true
+    LeaderboardEntry:
+      type: object
+      additionalProperties: false
+      required:
+        - rank
+        - pseudonym
+        - earned
+        - possible
+        - completedAt
+      properties:
+        rank:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        pseudonym:
+          type: string
+          minLength: 8
+          maxLength: 64
+        earned:
+          type: integer
+          minimum: 0
+          maximum: 500000
+        possible:
+          type: integer
+          minimum: 1
+          maximum: 500000
+        completedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+      example:
+        rank: 1
+        pseudonym: candidate-8b473ec4
+        earned: 5
+        possible: 6
+        completedAt: "2026-10-06T13:45:10.000Z"
+    HistoryItem:
+      type: object
+      additionalProperties: false
+      required:
+        - attemptId
+        - examId
+        - publishedVersionId
+        - startedAt
+        - status
+        - expired
+        - earned
+        - possible
+      properties:
+        attemptId:
+          type: string
+          format: uuid
+        examId:
+          type: string
+          format: uuid
+        publishedVersionId:
+          type: string
+          format: uuid
+        startedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        status:
+          type: string
+          enum:
+            - CREATED
+            - IN_PROGRESS
+            - SUBMITTED
+            - PROCESSING
+            - COMPLETED
+            - EXPIRED
+            - FAILED
+        expired:
+          type: boolean
+        earned:
+          type: integer
+          minimum: 0
+          maximum: 500000
+          nullable: true
+        possible:
+          type: integer
+          minimum: 1
+          maximum: 500000
+          nullable: true
+    QuestionOptionInput:
+      type: object
+      additionalProperties: false
+      required:
+        - position
+        - text
+      properties:
+        position:
+          type: integer
+          minimum: 1
+          maximum: 10
+        text:
+          type: string
+          minLength: 1
+          maxLength: 2000
+    QuestionWriteRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - type
+        - prompt
+        - options
+        - correctOptionPositions
+        - points
+        - explanation
+        - expectedRevision
+      properties:
+        type:
+          type: string
+          enum:
+            - SINGLE_CHOICE
+            - MULTIPLE_CHOICE
+            - TRUE_FALSE
+        prompt:
+          type: string
+          minLength: 1
+          maxLength: 8000
+        options:
+          type: array
+          items:
+            $ref: "#/components/schemas/QuestionOptionInput"
+          minItems: 2
+          maxItems: 10
+        correctOptionPositions:
+          type: array
+          items:
+            type: integer
+            minimum: 1
+            maximum: 10
+          minItems: 1
+          maxItems: 10
+          uniqueItems: true
+        points:
+          type: integer
+          minimum: 1
+          maximum: 1000
+        explanation:
+          type: string
+          minLength: 0
+          maxLength: 8000
+          nullable: true
+        expectedRevision:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+      example:
+        type: SINGLE_CHOICE
+        prompt: Choose A.
+        options:
+          - position: 1
+            text: A
+          - position: 2
+            text: B
+        correctOptionPositions:
+          - 1
+        points: 1
+        explanation: A is correct.
+        expectedRevision: 0
+    AdminQuestion:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - revision
+        - archived
+        - type
+        - prompt
+        - options
+        - correctOptionPositions
+        - points
+        - explanation
+      properties:
+        id:
+          type: string
+          format: uuid
+        revision:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        archived:
+          type: boolean
+        type:
+          type: string
+          enum:
+            - SINGLE_CHOICE
+            - MULTIPLE_CHOICE
+            - TRUE_FALSE
+        prompt:
+          type: string
+          minLength: 1
+          maxLength: 8000
+        options:
+          type: array
+          items:
+            $ref: "#/components/schemas/QuestionOptionInput"
+          minItems: 2
+          maxItems: 10
+        correctOptionPositions:
+          type: array
+          items:
+            type: integer
+            minimum: 1
+            maximum: 10
+          minItems: 1
+          maxItems: 10
+          uniqueItems: true
+        points:
+          type: integer
+          minimum: 1
+          maximum: 1000
+        explanation:
+          type: string
+          minLength: 0
+          maxLength: 8000
+          nullable: true
+    QuestionReference:
+      type: object
+      additionalProperties: false
+      required:
+        - bankQuestionId
+        - position
+        - points
+      properties:
+        bankQuestionId:
+          type: string
+          format: uuid
+        position:
+          type: integer
+          minimum: 1
+          maximum: 500
+        points:
+          type: integer
+          minimum: 1
+          maximum: 1000
+    SectionInput:
+      type: object
+      additionalProperties: false
+      required:
+        - title
+        - position
+        - questions
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+        position:
+          type: integer
+          minimum: 1
+          maximum: 20
+        questions:
+          type: array
+          items:
+            $ref: "#/components/schemas/QuestionReference"
+          minItems: 0
+          maxItems: 500
+    ExamWriteRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - title
+        - category
+        - durationSeconds
+        - openAt
+        - closeAt
+        - displayTimezone
+        - attemptLimit
+        - explanationPolicy
+        - leaderboardEnabled
+        - sections
+        - expectedRevision
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+        category:
+          type: string
+          enum:
+            - TOEIC
+            - IELTS
+            - IT_CERTIFICATION
+            - UNIVERSITY
+            - RECRUITMENT
+            - CORPORATE
+        durationSeconds:
+          type: integer
+          minimum: 60
+          maximum: 14400
+        openAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        closeAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        displayTimezone:
+          type: string
+          minLength: 1
+          maxLength: 64
+        attemptLimit:
+          type: integer
+          minimum: 1
+          maximum: 10
+        explanationPolicy:
+          type: string
+          enum:
+            - NEVER
+            - AFTER_COMPLETION
+            - AFTER_EXAM_CLOSE
+        leaderboardEnabled:
+          type: boolean
+        sections:
+          type: array
+          items:
+            $ref: "#/components/schemas/SectionInput"
+          minItems: 0
+          maxItems: 20
+        expectedRevision:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+    AdminExam:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - revision
+        - published
+        - archived
+        - publishedVersionId
+        - title
+        - category
+        - durationSeconds
+        - openAt
+        - closeAt
+        - displayTimezone
+        - attemptLimit
+        - explanationPolicy
+        - leaderboardEnabled
+        - sections
+      properties:
+        id:
+          type: string
+          format: uuid
+        revision:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        published:
+          type: boolean
+        archived:
+          type: boolean
+        publishedVersionId:
+          type: string
+          format: uuid
+          nullable: true
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+        category:
+          type: string
+          enum:
+            - TOEIC
+            - IELTS
+            - IT_CERTIFICATION
+            - UNIVERSITY
+            - RECRUITMENT
+            - CORPORATE
+        durationSeconds:
+          type: integer
+          minimum: 60
+          maximum: 14400
+        openAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        closeAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        displayTimezone:
+          type: string
+          minLength: 1
+          maxLength: 64
+        attemptLimit:
+          type: integer
+          minimum: 1
+          maximum: 10
+        explanationPolicy:
+          type: string
+          enum:
+            - NEVER
+            - AFTER_COMPLETION
+            - AFTER_EXAM_CLOSE
+        leaderboardEnabled:
+          type: boolean
+        sections:
+          type: array
+          items:
+            $ref: "#/components/schemas/SectionInput"
+          minItems: 0
+          maxItems: 20
+    RevisionRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - expectedRevision
+      properties:
+        expectedRevision:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+      example:
+        expectedRevision: 1
+    ReplayRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - expectedRevision
+        - reason
+      properties:
+        expectedRevision:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        reason:
+          type: string
+          minLength: 1
+          maxLength: 500
+      example:
+        expectedRevision: 3
+        reason: Dependency recovered; retry original submission.
+    ImportEntry:
+      type: object
+      additionalProperties: false
+      required:
+        - clientRef
+        - type
+        - prompt
+        - options
+        - correctOptionPositions
+        - points
+        - explanation
+      properties:
+        clientRef:
+          type: string
+          pattern: ^[A-Za-z0-9_-]{1,64}$
+        type:
+          type: string
+          enum:
+            - SINGLE_CHOICE
+            - MULTIPLE_CHOICE
+            - TRUE_FALSE
+        prompt:
+          type: string
+          minLength: 1
+          maxLength: 8000
+        options:
+          type: array
+          items:
+            $ref: "#/components/schemas/QuestionOptionInput"
+          minItems: 2
+          maxItems: 10
+        correctOptionPositions:
+          type: array
+          items:
+            type: integer
+            minimum: 1
+            maximum: 10
+          minItems: 1
+          maxItems: 10
+          uniqueItems: true
+        points:
+          type: integer
+          minimum: 1
+          maximum: 1000
+        explanation:
+          type: string
+          minLength: 0
+          maxLength: 8000
+          nullable: true
+    ImportRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - schemaVersion
+        - dryRun
+        - questions
+      properties:
+        schemaVersion:
+          type: integer
+          enum:
+            - 1
+        dryRun:
+          type: boolean
+        questions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ImportEntry"
+          minItems: 1
+          maxItems: 100
+      example:
+        schemaVersion: 1
+        dryRun: false
+        questions:
+          - clientRef: q1
+            type: SINGLE_CHOICE
+            prompt: Choose A.
+            options:
+              - position: 1
+                text: A
+              - position: 2
+                text: B
+            correctOptionPositions:
+              - 1
+            points: 1
+            explanation: A is correct.
+    ImportIssue:
+      type: object
+      additionalProperties: false
+      required:
+        - clientRef
+        - field
+        - message
+      properties:
+        clientRef:
+          type: string
+          minLength: 1
+          maxLength: 64
+        field:
+          type: string
+          minLength: 1
+          maxLength: 128
+        message:
+          type: string
+          minLength: 1
+          maxLength: 200
+    ImportedQuestion:
+      type: object
+      additionalProperties: false
+      required:
+        - clientRef
+        - questionId
+      properties:
+        clientRef:
+          type: string
+          minLength: 1
+          maxLength: 64
+        questionId:
+          type: string
+          format: uuid
+    ImportReport:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - valid
+        - committed
+        - issues
+        - questions
+        - createdAt
+      properties:
+        id:
+          type: string
+          format: uuid
+        valid:
+          type: boolean
+        committed:
+          type: boolean
+        issues:
+          type: array
+          items:
+            $ref: "#/components/schemas/ImportIssue"
+          minItems: 0
+          maxItems: 1000
+        questions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ImportedQuestion"
+          minItems: 0
+          maxItems: 100
+        createdAt:
+          type: string
+          format: date-time
+          pattern: Z$
+    ActiveCandidate:
+      type: object
+      additionalProperties: false
+      required:
+        - candidateId
+        - attemptId
+        - status
+        - startedAt
+        - deadline
+      properties:
+        candidateId:
+          type: string
+          format: uuid
+        attemptId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+            - CREATED
+            - IN_PROGRESS
+            - SUBMITTED
+            - PROCESSING
+            - COMPLETED
+            - EXPIRED
+            - FAILED
+        startedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        deadline:
+          type: string
+          format: date-time
+          pattern: Z$
+    AdminSubmission:
+      type: object
+      additionalProperties: false
+      required:
+        - candidateId
+        - attemptId
+        - publishedVersionId
+        - submittedAt
+        - status
+        - expired
+        - earned
+        - possible
+      properties:
+        candidateId:
+          type: string
+          format: uuid
+        attemptId:
+          type: string
+          format: uuid
+        publishedVersionId:
+          type: string
+          format: uuid
+        submittedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+          nullable: true
+        status:
+          type: string
+          enum:
+            - CREATED
+            - IN_PROGRESS
+            - SUBMITTED
+            - PROCESSING
+            - COMPLETED
+            - EXPIRED
+            - FAILED
+        expired:
+          type: boolean
+        earned:
+          type: integer
+          minimum: 0
+          maximum: 500000
+          nullable: true
+        possible:
+          type: integer
+          minimum: 1
+          maximum: 500000
+          nullable: true
+    OptionStatistic:
+      type: object
+      additionalProperties: false
+      required:
+        - optionId
+        - selectedCount
+      properties:
+        optionId:
+          type: string
+          format: uuid
+        selectedCount:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+    QuestionStatistic:
+      type: object
+      additionalProperties: false
+      required:
+        - questionId
+        - completedAttempts
+        - correct
+        - incorrect
+        - unanswered
+        - options
+      properties:
+        questionId:
+          type: string
+          format: uuid
+        completedAttempts:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        correct:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        incorrect:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        unanswered:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        options:
+          type: array
+          items:
+            $ref: "#/components/schemas/OptionStatistic"
+          minItems: 0
+          maxItems: 10
+    Metrics:
+      type: object
+      additionalProperties: false
+      required:
+        - asOf
+        - activeCandidates
+        - submitted
+        - completed
+        - failed
+        - httpRps
+        - httpP95Ms
+        - queueDepth
+        - oldestJobSeconds
+      properties:
+        asOf:
+          type: string
+          format: date-time
+          pattern: Z$
+        activeCandidates:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        submitted:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        completed:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        failed:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        httpRps:
+          type: number
+          minimum: 0
+        httpP95Ms:
+          type: number
+          minimum: 0
+        queueDepth:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+        oldestJobSeconds:
+          type: number
+          minimum: 0
+    AuditEntry:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - occurredAt
+        - actorId
+        - action
+        - resourceType
+        - resourceId
+        - outcome
+        - reason
+        - correlationId
+        - changedFields
+      properties:
+        id:
+          type: string
+          format: uuid
+        occurredAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        actorId:
+          type: string
+          format: uuid
+          nullable: true
+        action:
+          type: string
+          minLength: 1
+          maxLength: 100
+        resourceType:
+          type: string
+          minLength: 1
+          maxLength: 64
+        resourceId:
+          type: string
+          format: uuid
+        outcome:
+          type: string
+          enum:
+            - SUCCESS
+            - DENIED
+            - FAILED
+        reason:
+          type: string
+          minLength: 0
+          maxLength: 500
+          nullable: true
+        correlationId:
+          type: string
+          format: uuid
+        changedFields:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 64
+          minItems: 0
+          maxItems: 50
+    Health:
+      type: object
+      additionalProperties: false
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+            - unavailable
+    MutationReceiptEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/MutationReceipt"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    AcceptedEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/Accepted"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    RevokedEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/Revoked"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    CsrfEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/Csrf"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    SessionEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/Session"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    ProfileEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/Profile"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    ExamEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/Exam"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    AttemptEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/Attempt"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    SaveReceiptEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/SaveReceipt"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    SubmitReceiptEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/SubmitReceipt"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    ResultEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/Result"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    AdminQuestionEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/AdminQuestion"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    AdminExamEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/AdminExam"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    ImportReportEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/ImportReport"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    MetricsEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+      properties:
+        data:
+          $ref: "#/components/schemas/Metrics"
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+    ExamListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Exam"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    CandidateQuestionListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/CandidateQuestion"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    AnswerListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Answer"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    HistoryItemListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/HistoryItem"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    LeaderboardEntryListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/LeaderboardEntry"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    AdminExamListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/AdminExam"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    AdminQuestionListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/AdminQuestion"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    ActiveCandidateListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ActiveCandidate"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    AdminSubmissionListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/AdminSubmission"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    QuestionStatisticListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/QuestionStatistic"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    ReviewQuestionListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReviewQuestion"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    AuditEntryListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/AuditEntry"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          enum:
+            - ""
+        message:
+          type: string
+          enum:
+            - OK
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
