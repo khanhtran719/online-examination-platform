@@ -1,11 +1,11 @@
 # Production acceptance ledger
 
-Updated 2026-10-06. **Production status: NOT ACCEPTED.** There is no application deployment, AWS benchmark or production recovery evidence. Phase 02 [product](product-specification.md), [permissions](security-and-permissions.md), [API/events](contracts/README.md) and [SLO/workload](slo-and-workload.md) are specified/locally validated; their business runtime implementation and measured production validation remain pending. DB-01–11 [PostgreSQL foundation](phase-03-review.md) has local constraint/transaction/role evidence; this does not satisfy production correctness/security/SLO gates.
+Updated 2026-10-06. **Production status: NOT ACCEPTED.** No AWS deployment/capacity/cost/recovery evidence. [Identity runtime](phase-04-review.md) has local crypto/PG/HTTP/SMTP/lease/operator tests, actual entry-point smoke and [raw local diagnostic](../experiments/identity-local/README.md). Browser HTTPS/live SES remain open. Contracts and [DB foundation](phase-03-review.md) remain locally validated; exam runtime/full production gates are not satisfied by these checks.
 
 | Hard gate | Proposed target / requirement | Status | Evidence needed |
 | --- | --- | --- | --- |
 | Correctness/idempotency | no lost acknowledged answers or duplicate scoring effect | unverified | real DB/SQS races/crash/retry tests |
-| Security | RBAC/ownership/TLS/private DB/cache/encryption/secrets/IAM/WAF/audit | unimplemented | security tests/effective config review |
+| Security | RBAC/ownership/TLS/private DB/cache/encryption/secrets/IAM/WAF/audit | local Identity evidence only | browser, other capabilities, AWS effective config/IAM/TLS/WAF and image review |
 | Availability | ≥99.9%, monthly agreed SLI | unmeasured | eligible request/window/error-budget evidence |
 | GET exam | p95 <250ms at specified workload | unmeasured | per-route k6/telemetry |
 | Save answer | p95 <300ms at specified workload | unmeasured | latency + durable correctness |
@@ -22,11 +22,11 @@ Updated 2026-10-06. **Production status: NOT ACCEPTED.** There is no application
 | Maximum sustainable RPS? | chưa đo | stress → last feasible load → soak |
 | Maximum concurrent users? | chưa đo | activity-defined full lifecycle test |
 | First bottleneck? | chưa xác định | achieved throughput/latency/pool/CPU/IOPS/queue/generator |
-| p95/p99 for each critical API? | chưa đo | per-route distribution/samples/errors |
+| p95/p99 for each critical API? | Identity local diagnostic có; exam/AWS chưa đo | per-route distribution/samples/errors at committed workload |
 | DB saturation point? | chưa đo | load steps/query plans/IOPS/locks/pool/WAL |
 | Optimal DB pool? | chưa đo | pool sweep with task count/connection budget |
 | Cache DB load reduction? | Redis chưa được bật | no-cache baseline, optional cache comparison or no-cache decision |
-| Worker throughput/jobs per task/USD? | chưa có worker | steady/backlog jobs throughput/full cost |
+| Worker throughput/jobs per task/USD? | email worker local có; scoring/task/USD chưa đo | steady/backlog jobs throughput/full cost |
 | Autoscaling reaction time? | chưa có AWS scaling | trigger→new ready capacity→backlog/latency recovery |
 | Failure recovery time? | chưa đo | timed crash/failover/restore drills |
 | Idle/normal/peak cost? | chưa đo | tagged usage/bill and stated allocation basis |

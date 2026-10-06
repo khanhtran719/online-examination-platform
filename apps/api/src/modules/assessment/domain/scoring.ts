@@ -13,10 +13,7 @@ export interface ScoringAnswer {
   selected: readonly string[];
 }
 
-export function validateSelection(
-  question: ScoringQuestion,
-  selected: readonly string[],
-): void {
+export function validateSelection(question: ScoringQuestion, selected: readonly string[]): void {
   const unique = new Set(selected);
   const allowed = new Set(question.optionIds);
   if (
@@ -45,9 +42,7 @@ export function score(
       byQuestion.has(question.id) ||
       !Number.isSafeInteger(question.points) ||
       question.points <= 0 ||
-      !["SINGLE_CHOICE", "MULTIPLE_CHOICE", "TRUE_FALSE"].includes(
-        question.type,
-      ) ||
+      !["SINGLE_CHOICE", "MULTIPLE_CHOICE", "TRUE_FALSE"].includes(question.type) ||
       question.optionIds.length < 2 ||
       new Set(question.optionIds).size !== question.optionIds.length ||
       (question.type === "TRUE_FALSE" && question.optionIds.length !== 2) ||
@@ -58,8 +53,7 @@ export function score(
     validateSelection(question, question.correctIds);
     byQuestion.set(question.id, question);
     possible += question.points;
-    if (!Number.isSafeInteger(possible))
-      throw new AssessmentError("Score total is too large");
+    if (!Number.isSafeInteger(possible)) throw new AssessmentError("Score total is too large");
   }
   const seen = new Set<string>();
   let earned = 0;

@@ -1,13 +1,7 @@
 import { AssessmentError } from "./assessment.error";
 
 export type AttemptStatus =
-  | "CREATED"
-  | "IN_PROGRESS"
-  | "SUBMITTED"
-  | "PROCESSING"
-  | "COMPLETED"
-  | "EXPIRED"
-  | "FAILED";
+  "CREATED" | "IN_PROGRESS" | "SUBMITTED" | "PROCESSING" | "COMPLETED" | "EXPIRED" | "FAILED";
 
 export interface AttemptState {
   id: string;
@@ -42,14 +36,12 @@ export class Attempt {
     }
     const isSubmitted = submittedStates.includes(state.status);
     const isUnsubmitted = ["CREATED", "IN_PROGRESS"].includes(state.status);
-    const expiredAtSubmission =
-      state.submittedAt !== null && state.submittedAt >= state.deadline;
+    const expiredAtSubmission = state.submittedAt !== null && state.submittedAt >= state.deadline;
     if (
       (!isSubmitted && !isUnsubmitted) ||
       isSubmitted !== (state.submittedAt !== null) ||
       (state.submittedAt !== null &&
-        (!Number.isFinite(state.submittedAt) ||
-          state.submittedAt < state.startedAt)) ||
+        (!Number.isFinite(state.submittedAt) || state.submittedAt < state.startedAt)) ||
       state.expired !== expiredAtSubmission ||
       (state.status === "EXPIRED" && !state.expired) ||
       (state.status === "SUBMITTED" && state.expired)

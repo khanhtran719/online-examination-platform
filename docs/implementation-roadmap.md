@@ -1,16 +1,17 @@
 # Roadmap triển khai có đánh dấu
 
-Cập nhật: 2026-10-06. Phạm vi đã bàn giao và review: **bộ quy chuẩn, bootstrap/domain, Phần 02 contracts và DB-01–11 nền PostgreSQL**. Auth contract đã được điều chỉnh theo [ADR-005](adr/005-email-verification-and-signed-tokens.md): email/password + verification link, asymmetric JWT; magic link/GitHub sau. Thêm ID-10–13 nên tổng hiện **40/216 mục hoàn thành, 176 mục chưa hoàn thành**. DB-12 còn image compatibility; business API/worker và AWS chưa triển khai.
+Cập nhật: 2026-10-06. Đã bàn giao/review **quy chuẩn, bootstrap/domain, contracts, DB-01–11 và lõi Identity/API/email-worker local** theo [ADR-005](adr/005-email-verification-and-signed-tokens.md). **50/216 mục hoàn thành,166 mục chưa hoàn thành.** ID-07/browser HTTPS, ID-11/live SES và DB-12/image compatibility còn PARTIAL; magic link/GitHub LATER. AWS chưa triển khai/đo.
 
-Quy ước: `[x]` = đầu mục cụ thể đã hoàn tất và có artifact/kiểm chứng; `[ ]` = chưa hoàn tất. Dòng có `IN PROGRESS` là đang làm, chưa được tick. “Đã viết tiêu chuẩn” không đồng nghĩa “đã triển khai control”; “đã tạo script” không đồng nghĩa “đã chạy benchmark”. 18 mục bootstrap đã [review](completed-checklist-review.md); 11 mục SPEC có [review/evidence](phase-02-review.md), auth amendment có [review/evidence](phase-04-contract-review.md). DB-01–11 đã có [review/evidence](phase-03-review.md); DB-12 đã có runbook, chưa chạy old/new image drill. Không còn tác vụ triển khai chạy nền. [Kế hoạch Phần 04](phase-04-plan.md) ghi thứ tự Identity và composition roots BOOT-10; BOOT-09 vẫn thiếu Git/remote. AWS/benchmark chưa bắt đầu. Phần lớn đầu mục bên dưới cần tách thành PR nhỏ khi thực hiện. Mỗi PR cập nhật checklist + evidence + acceptance ledger.
+Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. BOOT-09 thiếu Git/remote; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
 
 | Nhóm | Trạng thái hiện tại | Điều kiện chuyển bước |
 | --- | --- | --- |
 | 00: Bộ quy chuẩn | Hoàn tất, đã kiểm tra và review lại | Không còn quyết định POS mâu thuẫn, có contract/ADR và checklist |
-| 01: Bootstrap | Phần đã mở đã hoàn tất; Git/Nest runtime để phase sau | Unit/typecheck/build/lint/quality và local dependency checks |
+| 01: Bootstrap | Runtime API/email-worker local đã có; Git còn pending | Unit/typecheck/build/lint/quality, actual entry-point health/drain |
 | 02: Product/public contracts | Hoàn tất specification + local contract checks | Policy/schema/permissions/workload nhất quán; runtime evidence pending |
 | 03: Database | DB-01–11 hoàn tất nền persistence; DB-12 chưa drill | Business adapters/races và old/new images cần evidence riêng |
-| 04–13: Application/operations/AWS | Có kế hoạch Phần04 và auth contract; runtime chưa triển khai | Correctness và security trước capacity tuning |
+| 04: Identity | Lõi local hoàn tất; ID-07/11 PARTIAL, ID-12/13 LATER | Browser HTTPS/live SES operations trước đóng phase |
+| 05–13: Application/operations/AWS | Chưa triển khai các phase sau | Correctness và security trước capacity tuning |
 | 14–19: Dataset/load/failure/FinOps | Chưa đo | Có môi trường kiểm thử và raw evidence |
 | 20: Production acceptance | Chưa đạt | Toàn bộ hard gates và câu hỏi định lượng có evidence |
 
@@ -33,7 +34,7 @@ Hoàn tất khi: tiêu chuẩn không tự mâu thuẫn, quyết định có ADR
 
 ## 01. Hoàn tất bootstrap đã bắt đầu
 
-Mục đích: khép lại phần đang làm dở theo chỉ đạo mới; chưa dựng application runtime.
+Mục đích: bootstrap/dependencies/domain và composition roots; Git/remote vẫn chờ cấu hình.
 
 - [x] **BOOT-01** Tạo package metadata, TypeScript strict config, Jest không phụ thuộc Watchman, ESLint/Prettier và lockfile.
 - [x] **BOOT-02** Cài dependency phục vụ TypeScript/unit/lint. Loại dependency runtime chưa sử dụng khỏi bootstrap; sẽ thêm theo phase có nhu cầu.
@@ -44,9 +45,9 @@ Mục đích: khép lại phần đang làm dở theo chỉ đạo mới; chưa 
 - [x] **BOOT-07** Chạy typecheck/build/lint/quality; ghi kết quả vào [validation log](validation.md).
 - [x] **BOOT-08** Kiểm tra health PostgreSQL và queue local; đây chỉ là dependency check, chưa phải integration test hệ thống.
 - [ ] **BOOT-09** Khởi tạo Git và cấu hình remote/branch/PR khi bắt đầu phase implementation tiếp theo.
-- [ ] **BOOT-10** Tạo Nest composition root/API/worker entry points và config validation khi bắt đầu application phase.
+- [x] **BOOT-10** Nest composition root/API/email-worker entry points, config fail-fast, health/correlation/error mapper và graceful drain; actual local smoke PASS.
 
-BOOT-06–08 đã được kiểm chứng: 28 domain tests + 9 tooling tests pass; typecheck/build/lint/quality pass; PostgreSQL query và SQS ListQueues local thành công. Dependency audit còn 20 moderate trong tooling dev, 0 high/critical; chưa có runtime dependencies. Xem [validation log](validation.md). BOOT-09–10 thuộc phase sau, chưa bắt đầu. Kết luận review: đủ điều kiện chuyển sang phần 02 product contracts; xem [review report](completed-checklist-review.md).
+BOOT-06–08 có [bootstrap evidence lịch sử](completed-checklist-review.md). BOOT-10 có [runtime review](phase-04-review.md): actual API/worker live/ready/SIGTERM PASS. Hiện90 unit/tooling +52 integration PASS, runtime audit0,20 moderate dev findings. BOOT-09 chưa làm; không suy ra Docker/AWS readiness từ local roots.
 
 ## 02. Chốt product specification và public contracts
 
@@ -83,29 +84,29 @@ Phụ thuộc: 01–02. Artifact: schema/migrations, transaction context, reposi
 - [x] **DB-09** Lập connection budget = max API tasks × pool + max worker tasks × pool + reserved maintenance/headroom.
 - [x] **DB-10** Tích hợp pg_stat_statements, query/lock/pool timing và redaction; không đưa SQL parameters vào log/trace.
 - [x] **DB-11** Viết PostgreSQL thật kiểm chứng constraints, transaction context, joined rollback, lock isolation và pool timeouts bằng technical fixtures. Tests start/save/submit và inbox thực tế được làm tại ATT-10/ASYNC-11 sau khi có application flows.
-- [ ] **DB-12** PARTIAL — [runbook](runbooks/database-migrations.md) đã viết; old/new API/worker image compatibility test chưa chạy vì BOOT-10/CI images chưa có. Không có tác vụ chạy nền.
+- [ ] **DB-12** PARTIAL — [runbook](runbooks/database-migrations.md) đã viết; BOOT-10 local đã có nhưng actual old/new API/worker CI images và compatibility drill chưa có. Không có tác vụ chạy nền.
 
 DB-01–11 đạt gate nền persistence: 30 real-PG cases PASS, restricted roles/constraints/context/timeout. Xem [database guide](database.md) và [review](phase-03-review.md). Gate business races/SQS/image compatibility và load/tuning vẫn pending; không chọn pool/index tối ưu từ fixtures.
 
 ## 04. Identity, authentication, session, permissions
 
-Phụ thuộc: 02–03. [Kế hoạch chi tiết](phase-04-plan.md), [security contract](security-and-permissions.md) và [ADR-005](adr/005-email-verification-and-signed-tokens.md) đã cập nhật; checkbox dưới đây là runtime deliverables, chưa hoàn tất từ việc viết kế hoạch.
+Phụ thuộc: 02–03. [Runtime review](phase-04-review.md), [plan](phase-04-plan.md), [security contract](security-and-permissions.md), [ADR-005](adr/005-email-verification-and-signed-tokens.md). Ticks dưới đây là local runtime evidence; production TLS/SES/key rollout/capacity vẫn mở.
 
-- [ ] **ID-01** Register bằng email/password: normalized unique email, pending verification, input limits, strong password hash, atomic challenge/email intent và chống enumeration.
-- [ ] **ID-02** Login bằng email/password: chỉ enabled + verified, bounded hashing/rate limit, signed session creation và safe audit metadata.
-- [ ] **ID-03** Refresh rotation: hash token trong DB, atomic rotate, replay/family-revocation policy và concurrent refresh tests.
-- [ ] **ID-04** Logout/revoke: hiệu lực được định nghĩa và kiểm tra với API đang scale ngang.
-- [ ] **ID-05** Access/refresh JWT ký bằng private key, verify bằng public key (ES256/P-256); strict alg/claims/type/audience/use, TTL/idle/absolute expiry, trusted kid/key rotation/compromise drill; DB revocation vẫn authoritative.
-- [ ] **ID-06** Tạo guard/principal infrastructure, permission matrix tập trung và actor ownership checks.
-- [ ] **ID-07** Chọn cookie/token transport, CSRF/CORS/SameSite/secure policy theo threat model và browser client.
-- [ ] **ID-08** Tạo quy trình cấp admin đầu tiên an toàn; không public endpoint tự cấp role.
-- [ ] **ID-09** Unit/integration/E2E: duplicate register, invalid/unverified credential, JWT substitution, token reuse, expired/revoked session, forbidden/admin access; đo hash/crypto/HTTP/query/pool và hai API instances.
-- [ ] **ID-10** Link xác thực email một lần30min, resend bounds/coalescing, POST activation + final email-owner password, race/expiry/retry, chống attacker pre-registration và ciphertext cleanup.
-- [ ] **ID-11** Identity email outbox + worker + local mailbox/SES adapters: encrypted token material, leases/fencing, bounded retry/parked/replay, sender/quota/bounce/complaint và delivery metrics; AWS delivery vẫn chờ account/region/sender.
+- [x] **ID-01** Register email/password: normalized unique email, pending verification, input limits, strong hash, atomic challenge/intent và generic response chống enumeration. Timing resistance chưa được nghiệm thu từ local diagnostic.
+- [x] **ID-02** Login enabled+verified, bounded hashing/shared atomic failure admission, signed session và safe audit; sequential/concurrent/rate expiry real-PG tests.
+- [x] **ID-03** Hashed refresh, atomic rotate và durable reuse revocation; concurrent refresh/replay tests.
+- [x] **ID-04** Logout/revoke/current permissions/disable/expiry qua hai instances; old-cookie lost-ACK retry HTTP test.
+- [x] **ID-05** Private-sign/public-verify ES256, strict claims/purpose/TTL, public overlap/removal và real-PG compromised-kid revoke/audit. Actual AWS key propagation/drill còn pending.
+- [x] **ID-06** Principal/permission adapter, tập trung permission matrix/current DB reads và actor ownership; no JWT role authority.
+- [ ] **ID-07 — PARTIAL** Cookie/CSRF/Origin/no-store implementation và server tests đã có; actual browser HTTPS/client single-flight/WEB-02 verification landing còn pending.
+- [x] **ID-08** Audited verified-user admin bootstrap/operator CLI, runtime không tự grant role; dedicated role tests.
+- [x] **ID-09** Unit/real-PG/server HTTP E2E/SMTP/lease/operator cases và benchmark hash/crypto/HTTP/query/pool hai API instances. Browser/AWS acceptance chưa đóng.
+- [x] **ID-10** Single-use30min link/resend/final-password activation/race/expiry/retry/pre-registration/material cleanup; local evidence.
+- [ ] **ID-11 — PARTIAL** Encrypted outbox/SMTP+SES adapters/worker lease/fence/retry/park/audited SQL replay/verification retention đã test; live AWS sender/quota/bounce/complaint/delivery metrics còn pending.
 - [ ] **ID-12 — LATER** Passwordless email magic link: LOGIN_EMAIL purpose riêng, single-use/login CSRF/browser binding và session policy chung; không dùng VERIFY_EMAIL để login.
 - [ ] **ID-13 — LATER** GitHub OAuth code + state/PKCE, stable provider subject, explicit account linking, email ownership, provider-only schema migration và no privilege escalation.
 
-Gate Phần04: BOOT-10 + ID-01–11 có runtime evidence; auth/verification/permissions chạy thật, token chỉ trong HttpOnly cookies, không lộ trong JSON/log. ID-12/13 để phase sau. Local evidence và SES/key-operations AWS evidence được đánh dấu riêng.
+Gate Phần04 chưa đóng: còn ID-07/11. Local90 unit/tooling +52 integration PASS, actual roots smoke/SIGTERM PASS, diagnostic benchmark0 lỗi; tokens không trả JSON/log. Chưa có browser verification page/HTTPS/live SES/AWS key rollout. ID-12/13 LATER. Xem [review](phase-04-review.md); không coi local RPS là sustainable production capacity.
 
 ## 05. Catalog: exam và question bank
 

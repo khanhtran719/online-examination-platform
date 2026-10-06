@@ -3736,6 +3736,8 @@ Local memoization may be acceptable for immutable/process-local technical data w
 
 Within one business module, use the same convention for similar features.
 
+For this project, the adopted Identity shape uses `application/ports`, `application/errors` for technical application failures, `domain/errors` for semantic business errors, `infrastructure/{persistence,security,mail,http}` and `presentation/http/dto`. Module composition factories bind adapters; presentation consumes its inbound HTTP port rather than importing infrastructure. Technical platform has application/domain/infrastructure/presentation and does not import business modules. Follow this grouping when adding related code; do not create empty groups for future capabilities. See [project module guide](../docs/examination-module-guide.md).
+
 Do not mix:
 
 ```text

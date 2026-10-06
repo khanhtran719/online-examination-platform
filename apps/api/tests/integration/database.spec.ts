@@ -16,9 +16,7 @@ import {
 // Explicit disposable DB names. Never truncate the main local development database.
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
 if (!adminUrl)
-  throw new Error(
-    "TEST_DATABASE_ADMIN_URL required (Compose local administrator only)",
-  );
+  throw new Error("TEST_DATABASE_ADMIN_URL required (Compose local administrator only)");
 const base = new URL(adminUrl);
 const dbName = `exam_test_${randomUUID().replaceAll("-", "")}`;
 const migrationUrl = new URL(base);
@@ -66,27 +64,19 @@ beforeAll(async () => {
   await admin.query(`CREATE DATABASE ${dbName}`);
   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
-  await admin.query(
-    `CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`,
-  );
-  await admin.query(
-    `CREATE ROLE ${runtimeRole} LOGIN INHERIT PASSWORD '${password}'`,
-  );
+  await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+  await admin.query(`CREATE ROLE ${runtimeRole} LOGIN INHERIT PASSWORD '${password}'`);
   await admin.query(`GRANT examination_owner TO ${migratorRole}`);
   await admin.query(`GRANT examination_runtime TO ${runtimeRole}`);
   fixture = new Pool({ connectionString: migrationUrl.toString(), max: 3 });
   fixture.on("error", (error) => {
     fixturePoolErrors.push(
-      "code" in error && typeof error.code === "string"
-        ? error.code
-        : "UNKNOWN",
+      "code" in error && typeof error.code === "string" ? error.code : "UNKNOWN",
     );
   });
   migrations = await loadMigrations("apps/api/migrations");
   await migrate(migrationConfig, migrations);
-  await fixture.query(
-    await readFile("infra/database/observability.sql", "utf8"),
-  );
+  await fixture.query(await readFile("infra/database/observability.sql", "utf8"));
   await fixture.query(
     "CREATE TABLE platform.transaction_fixture (id text PRIMARY KEY, value integer NOT NULL)",
   );
@@ -102,10 +92,9 @@ afterAll(async () => {
   let connections = 1;
   for (let i = 0; i < 100 && connections; i += 1) {
     connections = (
-      await admin.query(
-        "SELECT count(*)::int AS n FROM pg_stat_activity WHERE datname=$1",
-        [dbName],
-      )
+      await admin.query("SELECT count(*)::int AS n FROM pg_stat_activity WHERE datname=$1", [
+        dbName,
+      ])
     ).rows[0]!.n;
     if (connections) await new Promise((done) => setTimeout(done, 10));
   }
@@ -164,11 +153,11 @@ async function publication(existing?: { exam: string }) {
       "INSERT INTO catalog.published_options VALUES ($1,$2,$3,1,'A'),($1,$2,$4,2,'B')",
       [version, question, ...options],
     );
-    await db.query(
-      "diagnostic",
-      "INSERT INTO catalog.published_answer_keys VALUES ($1,$2,$3)",
-      [version, question, options[0]],
-    );
+    await db.query("diagnostic", "INSERT INTO catalog.published_answer_keys VALUES ($1,$2,$3)", [
+      version,
+      question,
+      options[0],
+    ]);
     await db.query(
       "diagnostic",
       "UPDATE catalog.exams SET current_version_id=$2,published=true WHERE id=$1",
@@ -177,10 +166,7 @@ async function publication(existing?: { exam: string }) {
   });
   return { actor, exam, version, section, question, options };
 }
-async function attempt(
-  p: Awaited<ReturnType<typeof publication>>,
-  actor?: string,
-) {
+async function attempt(p: Awaited<ReturnType<typeof publication>>, actor?: string) {
   const id = randomUUID();
   const owner = actor ?? (await user());
   await db.query(
@@ -202,11 +188,10 @@ describe("capability schema and runtime privileges", () => {
       [a.id, randomUUID(), randomUUID()],
     );
     await expect(
-      db.query(
-        "diagnostic",
-        "UPDATE assessment.attempts SET submission_id=$2 WHERE id=$1",
-        [a.id, randomUUID()],
-      ),
+      db.query("diagnostic", "UPDATE assessment.attempts SET submission_id=$2 WHERE id=$1", [
+        a.id,
+        randomUUID(),
+      ]),
     ).rejects.toMatchObject({ code: "23514" });
     await expect(
       db.query(
@@ -218,17 +203,14 @@ describe("capability schema and runtime privileges", () => {
   });
   it("keeps the public category frozen when the exam draft category changes", async () => {
     const p = await publication();
-    await db.query(
-      "diagnostic",
-      "UPDATE catalog.exams SET category='CORPORATE' WHERE id=$1",
-      [p.exam],
-    );
+    await db.query("diagnostic", "UPDATE catalog.exams SET category='CORPORATE' WHERE id=$1", [
+      p.exam,
+    ]);
     expect(
       (
-        await fixture.query(
-          "SELECT category FROM catalog.published_versions WHERE id=$1",
-          [p.version],
-        )
+        await fixture.query("SELECT category FROM catalog.published_versions WHERE id=$1", [
+          p.version,
+        ])
       ).rows[0]!.category,
     ).toBe("IT_CERTIFICATION");
   });
@@ -243,18 +225,10 @@ describe("capability schema and runtime privileges", () => {
     ).rejects.toMatchObject({ code: "23505" });
     const p = await publication();
     await expect(
-      db.query(
-        "diagnostic",
-        "UPDATE catalog.exams SET duration_seconds=0 WHERE id=$1",
-        [p.exam],
-      ),
+      db.query("diagnostic", "UPDATE catalog.exams SET duration_seconds=0 WHERE id=$1", [p.exam]),
     ).rejects.toMatchObject({ code: "23514" });
     await expect(
-      db.query(
-        "diagnostic",
-        "UPDATE catalog.exams SET closes_at=opens_at WHERE id=$1",
-        [p.exam],
-      ),
+      db.query("diagnostic", "UPDATE catalog.exams SET closes_at=opens_at WHERE id=$1", [p.exam]),
     ).rejects.toMatchObject({ code: "23514" });
   });
   it("prevents an incomplete publication from committing", async () => {
@@ -271,22 +245,16 @@ describe("capability schema and runtime privileges", () => {
       }),
     ).rejects.toMatchObject({ code: "23514" });
     expect(
-      (
-        await fixture.query(
-          "SELECT id FROM catalog.published_versions WHERE id=$1",
-          [id],
-        )
-      ).rowCount,
+      (await fixture.query("SELECT id FROM catalog.published_versions WHERE id=$1", [id])).rowCount,
     ).toBe(0);
   });
   it("seals publications against later append and denies snapshot UPDATE/DELETE", async () => {
     const p = await publication();
     await expect(
-      db.query(
-        "diagnostic",
-        "INSERT INTO catalog.published_sections VALUES ($1,$2,'Late',2)",
-        [p.version, randomUUID()],
-      ),
+      db.query("diagnostic", "INSERT INTO catalog.published_sections VALUES ($1,$2,'Late',2)", [
+        p.version,
+        randomUUID(),
+      ]),
     ).rejects.toMatchObject({ code: "23514" });
     await expect(
       db.query(
@@ -296,11 +264,9 @@ describe("capability schema and runtime privileges", () => {
       ),
     ).rejects.toMatchObject({ code: "42501" });
     await expect(
-      db.query(
-        "diagnostic",
-        "DELETE FROM catalog.published_questions WHERE version_id=$1",
-        [p.version],
-      ),
+      db.query("diagnostic", "DELETE FROM catalog.published_questions WHERE version_id=$1", [
+        p.version,
+      ]),
     ).rejects.toMatchObject({ code: "42501" });
   });
   it("enforces one active attempt across versions of one logical exam", async () => {
@@ -335,34 +301,35 @@ describe("capability schema and runtime privileges", () => {
       [a.id, p.version, p.question],
     );
     await expect(
-      db.query(
-        "diagnostic",
-        "INSERT INTO assessment.answer_selections VALUES ($1,$2,$3,$4)",
-        [a.id, p.version, p.question, foreign.options[0]],
-      ),
+      db.query("diagnostic", "INSERT INTO assessment.answer_selections VALUES ($1,$2,$3,$4)", [
+        a.id,
+        p.version,
+        p.question,
+        foreign.options[0],
+      ]),
     ).rejects.toMatchObject({ code: "23503" });
-    await db.query(
-      "diagnostic",
-      "INSERT INTO assessment.answer_selections VALUES ($1,$2,$3,$4)",
-      [a.id, p.version, p.question, p.options[0]],
-    );
+    await db.query("diagnostic", "INSERT INTO assessment.answer_selections VALUES ($1,$2,$3,$4)", [
+      a.id,
+      p.version,
+      p.question,
+      p.options[0],
+    ]);
     await expect(
-      db.query(
-        "diagnostic",
-        "INSERT INTO assessment.answer_selections VALUES ($1,$2,$3,$4)",
-        [a.id, p.version, p.question, p.options[0]],
-      ),
+      db.query("diagnostic", "INSERT INTO assessment.answer_selections VALUES ($1,$2,$3,$4)", [
+        a.id,
+        p.version,
+        p.question,
+        p.options[0],
+      ]),
     ).rejects.toMatchObject({ code: "23505" });
   });
   it("rejects incoherent submission and negative answer version", async () => {
     const p = await publication();
     const a = await attempt(p);
     await expect(
-      db.query(
-        "diagnostic",
-        "UPDATE assessment.attempts SET status='SUBMITTED' WHERE id=$1",
-        [a.id],
-      ),
+      db.query("diagnostic", "UPDATE assessment.attempts SET status='SUBMITTED' WHERE id=$1", [
+        a.id,
+      ]),
     ).rejects.toMatchObject({ code: "23514" });
     await expect(
       db.query(
@@ -454,16 +421,13 @@ describe("capability schema and runtime privileges", () => {
     const p = await publication();
     const a = await attempt(p);
     await expect(
-      db.query(
-        "diagnostic",
-        "UPDATE assessment.attempts SET user_id=$2 WHERE id=$1",
-        [a.id, p.actor],
-      ),
+      db.query("diagnostic", "UPDATE assessment.attempts SET user_id=$2 WHERE id=$1", [
+        a.id,
+        p.actor,
+      ]),
     ).rejects.toMatchObject({ code: "42501" });
     await expect(
-      db.query("diagnostic", "UPDATE assessment.answers SET version_id=$1", [
-        p.version,
-      ]),
+      db.query("diagnostic", "UPDATE assessment.answers SET version_id=$1", [p.version]),
     ).rejects.toMatchObject({ code: "42501" });
     await expect(
       db.query("diagnostic", "UPDATE platform.outbox SET payload='{}'"),
@@ -479,9 +443,9 @@ describe("capability schema and runtime privileges", () => {
     await expect(
       db.query("diagnostic", "UPDATE platform.audit_logs SET action='changed'"),
     ).rejects.toMatchObject({ code: "42501" });
-    await expect(
-      db.query("diagnostic", "SET ROLE examination_owner"),
-    ).rejects.toMatchObject({ code: "42501" });
+    await expect(db.query("diagnostic", "SET ROLE examination_owner")).rejects.toMatchObject({
+      code: "42501",
+    });
   });
   it("commits audit and outbox intent atomically with rollback of the owning write", async () => {
     const p = await publication();
@@ -504,19 +468,11 @@ describe("capability schema and runtime privileges", () => {
       }),
     ).rejects.toThrow("cancel");
     expect(
-      (
-        await fixture.query(
-          "SELECT event_id FROM platform.outbox WHERE event_id=$1",
-          [event],
-        )
-      ).rowCount,
+      (await fixture.query("SELECT event_id FROM platform.outbox WHERE event_id=$1", [event]))
+        .rowCount,
     ).toBe(0);
     expect(
-      (
-        await fixture.query("SELECT id FROM platform.audit_logs WHERE id=$1", [
-          audit,
-        ])
-      ).rowCount,
+      (await fixture.query("SELECT id FROM platform.audit_logs WHERE id=$1", [audit])).rowCount,
     ).toBe(0);
   });
 });
@@ -525,37 +481,22 @@ describe("transaction correctness on PostgreSQL", () => {
   it("commits joined calls on one backend resolved at call time", async () => {
     const pids: number[] = [];
     await db.transaction(async () => {
-      pids.push(
-        (await db.query("diagnostic", "SELECT pg_backend_pid() AS pid"))
-          .rows[0]!.pid,
-      );
-      await db.query(
-        "diagnostic",
-        "INSERT INTO platform.transaction_fixture VALUES ('one', 1)",
-      );
+      pids.push((await db.query("diagnostic", "SELECT pg_backend_pid() AS pid")).rows[0]!.pid);
+      await db.query("diagnostic", "INSERT INTO platform.transaction_fixture VALUES ('one', 1)");
       await db.transaction(async () => {
-        pids.push(
-          (await db.query("diagnostic", "SELECT pg_backend_pid() AS pid"))
-            .rows[0]!.pid,
-        );
+        pids.push((await db.query("diagnostic", "SELECT pg_backend_pid() AS pid")).rows[0]!.pid);
       });
     });
     expect(new Set(pids).size).toBe(1);
     expect(
-      (
-        await fixture.query(
-          "SELECT count(*)::int AS n FROM platform.transaction_fixture",
-        )
-      ).rows[0]!.n,
+      (await fixture.query("SELECT count(*)::int AS n FROM platform.transaction_fixture")).rows[0]!
+        .n,
     ).toBe(1);
   });
   it("rolls back all writes when a joined business failure is caught", async () => {
     await expect(
       db.transaction(async () => {
-        await db.query(
-          "diagnostic",
-          "INSERT INTO platform.transaction_fixture VALUES ('one', 1)",
-        );
+        await db.query("diagnostic", "INSERT INTO platform.transaction_fixture VALUES ('one', 1)");
         try {
           await db.transaction(async () => {
             await db.query(
@@ -570,11 +511,8 @@ describe("transaction correctness on PostgreSQL", () => {
       }),
     ).rejects.toThrow("rollback-only");
     expect(
-      (
-        await fixture.query(
-          "SELECT count(*)::int AS n FROM platform.transaction_fixture",
-        )
-      ).rows[0]!.n,
+      (await fixture.query("SELECT count(*)::int AS n FROM platform.transaction_fixture")).rows[0]!
+        .n,
     ).toBe(0);
   });
   it("forbids a successful result after a caught SQL failure", async () => {
@@ -592,10 +530,7 @@ describe("transaction correctness on PostgreSQL", () => {
     const ready = deferred<void>();
     const release = deferred<void>();
     const first = db.transaction(async () => {
-      await db.query(
-        "diagnostic",
-        "INSERT INTO platform.transaction_fixture VALUES ('first', 1)",
-      );
+      await db.query("diagnostic", "INSERT INTO platform.transaction_fixture VALUES ('first', 1)");
       ready.resolve();
       await release.promise;
       throw new Error("cancel");
@@ -603,26 +538,20 @@ describe("transaction correctness on PostgreSQL", () => {
     const failed = expect(first).rejects.toThrow("cancel");
     await ready.promise;
     await db.transaction(async () => {
-      await db.query(
-        "diagnostic",
-        "INSERT INTO platform.transaction_fixture VALUES ('second', 2)",
-      );
+      await db.query("diagnostic", "INSERT INTO platform.transaction_fixture VALUES ('second', 2)");
     });
     release.resolve();
     await failed;
-    expect(
-      (await fixture.query("SELECT id FROM platform.transaction_fixture")).rows,
-    ).toEqual([{ id: "second" }]);
+    expect((await fixture.query("SELECT id FROM platform.transaction_fixture")).rows).toEqual([
+      { id: "second" },
+    ]);
   });
   it("rejects detached work after its transaction has ended", async () => {
     const release = deferred<void>();
     let late!: Promise<unknown>;
     await db.transaction(async () => {
       late = release.promise.then(() =>
-        db.query(
-          "diagnostic",
-          "INSERT INTO platform.transaction_fixture VALUES ('late', 1)",
-        ),
+        db.query("diagnostic", "INSERT INTO platform.transaction_fixture VALUES ('late', 1)"),
       );
     });
     const rejection = expect(late).rejects.toMatchObject({
@@ -631,11 +560,8 @@ describe("transaction correctness on PostgreSQL", () => {
     release.resolve();
     await rejection;
     expect(
-      (
-        await fixture.query(
-          "SELECT count(*)::int AS n FROM platform.transaction_fixture",
-        )
-      ).rows[0]!.n,
+      (await fixture.query("SELECT count(*)::int AS n FROM platform.transaction_fixture")).rows[0]!
+        .n,
     ).toBe(0);
   });
   it("rolls back pending unawaited database work instead of committing it", async () => {
@@ -646,15 +572,11 @@ describe("transaction correctness on PostgreSQL", () => {
     ).rejects.toThrow("rollback-only");
   });
   it("bounds a real row-lock wait and permits pool reuse after rollback", async () => {
-    await fixture.query(
-      "INSERT INTO platform.transaction_fixture VALUES ('lock', 0)",
-    );
+    await fixture.query("INSERT INTO platform.transaction_fixture VALUES ('lock', 0)");
     const client = await fixture.connect();
     await client.query("BEGIN");
     try {
-      await client.query(
-        "UPDATE platform.transaction_fixture SET value=1 WHERE id='lock'",
-      );
+      await client.query("UPDATE platform.transaction_fixture SET value=1 WHERE id='lock'");
       await expect(
         db.transaction(async () => {
           await db.query(
@@ -667,31 +589,23 @@ describe("transaction correctness on PostgreSQL", () => {
       await client.query("ROLLBACK");
       client.release();
     }
-    await db.query(
-      "diagnostic",
-      "UPDATE platform.transaction_fixture SET value=3 WHERE id='lock'",
-    );
+    await db.query("diagnostic", "UPDATE platform.transaction_fixture SET value=3 WHERE id='lock'");
     expect(
-      (await fixture.query("SELECT value FROM platform.transaction_fixture"))
-        .rows[0]!.value,
+      (await fixture.query("SELECT value FROM platform.transaction_fixture")).rows[0]!.value,
     ).toBe(3);
   });
   it("uses clock_timestamp after lock acquisition rather than transaction start time", async () => {
-    await fixture.query(
-      "INSERT INTO platform.transaction_fixture VALUES ('clock', 0)",
-    );
+    await fixture.query("INSERT INTO platform.transaction_fixture VALUES ('clock', 0)");
     await db.transaction(async () => {
-      const start = (
-        await db.query("diagnostic", "SELECT clock_timestamp() AS at")
-      ).rows[0]!.at as Date;
+      const start = (await db.query("diagnostic", "SELECT clock_timestamp() AS at")).rows[0]!
+        .at as Date;
       await db.query("diagnostic", "SELECT pg_sleep(0.05)");
       await db.query(
         "diagnostic",
         "SELECT id FROM platform.transaction_fixture WHERE id='clock' FOR UPDATE",
       );
-      const end = (
-        await db.query("diagnostic", "SELECT clock_timestamp() AS at")
-      ).rows[0]!.at as Date;
+      const end = (await db.query("diagnostic", "SELECT clock_timestamp() AS at")).rows[0]!
+        .at as Date;
       expect(end.getTime() - start.getTime()).toBeGreaterThanOrEqual(40);
     });
   });
@@ -710,11 +624,8 @@ describe("pool protection and safe observations", () => {
         );
       });
       expect(
-        (
-          await fixture.query(
-            "SELECT value FROM platform.transaction_fixture WHERE id='telemetry'",
-          )
-        ).rows[0]!.value,
+        (await fixture.query("SELECT value FROM platform.transaction_fixture WHERE id='telemetry'"))
+          .rows[0]!.value,
       ).toBe(1);
     } finally {
       await observed.close();
@@ -722,13 +633,10 @@ describe("pool protection and safe observations", () => {
   });
   it("records bounded lock-acquisition timing without row identifiers", async () => {
     const observations: DatabaseObservation[] = [];
-    const observed = new PostgresDatabase(
-      { ...config, statementMs: 200, lockMs: 50 },
-      (event) => observations.push(event),
+    const observed = new PostgresDatabase({ ...config, statementMs: 200, lockMs: 50 }, (event) =>
+      observations.push(event),
     );
-    await fixture.query(
-      "INSERT INTO platform.transaction_fixture VALUES ('timed_lock',0)",
-    );
+    await fixture.query("INSERT INTO platform.transaction_fixture VALUES ('timed_lock',0)");
     const client = await fixture.connect();
     await client.query("BEGIN");
     try {
@@ -755,9 +663,7 @@ describe("pool protection and safe observations", () => {
   });
   it("collects pg_stat_statements without SQL text and keeps diagnostics restricted", async () => {
     await db.query("diagnostic", "SELECT $1::integer AS n", [123]);
-    const result = await fixture.query(
-      "SELECT * FROM public.examination_query_metrics",
-    );
+    const result = await fixture.query("SELECT * FROM public.examination_query_metrics");
     expect(result.rowCount).toBeGreaterThan(0);
     expect(result.fields.map((field) => field.name)).not.toContain("query");
     expect(
@@ -787,15 +693,13 @@ describe("pool protection and safe observations", () => {
       const timedOut = expect(waiter).rejects.toMatchObject({
         code: "DB_ACQUIRE_TIMEOUT",
       });
-      await expect(
-        bounded.query("diagnostic", "SELECT 1"),
-      ).rejects.toMatchObject({ code: "DB_BUSY" });
+      await expect(bounded.query("diagnostic", "SELECT 1")).rejects.toMatchObject({
+        code: "DB_BUSY",
+      });
       await timedOut;
       release.resolve();
       await active;
-      expect(
-        (await bounded.query("diagnostic", "SELECT 42 AS n")).rows[0]!.n,
-      ).toBe(42);
+      expect((await bounded.query("diagnostic", "SELECT 42 AS n")).rows[0]!.n).toBe(42);
     } finally {
       release.resolve();
       await bounded.close();
@@ -803,26 +707,21 @@ describe("pool protection and safe observations", () => {
   });
   it("cancels long statements at the server and does not emit SQL, parameters or error detail", async () => {
     const observations: DatabaseObservation[] = [];
-    const bounded = new PostgresDatabase(
-      { ...config, statementMs: 100, lockMs: 50 },
-      (event) => observations.push(event),
+    const bounded = new PostgresDatabase({ ...config, statementMs: 100, lockMs: 50 }, (event) =>
+      observations.push(event),
     );
     try {
-      await expect(
-        bounded.query("diagnostic", "SELECT pg_sleep($1)", [1]),
-      ).rejects.toMatchObject({ code: "57014" });
-      await expect(
-        bounded.query("diagnostic", "SELECT 'secret-answer'::integer"),
-      ).rejects.toEqual(new DatabaseError("22P02"));
-      expect(JSON.stringify(observations)).not.toMatch(
-        /secret-answer|pg_sleep|SELECT/,
+      await expect(bounded.query("diagnostic", "SELECT pg_sleep($1)", [1])).rejects.toMatchObject({
+        code: "57014",
+      });
+      await expect(bounded.query("diagnostic", "SELECT 'secret-answer'::integer")).rejects.toEqual(
+        new DatabaseError("22P02"),
       );
+      expect(JSON.stringify(observations)).not.toMatch(/secret-answer|pg_sleep|SELECT/);
       expect(observations.some((event) => event.kind === "acquire")).toBe(true);
-      expect(
-        observations.some(
-          (event) => event.kind === "query" && event.code === "57014",
-        ),
-      ).toBe(true);
+      expect(observations.some((event) => event.kind === "query" && event.code === "57014")).toBe(
+        true,
+      );
     } finally {
       await bounded.close();
     }
@@ -835,9 +734,7 @@ describe("pool protection and safe observations", () => {
           await new Promise((done) => setTimeout(done, 200));
         }),
       ).rejects.toThrow();
-      expect(
-        (await bounded.query("diagnostic", "SELECT 7 AS n")).rows[0]!.n,
-      ).toBe(7);
+      expect((await bounded.query("diagnostic", "SELECT 7 AS n")).rows[0]!.n).toBe(7);
     } finally {
       await bounded.close();
     }
@@ -867,43 +764,27 @@ describe("immutable ordered migrations", () => {
         ),
       ),
     ).rejects.toThrow("checksum");
-    await expect(
-      migrate(migrationConfig, migrations.slice(0, -1)),
-    ).rejects.toThrow("prefix");
+    await expect(migrate(migrationConfig, migrations.slice(0, -1))).rejects.toThrow("prefix");
   });
   it("rolls back failed DDL and its migration receipt, then succeeds on repaired new migration", async () => {
     const name = `${String(migrations.length + 1).padStart(4, "0")}_atomic_fixture.sql`;
     await expect(
       migrate(migrationConfig, [
         ...migrations,
-        sqlMigration(
-          name,
-          "CREATE TABLE platform.atomic_fixture (id integer); SELECT 1/0;",
-        ),
+        sqlMigration(name, "CREATE TABLE platform.atomic_fixture (id integer); SELECT 1/0;"),
       ]),
     ).rejects.toThrow("Migration failed");
     expect(
-      (
-        await fixture.query(
-          "SELECT to_regclass('platform.atomic_fixture') AS name",
-        )
-      ).rows[0]!.name,
+      (await fixture.query("SELECT to_regclass('platform.atomic_fixture') AS name")).rows[0]!.name,
     ).toBeNull();
     expect(
-      (
-        await fixture.query(
-          "SELECT name FROM platform.schema_migrations WHERE name=$1",
-          [name],
-        )
-      ).rowCount,
+      (await fixture.query("SELECT name FROM platform.schema_migrations WHERE name=$1", [name]))
+        .rowCount,
     ).toBe(0);
     expect(
       await migrate(migrationConfig, [
         ...migrations,
-        sqlMigration(
-          name,
-          "CREATE TABLE platform.atomic_fixture (id integer);",
-        ),
+        sqlMigration(name, "CREATE TABLE platform.atomic_fixture (id integer);"),
       ]),
     ).toEqual([name]);
   });

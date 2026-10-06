@@ -1,18 +1,19 @@
 # Phần 04 — Identity và composition roots
 
-2026-10-06. Kế hoạch đã điều chỉnh theo yêu cầu: email/password, link xác thực một lần, access/refresh JWT ký bằng private key và kiểm tra bằng public key. Magic link và GitHub thuộc bước sau. [ADR-005](adr/005-email-verification-and-signed-tokens.md) ghi thay đổi so với contract opaque token cũ. Đây là kế hoạch triển khai; API, email delivery và key rotation chưa chạy thật.
+2026-10-06. Đã triển khai lõi local: email/password, link xác thực một lần, access/refresh JWT ký bằng private key và kiểm tra bằng public key. Magic link và GitHub thuộc bước sau. [ADR-005](adr/005-email-verification-and-signed-tokens.md) ghi quyết định; [runtime review](phase-04-review.md) ghi implementation, kiểm chứng và giới hạn.
 
 ## 1. Phạm vi và trạng thái
 
-**IN PROGRESS — runtime execution started:** triển khai BOOT-10/Identity local và các kiểm chứng PostgreSQL/HTTP/crypto/mail; SES adapter được kiểm thử bằng provider boundary, live AWS sender/quota/bounce operations giữ pending. ID-12/13 giữ LATER. Không tick toàn phase khi còn browser/AWS/key operations chưa đo.
+**LOCAL CORE DELIVERED — phase chưa đóng:** BOOT-10 và ID-01–06/08–10 có runtime evidence. ID-07 còn browser HTTPS; ID-11 còn live AWS sender/quota/bounce/complaint/metrics. ID-12/13 giữ LATER. Không đóng phase từ các test local.
 
-- [ ] **BOOT-10** Nest API/Fastify composition root, worker entry point, cấu hình fail-fast, correlation/error mapper, liveness/readiness và graceful drain.
-- [ ] **ID-01–09** Register/login/session/permissions/profile/admin bootstrap và các kiểm chứng liên quan, theo contract mới.
-- [ ] **ID-10** Xác thực email, gửi lại, expiry, single use, activation và chống chiếm tài khoản đăng ký trước.
-- [ ] **ID-11** Durable email delivery qua Identity outbox + worker, local mailbox adapter, SES adapter và vận hành sender/abuse/bounce.
+- [x] **BOOT-10** Nest API/Fastify composition root, worker entry point, cấu hình fail-fast, correlation/error mapper, liveness/readiness và graceful drain.
+- [x] **ID-01–06, ID-08–09** Register/login/session/permissions/profile/admin bootstrap; crypto/real-PG/server HTTP tests và local benchmark.
+- [ ] **ID-07 — PARTIAL** HTTP cookie/Origin/CSRF controls đã triển khai; browser HTTPS/client coordination chưa kiểm chứng.
+- [x] **ID-10** Xác thực email, gửi lại, expiry, single use, activation, ciphertext cleanup và chống chiếm tài khoản đăng ký trước.
+- [ ] **ID-11 — PARTIAL** Outbox/worker/SMTP/SES adapter, retries/park/replay/retention đã kiểm chứng local; live sender/quota/bounce/complaint/metrics chưa triển khai.
 - [ ] **ID-12, ID-13 — LATER** Magic link và GitHub. Chưa thêm endpoint/SDK/provider credential trong phase hiện tại.
 
-Lượt điều chỉnh hiện tại chỉ bàn giao quy chuẩn, ADR, OpenAPI và contract checks. Không tick runtime Identity từ specification. DB-12 vẫn chờ old/new image drill; BOOT-09 vẫn thiếu remote. Không cần domain để kiểm thử local; gửi email AWS cần account/region/sender được chọn riêng.
+Các checkbox runtime được cập nhật trong [roadmap](implementation-roadmap.md), không chỉ từ specification. DB-12 vẫn chờ old/new image drill; BOOT-09 vẫn thiếu Git/remote. Không cần domain để kiểm thử local; gửi email AWS cần account/region/sender được chọn. WEB-02 chưa có `/verify-email` page: link local chưa hoàn tất được bằng browser.
 
 ## 2. Ownership, luồng và atomicity
 
@@ -47,9 +48,9 @@ Không dựng generic provider registry cho provider chưa tồn tại. Sau này
 
 ## 4. File/dependency impact
 
-Tạo `modules/identity/{domain,application,infrastructure,presentation}` theo nhu cầu use case; technical crypto/secret/config/HTTP cơ chế ở platform, policy Identity ở module. Tạo `main.ts`, `worker.ts`, migration mới và tests trong classification tương ứng. SQL adapter vẫn dùng `PostgresDatabase`/UoW hiện có.
+Đã áp dụng folder bạn chỉnh: Identity có `application/ports`, `domain/errors`, `infrastructure/{persistence,security,mail,http}` và `presentation/http/dto`. Crypto/email policy adapter thuộc Identity; database, idempotency, rate/audit mechanisms và reusable HTTP filter/interceptor/health thuộc platform. `AppModule`/IdentityModule/DatabaseModule/HealthModule là composition factories; platform không import module business, Presentation không import Infrastructure. SQL adapter dùng `PostgresDatabase`/UoW. Build xóa riêng generated `dist` trước compile để loại output theo folder cũ.
 
-Dependencies dự kiến: Nest core/platform-fastify, Fastify cookie/security integration, Argon2 và maintained JOSE library (`jose` candidate). Kiểm tra Node24/CommonJS packaging, lockfile/advisories, image ARM64 native Argon2 build trước khi chọn phiên bản/cài. Không cài OAuth SDK, Redis/Kafka, queue email riêng, KMS signing-per-request hoặc provider framework khi chưa có nhu cầu. Key material ở ignored local files hoặc Secrets Manager production, không đưa vào `.env.example`, repo/image/log.
+Dependencies đã dùng: Nest12.1.2/Fastify5.12.5, cookie plugin, Argon2, JOSE, Nodemailer và SESv2 SDK. Runtime audit báo0 vulnerabilities;20 moderate dev findings còn theo dõi. Node24/CommonJS startup và Argon2 trên host ARM64 đã chạy; Linux container ARM64 compatibility chưa đo. Không thêm OAuth SDK/Redis/Kafka/email queue/KMS signing mỗi request. Key material tạo exclusive trong ignored `.local/identity`, quyền600; production Secrets Manager wiring còn pending.
 
 Outbox email là Identity-owned PostgreSQL delivery intent được worker đọc trực tiếp; `platform.outbox_events` hiện có FK/type dành cho attempt submission nên không tái sử dụng sai ownership. SES là resource mới có operational requirement từ email verification; phải ghi cost provenance, quota, failure mode, retry/backlog utilization và lựa chọn khác vào resource ledger trước AWS deploy. Chưa có giá/chi phí tiết kiệm được đo.
 
@@ -68,4 +69,4 @@ Outbox email là Identity-owned PostgreSQL delivery intent được worker đọ
 
 [SLO/workload](slo-and-workload.md) ghi auth targets riêng; hot-path exam benchmarks setup sẵn verified sessions, không bypass verification. Đo full HTTP và crypto/DB riêng. No Redis baseline. Chỉ tối ưu hashing concurrency/pool/algorithm khi giữ security floor, correctness và SLO. Kết quả local không suy ra jobs/USD, sustainable AWS RPS hay cấu hình thắng.
 
-Gate Phase04 runtime: ID-01–11 + BOOT-10 có evidence tương ứng; ID-12–13 được giữ LATER. DB-12 chỉ tick sau image drill thật. Production gate vẫn cần TLS/SES/key ops/AWS load/failure/restore, không đóng từ contract checks.
+Kết quả hiện tại:90 unit/tooling +52 integration PASS; actual main/worker `/live`/`/ready` và SIGTERM PASS; benchmark hai API không có lỗi, raw samples có trong [experiment](../experiments/identity-local/README.md). Gate còn ID-07/ID-11; không chuyển sang Catalog như thể toàn Phase04 đã đóng. DB-12 chỉ tick sau image drill. Production vẫn cần browser/TLS/SES/key rollout/AWS load/failure/restore.

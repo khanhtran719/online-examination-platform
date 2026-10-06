@@ -11,12 +11,7 @@ export interface DatabaseConfig {
   idleTransactionMs: number;
 }
 
-function integer(
-  env: NodeJS.ProcessEnv,
-  key: string,
-  fallback: number,
-  max: number,
-): number {
+function integer(env: NodeJS.ProcessEnv, key: string, fallback: number, max: number): number {
   const value = env[key] ?? String(fallback);
   if (!/^\d+$/.test(value) || Number(value) < 1 || Number(value) > max)
     throw new Error(`Invalid ${key}`);
@@ -38,8 +33,7 @@ export function databaseConfig(env: NodeJS.ProcessEnv): DatabaseConfig {
     url.hash
   )
     throw new Error("Database URL must not override connection configuration");
-  if (env.DB_SSL && !["true", "false"].includes(env.DB_SSL))
-    throw new Error("Invalid DB_SSL");
+  if (env.DB_SSL && !["true", "false"].includes(env.DB_SSL)) throw new Error("Invalid DB_SSL");
   if (env.NODE_ENV === "production" && env.DB_SSL !== "true")
     throw new Error("Production database requires verified TLS");
   const config: DatabaseConfig = {
@@ -48,9 +42,7 @@ export function databaseConfig(env: NodeJS.ProcessEnv): DatabaseConfig {
       env.DB_SSL === "true"
         ? {
             rejectUnauthorized: true,
-            ...(env.DB_CA_FILE
-              ? { ca: readFileSync(env.DB_CA_FILE, "utf8") }
-              : {}),
+            ...(env.DB_CA_FILE ? { ca: readFileSync(env.DB_CA_FILE, "utf8") } : {}),
           }
         : false,
     max: integer(env, "DB_POOL_MAX", 10, 100),
@@ -58,12 +50,7 @@ export function databaseConfig(env: NodeJS.ProcessEnv): DatabaseConfig {
     acquireMs: integer(env, "DB_ACQUIRE_TIMEOUT_MS", 1000, 30000),
     statementMs: integer(env, "DB_STATEMENT_TIMEOUT_MS", 2000, 60000),
     lockMs: integer(env, "DB_LOCK_TIMEOUT_MS", 500, 60000),
-    idleTransactionMs: integer(
-      env,
-      "DB_IDLE_TRANSACTION_TIMEOUT_MS",
-      5000,
-      60000,
-    ),
+    idleTransactionMs: integer(env, "DB_IDLE_TRANSACTION_TIMEOUT_MS", 5000, 60000),
   };
   if (config.lockMs >= config.statementMs)
     throw new Error("Lock timeout must be less than statement timeout");
@@ -87,9 +74,7 @@ export function connectionBudget(budget: ConnectionBudget): {
   headroom: number;
 } {
   if (
-    Object.values(budget).some(
-      (value) => !Number.isSafeInteger(value) || value < 0,
-    ) ||
+    Object.values(budget).some((value) => !Number.isSafeInteger(value) || value < 0) ||
     budget.maxConnections < 1 ||
     budget.reserved < 1
   )

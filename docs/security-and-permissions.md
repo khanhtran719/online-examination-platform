@@ -1,6 +1,6 @@
 # Security, permissions, import and retention v1
 
-Status: implementation requirements adopted/amended 2026-10-06 by [ADR-005](adr/005-email-verification-and-signed-tokens.md), controls not implemented or production-verified. Covers SPEC-09 and auth transport for SPEC-10. [Product rules](product-specification.md), [API](contracts/openapi.yaml) and architecture/R-33–47 remain authoritative. [Phase04 plan](phase-04-plan.md) lists implementation order; magic-link/GitHub login is later work.
+Status: requirements adopted/amended 2026-10-06 by [ADR-005](adr/005-email-verification-and-signed-tokens.md). Identity core controls have [local runtime evidence](phase-04-review.md); browser HTTPS, live SES and production controls remain pending. Covers SPEC-09/auth transport SPEC-10. [Product rules](product-specification.md), [API](contracts/openapi.yaml) and architecture/R-33–47 remain authoritative; magic-link/GitHub login is later work.
 
 ## 1. Permissions and ownership
 
@@ -49,7 +49,7 @@ SES is the production adapter candidate with an explicit email operational requi
 
 ### 2.2 Signed access/refresh and key lifecycle
 
-Baseline browser API and static app share one HTTPS origin (CloudFront routing); origin/TLS AWS implementation remains pending. Access and refresh are compact signed JWTs, **ES256/P-256**, issued with an environment-specific active private/public pair through a crypto port. Private signs, public verifies; signature does not encrypt payload. No email/password/answers/authoritative role list in claims, no localStorage/sessionStorage token. Cookie names `__Host-access`, `__Host-refresh`, both Secure, HttpOnly, SameSite=Lax, Path=/, no Domain. JSON Session contains only IDs/expiry metadata. Access TTL5min; refresh idle7days clipped to family absolute30days. These are credential validity, not attempt duration. Signing cost/bytes are unmeasured; this choice is not an optimization claim.
+Baseline browser API and static app share one HTTPS origin (CloudFront routing); origin/TLS AWS implementation remains pending. Access and refresh are compact signed JWTs, **ES256/P-256**, issued with an environment-specific active private/public pair through a crypto port. Private signs, public verifies; signature does not encrypt payload. No email/password/answers/authoritative role list in claims, no localStorage/sessionStorage token. Cookie names `__Host-access`, `__Host-refresh`, both Secure, HttpOnly, SameSite=Lax, Path=/, no Domain. JSON Session contains only IDs/expiry metadata. Access TTL5min; refresh idle7days clipped to family absolute30days. These are credential validity, not attempt duration. Signing CPU/latency and token bytes have a [local diagnostic](../experiments/identity-local/README.md); AWS signing cost and optimum settings remain unmeasured.
 
 Required claims: exact configured `iss`, purpose-specific `aud`, opaque UUID `sub`, independent random UUID `jti` for each token, UUID session `sid` and family `fid`, integer `iat`, `nbf`, `exp`, and `token_use`. Protected headers: allowlisted `alg=ES256`, bounded known `kid`; access `typ=exam-access+jwt`/`token_use=access`/audience `urn:online-exam:api:v1`, refresh `typ=exam-refresh+jwt`/`token_use=refresh`/audience `urn:online-exam:refresh:v1`. Environment-specific issuer prevents cross-environment acceptance and need not be a DNS domain. Reject wrong/missing claims, unexpected critical headers, malformed/oversized JWT (initial ceiling2048bytes), none/HS/other algorithms, unknown/revoked kid, attacker-supplied jwk/jku/x5u and token-purpose substitution. Clock tolerance at most30s for crypto checks; authoritative DB expiry has no grace. Bound future iat and configured maximum lifetimes. Rules follow [RFC8725](https://www.rfc-editor.org/rfc/rfc8725.html).
 
@@ -67,7 +67,7 @@ Defense-in-depth rate limits: authenticated candidate mutation bucket initially 
 
 ## 3. First admin and privilege changes
 
-No public role-assignment/bootstrap endpoint. Future one-shot deployment/operator CLI uses a dedicated short-lived operator DB/IAM role, validates an existing enabled **email-verified** account, acquires a bootstrap lock and grants admin permissions once with append-only audit. It never accepts a hard-coded password/default admin. Require verified operator identity, reason and explicit account selection; print no secrets. Application runtime DML role cannot self-grant operator privileges. Subsequent grants/revokes use the same audited operator procedure in v1; separate UI workflow requires its own API/review.
+No public role-assignment/bootstrap endpoint. Implemented operator CLI uses a separate DB role, validates an existing enabled **email-verified** account, acquires a bootstrap lock and grants admin once with append-only audit. It never accepts a hard-coded password/default admin. Require operator identity, reason and explicit account selection; print no secrets. DB audit includes authenticated session_user; trusted human/IAM attribution remains an AWS deployment requirement. Runtime DML cannot self-grant. Subsequent grants/revokes use the same audited procedure; key revoke/email replay use operator-only SQL functions. See [operations runbook](runbooks/identity-operations.md).
 
 ## 4. Question import
 
@@ -96,7 +96,9 @@ Account deletion: immediately disable/revoke sessions, opt out ranking; remove d
 
 ## 6. Acceptance
 
-AC-18–24/29 and AC-33–35 in [contract-test matrix](contract-tests.md) cover ownership, leakage, refresh/revocation, admin escalation, verification/crypto/mail, import rollback/retry, audit and retention/restore. Schema validation cannot prove those controls: real API/DB/browser/restore tests remain pending. Dependencies/image/IaC advisories remain SEC-06; current dev findings are not production security acceptance.
+AC-18–24/29 and AC-33–35 in [contract-test matrix](contract-tests.md) define acceptance. Identity crypto, real DB/HTTP sessions, profile rollback/receipts, operator boundaries and SMTP/lease/retention have local evidence; other business ownership/import and browser/restore cases remain pending. Runtime dependency audit reports0 vulnerabilities;20 moderate dev advisories remain SEC-06. Image/IaC and production security are not accepted from that scan.
+
+Login failure admission reserves one slot atomically in an independent short transaction before hashing, with a subject-HMAC advisory lock and a fresh post-lock SELECT. Five failed/in-flight evaluations block further attempts; successful or technically rejected hashing releases its reservation. Native hashing holds no connection. Crash after reservation conservatively counts as a failure until expiry. Minute buckets retain failures at least15min after the latest reservation in that bucket (up to one minute of conservative overlap); a later reservation must extend its expiry. Sequential successes, six concurrent wrong passwords and expiry-extension regression were tested against PostgreSQL. This does not prove shared-NAT capacity or timing-enumeration resistance.
 
 ## 7. Later login methods
 

@@ -11,9 +11,7 @@ const state = () => ({
 });
 describe("Attempt lifecycle", () => {
   it("rejects saving at the exact server deadline", () => {
-    expect(() => Attempt.restore(state()).assertCanSave(5000)).toThrow(
-      "Attempt is closed",
-    );
+    expect(() => Attempt.restore(state()).assertCanSave(5000)).toThrow("Attempt is closed");
   });
   it("permits saving before deadline", () => {
     expect(() => Attempt.restore(state()).assertCanSave(4999)).not.toThrow();

@@ -156,8 +156,8 @@ apps/
   api/
     migrations/                       # versioned SQL migration bundle
     src/
-      main.ts                         # API composition root, planned
-      worker.ts                       # worker composition root, planned
+      main.ts                         # API composition root
+      worker.ts                       # independent worker composition root
       modules/
         identity/
         catalog/
@@ -169,6 +169,7 @@ apps/
         reporting/
       platform/
         application/                  # technical ports, created only when needed
+        domain/                       # transport-independent shared error semantics
         infrastructure/               # DB/UoW/outbox/SQS/telemetry/security mechanisms
         presentation/                 # HTTP/security/worker inbound adapters
   web/                                # browser client, planned
@@ -176,11 +177,13 @@ infra/terraform/                      # AWS, planned
 load-tests/                           # k6, planned
 experiments/                          # hypothesis/config/evidence/decision
 scripts/                              # validation/seed/migration/cost tooling as implemented
-tests/integration/                   # real PostgreSQL/SQS/API, planned
+apps/api/tests/integration/           # real PostgreSQL/API; SQS cases when implemented
 docs/
 ```
 
 Each capability uses only the layers it needs. Published question snapshots remain Catalog-owned; attempt/results/projections remain Assessment-owned; technical schema/migrations do not become business modules. Infrastructure imports application ports and domain types, never the reverse. Composition roots wire factories; SQS/Redis adapters remain conditional on the project contracts, not on the existence of template folders.
+
+The project placement guide groups Identity ports/errors and persistence/security/mail/HTTP adapters as described in conventions §173. Platform remains technical and cannot import business modules; Presentation depends on inbound application/HTTP ports and never the Infrastructure implementation. Module-level composition factories are the wiring boundary. This folder specialization preserves the existing dependency contract rather than changing business ownership.
 
 ---
 

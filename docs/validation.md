@@ -1,6 +1,6 @@
 # Validation log
 
-Updated 2026-10-06. Latest scope: DB-01–11 PostgreSQL foundation (Phase 03); DB-12 runbook partial. No application/AWS capacity claim is made. The initial table below records bootstrap checks; latest results are in the Phase 03 section.
+Updated 2026-10-06. Latest scope: Phase04 local Identity/API/email-worker and user-adjusted source folders. ID-07/browser and ID-11/live SES remain PARTIAL. Initial sections record historical checks; latest results are in the final Phase04 runtime section. No AWS capacity/cost/production claim.
 
 | Check / command | Result | Detail |
 | --- | --- | --- |
@@ -94,3 +94,38 @@ User selected email/password + single-use verification link now, asymmetric priv
 | API/browser/JOSE/keys/SMTP/SES/GitHub/magic link/AWS/load | NOT RUN/not implemented. No real email, key material, credentials or AWS resource created. |
 
 Manifest/lock unchanged; previous audit findings remain historical, not a newly executed dependency scan. Typecheck/build passed before final docs/test-only refinements; tests/lint/contracts passed again after those refinements. Git/remote remain unconfigured. Runtime Phase04 implementation is next; contract amendment cannot close production security, delivery, performance or cost gates.
+
+## Phase04 runtime and folder adjustment — 2026-10-06
+
+[Review](phase-04-review.md), [runbook](runbooks/identity-operations.md), [raw experiment](../experiments/identity-local/README.md). Inspected the user's moved ports/errors/persistence/security/mail/http/DTO folders and module factories; kept generic platform HTTP, extracted technical idempotency, semantic DomainError categories and null success envelope. Quality enforces platform no-business imports/Presentation no-infrastructure imports. No capability ownership change or microservice introduced.
+
+| Check / command | Actual result / scope |
+| --- | --- |
+| Fail-first domain/crypto/config/application tests | Initial missing/incorrect sources failed before implementation; actual Argon2/JOSE, key/claim/purpose/overlap and config tests now pass |
+| Logout old-cookie retry RED→GREEN | HTTP retry initially403 after family revoke; logout-specific CSRF known-family context restores idempotent200 without authorizing other mutations |
+| Concurrent login RED→GREEN | Six simultaneous wrong credentials initially all401; atomic independent reservation now five401/one429 across two instances; success releases slots |
+| Failure bucket expiry RED→GREEN | Reservation in existing minute bucket left998ms after fixture shortening, expected≥899999ms; expiry extension corrected; full PG suite passed |
+| Maintenance lock RED→GREEN | Held challenge plus cleanup caused email-intent lock timeout; parking now commits before challenge cleanup. Test synchronization permits SKIP LOCKED completion or wait;52 final cases passed |
+| Final-attempt crash / audit rollback / operator | Crash attempt10 parked after expired lease; fencing/retry bounds, profile/audit/receipt rollback, audited bootstrap/key-revoke/email-replay and mail least privilege tested |
+| `npm test` | **90 PASS**:64 Jest/11 suites +26 Node (10 quality/16 contract); none skipped in complete run |
+| `npm run test:integration:local` | **52 PASS**:30 foundation +22 Identity/2 suites, PostgreSQL17.11 through restricted roles, HTTP/SMTP actual local; fixture DBs/logins removed after zero connections |
+| `npm run typecheck` / build | PASS strict TypeScript and clean generated-output build, actual Node24 CommonJS entry points |
+| `npm run lint` / quality/contracts | PASS source boundaries/links/anchors/test placement and46 HTTP operations/425 example occurrences; only nine Identity operations implemented |
+| Local key generation | PASS exclusive600 ignored files; signing pair, public ring, separate email/CSRF/rate keys. No production credential created or secret material logged |
+| `db:local` / `db:migrate:local` | PASS:app/migrator/operator/mail roles,8 migration receipts, preserved first-six checksums |
+| SMTP Mailpit | Actual loopback capture of fragment verification link; no external email |
+| SES request/abort tests | PASS provider boundary and5s timeout; no AWS sender/quota/bounce/delivery evidence |
+| `smoke:identity:local` | Actual main/worker live/ready PASS, both SIGTERM exit0; latest idle combined640.634875ms, [raw summary](../experiments/identity-local/smoke.json); child processes stopped |
+| `bench:identity:local` | PASS final two HTTP instances/pool4 each/32 users/0 unexpected errors; latest raw samples stored; no sustainable RPS or AWS cost inference |
+| Runtime dependency remediation | Aligned Nest12.1.2/Fastify5.12.5 after nested vulnerable Fastify dependency; actual API/startup passed |
+| `npm audit --omit=dev --audit-level=high` | 0 runtime vulnerabilities reported; current lockfile scanned |
+| Full audit | 20 moderate dev findings,0 high/critical; no force fix or hidden downgrade |
+| Roadmap count |50 checked/166 unchecked =216; BOOT-10 and nine Identity items added; ID-07/11 PARTIAL, ID-12/13 LATER |
+| Browser HTTPS/frontend/ARM64 Linux images/old-new compatibility | NOT RUN; verification landing404 is documented, Secure cookie behavior not proven by manual local cookie jars |
+| AWS/Terraform/k6/scoring/SQS/large seed/saturation/PITR/restore/cost curve | NOT RUN; account/profile/region/sender/domain and deployment/evidence remain absent |
+
+Benchmark initially sent application/json with empty bodies causing96 refresh/logout errors; corrected client, retained invalid raw run and excluded it from comparisons. Valid baseline/CSRF-projection/latest runs had0 unexpected errors. Refresh query count15→10, logout13→9 including added audit. Final login19.5 average includes atomic security admission/release; do not accept a cheaper racy path. Raw CPU includes API/client process, excludes PG; RSS delta is not per-request allocation, sequential RPS is not saturation. Invalid-credential timing groups are ordered small samples and do not close enumeration resistance.
+
+No Git diff/commit/PR claimed; repository still has no Git remote. No AWS deploy/price saving/production acceptance claimed. Remaining browser/live-provider/production gates are explicit in roadmap and acceptance ledger; test/script existence alone never ticks them.
+
+Final manifest/lock dependency comparison matched; roadmap count CLI confirmed50/166/216. Final document/source quality and contract validation passed after report updates. Actual API/worker smoke processes exited; PostgreSQL/Mailpit stopped through Compose with PostgreSQL data volume retained. No implementation or test task remains running in the background.

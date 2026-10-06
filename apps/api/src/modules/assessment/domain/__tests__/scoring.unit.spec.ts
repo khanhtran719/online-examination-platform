@@ -18,14 +18,10 @@ describe("Exact-match deterministic scoring", () => {
   });
   it("gives no partial credit or credit for extra choices", () => {
     expect(score([q], [{ questionId: "q", selected: ["a"] }]).earned).toBe(0);
-    expect(
-      score([q], [{ questionId: "q", selected: ["a", "b", "c"] }]).earned,
-    ).toBe(0);
+    expect(score([q], [{ questionId: "q", selected: ["a", "b", "c"] }]).earned).toBe(0);
   });
   it("validates question membership and single-choice cardinality", () => {
-    expect(() =>
-      validateSelection({ ...q, type: "SINGLE_CHOICE" }, ["a", "b"]),
-    ).toThrow();
+    expect(() => validateSelection({ ...q, type: "SINGLE_CHOICE" }, ["a", "b"])).toThrow();
     expect(() => validateSelection(q, ["unknown"])).toThrow();
   });
   it("counts unanswered questions as incorrect", () => {
@@ -55,9 +51,7 @@ describe("Scoring input integrity", () => {
     ).toThrow();
   });
   it("rejects answers outside the frozen exam", () => {
-    expect(() =>
-      score([q], [{ questionId: "other", selected: ["true"] }]),
-    ).toThrow();
+    expect(() => score([q], [{ questionId: "other", selected: ["true"] }])).toThrow();
   });
   it("rejects invalid scoring definitions", () => {
     expect(() => score([{ ...q, points: NaN }], [])).toThrow();

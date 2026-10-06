@@ -11,8 +11,7 @@ function withoutFences(markdown) {
       const marker = line.match(/^\s{0,3}(`{3,}|~{3,})/);
       if (marker) {
         if (!fence) fence = marker[1];
-        else if (marker[1][0] === fence[0] && marker[1].length >= fence.length)
-          fence = null;
+        else if (marker[1][0] === fence[0] && marker[1].length >= fence.length) fence = null;
         return "";
       }
       return fence ? "" : line;
@@ -22,9 +21,7 @@ function withoutFences(markdown) {
 
 export function localLinks(markdown) {
   return [
-    ...withoutFences(markdown).matchAll(
-      /\[[^\]]*\]\((?:<([^>]+)>|([^\s)]+))(?:\s+"[^"]*")?\)/g,
-    ),
+    ...withoutFences(markdown).matchAll(/\[[^\]]*\]\((?:<([^>]+)>|([^\s)]+))(?:\s+"[^"]*")?\)/g),
   ]
     .map((match) => match[1] ?? match[2])
     .filter((link) => !/^[a-z][a-z0-9+.-]*:/i.test(link));
@@ -33,9 +30,7 @@ export function localLinks(markdown) {
 export function headingAnchors(markdown) {
   const seen = new Map();
   const result = new Set();
-  for (const match of withoutFences(markdown).matchAll(
-    /^#{1,6}\s+(.+?)\s*#*$/gm,
-  )) {
+  for (const match of withoutFences(markdown).matchAll(/^#{1,6}\s+(.+?)\s*#*$/gm)) {
     const slug = match[1]
       .replace(/<[^>]+>/g, "")
       .toLowerCase()
@@ -69,27 +64,19 @@ export function inspectImports(path, code) {
     ) {
       dependencies.push(node.argument.literal.text);
     }
-    if (
-      ts.isImportEqualsDeclaration(node) &&
-      ts.isExternalModuleReference(node.moduleReference)
-    ) {
+    if (ts.isImportEqualsDeclaration(node) && ts.isExternalModuleReference(node.moduleReference)) {
       const dependency = node.moduleReference.expression;
-      if (dependency && ts.isStringLiteralLike(dependency))
-        dependencies.push(dependency.text);
+      if (dependency && ts.isStringLiteralLike(dependency)) dependencies.push(dependency.text);
     }
     if (
       ts.isCallExpression(node) &&
       (node.expression.kind === ts.SyntaxKind.ImportKeyword ||
-        (ts.isIdentifier(node.expression) &&
-          node.expression.text === "require"))
+        (ts.isIdentifier(node.expression) && node.expression.text === "require"))
     ) {
       const argument = node.arguments[0];
-      if (argument && ts.isStringLiteralLike(argument))
-        dependencies.push(argument.text);
+      if (argument && ts.isStringLiteralLike(argument)) dependencies.push(argument.text);
       else if (protectedLayer)
-        errors.push(
-          "Non-literal runtime dependency cannot be checked statically",
-        );
+        errors.push("Non-literal runtime dependency cannot be checked statically");
     }
     ts.forEachChild(node, visit);
   }
@@ -100,15 +87,18 @@ export function inspectImports(path, code) {
       : dependency;
     if (
       protectedLayer &&
-      (forbidden.test(dependency) ||
-        /\/(infrastructure|presentation)(?:\/|$)/.test(target))
+      (forbidden.test(dependency) || /\/(infrastructure|presentation)(?:\/|$)/.test(target))
     ) {
-      errors.push(
-        `Protected business layer imports technical dependency: ${dependency}`,
-      );
+      errors.push(`Protected business layer imports technical dependency: ${dependency}`);
     }
     if (domainLayer && /\/application(?:\/|$)/.test(target)) {
       errors.push(`Domain imports application orchestration: ${dependency}`);
+    }
+    if (/\/presentation\//.test(path) && /\/infrastructure(?:\/|$)/.test(target)) {
+      errors.push(`Presentation imports infrastructure: ${dependency}`);
+    }
+    if (/\/platform\//.test(path) && /(?:^|\/)modules\//.test(target)) {
+      errors.push(`Platform imports a business module: ${dependency}`);
     }
     const targetModule = target.match(/(?:^|\/)modules\/([^/]+)\//)?.[1];
     if (
@@ -126,8 +116,7 @@ export function inspectImports(path, code) {
 function filesIn(root) {
   if (!existsSync(root)) return [];
   return readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
-    if (["node_modules", ".git", "dist", ".terraform"].includes(entry.name))
-      return [];
+    if (["node_modules", ".git", "dist", ".terraform"].includes(entry.name)) return [];
     const path = resolve(root, entry.name);
     return entry.isDirectory() ? filesIn(path) : [path];
   });
@@ -140,17 +129,12 @@ export function checkRepository(root) {
     const content = readFileSync(file, "utf8");
     for (const link of localLinks(content)) {
       const [target, fragment] = link.split("#");
-      const destination = target
-        ? resolve(dirname(file), decodeURIComponent(target))
-        : file;
-      if (!existsSync(destination))
-        errors.push(`${relative(root, file)}: missing link ${link}`);
+      const destination = target ? resolve(dirname(file), decodeURIComponent(target)) : file;
+      if (!existsSync(destination)) errors.push(`${relative(root, file)}: missing link ${link}`);
       else if (
         fragment &&
         destination.endsWith(".md") &&
-        !headingAnchors(readFileSync(destination, "utf8")).has(
-          decodeURIComponent(fragment),
-        )
+        !headingAnchors(readFileSync(destination, "utf8")).has(decodeURIComponent(fragment))
       ) {
         errors.push(`${relative(root, file)}: missing anchor ${link}`);
       }
@@ -173,32 +157,24 @@ export function checkRepository(root) {
     ) {
       errors.push(`${name}: stale local project policy`);
     }
-    const sections = [...content.matchAll(/^#{1,2}\s+(\d+[A-Z]?)\.\s/gm)].map(
-      (match) => match[1],
-    );
+    const sections = [...content.matchAll(/^#{1,2}\s+(\d+[A-Z]?)\.\s/gm)].map((match) => match[1]);
     if (new Set(sections).size !== sections.length)
       errors.push(`${name}: duplicate numbered section`);
   }
-  const architecture = readFileSync(
-    resolve(root, ".ai/architecture.md"),
-    "utf8",
-  );
+  const architecture = readFileSync(resolve(root, ".ai/architecture.md"), "utf8");
   const rules = readFileSync(resolve(root, ".ai/rules.md"), "utf8");
   for (let section = 76; section <= 85; section += 1) {
     if (!new RegExp(`^# ${section}\\. `, "m").test(architecture))
       errors.push(`Missing examination architecture section ${section}`);
   }
   for (let rule = 63; rule <= 75; rule += 1) {
-    if (!rules.includes(`(R-${rule})`))
-      errors.push(`Missing project rule R-${rule}`);
+    if (!rules.includes(`(R-${rule})`)) errors.push(`Missing project rule R-${rule}`);
   }
   for (const file of files.filter((path) => /\.(?:ts|mjs)$/.test(path))) {
     const name = relative(root, file);
     if (name.startsWith("apps/api/src/"))
       errors.push(
-        ...inspectImports(name, readFileSync(file, "utf8")).map(
-          (error) => `${name}: ${error}`,
-        ),
+        ...inspectImports(name, readFileSync(file, "utf8")).map((error) => `${name}: ${error}`),
       );
     if (/\.unit\.spec\.(?:ts|mjs)$/.test(name) && !name.includes("/__tests__/"))
       errors.push(`${name}: unit test must be in __tests__`);
@@ -206,10 +182,7 @@ export function checkRepository(root) {
   return errors;
 }
 
-if (
-  process.argv[1] &&
-  resolve(process.argv[1]) === fileURLToPath(import.meta.url)
-) {
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const errors = checkRepository(process.cwd());
   if (errors.length) {
     process.stderr.write(`${errors.join("\n")}\n`);

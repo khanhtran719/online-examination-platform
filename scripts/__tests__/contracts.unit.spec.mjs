@@ -1,11 +1,7 @@
 import assert from "node:assert/strict";
 import { test, before } from "node:test";
 import { resolve } from "node:path";
-import {
-  loadContracts,
-  inspectOperations,
-  validateEvent,
-} from "../contracts.mjs";
+import { loadContracts, inspectOperations, validateEvent } from "../contracts.mjs";
 
 let contracts;
 before(async () => {
@@ -67,9 +63,7 @@ test("contract checks reject a refresh audience reused for access", () => {
     access: { typ: "exam-access+jwt", audience: "same", tokenUse: "access" },
     refresh: { typ: "exam-refresh+jwt", audience: "same", tokenUse: "refresh" },
   };
-  assert.ok(
-    inspectOperations(api).some((error) => error.includes("token contract")),
-  );
+  assert.ok(inspectOperations(api).some((error) => error.includes("token contract")));
 });
 
 test("email login rejects alternate usernames and Session rejects raw credential fields", () => {
@@ -87,14 +81,8 @@ test("email login rejects alternate usernames and Session rejects raw credential
     absoluteExpiresAt: "2026-11-05T12:00:00.000Z",
   };
   assert.equal(contracts.schemas.Session(session), true);
-  assert.equal(
-    contracts.schemas.Session({ ...session, access_token: "secret" }),
-    false,
-  );
-  assert.equal(
-    contracts.schemas.Session({ ...session, refresh_token: "secret" }),
-    false,
-  );
+  assert.equal(contracts.schemas.Session({ ...session, access_token: "secret" }), false);
+  assert.equal(contracts.schemas.Session({ ...session, refresh_token: "secret" }), false);
 });
 
 test("email schemas reject non-ASCII identifiers consistently with the PostgreSQL identity policy", () => {
@@ -114,10 +102,7 @@ test("email schemas reject non-ASCII identifiers consistently with the PostgreSQ
     }),
     false,
   );
-  assert.equal(
-    contracts.schemas.RequestEmailVerificationRequest({ email: invalidEmail }),
-    false,
-  );
+  assert.equal(contracts.schemas.RequestEmailVerificationRequest({ email: invalidEmail }), false);
 });
 
 test("accepts a submitted event and rejects answer data anywhere in it", () => {
@@ -141,9 +126,7 @@ test("rejects an event for another aggregate, schema version or invalid timestam
     }).length,
   );
   assert.ok(validateEvent(contracts, { ...sample, version: 2 }).length);
-  assert.ok(
-    validateEvent(contracts, { ...sample, occurredAt: "yesterday" }).length,
-  );
+  assert.ok(validateEvent(contracts, { ...sample, occurredAt: "yesterday" }).length);
   assert.ok(
     validateEvent(contracts, {
       ...sample,
@@ -181,10 +164,7 @@ test("save contract accepts clearing and rejects duplicate options and oversized
   const validate = contracts.schemas.SaveAnswersRequest;
   const sample = contracts.api.components.schemas.SaveAnswersRequest.example;
   assert.equal(validate(sample), true);
-  assert.equal(
-    validate({ answers: [{ ...sample.answers[0], selectedOptionIds: [] }] }),
-    true,
-  );
+  assert.equal(validate({ answers: [{ ...sample.answers[0], selectedOptionIds: [] }] }), true);
   assert.equal(
     validate({
       answers: [
@@ -200,18 +180,13 @@ test("save contract accepts clearing and rejects duplicate options and oversized
     false,
   );
   assert.equal(validate({ answers: Array(21).fill(sample.answers[0]) }), false);
-  assert.equal(
-    validate({ answers: [{ ...sample.answers[0], expectedVersion: -1 }] }),
-    false,
-  );
+  assert.equal(validate({ answers: [{ ...sample.answers[0], expectedVersion: -1 }] }), false);
 });
 
 test("rejects an admin operation made public even when the document remains valid OpenAPI", () => {
   const api = structuredClone(contracts.api);
   api.paths["/v1/admin/exams"].post.security = [];
-  assert.ok(
-    inspectOperations(api).some((error) => error.includes("authentication")),
-  );
+  assert.ok(inspectOperations(api).some((error) => error.includes("authentication")));
 });
 
 test("does not allow an admin route to inherit a public operation name", () => {
@@ -219,17 +194,13 @@ test("does not allow an admin route to inherit a public operation name", () => {
   const admin = api.paths["/v1/admin/exams"].post;
   admin.operationId = "login";
   admin.security = [{ CsrfHeader: [] }];
-  assert.ok(
-    inspectOperations(api).some((error) => error.includes("authentication")),
-  );
+  assert.ok(inspectOperations(api).some((error) => error.includes("authentication")));
 });
 
 test("rejects a critical mutation without an idempotency header", () => {
   const api = structuredClone(contracts.api);
   api.paths["/v1/attempts/{attemptId}/answers"].put.parameters = [];
-  assert.ok(
-    inspectOperations(api).some((error) => error.includes("Idempotency-Key")),
-  );
+  assert.ok(inspectOperations(api).some((error) => error.includes("Idempotency-Key")));
 });
 
 test("rejects unsafe browser operations without Origin or CSRF contract", () => {

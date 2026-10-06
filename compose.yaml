@@ -27,5 +27,8 @@ services:
     image: softwaremill/elasticmq-native:1.6.15
     ports: ["127.0.0.1:9324:9324"]
     volumes: ["./infra/local-sqs.conf:/opt/elasticmq.conf:ro"]
+  mailpit:
+    image: axllent/mailpit:v1.31.4
+    ports: ["127.0.0.1:11025:1025", "127.0.0.1:18025:8025"]
 volumes:
   postgres-data:

@@ -16,39 +16,29 @@ describe("database configuration", () => {
       idleTransactionMs: 5000,
     });
   });
-  it.each(["0", "-1", "NaN", "1.2", "100000"])(
-    "rejects unsafe pool sizes %s",
-    (value) => {
-      expect(() => databaseConfig({ ...local, DB_POOL_MAX: value })).toThrow();
+  it.each(["0", "-1", "NaN", "1.2", "100000"])("rejects unsafe pool sizes %s", (value) => {
+    expect(() => databaseConfig({ ...local, DB_POOL_MAX: value })).toThrow();
+  });
+  it("requires explicit verified TLS in production", () => {
+    expect(() => databaseConfig({ ...local, NODE_ENV: "production" })).toThrow();
+    expect(() => databaseConfig({ ...local, NODE_ENV: "production", DB_SSL: "false" })).toThrow();
+    expect(databaseConfig({ ...local, NODE_ENV: "production", DB_SSL: "true" }).ssl).toEqual({
+      rejectUnauthorized: true,
+    });
+  });
+  it.each(["sslmode=no-verify", "sslmode=disable", "options=-c%20statement_timeout=0"])(
+    "rejects URL override %s",
+    (option) => {
+      expect(() =>
+        databaseConfig({
+          ...local,
+          DATABASE_URL: `${local.DATABASE_URL}?${option}`,
+        }),
+      ).toThrow();
     },
   );
-  it("requires explicit verified TLS in production", () => {
-    expect(() =>
-      databaseConfig({ ...local, NODE_ENV: "production" }),
-    ).toThrow();
-    expect(() =>
-      databaseConfig({ ...local, NODE_ENV: "production", DB_SSL: "false" }),
-    ).toThrow();
-    expect(
-      databaseConfig({ ...local, NODE_ENV: "production", DB_SSL: "true" }).ssl,
-    ).toEqual({ rejectUnauthorized: true });
-  });
-  it.each([
-    "sslmode=no-verify",
-    "sslmode=disable",
-    "options=-c%20statement_timeout=0",
-  ])("rejects URL override %s", (option) => {
-    expect(() =>
-      databaseConfig({
-        ...local,
-        DATABASE_URL: `${local.DATABASE_URL}?${option}`,
-      }),
-    ).toThrow();
-  });
   it("rejects lock timeout longer than statement timeout", () => {
-    expect(() =>
-      databaseConfig({ ...local, DB_LOCK_TIMEOUT_MS: "3000" }),
-    ).toThrow();
+    expect(() => databaseConfig({ ...local, DB_LOCK_TIMEOUT_MS: "3000" })).toThrow();
   });
 });
 

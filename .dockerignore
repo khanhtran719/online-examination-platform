@@ -1,6 +1,9 @@
 node_modules
 .git
 .env
+.env.*
+.local
+dist
 infra
 experiments
 coverage

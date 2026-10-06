@@ -5,22 +5,8 @@ import SwaggerParser from "@apidevtools/swagger-parser";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
-const methods = new Set([
-  "get",
-  "post",
-  "put",
-  "patch",
-  "delete",
-  "head",
-  "options",
-]);
-const owners = new Set([
-  "Identity",
-  "Catalog",
-  "Assessment",
-  "Reporting",
-  "Platform",
-]);
+const methods = new Set(["get", "post", "put", "patch", "delete", "head", "options"]);
+const owners = new Set(["Identity", "Catalog", "Assessment", "Reporting", "Platform"]);
 const publicRoutes = new Set([
   "get /v1/auth/csrf",
   "post /v1/auth/register",
@@ -52,9 +38,7 @@ export function inspectOperations(api) {
     !tokens.refresh.audience ||
     tokens.access.audience === tokens.refresh.audience
   )
-    errors.push(
-      "Identity: invalid signed token contract or token-purpose separation",
-    );
+    errors.push("Identity: invalid signed token contract or token-purpose separation");
   const operationIds = new Set();
   for (const [path, item] of Object.entries(api.paths)) {
     for (const [method, operation] of Object.entries(item)) {
@@ -66,8 +50,7 @@ export function inspectOperations(api) {
       operationIds.add(operation.operationId);
       const unsafe = !["get", "head", "options"].includes(method);
       const security = operation.security ?? api.security ?? [];
-      if (!owners.has(operation["x-owner"]))
-        errors.push(`${label}: unknown owner`);
+      if (!owners.has(operation["x-owner"])) errors.push(`${label}: unknown owner`);
       if (!Array.isArray(operation["x-cases"]) || !operation["x-cases"].length)
         errors.push(`${label}: missing acceptance cases`);
       if (
@@ -78,17 +61,13 @@ export function inspectOperations(api) {
       if (
         !isPublic &&
         (!security.length ||
-          security.some(
-            (alternative) => !Object.hasOwn(alternative, "AccessCookie"),
-          ))
+          security.some((alternative) => !Object.hasOwn(alternative, "AccessCookie")))
       )
         errors.push(`${label}: authentication can be bypassed`);
       if (
         unsafe &&
         (!security.length ||
-          security.some(
-            (alternative) => !Object.hasOwn(alternative, "CsrfHeader"),
-          ))
+          security.some((alternative) => !Object.hasOwn(alternative, "CsrfHeader")))
       )
         errors.push(`${label}: missing CSRF requirement`);
       if (operation["x-flow"] !== (unsafe ? "write" : "read"))
@@ -98,38 +77,28 @@ export function inspectOperations(api) {
         (unsafe && operation["x-transaction"] === "none")
       )
         errors.push(`${label}: missing transaction contract`);
-      const parameters = [
-        ...(item.parameters ?? []),
-        ...(operation.parameters ?? []),
-      ];
+      const parameters = [...(item.parameters ?? []), ...(operation.parameters ?? [])];
       if (
         unsafe &&
         !parameters.some(
           (parameter) =>
-            parameter.in === "header" &&
-            parameter.name === "Origin" &&
-            parameter.required,
+            parameter.in === "header" && parameter.name === "Origin" && parameter.required,
         )
       )
         errors.push(`${label}: missing required Origin`);
       if (unsafe && !isPublic && operation["x-idempotency"] !== true)
-        errors.push(
-          `${label}: authenticated mutation missing idempotency contract`,
-        );
+        errors.push(`${label}: authenticated mutation missing idempotency contract`);
       if (
         operation["x-idempotency"] &&
         !parameters.some(
           (parameter) =>
-            parameter.in === "header" &&
-            parameter.name === "Idempotency-Key" &&
-            parameter.required,
+            parameter.in === "header" && parameter.name === "Idempotency-Key" && parameter.required,
         )
       )
         errors.push(`${label}: missing required Idempotency-Key`);
       if (operation["x-paginated"]) {
         const pageSize = parameters.find(
-          (parameter) =>
-            parameter.in === "query" && parameter.name === "pageSize",
+          (parameter) => parameter.in === "query" && parameter.name === "pageSize",
         );
         if (
           !pageSize ||
@@ -139,10 +108,7 @@ export function inspectOperations(api) {
         )
           errors.push(`${label}: missing bounded pageSize`);
         if (
-          !parameters.some(
-            (parameter) =>
-              parameter.name === "cursor" && parameter.in === "query",
-          )
+          !parameters.some((parameter) => parameter.name === "cursor" && parameter.in === "query")
         )
           errors.push(`${label}: missing keyset cursor`);
       }
@@ -174,10 +140,9 @@ export function validateEvent(contracts, event) {
 
 export async function loadContracts(root) {
   // Do not allow a contract to resolve external files/URLs during checks.
-  const api = await SwaggerParser.validate(
-    resolve(root, "docs/contracts/openapi.yaml"),
-    { resolve: { external: false } },
-  );
+  const api = await SwaggerParser.validate(resolve(root, "docs/contracts/openapi.yaml"), {
+    resolve: { external: false },
+  });
   const errors = inspectOperations(api);
   const caseIds = new Set(
     [
@@ -193,46 +158,32 @@ export async function loadContracts(root) {
       operationCount += 1;
       for (const id of operation["x-cases"] ?? [])
         if (!caseIds.has(id))
-          errors.push(
-            `${operation.operationId}: unknown acceptance case ${id}`,
-          );
+          errors.push(`${operation.operationId}: unknown acceptance case ${id}`);
     }
   }
   if (errors.length) throw new Error(errors.join("\n"));
   const ajv = new Ajv({ allErrors: true, strict: false });
   addFormats(ajv);
   const schemas = Object.fromEntries(
-    Object.entries(api.components.schemas).map(([name, schema]) => [
-      name,
-      ajv.compile(schema),
-    ]),
+    Object.entries(api.components.schemas).map(([name, schema]) => [name, ajv.compile(schema)]),
   );
   let exampleCount = 0;
   function checkExample(schema, example, label) {
     const validate = ajv.compile(schema);
-    if (!validate(example))
-      throw new Error(`${label}: ${ajv.errorsText(validate.errors)}`);
-    if (
-      example &&
-      typeof example === "object" &&
-      Object.hasOwn(example, "errorCode")
-    ) {
+    if (!validate(example)) throw new Error(`${label}: ${ajv.errorsText(validate.errors)}`);
+    if (example && typeof example === "object" && Object.hasOwn(example, "errorCode")) {
       if (
         example.status === false &&
         (example.data !== null || example.errorCode !== example.message)
       )
         throw new Error(`${label}: unsafe error envelope`);
-      if (
-        example.status === true &&
-        (example.errorCode !== "" || example.message !== "OK")
-      )
+      if (example.status === true && (example.errorCode !== null || example.message !== null))
         throw new Error(`${label}: inconsistent success envelope`);
     }
     exampleCount += 1;
   }
   for (const [name, schema] of Object.entries(api.components.schemas))
-    if (Object.hasOwn(schema, "example"))
-      checkExample(schema, schema.example, name);
+    if (Object.hasOwn(schema, "example")) checkExample(schema, schema.example, name);
   for (const item of Object.values(api.paths)) {
     for (const [method, operation] of Object.entries(item)) {
       if (!methods.has(method)) continue;
@@ -252,10 +203,7 @@ export async function loadContracts(root) {
     }
   }
   const event = JSON.parse(
-    readFileSync(
-      resolve(root, "docs/contracts/attempt-submitted.v1.schema.json"),
-      "utf8",
-    ),
+    readFileSync(resolve(root, "docs/contracts/attempt-submitted.v1.schema.json"), "utf8"),
   );
   const contracts = {
     api,
@@ -272,10 +220,7 @@ export async function loadContracts(root) {
   return contracts;
 }
 
-if (
-  process.argv[1] &&
-  import.meta.url === pathToFileURL(resolve(process.argv[1])).href
-) {
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const contracts = await loadContracts(resolve(import.meta.dirname, ".."));
   process.stdout.write(
     `Contracts passed: ${contracts.operationCount} operations, ${contracts.exampleCount} examples, event schema and declared boundary metadata. Runtime security/durability/SLO remain unverified.\n`,

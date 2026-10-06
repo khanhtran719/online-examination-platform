@@ -5,25 +5,18 @@ import { inspectImports, localLinks, headingAnchors } from "../quality.mjs";
 test("finds forbidden external, dynamic and re-export imports while ignoring comments", () => {
   const code = `// import { Client } from 'pg';\nexport { Client } from 'pg';\nconst driver = import('@aws-sdk/client-sqs');`;
   assert.equal(
-    inspectImports("apps/api/src/modules/assessment/application/save.ts", code)
-      .length,
+    inspectImports("apps/api/src/modules/assessment/application/save.ts", code).length,
     2,
   );
 });
 test("detects module-private and same-module infrastructure access from application", () => {
   const path = "apps/api/src/modules/assessment/application/save.ts";
   assert.equal(
-    inspectImports(
-      path,
-      `import x from '../../catalog/infrastructure/catalog.repository';`,
-    ).length,
+    inspectImports(path, `import x from '../../catalog/infrastructure/catalog.repository';`).length,
     2,
   );
   assert.equal(
-    inspectImports(
-      path,
-      `import x from '../infrastructure/attempt.repository';`,
-    ).length,
+    inspectImports(path, `import x from '../infrastructure/attempt.repository';`).length,
     1,
   );
 });
@@ -61,8 +54,7 @@ test("resolves repeated headings and ignores code-fence pseudo-headings", () => 
 test("checks TypeScript import types and import-equals dependencies", () => {
   const code = `type Client = import('pg').Pool; import sqs = require('@aws-sdk/client-sqs');`;
   assert.equal(
-    inspectImports("apps/api/src/modules/assessment/application/save.ts", code)
-      .length,
+    inspectImports("apps/api/src/modules/assessment/application/save.ts", code).length,
     2,
   );
 });
@@ -70,8 +62,7 @@ test("checks TypeScript import types and import-equals dependencies", () => {
 test("rejects Node network imports with or without node prefix", () => {
   const code = `import http from 'http'; import https from 'node:https';`;
   assert.equal(
-    inspectImports("apps/api/src/modules/assessment/application/save.ts", code)
-      .length,
+    inspectImports("apps/api/src/modules/assessment/application/save.ts", code).length,
     2,
   );
 });
@@ -79,17 +70,36 @@ test("rejects Node network imports with or without node prefix", () => {
 test("checks technical folder barrel imports without a trailing slash", () => {
   const code = `import sql from '../infrastructure'; export { adapter } from '../presentation';`;
   assert.equal(
-    inspectImports("apps/api/src/modules/assessment/application/save.ts", code)
-      .length,
+    inspectImports("apps/api/src/modules/assessment/application/save.ts", code).length,
     2,
+  );
+});
+
+test("keeps platform technical and presentation independent of infrastructure", () => {
+  assert.equal(
+    inspectImports(
+      "apps/api/src/platform/infrastructure/security/runtime-config.ts",
+      `import { JwtSessionTokens } from '../../../modules/identity/infrastructure/security/identity-crypto';`,
+    ).length,
+    1,
+  );
+  assert.equal(
+    inspectImports(
+      "apps/api/src/modules/identity/presentation/http/identity.controller.ts",
+      `import { HttpSession } from '../../infrastructure/http/http-session';`,
+    ).length,
+    1,
+  );
+  assert.deepEqual(
+    inspectImports(
+      "apps/api/src/main.ts",
+      `import { IdentityService } from './modules/identity/application/identity.service';`,
+    ),
+    [],
   );
 });
 
 test("keeps domain independent of application orchestration", () => {
   const code = `import { SubmitAttemptUseCase } from '../application/submit-attempt.use-case';`;
-  assert.equal(
-    inspectImports("apps/api/src/modules/assessment/domain/attempt.ts", code)
-      .length,
-    1,
-  );
+  assert.equal(inspectImports("apps/api/src/modules/assessment/domain/attempt.ts", code).length, 1);
 });

@@ -7,6 +7,13 @@ import { DatabaseConfig } from "./database-config";
 // Bounded labels only. Add a reviewed label when a business adapter is implemented.
 export type DatabaseOperation =
   | "diagnostic"
+  | "identity.read"
+  | "identity.write"
+  | "security.rate"
+  | "audit.write"
+  | "idempotency.read"
+  | "idempotency.write"
+  | "email.claim"
   | "lock.acquire"
   | "transaction.begin"
   | "transaction.commit"
@@ -40,13 +47,8 @@ interface TransactionScope {
   pending: Set<Promise<unknown>>;
 }
 function safeCode(error: unknown): string {
-  const code =
-    error && typeof error === "object" && "code" in error
-      ? error.code
-      : undefined;
-  return typeof code === "string" && /^[0-9A-Z]{5}$/.test(code)
-    ? code
-    : "DB_UNAVAILABLE";
+  const code = error && typeof error === "object" && "code" in error ? error.code : undefined;
+  return typeof code === "string" && /^[0-9A-Z]{5}$/.test(code) ? code : "DB_UNAVAILABLE";
 }
 
 /** Infrastructure executor only: never inject into application/domain code. */
@@ -58,8 +60,7 @@ export class PostgresDatabase implements UnitOfWork {
 
   constructor(
     private readonly config: DatabaseConfig,
-    private readonly observe: (value: DatabaseObservation) => void = () =>
-      undefined,
+    private readonly observe: (value: DatabaseObservation) => void = () => undefined,
   ) {
     this.pool = new Pool({
       connectionString: config.url,
@@ -72,12 +73,9 @@ export class PostgresDatabase implements UnitOfWork {
       lock_timeout: config.lockMs,
       idle_in_transaction_session_timeout: config.idleTransactionMs,
       application_name: "examination",
-      options:
-        "-c search_path=pg_catalog -c timezone=UTC -c synchronous_commit=on",
+      options: "-c search_path=pg_catalog -c timezone=UTC -c synchronous_commit=on",
     });
-    this.pool.on("error", (error) =>
-      this.emit("pool.error", 0, undefined, safeCode(error)),
-    );
+    this.pool.on("error", (error) => this.emit("pool.error", 0, undefined, safeCode(error)));
   }
 
   stats(): { total: number; idle: number; waiting: number } {
@@ -103,10 +101,7 @@ export class PostgresDatabase implements UnitOfWork {
   }
 
   private async acquire(): Promise<PoolClient> {
-    if (
-      this.closing ||
-      this.admitted >= this.config.max + this.config.maxWaiting
-    )
+    if (this.closing || this.admitted >= this.config.max + this.config.maxWaiting)
       throw new DatabaseError("DB_BUSY");
     this.admitted += 1;
     const started = performance.now();
@@ -116,12 +111,7 @@ export class PostgresDatabase implements UnitOfWork {
       return client;
     } catch {
       this.admitted -= 1;
-      this.emit(
-        "acquire",
-        performance.now() - started,
-        undefined,
-        "DB_ACQUIRE_TIMEOUT",
-      );
+      this.emit("acquire", performance.now() - started, undefined, "DB_ACQUIRE_TIMEOUT");
       throw new DatabaseError("DB_ACQUIRE_TIMEOUT");
     }
   }
@@ -141,8 +131,7 @@ export class PostgresDatabase implements UnitOfWork {
     try {
       const result = await client.query<T>(sql, parameters);
       this.emit("query", performance.now() - started, operation);
-      if (operation === "lock.acquire")
-        this.emit("lock", performance.now() - started, operation);
+      if (operation === "lock.acquire") this.emit("lock", performance.now() - started, operation);
       return result;
     } catch (error) {
       const code = safeCode(error);
@@ -159,11 +148,9 @@ export class PostgresDatabase implements UnitOfWork {
     parameters: unknown[] = [],
   ): Promise<QueryResult<T>> {
     const scope = this.context.getStore();
-    if (operation === "lock.acquire" && !scope)
-      throw new DatabaseError("DB_TRANSACTION_REQUIRED");
+    if (operation === "lock.acquire" && !scope) throw new DatabaseError("DB_TRANSACTION_REQUIRED");
     if (scope) {
-      if (!scope.active || !scope.accepting)
-        throw new DatabaseError("DB_CONTEXT_ENDED");
+      if (!scope.active || !scope.accepting) throw new DatabaseError("DB_CONTEXT_ENDED");
       const work = this.execute<T>(scope.client, operation, sql, parameters);
       scope.pending.add(work);
       try {
@@ -186,8 +173,7 @@ export class PostgresDatabase implements UnitOfWork {
   async transaction<T>(work: () => Promise<T>): Promise<T> {
     const existing = this.context.getStore();
     if (existing) {
-      if (!existing.active || !existing.accepting)
-        throw new DatabaseError("DB_CONTEXT_ENDED");
+      if (!existing.active || !existing.accepting) throw new DatabaseError("DB_CONTEXT_ENDED");
       const joined = Promise.resolve().then(work);
       existing.pending.add(joined);
       try {
@@ -228,15 +214,9 @@ export class PostgresDatabase implements UnitOfWork {
           await Promise.allSettled([...scope.pending]);
         }
         if (scope.rollbackOnly) throw new TransactionRollbackOnlyError();
-        const commitResult = await this.execute(
-          client,
-          "transaction.commit",
-          "COMMIT",
-          [],
-        );
+        const commitResult = await this.execute(client, "transaction.commit", "COMMIT", []);
         // PostgreSQL may answer ROLLBACK to COMMIT after an aborted transaction.
-        if (commitResult.command !== "COMMIT")
-          throw new TransactionRollbackOnlyError();
+        if (commitResult.command !== "COMMIT") throw new TransactionRollbackOnlyError();
         committed = true;
         return result;
       });

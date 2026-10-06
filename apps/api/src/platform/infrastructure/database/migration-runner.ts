@@ -18,27 +18,18 @@ export function validateMigrationSql(sql: string): void {
     " ",
   );
   if (
-    /(?:^|;)\s*(?:BEGIN|COMMIT|ROLLBACK|START\s+TRANSACTION|SET|RESET|DISCARD)\b/i.test(
-      statements,
-    )
+    /(?:^|;)\s*(?:BEGIN|COMMIT|ROLLBACK|START\s+TRANSACTION|SET|RESET|DISCARD)\b/i.test(statements)
   )
     throw new Error("Migration cannot manage its transaction/session");
 }
 
-export async function loadMigrations(
-  directory: string,
-): Promise<SqlMigration[]> {
+export async function loadMigrations(directory: string): Promise<SqlMigration[]> {
   const files = (await readdir(directory)).sort();
-  if (
-    !files.length ||
-    files.some((name) => !/^\d{4}_[a-z0-9_]+\.sql$/.test(name))
-  )
+  if (!files.length || files.some((name) => !/^\d{4}_[a-z0-9_]+\.sql$/.test(name)))
     throw new Error("Invalid migration filenames");
   const versions = files.map((name) => Number(name.slice(0, 4)));
   if (versions.some((version, index) => version !== index + 1))
-    throw new Error(
-      "Migrations must be a contiguous sequence starting at 0001",
-    );
+    throw new Error("Migrations must be a contiguous sequence starting at 0001");
   return Promise.all(
     files.map(async (name) => {
       const sql = await readFile(join(directory, name), "utf8");
@@ -59,10 +50,7 @@ export async function migrate(
 ): Promise<string[]> {
   for (const migration of migrations) {
     validateMigrationSql(migration.sql);
-    if (
-      createHash("sha256").update(migration.sql).digest("hex") !==
-      migration.checksum
-    )
+    if (createHash("sha256").update(migration.sql).digest("hex") !== migration.checksum)
       throw new Error("Migration content/checksum mismatch");
   }
   const pool = new Pool({
@@ -73,8 +61,7 @@ export async function migrate(
     statement_timeout: 60000,
     lock_timeout: 5000,
     idle_in_transaction_session_timeout: 60000,
-    options:
-      "-c search_path=pg_catalog -c timezone=UTC -c synchronous_commit=on",
+    options: "-c search_path=pg_catalog -c timezone=UTC -c synchronous_commit=on",
     application_name: "examination-migration",
   });
   pool.on("error", () => undefined);
@@ -101,9 +88,7 @@ export async function migrate(
     const names = migrations.map((m) => m.name);
     if (
       names.some(
-        (name, i) =>
-          !/^\d{4}_[a-z0-9_]+\.sql$/.test(name) ||
-          Number(name.slice(0, 4)) !== i + 1,
+        (name, i) => !/^\d{4}_[a-z0-9_]+\.sql$/.test(name) || Number(name.slice(0, 4)) !== i + 1,
       ) ||
       new Set(names).size !== names.length
     )
@@ -111,18 +96,11 @@ export async function migrate(
     for (let i = 0; i < existing.rows.length; i += 1) {
       const row = existing.rows[i];
       const expected = migrations[i];
-      if (
-        !expected ||
-        row?.name !== expected.name ||
-        row.checksum !== expected.checksum
-      )
+      if (!expected || row?.name !== expected.name || row.checksum !== expected.checksum)
         throw new Error("Applied migration prefix/checksum mismatch");
     }
     for (const migration of migrations.slice(existing.rows.length)) {
-      if (
-        createHash("sha256").update(migration.sql).digest("hex") !==
-        migration.checksum
-      )
+      if (createHash("sha256").update(migration.sql).digest("hex") !== migration.checksum)
         throw new Error("Migration content/checksum mismatch");
       await client.query("BEGIN");
       try {

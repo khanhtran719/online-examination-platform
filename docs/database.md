@@ -1,6 +1,6 @@
 # PostgreSQL implementation
 
-Scope: DB-01–11. PostgreSQL 17, parameterized pg infrastructure (ADR-001). This is the persistence foundation, not implemented Identity/Catalog/Assessment HTTP use cases or a performance benchmark. [Review](phase-03-review.md), [migration runbook](runbooks/database-migrations.md), [decision](adr/004-postgresql-durability.md).
+Scope: DB-01–11 foundation plus Phase04 Identity adapters/operations. PostgreSQL17, parameterized pg infrastructure (ADR-001). Eight migrations applied local; Identity real-PG/HTTP/retention tests and [local diagnostic](../experiments/identity-local/README.md) exist. Catalog/Assessment persistence flows/AWS saturation remain pending. [Foundation review](phase-03-review.md), [Identity review](phase-04-review.md), [migration runbook](runbooks/database-migrations.md), [decision](adr/004-postgresql-durability.md).
 
 ## Local execution
 
@@ -14,7 +14,7 @@ npm run db:budget -- infra/database/connection-budget.local.json
 docker compose stop postgres
 ```
 
-Local-only commands use fake credentials in `.env.example`. `db:local` provisions NOLOGIN owner/runtime groups and two local logins, revokes public schema CREATE, and installs restricted diagnostics. The migrator explicitly SET ROLE to the owner; application login inherits DML only and cannot SET ROLE owner. Production uses different secret-managed logins: **never inject local/test/admin/migration URLs into API/worker containers**. General `db:migrate` requires DATABASE_MIGRATION_URL; general `test:integration` requires TEST_DATABASE_ADMIN_URL. Tests create isolated randomly named databases and login roles, wait for all connections to close, and remove only their own fixtures. They do not truncate the development database or prove AWS behavior.
+Local-only commands use fake example credentials. `db:local` provisions NOLOGIN owner/runtime/operator/mail-worker groups and distinct local migrator/app/operator/mail logins, revokes public CREATE and installs diagnostics. Migrator SET ROLE owner; app DML only cannot SET ROLE owner or directly mutate role grants. Worker only reads required user columns/challenges/intents and uses narrow maintenance, not passwords/JWT sessions/catalog keys. Production secret-managed logins remain pending: **never inject local/test/admin/migration/operator URLs into API/worker containers**. General db:migrate requires DATABASE_MIGRATION_URL, integration requires TEST_DATABASE_ADMIN_URL. Isolated test databases/roles are cleaned after connections close; development data is not truncated.
 
 ## Ownership and storage
 
@@ -25,13 +25,13 @@ Local-only commands use fake credentials in `.env.example`. `db:local` provision
 | assessment | attempts, answers, normalized selections, results/sections/question detail, ranking/statistic projections | one active candidate/logical exam across versions; ownership/version composite FKs; unique submission/event IDs; positive answer version; immutable accepted submission; results unique per attempt; exact integer basis points; completion/result deferred integrity |
 | platform | migration receipts, actor/key receipts, outbox, inbox, quarantined jobs, append-only audit, bounded rate buckets, import reports | checksum history; globally actor-scoped key uniqueness; consumer/event uniqueness; leases paired; payload/report size limits; DML grants by table/column |
 
-There are 34 base tables including schema_migrations. No module is created per table. FKs do not authorize cross-module repository access. Bank provenance in frozen questions is scalar historical identity/revision, deliberately not a cascading FK to mutable bank content. Candidate projections must explicitly select authorized columns; separate key tables are not a substitute for authorization. Reporting's allowed source projections remain as specified in Phase 02; no reporting query is implemented here.
+The initial six migrations delivered34 tables including history. 0007 expands Identity with challenges/email intents/operator bootstrap/request limits and session/user metadata;0008 adds maintenance/privileges/operational functions. No per-table modules or cross-module repository access. Bank provenance is scalar historical identity/revision, not a cascading FK to mutable content. Candidate projections explicitly select authorized columns; separate key tables do not substitute authorization. Reporting remains specified, not implemented.
 
 Frozen publication INSERTs are assembled in one transaction. A server-owned xid8 marks that transaction; child insertion guards reject later append. Runtime has SELECT/INSERT only on snapshots. A deferred constraint validates nonempty sections, total bounds, option count, key membership/cardinality and type at commit. Published metadata, including category, comes from the snapshot, not the draft. Publication trigger/validation queries are internal server work that must be included in future profiling. No optimization benefit is claimed for these guards: they protect correctness.
 
 PROCESSING is transaction-local. Deferred constraints reject a commit leaving PROCESSING, a COMPLETED attempt without result, or a result without COMPLETED. The worker must finish both in its UoW; a lease model would require a reviewed migration/ADR. Stable accepted submitted_at/submission_id/event_id/expired cannot change. Runtime cannot change attempt owner/exam/version/start/deadline, answer membership or outbox payload/identity. Audit, results, inbox and receipt identities are append-only for runtime. Retention is a future audited maintenance capability with ordered FK-safe batches; runtime has no blanket purge permission.
 
-Application/domain still own permission/ownership checks, exact deadline=min(duration,frozen close), start/count serialization, expected-version compare, answer choice cardinality, lifecycle transition commands, UUIDv7 freshness/fingerprints, same-lock save/submit, receipt-first retry, event schema, deterministic scores/projection effects and retention policy. Technical schema tests **do not implement or prove** ATT-10/ASYNC-11/Identity authentication. Empty event/response test fixtures are deliberately technical, never production event payloads.
+Application/domain own permissions/invariants. Identity now implements sessions/current permissions, post-lock time, UUIDv7 profile freshness/fingerprints/receipt-first retry and atomic audit; business races have real tests. Exam deadline/start/save/submit/scoring/inbox remain future use cases. Technical schema fixtures do not prove ATT-10/ASYNC-11; empty technical payloads are not production events.
 
 ## Query/index map
 
@@ -51,6 +51,7 @@ Primary/unique constraints provide their own indexes. Additional indexes in 0002
 | Receipt replay / retention | receipt actor/key PK; receipts_retention |
 | Outbox / inbox | outbox_ready partial available_at/created_at/event; lease/deadline filter checked at claim; outbox_aggregate; inbox consumer/event PK + inbox_attempt |
 | Session / RBAC / operations | unique credential hashes; families by user; sessions_by_family/retention; role assignment reverse index; audit actor/resource/time; bucket expiry; import actor cursor |
+| Identity verification / delivery | unique token hash; email-ready partial lease/available index; pending-account/material/metadata retention indexes; sessions by signing kid/family for incident revoke |
 
 Actual adapter query plans, index selectivity/write overhead, cross-version rank/opt-out filtering and saturation require the large dataset and experiments. Small fixture success is not evidence of optimal index choice. No partitions, RDS Proxy, PgBouncer or Redis are added.
 
