@@ -48,3 +48,5 @@ Outcome cần Grok giao: app static chạy được, UI đủ luồng demo, Iden
 Không đổi pg/ORM, migration, backend auth, scoring, SLO, Terraform hoặc AWS resource. Không thêm thanh toán, webcam/proctoring, khóa copy/chuột phải, chặn đổi tab, essays/speaking, chat, reset password, role assignment UI, CSV/XLSX import, magic link/GitHub hoạt động khi chưa có contract. Không đặt access/refresh token hoặc private key vào JavaScript. Không tạo số liệu performance/cost/rating hay khẳng định điểm TOEIC/IELTS chính thức.
 
 Nếu Grok chỉ có môi trường sinh frontend và không có repository, phải đính kèm ít nhất toàn bộ bộ tài liệu này, OpenAPI, product và security contract; nó chỉ được báo demo hoàn tất. Live auth/browser/security acceptance cần repository và backend/environment thật.
+
+[Web UI đợt1 — nền tảng giao diện](foundation-implementation-2026-10-07.md): Brand/navy/mint, shared controls và Candidate/Admin navigation theo bộ mẫu secondary pages. Named scope độc lập với full FE/production acceptance.

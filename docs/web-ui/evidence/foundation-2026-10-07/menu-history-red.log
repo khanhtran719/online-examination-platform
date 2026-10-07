@@ -1,0 +1,51 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test foundation.e2e-spec.ts --grep candidate mobile
+
+
+Running 1 test using 1 worker
+
+(node:85941) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › e2e/foundation.e2e-spec.ts:31:1 › candidate mobile navigation closes after choosing a route and shows its active link (12.9s)
+
+
+  1) [chromium] › e2e/foundation.e2e-spec.ts:31:1 › candidate mobile navigation closes after choosing a route and shows its active link 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: 'Menu', exact: true })
+    Expected: "false"
+    Timeout: 12000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('button', { name: 'Menu', exact: true }) with timeout 12000ms
+      - waiting for getByRole('button', { name: 'Menu', exact: true })
+
+
+      55 |   await page.goBack();
+      56 |   await expect(page.getByRole("heading", { name: "Đề thi", exact: true })).toBeVisible();
+    > 57 |   await expect(page.getByRole("button", { name: "Menu", exact: true })).toHaveAttribute("aria-expanded", "false");
+         |                                                                         ^
+      58 | });
+      59 |
+      60 | test("admin mobile menu preserves capability filtering and logout", async ({ page }) => {
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:57:73
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-can-92d39-e-and-shows-its-active-link-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/foundation.e2e-spec.ts-can-92d39-e-and-shows-its-active-link-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-can-92d39-e-and-shows-its-active-link-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/foundation.e2e-spec.ts-can-92d39-e-and-shows-its-active-link-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/foundation.e2e-spec.ts:31:1 › candidate mobile navigation closes after choosing a route and shows its active link 

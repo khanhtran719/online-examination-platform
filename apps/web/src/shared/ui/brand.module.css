@@ -1,0 +1,41 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--control-height);
+  color: inherit;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.light {
+  font-weight: 600;
+}
+.mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-brand);
+  background: var(--color-brand-accent);
+  color: var(--color-brand-canvas);
+  box-shadow: 0 3px 0 var(--color-brand-edge);
+  font-size: 36px;
+  line-height: 36px;
+  transform: rotate(-6deg);
+  transition: transform var(--motion-control) var(--ease-control);
+}
+@media (hover: hover) {
+  .brand:hover .mark {
+    transform: perspective(120px) rotate(-3deg) rotateY(-12deg) translateY(-2px);
+  }
+}
+@media (max-width: 600px) {
+  .brand {
+    font-size: 22px;
+  }
+}

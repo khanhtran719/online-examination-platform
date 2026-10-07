@@ -6,7 +6,7 @@ import { useTitle } from "../../app/use-title";
 import { formatDateTime, shortId } from "../../shared/format";
 import { useProtectedAccess } from "../../shared/protected-access";
 import { Button, Dialog, EmptyState, ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
-import { tableClass, tableWrapClass } from "../../shared/ui/ui";
+import { tableClass, TableScroll } from "../../shared/ui/ui";
 import { rateLabel } from "../assessment/progress";
 import styles from "../../shared/styles/layout.module.css";
 import { CapabilityGate, useCapability } from "./gate";
@@ -160,7 +160,7 @@ export function AuditPage() {
           Các thao tác quản trị sẽ thêm dòng mới.
         </EmptyState>
       ) : null}
-      <div className={tableWrapClass}>
+      <TableScroll label="Nhật ký quản trị">
         <table className={tableClass}>
           <thead>
             <tr>
@@ -193,7 +193,7 @@ export function AuditPage() {
             ))}
           </tbody>
         </table>
-      </div>
+      </TableScroll>
       {audit.hasNextPage && !hidden ? (
         <Button onClick={() => void audit.fetchNextPage()}>Tải thêm</Button>
       ) : null}

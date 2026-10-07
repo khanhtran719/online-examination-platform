@@ -1,13 +1,13 @@
-import { useState, type ReactNode } from "react";
-import { Link, NavLink, useLocation } from "react-router";
+import type { ReactNode } from "react";
+import { Link, useLocation } from "react-router";
 import { useSession } from "../../app/session";
 import styles from "./public.module.css";
+import { Brand } from "../../shared/ui/brand";
+import { Navigation } from "../../shared/ui/navigation";
 
 export function PublicFrame({ children }: { children: ReactNode }) {
   const session = useSession();
   const location = useLocation();
-  const [openAt, setOpenAt] = useState<string | null>(null);
-  const open = openAt === location.pathname;
   const immersive = location.pathname === "/" || location.pathname === "/experience";
   const links = [
     { to: "/experience", label: "Trải nghiệm" },
@@ -30,43 +30,17 @@ export function PublicFrame({ children }: { children: ReactNode }) {
       </a>
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <Link className={styles.brand} to="/" aria-label="ExamPlatform — trang chủ">
-            <span className={styles.brandMark} aria-hidden="true">
-              e
-            </span>
-            <span>
-              Exam<span className={styles.brandLight}>Platform</span>
-            </span>
-          </Link>
-          <button
-            type="button"
-            className={styles.menuButton}
-            aria-expanded={open}
-            aria-controls="public-nav"
-            onClick={() => setOpenAt(open ? null : location.pathname)}
-          >
-            {open ? "Đóng menu" : "Menu"}
-          </button>
-          <nav
-            id="public-nav"
-            className={`${styles.nav} ${open ? styles.navOpen : ""}`}
-            aria-label="Chính"
-          >
-            {links.map((link, index) => (
-              <NavLink
-                className={index === links.length - 1 ? styles.headerCta : styles.navLink}
-                key={link.to}
-                to={link.to}
-                onClick={() => setOpenAt(null)}
-              >
-                {link.label}
-                {index === links.length - 1 ? <span aria-hidden="true">↗</span> : null}
-              </NavLink>
-            ))}
-          </nav>
+          <Brand />
+          <Navigation
+            items={links.map((link, index) => ({ ...link, emphasis: index === links.length - 1 }))}
+          />
         </div>
       </header>
-      <main id="content" className={immersive ? styles.immersiveMain : styles.standardMain}>
+      <main
+        id="content"
+        tabIndex={-1}
+        className={immersive ? styles.immersiveMain : styles.standardMain}
+      >
         {children}
       </main>
       <footer className={styles.footer}>

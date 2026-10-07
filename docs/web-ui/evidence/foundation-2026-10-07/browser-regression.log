@@ -1,0 +1,29 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test
+
+
+Running 16 tests using 1 worker
+
+(node:89879) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › e2e/browser.spec.ts:58:3 › demo › public pages at five widths (7.1s)
+  ✓   2 [chromium] › e2e/browser.spec.ts:87:3 › demo › exam save, conflict, frozen attempt and result (5.0s)
+  ✓   3 [chromium] › e2e/browser.spec.ts:140:3 › demo › admin permission boundary and honest metrics (4.8s)
+  ✓   4 [chromium] › e2e/browser.spec.ts:170:3 › live › does not fall back to demo data (1.2s)
+  ✓   5 [chromium] › e2e/foundation.e2e-spec.ts:11:1 › public mobile menu closes on Escape and restores trigger focus (296ms)
+  ✓   6 [chromium] › e2e/foundation.e2e-spec.ts:31:1 › candidate mobile navigation closes after choosing a route and shows its active link (537ms)
+  ✓   7 [chromium] › e2e/foundation.e2e-spec.ts:66:1 › admin mobile menu preserves capability filtering and logout (2.9s)
+  ✓   8 [chromium] › e2e/foundation.e2e-spec.ts:94:1 › shared controls support keyboard entry, table scrolling and dialog focus (729ms)
+(node:90496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   9 [chromium] › e2e/public-experience.e2e-spec.ts:32:5 › public experience demo › homepage renders 3D, fits five widths and supports motion pause (2.1s)
+  ✓  10 [chromium] › e2e/public-experience.e2e-spec.ts:66:5 › public experience demo › public sample works without business requests and leads to registration (3.7s)
+  ✓  11 [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience demo › fallback and keyboard navigation remain useful (1.1s)
+  ✓  12 [chromium] › e2e/public-experience.e2e-spec.ts:162:5 › public experience demo › 3D stops when paused or offscreen and recovers after context loss (1.9s)
+  ✓  13 [chromium] › e2e/public-experience.e2e-spec.ts:32:5 › public experience live › homepage renders 3D, fits five widths and supports motion pause (1.9s)
+  ✓  14 [chromium] › e2e/public-experience.e2e-spec.ts:66:5 › public experience live › public sample works without business requests and leads to registration (2.7s)
+  ✓  15 [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience live › fallback and keyboard navigation remain useful (1.0s)
+  ✓  16 [chromium] › e2e/public-experience.e2e-spec.ts:162:5 › public experience live › 3D stops when paused or offscreen and recovers after context loss (2.0s)
+
+  16 passed (40.2s)

@@ -28,6 +28,15 @@ h4 {
   margin: 0;
 }
 
+h2 {
+  font-size: var(--type-section);
+  line-height: var(--type-section-line);
+}
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
 p {
   margin: 0;
 }
@@ -49,6 +58,42 @@ textarea {
   color: inherit;
 }
 
+input:not([type="radio"]):not([type="checkbox"]),
+select,
+textarea {
+  min-height: var(--control-height);
+  min-width: 0;
+  max-width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
+  padding: var(--space-2) var(--space-3);
+  transition:
+    border-color var(--motion-control),
+    box-shadow var(--motion-control);
+}
+
+input:not([type="radio"]):not([type="checkbox"]):hover:not(:disabled),
+select:hover:not(:disabled),
+textarea:hover:not(:disabled) {
+  border-color: var(--color-text-muted);
+}
+input[aria-invalid="true"],
+textarea[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: var(--color-danger-text);
+}
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: var(--color-canvas);
+  cursor: not-allowed;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--color-primary);
+}
+
 button {
   cursor: pointer;
 }
@@ -63,7 +108,7 @@ img {
   top: -40px;
   background: var(--color-surface);
   padding: var(--space-2) var(--space-3);
-  z-index: 5;
+  z-index: 30;
 }
 
 .skip-link:focus {

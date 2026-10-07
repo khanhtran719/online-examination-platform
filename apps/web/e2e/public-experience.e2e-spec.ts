@@ -3,7 +3,9 @@ import path from "node:path";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "playwright/test";
 
-const evidence = path.resolve(process.cwd(), "../../docs/web-ui/evidence/vao-nhip-thi-2026-10-07");
+const evidence = process.env.WEB_EVIDENCE_DIR
+  ? path.resolve(process.env.WEB_EVIDENCE_DIR, "public-experience")
+  : path.resolve(process.cwd(), "../../docs/web-ui/evidence/vao-nhip-thi-2026-10-07");
 test.use({ launchOptions: { args: ["--enable-unsafe-swiftshader"] } });
 
 async function screenshot(page: Page, name: string) {

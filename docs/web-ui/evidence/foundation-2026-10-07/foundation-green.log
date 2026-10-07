@@ -1,0 +1,57 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test foundation.e2e-spec.ts
+
+
+Running 4 tests using 1 worker
+
+(node:86852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/foundation.e2e-spec.ts:11:1 › public mobile menu closes on Escape and restores trigger focus (530ms)
+  ✓  2 [chromium] › e2e/foundation.e2e-spec.ts:31:1 › candidate mobile navigation closes after choosing a route and shows its active link (477ms)
+  ✓  3 [chromium] › e2e/foundation.e2e-spec.ts:66:1 › admin mobile menu preserves capability filtering and logout (2.9s)
+  ✘  4 [chromium] › e2e/foundation.e2e-spec.ts:94:1 › shared controls support keyboard entry, table scrolling and dialog focus (13.1s)
+
+
+  1) [chromium] › e2e/foundation.e2e-spec.ts:94:1 › shared controls support keyboard entry, table scrolling and dialog focus 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByLabel('Danh mục mẫu')
+    Expected: "TOEIC"
+    Received: "IT_CERTIFICATION"
+    Timeout:  12000ms
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Danh mục mẫu') with timeout 12000ms
+      - waiting for getByLabel('Danh mục mẫu')
+        28 × locator resolved to <select id="_r_9_">…</select>
+           - unexpected value "IT_CERTIFICATION"
+
+
+      116 |   await page.keyboard.press("ArrowDown");
+      117 |   await page.keyboard.press("Enter");
+    > 118 |   await expect(select).toHaveValue("TOEIC");
+          |                        ^
+      119 |   await page.keyboard.press("Tab");
+      120 |   await expect(page.getByLabel("Nội dung mẫu")).toBeFocused();
+      121 |   await page.keyboard.press("End");
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:118:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-sha-61e34--scrolling-and-dialog-focus-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/foundation.e2e-spec.ts-sha-61e34--scrolling-and-dialog-focus-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-sha-61e34--scrolling-and-dialog-focus-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/foundation.e2e-spec.ts-sha-61e34--scrolling-and-dialog-focus-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/foundation.e2e-spec.ts:94:1 › shared controls support keyboard entry, table scrolling and dialog focus 
+  3 passed (17.8s)

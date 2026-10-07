@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router";
+import { WorkspaceFrame } from "../../app/workspace-frame";
 import { useRuntime } from "../../app/runtime";
 import { useTitle } from "../../app/use-title";
 import type { Permission } from "../../shared/api/dto";
@@ -6,13 +7,13 @@ import { Alert } from "../../shared/ui/ui";
 import styles from "../../shared/styles/layout.module.css";
 
 const links = [
-  ["/admin", "Tổng quan"],
-  ["/admin/exams", "Đề thi"],
-  ["/admin/questions", "Ngân hàng câu"],
-  ["/admin/imports/new", "Nhập JSON"],
-  ["/admin/monitor", "Giám sát"],
-  ["/admin/metrics", "Số liệu"],
-  ["/admin/audit", "Nhật ký"],
+  ["/admin", "Tổng quan", "grid"],
+  ["/admin/exams", "Đề thi", "paper"],
+  ["/admin/questions", "Ngân hàng câu", "bank"],
+  ["/admin/imports/new", "Nhập JSON", "upload"],
+  ["/admin/monitor", "Giám sát", "activity"],
+  ["/admin/metrics", "Số liệu", "chart"],
+  ["/admin/audit", "Nhật ký", "log"],
 ] as const;
 
 export function AdminLayout() {
@@ -29,60 +30,64 @@ export function AdminLayout() {
     demo !== null && adminPermissions.some((permission) => demo.permissions.includes(permission));
   if (mode === "live" || !demo) {
     return (
-      <div className={styles.wrap}>
-        <h1 className={styles.title}>Quản trị</h1>
-        <Alert tone="warning" title="Admin đang bị chặn">
-          Hồ sơ không có danh sách quyền. Bản live không đoán quyền từ phiên đăng nhập.
-        </Alert>
-        <NavLink className={styles.chip} to="/dashboard">
-          Về bảng làm việc
-        </NavLink>
-      </div>
+      <WorkspaceFrame
+        section="Quản trị"
+        items={[{ to: "/dashboard", label: "Bảng làm việc", icon: "back" }]}
+      >
+        <div className={styles.wrap}>
+          <h1 className={styles.title}>Quản trị</h1>
+          <Alert tone="warning" title="Admin đang bị chặn">
+            Hồ sơ không có danh sách quyền. Bản live không đoán quyền từ phiên đăng nhập.
+          </Alert>
+          <NavLink className={styles.chip} to="/dashboard">
+            Về bảng làm việc
+          </NavLink>
+        </div>
+      </WorkspaceFrame>
     );
   }
   if (!allowed) {
     return (
-      <div className={styles.wrap}>
-        <h1 className={styles.title}>Quản trị</h1>
-        <Alert title="Preset này không có quyền quản trị">
-          Hãy dùng preset Admin trong thanh dữ liệu mẫu nếu bạn đang xem demo.
-        </Alert>
-        <NavLink className={styles.chip} to="/dashboard">
-          Về bảng làm việc
-        </NavLink>
-      </div>
-    );
-  }
-  return (
-    <div className={styles.wrap}>
-      <div className={styles.admin}>
-        <nav className={styles.adminNav} aria-label="Quản trị">
-          {links
-            .filter(([to]) => {
-              if (to === "/admin") return true;
-              if (to === "/admin/exams" || to === "/admin/questions") {
-                return demo.permissions.includes("catalog.manage");
-              }
-              if (to === "/admin/imports/new") return demo.permissions.includes("catalog.import");
-              if (to === "/admin/monitor") return demo.permissions.includes("reporting.read");
-              if (to === "/admin/metrics") return demo.permissions.includes("system.metrics.read");
-              if (to === "/admin/audit") return demo.permissions.includes("audit.read");
-              return false;
-            })
-            .map(([to, label]) => (
-              <NavLink key={to} className={styles.navLink} to={to} end={to === "/admin"}>
-                {label}
-              </NavLink>
-            ))}
-          <NavLink className={styles.navLink} to="/dashboard">
+      <WorkspaceFrame
+        section="Quản trị"
+        items={[{ to: "/dashboard", label: "Bảng làm việc", icon: "back" }]}
+      >
+        <div className={styles.wrap}>
+          <h1 className={styles.title}>Quản trị</h1>
+          <Alert title="Preset này không có quyền quản trị">
+            Hãy dùng preset Admin trong thanh dữ liệu mẫu nếu bạn đang xem demo.
+          </Alert>
+          <NavLink className={styles.chip} to="/dashboard">
             Về bảng làm việc
           </NavLink>
-        </nav>
+        </div>
+      </WorkspaceFrame>
+    );
+  }
+  const items = links
+    .filter(([to]) => {
+      if (to === "/admin") return true;
+      if (to === "/admin/exams" || to === "/admin/questions")
+        return demo.permissions.includes("catalog.manage");
+      if (to === "/admin/imports/new") return demo.permissions.includes("catalog.import");
+      if (to === "/admin/monitor") return demo.permissions.includes("reporting.read");
+      if (to === "/admin/metrics") return demo.permissions.includes("system.metrics.read");
+      if (to === "/admin/audit") return demo.permissions.includes("audit.read");
+      return false;
+    })
+    .map(([to, label, icon]) => ({ to, label, icon, end: to === "/admin" }));
+  return (
+    <WorkspaceFrame
+      section="Quản trị"
+      navLabel="Quản trị"
+      items={[...items, { to: "/dashboard", label: "Về bảng làm việc", icon: "back" }]}
+    >
+      <div className={styles.wrap}>
         <div className={styles.stack}>
           <Outlet />
         </div>
       </div>
-    </div>
+    </WorkspaceFrame>
   );
 }
 

@@ -1,0 +1,123 @@
+.frame {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.rail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-brand-canvas);
+  color: var(--color-brand-text);
+  border-bottom: 1px solid var(--color-brand-border);
+}
+.railLabel,
+.railFooter {
+  display: none;
+}
+.workspace {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.context {
+  color: var(--color-text-muted);
+  font-size: var(--type-utility);
+}
+.account {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.name {
+  font-size: var(--type-utility);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  max-width: 28ch;
+}
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-5) 0 var(--space-7);
+}
+.footer {
+  color: var(--color-text-muted);
+  font-size: var(--type-utility);
+  padding: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+@media (min-width: 1024px) {
+  .frame {
+    display: grid;
+    grid-template-columns: var(--rail-width) minmax(0, 1fr);
+    align-items: start;
+  }
+  .rail {
+    position: sticky;
+    top: 0;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow-y: auto;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-5) var(--space-4);
+    border-bottom: none;
+    gap: var(--space-5);
+  }
+  .rail > a {
+    font-size: 20px;
+  }
+  .railLabel {
+    display: block;
+    color: var(--color-brand-muted);
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .railFooter {
+    display: grid;
+    gap: var(--space-2);
+    margin-top: auto;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-brand-border);
+    font-size: var(--type-utility);
+    color: var(--color-brand-muted);
+  }
+  .railFooter a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--control-height);
+    color: var(--color-brand-accent);
+    text-decoration: none;
+  }
+  .workspace {
+    min-height: 100dvh;
+  }
+  .topbar {
+    min-height: var(--header-height);
+    padding-inline: var(--space-6);
+  }
+  .main {
+    padding-block: var(--space-6) var(--space-8);
+  }
+  .footer {
+    padding-inline: var(--space-6);
+  }
+}

@@ -6,7 +6,7 @@ Status: spec vẫn là hợp đồng hành vi. SPA local đã có trong `apps/we
 
 **Phòng thi số, chính xác và bình tĩnh.** Bố cục lấy cảm hứng từ phiếu trả lời và bàn làm bài: câu hỏi là trọng tâm, thời gian và trạng thái lưu luôn nhìn thấy, sơ đồ câu hỏi giúp định hướng. Phần khác giữ nhẹ để không cạnh tranh sự chú ý. Không dựng dashboard bằng một loạt card số liệu lớn khi API chưa cung cấp số liệu đó.
 
-Tên tạm “Exam Platform”, logo chữ kèm biểu tượng phiếu trả lời bằng SVG đơn giản. Hero trang giới thiệu dùng một preview workspace có chú thích “Minh họa”, không stock photo. Trong workspace thật không có illustration hoặc hero. Dùng sentence case: “Bắt đầu bài thi”, “Nộp bài”, “Đã lưu”, “Lưu thay đổi”. Tiếng Việt có dấu đầy đủ. Nội dung câu hỏi có thể là tiếng Anh và không tự dịch.
+Tên tạm “ExamPlatform”, dùng một logo chữ chung với mark e nghiêng và cạnh mint như phiếu thi. Hero trang giới thiệu dùng một preview workspace có chú thích “Minh họa”, không stock photo. Trong workspace thật không có illustration hoặc hero. Dùng sentence case: “Bắt đầu bài thi”, “Nộp bài”, “Đã lưu”, “Lưu thay đổi”. Tiếng Việt có dấu đầy đủ. Nội dung câu hỏi có thể là tiếng Anh và không tự dịch.
 
 Điểm nhận diện duy nhất là **Answer sheet navigator**: ô số câu, trạng thái đã trả lời/chưa trả lời/đánh dấu/chưa lưu, cùng timer có chữ số tabular và một thanh tiến độ mỏng. Ô đã chọn có viền, dấu lưu có icon/check và label trong legend; không dùng màu là tín hiệu duy nhất. Không cho các ô màu giống một gameboard.
 
@@ -41,11 +41,13 @@ Type: heading **Source Sans 3** 600/700, body **Noto Sans** 400/500/600, timer/b
 | Utility/helper  | 14/20px           | 14/20px | không dùng cho lời giải dài |
 | Timer           | 28/32px           | 22/28px | không nhảy width mỗi giây   |
 
-Spacing scale:4,8,12,16,24,32,48,64px. Border1px; radius6px controls,8px containers,999px chỉ badge/pill. Shadow nhẹ chỉ dropdown/dialog/sticky separation. Desktop content max1280px; reading/detail max1064px; auth form max440px. Main horizontal padding24px desktop,16px mobile; form field gap16px, section gap32px. Button/input chiều cao44px; icon button44×44px, kể cả navigator/mobile actions.
+Spacing scale:4,8,12,16,24,32,48,64px. Border1px; radius10px controls,16px containers,999px chỉ badge/pill. Shadow nhẹ cho surface/card, dropdown/dialog/sticky separation theo semantic tokens. Desktop content max1280px; reading/detail max1064px; auth form max440px. Main horizontal padding24px desktop,16px mobile; form field gap16px, section gap32px. Button/input chiều cao44px; icon button44×44px, kể cả navigator/mobile actions.
 
 Motion150–200ms cho hover/dialog; không animate số timer, không pulse cả phòng thi, không confetti khi nộp/đạt điểm. Tôn trọng reduced-motion; skeleton không gây flash/pulsing gắt. Không toast cho mỗi autosave; một trạng thái lưu inline là đủ.
 
 **Public visual increment được yêu cầu 2026-10-07:** homepage dùng “Vào nhịp thi / Cổng ánh sáng” đã xem trong demo. Bổ sung semantic tokens `--color-public-*` cho navy/mint, hero heading 40–64px và radius public 12/20px. Các giá trị này chỉ áp dụng trang giới thiệu và public experience; các form/Assessment/Admin giữ type, contrast và semantic status hiện có. Scene phiếu thi 3D được lazy-load cùng origin, có fallback CSS, nút dừng, reduced-motion, pause hidden/offscreen và cleanup khi rời trang. Không đưa scene hoặc ambient motion vào bài thi thật. Xem [kế hoạch triển khai](vao-nhip-thi-implementation-2026-10-07.md).
+
+**Foundation increment được yêu cầu 2026-10-07:** Brand/navy/mint dùng chung qua Public/Candidate/Admin; các public color names là aliases để scene giữ nhận diện. Radius10/16px và surface shadow nhẹ cho shared primitives; type scale mobile26/34px và22/30px. Brand/card links có hover nâng nhẹ, reduced-motion tắt transition. Không thêm scene/ambient motion vào workspace hoặc phòng thi. Labels, IDs/helpers/errors/disabled của form vẫn semantic; bảng có vùng cuộn được đặt tên và truy cập bằng keyboard. Xem [kế hoạch và evidence đợt1](foundation-implementation-2026-10-07.md).
 
 ## 3. Layout và navigation
 
@@ -55,7 +57,7 @@ Header tối thiểu80px desktop,72px mobile: logo trái, “Trải nghiệm”,
 
 ### 3.2 Candidate shell
 
-Top header64px: logo, “Tổng quan”, “Đề thi”, “Lịch sử”; menu profile có tên, “Hồ sơ”, “Đăng xuất”. Desktop main có breadcrumbs khi nested. Mobile dùng header nhỏ và nav bar bốn mục; nhãn/icon đều rõ. Không hiển thị nút Admin từ lựa chọn role phía client; permission gating xem API document.
+Theo đợt1 được yêu cầu 2026-10-07: rail224px navy trên desktop, logo chung, “Bảng làm việc”, “Đề thi”, “Lịch sử”, “Hồ sơ”. Topbar64px có ngữ cảnh, tên từ profile và “Đăng xuất”. Dưới1024px dùng header nhỏ và nút Menu mở navigation trong flow; nhãn/icon rõ, đóng sau khi chọn route hoặc Escape, trả focus về trigger khi Escape. Không hiển thị nút Admin từ lựa chọn role phía client; permission gating xem API document.
 
 ### 3.3 Examination shell
 
@@ -81,7 +83,7 @@ Mobile: timer/status sticky ở trên, nội dung một cột, nút “Danh sác
 
 ### 3.4 Admin shell
 
-Sidebar240px desktop, topbar64px, main padding24px. Nhóm “Nội dung”: Đề thi/Ngân hàng câu hỏi/Nhập câu hỏi. Nhóm “Vận hành”: Theo dõi bài thi/Bài nộp/Thống kê. Nhóm “Hệ thống”: Metrics/Audit. Không một menu chung “Users/Roles/Settings” với CRUD chưa có contract. Sidebar collapse/mobile drawer có labels. Permission mất sau API403 phải cập nhật trạng thái access, không thử tiếp dữ liệu admin từ cache.
+Rail224px desktop và topbar64px dùng chung WorkspaceFrame với Candidate; main có padding theo spacing scale. Dưới1024px dùng menu trong flow có trạng thái mở/đóng, Escape và focus restore. Nhóm “Nội dung”: Đề thi/Ngân hàng câu hỏi/Nhập câu hỏi. Nhóm “Vận hành”: Theo dõi bài thi/Bài nộp/Thống kê. Nhóm “Hệ thống”: Metrics/Audit. Không một menu chung “Users/Roles/Settings” với CRUD chưa có contract. Sidebar collapse/mobile drawer có labels. Permission mất sau API403 phải cập nhật trạng thái access, không thử tiếp dữ liệu admin từ cache.
 
 ## 4. Danh mục route màn hình
 

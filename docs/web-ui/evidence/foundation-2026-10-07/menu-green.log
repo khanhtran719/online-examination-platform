@@ -1,0 +1,14 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test foundation.e2e-spec.ts
+
+
+Running 3 tests using 1 worker
+
+(node:83573) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/foundation.e2e-spec.ts:11:1 › public mobile menu closes on Escape and restores trigger focus (571ms)
+  ✓  2 [chromium] › e2e/foundation.e2e-spec.ts:24:1 › candidate mobile navigation closes after choosing a route and shows its active link (392ms)
+  ✓  3 [chromium] › e2e/foundation.e2e-spec.ts:36:1 › admin mobile menu preserves capability filtering and logout (2.9s)
+
+  3 passed (4.7s)

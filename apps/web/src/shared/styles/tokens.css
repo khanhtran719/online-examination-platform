@@ -14,13 +14,21 @@
   --color-danger-surface: #fff1f0;
   --color-success-text: #166534;
   --color-success-surface: #f0fdf4;
-  --color-public-canvas: #081c25;
-  --color-public-surface: #153c3b;
-  --color-public-text: #f1f8f5;
-  --color-public-muted: #b7cdce;
-  --color-public-border: #2b494d;
-  --color-public-accent: #a3f2d0;
-  --color-public-accent-hover: #c6ffe6;
+  --color-brand-canvas: #081c25;
+  --color-brand-surface: #153c3b;
+  --color-brand-text: #f1f8f5;
+  --color-brand-muted: #b7cdce;
+  --color-brand-border: #2b494d;
+  --color-brand-accent: #a3f2d0;
+  --color-brand-accent-hover: #c6ffe6;
+  --color-brand-edge: #73b798;
+  --color-public-canvas: var(--color-brand-canvas);
+  --color-public-surface: var(--color-brand-surface);
+  --color-public-text: var(--color-brand-text);
+  --color-public-muted: var(--color-brand-muted);
+  --color-public-border: var(--color-brand-border);
+  --color-public-accent: var(--color-brand-accent);
+  --color-public-accent-hover: var(--color-brand-accent-hover);
   --color-public-glow: #17433f;
   --color-public-paper: #f5f8f7;
   --color-public-paper-ink: #183930;
@@ -40,13 +48,34 @@
   --space-6: 32px;
   --space-7: 48px;
   --space-8: 64px;
-  --radius-control: 6px;
-  --radius-container: 8px;
+  --radius-control: 10px;
+  --radius-container: 16px;
+  --radius-brand: 12px;
   --radius-pill: 999px;
   --shadow-overlay: 0 8px 24px rgb(20 40 63 / 12%);
+  --shadow-surface: 0 4px 16px rgb(20 40 63 / 4%);
+  --shadow-raised: 0 8px 20px rgb(20 40 63 / 8%);
+  --motion-control: 180ms;
+  --ease-control: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --control-height: 44px;
+  --type-title: 32px;
+  --type-title-line: 40px;
+  --type-section: 24px;
+  --type-section-line: 32px;
+  --type-utility: 14px;
+  --rail-width: 224px;
   --header-height: 64px;
   --content-max: 1280px;
   --reading-max: 1064px;
   --auth-max: 440px;
   color-scheme: light;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --type-title: 26px;
+    --type-title-line: 34px;
+    --type-section: 22px;
+    --type-section-line: 30px;
+  }
 }

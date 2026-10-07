@@ -1,0 +1,51 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test foundation.e2e-spec.ts --grep public mobile
+
+
+Running 1 test using 1 worker
+
+(node:82624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › e2e/foundation.e2e-spec.ts:11:1 › public mobile menu closes on Escape and restores trigger focus (12.7s)
+
+
+  1) [chromium] › e2e/foundation.e2e-spec.ts:11:1 › public mobile menu closes on Escape and restores trigger focus 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByRole('button', { name: 'Menu', exact: true })
+    Expected: "false"
+    Timeout: 12000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('button', { name: 'Menu', exact: true }) with timeout 12000ms
+      - waiting for getByRole('button', { name: 'Menu', exact: true })
+
+
+      17 |   await page.getByRole("navigation", { name: "Chính", exact: true }).getByRole("link").first().focus();
+      18 |   await page.keyboard.press("Escape");
+    > 19 |   await expect(trigger).toHaveAttribute("aria-expanded", "false");
+         |                         ^
+      20 |   await expect(trigger).toBeFocused();
+      21 |   await expect(page.getByRole("navigation", { name: "Chính", exact: true })).toBeHidden();
+      22 | });
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:19:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-pub-2a3bd--and-restores-trigger-focus-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/foundation.e2e-spec.ts-pub-2a3bd--and-restores-trigger-focus-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-pub-2a3bd--and-restores-trigger-focus-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/foundation.e2e-spec.ts-pub-2a3bd--and-restores-trigger-focus-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/foundation.e2e-spec.ts:11:1 › public mobile menu closes on Escape and restores trigger focus 

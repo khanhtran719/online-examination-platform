@@ -1,0 +1,546 @@
+{
+  "checks": [
+    {
+      "name": "home",
+      "route": "/",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "login",
+      "route": "/login",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "register",
+      "route": "/register",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "controls",
+      "route": "/dev/ui",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "how",
+      "route": "/how-it-works",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "help",
+      "route": "/help",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "dashboard",
+      "route": "/dashboard",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "menuFits": true,
+      "menuViolations": []
+    },
+    {
+      "name": "catalog",
+      "route": "/exams",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "menuFits": true,
+      "menuViolations": []
+    },
+    {
+      "name": "profile",
+      "route": "/profile",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "menuFits": true,
+      "menuViolations": []
+    },
+    {
+      "name": "result",
+      "route": "/attempts/00000000-0000-4000-8000-000000000401/result",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "menuFits": true,
+      "menuViolations": []
+    },
+    {
+      "name": "room",
+      "route": "/attempts/00000000-0000-4000-8000-000000000402",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "admin-exams",
+      "route": "/admin/exams",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "menuFits": true,
+      "menuViolations": []
+    },
+    {
+      "name": "admin-editor",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/edit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "menuFits": true,
+      "menuViolations": []
+    },
+    {
+      "name": "admin-question",
+      "route": "/admin/questions/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "menuFits": true,
+      "menuViolations": []
+    },
+    {
+      "name": "admin-import",
+      "route": "/admin/imports/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "menuFits": true,
+      "menuViolations": []
+    },
+    {
+      "name": "admin-audit",
+      "route": "/admin/audit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "menuFits": true,
+      "menuViolations": []
+    }
+  ],
+  "reducedMotion": {
+    "transition": "0s",
+    "animation": "none"
+  },
+  "zoom": {
+    "layoutWidth": 1440,
+    "documentWidth": 1440,
+    "fits": true
+  },
+  "errors": [],
+  "external": [],
+  "modes": "demo routes and live login only; synthetic data"
+}

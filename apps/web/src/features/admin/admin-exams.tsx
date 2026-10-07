@@ -23,7 +23,7 @@ import {
   SkeletonLines,
   TextField,
 } from "../../shared/ui/ui";
-import { tableClass, tableWrapClass } from "../../shared/ui/ui";
+import { tableClass, TableScroll } from "../../shared/ui/ui";
 import styles from "../../shared/styles/layout.module.css";
 import { CapabilityGate, useCapability } from "./gate";
 import { idleIntent, settleIntent, startIntent, type IntentMachine } from "./mutation-intent";
@@ -58,7 +58,7 @@ export function AdminExamListPage() {
       {exams.isSuccess && !hidden && items.length === 0 ? (
         <EmptyState title="Chưa có đề">Tạo bản nháp từ ngân hàng câu.</EmptyState>
       ) : null}
-      <div className={tableWrapClass}>
+      <TableScroll label="Danh sách đề thi quản trị">
         <table className={tableClass}>
           <thead>
             <tr>
@@ -82,7 +82,7 @@ export function AdminExamListPage() {
             ))}
           </tbody>
         </table>
-      </div>
+      </TableScroll>
       {exams.hasNextPage ? (
         <Button onClick={() => void exams.fetchNextPage()}>Tải thêm</Button>
       ) : (
