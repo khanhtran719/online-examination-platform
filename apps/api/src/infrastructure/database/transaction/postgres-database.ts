@@ -57,6 +57,8 @@ export class PostgresDatabase implements UnitOfWork {
   private readonly context = new AsyncLocalStorage<TransactionScope>();
   private admitted = 0;
   private closing = false;
+  private readonly drainWaiters = new Set<() => void>();
+  private closePromise?: Promise<void>;
 
   constructor(
     private readonly config: DatabaseConfig,
@@ -111,6 +113,7 @@ export class PostgresDatabase implements UnitOfWork {
       return client;
     } catch {
       this.admitted -= 1;
+      this.notifyDrained();
       this.emit("acquire", performance.now() - started, undefined, "DB_ACQUIRE_TIMEOUT");
       throw new DatabaseError("DB_ACQUIRE_TIMEOUT");
     }
@@ -119,6 +122,14 @@ export class PostgresDatabase implements UnitOfWork {
   private release(client: PoolClient, destroy = false): void {
     this.admitted -= 1;
     client.release(destroy);
+    this.notifyDrained();
+  }
+
+  private notifyDrained(): void {
+    if (this.admitted === 0) {
+      for (const resolve of this.drainWaiters) resolve();
+      this.drainWaiters.clear();
+    }
   }
 
   private async execute<T extends QueryResultRow>(
@@ -245,8 +256,12 @@ export class PostgresDatabase implements UnitOfWork {
     }
   }
 
-  async close(): Promise<void> {
+  close(): Promise<void> {
     this.closing = true;
-    await this.pool.end();
+    this.closePromise ??= (async () => {
+      if (this.admitted > 0) await new Promise<void>((resolve) => this.drainWaiters.add(resolve));
+      await this.pool.end();
+    })();
+    return this.closePromise;
   }
 }

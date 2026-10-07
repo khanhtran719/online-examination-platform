@@ -23,7 +23,14 @@
     "start:local": "node --env-file=.env.example dist/main.js",
     "worker:local": "node --env-file=.env.worker.example dist/workers/outbox/verification.main.js",
     "bench:identity:local": "npm run build && node --env-file=.env.example scripts/identity-benchmark.mjs",
-    "smoke:identity:local": "npm run build && node scripts/identity-smoke.mjs"
+    "smoke:identity:local": "npm run build && node scripts/identity-smoke.mjs",
+    "web:dev": "npm --prefix apps/web run dev",
+    "web:dev:live": "npm --prefix apps/web run dev:live",
+    "web:typecheck": "npm --prefix apps/web run typecheck",
+    "web:lint": "npm --prefix apps/web run lint",
+    "web:test": "npm --prefix apps/web test",
+    "web:build": "npm --prefix apps/web run build",
+    "web:build:demo": "npm --prefix apps/web run build:demo"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "^13.1.0",

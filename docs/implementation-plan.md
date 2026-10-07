@@ -1,6 +1,36 @@
 # Implementation plan
 
-## Active scope — source-layout normalization COMPLETE, 2026-10-06
+## Active scope — SQL readability COMPLETE locally, 2026-10-07
+
+User accepts retaining pg provisionally and requests a query-format rule plus normalization of existing SQL. Ownership remains Identity persistence and shared technical PostgreSQL adapters; include executable test fixtures, local tooling and operational SQL. Read/write paths, bindings, domain invariants, transaction/lock boundaries and public contracts must remain unchanged. This is code-shape work, not an ORM, schema or query optimization change.
+
+- [x] QF-01: Canonical SQL layout adopted in conventions §102.1/rule R-77; AGENTS, validation workflow and database guide point to it. Clauses, projections, predicates, CTEs/subqueries, mutations, bindings and short-query exceptions are specified.
+- [x] QF-02: Current runtime, integration fixtures, local tooling and operational queries normalized across14 code/SQL files. Reviewed locking clauses, EXTRACT, JSON pairs, shared projections and PL/pgSQL bootstrap blocks. Eight immutable migrations and historical experiment sources/evidence preserve their bytes; future migrations use the convention.
+- [x] QF-03: Token/literal/interpolation/binding and surrounding semantic AST comparison PASS across84 code files/274 SQL literals or fragments plus3 operational SQL files. All53 scoped historical files unchanged;8 source/built migrations match captured SHA-256. Prettier, lint/quality/contracts, typecheck/build,100 unit/tooling and53 real PostgreSQL/Identity regressions PASS. Bootstrap and diagnostics execute on dedicated local PostgreSQL:55434. See [validation](validation.md#sql-readability-normalization--2026-10-07) and [verification ledger](evidence/sql-format-2026-10-07.json).
+
+Self-review: one active connection/UoW, query operation labels, parameter arrays, static interpolation, quoted aliases/literals, locks, result shape and statement order are unchanged. No runtime formatter/dependency, ORM switch, schema/HTTP/event or performance optimization was added. Formatting tooling ran from `/tmp` only; short technical commands and intentional migration-parser fixtures remain compact. Separate Web UI work, Git staging and historical benchmark results are preserved. Product roadmap and production acceptance are not advanced by this maintenance increment.
+
+## Status note — Web UI local fix, 2026-10-07
+
+This note does not replace the SQL readability scope above and does not reopen the persistence evaluation. Local `apps/web` exists. FE checklist remains 3/32 checked. Preview regressions for the reviewed deadline, reauth, 403 cache, answer pagination and editor-revision cases are recorded in [fix evidence](web-ui/evidence/fix-2026-10-07/README.md). HTTPS, live Catalog/Assessment/Reporting and WEB-01–10 stay open. No production acceptance is claimed.
+
+## Active scope — persistence evaluation COMPLETE locally, 2026-10-07
+
+User authorizes O-01–04: compare current pg with TypeORM and Sequelize before selecting persistence. Keep existing Web UI work and staging untouched. The experiment has its own pinned package/lockfile and disposable PostgreSQL on a separate port; no runtime ORM switch, applied migration rewrite, API or AWS change is authorized by this evaluation alone.
+
+Identity owns the representative paths: principal projection, account mapping, session refresh and profile + audit + actor-scoped receipt. The existing Application and Domain contracts remain unchanged. Candidate executors must preserve one active transaction/connection, nested join/rollback-only, late-context rejection, bounded admission, server timeouts, safe errors and graceful pool drain. ORM models are experiment Infrastructure only; synchronize and automatic migrations are disabled. Raw projections and ORM repository paths are measured separately.
+
+Sequence: pin/verify dependencies and capture source/config/schema digests; write failing real-PG transaction/correctness checks; implement isolated candidate adapters; run hard gates; seed 100,000 Identity users/families/sessions; run repeated interleaved comparisons at fixed pools/concurrency; retain raw samples, query/lock/transaction/pool/CPU/RSS/startup and query plans; inspect dependency/TCO burden; write ADR and adoption/rollback decision. Use the same compiled Identity classes, ES256 crypto, privileges, schema and durable controls across candidates. Local closed-loop measurements are not sustainable AWS capacity, exam load-test acceptance or dollar savings. Reject failed candidates regardless of latency.
+
+Outcome: O-01–04 complete locally; [experiment](../experiments/persistence-comparison/README.md) retains75 configurations/76,800 samples/0 errors and42 checks. Current runtime regression evidence is100 unit/tooling +53 integration PASS. pg queued-work drain failure was reproduced and corrected before measuring; no schema/contract change. [ADR-008](adr/008-persistence-evaluation.md) retains pg for current Identity, allows later TypeORM reopening, and records Sequelize dependency/logging/lifecycle gaps. Production dataset/capacity/RDS/AWS/TCO remain separate open gates. Existing frontend work/staging is not accepted or changed by this task.
+
+## Active scope — Web UI documentation/task handoff COMPLETE, 2026-10-06
+
+The user requests a detailed UI implementation brief and tasks for Grok before the ORM comparison. Deliver [web-ui handoff](web-ui/README.md): committed visual direction/tokens/screens, truthful API/state mapping and dependency register,32 ordered frontend tasks with acceptance,24 scenarios and a prompt around1,000 whitespace words. ADR-007 specializes frontend build/layout choices without changing backend architecture. This increment creates documentation only: no frontend scaffold/package/runtime, backend/ORM/API change or AWS action.
+
+Owners are presentation/features in the future apps/web client; Identity/Catalog/Assessment/Reporting remain backend authorities. Existing product/security/OpenAPI were inspected, including actual Identity controllers. The brief separates interactive demo, live Identity, missing business endpoints and production acceptance. Current Profile has no permissions; frozen presentation metadata/replay revision/search/report fields are explicit backend dependencies, not frontend fabrications. Product count remains50/216; FE implementation0/32, ORM evaluation0/4. Validate links/schema mapping/task IDs/word count/diff and record documentation checks; prior152 tests remain historical runtime evidence for unchanged sources.
+
+## Source-layout normalization COMPLETE, 2026-10-06
 
 The user authorizes completing the structural adjustment after the documentation/review increment. Implement N-04–12: fail-first guard regressions; baseline diagnostic; config/shared/database/HTTP/Identity moves; public worker/operator factories; immutable SQL bundle copy and CLI path updates; unit/real-PG/smoke/drain checks; repeated comparable diagnostic and final self-review. Preserve all auth/session/rate/receipt/worker/transaction semantics and eight migration checksums. No schema/ORM migration or Catalog expansion is included; O-01–04 remains the separate proposed persistence experiment.
 

@@ -1,5 +1,8 @@
 node_modules/
 dist/
+apps/web/dist-demo/
+apps/web/test-results/
+apps/web/playwright-report/
 .env
 .local/
 *.tfstate*

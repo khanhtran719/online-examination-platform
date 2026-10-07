@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="color-scheme" content="light" />
+    <title>Phòng thi</title>
+    <script>
+      (function () {
+        if (location.pathname !== "/verify-email") return;
+        var hash = location.hash || "";
+        var match = /^#token=([A-Za-z0-9_-]{43})$/.exec(hash);
+        window.__examVerifyToken = match ? match[1] : hash ? "invalid" : "";
+        if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

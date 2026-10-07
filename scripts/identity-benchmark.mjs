@@ -209,7 +209,16 @@ try {
     });
     const c = (
       await fixture.query(
-        "SELECT c.id,c.ciphertext FROM identity.verification_challenges c JOIN identity.users u ON u.id=c.user_id WHERE u.email=$1",
+        `
+        SELECT
+          c.id,
+          c.ciphertext
+        FROM
+          identity.verification_challenges c
+          JOIN identity.users u ON u.id = c.user_id
+        WHERE
+          u.email = $1
+        `,
         [email],
       )
     ).rows[0];
@@ -326,7 +335,14 @@ try {
   if (
     (
       await fixture.query(
-        "SELECT count(*)::int n FROM identity.email_intents WHERE delivered_at IS NOT NULL",
+        `
+        SELECT
+          count(*)::int n
+        FROM
+          identity.email_intents
+        WHERE
+          delivered_at IS NOT NULL
+        `,
       )
     ).rows[0].n !== 32
   )
@@ -353,7 +369,17 @@ try {
   if (
     (
       await fixture.query(
-        "SELECT count(*)::int n FROM identity.email_intents WHERE delivered_at IS NULL AND attempts=1 AND lease_token IS NULL AND parked_at IS NULL",
+        `
+        SELECT
+          count(*)::int n
+        FROM
+          identity.email_intents
+        WHERE
+          delivered_at IS NULL
+          AND attempts = 1
+          AND lease_token IS NULL
+          AND parked_at IS NULL
+        `,
       )
     ).rows[0].n !== 16
   )
@@ -381,13 +407,24 @@ try {
   await fixture.end();
   for (let i = 0; i < 100; i++) {
     if (
-      (await admin.query("SELECT count(*)::int n FROM pg_stat_activity WHERE datname=$1", [name]))
-        .rows[0].n === 0
+      (
+        await admin.query(
+          `
+      SELECT
+        count(*)::int n
+      FROM
+        pg_stat_activity
+      WHERE
+        datname = $1
+      `,
+          [name],
+        )
+      ).rows[0].n === 0
     )
       break;
     await new Promise((r) => setTimeout(r, 10));
   }
   await admin.query(`DROP DATABASE IF EXISTS ${name}`);
-  await admin.query(`DROP ROLE IF EXISTS ${ddl},${runtime}`);
+  await admin.query(`DROP ROLE IF EXISTS ${ddl}, ${runtime}`);
   await admin.end();
 }

@@ -1,0 +1,30 @@
+name: examination-persistence-evaluation
+services:
+  postgres:
+    image: postgres:17-alpine
+    command:
+      [
+        "postgres",
+        "-c",
+        "shared_preload_libraries=pg_stat_statements",
+        "-c",
+        "log_parameter_max_length=0",
+        "-c",
+        "log_parameter_max_length_on_error=0",
+      ]
+    environment:
+      POSTGRES_DB: examination
+      POSTGRES_USER: examination
+      POSTGRES_PASSWORD: local-evaluation-only
+    ports: ["127.0.0.1:55434:5432"]
+    volumes: ["persistence-data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U examination"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  mailpit:
+    image: axllent/mailpit:v1.31.4
+    ports: ["127.0.0.1:11025:1025", "127.0.0.1:18025:8025"]
+volumes:
+  persistence-data:

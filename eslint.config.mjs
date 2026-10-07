@@ -1,6 +1,6 @@
 import ts from "typescript-eslint";
 export default ts.config(
-  { ignores: ["dist/**", "node_modules/**"] },
+  { ignores: ["dist/**", "node_modules/**", "apps/web/**"] },
   ...ts.configs.recommended,
   {
     rules: {

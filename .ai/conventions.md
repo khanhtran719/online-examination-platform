@@ -2535,6 +2535,46 @@ Add integration tests.
 Do not build SQL with untrusted string interpolation.
 ```
 
+## 102.1 PostgreSQL Query Layout
+
+Use the same layout for SQL in Infrastructure adapters, executable test fixtures, local scripts, operational `.sql` files and new migrations. SQL formatting happens in source, never in the request path. Prettier formats TypeScript/JavaScript around a SQL string; it does not format the SQL inside that string.
+
+- Write structural SQL keywords in uppercase; keep schema/table/column names and PostgreSQL function/type names in their existing form. Preserve quoted aliases and literals exactly.
+- A query with multiple clauses, multiple projected fields, a join, a CTE or a subquery uses a multiline template literal. A short single-clause operation such as `SELECT 1`, `BEGIN` or `SELECT identity.assign_candidate($1)` may stay on one line. Do not concatenate lines or introduce a runtime SQL builder merely to format a static query.
+- Begin each major clause on a new line: `SELECT`, `FROM`, `WHERE`, joins, `GROUP BY`, `ORDER BY`, `LIMIT`, `FOR UPDATE`, `SET`, `VALUES`, `ON CONFLICT` and `RETURNING`. Indent clause bodies by two spaces relative to the clause. Keep `FOR UPDATE OF … SKIP LOCKED` visible as one locking clause.
+- Put each selected/returned expression and each `SET` assignment on its own line. Put a comma at the end of every item except the last; do not leave a comma before `FROM` or a closing parenthesis. Put each predicate on a separate line, with `AND`/`OR` at the beginning of continuation lines; indent nested boolean groups without changing parentheses or precedence.
+- Expand CTEs and subqueries into indented blocks. Expand long column/value lists, function arguments and `CASE` expressions so their correspondence and branches can be reviewed. Short argument/tuple lists may stay inline. Aim for at most 100 columns including the surrounding code indentation; do not split a quoted literal or identifier just to meet the width target.
+- Put spaces after commas and around comparison/arithmetic/assignment operators. Keep `::` casts and qualified names attached. In TypeScript, put the opening and closing backticks on their own lines for multiline queries and align the SQL block with the call's other arguments.
+- Keep `$1`, `$2`, … bindings and the parameter array adjacent to the query. Preserve parameter order, predicates, joins, casts, aliases, result shape, statement order and transaction/lock boundaries during a formatting-only edit. Existing reviewed static fragments or allowlisted identifier interpolation may remain; never interpolate caller data.
+- Shared projection fragments use the same one-expression-per-line layout; indent their insertion so the final query is readable. Keep a fragment near its owning adapter. Do not create a generic query registry or move business SQL across module boundaries for formatting.
+- Applied/checksummed migrations and archived benchmark source/evidence are immutable. Do not reformat them or regenerate checksums. Apply this convention to newly authored migrations and current executable queries; list preserved historical assets in the validation report.
+
+Example (Infrastructure only):
+
+```ts
+const result = await this.db.query(
+  "identity.read",
+  `
+    SELECT
+      session.id,
+      family.user_id AS "userId"
+    FROM
+      identity.sessions session
+      JOIN identity.session_families family ON family.id = session.family_id
+    WHERE
+      session.id = $1
+      AND family.revoked_at IS NULL
+    ORDER BY
+      session.id
+    LIMIT
+      1
+  `,
+  [sessionId],
+);
+```
+
+For a formatting-only change, compare SQL tokens/literals/interpolation and parameter bindings before/after, then run the affected existing PostgreSQL regression tests. Do not claim a query-plan or performance improvement from formatting. See rules R-77 and the [migration runbook](../docs/runbooks/database-migrations.md).
+
 ---
 
 # 103. Transaction Method Naming

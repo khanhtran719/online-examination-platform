@@ -1,0 +1,6 @@
+apps/web/package-lock.json
+apps/web/dist
+apps/web/dist-demo
+apps/web/node_modules
+apps/web/playwright-report
+apps/web/test-results

@@ -119,14 +119,30 @@ afterAll(async () => {
   await fixture?.end();
   for (let i = 0; i < 100; i++) {
     if (
-      (await admin.query("SELECT count(*)::int n FROM pg_stat_activity WHERE datname=$1", [name]))
-        .rows[0].n === 0
+      (
+        await admin.query(
+          `
+      SELECT
+        count(*)::int n
+      FROM
+        pg_stat_activity
+      WHERE
+        datname = $1
+      `,
+          [name],
+        )
+      ).rows[0].n === 0
     )
       break;
     await new Promise((r) => setTimeout(r, 10));
   }
   await admin.query(`DROP DATABASE IF EXISTS ${name}`);
-  await admin.query(`DROP ROLE IF EXISTS ${owner},${runtime},${operator},${mailRole}`);
+  await admin.query(`
+  DROP ROLE IF EXISTS ${owner},
+  ${runtime},
+  ${operator},
+  ${mailRole}
+  `);
   await admin.end();
 });
 async function register() {
@@ -134,7 +150,17 @@ async function register() {
   await identity.register({ email, displayName: "Candidate", password: originalPassword });
   const row = (
     await fixture.query(
-      "SELECT c.id,c.user_id,c.ciphertext FROM identity.verification_challenges c JOIN identity.users u ON u.id=c.user_id WHERE u.email=$1",
+      `
+      SELECT
+        c.id,
+        c.user_id,
+        c.ciphertext
+      FROM
+        identity.verification_challenges c
+        JOIN identity.users u ON u.id = c.user_id
+      WHERE
+        u.email = $1
+      `,
       [email],
     )
   ).rows[0];
@@ -147,7 +173,14 @@ async function register() {
 }
 beforeEach(async () => {
   await fixture.query(
-    "UPDATE identity.email_intents SET cancelled_at=clock_timestamp() WHERE cancelled_at IS NULL AND delivered_at IS NULL",
+    `
+    UPDATE identity.email_intents
+    SET
+      cancelled_at = clock_timestamp()
+    WHERE
+      cancelled_at IS NULL
+      AND delivered_at IS NULL
+    `,
   );
 });
 async function activated() {
@@ -161,13 +194,32 @@ describe("Identity on real restricted PostgreSQL", () => {
       input = { email, displayName: "Candidate", password: originalPassword };
     await Promise.all([identity.register(input), second.register(input)]);
     expect(
-      (await fixture.query("SELECT count(*)::int n FROM identity.users WHERE email=$1", [email]))
-        .rows[0].n,
+      (
+        await fixture.query(
+          `
+      SELECT
+        count(*)::int n
+      FROM
+        identity.users
+      WHERE
+        email = $1
+      `,
+          [email],
+        )
+      ).rows[0].n,
     ).toBe(1);
     expect(
       (
         await fixture.query(
-          "SELECT count(*)::int n FROM identity.email_intents i JOIN identity.verification_challenges c ON c.id=i.challenge_id WHERE c.email=$1",
+          `
+          SELECT
+            count(*)::int n
+          FROM
+            identity.email_intents i
+            JOIN identity.verification_challenges c ON c.id = i.challenge_id
+          WHERE
+            c.email = $1
+          `,
           [email],
         )
       ).rows[0].n,
@@ -182,22 +234,46 @@ describe("Identity on real restricted PostgreSQL", () => {
     ]);
     const row = (
       await fixture.query(
-        "SELECT password_hash,email_verified_at FROM identity.users WHERE id=$1",
+        `
+        SELECT
+          password_hash,
+          email_verified_at
+        FROM
+          identity.users
+        WHERE
+          id = $1
+        `,
         [a.id],
       )
     ).rows[0];
     expect(row.email_verified_at).not.toBeNull();
     expect(
       (
-        await fixture.query("SELECT ciphertext FROM identity.verification_challenges WHERE id=$1", [
-          a.challenge,
-        ])
+        await fixture.query(
+          `
+        SELECT
+          ciphertext
+        FROM
+          identity.verification_challenges
+        WHERE
+          id = $1
+        `,
+          [a.challenge],
+        )
       ).rows[0].ciphertext,
     ).toBeNull();
     expect(
       (
         await fixture.query(
-          "SELECT count(*)::int n FROM identity.sessions s JOIN identity.session_families f ON f.id=s.family_id WHERE f.user_id=$1",
+          `
+          SELECT
+            count(*)::int n
+          FROM
+            identity.sessions s
+            JOIN identity.session_families f ON f.id = s.family_id
+          WHERE
+            f.user_id = $1
+          `,
           [a.id],
         )
       ).rows[0].n,
@@ -211,8 +287,19 @@ describe("Identity on real restricted PostgreSQL", () => {
     expect(passwordMatches.filter(Boolean)).toHaveLength(1);
     await identity.confirm(a.token, "a duplicate new password");
     expect(
-      (await fixture.query("SELECT password_hash FROM identity.users WHERE id=$1", [a.id])).rows[0]
-        .password_hash,
+      (
+        await fixture.query(
+          `
+      SELECT
+        password_hash
+      FROM
+        identity.users
+      WHERE
+        id = $1
+      `,
+          [a.id],
+        )
+      ).rows[0].password_hash,
     ).toBe(row.password_hash);
   });
   it("coalesces resend during cooldown and rejects expired/cancelled challenges", async () => {
@@ -222,13 +309,26 @@ describe("Identity on real restricted PostgreSQL", () => {
     expect(
       (
         await fixture.query(
-          "SELECT count(*)::int n FROM identity.email_intents WHERE challenge_id=$1",
+          `
+          SELECT
+            count(*)::int n
+          FROM
+            identity.email_intents
+          WHERE
+            challenge_id = $1
+          `,
           [a.challenge],
         )
       ).rows[0].n,
     ).toBe(1);
     await fixture.query(
-      "UPDATE identity.verification_challenges SET expires_at=clock_timestamp()-interval '1 second' WHERE id=$1",
+      `
+      UPDATE identity.verification_challenges
+      SET
+        expires_at = clock_timestamp() - interval '1 second'
+      WHERE
+        id = $1
+      `,
       [a.challenge],
     );
     await expect(identity.confirm(a.token, finalPassword)).rejects.toThrow("Invalid request");
@@ -241,15 +341,31 @@ describe("Identity on real restricted PostgreSQL", () => {
     await expect(identity.refresh(session.refresh)).rejects.toThrow("Unauthenticated");
     expect(
       (
-        await fixture.query("SELECT revoked_at FROM identity.session_families WHERE id=$1", [
-          session.familyId,
-        ])
+        await fixture.query(
+          `
+        SELECT
+          revoked_at
+        FROM
+          identity.session_families
+        WHERE
+          id = $1
+        `,
+          [session.familyId],
+        )
       ).rows[0].revoked_at,
     ).not.toBeNull();
     expect(
       (
         await fixture.query(
-          "SELECT count(*)::int n FROM platform.audit_logs WHERE action='identity.refresh.reuse' AND resource_id=$1",
+          `
+          SELECT
+            count(*)::int n
+          FROM
+            platform.audit_logs
+          WHERE
+            action = 'identity.refresh.reuse'
+            AND resource_id = $1
+          `,
           [session.familyId],
         )
       ).rows[0].n,
@@ -275,7 +391,15 @@ describe("Identity on real restricted PostgreSQL", () => {
     expect(
       (
         await fixture.query(
-          "SELECT count(*)::int n FROM platform.audit_logs WHERE actor_id=$1 AND action='identity.login'",
+          `
+          SELECT
+            count(*)::int n
+          FROM
+            platform.audit_logs
+          WHERE
+            actor_id = $1
+            AND action = 'identity.login'
+          `,
           [a.id],
         )
       ).rows[0].n,
@@ -292,14 +416,29 @@ describe("Identity on real restricted PostgreSQL", () => {
     const first = await security.reserveLogin(email);
     expect(first).not.toBeNull();
     await fixture.query(
-      "UPDATE platform.rate_limit_buckets SET expires_at=clock_timestamp()+interval '1 second' WHERE scope='login.failure' AND window_start=$1",
+      `
+      UPDATE platform.rate_limit_buckets
+      SET
+        expires_at = clock_timestamp() + interval '1 second'
+      WHERE
+        scope = 'login.failure'
+        AND window_start = $1
+      `,
       [first],
     );
     const before = (await fixture.query("SELECT clock_timestamp() AS now")).rows[0].now;
     const next = await security.reserveLogin(email);
     const expires = (
       await fixture.query(
-        "SELECT max(expires_at) AS expires FROM platform.rate_limit_buckets WHERE scope='login.failure' AND window_start=$1",
+        `
+        SELECT
+          max(expires_at) AS expires
+        FROM
+          platform.rate_limit_buckets
+        WHERE
+          scope = 'login.failure'
+          AND window_start = $1
+        `,
         [next],
       )
     ).rows[0].expires;
@@ -321,13 +460,27 @@ describe("Identity on real restricted PostgreSQL", () => {
     const a = await activated(),
       session = await identity.login(a.email, finalPassword);
     await fixture.query(
-      "UPDATE identity.sessions SET created_at=clock_timestamp()-interval '10 minutes',access_expires_at=clock_timestamp()-interval '1 second' WHERE id=$1",
+      `
+      UPDATE identity.sessions
+      SET
+        created_at = clock_timestamp() - interval '10 minutes',
+        access_expires_at = clock_timestamp() - interval '1 second'
+      WHERE
+        id = $1
+      `,
       [session.sessionId],
     );
     await expect(second.authenticate(session.access)).rejects.toThrow("Unauthenticated");
     const rotated = await second.refresh(session.refresh);
     await fixture.query(
-      "UPDATE identity.session_families SET created_at=clock_timestamp()-interval '31 days',absolute_expires_at=clock_timestamp()-interval '1 second' WHERE id=$1",
+      `
+      UPDATE identity.session_families
+      SET
+        created_at = clock_timestamp() - interval '31 days',
+        absolute_expires_at = clock_timestamp() - interval '1 second'
+      WHERE
+        id = $1
+      `,
       [session.familyId],
     );
     await expect(identity.authenticate(rotated.access)).rejects.toThrow("Unauthenticated");
@@ -340,10 +493,14 @@ describe("Identity on real restricted PostgreSQL", () => {
       time = Date.now().toString(16).padStart(12, "0"),
       key = `${time.slice(0, 8)}-${time.slice(8)}-7000-8000-000000000002`;
     await fixture.query(
-      `CREATE FUNCTION platform.fail_profile_audit() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.action='identity.profile.update' THEN RAISE EXCEPTION 'fixture audit unavailable'; END IF; RETURN NEW; END $$`,
+      "CREATE FUNCTION platform.fail_profile_audit () RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.action='identity.profile.update' THEN RAISE EXCEPTION 'fixture audit unavailable'; END IF; RETURN NEW; END $$",
     );
     await fixture.query(
-      "CREATE TRIGGER fixture_profile_audit BEFORE INSERT ON platform.audit_logs FOR EACH ROW EXECUTE FUNCTION platform.fail_profile_audit()",
+      `
+      CREATE TRIGGER fixture_profile_audit
+      BEFORE INSERT ON platform.audit_logs FOR EACH ROW
+      EXECUTE FUNCTION platform.fail_profile_audit ()
+      `,
     );
     try {
       await expect(
@@ -362,7 +519,15 @@ describe("Identity on real restricted PostgreSQL", () => {
       expect(
         (
           await fixture.query(
-            "SELECT key FROM platform.idempotency_receipts WHERE actor_id=$1 AND key=$2",
+            `
+            SELECT
+              key
+            FROM
+              platform.idempotency_receipts
+            WHERE
+              actor_id = $1
+              AND key = $2
+            `,
             [a.id, key],
           )
         ).rowCount,
@@ -376,7 +541,14 @@ describe("Identity on real restricted PostgreSQL", () => {
     const a = await activated(),
       session = await identity.login(a.email, finalPassword);
     expect((await second.authenticate(session.access)).permissions).toContain("identity.self");
-    await fixture.query("DELETE FROM identity.user_roles WHERE user_id=$1", [a.id]);
+    await fixture.query(
+      `
+    DELETE FROM identity.user_roles
+    WHERE
+      user_id = $1
+    `,
+      [a.id],
+    );
     expect((await identity.authenticate(session.access)).permissions).not.toContain(
       "identity.self",
     );
@@ -384,16 +556,41 @@ describe("Identity on real restricted PostgreSQL", () => {
     await second.logout(session.refresh);
     await expect(second.authenticate(session.access)).rejects.toThrow("Unauthenticated");
     const next = await identity.login(a.email, finalPassword);
-    await fixture.query("UPDATE identity.users SET enabled=false WHERE id=$1", [a.id]);
+    await fixture.query(
+      `
+    UPDATE identity.users
+    SET
+      enabled = false
+    WHERE
+      id = $1
+    `,
+      [a.id],
+    );
     await expect(second.authenticate(next.access)).rejects.toThrow("Unauthenticated");
   });
   it("forbids runtime self-granting admin or editing the permission matrix", async () => {
     const a = await activated();
     await expect(
-      db.query("diagnostic", "INSERT INTO identity.user_roles VALUES ($1,'ADMIN')", [a.id]),
+      db.query(
+        "diagnostic",
+        `
+      INSERT INTO
+        identity.user_roles
+      VALUES
+        ($1, 'ADMIN')
+      `,
+        [a.id],
+      ),
     ).rejects.toMatchObject({ code: "42501" });
     await expect(
-      db.query("diagnostic", "UPDATE identity.role_permissions SET permission_id='profile:update'"),
+      db.query(
+        "diagnostic",
+        `
+      UPDATE identity.role_permissions
+      SET
+        permission_id = 'profile:update'
+      `,
+      ),
     ).rejects.toMatchObject({ code: "42501" });
   });
   it("persists profile receipts before checking revision, with atomic audit and no lost update", async () => {
@@ -420,7 +617,15 @@ describe("Identity on real restricted PostgreSQL", () => {
     expect(
       (
         await fixture.query(
-          "SELECT count(*)::int n FROM platform.audit_logs WHERE actor_id=$1 AND action='identity.profile.update'",
+          `
+          SELECT
+            count(*)::int n
+          FROM
+            platform.audit_logs
+          WHERE
+            actor_id = $1
+            AND action = 'identity.profile.update'
+          `,
           [a.id],
         )
       ).rows[0].n,
@@ -506,7 +711,16 @@ describe("Identity on real restricted PostgreSQL", () => {
       ).toBe(401);
       const challenge = (
         await fixture.query(
-          "SELECT c.id,c.ciphertext FROM identity.verification_challenges c JOIN identity.users u ON u.id=c.user_id WHERE u.email=$1",
+          `
+          SELECT
+            c.id,
+            c.ciphertext
+          FROM
+            identity.verification_challenges c
+            JOIN identity.users u ON u.id = c.user_id
+          WHERE
+            u.email = $1
+          `,
           [a.email],
         )
       ).rows[0];
@@ -655,7 +869,13 @@ describe("Identity on real restricted PostgreSQL", () => {
       job = await delivery.claim();
     expect(job).not.toBeNull();
     await fixture.query(
-      "UPDATE identity.email_intents SET lease_until=clock_timestamp()-interval '1 second' WHERE id=$1",
+      `
+      UPDATE identity.email_intents
+      SET
+        lease_until = clock_timestamp() - interval '1 second'
+      WHERE
+        id = $1
+      `,
       [job!.id],
     );
     const replacement = await delivery.claim();
@@ -663,15 +883,34 @@ describe("Identity on real restricted PostgreSQL", () => {
     await delivery.delivered(job!);
     expect(
       (
-        await fixture.query("SELECT delivered_at FROM identity.email_intents WHERE id=$1", [
-          job!.id,
-        ])
+        await fixture.query(
+          `
+        SELECT
+          delivered_at
+        FROM
+          identity.email_intents
+        WHERE
+          id = $1
+        `,
+          [job!.id],
+        )
       ).rows[0].delivered_at,
     ).toBeNull();
     await delivery.failed(replacement!, "PROVIDER_UNAVAILABLE", false);
     expect(
-      (await fixture.query("SELECT parked_at FROM identity.email_intents WHERE id=$1", [job!.id]))
-        .rows[0].parked_at,
+      (
+        await fixture.query(
+          `
+      SELECT
+        parked_at
+      FROM
+        identity.email_intents
+      WHERE
+        id = $1
+      `,
+          [job!.id],
+        )
+      ).rows[0].parked_at,
     ).not.toBeNull();
     await identity.confirm(a.token, finalPassword);
   });
@@ -686,31 +925,31 @@ describe("Identity on real restricted PostgreSQL", () => {
     try {
       await expect(
         ops.query(
-          "SELECT identity.operator_admin($1,'test-operator','bootstrap test',$2,true,true)",
+          "SELECT identity.operator_admin($1, 'test-operator', 'bootstrap test', $2, true, true)",
           [pending.id, randomUUID()],
         ),
       ).rejects.toMatchObject({ code: "22023" });
       await expect(
         db.query(
           "diagnostic",
-          "SELECT identity.operator_admin($1,'runtime','escalation',$2,true,true)",
+          "SELECT identity.operator_admin($1, 'runtime', 'escalation', $2, true, true)",
           [a.id, randomUUID()],
         ),
       ).rejects.toMatchObject({ code: "42501" });
       await ops.query(
-        "SELECT identity.operator_admin($1,'test-operator','bootstrap test',$2,true,true)",
+        "SELECT identity.operator_admin($1, 'test-operator', 'bootstrap test', $2, true, true)",
         [a.id, randomUUID()],
       );
       await expect(
         ops.query(
-          "SELECT identity.operator_admin($1,'test-operator','second bootstrap',$2,true,true)",
+          "SELECT identity.operator_admin($1, 'test-operator', 'second bootstrap', $2, true, true)",
           [b.id, randomUUID()],
         ),
       ).rejects.toMatchObject({ code: "23514" });
       const session = await identity.login(a.email, finalPassword);
       expect((await second.authenticate(session.access)).permissions).toContain("catalog.manage");
       await ops.query(
-        "SELECT identity.operator_admin($1,'test-operator','revoke test',$2,false,false)",
+        "SELECT identity.operator_admin($1, 'test-operator', 'revoke test', $2, false, false)",
         [a.id, randomUUID()],
       );
       expect((await identity.authenticate(session.access)).permissions).not.toContain(
@@ -718,7 +957,16 @@ describe("Identity on real restricted PostgreSQL", () => {
       );
       const audit = (
         await fixture.query(
-          "SELECT operator_identity,reason FROM platform.audit_logs WHERE resource_id=$1 AND actor_type='OPERATOR'",
+          `
+          SELECT
+            operator_identity,
+            reason
+          FROM
+            platform.audit_logs
+          WHERE
+            resource_id = $1
+            AND actor_type = 'OPERATOR'
+          `,
           [a.id],
         )
       ).rows;
@@ -731,24 +979,55 @@ describe("Identity on real restricted PostgreSQL", () => {
   it("parks a worker that crashed on its last allowed attempt and bounds retry backoff", async () => {
     const a = await register(),
       delivery = new PostgresVerificationDelivery(mailDatabase);
-    await fixture.query("UPDATE identity.email_intents SET attempts=9 WHERE challenge_id=$1", [
-      a.challenge,
-    ]);
+    await fixture.query(
+      `
+    UPDATE identity.email_intents
+    SET
+      attempts = 9
+    WHERE
+      challenge_id = $1
+    `,
+      [a.challenge],
+    );
     const job = await delivery.claim();
     expect(job!.attempts).toBe(10);
     await fixture.query(
-      "UPDATE identity.email_intents SET lease_until=clock_timestamp()-interval '1 second' WHERE id=$1",
+      `
+      UPDATE identity.email_intents
+      SET
+        lease_until = clock_timestamp() - interval '1 second'
+      WHERE
+        id = $1
+      `,
       [job!.id],
     );
     await delivery.cleanup();
     expect(
-      (await fixture.query("SELECT parked_at FROM identity.email_intents WHERE id=$1", [job!.id]))
-        .rows[0].parked_at,
+      (
+        await fixture.query(
+          `
+      SELECT
+        parked_at
+      FROM
+        identity.email_intents
+      WHERE
+        id = $1
+      `,
+          [job!.id],
+        )
+      ).rows[0].parked_at,
     ).not.toBeNull();
     const b = await register();
-    await fixture.query("UPDATE identity.email_intents SET attempts=8 WHERE challenge_id=$1", [
-      b.challenge,
-    ]);
+    await fixture.query(
+      `
+    UPDATE identity.email_intents
+    SET
+      attempts = 8
+    WHERE
+      challenge_id = $1
+    `,
+      [b.challenge],
+    );
     const retry = await delivery.claim(),
       random = Math.random;
     Math.random = () => 1;
@@ -759,7 +1038,18 @@ describe("Identity on real restricted PostgreSQL", () => {
     }
     const wait = (
       await fixture.query(
-        "SELECT extract(epoch FROM available_at-clock_timestamp())*1000::float8 AS ms FROM identity.email_intents WHERE id=$1",
+        `
+        SELECT
+          extract(
+            epoch
+            FROM
+              available_at - clock_timestamp()
+          ) * 1000::float8 AS ms
+        FROM
+          identity.email_intents
+        WHERE
+          id = $1
+        `,
         [retry!.id],
       )
     ).rows[0].ms;
@@ -769,18 +1059,41 @@ describe("Identity on real restricted PostgreSQL", () => {
     const a = await register(),
       delivery = new PostgresVerificationDelivery(mailDatabase),
       holder = await fixture.connect();
-    await fixture.query("UPDATE identity.email_intents SET attempts=10 WHERE challenge_id=$1", [
-      a.challenge,
-    ]);
     await fixture.query(
-      "UPDATE identity.verification_challenges SET expires_at=created_at+interval '1 millisecond',created_at=clock_timestamp()-interval '1 minute' WHERE id=$1",
+      `
+    UPDATE identity.email_intents
+    SET
+      attempts = 10
+    WHERE
+      challenge_id = $1
+    `,
+      [a.challenge],
+    );
+    await fixture.query(
+      `
+      UPDATE identity.verification_challenges
+      SET
+        expires_at = created_at + interval '1 millisecond',
+        created_at = clock_timestamp() - interval '1 minute'
+      WHERE
+        id = $1
+      `,
       [a.challenge],
     );
     await holder.query("BEGIN");
     await holder.query("SET LOCAL lock_timeout='100ms'");
-    await holder.query("SELECT id FROM identity.verification_challenges WHERE id=$1 FOR UPDATE", [
-      a.challenge,
-    ]);
+    await holder.query(
+      `
+    SELECT
+      id
+    FROM
+      identity.verification_challenges
+    WHERE
+      id = $1
+    FOR UPDATE
+    `,
+      [a.challenge],
+    );
     let finished = false;
     const cleanup = delivery.cleanup().then(
       () => {
@@ -798,7 +1111,15 @@ describe("Identity on real restricted PostgreSQL", () => {
         waiting = Boolean(
           (
             await fixture.query(
-              "SELECT 1 FROM pg_stat_activity WHERE usename=$1 AND wait_event_type='Lock'",
+              `
+              SELECT
+                1
+              FROM
+                pg_stat_activity
+              WHERE
+                usename = $1
+                AND wait_event_type = 'Lock'
+              `,
               [mailRole],
             )
           ).rowCount,
@@ -808,9 +1129,18 @@ describe("Identity on real restricted PostgreSQL", () => {
       }
       expect(waiting || finished).toBe(true);
       await expect(
-        holder.query("SELECT id FROM identity.email_intents WHERE challenge_id=$1 FOR UPDATE", [
-          a.challenge,
-        ]),
+        holder.query(
+          `
+        SELECT
+          id
+        FROM
+          identity.email_intents
+        WHERE
+          challenge_id = $1
+        FOR UPDATE
+        `,
+          [a.challenge],
+        ),
       ).resolves.toMatchObject({ rowCount: 1 });
     } finally {
       await holder.query("ROLLBACK");
@@ -828,35 +1158,81 @@ describe("Identity on real restricted PostgreSQL", () => {
     );
     try {
       await expect(
-        mailDb.query("diagnostic", "SELECT password_hash FROM identity.users"),
+        mailDb.query(
+          "diagnostic",
+          `
+        SELECT
+          password_hash
+        FROM
+          identity.users
+        `,
+        ),
       ).rejects.toMatchObject({ code: "42501" });
       await expect(
-        mailDb.query("diagnostic", "SELECT refresh_hash FROM identity.sessions"),
+        mailDb.query(
+          "diagnostic",
+          `
+        SELECT
+          refresh_hash
+        FROM
+          identity.sessions
+        `,
+        ),
       ).rejects.toMatchObject({ code: "42501" });
       const delivery = new PostgresVerificationDelivery(mailDb);
       expect((await delivery.claim())!.challengeId).toBe(a.challenge);
       await fixture.query(
-        "UPDATE identity.verification_challenges SET expires_at=clock_timestamp()-interval '2 days' WHERE id=$1",
+        `
+        UPDATE identity.verification_challenges
+        SET
+          expires_at = clock_timestamp() - interval '2 days'
+        WHERE
+          id = $1
+        `,
         [a.challenge],
       );
       await delivery.cleanup();
       const c = (
         await fixture.query(
-          "SELECT ciphertext,token_hash FROM identity.verification_challenges WHERE id=$1",
+          `
+          SELECT
+            ciphertext,
+            token_hash
+          FROM
+            identity.verification_challenges
+          WHERE
+            id = $1
+          `,
           [a.challenge],
         )
       ).rows[0];
       expect(c.ciphertext).toBeNull();
       expect(c.token_hash).toBeNull();
       await fixture.query(
-        "UPDATE identity.users SET created_at=clock_timestamp()-interval '8 days' WHERE id=$1",
+        `
+        UPDATE identity.users
+        SET
+          created_at = clock_timestamp() - interval '8 days'
+        WHERE
+          id = $1
+        `,
         [a.id],
       );
       await delivery.cleanup();
       const u = (
-        await fixture.query("SELECT email,password_hash,enabled FROM identity.users WHERE id=$1", [
-          a.id,
-        ])
+        await fixture.query(
+          `
+        SELECT
+          email,
+          password_hash,
+          enabled
+        FROM
+          identity.users
+        WHERE
+          id = $1
+        `,
+          [a.id],
+        )
       ).rows[0];
       expect(u).toEqual({ email: null, password_hash: null, enabled: false });
     } finally {
@@ -874,12 +1250,12 @@ describe("Identity on real restricted PostgreSQL", () => {
       await expect(
         db.query(
           "diagnostic",
-          "SELECT identity.operator_revoke_key('local-test','runtime','not permitted',$1)",
+          "SELECT identity.operator_revoke_key('local-test', 'runtime', 'not permitted', $1)",
           [randomUUID()],
         ),
       ).rejects.toMatchObject({ code: "42501" });
       await ops.query(
-        "SELECT identity.operator_revoke_key('local-test','operator-test','compromise drill',$1)",
+        "SELECT identity.operator_revoke_key('local-test', 'operator-test', 'compromise drill', $1)",
         [randomUUID()],
       );
       await expect(second.authenticate(session.access)).rejects.toThrow("Unauthenticated");
@@ -887,7 +1263,15 @@ describe("Identity on real restricted PostgreSQL", () => {
       expect(
         (
           await fixture.query(
-            "SELECT count(*)::int n FROM platform.audit_logs WHERE resource_id=$1 AND action='identity.key.revoke'",
+            `
+            SELECT
+              count(*)::int n
+            FROM
+              platform.audit_logs
+            WHERE
+              resource_id = $1
+              AND action = 'identity.key.revoke'
+            `,
             [session.familyId],
           )
         ).rows[0].n,
@@ -907,7 +1291,7 @@ describe("Identity on real restricted PostgreSQL", () => {
     const ops = new Pool({ connectionString: opsUrl.toString(), max: 1 });
     try {
       await ops.query(
-        "SELECT identity.operator_replay_email($1,'test-operator','provider fixed',$2)",
+        "SELECT identity.operator_replay_email($1, 'test-operator', 'provider fixed', $2)",
         [job.id, randomUUID()],
       );
       const retried = (await delivery.claim())!;
@@ -918,7 +1302,7 @@ describe("Identity on real restricted PostgreSQL", () => {
       await identity.confirm(a.token, finalPassword);
       await expect(
         ops.query(
-          "SELECT identity.operator_replay_email($1,'test-operator','already activated',$2)",
+          "SELECT identity.operator_replay_email($1, 'test-operator', 'already activated', $2)",
           [job.id, randomUUID()],
         ),
       ).rejects.toMatchObject({ code: "22023" });

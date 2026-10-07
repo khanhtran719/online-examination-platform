@@ -1,0 +1,5 @@
+npm run quality
+FAIL (exit 1)
+experiments/persistence-comparison/tests/statistics.unit.spec.mjs: unit test must be in __tests__
+
+This test appeared in concurrent persistence work after the earlier root quality/lint checks passed. Web review did not create or modify it. contracts:check was not reached in this final quality run; the earlier 46-operation/425-example contract check passed.

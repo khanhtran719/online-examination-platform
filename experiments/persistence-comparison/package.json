@@ -1,0 +1,24 @@
+{
+  "name": "examination-persistence-comparison",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.11.0 <25"
+  },
+  "scripts": {
+    "test": "node --test --test-concurrency=1 __tests__/*.unit.spec.mjs tests/*.integration.spec.mjs",
+    "benchmark": "node --expose-gc benchmark.mjs"
+  },
+  "overrides": {
+    "sequelize": {
+      "uuid": "11.1.1"
+    }
+  },
+  "dependencies": {
+    "pg": "8.23.1",
+    "reflect-metadata": "0.2.2",
+    "sequelize": "6.37.8",
+    "typeorm": "1.1.1"
+  }
+}

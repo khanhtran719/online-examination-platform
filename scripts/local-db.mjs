@@ -17,20 +17,48 @@ try {
   await pool.query(await readFile("infra/database/roles.sql", "utf8"));
   const databaseName = decodeURIComponent(url.pathname.slice(1)).replaceAll('"', '""');
   await pool.query(`GRANT CREATE ON DATABASE "${databaseName}" TO examination_owner`);
-  await pool.query(`DO $$ BEGIN
-    IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname='examination_migrator_local') THEN
-      CREATE ROLE examination_migrator_local LOGIN NOINHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS PASSWORD 'local-migration-only-password';
+  await pool.query(`
+  DO $$
+  BEGIN
+    IF NOT EXISTS (
+      SELECT FROM pg_roles
+      WHERE rolname = 'examination_migrator_local'
+    ) THEN
+      CREATE ROLE examination_migrator_local
+        LOGIN NOINHERIT
+        NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS
+        PASSWORD 'local-migration-only-password';
     END IF;
-    IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname='examination_app_local') THEN
-      CREATE ROLE examination_app_local LOGIN INHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS PASSWORD 'local-runtime-only-password';
+    IF NOT EXISTS (
+      SELECT FROM pg_roles
+      WHERE rolname = 'examination_app_local'
+    ) THEN
+      CREATE ROLE examination_app_local
+        LOGIN INHERIT
+        NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS
+        PASSWORD 'local-runtime-only-password';
     END IF;
-    IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname='examination_operator_local') THEN
-      CREATE ROLE examination_operator_local LOGIN INHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS PASSWORD 'local-operator-only-password';
+    IF NOT EXISTS (
+      SELECT FROM pg_roles
+      WHERE rolname = 'examination_operator_local'
+    ) THEN
+      CREATE ROLE examination_operator_local
+        LOGIN INHERIT
+        NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS
+        PASSWORD 'local-operator-only-password';
     END IF;
-    IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname='examination_mail_local') THEN
-      CREATE ROLE examination_mail_local LOGIN INHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS PASSWORD 'local-mail-only-password';
+    IF NOT EXISTS (
+      SELECT FROM pg_roles
+      WHERE rolname = 'examination_mail_local'
+    ) THEN
+      CREATE ROLE examination_mail_local
+        LOGIN INHERIT
+        NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS
+        PASSWORD 'local-mail-only-password';
     END IF;
-  END $$`);
+  END
+  $$
+  `);
   await pool.query("GRANT examination_owner TO examination_migrator_local");
   await pool.query("GRANT examination_runtime TO examination_app_local");
   await pool.query("GRANT examination_operator TO examination_operator_local");

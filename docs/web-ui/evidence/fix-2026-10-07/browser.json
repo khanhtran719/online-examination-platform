@@ -1,0 +1,198 @@
+{
+  "checks": [
+    {
+      "name": "home overflow 320",
+      "result": "PASS",
+      "detail": {
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "home overflow 390",
+      "result": "PASS",
+      "detail": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "home overflow 768",
+      "result": "PASS",
+      "detail": {
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "home overflow 1024",
+      "result": "PASS",
+      "detail": {
+        "scrollWidth": 1024,
+        "clientWidth": 1024,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "home overflow 1440",
+      "result": "PASS",
+      "detail": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "home brand and steps",
+      "result": "PASS",
+      "detail": {
+        "hasMinhHoa": true,
+        "hasBrand": true,
+        "hasSteps": true
+      }
+    },
+    {
+      "name": "keyboard login",
+      "result": "PASS",
+      "detail": {
+        "firstFocus": "Kịch bản mẫu",
+        "passwordFocused": "password"
+      }
+    },
+    {
+      "name": "mobile focus not under dock",
+      "result": "PASS",
+      "detail": {
+        "top": 578,
+        "bottom": 598,
+        "dockTop": 629,
+        "overlaps": false,
+        "dockDisplay": "flex"
+      }
+    },
+    {
+      "name": "keyboard selects radio",
+      "result": "PASS",
+      "detail": {
+        "checked": true
+      }
+    },
+    {
+      "name": "keyboard sheet open and escape",
+      "result": "PASS",
+      "detail": {
+        "dialogs": 0
+      }
+    },
+    {
+      "name": "exam overflow 320",
+      "result": "PASS",
+      "detail": {
+        "scrollWidth": 320,
+        "clientWidth": 320,
+        "overflowX": false
+      }
+    },
+    {
+      "name": "200% layout viewport has no page overflow",
+      "result": "PASS",
+      "detail": {
+        "zoom1440": {
+          "scrollWidth": 720,
+          "clientWidth": 720,
+          "overflowX": false
+        },
+        "zoom768": {
+          "scrollWidth": 384,
+          "clientWidth": 384,
+          "overflowX": false
+        }
+      }
+    },
+    {
+      "name": "500-question first page does not invent version zero",
+      "result": "PASS",
+      "detail": {
+        "radiosBefore": 0
+      }
+    },
+    {
+      "name": "500-question pages load",
+      "result": "PASS",
+      "detail": {
+        "clicks": 24,
+        "radiosAfter": 2,
+        "cells": 500,
+        "ms": 2221
+      }
+    },
+    {
+      "name": "clean room sends no answer write",
+      "result": "PASS",
+      "detail": {
+        "puts": 0,
+        "beforeClean": 0
+      }
+    },
+    {
+      "name": "live home initial assets",
+      "result": "PASS",
+      "detail": {
+        "assets": [
+          {
+            "url": "index-CEy6GWbg.css",
+            "status": 200
+          },
+          {
+            "url": "index-CEnOb121.js",
+            "status": 200
+          },
+          {
+            "url": "layout-DK5OPhcP.css",
+            "status": 200
+          },
+          {
+            "url": "memory-Cr_pDoeN.js",
+            "status": 200
+          },
+          {
+            "url": "format-CuaVDQE9.js",
+            "status": 200
+          },
+          {
+            "url": "layout.module-CP-TcwWq.js",
+            "status": 200
+          },
+          {
+            "url": "mount-DOndEosk.js",
+            "status": 200
+          },
+          {
+            "url": "noto-sans-vietnamese-400-normal-D2wP-Vm-.woff2",
+            "status": 200
+          },
+          {
+            "url": "source-sans-3-latin-700-normal-CkzU-mV9.woff2",
+            "status": 200
+          },
+          {
+            "url": "noto-sans-latin-400-normal-BTkUljjl.woff2",
+            "status": 200
+          },
+          {
+            "url": "source-sans-3-latin-600-normal-DeckBYAU.woff2",
+            "status": 200
+          },
+          {
+            "url": "source-sans-3-vietnamese-600-normal-B2sTNYey.woff2",
+            "status": 200
+          }
+        ]
+      }
+    }
+  ],
+  "pages": []
+}

@@ -1,0 +1,558 @@
+{
+  "config": {
+    "argv": [
+      "/Users/trankhanh/.hermes/node/bin/node",
+      "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "/private/tmp/web-ui-review-20261007/playwright.config.mjs"
+    ],
+    "configFile": "/private/tmp/web-ui-review-20261007/playwright.config.mjs",
+    "rootDir": "/private/tmp/web-ui-review-20261007",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/private/tmp/web-ui-review-20261007/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/private/tmp/web-ui-review-20261007",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/private/tmp/web-ui-review-20261007/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "existing.spec.ts",
+      "file": "existing.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "demo",
+          "file": "existing.spec.ts",
+          "line": 34,
+          "column": 6,
+          "specs": [
+            {
+              "title": "public pages at five widths",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1601,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-07T02:02:41.982Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c59bdb8ce65416ce7f12-67c0e55846abdf6ffcf5",
+              "file": "existing.spec.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "exam save, conflict, frozen attempt and result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4583,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-07T02:02:43.866Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c59bdb8ce65416ce7f12-8e75f7753114e5bfb7cb",
+              "file": "existing.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "admin permission boundary and honest metrics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4701,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-07T02:02:48.455Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c59bdb8ce65416ce7f12-5cd62517eab04949dd24",
+              "file": "existing.spec.ts",
+              "line": 132,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "live",
+          "file": "existing.spec.ts",
+          "line": 157,
+          "column": 6,
+          "specs": [
+            {
+              "title": "does not fall back to demo data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 402,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-07T02:02:53.163Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c59bdb8ce65416ce7f12-3303f685893c54a45ed7",
+              "file": "existing.spec.ts",
+              "line": 160,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "findings.spec.ts",
+      "file": "findings.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "W-14: do not treat an answer in an unloaded page as version zero",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2918,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('radio')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  2000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('radio') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('radio')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('radio')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  2000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('radio') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('radio')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at /private/tmp/web-ui-review-20261007/findings.spec.ts:39:41",
+                    "location": {
+                      "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                      "column": 41,
+                      "line": 39
+                    },
+                    "snippet": "  37 |     [`GET /v1/attempts/${aid}/answers`]: (route, url) => route.fulfill({status: 200, json: ok(url.searchParams.has(\"cursor\") ? [{questionId: question.id, selectedOptionIds: [id(11)], marked: false, version: 5, updatedAt: iso()}] : [{questionId: id(99), selectedOptionIds: [], marked: false, version: 1, updatedAt: iso()}], {next: url.searchParams.has(\"cursor\") ? null : \"answer-page-2\", pageSize: 20})})\n  38 |   });\n> 39 |   await expect(page.getByRole(\"radio\")).toHaveCount(0, {timeout: 2000});\n     |                                         ^\n  40 | });\n  41 |\n  42 | test(\"W-06/W-14: reauthentication keeps the unsaved selection\", async ({page}) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                        "column": 41,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('radio')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  2000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('radio') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('radio')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  37 |     [`GET /v1/attempts/${aid}/answers`]: (route, url) => route.fulfill({status: 200, json: ok(url.searchParams.has(\"cursor\") ? [{questionId: question.id, selectedOptionIds: [id(11)], marked: false, version: 5, updatedAt: iso()}] : [{questionId: id(99), selectedOptionIds: [], marked: false, version: 1, updatedAt: iso()}], {next: url.searchParams.has(\"cursor\") ? null : \"answer-page-2\", pageSize: 20})})\n  38 |   });\n> 39 |   await expect(page.getByRole(\"radio\")).toHaveCount(0, {timeout: 2000});\n     |                                         ^\n  40 | });\n  41 |\n  42 | test(\"W-06/W-14: reauthentication keeps the unsaved selection\", async ({page}) => {\n    at /private/tmp/web-ui-review-20261007/findings.spec.ts:39:41"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T02:02:53.576Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-14-do-not-treat-b0277-loaded-page-as-version-zero/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-14-do-not-treat-b0277-loaded-page-as-version-zero/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                    "column": 41,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9f77afc68013305085bc-310ae0c392055cd7722c",
+          "file": "findings.spec.ts",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "title": "W-06/W-14: reauthentication keeps the unsaved selection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13092,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Đăng nhập lại' })\nExpected: visible\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Đăng nhập lại' }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Đăng nhập lại' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Đăng nhập lại' })\nExpected: visible\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Đăng nhập lại' }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Đăng nhập lại' })\u001b[22m\n\n    at /private/tmp/web-ui-review-20261007/findings.spec.ts:58:68",
+                    "location": {
+                      "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                      "column": 68,
+                      "line": 58
+                    },
+                    "snippet": "  56 |   await page.getByRole(\"radio\").first().check();\n  57 |   await page.clock.runFor(750);\n> 58 |   await expect(page.getByRole(\"heading\", {name: \"Đăng nhập lại\"})).toBeVisible();\n     |                                                                    ^\n  59 |   await page.getByLabel(\"Email\", {exact: true}).fill(\"candidate@example.test\");\n  60 |   await page.getByLabel(\"Mật khẩu\", {exact: true}).fill(\"fixture-password-ok\");\n  61 |   await page.getByRole(\"button\", {name: \"Đăng nhập lại\", exact: true}).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                        "column": 68,
+                        "line": 58
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Đăng nhập lại' })\nExpected: visible\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Đăng nhập lại' }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Đăng nhập lại' })\u001b[22m\n\n\n  56 |   await page.getByRole(\"radio\").first().check();\n  57 |   await page.clock.runFor(750);\n> 58 |   await expect(page.getByRole(\"heading\", {name: \"Đăng nhập lại\"})).toBeVisible();\n     |                                                                    ^\n  59 |   await page.getByLabel(\"Email\", {exact: true}).fill(\"candidate@example.test\");\n  60 |   await page.getByLabel(\"Mật khẩu\", {exact: true}).fill(\"fixture-password-ok\");\n  61 |   await page.getByRole(\"button\", {name: \"Đăng nhập lại\", exact: true}).click();\n    at /private/tmp/web-ui-review-20261007/findings.spec.ts:58:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T02:02:56.797Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-06-W-14-reauthe-fbb2c-keeps-the-unsaved-selection/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-06-W-14-reauthe-fbb2c-keeps-the-unsaved-selection/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                    "column": 68,
+                    "line": 58
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9f77afc68013305085bc-828fd5a262016f6fea4f",
+          "file": "findings.spec.ts",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "title": "W-16: deadline submission does not wait forever for a held save",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4172,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\nCall Log:\n- Timeout 2000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\nCall Log:\n- Timeout 2000ms exceeded while waiting on the predicate\n    at /private/tmp/web-ui-review-20261007/findings.spec.ts:79:53",
+                    "location": {
+                      "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                      "column": 53,
+                      "line": 79
+                    },
+                    "snippet": "  77 |   await expect.poll(() => held !== null).toBe(true);\n  78 |   await page.clock.runFor(61000);\n> 79 |   await expect.poll(() => submits, {timeout: 2000}).toBe(1);\n     |                                                     ^\n  80 | });\n  81 |\n  82 | test(\"FE-23: a second question save uses the accepted revision\", async ({page}) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                        "column": 53,
+                        "line": 79
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\nCall Log:\n- Timeout 2000ms exceeded while waiting on the predicate\n\n  77 |   await expect.poll(() => held !== null).toBe(true);\n  78 |   await page.clock.runFor(61000);\n> 79 |   await expect.poll(() => submits, {timeout: 2000}).toBe(1);\n     |                                                     ^\n  80 | });\n  81 |\n  82 | test(\"FE-23: a second question save uses the accepted revision\", async ({page}) => {\n    at /private/tmp/web-ui-review-20261007/findings.spec.ts:79:53"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T02:03:10.313Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-16-deadline-sub-ab841-ait-forever-for-a-held-save/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-16-deadline-sub-ab841-ait-forever-for-a-held-save/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                    "column": 53,
+                    "line": 79
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9f77afc68013305085bc-1333318239de5c8e3fe0",
+          "file": "findings.spec.ts",
+          "line": 68,
+          "column": 5
+        },
+        {
+          "title": "FE-23: a second question save uses the accepted revision",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2843,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T02:03:14.880Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9f77afc68013305085bc-4768ae5076696e664848",
+          "file": "findings.spec.ts",
+          "line": 82,
+          "column": 5
+        },
+        {
+          "title": "W-18: permission loss removes previously loaded review text",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3843,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('RELEASED_REVIEW_TEXT')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  2000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByText('RELEASED_REVIEW_TEXT') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByText('RELEASED_REVIEW_TEXT')\u001b[22m\n\u001b[2m    21 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('RELEASED_REVIEW_TEXT')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  2000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByText('RELEASED_REVIEW_TEXT') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByText('RELEASED_REVIEW_TEXT')\u001b[22m\n\u001b[2m    21 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at /private/tmp/web-ui-review-20261007/findings.spec.ts:116:56",
+                    "location": {
+                      "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                      "column": 56,
+                      "line": 116
+                    },
+                    "snippet": "  114 |   await page.goBack();\n  115 |   await expect(page.getByRole(\"alert\")).toContainText(\"Bạn không có quyền\");\n> 116 |   await expect(page.getByText(\"RELEASED_REVIEW_TEXT\")).toHaveCount(0, {timeout: 2000});\n      |                                                        ^\n  117 | });\n  118 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                        "column": 56,
+                        "line": 116
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('RELEASED_REVIEW_TEXT')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  2000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByText('RELEASED_REVIEW_TEXT') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByText('RELEASED_REVIEW_TEXT')\u001b[22m\n\u001b[2m    21 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  114 |   await page.goBack();\n  115 |   await expect(page.getByRole(\"alert\")).toContainText(\"Bạn không có quyền\");\n> 116 |   await expect(page.getByText(\"RELEASED_REVIEW_TEXT\")).toHaveCount(0, {timeout: 2000});\n      |                                                        ^\n  117 | });\n  118 |\n    at /private/tmp/web-ui-review-20261007/findings.spec.ts:116:56"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T02:03:17.875Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-18-permission-l-e6829-eviously-loaded-review-text/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-18-permission-l-e6829-eviously-loaded-review-text/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/private/tmp/web-ui-review-20261007/findings.spec.ts",
+                    "column": 56,
+                    "line": 116
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9f77afc68013305085bc-28c54be121641f645abe",
+          "file": "findings.spec.ts",
+          "line": 102,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-07T02:02:41.617Z",
+    "duration": 40135.402,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

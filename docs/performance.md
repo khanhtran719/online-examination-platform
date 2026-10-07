@@ -1,6 +1,6 @@
 # Performance and cost protocol
 
-This protocol is normative through architecture §§80–85 and rules R-63–R-75. No benchmark has run yet. Specified, unverified targets/traffic are in [SLO/workload](slo-and-workload.md); the [acceptance ledger](production-acceptance.md) records missing evidence.
+This protocol is normative through architecture §§80–85 and rules R-63–R-75. No production AWS capacity/cost benchmark has run yet. Local Identity/normalization/[persistence comparison](../experiments/persistence-comparison/README.md) diagnostics are scoped evidence, not production acceptance. Specified, unverified targets/traffic are in [SLO/workload](slo-and-workload.md); the [acceptance ledger](production-acceptance.md) records missing evidence.
 
 ## Feasibility before cost
 

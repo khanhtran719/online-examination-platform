@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-07",
+  "scope": "SQL layout only; current pg retained",
+  "method": {
+    "formatter": "sql-formatter 15.9.0, temporary /tmp installation; no repository dependency added",
+    "comparison": "Exact SQL token/literal sequences, recursively tokenized PL/pgSQL bodies, template interpolation expression order, and TypeScript semantic AST; whitespace/quote layout/trailing comma metadata excluded",
+    "baseline": "Working tree before this increment, including the existing pg drain fix and pending UI work",
+    "limitations": "Maintenance verification, not a general SQL parser or performance benchmark; existing PostgreSQL regressions validate behavior"
+  },
+  "checkedCodeFiles": 84,
+  "sqlLiterals": 274,
+  "operationalSqlFiles": 3,
+  "preservedHistoricalFiles": 53,
+  "changed": [
+    {
+      "path": "apps/api/src/infrastructure/database/migration-runner.ts",
+      "queries": 10,
+      "normalizedAstSha256": "3f368d3d93237cd5f282bad735eb951522a01736147dad5b9a1b41516587e4ca"
+    },
+    {
+      "path": "apps/api/src/infrastructure/idempotency/postgres-idempotency.ts",
+      "queries": 2,
+      "normalizedAstSha256": "199b70048550d1c1189443a6d4322e825647e4220be216b6f4e8ad754be8fa65"
+    },
+    {
+      "path": "apps/api/src/infrastructure/security/authorization/postgres-security.ts",
+      "queries": 10,
+      "normalizedAstSha256": "ee7310182fa833e647271a2b3f562ed85ce9b1467d4ec222c3eef2bb85f482af"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.ts",
+      "queries": 8,
+      "normalizedAstSha256": "720e92b053b0d39151432e3490cdbbed3370b01d8ab812c1ecb3b57cdc793dbc"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.ts",
+      "queries": 2,
+      "normalizedAstSha256": "4681ecdbd479a70322c125478c982d3c0d2192a0aa64da7466e5cfe36f48da3d"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.ts",
+      "queries": 24,
+      "normalizedAstSha256": "1804665b96ad59bdea52f84add7a2e329aee2fc15765e8379c510a7932ac5601"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-operator-admin.ts",
+      "queries": 1,
+      "normalizedAstSha256": "a8e9afa5dffb860a20bbf6f1e41e6e81e0231026e98a5bda12aa5dd4a92467f4"
+    },
+    {
+      "path": "apps/api/tests/integration/database.spec.ts",
+      "queries": 112,
+      "normalizedAstSha256": "0864205deba93d9b688bb254824de3a170d3aaa59b6a52577531956d368ae9ca"
+    },
+    {
+      "path": "apps/api/tests/integration/identity.spec.ts",
+      "queries": 76,
+      "normalizedAstSha256": "a3b5ab27c83e0b7ab8ec986e88f1f48d66fba37abb9b26307ebc4fbeb19ccbc7"
+    },
+    {
+      "path": "scripts/local-db.mjs",
+      "queries": 6,
+      "normalizedAstSha256": "ab70be64702571b59a5b63c3098908cbf5bc462ef7de2eeabdc996f472dea9b0"
+    },
+    {
+      "path": "scripts/identity-benchmark.mjs",
+      "queries": 14,
+      "normalizedAstSha256": "e2b5632f83c576bc5ef817040c397a371108bab75cd9e853e4030cb0028c70d9"
+    },
+    {
+      "path": "infra/database/diagnostics.sql",
+      "normalizedSqlSha256": "2a05d88236f4d76bafb906ecbcc5126fd2ea3b1c690beef53775aed009f58cc9"
+    },
+    {
+      "path": "infra/database/observability.sql",
+      "normalizedSqlSha256": "ee62b7b13c50ced74d126d13dfd055f40d70c68fcd60237a0548618b83f40c1b"
+    },
+    {
+      "path": "infra/database/roles.sql",
+      "normalizedSqlSha256": "c997a3b8394997e64c478b31e275851676dd32b392579c654e4be25020a61487"
+    }
+  ],
+  "migrations": [
+    {
+      "source": "apps/api/src/infrastructure/database/migrations/0001_capability_schema.sql",
+      "built": "dist/infrastructure/database/migrations/0001_capability_schema.sql",
+      "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95"
+    },
+    {
+      "source": "apps/api/src/infrastructure/database/migrations/0002_query_indexes.sql",
+      "built": "dist/infrastructure/database/migrations/0002_query_indexes.sql",
+      "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158"
+    },
+    {
+      "source": "apps/api/src/infrastructure/database/migrations/0003_runtime_privileges.sql",
+      "built": "dist/infrastructure/database/migrations/0003_runtime_privileges.sql",
+      "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9"
+    },
+    {
+      "source": "apps/api/src/infrastructure/database/migrations/0004_durable_state_guards.sql",
+      "built": "dist/infrastructure/database/migrations/0004_durable_state_guards.sql",
+      "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8"
+    },
+    {
+      "source": "apps/api/src/infrastructure/database/migrations/0005_frozen_category.sql",
+      "built": "dist/infrastructure/database/migrations/0005_frozen_category.sql",
+      "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b"
+    },
+    {
+      "source": "apps/api/src/infrastructure/database/migrations/0006_immutable_submission.sql",
+      "built": "dist/infrastructure/database/migrations/0006_immutable_submission.sql",
+      "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043"
+    },
+    {
+      "source": "apps/api/src/infrastructure/database/migrations/0007_identity_runtime.sql",
+      "built": "dist/infrastructure/database/migrations/0007_identity_runtime.sql",
+      "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6"
+    },
+    {
+      "source": "apps/api/src/infrastructure/database/migrations/0008_identity_operations.sql",
+      "built": "dist/infrastructure/database/migrations/0008_identity_operations.sql",
+      "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67"
+    }
+  ],
+  "historicalEvidence": "All 53 scoped migration/experiment files match their captured SHA-256, including raw measurements and archived source; no evidence regenerated",
+  "checks": {
+    "prettier": "PASS for 11 touched TS/MJS files",
+    "lintQualityContracts": "PASS: boundaries, links, 46 operations and 425 contract examples",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "unitTooling": {
+      "passed": 100,
+      "skipped": 0
+    },
+    "postgresIntegration": {
+      "passed": 53,
+      "skipped": 0
+    },
+    "localBootstrap": "PASS on dedicated PostgreSQL:55434",
+    "operationalDiagnostics": "PASS, ON_ERROR_STOP=1",
+    "gitDiffCheck": "PASS"
+  }
+}

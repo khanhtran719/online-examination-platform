@@ -2,7 +2,9 @@
 
 Cập nhật: 2026-10-06. Đã bàn giao/review **quy chuẩn, bootstrap/domain, contracts, DB-01–11 và lõi Identity/API/email-worker local** theo [ADR-005](adr/005-email-verification-and-signed-tokens.md). **50/216 mục hoàn thành,166 mục chưa hoàn thành.** ID-07/browser HTTPS, ID-11/live SES và DB-12/image compatibility còn PARTIAL; magic link/GitHub LATER. AWS chưa triển khai/đo.
 
-[Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. ORM evaluation vẫn0/4, tách khỏi refactor. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–05; RV-06/07 và product acceptance còn pending. Catalog chưa được triển khai trong increment này.
+[Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. Persistence evaluation đã hoàn thành4/4 local theo [ADR-008](adr/008-persistence-evaluation.md), tách khỏi refactor; [raw comparison](../experiments/persistence-comparison/README.md) giữ pg hiện tại, chưa chọn AWS/TCO winner. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–05; RV-06/07 và product acceptance còn pending. Catalog chưa được triển khai trong increment này.
+
+Theo yêu cầu mới, đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. SPA local và kiểm tra build/browser đã có; checklist FE còn 3/32 được tick. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn định hướng static SPA/design/accessibility. WEB-01–10 vẫn mở vì TLS, phát hành asset và nghiệm thu budget chưa đủ. Product 50/216 không đổi.
 
 Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. Git và origin remote hiện đã có, BOOT-09 branch/PR workflow chưa kiểm chứng; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
 
@@ -182,6 +184,8 @@ Phụ thuộc: 04–07.
 Phụ thuộc: public contracts + 04–08.
 
 - [ ] **WEB-01** Chọn frontend/build strategy, responsive/accessibility budget và S3/CloudFront static asset plan.
+
+WEB-01 PARTIAL: ADR-007/[handoff](web-ui/README.md) đã chốt React/TypeScript/Vite, shells/design tokens, responsive/a11y targets, proposed asset/request budgets và static routing/cache plan. Local `apps/web` build và preview browser checks đã có, xem [fix evidence](web-ui/evidence/fix-2026-10-07/README.md). TLS, chiến lược phát asset trên S3/CloudFront và nghiệm thu budget chưa đủ để tick. FE-01–32 chi tiết hóa WEB-01–10, không phải 32 product items mới.
 - [ ] **WEB-02** Register/email verification/final password/login/logout/refresh: inert verification landing, resend UX và an toàn với cookie/token/CSRF policy đã chọn. Magic link/GitHub UI khi ID-12/13 triển khai sau.
 - [ ] **WEB-03** Browse exam/detail và lỗi open/close/attempt limit rõ ràng.
 - [ ] **WEB-04** Start/load questions/answer/mark, section navigation và answer-empty UX.

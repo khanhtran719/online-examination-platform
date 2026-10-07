@@ -2,7 +2,9 @@
 
 **Phase04: lõi Identity và API/email-worker chạy được trên local. 50/216 đầu mục hoàn tất.** Email/password, link xác thực một lần, JWT ES256 access/refresh, rotation/revocation, profile receipt và operator admin đã triển khai. Browser HTTPS và live SES còn PARTIAL. Magic link/GitHub để sau. Chưa đạt production acceptance trên AWS.
 
-- [Chuẩn hóa kiến trúc — checklist 12/12](docs/architecture-normalization-plan.md), [review API và lựa chọn pg/ORM](docs/api-architecture-review.md), [ADR-006](docs/adr/006-source-layout-normalization.md): source và tooling đã chuẩn hóa, [diagnostic trước/sau](experiments/architecture-normalization/README.md) đã đo; ORM evaluation còn0/4.
+- [Web UI handoff cho Grok](docs/web-ui/README.md): phong cách đã chốt, mô tả màn hình, API/state rules, [32 task frontend](docs/web-ui/implementation-tasks.md), 24 scenarios và [prompt khoảng 1.000 từ](docs/web-ui/grok-implementation-prompt.md). SPA local đã có trong `apps/web`; checklist còn 3/32 task được tick (FE-01, FE-03, FE-04). WEB-01–10 chưa tick. Preview build/browser đã chạy; HTTPS Identity, live Catalog/Assessment/Reporting và production acceptance vẫn mở. Bằng chứng sửa 2026-10-07: [fix evidence](docs/web-ui/evidence/fix-2026-10-07/README.md).
+
+- [Chuẩn hóa kiến trúc — checklist 12/12](docs/architecture-normalization-plan.md), [review API và lựa chọn pg/ORM](docs/api-architecture-review.md), [ADR-006](docs/adr/006-source-layout-normalization.md): source/tooling đã chuẩn hóa. Persistence evaluation4/4 local: [pg/TypeORM/Sequelize evidence](experiments/persistence-comparison/README.md), [ADR-008 giữ pg hiện tại](docs/adr/008-persistence-evaluation.md);76.800 operations/0 errors. AWS capacity/cost vẫn chưa đo.
 - [Architecture Contract](architecture.md) và [AGENTS.md](AGENTS.md): boundaries và quy trình.
 - [Roadmap có đánh dấu](docs/implementation-roadmap.md), [review Phần04](docs/phase-04-review.md), [profile](docs/project-profile.md): trạng thái/evidence.
 - [Product](docs/product-specification.md), [permissions](docs/security-and-permissions.md), [OpenAPI](docs/contracts/openapi.yaml), [SLO/workload](docs/slo-and-workload.md): contracts.

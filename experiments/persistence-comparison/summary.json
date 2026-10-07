@@ -1,0 +1,5224 @@
+{
+  "timestamp": "2026-10-07T02:11:26.314Z",
+  "scope": "local closed-loop Identity comparison, not sustainable capacity/AWS/SLO/cost proof",
+  "samples": 76800,
+  "errors": 0,
+  "startup": [
+    {
+      "candidate": "pg",
+      "bootstrapMs": 49.675250000000005,
+      "wallMs": 85.87929199999962,
+      "rssBytes": 66371584,
+      "raw": [
+        {
+          "block": 0,
+          "candidate": "pg",
+          "wallMs": 139.87266700000146,
+          "bootstrapMs": 82.16708299999999,
+          "processUptimeMs": 105.025958,
+          "rssBytes": 66207744,
+          "heapUsedBytes": 9420160,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 1,
+          "candidate": "pg",
+          "wallMs": 80.58599999999933,
+          "bootstrapMs": 45.712582999999995,
+          "processUptimeMs": 58.972667,
+          "rssBytes": 66371584,
+          "heapUsedBytes": 9414096,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 2,
+          "candidate": "pg",
+          "wallMs": 86.5034169999999,
+          "bootstrapMs": 52.426375,
+          "processUptimeMs": 64.84770900000001,
+          "rssBytes": 66125824,
+          "heapUsedBytes": 9428928,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 3,
+          "candidate": "pg",
+          "wallMs": 84.91654199999903,
+          "bootstrapMs": 49.596583,
+          "processUptimeMs": 62.435584000000006,
+          "rssBytes": 66387968,
+          "heapUsedBytes": 9449760,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 4,
+          "candidate": "pg",
+          "wallMs": 85.87929199999962,
+          "bootstrapMs": 49.675250000000005,
+          "processUptimeMs": 64.04391700000001,
+          "rssBytes": 66568192,
+          "heapUsedBytes": 9441064,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "typeorm",
+      "bootstrapMs": 123.75662500000001,
+      "wallMs": 160.75829199999862,
+      "rssBytes": 84213760,
+      "raw": [
+        {
+          "block": 0,
+          "candidate": "typeorm",
+          "wallMs": 256.68020799999977,
+          "bootstrapMs": 211.408958,
+          "processUptimeMs": 228.874833,
+          "rssBytes": 83755008,
+          "heapUsedBytes": 14912672,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 1,
+          "candidate": "typeorm",
+          "wallMs": 160.61974999999984,
+          "bootstrapMs": 122.041792,
+          "processUptimeMs": 135.39441699999998,
+          "rssBytes": 84213760,
+          "heapUsedBytes": 14887056,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 2,
+          "candidate": "typeorm",
+          "wallMs": 160.75829199999862,
+          "bootstrapMs": 124.271125,
+          "processUptimeMs": 138.191333,
+          "rssBytes": 84246528,
+          "heapUsedBytes": 14857776,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 3,
+          "candidate": "typeorm",
+          "wallMs": 161.9317090000004,
+          "bootstrapMs": 123.44412499999999,
+          "processUptimeMs": 138.541459,
+          "rssBytes": 84230144,
+          "heapUsedBytes": 14910840,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 4,
+          "candidate": "typeorm",
+          "wallMs": 159.93112499999916,
+          "bootstrapMs": 123.75662500000001,
+          "processUptimeMs": 137.157542,
+          "rssBytes": 83951616,
+          "heapUsedBytes": 14889752,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "sequelize",
+      "bootstrapMs": 148.154958,
+      "wallMs": 186.67333300000064,
+      "rssBytes": 90980352,
+      "raw": [
+        {
+          "block": 0,
+          "candidate": "sequelize",
+          "wallMs": 235.14895799999977,
+          "bootstrapMs": 199.08029200000001,
+          "processUptimeMs": 211.550667,
+          "rssBytes": 91226112,
+          "heapUsedBytes": 16792752,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 1,
+          "candidate": "sequelize",
+          "wallMs": 174.384082999999,
+          "bootstrapMs": 139.148,
+          "processUptimeMs": 150.96275,
+          "rssBytes": 90980352,
+          "heapUsedBytes": 16795144,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 2,
+          "candidate": "sequelize",
+          "wallMs": 186.67333300000064,
+          "bootstrapMs": 148.154958,
+          "processUptimeMs": 163.31895799999998,
+          "rssBytes": 91979776,
+          "heapUsedBytes": 16789048,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 3,
+          "candidate": "sequelize",
+          "wallMs": 181.2084159999995,
+          "bootstrapMs": 144.797833,
+          "processUptimeMs": 158.43225,
+          "rssBytes": 90701824,
+          "heapUsedBytes": 16791552,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        },
+        {
+          "block": 4,
+          "candidate": "sequelize",
+          "wallMs": 195.8637920000001,
+          "bootstrapMs": 159.013958,
+          "processUptimeMs": 172.252375,
+          "rssBytes": 90980352,
+          "heapUsedBytes": 16794704,
+          "pool": {
+            "total": 1,
+            "idle": 1,
+            "waiting": 0
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "concurrency": 1,
+      "mode": "pg",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 0.5535829999935231,
+        "min": 0.5025420000019949,
+        "max": 0.5666249999776483
+      },
+      "p95Ms": {
+        "median": 0.7975000000005821,
+        "min": 0.6076669999893056,
+        "max": 0.9539160000003903
+      },
+      "p99Ms": {
+        "median": 1.8063330000004498,
+        "min": 0.6824999999953434,
+        "max": 2.8559580000001006
+      },
+      "successfulRps": {
+        "median": 1665.926891006599,
+        "min": 1559.7344795756928,
+        "max": 1945.780994991552
+      },
+      "cpuMsPerOperation": {
+        "median": 0.15984765625,
+        "min": 0.0995390625,
+        "max": 0.18514453125
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.014000000001033186,
+        "min": 0.006750000000465661,
+        "max": 0.018834000002243556
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 1,
+      "mode": "pg",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.112541999995301,
+        "min": 0.982957999998689,
+        "max": 1.1687499999825377
+      },
+      "p95Ms": {
+        "median": 1.9410420000058366,
+        "min": 1.2224170000008598,
+        "max": 4.160667000003741
+      },
+      "p99Ms": {
+        "median": 3.1128330000065034,
+        "min": 1.4454590000004828,
+        "max": 11.619541000000027
+      },
+      "successfulRps": {
+        "median": 802.6081630110142,
+        "min": 607.6570119493683,
+        "max": 988.6469728962063
+      },
+      "cpuMsPerOperation": {
+        "median": 0.49651171875,
+        "min": 0.35184765625,
+        "max": 0.56878515625
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.026041000004624948,
+        "min": 0.014791999999943073,
+        "max": 0.03591700000106357
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 1,
+      "mode": "pg",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 4.347208999999566,
+        "min": 3.81237499999952,
+        "max": 4.668999999994412
+      },
+      "p95Ms": {
+        "median": 6.85137499999837,
+        "min": 5.042457999999897,
+        "max": 7.855750000002445
+      },
+      "p99Ms": {
+        "median": 10.58391699999629,
+        "min": 8.921333000005689,
+        "max": 11.883374999997613
+      },
+      "successfulRps": {
+        "median": 221.60833462505812,
+        "min": 202.03656408016826,
+        "max": 252.29686010575412
+      },
+      "cpuMsPerOperation": {
+        "median": 1.79107421875,
+        "min": 1.0285859375,
+        "max": 1.89578125
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 0.029207999992650002,
+        "min": 0.014917000000423286,
+        "max": 0.038166999991517514
+      },
+      "lockP95Ms": {
+        "median": 0.6940840000024764,
+        "min": 0.5919169999997393,
+        "max": 0.7879160000011325
+      },
+      "transactionP95Ms": {
+        "median": 6.298624999995809,
+        "min": 4.830083000000741,
+        "max": 7.407749999998487
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 1,
+      "mode": "pg",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 6.374416000006022,
+        "min": 5.701709000000847,
+        "max": 6.630292000001646
+      },
+      "p95Ms": {
+        "median": 10.36424999999872,
+        "min": 7.420332999994571,
+        "max": 12.463958000007551
+      },
+      "p99Ms": {
+        "median": 14.954666999983601,
+        "min": 10.258625000002212,
+        "max": 18.89316599999438
+      },
+      "successfulRps": {
+        "median": 144.05849115078811,
+        "min": 136.1288792592219,
+        "max": 167.12483646810273
+      },
+      "cpuMsPerOperation": {
+        "median": 2.2776484375,
+        "min": 1.17078125,
+        "max": 2.51635546875
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 0.0327079999842681,
+        "min": 0.018125000002328306,
+        "max": 0.039457999999285676
+      },
+      "lockP95Ms": {
+        "median": 0.7668340000091121,
+        "min": 0.7236249999987194,
+        "max": 1.3944999999948777
+      },
+      "transactionP95Ms": {
+        "median": 8.64083400000527,
+        "min": 6.278834000004281,
+        "max": 9.489540999988094
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 1,
+      "mode": "typeorm.raw",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 0.5253330000014103,
+        "min": 0.507792000003974,
+        "max": 0.5897080000067945
+      },
+      "p95Ms": {
+        "median": 0.7666660000104457,
+        "min": 0.5903749999997672,
+        "max": 1.2494580000056885
+      },
+      "p99Ms": {
+        "median": 1.511666000005789,
+        "min": 0.6412920000002487,
+        "max": 2.127542000001995
+      },
+      "successfulRps": {
+        "median": 1808.591338719442,
+        "min": 1496.8673985923417,
+        "max": 1938.7770557852616
+      },
+      "cpuMsPerOperation": {
+        "median": 0.135421875,
+        "min": 0.1066796875,
+        "max": 0.1985546875
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.012374999998428393,
+        "min": 0.008332999990670942,
+        "max": 0.02970899999490939
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -27.365197774190097,
+          "cpuPercent": -26.83503175306454
+        },
+        {
+          "block": 1,
+          "p95Percent": 32.91512507023173,
+          "cpuPercent": 13.878395690306466
+        },
+        {
+          "block": 2,
+          "p95Percent": 33.77655854673205,
+          "cpuPercent": 99.4741386076446
+        },
+        {
+          "block": 3,
+          "p95Percent": -25.971786833939024,
+          "cpuPercent": -33.26165049729968
+        },
+        {
+          "block": 4,
+          "p95Percent": -0.6050564413805581,
+          "cpuPercent": -35.21922079054658
+        }
+      ],
+      "pairedP95PercentMedian": -0.6050564413805581,
+      "pairedCpuPercentMedian": -26.83503175306454
+    },
+    {
+      "concurrency": 1,
+      "mode": "typeorm.raw",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.1277499999996508,
+        "min": 0.9913749999977881,
+        "max": 1.2922079999989364
+      },
+      "p95Ms": {
+        "median": 2.465708999996423,
+        "min": 1.3074169999999867,
+        "max": 2.8642500000132713
+      },
+      "p99Ms": {
+        "median": 3.7815410000039265,
+        "min": 1.5319579999995767,
+        "max": 5.1130839999968885
+      },
+      "successfulRps": {
+        "median": 731.9163413903794,
+        "min": 692.4039433216013,
+        "max": 968.5483483993833
+      },
+      "cpuMsPerOperation": {
+        "median": 0.4871796875,
+        "min": 0.33209375,
+        "max": 0.64977734375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.04758300000685267,
+        "min": 0.020250000001396984,
+        "max": 0.052624999996623956
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 6.953437329411094,
+          "cpuPercent": -5.614335039356955
+        },
+        {
+          "block": 1,
+          "p95Percent": -63.017732493395954,
+          "cpuPercent": -8.394250955482596
+        },
+        {
+          "block": 2,
+          "p95Percent": 47.56249478396957,
+          "cpuPercent": 30.868480886182503
+        },
+        {
+          "block": 3,
+          "p95Percent": -23.162698660191495,
+          "cpuPercent": -10.682851720557164
+        },
+        {
+          "block": 4,
+          "p95Percent": 29.209661835326138,
+          "cpuPercent": 6.233817964548893
+        }
+      ],
+      "pairedP95PercentMedian": 6.953437329411094,
+      "pairedCpuPercentMedian": -5.614335039356955
+    },
+    {
+      "concurrency": 1,
+      "mode": "typeorm.raw",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 4.206708000005165,
+        "min": 3.431416999999783,
+        "max": 4.872917000000598
+      },
+      "p95Ms": {
+        "median": 5.91425000000163,
+        "min": 5.032665999999153,
+        "max": 10.430457999987993
+      },
+      "p99Ms": {
+        "median": 8.94100000000617,
+        "min": 6.029749999997875,
+        "max": 14.18070899999293
+      },
+      "successfulRps": {
+        "median": 231.5017079468048,
+        "min": 178.016941684589,
+        "max": 271.6288806754755
+      },
+      "cpuMsPerOperation": {
+        "median": 1.12045703125,
+        "min": 1.04511328125,
+        "max": 2.1077578125
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 0.033750000002328306,
+        "min": 0.026624999998603016,
+        "max": 0.06320800000685267
+      },
+      "lockP95Ms": {
+        "median": 0.6382499999963329,
+        "min": 0.5293339999989257,
+        "max": 0.8473749999975553
+      },
+      "transactionP95Ms": {
+        "median": 5.44999999999709,
+        "min": 4.680000000000291,
+        "max": 9.917292000012822
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -0.19419100765427633,
+          "cpuPercent": 5.495115779562765
+        },
+        {
+          "block": 1,
+          "p95Percent": -10.876774577256999,
+          "cpuPercent": 1.6068024214068055
+        },
+        {
+          "block": 2,
+          "p95Percent": 32.77482099079969,
+          "cpuPercent": 5.235241153257197
+        },
+        {
+          "block": 3,
+          "p95Percent": -21.507455016713816,
+          "cpuPercent": -43.45813071787686
+        },
+        {
+          "block": 4,
+          "p95Percent": 11.09631278381733,
+          "cpuPercent": 17.68120999313001
+        }
+      ],
+      "pairedP95PercentMedian": -0.19419100765427633,
+      "pairedCpuPercentMedian": 5.235241153257197
+    },
+    {
+      "concurrency": 1,
+      "mode": "typeorm.raw",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 6.173916999992798,
+        "min": 5.27983299999687,
+        "max": 6.6574170000094455
+      },
+      "p95Ms": {
+        "median": 10.67720800000825,
+        "min": 7.4624170000024606,
+        "max": 14.182583000001614
+      },
+      "p99Ms": {
+        "median": 12.936249999998836,
+        "min": 9.360207999998238,
+        "max": 25.95516700000735
+      },
+      "successfulRps": {
+        "median": 142.9284442110101,
+        "min": 137.86983743438395,
+        "max": 174.10923170034468
+      },
+      "cpuMsPerOperation": {
+        "median": 2.05934375,
+        "min": 1.2919375,
+        "max": 2.61453125
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 0.04579099999682512,
+        "min": 0.023832999999285676,
+        "max": 0.04887499997857958
+      },
+      "lockP95Ms": {
+        "median": 0.7587500000081491,
+        "min": 0.6353340000023309,
+        "max": 1.0351250000094296
+      },
+      "transactionP95Ms": {
+        "median": 7.910250000015367,
+        "min": 6.106915999997,
+        "max": 12.679040999995777
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0.3343987649804703,
+          "cpuPercent": -17.712254600536916
+        },
+        {
+          "block": 1,
+          "p95Percent": 0.567144358722449,
+          "cpuPercent": 10.348325103429845
+        },
+        {
+          "block": 2,
+          "p95Percent": -12.910890746005188,
+          "cpuPercent": 9.969506652626237
+        },
+        {
+          "block": 3,
+          "p95Percent": 36.84138263746404,
+          "cpuPercent": -18.161651818493695
+        },
+        {
+          "block": 4,
+          "p95Percent": 0.7101735197985848,
+          "cpuPercent": 12.805093858179607
+        }
+      ],
+      "pairedP95PercentMedian": 0.567144358722449,
+      "pairedCpuPercentMedian": 9.969506652626237
+    },
+    {
+      "concurrency": 1,
+      "mode": "typeorm.mapped",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 0.6030409999948461,
+        "min": 0.587374999988242,
+        "max": 0.9073330000028363
+      },
+      "p95Ms": {
+        "median": 0.7884170000033919,
+        "min": 0.6949579999927664,
+        "max": 2.4321670000026643
+      },
+      "p99Ms": {
+        "median": 1.3852090000000317,
+        "min": 0.7614579999935813,
+        "max": 4.087332999999489
+      },
+      "successfulRps": {
+        "median": 1559.5891730200838,
+        "min": 894.3236658587037,
+        "max": 1654.6098820929449
+      },
+      "cpuMsPerOperation": {
+        "median": 0.1972890625,
+        "min": 0.18315625,
+        "max": 0.34518359375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.011124999989988282,
+        "min": 0.010290999998687766,
+        "max": 0.0397080000002461
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 154.96657986674603,
+          "cpuPercent": 86.44007004662744
+        },
+        {
+          "block": 1,
+          "p95Percent": -1.3120690351249853,
+          "cpuPercent": 90.10609992444898
+        },
+        {
+          "block": 2,
+          "p95Percent": 16.113430549146045,
+          "cpuPercent": 84.00439525939878
+        },
+        {
+          "block": 3,
+          "p95Percent": -12.857931035453396,
+          "cpuPercent": 18.193592531951808
+        },
+        {
+          "block": 4,
+          "p95Percent": 2.2148669889175743,
+          "cpuPercent": 10.114025334118226
+        }
+      ],
+      "pairedP95PercentMedian": 2.2148669889175743,
+      "pairedCpuPercentMedian": 84.00439525939878
+    },
+    {
+      "concurrency": 1,
+      "mode": "typeorm.mapped",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.0679999999993015,
+        "min": 0.9393329999875277,
+        "max": 1.2021670000031008
+      },
+      "p95Ms": {
+        "median": 1.6035830000037095,
+        "min": 1.2627079999947455,
+        "max": 4.128333000000566
+      },
+      "p99Ms": {
+        "median": 2.1396660000027623,
+        "min": 1.9659579999861307,
+        "max": 12.398083999996743
+      },
+      "successfulRps": {
+        "median": 872.7052071694904,
+        "min": 583.8383953566591,
+        "max": 1015.433296989875
+      },
+      "cpuMsPerOperation": {
+        "median": 0.34595703125,
+        "min": 0.31589453125,
+        "max": 0.51502734375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.02399999999033753,
+        "min": 0.01916600001277402,
+        "max": 0.03729100000055041
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 237.71887989104067,
+          "cpuPercent": 15.338669745650746
+        },
+        {
+          "block": 1,
+          "p95Percent": -61.45851133959368,
+          "cpuPercent": -4.65091241858212
+        },
+        {
+          "block": 2,
+          "p95Percent": 7.6311589334168595,
+          "cpuPercent": 3.729141589369589
+        },
+        {
+          "block": 3,
+          "p95Percent": -57.913960735244885,
+          "cpuPercent": -41.25756436423532
+        },
+        {
+          "block": 4,
+          "p95Percent": -34.053636245086714,
+          "cpuPercent": -44.4615374049681
+        }
+      ],
+      "pairedP95PercentMedian": -34.053636245086714,
+      "pairedCpuPercentMedian": -4.65091241858212
+    },
+    {
+      "concurrency": 1,
+      "mode": "typeorm.mapped",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 4.448042000003625,
+        "min": 4.2675839999865275,
+        "max": 5.072458000009647
+      },
+      "p95Ms": {
+        "median": 7.2381659999955446,
+        "min": 5.695250000004307,
+        "max": 8.96950000000652
+      },
+      "p99Ms": {
+        "median": 10.053165999997873,
+        "min": 7.21379199999501,
+        "max": 32.30174999999872
+      },
+      "successfulRps": {
+        "median": 205.23104002177968,
+        "min": 178.42262887812095,
+        "max": 221.2387629159406
+      },
+      "cpuMsPerOperation": {
+        "median": 1.76405078125,
+        "min": 1.26172265625,
+        "max": 2.19893359375
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 0.044166000006953254,
+        "min": 0.026458000000275206,
+        "max": 0.04916699999739649
+      },
+      "lockP95Ms": {
+        "median": 0.6952500000043074,
+        "min": 0.6501249999855645,
+        "max": 0.865124999996624
+      },
+      "transactionP95Ms": {
+        "median": 6.658083000016632,
+        "min": 5.479624999999942,
+        "max": 8.316542000000481
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 38.94596643149022,
+          "cpuPercent": 66.09181451731543
+        },
+        {
+          "block": 1,
+          "p95Percent": -4.508877769419273,
+          "cpuPercent": 22.6657501576041
+        },
+        {
+          "block": 2,
+          "p95Percent": 14.177513286493681,
+          "cpuPercent": -0.789882154846977
+        },
+        {
+          "block": 3,
+          "p95Percent": 11.450216541943202,
+          "cpuPercent": 15.990892606939756
+        },
+        {
+          "block": 4,
+          "p95Percent": 5.6454507306528345,
+          "cpuPercent": -3.6690184617733324
+        }
+      ],
+      "pairedP95PercentMedian": 11.450216541943202,
+      "pairedCpuPercentMedian": 15.990892606939756
+    },
+    {
+      "concurrency": 1,
+      "mode": "typeorm.mapped",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 7.0344159999949625,
+        "min": 6.296458999997412,
+        "max": 7.081292000017129
+      },
+      "p95Ms": {
+        "median": 9.842417000007117,
+        "min": 9.17987500000163,
+        "max": 10.174124999990454
+      },
+      "p99Ms": {
+        "median": 13.097708000001148,
+        "min": 10.393416999999317,
+        "max": 13.397333999993862
+      },
+      "successfulRps": {
+        "median": 136.72327236590522,
+        "min": 134.9574828153732,
+        "max": 154.62519208291823
+      },
+      "cpuMsPerOperation": {
+        "median": 3.0490859375,
+        "min": 1.6043984375,
+        "max": 3.2071875
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 0.04808400000911206,
+        "min": 0.025874999999359716,
+        "max": 0.05229199999303091
+      },
+      "lockP95Ms": {
+        "median": 0.84579200000735,
+        "min": 0.666666000000987,
+        "max": 0.890291999996407
+      },
+      "transactionP95Ms": {
+        "median": 7.935333000001265,
+        "min": 7.156582999999955,
+        "max": 8.622375000006286
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 9.959482134105823,
+          "cpuPercent": 19.477909495456778
+        },
+        {
+          "block": 1,
+          "p95Percent": 25.28750394366588,
+          "cpuPercent": 37.03656746296542
+        },
+        {
+          "block": 2,
+          "p95Percent": -21.03297363485055,
+          "cpuPercent": 39.13507283759634
+        },
+        {
+          "block": 3,
+          "p95Percent": -4.1199314953869965,
+          "cpuPercent": 21.17071595670201
+        },
+        {
+          "block": 4,
+          "p95Percent": -4.035034799325099,
+          "cpuPercent": 38.37550687461868
+        }
+      ],
+      "pairedP95PercentMedian": -4.035034799325099,
+      "pairedCpuPercentMedian": 37.03656746296542
+    },
+    {
+      "concurrency": 1,
+      "mode": "sequelize.raw",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 0.5651249999937136,
+        "min": 0.510958999991999,
+        "max": 0.6029579999958514
+      },
+      "p95Ms": {
+        "median": 0.8850000000093132,
+        "min": 0.6147500000079162,
+        "max": 1.109375
+      },
+      "p99Ms": {
+        "median": 1.5719590000007884,
+        "min": 0.8447500000002037,
+        "max": 3.4064589999907184
+      },
+      "successfulRps": {
+        "median": 1595.179984219907,
+        "min": 1495.0079989351916,
+        "max": 1912.0131720379457
+      },
+      "cpuMsPerOperation": {
+        "median": 0.16032421875,
+        "min": 0.12136328125,
+        "max": 0.2275625
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.011082999997597653,
+        "min": 0.006792000000132248,
+        "max": 0.021500000002561137
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -25.403913971430036,
+          "cpuPercent": -20.777686351456836
+        },
+        {
+          "block": 1,
+          "p95Percent": 0.3811531830689274,
+          "cpuPercent": 34.819170252603215
+        },
+        {
+          "block": 2,
+          "p95Percent": 1.1656055074136473,
+          "cpuPercent": 21.92528059022054
+        },
+        {
+          "block": 3,
+          "p95Percent": 10.971786834942598,
+          "cpuPercent": 33.740622174433675
+        },
+        {
+          "block": 4,
+          "p95Percent": 43.82568877300032,
+          "cpuPercent": 27.010704864063495
+        }
+      ],
+      "pairedP95PercentMedian": 1.1656055074136473,
+      "pairedCpuPercentMedian": 27.010704864063495
+    },
+    {
+      "concurrency": 1,
+      "mode": "sequelize.raw",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.110207999998238,
+        "min": 0.9526250000053551,
+        "max": 1.2119579999998678
+      },
+      "p95Ms": {
+        "median": 1.5887910000019474,
+        "min": 1.1613750000105938,
+        "max": 2.387249999999767
+      },
+      "p99Ms": {
+        "median": 2.1176249999989523,
+        "min": 1.536415999999008,
+        "max": 4.31745800000499
+      },
+      "successfulRps": {
+        "median": 853.0237567949353,
+        "min": 745.7909974100475,
+        "max": 1015.0860220969729
+      },
+      "cpuMsPerOperation": {
+        "median": 0.37169921875,
+        "min": 0.30483984375,
+        "max": 0.65203125
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.013624999999592546,
+        "min": 0.008457999996608123,
+        "max": 0.028749999997671694
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 12.386689648527515,
+          "cpuPercent": -4.047827872947485
+        },
+        {
+          "block": 1,
+          "p95Percent": -61.81403125987928,
+          "cpuPercent": 2.4438822199494004
+        },
+        {
+          "block": 2,
+          "p95Percent": -40.16744614453981,
+          "cpuPercent": -38.60369609856262
+        },
+        {
+          "block": 3,
+          "p95Percent": -31.09613586787582,
+          "cpuPercent": 9.526264904930738
+        },
+        {
+          "block": 4,
+          "p95Percent": 24.676850764037695,
+          "cpuPercent": 14.635771140520148
+        }
+      ],
+      "pairedP95PercentMedian": -31.09613586787582,
+      "pairedCpuPercentMedian": 2.4438822199494004
+    },
+    {
+      "concurrency": 1,
+      "mode": "sequelize.raw",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 4.631959000005736,
+        "min": 3.551625000000058,
+        "max": 4.979749999998603
+      },
+      "p95Ms": {
+        "median": 7.484500000005937,
+        "min": 4.983040999999503,
+        "max": 8.023790999999619
+      },
+      "p99Ms": {
+        "median": 9.737374999996973,
+        "min": 8.87620899999456,
+        "max": 11.413291999997455
+      },
+      "successfulRps": {
+        "median": 207.78870102055703,
+        "min": 189.5977607740147,
+        "max": 261.32643137017897
+      },
+      "cpuMsPerOperation": {
+        "median": 2.11748828125,
+        "min": 1.0985546875,
+        "max": 2.47840234375
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 0.02524999999150168,
+        "min": 0.011582999999518506,
+        "max": 0.027833000000100583
+      },
+      "lockP95Ms": {
+        "median": 0.677916999993613,
+        "min": 0.5461250000007567,
+        "max": 0.7953750000015134
+      },
+      "transactionP95Ms": {
+        "median": 6.753291999993962,
+        "min": 4.721416000000318,
+        "max": 7.277458000011393
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -1.1783340585166058,
+          "cpuPercent": 3.4329302380321947
+        },
+        {
+          "block": 1,
+          "p95Percent": 5.5693611531587806,
+          "cpuPercent": 29.74996012426039
+        },
+        {
+          "block": 2,
+          "p95Percent": -4.725837762102813,
+          "cpuPercent": 16.975885718822003
+        },
+        {
+          "block": 3,
+          "p95Percent": 6.489880543396609,
+          "cpuPercent": 11.694758097749936
+        },
+        {
+          "block": 4,
+          "p95Percent": 9.407469303418402,
+          "cpuPercent": 38.37518947035539
+        }
+      ],
+      "pairedP95PercentMedian": 5.5693611531587806,
+      "pairedCpuPercentMedian": 16.975885718822003
+    },
+    {
+      "concurrency": 1,
+      "mode": "sequelize.raw",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 6.629082999992534,
+        "min": 5.211209000000963,
+        "max": 6.973750000004657
+      },
+      "p95Ms": {
+        "median": 9.863832999995793,
+        "min": 8.447250000004715,
+        "max": 11.147541999991518
+      },
+      "p99Ms": {
+        "median": 16.339458000002196,
+        "min": 12.534707999999227,
+        "max": 24.342124999999214
+      },
+      "successfulRps": {
+        "median": 144.6508395010645,
+        "min": 136.85603073005788,
+        "max": 156.890267419387
+      },
+      "cpuMsPerOperation": {
+        "median": 2.77353515625,
+        "min": 1.6028125,
+        "max": 2.97295703125
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 0.025957999998354353,
+        "min": 0.013957999995909631,
+        "max": 0.032833000004757196
+      },
+      "lockP95Ms": {
+        "median": 0.692709000009927,
+        "min": 0.6599170000008598,
+        "max": 0.8591669999877922
+      },
+      "transactionP95Ms": {
+        "median": 8.127124999999069,
+        "min": 6.997000000003027,
+        "max": 9.286250000004657
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 2.5044751004051236,
+          "cpuPercent": -8.57759904357681
+        },
+        {
+          "block": 1,
+          "p95Percent": 13.839230665401336,
+          "cpuPercent": 36.90110770052046
+        },
+        {
+          "block": 2,
+          "p95Percent": -20.861150206139833,
+          "cpuPercent": 28.362586137703705
+        },
+        {
+          "block": 3,
+          "p95Percent": 7.55763321024574,
+          "cpuPercent": 18.145352203630317
+        },
+        {
+          "block": 4,
+          "p95Percent": 3.9607652050117625,
+          "cpuPercent": 19.66538691007884
+        }
+      ],
+      "pairedP95PercentMedian": 3.9607652050117625,
+      "pairedCpuPercentMedian": 19.66538691007884
+    },
+    {
+      "concurrency": 1,
+      "mode": "sequelize.mapped",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 0.5807080000085989,
+        "min": 0.5460420000017621,
+        "max": 0.6301250000033178
+      },
+      "p95Ms": {
+        "median": 0.8791249999994761,
+        "min": 0.6492089999956079,
+        "max": 0.9798750000045402
+      },
+      "p99Ms": {
+        "median": 1.312208000003011,
+        "min": 0.7956660000199918,
+        "max": 1.6193749999947613
+      },
+      "successfulRps": {
+        "median": 1527.1171413679067,
+        "min": 1496.4980600883446,
+        "max": 1796.4670608608276
+      },
+      "cpuMsPerOperation": {
+        "median": 0.2376953125,
+        "min": 0.20409765625,
+        "max": 0.30052734375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.0090829999971902,
+        "min": 0.005375000007916242,
+        "max": 0.014208000000508036
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -7.840417814659107,
+          "cpuPercent": 62.320400025318065
+        },
+        {
+          "block": 1,
+          "p95Percent": 1.4715299959578543,
+          "cpuPercent": 99.88174621423644
+        },
+        {
+          "block": 2,
+          "p95Percent": 61.251968598226505,
+          "cpuPercent": 201.53441645082805
+        },
+        {
+          "block": 3,
+          "p95Percent": 1.107586206879163,
+          "cpuPercent": 27.682607951907336
+        },
+        {
+          "block": 4,
+          "p95Percent": -15.832850404958576,
+          "cpuPercent": 20.419909739028054
+        }
+      ],
+      "pairedP95PercentMedian": 1.107586206879163,
+      "pairedCpuPercentMedian": 62.320400025318065
+    },
+    {
+      "concurrency": 1,
+      "mode": "sequelize.mapped",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.1543749999982538,
+        "min": 0.9262909999815747,
+        "max": 1.2878340000024764
+      },
+      "p95Ms": {
+        "median": 1.7006659999969997,
+        "min": 1.1051250000018626,
+        "max": 2.588666000010562
+      },
+      "p99Ms": {
+        "median": 2.7482920000038575,
+        "min": 1.2457909999939147,
+        "max": 5.437791999996989
+      },
+      "successfulRps": {
+        "median": 808.510520703668,
+        "min": 673.975453055755,
+        "max": 1060.643282305095
+      },
+      "cpuMsPerOperation": {
+        "median": 0.45827734375,
+        "min": 0.29535546875,
+        "max": 0.70184765625
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.020833000002312474,
+        "min": 0.007875000010244548,
+        "max": 0.03404199999931734
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 59.18602244565883,
+          "cpuPercent": 87.3857870838098
+        },
+        {
+          "block": 1,
+          "p95Percent": -59.12515949977563,
+          "cpuPercent": 5.557409700166871
+        },
+        {
+          "block": 2,
+          "p95Percent": 33.36475975289448,
+          "cpuPercent": 41.355708182869556
+        },
+        {
+          "block": 3,
+          "p95Percent": -50.386942972602334,
+          "cpuPercent": -15.981666487628454
+        },
+        {
+          "block": 4,
+          "p95Percent": -42.28358793555228,
+          "cpuPercent": -48.07257793130919
+        }
+      ],
+      "pairedP95PercentMedian": -42.28358793555228,
+      "pairedCpuPercentMedian": 5.557409700166871
+    },
+    {
+      "concurrency": 1,
+      "mode": "sequelize.mapped",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 4.898292000001675,
+        "min": 4.643041999996058,
+        "max": 4.953584000002593
+      },
+      "p95Ms": {
+        "median": 7.4814579999983835,
+        "min": 6.252082999999402,
+        "max": 9.196083000002545
+      },
+      "p99Ms": {
+        "median": 9.41120800000499,
+        "min": 9.045749999997497,
+        "max": 13.0435839999991
+      },
+      "successfulRps": {
+        "median": 192.2703320387791,
+        "min": 188.59328633125006,
+        "max": 204.81508127176897
+      },
+      "cpuMsPerOperation": {
+        "median": 2.247984375,
+        "min": 1.4328828125,
+        "max": 2.4165625
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 0.025541000009980053,
+        "min": 0.014792000001762062,
+        "max": 0.03162500000325963
+      },
+      "lockP95Ms": {
+        "median": 0.683707999996841,
+        "min": 0.6488749999989523,
+        "max": 0.7417920000007143
+      },
+      "transactionP95Ms": {
+        "median": 7.008125000000291,
+        "min": 6.037250000001222,
+        "max": 8.691208000003826
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 48.3692675278314,
+          "cpuPercent": 90.3444699443905
+        },
+        {
+          "block": 1,
+          "p95Percent": 4.82743021785299,
+          "cpuPercent": 39.30608617716982
+        },
+        {
+          "block": 2,
+          "p95Percent": 5.785571078597962,
+          "cpuPercent": 20.22336471831856
+        },
+        {
+          "block": 3,
+          "p95Percent": 22.04826622945162,
+          "cpuPercent": 25.4141597296629
+        },
+        {
+          "block": 4,
+          "p95Percent": 8.470314353250696,
+          "cpuPercent": 34.92252161870386
+        }
+      ],
+      "pairedP95PercentMedian": 8.470314353250696,
+      "pairedCpuPercentMedian": 34.92252161870386
+    },
+    {
+      "concurrency": 1,
+      "mode": "sequelize.mapped",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 7.083083000001352,
+        "min": 6.307249999998021,
+        "max": 7.57545800000662
+      },
+      "p95Ms": {
+        "median": 11.297458999997616,
+        "min": 8.329499999999825,
+        "max": 13.398874999998952
+      },
+      "p99Ms": {
+        "median": 15.062874999999622,
+        "min": 12.255999999993946,
+        "max": 23.98087499999383
+      },
+      "successfulRps": {
+        "median": 132.69378268158817,
+        "min": 119.17362171022138,
+        "max": 151.62076153156207
+      },
+      "cpuMsPerOperation": {
+        "median": 3.31255078125,
+        "min": 1.77744140625,
+        "max": 3.49302734375
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 0.0262079999956768,
+        "min": 0.0141250000015134,
+        "max": 0.029999999998835847
+      },
+      "lockP95Ms": {
+        "median": 0.9242079999967245,
+        "min": 0.6465419999949518,
+        "max": 1.0097500000010768
+      },
+      "transactionP95Ms": {
+        "median": 9.52245799999946,
+        "min": 6.906416999998328,
+        "max": 11.798833000008017
+      },
+      "maxConnections": 1,
+      "maxWaiters": 0,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 35.3245813337121,
+          "cpuPercent": 54.023126415405606
+        },
+        {
+          "block": 1,
+          "p95Percent": 12.25237465765916,
+          "cpuPercent": 51.816695582543694
+        },
+        {
+          "block": 2,
+          "p95Percent": 7.500963979426389,
+          "cpuPercent": 48.30828808495606
+        },
+        {
+          "block": 3,
+          "p95Percent": 4.683561280323745,
+          "cpuPercent": 38.81295338154915
+        },
+        {
+          "block": 4,
+          "p95Percent": 8.553095497036466,
+          "cpuPercent": 42.921451709132356
+        }
+      ],
+      "pairedP95PercentMedian": 8.553095497036466,
+      "pairedCpuPercentMedian": 48.30828808495606
+    },
+    {
+      "concurrency": 8,
+      "mode": "pg",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.2015420000097947,
+        "min": 1.1577089999918826,
+        "max": 1.8525410000002012
+      },
+      "p95Ms": {
+        "median": 1.7415000000037253,
+        "min": 1.3968750000058208,
+        "max": 55.581540999992285
+      },
+      "p99Ms": {
+        "median": 2.535083000009763,
+        "min": 1.9101249999948777,
+        "max": 76.9696249999979
+      },
+      "successfulRps": {
+        "median": 6344.747716226228,
+        "min": 897.7793987683556,
+        "max": 6667.773621272287
+      },
+      "cpuMsPerOperation": {
+        "median": 0.092828125,
+        "min": 0.09057421875,
+        "max": 0.13835546875
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.8019590000039898,
+        "min": 0.6955829999933485,
+        "max": 38.98812500000349
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 8,
+      "mode": "pg",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 2.013749999983702,
+        "min": 1.9624170000024606,
+        "max": 2.5880419999994047
+      },
+      "p95Ms": {
+        "median": 2.814416999986861,
+        "min": 2.4855420000094455,
+        "max": 5.849750000001222
+      },
+      "p99Ms": {
+        "median": 3.7739589999982854,
+        "min": 3.530166000011377,
+        "max": 9.360957999997481
+      },
+      "successfulRps": {
+        "median": 3773.5826250465143,
+        "min": 2595.940800381282,
+        "max": 3912.8673527110245
+      },
+      "cpuMsPerOperation": {
+        "median": 0.259359375,
+        "min": 0.2570625,
+        "max": 0.30573828125
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 1.2800829999905545,
+        "min": 1.1407089999993332,
+        "max": 2.9741250000006403
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 8,
+      "mode": "pg",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 9.199250000005122,
+        "min": 8.923624999995809,
+        "max": 18.528583999999682
+      },
+      "p95Ms": {
+        "median": 10.83183400001144,
+        "min": 9.959041000023717,
+        "max": 80.7688330000019
+      },
+      "p99Ms": {
+        "median": 15.363874999980908,
+        "min": 11.187417000008281,
+        "max": 98.42241700000159
+      },
+      "successfulRps": {
+        "median": 840.4576399533033,
+        "min": 303.0534409883334,
+        "max": 871.0285186747628
+      },
+      "cpuMsPerOperation": {
+        "median": 0.7879453125,
+        "min": 0.7553046875,
+        "max": 1.33490234375
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 5.213082999995095,
+        "min": 4.850207999988925,
+        "max": 43.723707999997714
+      },
+      "lockP95Ms": {
+        "median": 0.738167000003159,
+        "min": 0.7244580000115093,
+        "max": 3.5162080000009155
+      },
+      "transactionP95Ms": {
+        "median": 10.517709000007017,
+        "min": 9.803374999988591,
+        "max": 80.41637499999342
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 8,
+      "mode": "pg",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 12.818708000006154,
+        "min": 12.633125000007567,
+        "max": 14.303916999997455
+      },
+      "p95Ms": {
+        "median": 16.493000000016764,
+        "min": 15.0625,
+        "max": 37.80479199999536
+      },
+      "p99Ms": {
+        "median": 19.835083000012673,
+        "min": 16.925208000000566,
+        "max": 95.61883300000045
+      },
+      "successfulRps": {
+        "median": 612.6833841843475,
+        "min": 422.1802681313694,
+        "max": 625.8699424119455
+      },
+      "cpuMsPerOperation": {
+        "median": 0.9596953125,
+        "min": 0.9036953125,
+        "max": 1.12565234375
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 5.480375000013737,
+        "min": 5.327292000001762,
+        "max": 9.175167000008514
+      },
+      "lockP95Ms": {
+        "median": 0.8690000000060536,
+        "min": 0.7644999999902211,
+        "max": 1.446125000002212
+      },
+      "transactionP95Ms": {
+        "median": 11.637999999977183,
+        "min": 11.293708999990486,
+        "max": 25.400875000006636
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 8,
+      "mode": "typeorm.raw",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.2002079999947455,
+        "min": 1.1817499999888241,
+        "max": 1.3065829999977723
+      },
+      "p95Ms": {
+        "median": 1.5022079999980633,
+        "min": 1.4815829999861307,
+        "max": 2.4699999999866122
+      },
+      "p99Ms": {
+        "median": 2.2732079999987036,
+        "min": 2.0742089999985183,
+        "max": 3.0718329999945126
+      },
+      "successfulRps": {
+        "median": 6365.665193362817,
+        "min": 5460.294625127085,
+        "max": 6519.967400158901
+      },
+      "cpuMsPerOperation": {
+        "median": 0.09530078125,
+        "min": 0.0931171875,
+        "max": 0.10187890625
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.7692499999975553,
+        "min": 0.7325000000128057,
+        "max": 1.2035840000025928
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -53.66773074259007,
+          "cpuPercent": -31.519805753973852
+        },
+        {
+          "block": 1,
+          "p95Percent": 41.83175423378287,
+          "cpuPercent": 9.750042080457844
+        },
+        {
+          "block": 2,
+          "p95Percent": -97.32232684949352,
+          "cpuPercent": -25.07294002026965
+        },
+        {
+          "block": 3,
+          "p95Percent": 8.24755257287979,
+          "cpuPercent": 2.8076077112174858
+        },
+        {
+          "block": 4,
+          "p95Percent": 0.5030637626883383,
+          "cpuPercent": 5.403687221869058
+        }
+      ],
+      "pairedP95PercentMedian": 0.5030637626883383,
+      "pairedCpuPercentMedian": 2.8076077112174858
+    },
+    {
+      "concurrency": 8,
+      "mode": "typeorm.raw",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 2.122625000003609,
+        "min": 2.069000000017695,
+        "max": 2.299208999989787
+      },
+      "p95Ms": {
+        "median": 3.4399170000106096,
+        "min": 2.8822500000096625,
+        "max": 4.137374999991152
+      },
+      "p99Ms": {
+        "median": 4.765207999997074,
+        "min": 3.4337499999965075,
+        "max": 7.106375000003027
+      },
+      "successfulRps": {
+        "median": 3448.310698181951,
+        "min": 3118.8592889107053,
+        "max": 3570.330674822847
+      },
+      "cpuMsPerOperation": {
+        "median": 0.27949609375,
+        "min": 0.2663828125,
+        "max": 0.30412109375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 1.3587920000136364,
+        "min": 1.3574579999985872,
+        "max": 1.8484170000010636
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -49.05908799528237,
+          "cpuPercent": -6.48532624666216
+        },
+        {
+          "block": 1,
+          "p95Percent": 26.454345316578554,
+          "cpuPercent": 17.9996665605723
+        },
+        {
+          "block": 2,
+          "p95Percent": 3.2663664971933404,
+          "cpuPercent": 7.764021929031872
+        },
+        {
+          "block": 3,
+          "p95Percent": 47.18455773401191,
+          "cpuPercent": 7.717906637490879
+        },
+        {
+          "block": 4,
+          "p95Percent": 22.224851542137113,
+          "cpuPercent": -2.5089708215985884
+        }
+      ],
+      "pairedP95PercentMedian": 22.224851542137113,
+      "pairedCpuPercentMedian": 7.717906637490879
+    },
+    {
+      "concurrency": 8,
+      "mode": "typeorm.raw",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 9.449542000002111,
+        "min": 9.391124999994645,
+        "max": 10.348916999995708
+      },
+      "p95Ms": {
+        "median": 10.85391599999275,
+        "min": 10.060750000004191,
+        "max": 12.30174999999872
+      },
+      "p99Ms": {
+        "median": 13.008416000004217,
+        "min": 11.760582999995677,
+        "max": 15.290708999993512
+      },
+      "successfulRps": {
+        "median": 822.2451592934025,
+        "min": 762.0516156014968,
+        "max": 841.1776158036141
+      },
+      "cpuMsPerOperation": {
+        "median": 0.82991015625,
+        "min": 0.8088125,
+        "max": 0.91188671875
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 5.2910829999891575,
+        "min": 4.986832999973558,
+        "max": 6.229707999998936
+      },
+      "lockP95Ms": {
+        "median": 0.745666999995592,
+        "min": 0.7030839999788441,
+        "max": 0.8725839999970049
+      },
+      "transactionP95Ms": {
+        "median": 10.645959000001312,
+        "min": 9.895374999992782,
+        "max": 12.07499999999709
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -84.7691868966357,
+          "cpuPercent": -31.68888173584795
+        },
+        {
+          "block": 1,
+          "p95Percent": -0.6658014355291231,
+          "cpuPercent": 15.078354747666122
+        },
+        {
+          "block": 2,
+          "p95Percent": 0.20386206049027855,
+          "cpuPercent": 5.325857402064305
+        },
+        {
+          "block": 3,
+          "p95Percent": -4.199683253976794,
+          "cpuPercent": 7.0842685588390575
+        },
+        {
+          "block": 4,
+          "p95Percent": 3.8926237976154576,
+          "cpuPercent": 6.527897649388237
+        }
+      ],
+      "pairedP95PercentMedian": -0.6658014355291231,
+      "pairedCpuPercentMedian": 6.527897649388237
+    },
+    {
+      "concurrency": 8,
+      "mode": "typeorm.raw",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 13.725582999992184,
+        "min": 12.772334000008414,
+        "max": 14.062000000005355
+      },
+      "p95Ms": {
+        "median": 18.080542000003334,
+        "min": 15.19679200000246,
+        "max": 20.95412500000384
+      },
+      "p99Ms": {
+        "median": 19.789958000008482,
+        "min": 16.393249999993714,
+        "max": 22.980541999990237
+      },
+      "successfulRps": {
+        "median": 563.2609730003317,
+        "min": 533.3916730475626,
+        "max": 619.965054313538
+      },
+      "cpuMsPerOperation": {
+        "median": 1.0305546875,
+        "min": 1.01365234375,
+        "max": 1.12276171875
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 6.14862500000163,
+        "min": 5.5430840000044554,
+        "max": 6.82654100000218
+      },
+      "lockP95Ms": {
+        "median": 0.9551659999997355,
+        "min": 0.7877910000097472,
+        "max": 1.0143339999922318
+      },
+      "transactionP95Ms": {
+        "median": 13.200250000001688,
+        "min": 11.60020899999654,
+        "max": 15.007541000013589
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -27.030961473453765,
+          "cpuPercent": 2.3830447524111786
+        },
+        {
+          "block": 1,
+          "p95Percent": -44.572833518019586,
+          "cpuPercent": -0.2567955386980292
+        },
+        {
+          "block": 2,
+          "p95Percent": 21.415890606048784,
+          "cpuPercent": 7.383528300811615
+        },
+        {
+          "block": 3,
+          "p95Percent": 0.891565145244555,
+          "cpuPercent": 13.0665756053703
+        },
+        {
+          "block": 4,
+          "p95Percent": 1.4496028617769552,
+          "cpuPercent": 7.3957578892912545
+        }
+      ],
+      "pairedP95PercentMedian": 0.891565145244555,
+      "pairedCpuPercentMedian": 7.383528300811615
+    },
+    {
+      "concurrency": 8,
+      "mode": "typeorm.mapped",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.4620839999988675,
+        "min": 1.3679580000025453,
+        "max": 1.6006660000130069
+      },
+      "p95Ms": {
+        "median": 1.904333000013139,
+        "min": 1.8239160000011907,
+        "max": 2.906875000000582
+      },
+      "p99Ms": {
+        "median": 2.961875000008149,
+        "min": 2.8500420000054874,
+        "max": 3.6083330000110436
+      },
+      "successfulRps": {
+        "median": 5079.293727381662,
+        "min": 4412.376198160735,
+        "max": 5524.876782838705
+      },
+      "cpuMsPerOperation": {
+        "median": 0.1693671875,
+        "min": 0.15699609375,
+        "max": 0.1810625
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.9672919999866281,
+        "min": 0.9452080000191927,
+        "max": 1.5461670000076992
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -43.7453620170694,
+          "cpuPercent": 22.41452327846636
+        },
+        {
+          "block": 1,
+          "p95Percent": 66.91788687880356,
+          "cpuPercent": 95.05133815855915
+        },
+        {
+          "block": 2,
+          "p95Percent": -96.6519909910401,
+          "cpuPercent": 27.167470286539096
+        },
+        {
+          "block": 3,
+          "p95Percent": 89.67037136385343,
+          "cpuPercent": 73.33419588562558
+        },
+        {
+          "block": 4,
+          "p95Percent": 29.180276047648857,
+          "cpuPercent": 84.75948294130113
+        }
+      ],
+      "pairedP95PercentMedian": 29.180276047648857,
+      "pairedCpuPercentMedian": 73.33419588562558
+    },
+    {
+      "concurrency": 8,
+      "mode": "typeorm.mapped",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 2.2210419999901205,
+        "min": 2.075875000009546,
+        "max": 2.3821250000037253
+      },
+      "p95Ms": {
+        "median": 2.9959579999849666,
+        "min": 2.706665999998222,
+        "max": 4.141042000002926
+      },
+      "p99Ms": {
+        "median": 3.9425829999963753,
+        "min": 3.3365840000042226,
+        "max": 6.1700829999754205
+      },
+      "successfulRps": {
+        "median": 3411.2202870388633,
+        "min": 3176.7189387498215,
+        "max": 3715.3005801533077
+      },
+      "cpuMsPerOperation": {
+        "median": 0.2928203125,
+        "min": 0.2740390625,
+        "max": 0.2952734375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 1.3136670000094455,
+        "min": 1.2139170000009472,
+        "max": 1.7644579999905545
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -53.59630753448788,
+          "cpuPercent": -10.368089537364744
+        },
+        {
+          "block": 1,
+          "p95Percent": 2.4361879111651996,
+          "cpuPercent": 14.566756089058641
+        },
+        {
+          "block": 2,
+          "p95Percent": -3.0245248884129716,
+          "cpuPercent": 5.873847822157963
+        },
+        {
+          "block": 3,
+          "p95Percent": 66.60519114089361,
+          "cpuPercent": 13.910162898127876
+        },
+        {
+          "block": 4,
+          "p95Percent": 6.45039452216758,
+          "cpuPercent": 7.9014710717808745
+        }
+      ],
+      "pairedP95PercentMedian": 2.4361879111651996,
+      "pairedCpuPercentMedian": 7.9014710717808745
+    },
+    {
+      "concurrency": 8,
+      "mode": "typeorm.mapped",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 10.011083999997936,
+        "min": 9.688083999993978,
+        "max": 10.807000000000698
+      },
+      "p95Ms": {
+        "median": 12.167125000007218,
+        "min": 10.816749999998137,
+        "max": 16.075875000009546
+      },
+      "p99Ms": {
+        "median": 16.757250000024214,
+        "min": 12.146709000007831,
+        "max": 28.07949999999255
+      },
+      "successfulRps": {
+        "median": 772.9560014149889,
+        "min": 700.3123587347254,
+        "max": 815.7623773419085
+      },
+      "cpuMsPerOperation": {
+        "median": 0.978765625,
+        "min": 0.94183984375,
+        "max": 1.02237890625
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 5.713374999992084,
+        "min": 5.126625000004424,
+        "max": 8.418290999979945
+      },
+      "lockP95Ms": {
+        "median": 0.7693340000114404,
+        "min": 0.7007080000039423,
+        "max": 0.8747500000026776
+      },
+      "transactionP95Ms": {
+        "median": 11.961332999999286,
+        "min": 10.643458999998984,
+        "max": 15.743791999993846
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -85.26158970255067,
+          "cpuPercent": -26.678859350081208
+        },
+        {
+          "block": 1,
+          "p95Percent": -1.4598244565373064,
+          "cpuPercent": 29.068723232084004
+        },
+        {
+          "block": 2,
+          "p95Percent": -0.13925619625713148,
+          "cpuPercent": 19.647619897478606
+        },
+        {
+          "block": 3,
+          "p95Percent": 18.818607338632187,
+          "cpuPercent": 24.696676630912595
+        },
+        {
+          "block": 4,
+          "p95Percent": 61.41990980829641,
+          "cpuPercent": 32.877595572929884
+        }
+      ],
+      "pairedP95PercentMedian": -0.13925619625713148,
+      "pairedCpuPercentMedian": 24.696676630912595
+    },
+    {
+      "concurrency": 8,
+      "mode": "typeorm.mapped",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 13.730125000001863,
+        "min": 13.56325000000652,
+        "max": 14.719499999991967
+      },
+      "p95Ms": {
+        "median": 18.48795799999789,
+        "min": 16.486166999995476,
+        "max": 18.818707999998878
+      },
+      "p99Ms": {
+        "median": 20.792417000004207,
+        "min": 18.196958000015,
+        "max": 21.939582999999402
+      },
+      "successfulRps": {
+        "median": 565.3974540691576,
+        "min": 530.9607407939387,
+        "max": 571.9638836623035
+      },
+      "cpuMsPerOperation": {
+        "median": 1.2365703125,
+        "min": 1.1747890625,
+        "max": 1.29643359375
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 6.267832999990787,
+        "min": 5.945834000012837,
+        "max": 6.607416999999259
+      },
+      "lockP95Ms": {
+        "median": 0.9149169999873266,
+        "min": 0.8591669999877922,
+        "max": 0.9473330000037095
+      },
+      "transactionP95Ms": {
+        "median": 13.579666999998153,
+        "min": 12.49558300001081,
+        "max": 14.045124999996915
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -24.051887987014496,
+          "cpuPercent": 19.828432544132845
+        },
+        {
+          "block": 1,
+          "p95Percent": -51.09625785006261,
+          "cpuPercent": 15.171758043079198
+        },
+        {
+          "block": 2,
+          "p95Percent": 22.15457082499126,
+          "cpuPercent": 28.850302423457986
+        },
+        {
+          "block": 3,
+          "p95Percent": 9.45173112030191,
+          "cpuPercent": 34.03300683824229
+        },
+        {
+          "block": 4,
+          "p95Percent": 9.604583762633734,
+          "cpuPercent": 24.468080703569584
+        }
+      ],
+      "pairedP95PercentMedian": 9.45173112030191,
+      "pairedCpuPercentMedian": 24.468080703569584
+    },
+    {
+      "concurrency": 8,
+      "mode": "sequelize.raw",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.2305410000044503,
+        "min": 1.2055420000106096,
+        "max": 1.664334000000963
+      },
+      "p95Ms": {
+        "median": 1.6281659999949625,
+        "min": 1.5350000000034925,
+        "max": 4.429707999981474
+      },
+      "p99Ms": {
+        "median": 2.3381660000013653,
+        "min": 2.2859999999927823,
+        "max": 10.790417000011075
+      },
+      "successfulRps": {
+        "median": 6221.419291897107,
+        "min": 3728.311476421322,
+        "max": 6389.5703043945705
+      },
+      "cpuMsPerOperation": {
+        "median": 0.1164453125,
+        "min": 0.11327734375,
+        "max": 0.14891015625
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.8039579999967827,
+        "min": 0.7028339999960735,
+        "max": 2.5778750000172295
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -49.782835993668016,
+          "cpuPercent": -18.125864648917243
+        },
+        {
+          "block": 1,
+          "p95Percent": 11.75710594338133,
+          "cpuPercent": 36.222858104696186
+        },
+        {
+          "block": 2,
+          "p95Percent": -97.23829175588402,
+          "cpuPercent": -8.448757716286359
+        },
+        {
+          "block": 3,
+          "p95Percent": 10.0104876937265,
+          "cpuPercent": 26.652865829990937
+        },
+        {
+          "block": 4,
+          "p95Percent": 200.4888862631363,
+          "cpuPercent": 61.56389065479977
+        }
+      ],
+      "pairedP95PercentMedian": 10.0104876937265,
+      "pairedCpuPercentMedian": 26.652865829990937
+    },
+    {
+      "concurrency": 8,
+      "mode": "sequelize.raw",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 2.1633750000037253,
+        "min": 2.022292000008747,
+        "max": 2.2859170000010636
+      },
+      "p95Ms": {
+        "median": 2.978583999996772,
+        "min": 2.726250000006985,
+        "max": 3.9109170000010636
+      },
+      "p99Ms": {
+        "median": 3.882584000006318,
+        "min": 3.650999999998021,
+        "max": 7.4082909999997355
+      },
+      "successfulRps": {
+        "median": 3433.205873330115,
+        "min": 3322.9886274353453,
+        "max": 3719.3377289121227
+      },
+      "cpuMsPerOperation": {
+        "median": 0.29948046875,
+        "min": 0.286328125,
+        "max": 0.3219375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 1.3522079999966081,
+        "min": 1.1870409999974072,
+        "max": 1.374083000002429
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -46.63802726612043,
+          "cpuPercent": -2.0467873615352183
+        },
+        {
+          "block": 1,
+          "p95Percent": -10.030065715027536,
+          "cpuPercent": 18.183058245805483
+        },
+        {
+          "block": 2,
+          "p95Percent": -2.322861770231288,
+          "cpuPercent": 10.398216760045775
+        },
+        {
+          "block": 3,
+          "p95Percent": 19.836397855496024,
+          "cpuPercent": 14.282458059810343
+        },
+        {
+          "block": 4,
+          "p95Percent": 38.96011145538567,
+          "cpuPercent": 17.82298531787445
+        }
+      ],
+      "pairedP95PercentMedian": -2.322861770231288,
+      "pairedCpuPercentMedian": 14.282458059810343
+    },
+    {
+      "concurrency": 8,
+      "mode": "sequelize.raw",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 10.149124999996275,
+        "min": 9.580375000005006,
+        "max": 10.687416000000667
+      },
+      "p95Ms": {
+        "median": 13.766583000018727,
+        "min": 11.37041699999827,
+        "max": 15.612874999998894
+      },
+      "p99Ms": {
+        "median": 16.192458999998053,
+        "min": 14.276332999987062,
+        "max": 20.523083000000042
+      },
+      "successfulRps": {
+        "median": 752.7566780227578,
+        "min": 697.1104854792717,
+        "max": 808.5130741854038
+      },
+      "cpuMsPerOperation": {
+        "median": 1.05231640625,
+        "min": 1.0016875,
+        "max": 1.140046875
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 6.73333299998194,
+        "min": 5.907250000003842,
+        "max": 8.385000000002037
+      },
+      "lockP95Ms": {
+        "median": 0.8490830000082497,
+        "min": 0.7482080000045244,
+        "max": 0.9895410000026459
+      },
+      "transactionP95Ms": {
+        "median": 13.548500000004424,
+        "min": 11.140584000007948,
+        "max": 15.443916999996873
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -80.66967861229526,
+          "cpuPercent": -17.725137899249432
+        },
+        {
+          "block": 1,
+          "p95Percent": 23.40307960196668,
+          "cpuPercent": 44.004973651489124
+        },
+        {
+          "block": 2,
+          "p95Percent": 4.972223540226528,
+          "cpuPercent": 28.261300653400355
+        },
+        {
+          "block": 3,
+          "p95Percent": 31.087941943857377,
+          "cpuPercent": 32.62032085561497
+        },
+        {
+          "block": 4,
+          "p95Percent": 35.736794335623976,
+          "cpuPercent": 36.76854343301008
+        }
+      ],
+      "pairedP95PercentMedian": 23.40307960196668,
+      "pairedCpuPercentMedian": 32.62032085561497
+    },
+    {
+      "concurrency": 8,
+      "mode": "sequelize.raw",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 14.232499999998254,
+        "min": 13.428749999991851,
+        "max": 16.426416000002064
+      },
+      "p95Ms": {
+        "median": 18.663999999989755,
+        "min": 16.050167000008514,
+        "max": 77.2017499999929
+      },
+      "p99Ms": {
+        "median": 21.331124999996973,
+        "min": 18.184957999998005,
+        "max": 160.09483299999556
+      },
+      "successfulRps": {
+        "median": 534.7374368687179,
+        "min": 383.7968277462096,
+        "max": 595.1412865297954
+      },
+      "cpuMsPerOperation": {
+        "median": 1.34664453125,
+        "min": 1.1935078125,
+        "max": 1.56114453125
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 6.812207999988459,
+        "min": 5.832124999986263,
+        "max": 11.338583000004292
+      },
+      "lockP95Ms": {
+        "median": 0.9985419999866281,
+        "min": 0.8163749999948777,
+        "max": 3.5504999999975553
+      },
+      "transactionP95Ms": {
+        "median": 13.862999999983003,
+        "min": 11.745124999986729,
+        "max": 56.28491599998961
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -26.419710735662182,
+          "cpuPercent": 26.05869180734144
+        },
+        {
+          "block": 1,
+          "p95Percent": 29.09099724712927,
+          "cpuPercent": 38.68798300985195
+        },
+        {
+          "block": 2,
+          "p95Percent": 402.2626680524024,
+          "cpuPercent": 44.98905088691887
+        },
+        {
+          "block": 3,
+          "p95Percent": 6.557125311259848,
+          "cpuPercent": 32.06971376207066
+        },
+        {
+          "block": 4,
+          "p95Percent": 13.16316012836225,
+          "cpuPercent": 42.676047594412815
+        }
+      ],
+      "pairedP95PercentMedian": 13.16316012836225,
+      "pairedCpuPercentMedian": 38.68798300985195
+    },
+    {
+      "concurrency": 8,
+      "mode": "sequelize.mapped",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 1.248916000011377,
+        "min": 1.2156669999967562,
+        "max": 1.6086660000000848
+      },
+      "p95Ms": {
+        "median": 1.7509590000263415,
+        "min": 1.4842919999791775,
+        "max": 3.483250000004773
+      },
+      "p99Ms": {
+        "median": 2.8213749999995343,
+        "min": 2.497917000000598,
+        "max": 4.647624999997788
+      },
+      "successfulRps": {
+        "median": 6130.2253346324915,
+        "min": 4295.103833296413,
+        "max": 6218.359088228968
+      },
+      "cpuMsPerOperation": {
+        "median": 0.1665625,
+        "min": 0.1630625,
+        "max": 0.214265625
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 0.7484579999872949,
+        "min": 0.6969580000004498,
+        "max": 1.9196670000019367
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 7.433109723355447,
+          "cpuPercent": 54.866032355515415
+        },
+        {
+          "block": 1,
+          "p95Percent": 6.309216192616129,
+          "cpuPercent": 87.66621780844976
+        },
+        {
+          "block": 2,
+          "p95Percent": -97.22374915802162,
+          "cpuPercent": 28.202450784681066
+        },
+        {
+          "block": 3,
+          "p95Percent": 6.258040266522946,
+          "cpuPercent": 83.89614870401519
+        },
+        {
+          "block": 4,
+          "p95Percent": 18.776163081749566,
+          "cpuPercent": 78.22420004238187
+        }
+      ],
+      "pairedP95PercentMedian": 6.309216192616129,
+      "pairedCpuPercentMedian": 78.22420004238187
+    },
+    {
+      "concurrency": 8,
+      "mode": "sequelize.mapped",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 2.1100420000002487,
+        "min": 2.058999999979278,
+        "max": 2.298625000003085
+      },
+      "p95Ms": {
+        "median": 2.7130839999881573,
+        "min": 2.6768749999901047,
+        "max": 3.1091660000020056
+      },
+      "p99Ms": {
+        "median": 3.5927079999964917,
+        "min": 3.538957999990089,
+        "max": 4.323292000000947
+      },
+      "successfulRps": {
+        "median": 3673.905048928164,
+        "min": 3336.513795598227,
+        "max": 3741.4752824110346
+      },
+      "cpuMsPerOperation": {
+        "median": 0.30241796875,
+        "min": 0.29443359375,
+        "max": 0.31747265625
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 1.20183399997768,
+        "min": 1.16616600000998,
+        "max": 1.313166000007186
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -46.84959186287695,
+          "cpuPercent": 3.8380457141396818
+        },
+        {
+          "block": 1,
+          "p95Percent": -7.81543556769596,
+          "cpuPercent": 22.564755452492456
+        },
+        {
+          "block": 2,
+          "p95Percent": -4.09188834583194,
+          "cpuPercent": 16.6019037291403
+        },
+        {
+          "block": 3,
+          "p95Percent": 9.154623014933861,
+          "cpuPercent": 15.145575006078293
+        },
+        {
+          "block": 4,
+          "p95Percent": -3.6567786501592314,
+          "cpuPercent": 7.757080158401131
+        }
+      ],
+      "pairedP95PercentMedian": -4.09188834583194,
+      "pairedCpuPercentMedian": 15.145575006078293
+    },
+    {
+      "concurrency": 8,
+      "mode": "sequelize.mapped",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 10.09229200000118,
+        "min": 9.711207999993348,
+        "max": 10.481250000004366
+      },
+      "p95Ms": {
+        "median": 12.688500000003842,
+        "min": 11.669041000001016,
+        "max": 14.09070800000336
+      },
+      "p99Ms": {
+        "median": 13.612166000006255,
+        "min": 12.284458999987692,
+        "max": 17.113916000002064
+      },
+      "successfulRps": {
+        "median": 773.4168180393118,
+        "min": 734.6815503161662,
+        "max": 794.0463053190126
+      },
+      "cpuMsPerOperation": {
+        "median": 1.102,
+        "min": 1.06818359375,
+        "max": 1.13879296875
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 6.129792000007001,
+        "min": 5.508666999987327,
+        "max": 6.811709000001429
+      },
+      "lockP95Ms": {
+        "median": 0.7787919999973383,
+        "min": 0.7275000000081491,
+        "max": 0.8280830000003334
+      },
+      "transactionP95Ms": {
+        "median": 12.221250000002328,
+        "min": 11.329791999974987,
+        "max": 13.872124999994412
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -83.01562311789323,
+          "cpuPercent": -16.087319121541544
+        },
+        {
+          "block": 1,
+          "p95Percent": 2.7627329696097602,
+          "cpuPercent": 43.846586535614904
+        },
+        {
+          "block": 2,
+          "p95Percent": 7.729134327471154,
+          "cpuPercent": 39.857421894365295
+        },
+        {
+          "block": 3,
+          "p95Percent": 11.54206824876962,
+          "cpuPercent": 41.42419760237486
+        },
+        {
+          "block": 4,
+          "p95Percent": 41.48659494392888,
+          "cpuPercent": 41.2291211859674
+        }
+      ],
+      "pairedP95PercentMedian": 7.729134327471154,
+      "pairedCpuPercentMedian": 41.2291211859674
+    },
+    {
+      "concurrency": 8,
+      "mode": "sequelize.mapped",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 14.509999999994761,
+        "min": 13.780124999990221,
+        "max": 16.635249999992084
+      },
+      "p95Ms": {
+        "median": 22.60099999999511,
+        "min": 17.009208000003127,
+        "max": 31.30225000000064
+      },
+      "p99Ms": {
+        "median": 31.002041999992798,
+        "min": 18.2494589999842,
+        "max": 41.02183299999888
+      },
+      "successfulRps": {
+        "median": 514.3842564162723,
+        "min": 455.8085321990801,
+        "max": 567.8946530040766
+      },
+      "cpuMsPerOperation": {
+        "median": 1.4890859375,
+        "min": 1.43825,
+        "max": 1.62888671875
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 6.790915999998106,
+        "min": 6.02666699999827,
+        "max": 8.894333000003826
+      },
+      "lockP95Ms": {
+        "median": 0.9460410000028787,
+        "min": 0.8462500000023283,
+        "max": 1.3382500000006985
+      },
+      "transactionP95Ms": {
+        "median": 17.93787500000326,
+        "min": 12.870374999998603,
+        "max": 19.091874999998254
+      },
+      "maxConnections": 4,
+      "maxWaiters": 4,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 26.328905749463026,
+          "cpuPercent": 52.19276151535319
+        },
+        {
+          "block": 1,
+          "p95Percent": -33.88988358937917,
+          "cpuPercent": 44.70602116134048
+        },
+        {
+          "block": 2,
+          "p95Percent": 47.03861713822464,
+          "cpuPercent": 55.16236435717718
+        },
+        {
+          "block": 3,
+          "p95Percent": 18.744126140986307,
+          "cpuPercent": 60.318743354110296
+        },
+        {
+          "block": 4,
+          "p95Percent": 3.129861153130653,
+          "cpuPercent": 52.38158303155718
+        }
+      ],
+      "pairedP95PercentMedian": 18.744126140986307,
+      "pairedCpuPercentMedian": 52.38158303155718
+    },
+    {
+      "concurrency": 32,
+      "mode": "pg",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 4.735291999997571,
+        "min": 4.56349999998929,
+        "max": 5.461875000000873
+      },
+      "p95Ms": {
+        "median": 5.470582999987528,
+        "min": 5.027833000000101,
+        "max": 6.92883399999846
+      },
+      "p99Ms": {
+        "median": 6.4227499999979045,
+        "min": 5.825582999998005,
+        "max": 7.159916000004159
+      },
+      "successfulRps": {
+        "median": 6511.061122893524,
+        "min": 5506.669167899006,
+        "max": 6692.278224566362
+      },
+      "cpuMsPerOperation": {
+        "median": 0.0879453125,
+        "min": 0.0840703125,
+        "max": 0.10215625
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 4.897874999995111,
+        "min": 4.353165999986231,
+        "max": 6.193208999997296
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 32,
+      "mode": "pg",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 8.03229200001806,
+        "min": 7.956084000004921,
+        "max": 10.48791699999856
+      },
+      "p95Ms": {
+        "median": 10.224125000007916,
+        "min": 9.189584000007017,
+        "max": 17.594375000000582
+      },
+      "p99Ms": {
+        "median": 10.48399999999674,
+        "min": 9.716042000000016,
+        "max": 19.8134579999969
+      },
+      "successfulRps": {
+        "median": 3581.8139329935466,
+        "min": 2665.2565238607835,
+        "max": 3827.5174703742914
+      },
+      "cpuMsPerOperation": {
+        "median": 0.25612109375,
+        "min": 0.2468828125,
+        "max": 0.324328125
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 8.866500000003725,
+        "min": 7.5836660000059055,
+        "max": 15.573416999999608
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 32,
+      "mode": "pg",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 36.53533400000015,
+        "min": 35.808958000008715,
+        "max": 40.19650000002002
+      },
+      "p95Ms": {
+        "median": 41.6428339999984,
+        "min": 37.185708000004524,
+        "max": 55.267791999998735
+      },
+      "p99Ms": {
+        "median": 42.855292000007466,
+        "min": 39.61166699999012,
+        "max": 57.581208000003244
+      },
+      "successfulRps": {
+        "median": 848.9509776408484,
+        "min": 745.1028956246772,
+        "max": 880.6214708083861
+      },
+      "cpuMsPerOperation": {
+        "median": 0.8012109375,
+        "min": 0.7635703125,
+        "max": 0.8749453125
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 36.810874999995576,
+        "min": 32.45079100001021,
+        "max": 50.0767909999995
+      },
+      "lockP95Ms": {
+        "median": 0.7421249999897555,
+        "min": 0.7195000000065193,
+        "max": 0.8958330000023125
+      },
+      "transactionP95Ms": {
+        "median": 41.40345800000068,
+        "min": 36.9325410000165,
+        "max": 55.09491600000183
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 32,
+      "mode": "pg",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 52.2642909999995,
+        "min": 49.38820799998939,
+        "max": 54.626957999993465
+      },
+      "p95Ms": {
+        "median": 63.17254099999991,
+        "min": 54.4278750000085,
+        "max": 68.13362500000221
+      },
+      "p99Ms": {
+        "median": 65.43499999999767,
+        "min": 55.90679200000886,
+        "max": 69.86787499999627
+      },
+      "successfulRps": {
+        "median": 586.303514300727,
+        "min": 563.7865690715687,
+        "max": 629.6279932527032
+      },
+      "cpuMsPerOperation": {
+        "median": 0.92884375,
+        "min": 0.90881640625,
+        "max": 1.00476171875
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 38.94195799999579,
+        "min": 36.882207999995444,
+        "max": 40.5714169999992
+      },
+      "lockP95Ms": {
+        "median": 0.8983750000043074,
+        "min": 0.7833329999994021,
+        "max": 0.9162500000093132
+      },
+      "transactionP95Ms": {
+        "median": 46.276708000004874,
+        "min": 42.384500000000116,
+        "max": 46.4857090000005
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 1,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 2,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 3,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        },
+        {
+          "block": 4,
+          "p95Percent": 0,
+          "cpuPercent": 0
+        }
+      ],
+      "pairedP95PercentMedian": 0,
+      "pairedCpuPercentMedian": 0
+    },
+    {
+      "concurrency": 32,
+      "mode": "typeorm.raw",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 4.8215410000120755,
+        "min": 4.733208999998169,
+        "max": 5.430999999996857
+      },
+      "p95Ms": {
+        "median": 5.257582999998704,
+        "min": 5.189750000005006,
+        "max": 8.818167000004905
+      },
+      "p99Ms": {
+        "median": 5.933250000001863,
+        "min": 5.810791999974754,
+        "max": 9.269166999991285
+      },
+      "successfulRps": {
+        "median": 6418.372591542656,
+        "min": 5461.449844263792,
+        "max": 6470.0994840993
+      },
+      "cpuMsPerOperation": {
+        "median": 0.10442578125,
+        "min": 0.09773046875,
+        "max": 0.1088828125
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 4.639999999984866,
+        "min": 4.53079199999047,
+        "max": 8.000790999998571
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -18.760385946576296,
+          "cpuPercent": 3.380238605078012
+        },
+        {
+          "block": 1,
+          "p95Percent": 38.0687988589324,
+          "cpuPercent": 29.51398568906236
+        },
+        {
+          "block": 2,
+          "p95Percent": 1.888003002913452,
+          "cpuPercent": 9.469829089640736
+        },
+        {
+          "block": 3,
+          "p95Percent": 4.183392726111901,
+          "cpuPercent": 21.320626276378498
+        },
+        {
+          "block": 4,
+          "p95Percent": -3.893552112988863,
+          "cpuPercent": 11.126410233632411
+        }
+      ],
+      "pairedP95PercentMedian": 1.888003002913452,
+      "pairedCpuPercentMedian": 11.126410233632411
+    },
+    {
+      "concurrency": 32,
+      "mode": "typeorm.raw",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 8.43583299999591,
+        "min": 8.159707999991952,
+        "max": 9.743915999999444
+      },
+      "p95Ms": {
+        "median": 9.456041999990703,
+        "min": 9.0932089999842,
+        "max": 13.874791999987792
+      },
+      "p99Ms": {
+        "median": 10.78804100000707,
+        "min": 10.146166999998968,
+        "max": 14.484167000016896
+      },
+      "successfulRps": {
+        "median": 3653.430710582213,
+        "min": 3074.3134208492856,
+        "max": 3743.2601394874364
+      },
+      "cpuMsPerOperation": {
+        "median": 0.2721484375,
+        "min": 0.2656640625,
+        "max": 0.276046875
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 8.102167000004556,
+        "min": 7.690833000000566,
+        "max": 12.494875000003958
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -25.299517601493505,
+          "cpuPercent": -16.088548441489625
+        },
+        {
+          "block": 1,
+          "p95Percent": 1.5554802340528306,
+          "cpuPercent": 11.319262048669332
+        },
+        {
+          "block": 2,
+          "p95Percent": 2.411686970790017,
+          "cpuPercent": 7.779828267268618
+        },
+        {
+          "block": 3,
+          "p95Percent": -37.999263890432346,
+          "cpuPercent": 4.733891831957626
+        },
+        {
+          "block": 4,
+          "p95Percent": 35.70640030297996,
+          "cpuPercent": 2.76574524777089
+        }
+      ],
+      "pairedP95PercentMedian": 1.5554802340528306,
+      "pairedCpuPercentMedian": 4.733891831957626
+    },
+    {
+      "concurrency": 32,
+      "mode": "typeorm.raw",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 38.05483300000196,
+        "min": 37.30312500000582,
+        "max": 38.65841599999112
+      },
+      "p95Ms": {
+        "median": 44.52208300001803,
+        "min": 39.383499999996275,
+        "max": 52.23816700000316
+      },
+      "p99Ms": {
+        "median": 45.46958299999824,
+        "min": 41.74550000000454,
+        "max": 54.74845800000185
+      },
+      "successfulRps": {
+        "median": 795.7295853872872,
+        "min": 764.3272174029096,
+        "max": 837.0088703322994
+      },
+      "cpuMsPerOperation": {
+        "median": 0.8246953125,
+        "min": 0.8118203125,
+        "max": 0.87387109375
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 38.95787499999278,
+        "min": 34.46250000000873,
+        "max": 44.974499999996624
+      },
+      "lockP95Ms": {
+        "median": 0.7748330000031274,
+        "min": 0.7014170000038575,
+        "max": 0.8787499999962165
+      },
+      "transactionP95Ms": {
+        "median": 44.319250000000466,
+        "min": 39.205624999987776,
+        "max": 52.049792000005255
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 2.518823187065933,
+          "cpuPercent": 4.186343271765347
+        },
+        {
+          "block": 1,
+          "p95Percent": 18.448716355245608,
+          "cpuPercent": 4.256740285700356
+        },
+        {
+          "block": 2,
+          "p95Percent": -5.425504902001177,
+          "cpuPercent": 6.3189989461514
+        },
+        {
+          "block": 3,
+          "p95Percent": 19.72901793348296,
+          "cpuPercent": 4.963834273205081
+        },
+        {
+          "block": 4,
+          "p95Percent": -22.905595722039006,
+          "cpuPercent": -5.743216093863001
+        }
+      ],
+      "pairedP95PercentMedian": 2.518823187065933,
+      "pairedCpuPercentMedian": 4.256740285700356
+    },
+    {
+      "concurrency": 32,
+      "mode": "typeorm.raw",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 51.52337500000431,
+        "min": 50.48612499999581,
+        "max": 56.0175409999938
+      },
+      "p95Ms": {
+        "median": 60.127250000005006,
+        "min": 54.606958000018494,
+        "max": 66.94745900001726
+      },
+      "p99Ms": {
+        "median": 63.38275000000431,
+        "min": 55.9519169999985,
+        "max": 70.95624999998836
+      },
+      "successfulRps": {
+        "median": 596.2953992996102,
+        "min": 557.9604072907847,
+        "max": 625.646942767169
+      },
+      "cpuMsPerOperation": {
+        "median": 1.0090390625,
+        "min": 0.97501953125,
+        "max": 1.05715625
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 39.48708399999305,
+        "min": 36.54566599999089,
+        "max": 43.39304199999606
+      },
+      "lockP95Ms": {
+        "median": 0.8200000000069849,
+        "min": 0.790207999991253,
+        "max": 0.8900839999987511
+      },
+      "transactionP95Ms": {
+        "median": 45.57370899998932,
+        "min": 42.44149999998626,
+        "max": 49.70795899999939
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -0.6523134790408669,
+          "cpuPercent": 5.2146225589867035
+        },
+        {
+          "block": 1,
+          "p95Percent": 7.347185610294837,
+          "cpuPercent": 11.641171338064172
+        },
+        {
+          "block": 2,
+          "p95Percent": -11.750989324282902,
+          "cpuPercent": 7.679238300306146
+        },
+        {
+          "block": 3,
+          "p95Percent": 5.265713481332979,
+          "cpuPercent": 10.102168251546173
+        },
+        {
+          "block": 4,
+          "p95Percent": -9.822233553714321,
+          "cpuPercent": 1.5438753508807634
+        }
+      ],
+      "pairedP95PercentMedian": -0.6523134790408669,
+      "pairedCpuPercentMedian": 7.679238300306146
+    },
+    {
+      "concurrency": 32,
+      "mode": "typeorm.mapped",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 5.493958000006387,
+        "min": 5.381208000006154,
+        "max": 5.982250000000931
+      },
+      "p95Ms": {
+        "median": 6.362957999997889,
+        "min": 5.9189579999947455,
+        "max": 15.228166999993846
+      },
+      "p99Ms": {
+        "median": 7.387208000000101,
+        "min": 6.93154200000572,
+        "max": 15.486499999999069
+      },
+      "successfulRps": {
+        "median": 5534.9456903988275,
+        "min": 4596.586675284565,
+        "max": 5690.037517794582
+      },
+      "cpuMsPerOperation": {
+        "median": 0.16682421875,
+        "min": 0.158609375,
+        "max": 0.177984375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 5.587209000004805,
+        "min": 5.094708000018727,
+        "max": 14.502250000005006
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 17.810817808637736,
+          "cpuPercent": 71.28326705414499
+        },
+        {
+          "block": 1,
+          "p95Percent": -0.3731763926613674,
+          "cpuPercent": 98.43416039401545
+        },
+        {
+          "block": 2,
+          "p95Percent": 198.96768149193002,
+          "cpuPercent": 98.65713289152424
+        },
+        {
+          "block": 3,
+          "p95Percent": 17.72383848060639,
+          "cpuPercent": 86.91626957113681
+        },
+        {
+          "block": 4,
+          "p95Percent": 9.488623059411383,
+          "cpuPercent": 80.35000444168074
+        }
+      ],
+      "pairedP95PercentMedian": 17.72383848060639,
+      "pairedCpuPercentMedian": 86.91626957113681
+    },
+    {
+      "concurrency": 32,
+      "mode": "typeorm.mapped",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 8.36074999999255,
+        "min": 8.192459000012605,
+        "max": 8.98712499999965
+      },
+      "p95Ms": {
+        "median": 9.490666999990935,
+        "min": 8.962790999998106,
+        "max": 11.959834000001138
+      },
+      "p99Ms": {
+        "median": 10.427624999982072,
+        "min": 10.054624999989755,
+        "max": 12.634541999999783
+      },
+      "successfulRps": {
+        "median": 3669.7313462787542,
+        "min": 3256.2621036598957,
+        "max": 3771.1829445191497
+      },
+      "cpuMsPerOperation": {
+        "median": 0.2682109375,
+        "min": 0.25716796875,
+        "max": 0.29391796875
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 8.033332999999402,
+        "min": 7.606082999991486,
+        "max": 10.2467089999991
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -32.02467265816068,
+          "cpuPercent": -9.376354964590272
+        },
+        {
+          "block": 1,
+          "p95Percent": 1.9273439063092868,
+          "cpuPercent": 8.63896712129364
+        },
+        {
+          "block": 2,
+          "p95Percent": 4.05938941304238,
+          "cpuPercent": 2.533286561837511
+        },
+        {
+          "block": 3,
+          "p95Percent": -38.62627308936947,
+          "cpuPercent": 1.3844400640630639
+        },
+        {
+          "block": 4,
+          "p95Percent": -12.336840561014595,
+          "cpuPercent": 3.145328153143101
+        }
+      ],
+      "pairedP95PercentMedian": -12.336840561014595,
+      "pairedCpuPercentMedian": 2.533286561837511
+    },
+    {
+      "concurrency": 32,
+      "mode": "typeorm.mapped",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 38.91075000001001,
+        "min": 38.06095899999491,
+        "max": 48.48441699999967
+      },
+      "p95Ms": {
+        "median": 44.02812500001164,
+        "min": 39.4653330000001,
+        "max": 71.56425000000309
+      },
+      "p99Ms": {
+        "median": 45.89995799999451,
+        "min": 41.449041999992914,
+        "max": 72.07800000000134
+      },
+      "successfulRps": {
+        "median": 798.2413744718986,
+        "min": 612.9061026653663,
+        "max": 825.2987358174231
+      },
+      "cpuMsPerOperation": {
+        "median": 0.979234375,
+        "min": 0.93365234375,
+        "max": 1.1124453125
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 38.85762499997509,
+        "min": 34.2650840000133,
+        "max": 65.43395800000144
+      },
+      "lockP95Ms": {
+        "median": 0.7646670000103768,
+        "min": 0.6939169999968726,
+        "max": 1.4001250000001164
+      },
+      "transactionP95Ms": {
+        "median": 43.82554200000595,
+        "min": 39.287375000014435,
+        "max": 71.1887080000015
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 40.44678658546452,
+          "cpuPercent": 32.630098452883246
+        },
+        {
+          "block": 1,
+          "p95Percent": 13.53211438348163,
+          "cpuPercent": 17.99278435961189
+        },
+        {
+          "block": 2,
+          "p95Percent": 4.846670618047733,
+          "cpuPercent": 29.033528755742456
+        },
+        {
+          "block": 3,
+          "p95Percent": 18.40066350224201,
+          "cpuPercent": 20.559988701362908
+        },
+        {
+          "block": 4,
+          "p95Percent": -28.592528176264032,
+          "cpuPercent": 11.91949496843554
+        }
+      ],
+      "pairedP95PercentMedian": 13.53211438348163,
+      "pairedCpuPercentMedian": 20.559988701362908
+    },
+    {
+      "concurrency": 32,
+      "mode": "typeorm.mapped",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 54.10174999998708,
+        "min": 52.025041999993846,
+        "max": 61.88866599999892
+      },
+      "p95Ms": {
+        "median": 63.10624999999709,
+        "min": 56.01166600000579,
+        "max": 77.82554099999834
+      },
+      "p99Ms": {
+        "median": 67.94512499999837,
+        "min": 56.94058299998869,
+        "max": 82.26550000000861
+      },
+      "successfulRps": {
+        "median": 569.9292212246895,
+        "min": 506.41049417059645,
+        "max": 603.541147544662
+      },
+      "cpuMsPerOperation": {
+        "median": 1.184515625,
+        "min": 1.14244140625,
+        "max": 1.3322734375
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 40.572042000014335,
+        "min": 34.94475000000966,
+        "max": 42.986541999998735
+      },
+      "lockP95Ms": {
+        "median": 0.8458749999990687,
+        "min": 0.7665419999975711,
+        "max": 1.024290999979712
+      },
+      "transactionP95Ms": {
+        "median": 48.11791699999594,
+        "min": 41.674749999991036,
+        "max": 50.0357920000024
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 7.923604022828479,
+          "cpuPercent": 32.59595908544859
+        },
+        {
+          "block": 1,
+          "p95Percent": 15.944725014502659,
+          "cpuPercent": 25.706512161680052
+        },
+        {
+          "block": 2,
+          "p95Percent": -17.79144878904657,
+          "cpuPercent": 27.52582175419709
+        },
+        {
+          "block": 3,
+          "p95Percent": -2.7890450696069324,
+          "cpuPercent": 25.499439502499865
+        },
+        {
+          "block": 4,
+          "p95Percent": 28.520864682689417,
+          "cpuPercent": 26.49037874781335
+        }
+      ],
+      "pairedP95PercentMedian": 7.923604022828479,
+      "pairedCpuPercentMedian": 26.49037874781335
+    },
+    {
+      "concurrency": 32,
+      "mode": "sequelize.raw",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 4.821750000002794,
+        "min": 4.77966600000218,
+        "max": 5.12050000000454
+      },
+      "p95Ms": {
+        "median": 5.696833000001789,
+        "min": 5.300875000000815,
+        "max": 7.926875000004657
+      },
+      "p99Ms": {
+        "median": 6.690499999996973,
+        "min": 6.0929160000086995,
+        "max": 8.296374999990803
+      },
+      "successfulRps": {
+        "median": 6005.242811553757,
+        "min": 5943.496111143034,
+        "max": 6347.717343487363
+      },
+      "cpuMsPerOperation": {
+        "median": 0.11641015625,
+        "min": 0.1136015625,
+        "max": 0.121859375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 4.963041000002704,
+        "min": 4.594209000002593,
+        "max": 7.073082999995677
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -17.78078389519716,
+          "cpuPercent": 17.008259406546355
+        },
+        {
+          "block": 1,
+          "p95Percent": 24.11356123726549,
+          "cpuPercent": 38.46761453396525
+        },
+        {
+          "block": 2,
+          "p95Percent": 4.069669621394256,
+          "cpuPercent": 26.796302755493564
+        },
+        {
+          "block": 3,
+          "p95Percent": 9.673650655830656,
+          "cpuPercent": 33.42409802586792
+        },
+        {
+          "block": 4,
+          "p95Percent": 35.104430368591544,
+          "cpuPercent": 38.56267211512838
+        }
+      ],
+      "pairedP95PercentMedian": 9.673650655830656,
+      "pairedCpuPercentMedian": 33.42409802586792
+    },
+    {
+      "concurrency": 32,
+      "mode": "sequelize.raw",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 8.465916999994079,
+        "min": 8.124874999979511,
+        "max": 9.278542000000016
+      },
+      "p95Ms": {
+        "median": 9.204583000013372,
+        "min": 9.154917000007117,
+        "max": 13.132416000000376
+      },
+      "p99Ms": {
+        "median": 10.648499999995693,
+        "min": 10.524291999987327,
+        "max": 14.654209000000264
+      },
+      "successfulRps": {
+        "median": 3659.8681518202984,
+        "min": 3194.139074212745,
+        "max": 3765.868871269507
+      },
+      "cpuMsPerOperation": {
+        "median": 0.2839609375,
+        "min": 0.2799453125,
+        "max": 0.3043359375
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 7.771041999993031,
+        "min": 7.646290999997291,
+        "max": 11.356417000002693
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -25.36014493268478,
+          "cpuPercent": -6.164185575950287
+        },
+        {
+          "block": 1,
+          "p95Percent": -1.145125315488671,
+          "cpuPercent": 16.06752950855985
+        },
+        {
+          "block": 2,
+          "p95Percent": -0.13239989980002864,
+          "cpuPercent": 10.869797306571915
+        },
+        {
+          "block": 3,
+          "p95Percent": -34.64378726409119,
+          "cpuPercent": 10.364050757669062
+        },
+        {
+          "block": 4,
+          "p95Percent": -10.457696868924938,
+          "cpuPercent": 7.968263891990057
+        }
+      ],
+      "pairedP95PercentMedian": -10.457696868924938,
+      "pairedCpuPercentMedian": 10.364050757669062
+    },
+    {
+      "concurrency": 32,
+      "mode": "sequelize.raw",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 38.6725829999923,
+        "min": 38.63266599999042,
+        "max": 40.981667000000016
+      },
+      "p95Ms": {
+        "median": 44.933709000004455,
+        "min": 42.43712499999674,
+        "max": 46.886624999999185
+      },
+      "p99Ms": {
+        "median": 46.703833999999915,
+        "min": 43.69679200000246,
+        "max": 47.940749999994296
+      },
+      "successfulRps": {
+        "median": 796.5613021116354,
+        "min": 761.516542584489,
+        "max": 809.7586469120336
+      },
+      "cpuMsPerOperation": {
+        "median": 0.990078125,
+        "min": 0.980234375,
+        "max": 1.0550703125
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 39.39133300000685,
+        "min": 37.13187499999185,
+        "max": 41.551582999993116
+      },
+      "lockP95Ms": {
+        "median": 0.7737499999930151,
+        "min": 0.718457999988459,
+        "max": 0.7961670000004233
+      },
+      "transactionP95Ms": {
+        "median": 44.65841599999112,
+        "min": 42.15391700001783,
+        "max": 46.704458000007435
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -9.182664730404655,
+          "cpuPercent": 25.78962565549874
+        },
+        {
+          "block": 1,
+          "p95Percent": 17.135665680879942,
+          "cpuPercent": 23.572717078640725
+        },
+        {
+          "block": 2,
+          "p95Percent": 3.6580891684679484,
+          "cpuPercent": 30.12881508538221
+        },
+        {
+          "block": 3,
+          "p95Percent": 14.122137999877737,
+          "cpuPercent": 26.80803413802495
+        },
+        {
+          "block": 4,
+          "p95Percent": -18.698201295963692,
+          "cpuPercent": 12.033787826024845
+        }
+      ],
+      "pairedP95PercentMedian": 3.6580891684679484,
+      "pairedCpuPercentMedian": 25.78962565549874
+    },
+    {
+      "concurrency": 32,
+      "mode": "sequelize.raw",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 52.85095900000306,
+        "min": 51.87124999999651,
+        "max": 57.88495800000237
+      },
+      "p95Ms": {
+        "median": 59.12241599999834,
+        "min": 58.7891660000023,
+        "max": 159.35741700000654
+      },
+      "p99Ms": {
+        "median": 61.47116699999606,
+        "min": 59.34162500000093,
+        "max": 165.69191700000374
+      },
+      "successfulRps": {
+        "median": 588.4075101254638,
+        "min": 450.5521901643748,
+        "max": 595.3292813346719
+      },
+      "cpuMsPerOperation": {
+        "median": 1.23270703125,
+        "min": 1.2055078125,
+        "max": 1.323734375
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 36.52274999998917,
+        "min": 34.92662499999278,
+        "max": 121.40816699998686
+      },
+      "lockP95Ms": {
+        "median": 0.935209000002942,
+        "min": 0.8124170000082813,
+        "max": 1.2127089999994496
+      },
+      "transactionP95Ms": {
+        "median": 43.04166599999007,
+        "min": 41.21791700000176,
+        "max": 139.8968329999916
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 6.329689983501718,
+          "cpuPercent": 27.694299410230204
+        },
+        {
+          "block": 1,
+          "p95Percent": 192.78640218818327,
+          "cpuPercent": 45.654762160605515
+        },
+        {
+          "block": 2,
+          "p95Percent": -13.71490068229837,
+          "cpuPercent": 32.71414392894392
+        },
+        {
+          "block": 3,
+          "p95Percent": -7.5009581194247055,
+          "cpuPercent": 31.54002548878365
+        },
+        {
+          "block": 4,
+          "p95Percent": -2.365419773315547,
+          "cpuPercent": 25.745494487612387
+        }
+      ],
+      "pairedP95PercentMedian": -2.365419773315547,
+      "pairedCpuPercentMedian": 31.54002548878365
+    },
+    {
+      "concurrency": 32,
+      "mode": "sequelize.mapped",
+      "operation": "account",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 4.969791999988956,
+        "min": 4.845874999999069,
+        "max": 5.667874999999185
+      },
+      "p95Ms": {
+        "median": 5.828458000003593,
+        "min": 5.787125000002561,
+        "max": 11.31474999999773
+      },
+      "p99Ms": {
+        "median": 7.434708000000683,
+        "min": 7.238624999998137,
+        "max": 11.82499999999709
+      },
+      "successfulRps": {
+        "median": 6045.702916283671,
+        "min": 4841.38250367524,
+        "max": 6254.288218513677
+      },
+      "cpuMsPerOperation": {
+        "median": 0.1685,
+        "min": 0.1638203125,
+        "max": 0.1925
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 4.721457999985432,
+        "min": 4.612374999996973,
+        "max": 10.368583000003127
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 63.29948155779521,
+          "cpuPercent": 72.91220556745182
+        },
+        {
+          "block": 1,
+          "p95Percent": -9.3891737822148,
+          "cpuPercent": 96.06449214756995
+        },
+        {
+          "block": 2,
+          "p95Percent": 50.60779415938956,
+          "cpuPercent": 88.07115451691665
+        },
+        {
+          "block": 3,
+          "p95Percent": 15.923858250731016,
+          "cpuPercent": 90.32448377581122
+        },
+        {
+          "block": 4,
+          "p95Percent": 5.936314283287936,
+          "cpuPercent": 118.8860264724172
+        }
+      ],
+      "pairedP95PercentMedian": 15.923858250731016,
+      "pairedCpuPercentMedian": 90.32448377581122
+    },
+    {
+      "concurrency": 32,
+      "mode": "sequelize.mapped",
+      "operation": "principal",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 8.413916999998037,
+        "min": 7.761832999996841,
+        "max": 9.438916999999492
+      },
+      "p95Ms": {
+        "median": 9.363333000001148,
+        "min": 9.15916599999764,
+        "max": 12.515708999999333
+      },
+      "p99Ms": {
+        "median": 10.484458999999333,
+        "min": 10.254791000013938,
+        "max": 13.11241600001813
+      },
+      "successfulRps": {
+        "median": 3675.2016429535984,
+        "min": 3246.909357667493,
+        "max": 3764.78427844824
+      },
+      "cpuMsPerOperation": {
+        "median": 0.29373046875,
+        "min": 0.281453125,
+        "max": 0.311421875
+      },
+      "queriesPerOperation": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "poolP95Ms": {
+        "median": 7.799334000010276,
+        "min": 7.723417000001064,
+        "max": 10.797749999997905
+      },
+      "lockP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "transactionP95Ms": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": -37.00685588432127,
+          "cpuPercent": -3.9793804499686836
+        },
+        {
+          "block": 1,
+          "p95Percent": -0.7258241894755324,
+          "cpuPercent": 14.002721432866071
+        },
+        {
+          "block": 2,
+          "p95Percent": 1.8907167070239428,
+          "cpuPercent": 14.68421614531701
+        },
+        {
+          "block": 3,
+          "p95Percent": -14.663440493400303,
+          "cpuPercent": 15.921830725637554
+        },
+        {
+          "block": 4,
+          "p95Percent": -10.416138300435996,
+          "cpuPercent": 10.577710296372377
+        }
+      ],
+      "pairedP95PercentMedian": -10.416138300435996,
+      "pairedCpuPercentMedian": 14.002721432866071
+    },
+    {
+      "concurrency": 32,
+      "mode": "sequelize.mapped",
+      "operation": "refresh",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 39.70000000001164,
+        "min": 38.79695799999172,
+        "max": 50.28441700000258
+      },
+      "p95Ms": {
+        "median": 45.477874999982305,
+        "min": 42.648875000013504,
+        "max": 55.21674999999959
+      },
+      "p99Ms": {
+        "median": 46.0060410000151,
+        "min": 44.48883400000341,
+        "max": 58.03520900000149
+      },
+      "successfulRps": {
+        "median": 784.1000246017467,
+        "min": 636.6276638966523,
+        "max": 808.3149081212857
+      },
+      "cpuMsPerOperation": {
+        "median": 1.0789765625,
+        "min": 1.05452734375,
+        "max": 1.25130078125
+      },
+      "queriesPerOperation": {
+        "median": 8,
+        "min": 8,
+        "max": 8
+      },
+      "poolP95Ms": {
+        "median": 39.83841699999175,
+        "min": 37.2858750000014,
+        "max": 48.19291700000031
+      },
+      "lockP95Ms": {
+        "median": 0.7693749999743886,
+        "min": 0.7227079999865964,
+        "max": 1.1430830000026617
+      },
+      "transactionP95Ms": {
+        "median": 45.21208299999125,
+        "min": 42.32850000000326,
+        "max": 54.88841700000194
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 8.364373317579066,
+          "cpuPercent": 49.18499268822012
+        },
+        {
+          "block": 1,
+          "p95Percent": 8.418038791977022,
+          "cpuPercent": 37.860172590317376
+        },
+        {
+          "block": 2,
+          "p95Percent": 12.698761088194765,
+          "cpuPercent": 41.30677225615684
+        },
+        {
+          "block": 3,
+          "p95Percent": 14.69157720489902,
+          "cpuPercent": 37.7228202205252
+        },
+        {
+          "block": 4,
+          "p95Percent": -17.713602526434656,
+          "cpuPercent": 20.524943523255935
+        }
+      ],
+      "pairedP95PercentMedian": 8.418038791977022,
+      "pairedCpuPercentMedian": 37.860172590317376
+    },
+    {
+      "concurrency": 32,
+      "mode": "sequelize.mapped",
+      "operation": "profile",
+      "blocks": 5,
+      "samples": 1280,
+      "p50Ms": {
+        "median": 57.10512500000186,
+        "min": 54.817957999999635,
+        "max": 60.67775000000256
+      },
+      "p95Ms": {
+        "median": 68.30279099999461,
+        "min": 58.8872080000001,
+        "max": 195.38241700001527
+      },
+      "p99Ms": {
+        "median": 72.51299999999901,
+        "min": 60.40212499999325,
+        "max": 207.4777920000197
+      },
+      "successfulRps": {
+        "median": 502.4501806416332,
+        "min": 416.0611520960608,
+        "max": 570.7759910071387
+      },
+      "cpuMsPerOperation": {
+        "median": 1.46733984375,
+        "min": 1.3753671875,
+        "max": 1.5253515625
+      },
+      "queriesPerOperation": {
+        "median": 10,
+        "min": 10,
+        "max": 10
+      },
+      "poolP95Ms": {
+        "median": 46.794832999999926,
+        "min": 38.669999999998254,
+        "max": 102.68887500002165
+      },
+      "lockP95Ms": {
+        "median": 0.8881249999976717,
+        "min": 0.7667500000097789,
+        "max": 1.750584000023082
+      },
+      "transactionP95Ms": {
+        "median": 54.200791999996,
+        "min": 46.34687500000291,
+        "max": 110.10895900000469
+      },
+      "maxConnections": 4,
+      "maxWaiters": 28,
+      "paired": [
+        {
+          "block": 0,
+          "p95Percent": 8.121012577275799,
+          "cpuPercent": 51.81226892259125
+        },
+        {
+          "block": 1,
+          "p95Percent": 18.89228083953418,
+          "cpuPercent": 52.601469115479006
+        },
+        {
+          "block": 2,
+          "p95Percent": -13.571004038023538,
+          "cpuPercent": 48.07304107929886
+        },
+        {
+          "block": 3,
+          "p95Percent": 137.1964108862656,
+          "cpuPercent": 60.11005357759374
+        },
+        {
+          "block": 4,
+          "p95Percent": 222.65393666375277,
+          "cpuPercent": 55.732069484561244
+        }
+      ],
+      "pairedP95PercentMedian": 18.89228083953418,
+      "pairedCpuPercentMedian": 52.601469115479006
+    }
+  ]
+}

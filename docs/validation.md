@@ -1,6 +1,6 @@
 # Validation log
 
-Updated 2026-10-06. Latest scope: architecture §5 source/tooling normalization, complete12/12 with fresh152 test cases and actual API/worker/operator/migration checks. No ORM implementation. ID-07/browser and ID-11/live SES remain PARTIAL. Initial sections record historical checks; fresh evidence is in the final source-normalization section. No AWS capacity/cost/production claim.
+Updated 2026-10-06. Latest scope: Web UI documentation/task/prompt handoff for Grok before ORM evaluation; no frontend implementation. Source normalization12/12 and152 tests are prior runtime evidence. ID-07/browser and ID-11/live SES remain PARTIAL. Historical sections remain below; fresh documentation checks are in the final Web UI section. No AWS capacity/cost/production claim.
 
 | Check / command | Result | Detail |
 | --- | --- | --- |
@@ -177,3 +177,88 @@ Baseline runtime is `cac9416`; existing docs were committed by the user during w
 Query counts remain identical; median-of-run p95 increases on me/refresh/logout are recorded alongside decreases elsewhere. Shared-host noise, development activity during baseline runs, sequential non-interleaved execution and small samples prevent a causal performance conclusion. Worker measurements use a provider stub; CPU includes client/API in one process; RSS delta is not allocation/request. Accept the structure/correctness adjustment with observed local behavior; retain concurrency/AWS SLO and performance–cost verification as separate open gates.
 
 Final `npm test` passed100 again after factory-caller guard repair; `npm run lint` including quality/contracts and `git diff --check` passed after documentation updates. Roadmap count verified50 checked/166 unchecked; normalization12 checked and ORM4 unchecked. Task-owned `examination-normalization` PostgreSQL and the Mailpit started for this run were stopped through Compose, with volumes retained; the existing service on55432 was not touched. All smoke/test/benchmark child processes had exited; no task remains running.
+
+## Web UI brief/task/prompt handoff — 2026-10-06
+
+The user requests a detailed implementable UI specification and tasks for Grok before the persistence comparison. Delivered [handoff package](web-ui/README.md), [visual/screen spec](web-ui/design-spec.md), [API/state contract](web-ui/api-and-state-contract.md), [32 frontend tasks](web-ui/implementation-tasks.md), [24 scenarios](web-ui/acceptance-checklist.md), [prompt](web-ui/grok-implementation-prompt.md) and ADR-007. Updated README/profile/roadmap/active plan. Frontend-design/frontend-ui-engineering skills informed the brief; relevant official framework/accessibility references are linked in the documents. No dependency, source, migration, HTTP/event schema, backend or AWS resource changed in this increment.
+
+| Fresh documentation check | Actual result / scope |
+| --- | --- |
+| Repository/API inspection | Product/security/SLO/profile/roadmap/OpenAPI and actual Identity controller/session port inspected;9 implemented Identity business routes versus44 specified business +2 health operations |
+| API mapping cross-check | PASS: SwaggerParser-dereferenced OpenAPI; all44 business operationIds and exact API paths represented in handoff table; health grouped separately |
+| DTO dependency review | Profile/Session no permissions; frozen attempt presentation metadata missing; current exam may be a different version; browse/search/total/version-list/history labels/replay revision/metrics/media gaps recorded UI-GAP-01–08 |
+| Task/scenario inventory | PASS:32 unique contiguous FE IDs,all unchecked;24 unique W scenarios planned;5 documentation deliverables checked separately |
+| Prompt length | **1,000 whitespace-delimited words** in the copyable body after the separator; heading/instructions excluded |
+| `npm run quality` | PASS local links/anchors/project context/source boundaries/test placement; includes contract check46 operations/425 examples |
+| `node --test scripts/__tests__/*.unit.spec.mjs` | **34 PASS**,0 failed/skipped:16 contracts +16 quality +2 migration assets; fresh tooling check, not browser implementation evidence |
+| Targeted Markdown Prettier | PASS/applied to six web-ui docs and ADR-007 |
+| `git diff --check` | PASS whitespace validation; previous runtime changes are not part of this documentation increment |
+| Product count |50 checked/166 pending remains216; WEB-01 PARTIAL, frontend0/32 and ORM0/4; no product checkbox newly completed |
+| Frontend install/build/unit/E2E/visual/HTTPS/a11y/performance | NOT RUN: no app was implemented; task/spec budgets and screenshots are planned, not measured |
+| Backend unit/integration/smoke/audit/AWS/ORM | NOT RERUN: existing152 test evidence remains historical for unchanged runtime; no live comparison/deploy/cost/SLO claim |
+
+Self-review separated browser routes from API paths, demo adapters from live failures, consented review data from Candidate questions, authoritative session/permissions from client guesses, frozen metadata from current publications, committed ACKs from local draft and processing text from durable lifecycle. The brief includes one-in-flight stable-key saves, monotonic ACK reconciliation, conflict resolution, server deadlines, no-answer submit, bounded polling and privacy/cache isolation. Unsupported backend capabilities are explicitly blocked live; the prompt does not authorize Grok to invent fields or change the backend to bypass them.
+
+Outcome: documentation5/5 complete,32 implementation tasks pending. Static SPA/design direction is accepted for the brief with operational reasoning, not a measured cheapest/fastest frontend claim. No frontend/AWS process or background task was started.
+
+
+## Persistence evaluation closure — 2026-10-07
+
+User authorizes the TypeORM/Sequelize comparison. [Protocol/evidence/reproduction](../experiments/persistence-comparison/README.md), [all measurements](../experiments/persistence-comparison/measurements.md), [provenance](../experiments/persistence-comparison/provenance.json) and [ADR-008](adr/008-persistence-evaluation.md). O-01–04 complete locally; retain pg for current Identity, no production performance/cost winner. Existing Web UI work/root package changes/staging are outside this task and not accepted by these checks.
+
+| Fresh check | Actual result / limits |
+| --- | --- |
+| Fail-first transaction gates | Candidate import absent before implementation; real-PG spike exposed pg queued-work shutdown failure, plus fixture and Sequelize metadata adaptation defects. No assertions/security controls were removed to pass |
+| pg drain regression RED → GREEN | Targeted Jest test first failed DB_ACQUIRE_TIMEOUT. Fix rejects new admissions, drains active/queued work, then pool.end; repeated close shares one promise. Full53 integration cases later PASS,0 skipped |
+| ORM hard gates / stats | `npm test --prefix experiments/persistence-comparison`:42 PASS,0 skipped;36 behavioral leaves +3 parent results +3 statistics cases. Actual PostgreSQL locks/rollback/receipt/audit/refresh/backend-kill and Nest HTTP envelope/CSRF/cookies; not browser HTTPS |
+| Existing unit/tooling | `npm test`:100 PASS (66 Jest +34 Node),0 skipped |
+| Existing PG/HTTP/SMTP | Full integration command with task-local env:53 PASS,0 skipped. Initial run had52 PASS/1 SMTP ECONNREFUSED; task-owned Mailpit was then started and full suite passed |
+| TypeScript/build | `npm run typecheck` and `npm run build` PASS;67 compiled JS files byte-identical after formatting/rebuild. PoCs are JS spikes against the actual compiled application; strict production ORM typing/full conversion is not claimed |
+| Lint/quality/contracts | `npm run lint` PASS, including quality/links/anchors/boundaries/test placement and46 operations/425 examples. Explicit ESLint for experiment mjs PASS after unused destructuring cleanup |
+| Dependency provenance/audit | Separate experiment package/lockfile pins pg8.23.1/TypeORM1.1.1/Sequelize6.37.8. Audit before:2 moderate through uuid; scoped uuid11.1.1 override then audit0 findings. No root ORM install or audit downgrade/fix-force |
+| Native diagnostics caveat | Sequelize logs a native failed-rollback console warning despite logging=false. Observed message contained no SQL/credential, but structured redaction/lifecycle controls remain adoption gaps; not silently suppressed |
+| Comparable local measurement |100,000 users/roles/families/sessions, pool4, concurrency1/8/32,5 rotated blocks:75 configs/76,800 timed application operations,0 errors. Raw samples/percentiles/success RPS/CPU/RSS/GC/query/pool/lock/transaction/DB counters/startup/EXPLAIN retained |
+| Migration/schema/HTTP preservation |8 source +8 built SQL bytes/checksums match HEAD and raw measurement manifest. No schema/grant/history/HTTP/event contract change. Startup hooks/model definitions do not synchronize or run migrations |
+| Measurement provenance | Raw SHA-256 and67 compiled JS checks in provenance.json. Timed source digest is from measurement time; later timed-source edits are formatting only, compiled runtime JS remains byte-identical |
+| Scope/status | Normalization12/12; persistence evaluation4/4; product roadmap50 checked/166 pending remains216. UI progress, AWS SLO/capacity/pool/TCO and acceptance gates are not ticked by the experiment |
+| AWS/k6/exam dataset/cost/restore/HTTPS/image | NOT RUN: no AWS account/region/domain selected, no full exam load, saturation/optimal pool, x86_64/Linux image, HTTPS browser, RDS failover/PITR restore, cost curve or future developer-hours claim |
+
+Self-review: one active ORM manager/connection resolves every repository/raw/audit/receipt call; no new pool inside a UoW, no ORM import into business layers and no schema/contract rewrite. Query counts1/1/8/10 remain equal across modes. Account mapper/read-only projection and write locks are separate. Native warning, private pool counters, non-equivalent connection lifetime and incomplete whole-Identity production adapter coverage remain explicit. Cold memory, noisy short closed-loop latencies and client-inclusive CPU do not establish AWS savings. Retain pg with a concrete current-scope ADR, not a universal ORM ban; TypeORM can be reopened with demonstrated CRUD/TCO benefit and full hard gates.
+
+
+Final scope checks: experiment containers PostgreSQL/Mailpit were stopped through their dedicated Compose project, volumes retained; test/benchmark/startup child sessions exited and disposable databases/logins were cleaned. `git diff --check` and final quality/contracts passed after the closure documentation. No Git stage/commit/PR action was taken. Existing staged UI handoff and unstaged Web UI/package/ESLint work were preserved. Native Sequelize rollback diagnostics remain explicit, so no candidate is reported as production-ready.
+
+## SQL readability normalization — 2026-10-07
+
+User confirms provisional retention of pg and requests a SQL format rule plus normalization of existing queries. Adopted [conventions §102.1](../.ai/conventions.md#1021-postgresql-query-layout)/[R-77](../.ai/rules.md#77-sql-readability-and-formatting-preservation-rule-r-77); updated AGENTS, validation workflow and database guide. QF-01–03 are complete; [verification ledger](evidence/sql-format-2026-10-07.json) records scope, normalized hashes and the unchanged migration bundle. Current runtime, integration fixtures, local scripts and operational SQL were formatted; archived experiment source/evidence and all eight applied migrations were intentionally preserved.
+
+| Check | Executed evidence |
+| --- | --- |
+| SQL/code preservation | PASS:84 TypeScript/MJS files inspected,274 SQL literals/fragments plus3 operational SQL files. SQL token/literal sequences, recursive PL/pgSQL body tokens, template expression order, parameter arrays and surrounding semantic AST match the captured pre-edit working tree.14 code/SQL files changed layout; no statement, binding, alias, result shape or lock/UoW change |
+| Migration/historical assets | PASS:53 scoped historical files preserve SHA-256, including8 migrations and archived experiment source/raw reports. All8 built SQL files also match the captured source bytes. No checksum regeneration, schema/grant change or benchmark rerun |
+| Formatting | PASS:Prettier check for11 touched TS/MJS files; manual SQL review corrects locking-clause wrapping, EXTRACT, JSON key/value pairs, long assignments and PL/pgSQL blocks. Formatter15.9.0 was installed under `/tmp` only; no repository dependency or request-time formatting added |
+| Lint/quality/contracts | PASS:`npm run lint`; source boundaries, document links/anchors,46 OpenAPI operations and425 examples |
+| TypeScript/build | PASS:`npm run typecheck`, `npm run build`; migrations packaged byte-identically. Compiled query strings now contain the new whitespace, so earlier benchmark runtime digests remain historical |
+| Unit/tooling | PASS:`npm test`:66 Jest +34 Node cases =100,0 skipped |
+| PostgreSQL/Identity | PASS:`npm run test:integration` against dedicated PostgreSQL:55434:53 cases,0 skipped. Includes locks, transaction rollback/nesting, idempotency/audit, refresh races, SMTP delivery, migration integrity and queued-work drain |
+| Operational SQL | PASS:formatted local bootstrap and all diagnostics statements run against dedicated PostgreSQL with ON_ERROR_STOP=1. Existing development DB on55432 is not used |
+| Diff/scope | PASS:`git diff --check`; root package/lockfile, separate UI work and Git staging unchanged by this increment. QF3/3 complete; no product/production acceptance task newly checked |
+
+Self-review: this is source readability maintenance, not a query-plan/performance optimization or a fresh ORM comparison. No SQL builder or abstraction was introduced; owned SQL remains in Infrastructure. Structural keywords and two-space clause bodies, separate projections/predicates/assignments, explicit CTEs/subqueries and adjacent bindings now form the authoring convention. Applied migrations and archived benchmark evidence remain exceptions for immutability. Existing tests were reused; no implementation-mirroring test was added. Production/AWS performance-cost, browser HTTPS and other delivery gates remain unchanged.
+
+Cleanup: dedicated PostgreSQL/Mailpit containers stopped with volumes retained; unit/integration child processes exited. No Git stage/commit/PR action occurred. Separate UI changes appearing during this increment were preserved and are outside this review.
+
+## Web UI review fix — 2026-10-07
+
+The user asked to repair the existing `apps/web` SPA from the independent review. Scope stayed frontend, web tests and Web UI documents. Backend, ORM, migrations and AWS were not changed so the UI would pass. The SQL readability scope and the persistence evaluation above stay as recorded. Stored RED artifacts in [review evidence](web-ui/evidence/review-2026-10-07/README.md) were not edited.
+
+| Fresh check | Actual result / limits |
+| --- | --- |
+| Web eslint and Vitest | PASS: `eslint src` silent, 14 files, 60 tests. Includes deadline transport and autosave regressions |
+| Web live and demo builds | PASS before this documentation pass. Live home gzip level 9: initial JS 129916 bytes, CSS 3370 bytes, shipped fonts 100600 bytes raw. Hashes in [fix evidence](web-ui/evidence/fix-2026-10-07/README.md) |
+| Stored Playwright suite on a separate output path | 7 PASS, 2 FAIL. FAIL are the stored `UI-GAP-02` copy assertion and the candidate “Quản trị” link. W-14, W-06, W-16, FE-23 and W-18 PASS. W-16 was not replayed after the later brand-only rebuild |
+| Browser script | PASS for five home widths, exam 320, focus versus dock, keyboard radio/sheet, layout viewports 720 and 384, and a 500-question live fixture with 0 clean PUTs in 2.5 seconds. CSS zoom 2 on a fixed 320 viewport clips the dock and is not counted as browser zoom |
+| CSRF / Retry-After probe | One Node realm: lastStatus 200, delay 10000 ms. Not two browser tabs and not HTTPS cookie proof |
+| Checklist | Still 3/32 FE tasks checked. WEB-01–10 unticked. Identity HTTPS and live Catalog/Assessment/Reporting remain BLOCKED |
+| LCP/CLS, Firefox/WebKit, dirty autosave HAR, manual submit browser | NOT RUN |
+| Root quality after these document edits | PASS: local Markdown links/anchors, project context, import boundaries and unit-test placement, then contracts 46 operations and 425 examples. The previously reported persistence placement failure did not appear. No guard was bypassed |

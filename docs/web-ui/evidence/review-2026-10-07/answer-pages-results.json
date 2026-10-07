@@ -1,0 +1,158 @@
+{
+  "config": {
+    "argv": [
+      "/Users/trankhanh/.hermes/node/bin/node",
+      "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "../../docs/web-ui/evidence/review-2026-10-07/playwright.config.mjs",
+      "--grep",
+      "do not treat an answer"
+    ],
+    "configFile": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/review-2026-10-07/playwright.config.mjs",
+    "rootDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/review-2026-10-07",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/private/tmp/web-ui-review-20261007/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/review-2026-10-07",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/private/tmp/web-ui-review-20261007/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "findings.spec.ts",
+      "file": "findings.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "W-14: do not treat an answer in an unloaded page as version zero",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3201,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('radio')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  2000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('radio') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('radio')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('radio')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  2000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('radio') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('radio')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/review-2026-10-07/findings.spec.ts:101:41",
+                    "location": {
+                      "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/review-2026-10-07/findings.spec.ts",
+                      "column": 41,
+                      "line": 101
+                    },
+                    "snippet": "   99 |     [`GET /v1/attempts/${aid}/answers`]: (route, url) => route.fulfill({status: 200, json: ok(url.searchParams.has(\"cursor\") ? reversedAnswers.slice(20) : reversedAnswers.slice(0,20), {next: url.searchParams.has(\"cursor\") ? null : \"answer-page-2\", pageSize: 20})}),\n  100 |   });\n> 101 |   await expect(page.getByRole(\"radio\")).toHaveCount(0, { timeout: 2000 });\n      |                                         ^\n  102 | });\n  103 |\n  104 | test(\"W-06/W-14: reauthentication keeps the unsaved selection\", async ({ page }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/review-2026-10-07/findings.spec.ts",
+                        "column": 41,
+                        "line": 101
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('radio')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  2000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('radio') with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('radio')\u001b[22m\n\u001b[2m    21 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n   99 |     [`GET /v1/attempts/${aid}/answers`]: (route, url) => route.fulfill({status: 200, json: ok(url.searchParams.has(\"cursor\") ? reversedAnswers.slice(20) : reversedAnswers.slice(0,20), {next: url.searchParams.has(\"cursor\") ? null : \"answer-page-2\", pageSize: 20})}),\n  100 |   });\n> 101 |   await expect(page.getByRole(\"radio\")).toHaveCount(0, { timeout: 2000 });\n      |                                         ^\n  102 | });\n  103 |\n  104 | test(\"W-06/W-14: reauthentication keeps the unsaved selection\", async ({ page }) => {\n    at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/review-2026-10-07/findings.spec.ts:101:41"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T02:10:36.527Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-14-do-not-treat-b0277-loaded-page-as-version-zero/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/private/tmp/web-ui-review-20261007/test-results/findings-W-14-do-not-treat-b0277-loaded-page-as-version-zero/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/review-2026-10-07/findings.spec.ts",
+                    "column": 41,
+                    "line": 101
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9f77afc68013305085bc-310ae0c392055cd7722c",
+          "file": "findings.spec.ts",
+          "line": 86,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-07T02:10:36.154Z",
+    "duration": 3931.3010000000004,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

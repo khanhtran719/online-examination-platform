@@ -1113,6 +1113,8 @@ Before finishing, run the validations supported by the repository and relevant t
 
 Run `npm run quality` from the repository root when validating architecture-sensitive work. It checks the standard's links and section references, rejects stale project context, verifies source import boundaries, and enforces unit-test naming/location. Online Examination Platform currently has no boundary or legacy-test baseline; do not create one merely to bypass a finding. Add the applicable scenarios in `docs/contract-tests.md` as application integration tests when the corresponding transaction, outbox, inbox, cache, or reporting capability is used. Static checks do not verify runtime consistency.
 
+For SQL formatting, follow conventions §102.1/rules R-77. Prettier does not format embedded SQL. Compare tokens/literals, interpolation/binding order and surrounding code before/after; preserve applied migration and historical benchmark bytes, then execute the affected existing PostgreSQL regressions. A whitespace-only change does not require a new performance benchmark or establish a performance improvement.
+
 Typical order:
 
 ```text

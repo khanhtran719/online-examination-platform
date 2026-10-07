@@ -1,6 +1,6 @@
 # Kế hoạch chuẩn hóa kiến trúc có đánh dấu
 
-Cập nhật 2026-10-06. Contract: [.ai/architecture.md §5](../.ai/architecture.md#5-target-project-structure), [ADR-006](adr/006-source-layout-normalization.md). **Hoàn tất chuẩn hóa source/tooling và kiểm chứng local:12/12.** [Evidence trước/sau](../experiments/architecture-normalization/README.md) và [validation](validation.md) ghi kết quả thực tế; chưa cài/chọn ORM. Product roadmap vẫn **50/216**; checklist normalization theo dõi riêng để không biến refactor thành feature đã hoàn thành.
+Cập nhật 2026-10-07. Contract: [.ai/architecture.md §5](../.ai/architecture.md#5-target-project-structure), [ADR-006](adr/006-source-layout-normalization.md). **Hoàn tất chuẩn hóa source/tooling và kiểm chứng local:12/12.** [Evidence trước/sau](../experiments/architecture-normalization/README.md) và [validation](validation.md) ghi kết quả thực tế; ORM chỉ được cài ở experiment riêng; ADR-008 giữ pg runtime. Product roadmap vẫn **50/216**; checklist normalization theo dõi riêng để không biến refactor thành feature đã hoàn thành.
 
 ## 1. Quyết định và giới hạn
 
@@ -41,7 +41,7 @@ Global infrastructure có thể thêm folder cho cơ chế đang dùng như HTTP
 
 ## 3. Checklist thực hiện và gate
 
-Normalization: **12/12 hoàn thành local**. ORM evaluation: **0/4**, chưa chọn phương án thay runtime. Các counts và links bên dưới ghi kết quả fresh của source increment, không thay evidence lịch sử.
+Normalization: **12/12 hoàn thành local**. Persistence evaluation: **4/4 hoàn thành local, 2026-10-07**; [experiment](../experiments/persistence-comparison/README.md) và [ADR-008](adr/008-persistence-evaluation.md) giữ pg cho Identity hiện tại. Đây không phải AWS/production winner. Evidence normalization giữ nguyên lịch sử; evidence persistence nằm riêng.
 
 - [x] **N-01 — Quy chuẩn:** thay §5; đồng bộ rules/conventions/workflow/template/overview/AGENTS/profile/ADR, làm rõ shared/common, outbox port, config, business ownership và transition.
 - [x] **N-02 — Review API:** kiểm tra route/controller/application/UoW/persistence/worker/config/tests; ghi điểm đạt, findings, limits và lý do dùng pg trong [review](api-architecture-review.md).
@@ -58,12 +58,12 @@ Normalization: **12/12 hoàn thành local**. ORM evaluation: **0/4**, chưa ch�
 
 ## 4. Persistence experiment — có thể dùng ORM mà vẫn tối ưu SQL
 
-Đề xuất đánh giá **TypeORM + raw projections** vì cây/quy chuẩn đang có examples entities/repositories/mappers/transaction context cho TypeORM. Đây là đánh giá về độ phù hợp và maintainability; chưa phải quyết định rằng TypeORM nhanh hơn, rẻ hơn hoặc tự xử lý mọi transaction requirement. Sequelize vẫn hợp lệ sau cùng một gate.
+Đề xuất ban đầu (trước evaluation ngày2026-10-07): đánh giá **TypeORM + raw projections** vì cây/quy chuẩn đang có examples entities/repositories/mappers/transaction context cho TypeORM. Đây là đánh giá về độ phù hợp và maintainability; chưa phải quyết định rằng TypeORM nhanh hơn, rẻ hơn hoặc tự xử lý mọi transaction requirement. Sequelize vẫn hợp lệ sau cùng một gate.
 
-- [ ] **O-01 — Baseline có thể so sánh:** lấy code/config digest, dataset, Node/PG/hardware, pool/timeouts/security controls và actual transaction/query plans. Rerun current pg nhiều lần; ghi startup/RSS/CPU/query/pool/lock/transaction và latencies. Existing local raw results chỉ làm starting evidence.
-- [ ] **O-02 — TypeORM PoC độc lập:** bọc cùng UnitOfWork port; QueryRunner/active manager resolved mỗi call; rollback-only join; preserved back-pressure/timeouts/redaction; một pool/process. Một representative read projection + session refresh và profile/audit/receipt write, cùng HTTP contract. Raw SQL chạy qua active manager/runner; không qua một pg pool riêng. Map entities ở Infrastructure, migrate schema bằng toolchain hiện tại, synchronize=false. Compatibility Node24/Nest12/ARM64 và dependency audit là gate phải kiểm tra thực tế.
-- [ ] **O-03 — Comparison + Sequelize nếu cần:** chạy paired/repeated pg vs TypeORM, same traffic/security/dataset/pool/indexes; compare ORM/raw projection paths, real concurrency/correctness/crash tests. Sequelize PoC chỉ khi có trade-off chưa giải quyết hoặc user chọn, để tránh xây ba persistence stacks đầy đủ. Đo developer/maintenance/operational burden cùng runtime metrics; AWS bill/cost ratio chưa có thì để unknown.
-- [ ] **O-04 — Decision + staged adoption:** ADR riêng ghi evidence/tolerances/maintenance và phương án chọn. Nếu chọn ORM, convert một path rồi toàn Identity cùng regression gates; không để logical UoW chạy qua hai connection pools. Nếu giữ pg, nêu requirement hoặc evidence cụ thể; không coi existing code là lý do đủ. Production winner chỉ chọn sau SLO/capacity/TCO benchmark thật.
+- [x] **O-01 — Baseline có thể so sánh:** [raw evidence](../experiments/persistence-comparison/raw.json) có source/config/migration digests, Node24.17/PG17.11/ARM64,100.000 user/family/session, pool4/timeouts/grants/ES256, EXPLAIN và DB counters. Năm block xen kẽ tại concurrency1/8/32; cold startup/RSS/CPU/query/pool/lock/transaction/latencies lưu đầy đủ. Sửa lỗi pg drain bằng fail-first regression trước khi đo.
+- [x] **O-02 — TypeORM PoC độc lập:** TypeORM1.1.1 trong package experiment riêng; QueryRunner/active manager, owned EntitySchema/mapping, raw/mapped paths, same UoW/context, audit/receipt và HTTP contract. Synchronize/migrationsRun=false, một pool; Node24/Nest12/ARM64 thực thi thật. Local hard gates PASS; production strict-TypeScript/full Identity/worker/operator/image/HTTPS gates vẫn riêng.
+- [x] **O-03 — Comparison + Sequelize:** theo user yêu cầu đánh giá cả hai, Sequelize6.37.8 PoC cũng chạy raw/mapped. [Measurements](../experiments/persistence-comparison/measurements.md):75 configurations/76.800 operations/0 errors;42 experiment tests PASS. Audit gốc có2 moderate, scoped uuid11.1.1 override rồi0 findings. Native rollback warning/connection-lifetime differences là adoption gaps; maintenance/TCO ghi rõ, AWS USD chưa đo.
+- [x] **O-04 — Decision + staged adoption:** [ADR-008](adr/008-persistence-evaluation.md) giữ pg hiện tại theo observed CPU/footprint/control burden và chưa chứng minh net maintenance/TCO benefit khi chuyển cả Identity. TypeORM raw viable, không cấm ORM. Staged conversion/regressions/rollback được quy định nếu reopen; không thêm ORM vào root runtime, không đổi schema/migrations. Local decision không chọn production performance/cost winner.
 
 Protocol dừng candidate ngay khi có correctness/security/durability failure. Chọn lowest total cost đáp ứng hard gates/capacity; không loại ORM chỉ vì overhead chưa đo. Chi phí ORM migration/maintenance là TCO phải ghi định tính/giờ thực tế, không quy đổi USD tùy ý. SLO thresholds lấy từ [SLO contract](slo-and-workload.md), không tự hạ vì refactor.
 
@@ -71,6 +71,6 @@ Protocol dừng candidate ngay khi có correctness/security/durability failure. 
 
 Mỗi increment có mapping và checks riêng; rollback về code artifact trước, giữ immutable DB state. Placement-only change không cần schema rollback. Khi chuyển migration root, so sánh checksums trước/sau và test artifact chứa đủ assets; DB receipt là nguồn sự thật. ORM rollout nếu có phải dùng cùng schema/migration semantics để previous compatible image vẫn hoạt động.
 
-**Runtime và build đã conform placement được dùng của cây mới**, N-01–12 đóng bằng actual evidence. ORM O-01–04 chưa đo/chưa chọn replacement; new pg diagnostics chỉ là starting evidence cho experiment tương lai. Browser verification landing/HTTPS và SES production operations vẫn PARTIAL, SQS scoring/Catalog/Reporting/AWS/k6 chưa triển khai. Product ticks và historical benchmark không thay đổi vì refactor.
+**Runtime và build đã conform placement được dùng của cây mới**, N-01–12 đóng bằng actual evidence. O-01–04 đã đo local và giữ pg theo ADR-008; candidate ORM vẫn chỉ ở experiments. Browser HTTPS/SES production, SQS scoring/Catalog/Reporting/AWS/k6 acceptance vẫn pending. Web UI có công việc riêng trong working tree, không được review/accept trong evaluation này. Product ticks và historical benchmark không thay đổi.
 
 [Validation log](validation.md) ghi actual checks. Acceptance ở đây là normalization và behavior đã test local, không phải production security/SLO/capacity/cost acceptance.

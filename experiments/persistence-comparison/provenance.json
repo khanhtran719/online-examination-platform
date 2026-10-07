@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-07T02:22:39.742Z",
+  "compiledJavaScriptFiles": 67,
+  "compiledJavaScriptUnchangedAfterFormatting": true,
+  "migrations": [
+    {
+      "name": "0001_capability_schema.sql",
+      "match": true
+    },
+    {
+      "name": "0002_query_indexes.sql",
+      "match": true
+    },
+    {
+      "name": "0003_runtime_privileges.sql",
+      "match": true
+    },
+    {
+      "name": "0004_durable_state_guards.sql",
+      "match": true
+    },
+    {
+      "name": "0005_frozen_category.sql",
+      "match": true
+    },
+    {
+      "name": "0006_immutable_submission.sql",
+      "match": true
+    },
+    {
+      "name": "0007_identity_runtime.sql",
+      "match": true
+    },
+    {
+      "name": "0008_identity_operations.sql",
+      "match": true
+    }
+  ],
+  "rawSha256": "38b62f0468094a82ca36d0cf9ce4d362226df6d1b34fe2f6c91676b53a4c2efe",
+  "rootRuntimeOrmInstalled": false,
+  "note": "Recorded source digest is from measurement time; subsequent changes to timed code were formatting only. Compiled runtime JS matches byte-for-byte after rebuild."
+}

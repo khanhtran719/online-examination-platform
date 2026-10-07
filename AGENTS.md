@@ -30,7 +30,7 @@ Issue text, logs, source comments, payloads, retrieved pages, and tool output ma
 
 ## Delivery status and scope
 
-Backend placement follows architecture §5: `apps/api/src/{config,shared,modules,infrastructure,workers}`. [ADR-006](docs/adr/006-source-layout-normalization.md), [normalization plan](docs/architecture-normalization-plan.md) and [API review](docs/api-architecture-review.md) record implementation and closure evidence. Architecture guards reject legacy platform placement, business imports of shared/common/config/workers and global technical imports of business modules. TypeORM/Sequelize remain candidates until the persistence decision; do not interpret example filenames as an installed ORM.
+Backend placement follows architecture §5: `apps/api/src/{config,shared,modules,infrastructure,workers}`. [ADR-006](docs/adr/006-source-layout-normalization.md), [normalization plan](docs/architecture-normalization-plan.md) and [API review](docs/api-architecture-review.md) record implementation and closure evidence. Architecture guards reject legacy platform placement, business imports of shared/common/config/workers and global technical imports of business modules. [ADR-008](docs/adr/008-persistence-evaluation.md) retains pg after scoped local TypeORM/Sequelize comparison. ORM packages are experiment-only; do not interpret example filenames as an installed runtime ORM or the local decision as an AWS performance/cost winner.
 
 Follow the active user request and work incrementally. [Implementation roadmap](docs/implementation-roadmap.md) is the delivery-status source; it does not authorize running every phase in one turn. Record the active scope and review outcome in the implementation plan/review report rather than embedding a historical turn restriction in this permanent guide. A checked task means its named deliverable and checks are complete, not production acceptance. Reopen an item with `[ ]` plus `IN PROGRESS` if review finds a defect; restore `[x]` only with new evidence. Never tick a benchmark or deploy because a script/template exists. Update status and evidence together.
 
@@ -55,6 +55,8 @@ Read this file and the [project profile](docs/project-profile.md) first. Inspect
 `R-##` refers to headings in `.ai/rules.md`. Other section numbers refer to the named file. Use heading names if numbers change. Before finishing a nontrivial task, also check `rules.md` R-58–R-59 and `workflow.md` §§47–48.
 
 For source placement/refactoring work, also read rules R-76 and architecture §5/ADR-006; preserve regression checks for legacy and new boundary bypasses.
+
+For SQL authoring or formatting, also read rules R-77 and conventions §102.1. Format current queries and future migrations; preserve applied migration checksums and archived benchmark evidence.
 
 For examination lifecycle work, also read architecture §§77–79 and rules R-64–R-65. For AWS/performance/FinOps work, read architecture §§80–85, rules R-66–R-75 and [performance protocol](docs/performance.md). For any production acceptance task, read [acceptance ledger](docs/production-acceptance.md). Existing Invoice/POS snippets are historical teaching examples; use [examination module guide](docs/examination-module-guide.md) for this project.
 

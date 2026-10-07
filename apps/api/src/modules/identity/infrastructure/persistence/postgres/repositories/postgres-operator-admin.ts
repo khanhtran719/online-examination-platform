@@ -11,13 +11,10 @@ export class PostgresOperatorAdmin {
     bootstrap: boolean,
     grant: boolean,
   ): Promise<void> {
-    await this.db.query("identity.write", "SELECT identity.operator_admin($1,$2,$3,$4,$5,$6)", [
-      userId,
-      actor,
-      reason,
-      correlationId,
-      bootstrap,
-      grant,
-    ]);
+    await this.db.query(
+      "identity.write",
+      "SELECT identity.operator_admin($1, $2, $3, $4, $5, $6)",
+      [userId, actor, reason, correlationId, bootstrap, grant],
+    );
   }
 }

@@ -1,0 +1,12 @@
+{
+  "csrf": {
+    "sequence": "tab A write -> tab B write -> tab A write",
+    "lastStatus": 403,
+    "required": 200
+  },
+  "retryAfter": {
+    "serverMinimumMs": 10000,
+    "actualRetryDelayMs": 8000,
+    "requiredMinimumMs": 10000
+  }
+}

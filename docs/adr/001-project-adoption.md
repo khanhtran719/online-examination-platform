@@ -1,6 +1,6 @@
 # ADR-001: Adopt the supplied contract for online examinations
 
-Status: accepted for project adoption, 2026-10-06. Source placement is superseded by [ADR-006](006-source-layout-normalization.md). The pg adapter is the implementation choice made during foundation work, not an explicit user requirement or measured ORM winner.
+Status: accepted for project adoption, 2026-10-06. Source placement is superseded by [ADR-006](006-source-layout-normalization.md). The pg adapter is the implementation choice made during foundation work, not an explicit user requirement or measured ORM winner. [ADR-008](008-persistence-evaluation.md) now records the 2026-10-07 scoped local comparison and retains pg for current Identity; historical unmeasured hypotheses below are not the current evaluation status.
 
 The supplied contract contains local POS decisions: three applications, no schema migration program, TypeORM examples and Kafka examples. Those local decisions conflict with the explicitly requested single examination modular monolith, production migrations and AWS SQS. The user also authorizes updating the standards.
 

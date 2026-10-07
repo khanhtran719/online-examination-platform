@@ -8,7 +8,16 @@ export class PostgresIdempotency implements IdempotencyStore {
     const row = (
       await this.db.query<{ fingerprint: Buffer; response: T }>(
         "idempotency.read",
-        "SELECT fingerprint, response FROM platform.idempotency_receipts WHERE actor_id=$1 AND key=$2",
+        `
+        SELECT
+          fingerprint,
+          response
+        FROM
+          platform.idempotency_receipts
+        WHERE
+          actor_id = $1
+          AND key = $2
+        `,
         [actorId, key],
       )
     ).rows[0];
@@ -26,7 +35,20 @@ export class PostgresIdempotency implements IdempotencyStore {
   }): Promise<void> {
     await this.db.query(
       "idempotency.write",
-      "INSERT INTO platform.idempotency_receipts(actor_id,key,fingerprint,operation,resource_id,http_status,response) VALUES($1,$2,$3,$4,$5,$6,$7)",
+      `
+      INSERT INTO
+        platform.idempotency_receipts (
+          actor_id,
+          key,
+          fingerprint,
+          operation,
+          resource_id,
+          http_status,
+          response
+        )
+      VALUES
+        ($1, $2, $3, $4, $5, $6, $7)
+      `,
       [
         input.actorId,
         input.key,
