@@ -1,0 +1,14 @@
+{
+  "status": "failed",
+  "tests": [
+    {
+      "name": "H04 exact Origin and signed cookie/header CSRF remain mandatory",
+      "status": "failed",
+      "durationMs": 1124
+    }
+  ],
+  "recordedAt": "2026-10-07T04:24:27.436Z",
+  "traces": false,
+  "rawCookies": false,
+  "rawEmailLinks": false
+}

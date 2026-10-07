@@ -1,0 +1,5 @@
+
+> online-examination-platform@0.1.0 contracts:check
+> node scripts/contracts.mjs
+
+Contracts passed: 46 operations, 425 examples, event schema and declared boundary metadata. Runtime security/durability/SLO remain unverified.

@@ -2,7 +2,6 @@ import { lazy, Suspense, type ComponentType } from "react";
 import { createBrowserRouter, Navigate } from "react-router";
 import {
   CheckEmailPage,
-  HomePage,
   HowPage,
   HelpPage,
   LoginPage,
@@ -10,6 +9,7 @@ import {
   RegisterPage,
   VerifyPage,
 } from "../features/auth/auth-pages";
+import { HomePage } from "../features/experience/home-page";
 import { BrowsePage, DashboardPage, ExamDetailPage } from "../features/catalog/catalog-pages";
 import { ProfilePage } from "../features/profile/profile-page";
 import { SkeletonLines } from "../shared/ui/ui";
@@ -29,6 +29,11 @@ function load(factory: () => Promise<{ default: ComponentType }>) {
 
 const ExamRoomPage = load(() =>
   import("../features/assessment/exam-room").then((mod) => ({ default: mod.ExamRoomPage })),
+);
+const SampleExperiencePage = load(() =>
+  import("../features/experience/sample-experience").then((mod) => ({
+    default: mod.SampleExperience,
+  })),
 );
 const StatusPage = load(() =>
   import("../features/results/result-pages").then((mod) => ({ default: mod.StatusPage })),
@@ -110,6 +115,7 @@ export const router = createBrowserRouter([
         element: <PublicShell />,
         children: [
           { path: "/", element: <HomePage /> },
+          { path: "/experience", element: <SampleExperiencePage /> },
           { path: "/how-it-works", element: <HowPage /> },
           { path: "/help", element: <HelpPage /> },
           { path: "/login", element: <LoginPage /> },

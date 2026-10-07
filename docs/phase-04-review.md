@@ -1,6 +1,6 @@
 # Review Phần04 — Identity runtime local
 
-2026-10-06. **Lõi local đã bàn giao; toàn Phase04 chưa đóng.** BOOT-10 và ID-01–06/08–10 hoàn tất named deliverables. ID-07 PARTIAL vì browser HTTPS/client coordination; ID-11 PARTIAL vì live SES sender/quota/bounce/complaint/metrics. ID-12/13 LATER. Roadmap50/216; chưa tự chuyển Catalog hay production acceptance.
+2026-10-06. **Lõi local đã bàn giao; toàn Phase04 chưa đóng.** BOOT-10 và ID-01–06/08–10 hoàn tất named deliverables. ID-07 đã đóng locally theo [2026-10-07 HTTPS evidence](evidence/identity-https-2026-10-07/README.md); ID-11 PARTIAL vì live SES sender/quota/bounce/complaint/metrics. ID-12/13 LATER. Roadmap hiện52/216; chưa tự chuyển Catalog hay production acceptance.
 
 ## Cấu trúc theo điều chỉnh của người dùng
 
@@ -35,7 +35,7 @@ Platform không import business module; Presentation không import Infrastructur
 | ID-04 | DONE local | Immediate revoke, expired/disabled/current-permission checks across two instances; logout old-cookie retry HTTP test |
 | ID-05 | DONE local | Strict ES256 claims/headers/purpose, public overlap/removal tests, real-PG compromised-kid revoke/audit. AWS key rollout unmeasured |
 | ID-06 | DONE local | Principal adapter uses authoritative session/current-permission projection; ownership/role restrictions |
-| ID-07 | PARTIAL | Cookie/Origin/CSRF/HMAC/context/no-store tested server-side; WEB-02/browser TLS/multi-tab client pending |
+| ID-07 | DONE local |10 actual Chromium HTTPS cases/API/PG/SMTP, cookie/Origin/context, inert verification và shared-cookie multi-tab/fault proof; scoped leaf trust, public PKI/AWS pending |
 | ID-08 | DONE local | One-shot verified-user admin bootstrap, operator role, atomic audit with session_user/reason; no public role endpoint |
 | ID-09 | DONE local | Crypto, real PG/HTTP/SMTP tests; two loopback HTTP API instances benchmarked; not browser/AWS acceptance |
 | ID-10 | DONE local | Single-use30min, final owner password, bounded coalesced resend, race/retry/expiry/material cleanup |
@@ -92,7 +92,7 @@ SES supplies production email ownership delivery. Provider outage leaves durable
 
 ## Remaining gate và bước kế tiếp
 
-1. **ID-07/WEB-02:** same-origin HTTPS inert landing, no third-party scripts/cache/referrer, scrub fragment, explicit final-password POST; browser CSRF/cookies/scanner/multi-tab single-flight tests. Landing currently404, not usable browser verification yet.
+1. **ID-07/WEB-02 DONE local, 2026-10-07:** actual landing/activation/cookies/Origin/CSRF/shared-cookie coordination and fault/recovery PASS; [evidence](evidence/identity-https-2026-10-07/README.md). Public certificates/AWS TLS and broader browser matrix remain separate gates.
 2. **ID-11/AWS:** account/profile/region/sender; SES access/quota/IAM/egress, live delivery and suppression/bounce/complaint/age/park/abuse metrics. No domain does not block local but does not waive TLS.
 3. **BOOT-09/DB-12:** Git/remote when supplied; actual image/ARM64/old-new migration drill. No commit/PR/image evidence.
 4. Re-review remaining gates, then Catalog. Exam correctness/SLO, OTel/CloudWatch, k6, failure/restore and Performance–Cost Curve remain future work.

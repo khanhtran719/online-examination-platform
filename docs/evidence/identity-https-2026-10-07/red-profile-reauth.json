@@ -1,0 +1,14 @@
+{
+  "status": "failed",
+  "tests": [
+    {
+      "name": "H06 lost refresh ACK does not replay, explicit login restores future refresh",
+      "status": "failed",
+      "durationMs": 13037
+    }
+  ],
+  "recordedAt": "2026-10-07T04:39:46.981Z",
+  "traces": false,
+  "rawCookies": false,
+  "rawEmailLinks": false
+}

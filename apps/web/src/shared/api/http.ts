@@ -73,6 +73,7 @@ export async function requestJson(input: RequestInput): Promise<RawResponse> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), input.timeoutMs ?? REQUEST_TIMEOUT_MS);
   let response: Response;
+  let textBody: string;
   try {
     response = await fetchImpl(input.path, {
       method: input.method,
@@ -81,6 +82,9 @@ export async function requestJson(input: RequestInput): Promise<RawResponse> {
       body: hasBody ? JSON.stringify(input.body) : undefined,
       signal: controller.signal,
     });
+    // A mutation can commit before its body arrives. Keep the original timeout and
+    // unknown-outcome classification through the complete response, not only headers.
+    textBody = await response.text();
   } catch {
     if (controller.signal.aborted) {
       throw new ApiError({
@@ -105,7 +109,6 @@ export async function requestJson(input: RequestInput): Promise<RawResponse> {
     retryAfterSeconds: retryAfter(response),
     idempotencyReplayed: header(response, "Idempotency-Replayed") === "true",
   };
-  const textBody = await response.text();
   let payload: unknown = null;
   if (textBody) {
     try {

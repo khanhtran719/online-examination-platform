@@ -1,4 +1,13 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import {
   browserCoordination,
@@ -22,7 +31,7 @@ interface SessionValue {
   hasUnconfirmed: boolean;
   needsReauth: boolean;
   setUnconfirmed: (value: boolean) => void;
-  reload: (options?: { quiet?: boolean }) => Promise<boolean>;
+  reload: (options?: { quiet?: boolean; confirmedLogin?: boolean }) => Promise<boolean>;
   adoptProfile: (profile: Profile) => void;
   replaceActor: (profile: Profile) => void;
   logout: () => Promise<void>;
@@ -44,33 +53,39 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const coordinatorRef = useRef<SessionCoordinator | null>(null);
   const channelRef = useRef<BroadcastChannel | null>(null);
 
-  const reload = useCallback(async (options?: { quiet?: boolean }) => {
-    if (!options?.quiet) setStatus("loading");
-    try {
-      const response = await api.getProfile();
-      setProfile(response.data);
-      setStatus("authenticated");
-      setNeedsReauth(false);
-      setError(null);
-      return true;
-    } catch (caught) {
-      if (options?.quiet) {
-        setError(caught);
+  const reload = useCallback(
+    async (options?: { quiet?: boolean; confirmedLogin?: boolean }) => {
+      if (!options?.quiet) setStatus("loading");
+      try {
+        const response = await api.getProfile();
+        if (options?.confirmedLogin) coordinatorRef.current?.confirmLogin();
+        setProfile(response.data);
+        setStatus("authenticated");
+        setNeedsReauth(false);
+        setError(null);
+        return true;
+      } catch (caught) {
+        if (options?.quiet) {
+          setError(caught);
+          return false;
+        }
+        setProfile(null);
+        if (isApiError(caught) && caught.status === 401) {
+          setStatus("anonymous");
+          setError(null);
+        } else {
+          setStatus("unavailable");
+          setError(caught);
+        }
         return false;
       }
-      setProfile(null);
-      if (isApiError(caught) && caught.status === 401) {
-        setStatus("anonymous");
-        setError(null);
-      } else {
-        setStatus("unavailable");
-        setError(caught);
-      }
-      return false;
-    }
-  }, [api]);
+    },
+    [api],
+  );
 
   const adoptProfile = useCallback((next: Profile) => {
+    // Used after an explicit reauth login and its authoritative profile read.
+    coordinatorRef.current?.confirmLogin();
     setProfile(next);
     setStatus("authenticated");
     setNeedsReauth(false);
@@ -79,6 +94,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const replaceActor = useCallback(
     (next: Profile) => {
+      coordinatorRef.current?.confirmLogin();
       queryClient.clear();
       memory.clear();
       setUnconfirmed(false);
@@ -98,7 +114,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     const coordinator = createSessionCoordinator({ transport, ...browserCoordination() });
     coordinatorRef.current = coordinator;
     bindRecovery?.(() => coordinator.recover());
-    const channel = typeof BroadcastChannel === "undefined" ? null : new BroadcastChannel("exam-platform-session");
+    const channel =
+      typeof BroadcastChannel === "undefined"
+        ? null
+        : new BroadcastChannel("exam-platform-session");
     channelRef.current = channel;
     if (channel) {
       channel.onmessage = (event: MessageEvent<SessionSignal>) => {
@@ -126,7 +145,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     try {
       await api.logout();
     } catch {
-      setLogoutError("Máy chủ chưa xác nhận đăng xuất. Dữ liệu riêng trên trình duyệt đã được xóa.");
+      setLogoutError(
+        "Máy chủ chưa xác nhận đăng xuất. Dữ liệu riêng trên trình duyệt đã được xóa.",
+      );
     }
     channelRef.current?.postMessage({ type: "logout" });
     queryClient.clear();
@@ -158,7 +179,19 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       logout,
       recover,
     }),
-    [adoptProfile, error, hasUnconfirmed, logout, logoutError, needsReauth, profile, recover, reload, replaceActor, status],
+    [
+      adoptProfile,
+      error,
+      hasUnconfirmed,
+      logout,
+      logoutError,
+      needsReauth,
+      profile,
+      recover,
+      reload,
+      replaceActor,
+      status,
+    ],
   );
 
   return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;

@@ -1,0 +1,30 @@
+name: examination-identity-https
+services:
+  postgres:
+    image: postgres:17-alpine
+    command:
+      [
+        postgres,
+        -c,
+        shared_preload_libraries=pg_stat_statements,
+        -c,
+        log_parameter_max_length=0,
+        -c,
+        log_parameter_max_length_on_error=0,
+      ]
+    environment:
+      POSTGRES_DB: examination_https
+      POSTGRES_USER: examination_https
+      POSTGRES_PASSWORD: local-https-only-password
+    ports: ["127.0.0.1:55435:5432"]
+    volumes: ["postgres-data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U examination_https]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  mailpit:
+    image: axllent/mailpit:v1.31.4
+    ports: ["127.0.0.1:13025:1025", "127.0.0.1:20025:8025"]
+volumes:
+  postgres-data:

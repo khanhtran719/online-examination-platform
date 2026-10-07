@@ -5,6 +5,7 @@ import { Button, Dialog, ErrorPanel, SkeletonLines } from "../shared/ui/ui";
 import styles from "../shared/styles/layout.module.css";
 import { useRuntime } from "./runtime";
 import { useSession } from "./session";
+import { PublicFrame } from "../features/experience/public-chrome";
 
 function Brand() {
   return (
@@ -94,36 +95,11 @@ function Footer() {
   );
 }
 
-const publicLinks = [
-  { to: "/exams", label: "Đề thi" },
-  { to: "/how-it-works", label: "Cách hoạt động" },
-  { to: "/help", label: "Trợ giúp" },
-  { to: "/login", label: "Đăng nhập" },
-  { to: "/register", label: "Tạo tài khoản" },
-];
-
 export function PublicShell() {
-  const session = useSession();
-  const links =
-    session.status === "authenticated"
-      ? [
-          { to: "/dashboard", label: "Bảng làm việc" },
-          { to: "/exams", label: "Đề thi" },
-          { to: "/how-it-works", label: "Cách hoạt động" },
-          { to: "/help", label: "Trợ giúp" },
-        ]
-      : publicLinks;
   return (
-    <div className={styles.frame}>
-      <a className="skip-link" href="#content">
-        Đi tới nội dung
-      </a>
-      <Header links={links} />
-      <main id="content" className={styles.main}>
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    <PublicFrame>
+      <Outlet />
+    </PublicFrame>
   );
 }
 

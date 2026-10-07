@@ -1,0 +1,13 @@
+{
+  "node": "v24.17.0",
+  "browser": "153.0.8010.12",
+  "arch": "arm64",
+  "platform": "darwin",
+  "publicPki": false,
+  "trust": "ephemeral leaf SPKI scoped to Chromium; Node CA/SAN validation",
+  "ignoreHTTPSErrors": false,
+  "backend": "real AppModule",
+  "frontend": "live static build",
+  "persistence": "restricted-role PostgreSQL with all eight migrations",
+  "mail": "actual worker SMTP to Mailpit"
+}

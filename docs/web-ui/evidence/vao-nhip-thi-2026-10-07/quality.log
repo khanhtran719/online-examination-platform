@@ -1,0 +1,7 @@
+
+> online-examination-platform@0.1.0 quality
+> node scripts/quality.mjs && npm run contracts:check
+
+docs/evidence/identity-https-2026-10-07/README.md: missing link manifest.json
+docs/evidence/identity-https-2026-10-07/README.md: missing link manifest.json
+docs/evidence/identity-https-2026-10-07/README.md: missing anchor ../../validation.md#identity-browser-https--2026-10-07

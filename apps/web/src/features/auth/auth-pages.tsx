@@ -3,69 +3,11 @@ import { Link, useLocation, useNavigate, useSearchParams } from "react-router";
 import { useTitle } from "../../app/use-title";
 import { useRuntime } from "../../app/runtime";
 import { useSession } from "../../app/session";
-import { CATEGORIES } from "../../shared/api/dto";
 import { isApiError } from "../../shared/api/errors";
-import { categoryLabel, safeReturnPath } from "../../shared/format";
+import { safeReturnPath } from "../../shared/format";
 import { validateFinalPassword, validateLogin, validateRegister } from "../../shared/validation";
 import { Alert, Button, PasswordField, TextField } from "../../shared/ui/ui";
 import styles from "../../shared/styles/layout.module.css";
-
-export function HomePage() {
-  useTitle("Trang chủ");
-  return (
-    <div className={styles.wrap}>
-      <section className={`${styles.card} ${styles.reading}`}>
-        <h1 className={styles.title}>Làm bài thi trực tuyến, theo dõi kết quả rõ ràng.</h1>
-        <p>
-          Một lựa chọn, nhiều lựa chọn hoặc đúng/sai. Danh mục gồm TOEIC, IELTS, chứng chỉ CNTT, đại
-          học, tuyển dụng và nội bộ. Điểm trên trang này không quy đổi sang điểm kỳ thi chính thức.
-        </p>
-        <div className={styles.row}>
-          <Link className={styles.chip} to="/register">
-            Tạo tài khoản
-          </Link>
-          <Link className={styles.chip} to="/login">
-            Đăng nhập
-          </Link>
-        </div>
-      </section>
-      <section className={styles.card} aria-label="Minh họa giao diện">
-        <p className={styles.muted}>Minh họa</p>
-        <div className={styles.room}>
-          <div>
-            <h2>Phần A · Câu 13</h2>
-            <p>Chọn một đáp án. Đây là hình minh họa, không phải bài đang chạy.</p>
-          </div>
-          <div>
-            <p>Đã trả lời 12 trong phần đã tải</p>
-            <p>01 02 03 04 05</p>
-          </div>
-        </div>
-      </section>
-      <section>
-        <h2>Ba bước</h2>
-        <ol className={styles.stack}>
-          <li>Tạo tài khoản và xác nhận email.</li>
-          <li>Chọn đề trong danh mục.</li>
-          <li>Làm bài, theo dõi trạng thái lưu và nộp khi sẵn sàng.</li>
-        </ol>
-      </section>
-      <section className={styles.stack}>
-        <h2>Danh mục</h2>
-        <div className={styles.chips}>
-          {CATEGORIES.map((category) => (
-            <Link key={category} className={styles.chip} to={`/exams?category=${category}`}>
-              {categoryLabel(category)}
-            </Link>
-          ))}
-        </div>
-        <p className={styles.muted}>
-          Danh mục chỉ là lối vào. Số người dùng và điểm chuẩn không được ước lượng trên trang này.
-        </p>
-      </section>
-    </div>
-  );
-}
 
 export function HowPage() {
   useTitle("Cách hoạt động");
@@ -282,7 +224,7 @@ export function LoginPage() {
       </p>
       {verified ? (
         <Alert tone="success" title="Email đã xác nhận">
-          Hãy đăng nhập bằng mật khẩu bạn đã chọn.
+          Hãy đăng nhập bằng mật khẩu đã thiết lập khi xác nhận lần đầu.
         </Alert>
       ) : null}
       {error ? <Alert title="Không đăng nhập được">{error}</Alert> : null}
@@ -291,7 +233,7 @@ export function LoginPage() {
           setError(null);
           try {
             await api.login(body);
-            const ready = await session.reload();
+            const ready = await session.reload({ confirmedLogin: true });
             if (!ready) {
               setError("Máy chủ đã nhận đăng nhập nhưng chưa tải được hồ sơ.");
               return;
@@ -439,6 +381,10 @@ export function VerifyPage() {
       <p>
         Mã trong liên kết đã được đưa vào bộ nhớ của trang và xóa khỏi thanh địa chỉ. Trang không tự
         gửi yêu cầu.
+      </p>
+      <p>
+        Nếu liên kết đã được dùng, gửi lại chỉ xác nhận trạng thái và không đổi mật khẩu đã thiết
+        lập.
       </p>
       {missing ? (
         <Alert title="Liên kết không có mã">Hãy mở liên kết đầy đủ từ email.</Alert>

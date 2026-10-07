@@ -1,11 +1,11 @@
 # Production acceptance ledger
 
-Updated 2026-10-06. **Production status: NOT ACCEPTED.** No AWS deployment/capacity/cost/recovery evidence. [Identity runtime](phase-04-review.md) has local crypto/PG/HTTP/SMTP/lease/operator tests, actual entry-point smoke and [raw local diagnostic](../experiments/identity-local/README.md). Browser HTTPS/live SES remain open. Contracts and [DB foundation](phase-03-review.md) remain locally validated; exam runtime/full production gates are not satisfied by these checks.
+Updated 2026-10-07. **Production status: NOT ACCEPTED.** No AWS deployment/capacity/cost/recovery evidence. [Identity runtime](phase-04-review.md) has local crypto/PG/HTTP/SMTP/lease/operator tests, actual entry-point smoke and [raw local diagnostic](../experiments/identity-local/README.md). Local [Chromium HTTPS proof](evidence/identity-https-2026-10-07/README.md) now exists; live SES/public PKI/AWS remain open. Contracts and [DB foundation](phase-03-review.md) remain locally validated; exam runtime/full production gates are not satisfied by these checks.
 
 | Hard gate | Proposed target / requirement | Status | Evidence needed |
 | --- | --- | --- | --- |
 | Correctness/idempotency | no lost acknowledged answers or duplicate scoring effect | unverified | real DB/SQS races/crash/retry tests |
-| Security | RBAC/ownership/TLS/private DB/cache/encryption/secrets/IAM/WAF/audit | local Identity evidence only | browser, other capabilities, AWS effective config/IAM/TLS/WAF and image review |
+| Security | RBAC/ownership/TLS/private DB/cache/encryption/secrets/IAM/WAF/audit | local Identity + Chromium HTTPS evidence only | broader browser/other capabilities, AWS effective config/IAM/public TLS/WAF and image review |
 | Availability | ≥99.9%, monthly agreed SLI | unmeasured | eligible request/window/error-budget evidence |
 | GET exam | p95 <250ms at specified workload | unmeasured | per-route k6/telemetry |
 | Save answer | p95 <300ms at specified workload | unmeasured | latency + durable correctness |

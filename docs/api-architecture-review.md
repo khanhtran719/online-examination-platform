@@ -1,6 +1,6 @@
 # Review API và persistence trước chuẩn hóa kiến trúc
 
-Ngày 2026-10-06. Baseline source commit `cac9416`; working tree sạch trước increment tài liệu. Sections1–6 giữ review trước normalization; links đã cập nhật theo file moves. **Kết luận sau triển khai: placement đã chuẩn hóa, RV-01–05 CLOSED với152 tests và actual entry-point checks; RV-06/07 còn pending** tại [closure](#7-closure-sau-source-normalization). Phạm vi: Identity HTTP/application/persistence/crypto/email worker, shared technical code, configuration/composition và quality checker. Đây không phải production security/performance certification.
+Ngày 2026-10-06. Baseline source commit `cac9416`; working tree sạch trước increment tài liệu. Sections1–6 giữ review trước normalization; links đã cập nhật theo file moves. **Kết luận sau triển khai: placement đã chuẩn hóa, RV-01–05 CLOSED với152 tests và actual entry-point checks; RV-06 đã CLOSED locally sau [browser HTTPS](evidence/identity-https-2026-10-07/README.md), RV-07 còn pending** tại [closure](#7-closure-sau-source-normalization). Phạm vi: Identity HTTP/application/persistence/crypto/email worker, shared technical code, configuration/composition và quality checker. Đây không phải production security/performance certification.
 
 ## 1. Phần đang đạt
 
@@ -88,7 +88,7 @@ Increment review ban đầu chỉ cập nhật docs/findings; source move đư�
 | RV-03 | CLOSED | [Pure config validation](../apps/api/src/config/config.validation.ts) và [secret loader](../apps/api/src/infrastructure/security/authentication/secret-loader.ts) tách biệt; CA I/O ở database loader; existing security validation và hai pure-config regressions pass |
 | RV-04 | CLOSED | [Worker factory](../apps/api/src/modules/identity/identity-worker.factory.ts)/[operator factory](../apps/api/src/modules/identity/identity-operator.factory.ts) public; roots chỉ compose capability/process lifecycle; SMTP integration qua factory, lease/fencing/role isolation và actual operator CLI pass |
 | RV-05 | CLOSED |16 [quality guard tests](../scripts/__tests__/quality.unit.spec.mjs), fail-first new boundary/legacy/barrel regressions; cross-module public allowlist; global technical roots/business dependencies/unsupported aliases checked |
-| RV-06 | PENDING | ID-07/WEB-02 actual HTTPS browser activation/cookies vẫn chưa có; local cookie jar không đóng gate này |
+| RV-06 | CLOSED local | ID-07/WEB-02:10 actual Chromium HTTPS cases với real API/PG/SMTP; inert landing, final password, cookies/Origin/CSRF, shared-cookie tabs và fault/recovery. Scoped leaf trust; AWS/public PKI vẫn pending |
 | RV-07 | PENDING | Live SES, production metrics/traces/k6/AWS saturation/FinOps vẫn chưa đo |
 
 Self-review kiểm tra moved code thay vì chỉ nhìn deletion diff: PostgreSQL executor/worker business body giữ semantics, projection SQL chuyển nguyên shape, fixtures không bỏ assertion,8 migration bytes giữ nguyên. Đổi operator mapping sang `workers/operator` được giải thích tại ADR-006 để global infrastructure không import business. HTTP/OpenAPI/schema/dependency lock không đổi.
@@ -104,3 +104,8 @@ Sections1–7 giữ review lịch sử trước/ở normalization; nhận địn
 42 experiment checks PASS gồm actual PG transaction/race/crash/HTTP/CSRF/cookie behavior.100 unit/tooling +53 existing integration PASS sau sửa một pg drain defect: queued admitted work phải hoàn tất trước pool.end. Sequelize metadata INSERT/UPDATE shape phải normalize đúng rowCount để rate admission không bị false429; spike đã sửa rồi mới đo. Audit gốc2 moderate do uuid, scoped override11.1.1 rồi0 findings. Native rollback warning/lifetime/private diagnostic API/whole strict-TypeScript coverage vẫn là adoption gaps, không được che bằng logging=false hoặc runtime tests.
 
 Decision: giữ pg cho Identity hiện tại theo evidence/control/TCO reasoning tại ADR-008; TypeORM viable và có gate reopen cho CRUD-heavy benefit. Candidate dependencies chỉ ở experiment package; root API dependencies/HTTP/events/eight migration checksums không đổi. Full Identity/worker/operator ORM conversion, AWS capacity/pool/TCO, browser HTTPS/live SES và production telemetry/recovery vẫn chưa được accept. RV-06/07 vẫn PENDING; separate frontend work không thuộc review này.
+
+
+## 9. Browser HTTPS closure — 2026-10-07
+
+RV-06 closed locally after [RED/GREEN evidence](evidence/identity-https-2026-10-07/README.md). Fixed fresh-CSRF logout retry, anonymous verification boundary, response-body timeout/classification, confirmed-login recovery reset and profile reauth action. Domain/Application, repositories/UoW, JWT/JSON/event/schema and8 migration bytes remain unchanged. Fresh100 backend unit/tooling +53 integration +73 web unit +10 browser cases PASS. Browser trust is an ephemeral SPKI exception with Node CA/SAN probes; no public PKI or AWS acceptance. RV-07, live SES and other business/cost/load gates remain pending. Section8 is the earlier persistence experiment, whose source/evidence was not rerun or rewritten.

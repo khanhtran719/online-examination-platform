@@ -6,7 +6,7 @@ export interface HttpSessionPort {
     request: FastifyRequest,
     reply: FastifyReply,
   ): Promise<{ csrfToken: string; expiresAt: string }>;
-  checkUnsafe(request: FastifyRequest, context?: "live" | "logout"): Promise<void>;
+  checkUnsafe(request: FastifyRequest, context?: "live" | "logout" | "anonymous"): Promise<void>;
   admit(request: FastifyRequest, kind: "read" | "write", actor?: string): Promise<void>;
   registerAdmission(request: FastifyRequest): Promise<void>;
   access(request: FastifyRequest): string;

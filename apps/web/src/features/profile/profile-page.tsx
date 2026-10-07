@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { useRuntime } from "../../app/runtime";
 import { useSession } from "../../app/session";
 import { useTitle } from "../../app/use-title";
@@ -31,7 +32,9 @@ export function ProfilePage() {
       return;
     }
     if (key && sentName !== null && (sentName !== trimmed || sentOptIn !== optIn)) {
-      setError("Nội dung đã đổi so với lần lưu chưa xác nhận. Khôi phục nội dung đã gửi rồi bấm lưu lại.");
+      setError(
+        "Nội dung đã đổi so với lần lưu chưa xác nhận. Khôi phục nội dung đã gửi rồi bấm lưu lại.",
+      );
       return;
     }
     const idempotencyKey = key ?? uuidV7();
@@ -77,25 +80,49 @@ export function ProfilePage() {
       <h1 className={styles.title}>Hồ sơ</h1>
       <p>{profile.email}</p>
       <p className={styles.muted}>Revision {profile.revision}</p>
+      {session.needsReauth ? (
+        <Alert tone="warning" title="Cần đăng nhập lại">
+          Phiên chưa được xác nhận. Hãy đăng nhập lại trước khi lưu hồ sơ.
+          <p>
+            <Link to="/login?return=%2Fprofile">Đăng nhập lại</Link>
+          </p>
+        </Alert>
+      ) : null}
       {conflict ? (
         <Alert tone="warning" title="Đối chiếu hồ sơ">
-          Bản trên máy chủ: {profile.displayName}, hiện trên bảng xếp hạng: {profile.leaderboardOptIn ? "có" : "không"}. Bản bạn đang sửa: {displayName}, hiện trên bảng xếp hạng: {optIn ? "có" : "không"}.
+          Bản trên máy chủ: {profile.displayName}, hiện trên bảng xếp hạng:{" "}
+          {profile.leaderboardOptIn ? "có" : "không"}. Bản bạn đang sửa: {displayName}, hiện trên
+          bảng xếp hạng: {optIn ? "có" : "không"}.
         </Alert>
       ) : null}
       {mode === "live" ? (
         <Alert tone="warning" title="Chưa có quyền quản trị">
-          Hồ sơ không kèm danh sách quyền. Trang quản trị chưa mở cho đến khi máy chủ cho biết quyền. Ứng dụng không đọc token để đoán quyền.
+          Hồ sơ không kèm danh sách quyền. Trang quản trị chưa mở cho đến khi máy chủ cho biết
+          quyền. Ứng dụng không đọc token để đoán quyền.
         </Alert>
       ) : (
         <p className={styles.muted}>
-          Quyền demo hiện tại: {demo?.permissions.join(", ")}. Công tắc quyền nằm ở thanh dữ liệu mẫu, không phải hồ sơ thật.
+          Quyền demo hiện tại: {demo?.permissions.join(", ")}. Công tắc quyền nằm ở thanh dữ liệu
+          mẫu, không phải hồ sơ thật.
         </p>
       )}
-      {message ? <Alert tone="success" title="Đã lưu">{message}</Alert> : null}
+      {message ? (
+        <Alert tone="success" title="Đã lưu">
+          {message}
+        </Alert>
+      ) : null}
       {error ? <Alert title="Chưa lưu được">{error}</Alert> : null}
-      <TextField label="Tên hiển thị" value={displayName} onChange={(event) => setDisplayName(event.target.value)} />
+      <TextField
+        label="Tên hiển thị"
+        value={displayName}
+        onChange={(event) => setDisplayName(event.target.value)}
+      />
       <label className={styles.row}>
-        <input type="checkbox" checked={optIn} onChange={(event) => setOptIn(event.target.checked)} />
+        <input
+          type="checkbox"
+          checked={optIn}
+          onChange={(event) => setOptIn(event.target.checked)}
+        />
         Hiện bí danh trên bảng xếp hạng. Tên hiển thị không được đưa vào bảng.
       </label>
       <Button disabled={pending || !nameDrift} onClick={() => void save()}>

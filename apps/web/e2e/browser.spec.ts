@@ -3,7 +3,10 @@ import path from "node:path";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "playwright/test";
 
-const shotDir = path.resolve(process.cwd(), "../../docs/web-ui/evidence/screenshots");
+const shotDir = path.resolve(
+  process.cwd(),
+  "../../docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression",
+);
 const widths = [320, 390, 768, 1024, 1440] as const;
 
 async function shot(page: Page, name: string): Promise<void> {
@@ -23,12 +26,17 @@ function scenarios(page: Page) {
   return page.locator("summary").filter({ hasText: "Kịch bản mẫu" });
 }
 
-async function login(page: Page): Promise<void> {
-  await page.goto("/login");
+async function login(page: Page, returnPath = "/dashboard"): Promise<void> {
+  await page.goto(`/login?return=${encodeURIComponent(returnPath)}`);
   await page.getByLabel("Email").fill("candidate@example.test");
   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
   await page.getByRole("button", { name: "Đăng nhập" }).click();
-  await expect(page.getByRole("heading", { name: "Bảng làm việc" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", {
+      name: returnPath === "/admin" ? "Quản trị" : "Bảng làm việc",
+      exact: true,
+    }),
+  ).toBeVisible();
 }
 
 test.describe("demo", () => {
@@ -53,7 +61,7 @@ test.describe("demo", () => {
       await page.setViewportSize({ width, height: width < 768 ? 720 : 900 });
       await page.goto("/");
       await expect(page.getByRole("status")).toContainText("Dữ liệu mẫu");
-      await expect(page.getByRole("heading", { name: /Làm bài thi trực tuyến/ })).toBeVisible();
+      await expect(page.getByRole("heading", { name: /Vào nhịp thi/ })).toBeVisible();
       await shot(page, `home-${width}`);
       if (width === 1440 || width === 320) await axe(page, `home-${width}`);
     }
@@ -117,7 +125,8 @@ test.describe("demo", () => {
     await expect(page.getByRole("dialog", { name: "Phiếu câu hỏi" })).toHaveCount(0);
     await page.setViewportSize({ width: 1024, height: 800 });
     await page.getByRole("link", { name: "mở phòng" }).click();
-    await expect(page.getByText("UI-GAP-02")).toBeVisible();
+    await expect(page.getByText(/Bài làm không kèm tiêu đề đã khóa/)).toBeVisible();
+    await expect(page.getByText("Version 1 prompt")).toBeVisible();
     await expect(page.getByRole("heading", { level: 1 })).not.toContainText(
       "Networking Fundamentals",
     );
@@ -131,8 +140,8 @@ test.describe("demo", () => {
 
   test("admin permission boundary and honest metrics", async ({ page }) => {
     await page.setViewportSize({ width: 1024, height: 900 });
-    await login(page);
-    await page.getByRole("link", { name: "Quản trị", exact: true }).click();
+    await login(page, "/admin");
+    await expect(page.getByRole("link", { name: "Quản trị", exact: true })).toHaveCount(0);
     await expect(page.getByText("Preset này không có quyền quản trị")).toBeVisible();
     await shot(page, "admin-denied-candidate-1024");
     await scenarios(page).click();
@@ -147,8 +156,10 @@ test.describe("demo", () => {
     await page.getByRole("link", { name: "Nhật ký", exact: true }).click();
     await expect(page.getByRole("heading", { name: "Nhật ký" })).toBeVisible();
     await shot(page, "admin-audit-1024");
-    await page.getByLabel("Quyền mẫu").selectOption("reviewer");
     await page.getByRole("link", { name: "Ngân hàng câu", exact: true }).click();
+    await expect(page.getByRole("heading", { name: "Ngân hàng câu" })).toBeVisible();
+    await page.getByLabel("Quyền mẫu").selectOption("reviewer");
+    await expect(page.getByRole("link", { name: "Ngân hàng câu", exact: true })).toHaveCount(0);
     await expect(page.getByText("catalog.manage")).toBeVisible();
     await shot(page, "admin-reviewer-denied-questions-1024");
   });

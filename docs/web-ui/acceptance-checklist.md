@@ -1,5 +1,7 @@
 # Web UI acceptance và scenario catalog
 
+Latest increment: [Identity HTTPS](../evidence/identity-https-2026-10-07/README.md) —10 Chromium cases PASS với actual API/PG/SMTP, W-02–06 và phần profile W-07 có live local proof. ID-07/WEB-02 và FE-07–10 closed locally. Các paragraph review bên dưới là historical evidence; full Web/performance/production gate vẫn mở.
+
 Status: **spec giữ nguyên; một phần scenario đã chạy ngày 2026-10-07**. [Review mới](review-2026-10-07.md) tái hiện FAIL ở W-06/14 reauth, W-14 answer scope, W-16 deadline và W-18 review sau403. Bốn browser smoke hiện có vẫn PASS; xem [raw review evidence](evidence/review-2026-10-07/README.md). Kết quả trước review ở [evidence](evidence/README.md). Đây không phải bộ tick production. FE task checklist ở [implementation-tasks](implementation-tasks.md); baseline business policies ở [product](../product-specification.md) và [contract cases](../contract-tests.md).
 
 ## 1. Data modes và evidence

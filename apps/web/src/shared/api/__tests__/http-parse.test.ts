@@ -147,4 +147,72 @@ describe("HTTP envelope", () => {
     await assertion;
     vi.useRealTimers();
   });
+
+  it("classifies a response body stream failure after successful headers as an unknown network outcome", async () => {
+    let bodyController: ReadableStreamDefaultController<Uint8Array> | undefined;
+    const body = new ReadableStream<Uint8Array>({
+      start(controller) {
+        bodyController = controller;
+      },
+    });
+    const pending = requestJson({
+      path: "/v1/auth/refresh",
+      method: "POST",
+      fetchImpl: async () => new Response(body, { status: 200 }),
+    });
+    const outcome = pending.catch((error: unknown) => error);
+
+    await Promise.resolve();
+    bodyController?.error(new TypeError("response body connection terminated"));
+
+    const error = await outcome;
+    expect(error).toBeInstanceOf(ApiError);
+    expect(error).toMatchObject({ kind: "network", status: 0 });
+  });
+
+  it("applies the original request timeout budget to a body held after successful headers", async () => {
+    vi.useFakeTimers();
+    let bodyController: ReadableStreamDefaultController<Uint8Array> | undefined;
+    let settled = false;
+    let failure: unknown;
+    const body = new ReadableStream<Uint8Array>({
+      start(controller) {
+        bodyController = controller;
+      },
+    });
+    const pending = requestJson({
+      path: "/v1/auth/refresh",
+      method: "POST",
+      timeoutMs: 25,
+      fetchImpl: (_url, init) => {
+        init?.signal?.addEventListener("abort", () => {
+          bodyController?.error(new DOMException("request aborted", "AbortError"));
+        });
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(new Response(body, { status: 200 })), 20);
+        });
+      },
+    }).then(
+      () => {
+        settled = true;
+      },
+      (error: unknown) => {
+        settled = true;
+        failure = error;
+      },
+    );
+
+    try {
+      await vi.advanceTimersByTimeAsync(20);
+      expect(settled).toBe(false);
+      await vi.advanceTimersByTimeAsync(5);
+      expect(settled).toBe(true);
+      expect(failure).toBeInstanceOf(ApiError);
+      expect(failure).toMatchObject({ kind: "timeout", status: 0 });
+    } finally {
+      bodyController?.error(new Error("test body stream cleanup"));
+      await pending;
+      vi.useRealTimers();
+    }
+  });
 });

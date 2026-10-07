@@ -771,6 +771,41 @@ describe("Identity on real restricted PostgreSQL", () => {
         .join("; ");
       const me = await http.inject({ method: "GET", url: "/v1/me", headers: { cookie: cookies } });
       expect(me.json().data.email).toBe(a.email);
+      const liveHeaders = {
+        origin,
+        cookie: cookies,
+        "x-csrf-token": login.cookies.find((c: { name: string }) => c.name === "__Host-csrf")!
+          .value,
+      };
+      for (const [url, payload] of [
+        ["/v1/auth/email-verification/request", { email: a.email }],
+        [
+          "/v1/auth/email-verification/confirm",
+          {
+            token: await codec.open(challenge.ciphertext, challenge.id),
+            password: finalPassword,
+          },
+        ],
+      ] as const) {
+        expect(
+          (await http.inject({ method: "POST", url, headers: liveHeaders, payload })).statusCode,
+        ).toBe(403);
+      }
+      // A valid signed anonymous nonce plus live credentials must not revoke a live family.
+      const anonymousWithLiveCookies = login.cookies
+        .filter((c: { name: string }) => c.name !== "__Host-csrf")
+        .map((c: { name: string; value: string }) => `${c.name}=${c.value}`)
+        .concat(`__Host-csrf=${csrf.value}`)
+        .join("; ");
+      expect(
+        (
+          await http.inject({
+            method: "POST",
+            url: "/v1/auth/logout",
+            headers: { origin, cookie: anonymousWithLiveCookies, "x-csrf-token": csrf.value },
+          })
+        ).statusCode,
+      ).toBe(403);
       const anonymous = await http.inject({
         method: "POST",
         url: "/v1/auth/refresh",
@@ -799,6 +834,32 @@ describe("Identity on real restricted PostgreSQL", () => {
         },
       });
       expect(logoutRetry.statusCode).toBe(200);
+      const freshAfterLogout = await http.inject({
+        method: "GET",
+        url: "/v1/auth/csrf",
+        headers: { cookie: cookies },
+      });
+      const freshCsrf = freshAfterLogout.cookies.find(
+        (c: { name: string }) => c.name === "__Host-csrf",
+      )!;
+      const freshCookies = login.cookies
+        .filter((c: { name: string }) => c.name !== "__Host-csrf")
+        .map((c: { name: string; value: string }) => `${c.name}=${c.value}`)
+        .concat(`__Host-csrf=${freshCsrf.value}`)
+        .join("; ");
+      expect(
+        (
+          await http.inject({
+            method: "POST",
+            url: "/v1/auth/logout",
+            headers: {
+              origin,
+              cookie: freshCookies,
+              "x-csrf-token": freshAfterLogout.json().data.csrfToken,
+            },
+          })
+        ).statusCode,
+      ).toBe(200);
       expect(
         (await http.inject({ method: "GET", url: "/v1/me", headers: { cookie: cookies } }))
           .statusCode,

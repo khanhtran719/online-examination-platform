@@ -36,7 +36,7 @@ export class IdentityController {
     @Req() r: FastifyRequest,
     @Body() value: unknown,
   ) {
-    await this.transport.checkUnsafe(r);
+    await this.transport.checkUnsafe(r, "anonymous");
     await this.transport.admit(r, "write");
     const v = body(value, ["email"]);
     await this.identity.requestVerification(email(v.email));
@@ -46,7 +46,7 @@ export class IdentityController {
     @Req() r: FastifyRequest,
     @Body() value: unknown,
   ) {
-    await this.transport.checkUnsafe(r);
+    await this.transport.checkUnsafe(r, "anonymous");
     await this.transport.admit(r, "write");
     const v = body(value, ["token", "password"]);
     await this.identity.confirm(text(v.token, 43, 43), password(v.password));

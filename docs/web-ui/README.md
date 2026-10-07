@@ -1,6 +1,6 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
-Ngày 2026-10-06 cho bộ spec. Ngày 2026-10-07 đã có SPA trong `apps/web`. Spec này vẫn là hợp đồng. Bằng chứng chạy thật nằm ở [runbook](runbook.md), [UI-GAP](ui-gap.md) và [evidence](evidence/README.md). Không chạy đánh giá ORM, không sửa backend/API hay deploy AWS. Demo chạy được không phải production.
+Ngày 2026-10-06 cho bộ spec;2026-10-07 có SPA trong `apps/web`. **FE7/32 và WEB-02 local complete**; [Identity HTTPS evidence](../evidence/identity-https-2026-10-07/README.md) dùng API/PG/SMTP thật và có boundary bug fixes theo security contract. [Runbook](runbook.md), [UI-GAP](ui-gap.md) và [prior evidence](evidence/README.md) giữ phạm vi từng lần chạy. Full frontend/production acceptance chưa hoàn tất; không ORM switch hoặc AWS deployment trong increment này.
 
 ## 1. Đọc và giao việc
 

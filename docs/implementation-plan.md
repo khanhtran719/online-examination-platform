@@ -1,5 +1,20 @@
 # Implementation plan
 
+## Active scope — Identity browser HTTPS COMPLETE locally, 2026-10-07
+
+User authorizes the next increment after retaining pg and SQL normalization. Finish local ID-07/browser evidence with the existing live SPA, real AppModule/HTTP server, restricted PostgreSQL roles, immutable migrations and actual verification worker/SMTP delivery. Catalog, SES/AWS deployment, public certificates and general frontend acceptance remain separate work.
+
+Owners: Identity application/infrastructure/presentation for durable auth; Web auth transport/session and forms for browser behavior; isolated test tooling for TLS/proxy/fault injection. Preserve final-owner password activation, single-use challenge, signed family-bound CSRF, exact Origin, Secure/HttpOnly cookies and database authority. Test fixtures may expire/revoke disposable records; no runtime test endpoints or relaxed production controls.
+
+- [x] H-01: Dedicated HTTPS harness, ephemeral restricted keys/certificate, disposable database/roles, live build and actual Mailpit worker delivery. Normal teardown drains resources/removes DB/logins/temp keys; runner stops containers. Browser leaf SPKI exception and Node CA/SAN checks are scoped to the run, no OS trust changes.
+- [x] H-02: Real browser register/duplicate202, actual mail, suppressed resend/cooldown, inert/scrubbed landing and reload, final password, invalid/expired/replayed link/login PASS. Replay does not replace the first activation password or create a session.
+- [x] H-03: Secure cookie/Origin/CSRF/header proof; two shared-cookie tabs refresh once, profile200/409, restart/revocation/logout, commit-lost ACK and body timeout PASS. Fixed unknown-recovery reset, fresh-CSRF logout retry, body I/O/timeout, anonymous verification enforcement and direct profile reauth action after RED reproduction.
+- [x] H-04: 10 real Chromium HTTPS cases,73 web unit cases (64 auth/existing +9 concurrent public-experience cases),100 backend unit/tooling and53 real-PG/SMTP integration PASS. Lint/quality/contracts/typecheck/build/diff and migration preservation checked. [Evidence](evidence/identity-https-2026-10-07/README.md)/[runbook](runbooks/identity-https.md); ID-07/WEB-02 local, FE-07–10 closed. Public PKI/SES/AWS and broader Web gates remain pending.
+
+Execution: inspect latest UI fixes → build harness/tests → capture failing behavioral evidence → repair only reproduced defects → rerun focused checks → broader regressions → review diff and update roadmap/acceptance. Do not overwrite historical frontend or persistence evidence.
+
+Self-review: no new business dependency, runtime test endpoint, ORM/cache/service, schema/migration, JWT/public JSON change or transaction/event rewrite. Security contract is enforced at the HTTP port/controller; logout anonymous retry cannot authorize a live family. Browser recovery resets only after explicit confirmed login, with stale-generation protection. Receipt retry keeps one durable write; no latency/cost improvement is claimed. Concurrent public UI/Three.js work was preserved and is not accepted as a performance/visual phase by the auth suite. Product52/216 and FE7/32; Phase04 still awaits ID-11 live SES.
+
 ## Active scope — SQL readability COMPLETE locally, 2026-10-07
 
 User accepts retaining pg provisionally and requests a query-format rule plus normalization of existing SQL. Ownership remains Identity persistence and shared technical PostgreSQL adapters; include executable test fixtures, local tooling and operational SQL. Read/write paths, bindings, domain invariants, transaction/lock boundaries and public contracts must remain unchanged. This is code-shape work, not an ORM, schema or query optimization change.

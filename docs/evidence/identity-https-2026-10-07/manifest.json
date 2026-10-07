@@ -1,0 +1,1264 @@
+{
+  "recordedAt": "2026-10-07T04:52:52.398401+00:00",
+  "scope": "Local Identity browser HTTPS only: ID-07, WEB-02, FE-07 through FE-10",
+  "productionAccepted": false,
+  "sourceHeadAtAssembly": "fa2cd19e55856ef7d078f93cbe83dbe7839995e7",
+  "sourceDigestTiming": "Auth/test/config source digests after final GREEN. API and immutable static Web snapshot digests captured by fixture at start; concurrent public UI build overwrites do not change the tested snapshot.",
+  "environment": {
+    "node": "v24.17.0",
+    "browser": "153.0.8010.12",
+    "arch": "arm64",
+    "platform": "darwin",
+    "publicPki": false,
+    "trust": "ephemeral leaf SPKI scoped to Chromium; Node CA/SAN validation",
+    "ignoreHTTPSErrors": false,
+    "backend": "real AppModule",
+    "frontend": "live static build",
+    "persistence": "restricted-role PostgreSQL with all eight migrations",
+    "mail": "actual worker SMTP to Mailpit"
+  },
+  "checks": [
+    {
+      "command": "npm test",
+      "status": "passed",
+      "jest": 66,
+      "nodeTooling": 34,
+      "total": 100,
+      "skipped": 0
+    },
+    {
+      "command": "TEST_DATABASE_ADMIN_URL=<isolated loopback PostgreSQL55435 administrator> npm run test:integration",
+      "status": "passed",
+      "total": 53,
+      "suites": 2,
+      "skipped": 0,
+      "actualSmtp": true
+    },
+    {
+      "command": "npm run web:test",
+      "status": "passed",
+      "total": 73,
+      "files": 16,
+      "authAndExistingCases": 64,
+      "concurrentPublicExperienceCases": 9
+    },
+    {
+      "command": "npm run test:identity:https",
+      "status": "passed",
+      "total": 10,
+      "retries": 0,
+      "recordedAt": "2026-10-07T04:52:08.239Z"
+    },
+    {
+      "command": "npm run lint / npm run typecheck / npm run web:lint / npm run web:typecheck",
+      "status": "passed"
+    },
+    {
+      "command": "npm run build / npm run web:build",
+      "status": "passed",
+      "mode": "live"
+    },
+    {
+      "check": "Migration source/compiled/HEAD/tested-build checksums",
+      "status": "passed",
+      "total": 8
+    },
+    {
+      "check": "Verification form axe serious/critical",
+      "status": "passed",
+      "violations": 0,
+      "scope": "One desktop verification form; not whole-app accessibility"
+    },
+    {
+      "command": "npm run quality / git diff --check / 19-file Prettier check",
+      "status": "passed",
+      "operations": 46,
+      "exampleOccurrences": 425
+    }
+  ],
+  "redEvidence": {
+    "harness-diagnostic.json": "Initial fixture/navigation/socket assumptions corrected; not five product bugs",
+    "red-summary.json": "Six pass, H06/H07/H08 fail before fixes",
+    "red-anonymous-verification.json": "H04 authenticated request accepted202, expected403",
+    "red-profile-reauth.json": "H06 missing direct profile reauthentication action",
+    "unitRegressions": "Two streamed-body and two login-generation cases reproduced RED before repair; current web suite GREEN"
+  },
+  "privacy": {
+    "scannedJsonArtifacts": true,
+    "forbiddenPatternsFound": {
+      "privateKey": false,
+      "jwt": false,
+      "verificationFragment": false,
+      "recipient": false,
+      "fixturePassword": false
+    },
+    "traces": false,
+    "har": false,
+    "rawCredentials": false,
+    "rawEmailLinks": false,
+    "screenshotScope": "Empty verification form only, manually inspected separately",
+    "screenshotsVisuallyInspected": true
+  },
+  "cleanup": {
+    "runnerExitCode": 0,
+    "normalTeardownCompleted": true,
+    "ephemeralKeysRemovedByFixture": true,
+    "disposableDatabaseAndRolesDroppedByFixture": true,
+    "dedicatedComposeServicesStopped": true,
+    "dedicatedVolumesRetained": true,
+    "rootMailpitStartedForIntegrationThenStopped": true,
+    "developerDatabaseUntouched": true
+  },
+  "localImages": {
+    "postgres17Alpine": "sha256:25a89970a83255ae96484d709005bb35aa71f7455f941bc1634514f31c5d5c62",
+    "mailpitV1314": "sha256:e44ce28f7bf78c4449fdb424cbeec98a0ad728d3268dd9b15c63904edf090e3c"
+  },
+  "pending": [
+    "Public PKI/AWS viewer-origin-private DB TLS",
+    "Live SES delivery/quota/bounce/complaint",
+    "Firefox/WebKit broader browser matrix",
+    "Live Catalog/Assessment/Reporting and permissions gap",
+    "Sustainable RPS/concurrency/SLO/AWS cost/restore acceptance"
+  ],
+  "cost": null,
+  "sourceFiles": [
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/http/http-session.ts",
+      "sha256": "fa5b1f37ee080455e6a68128f26a8fbd2118e3a321493250b3ead3cb09e97797",
+      "bytes": 6048
+    },
+    {
+      "path": "apps/api/src/modules/identity/presentation/http/http-session.port.ts",
+      "sha256": "2b475650c4287aaf6f58610ced8719da2293cc560a88a4dee85b5238e7811b7e",
+      "bytes": 968
+    },
+    {
+      "path": "apps/api/src/modules/identity/presentation/http/identity.controller.ts",
+      "sha256": "cebce6e528eb6cef2eb36a94fddb1a81f0b73e7338d9a1d93c4429e7cf8abb4a",
+      "bytes": 4117
+    },
+    {
+      "path": "apps/api/tests/integration/identity.spec.ts",
+      "sha256": "10972000b9528191b629aa7c63b3eee95e63e9ce82610738db6d3cf90f4dfdce",
+      "bytes": 43386
+    },
+    {
+      "path": "apps/web/src/shared/api/http.ts",
+      "sha256": "d2516462a57da5549f06d98de9eb49f6ee63e78a162a6a2923bf75679db72fdc",
+      "bytes": 4877
+    },
+    {
+      "path": "apps/web/src/shared/api/__tests__/http-parse.test.ts",
+      "sha256": "54e7fd1c02ad0ef14e663380745d094db1aaa4fd8e7edba867453560468cb468",
+      "bytes": 7073
+    },
+    {
+      "path": "apps/web/src/features/auth/session-coordinator.ts",
+      "sha256": "d00805306b348dac424b94e0384469251b1883e7216f5ce1341c4dfa4985080f",
+      "bytes": 4290
+    },
+    {
+      "path": "apps/web/src/features/auth/__tests__/session-coordinator.test.ts",
+      "sha256": "72092d0f7dbd1ecc9345ee746245d24a510c01d64f1f0ecd3d72cd436c7532de",
+      "bytes": 5277
+    },
+    {
+      "path": "apps/web/src/features/auth/auth-pages.tsx",
+      "sha256": "f3da29e5dd766e35799ac1e6c3a34aaa5353e76b5f7598a701a4e28506092920",
+      "bytes": 15142
+    },
+    {
+      "path": "apps/web/src/features/profile/profile-page.tsx",
+      "sha256": "90607ffa6c7d2740d33c70cfa97aa4e899ab4d6f2632de3ae30fc1afa3841458",
+      "bytes": 5386
+    },
+    {
+      "path": "apps/web/src/app/session.tsx",
+      "sha256": "71ac606a33660f6a7d50e7070c83b1974fd9799e803977e46c045680c332bdbc",
+      "bytes": 5906
+    },
+    {
+      "path": "apps/web/playwright.identity-https.config.ts",
+      "sha256": "8443baacb02ab36206fe6c7c6a5544d39fb374264b3669cf5f343f64a524123a",
+      "bytes": 593
+    },
+    {
+      "path": "apps/web/playwright.config.ts",
+      "sha256": "78cec6804f481fb7b1a69c2344858b0d512ad7610063a9e812af1ebcf06290bb",
+      "bytes": 607
+    },
+    {
+      "path": "apps/web/e2e/identity-https/reporter.mjs",
+      "sha256": "597db5e9f2ac1ccc298e845e2e8f1908a202a3f88ba79e31d6cbcb382ee75362",
+      "bytes": 1212
+    },
+    {
+      "path": "apps/web/e2e/identity-https/identity.spec.mjs",
+      "sha256": "037de5783de5c71f3b91a6873291c3c679474c8797c27ea621aba407ecae4b9d",
+      "bytes": 22697
+    },
+    {
+      "path": "scripts/identity-https.mjs",
+      "sha256": "ef248b423225c4a4b0ddea985e0833ccf53a3211a3daa50feb7cdaf4720dc8b6",
+      "bytes": 1389
+    },
+    {
+      "path": "scripts/identity-https-fixture.mjs",
+      "sha256": "83fd4e8b42c874582c32d670db241ed44bffade8aa850c1315fc24c90987af0d",
+      "bytes": 17731
+    },
+    {
+      "path": "infra/identity-https/compose.yaml",
+      "sha256": "4586059442f4ab24358d36e656806622fbc0954f320c112ba1706f44ff337db0",
+      "bytes": 799
+    },
+    {
+      "path": "package.json",
+      "sha256": "5867253c7eb3a34f8e22afe10b87367f2c30c0c532608ad77eed033aeb51ddde",
+      "bytes": 2974
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "975144dbc3e746588d63028785a9db7564e580ed3acc7231618a90ea1c45c2fc",
+      "bytes": 283016
+    },
+    {
+      "path": "apps/web/package.json",
+      "sha256": "4f97426af4c16b02693a670578aed2d4c59b43c4e1a8b29106b6ef69f652d5ba",
+      "bytes": 1594
+    },
+    {
+      "path": "apps/web/package-lock.json",
+      "sha256": "e452d154e2546a229b50c1e2f5e592f7ae86c20fc6daa32debd19b0e6710b2b9",
+      "bytes": 152441
+    }
+  ],
+  "testedBuild": {
+    "recordedAt": "2026-10-07T04:51:44.684Z",
+    "webFiles": [
+      {
+        "path": "apps/web/dist/assets/admin-exams-CDYaXeHg.js",
+        "sha256": "3638a64b18d021be4397feb99f4bae20829c01e35e00306b7e1ee4b34cf6e92e",
+        "bytes": 13730
+      },
+      {
+        "path": "apps/web/dist/assets/admin-import-DPzl2bun.js",
+        "sha256": "47ac90613246bb8c758c6528b45ae06be17406a385a49b13b396bf4782d25dd2",
+        "bytes": 5295
+      },
+      {
+        "path": "apps/web/dist/assets/admin-insights-CJQ2955d.js",
+        "sha256": "358b0d33e9ba3be60e353384b9c77cc74c90a903f5f3b2cde6653ed96fdab2de",
+        "bytes": 6490
+      },
+      {
+        "path": "apps/web/dist/assets/admin-layout-B-JPWRQf.js",
+        "sha256": "8deb7453388a6237f8835bfebd16176dc3324b97ef3aad3fa05adb6813cdae36",
+        "bytes": 2568
+      },
+      {
+        "path": "apps/web/dist/assets/admin-monitor-DZPjl2HG.js",
+        "sha256": "21e661e1df4cb56cb0f88f92b6d740f80c2e4a909db98a2c48835f6fb75c5c71",
+        "bytes": 9845
+      },
+      {
+        "path": "apps/web/dist/assets/admin-questions-BkiITXoU.js",
+        "sha256": "3a1c138f902efd19517b1383dfb99bc5889367faae9742582f5a98786f24d012",
+        "bytes": 6566
+      },
+      {
+        "path": "apps/web/dist/assets/exam-room-Cx-PlaBb.js",
+        "sha256": "bbf6aa874b6791057a48b4c92ac11d6b8e494e1aade16b068a6f5bc0c1722eb3",
+        "bytes": 29228
+      },
+      {
+        "path": "apps/web/dist/assets/format-B3iElrdZ.js",
+        "sha256": "d7f1f36e8b1261a27d5d97244d98f748973e90e142895f58bb9a04df4fde136c",
+        "bytes": 24199
+      },
+      {
+        "path": "apps/web/dist/assets/gate-Bfr6DaUN.js",
+        "sha256": "a9090bd620a4fc06897349ab1fb02c7bd24c797403f51bbfa716d4c149cf3da2",
+        "bytes": 855
+      },
+      {
+        "path": "apps/web/dist/assets/index-Bx5cE_4t.css",
+        "sha256": "885a3dbbbfacc8cbf80135ddc7dd9dd8e2743671f226ad6e184ad126f29791bf",
+        "bytes": 5250
+      },
+      {
+        "path": "apps/web/dist/assets/index-OA-VlPaQ.js",
+        "sha256": "2baf0aeb7361066b6c2d7e0a83b4f8e7c0050c0b34eec9163d542a8635e97df2",
+        "bytes": 2690
+      },
+      {
+        "path": "apps/web/dist/assets/layout-DK5OPhcP.css",
+        "sha256": "a039d87f7d5db72ecf4aadc80f3ee94fd114a1b0263baea390e06417d87cafe9",
+        "bytes": 9038
+      },
+      {
+        "path": "apps/web/dist/assets/layout.module-CfKwYVIo.js",
+        "sha256": "0deea5d12ea75ba66e5509c7a49e74521971c3d847817d4d1b9074a2d85f21bf",
+        "bytes": 8090
+      },
+      {
+        "path": "apps/web/dist/assets/memory-B-c5uFzl.js",
+        "sha256": "01f80fdf04eeef7380b2d133b485bf6e6c32fd224380480153cb1d857aa67c49",
+        "bytes": 596
+      },
+      {
+        "path": "apps/web/dist/assets/mount-B8v016pj.css",
+        "sha256": "2338ce1ade3774d9b042ef4a595fd699804715317c1c4c6f01c5a108d76f22e1",
+        "bytes": 15082
+      },
+      {
+        "path": "apps/web/dist/assets/mount-FXzDfonO.js",
+        "sha256": "16ffac7637ea472fc97b89ccc5006c539bcd39535cd9d5d5a4879e53322210ea",
+        "bytes": 293694
+      },
+      {
+        "path": "apps/web/dist/assets/mount-scene-DL16NffI.js",
+        "sha256": "7f26a55c8ff9c8da19db1a0bda5e330d349137770eef65f8b1bb0341e13283d9",
+        "bytes": 520187
+      },
+      {
+        "path": "apps/web/dist/assets/mutation-intent-DIWikAAn.js",
+        "sha256": "f7af9cc0608db1ba09202483624567cb6e4e915ff3281f7a6a80fefa1590bc78",
+        "bytes": 695
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-latin-400-normal-BTkUljjl.woff2",
+        "sha256": "09aee8065d25508f23a4c3d92cd777ac869c52d93fd868a88f025d888a7937d6",
+        "bytes": 13120
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-latin-500-normal-DCA2Z9Cj.woff2",
+        "sha256": "1d35aaecc5c7a375d87c12787e1e4c5d6a695315b757e1e18a479d1a2f84e973",
+        "bytes": 13496
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-latin-600-normal-Dkgu5AE5.woff2",
+        "sha256": "79e274470d1c5a0118eb325e2ea6f2eb2a449336d7fde1a4f20a2f32fe1119ed",
+        "bytes": 13496
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-vietnamese-400-normal-D2wP-Vm-.woff2",
+        "sha256": "0f0c8a4858f1f5b2701331cf0a471ee00824ed92d33ecb21c9248ded975e297f",
+        "bytes": 5316
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-vietnamese-500-normal-B_DgfjT4.woff2",
+        "sha256": "091e15d43fad7642155cc12765a790b60b19ed793547279479df53ec7955fbb7",
+        "bytes": 5720
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-vietnamese-600-normal-mhyQDSzg.woff2",
+        "sha256": "810c4f33639e2e7df436de2154aa921845dd56f5bccc301215bcd6791804b44a",
+        "bytes": 5832
+      },
+      {
+        "path": "apps/web/dist/assets/polling-DFBeh31A.js",
+        "sha256": "f317471472332b4b6b5e4065a7ab065a5722695c649cb2c24d8f92fa38239680",
+        "bytes": 500
+      },
+      {
+        "path": "apps/web/dist/assets/progress-CrhD1lsq.js",
+        "sha256": "0ec7def48d9049ec0bb07dddd9b8df3e449c89a736276eb8a3972f6ed76be566",
+        "bytes": 374
+      },
+      {
+        "path": "apps/web/dist/assets/protected-access-bYyC-hGh.js",
+        "sha256": "4a2e58156ce080444f69538d8b346b8e89147dfd05596f909acb1361f85d4b51",
+        "bytes": 388
+      },
+      {
+        "path": "apps/web/dist/assets/result-pages-DA8dT6RP.js",
+        "sha256": "4abe2c4070eaaa4d635ecc38c66f7396c30148f5fc762cb08fd8e1f41abfd36f",
+        "bytes": 10617
+      },
+      {
+        "path": "apps/web/dist/assets/sample-experience-DeOYkbge.css",
+        "sha256": "3105eeeed4980dbae90f43f4f201069f17f4e3df7f1f8f1f03c5119a6a76663b",
+        "bytes": 9866
+      },
+      {
+        "path": "apps/web/dist/assets/sample-experience-mrA0C-3j.js",
+        "sha256": "cebd3f70c2c6036eb5c1d02b6f0b9375e5d7bf5cc4f3dae82eb4b6a59f0369ac",
+        "bytes": 10390
+      },
+      {
+        "path": "apps/web/dist/assets/source-sans-3-latin-600-normal-DeckBYAU.woff2",
+        "sha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38",
+        "bytes": 15668
+      },
+      {
+        "path": "apps/web/dist/assets/source-sans-3-latin-700-normal-CkzU-mV9.woff2",
+        "sha256": "ae35266f2ab0d5314ff9a04127931eb26c793e4f1269bb240046d4d2db4b7bb1",
+        "bytes": 15596
+      },
+      {
+        "path": "apps/web/dist/assets/source-sans-3-vietnamese-600-normal-B2sTNYey.woff2",
+        "sha256": "59f90792ec62ab0d73cad8fa82908755befe8db313ec4c1bb375464bdf5ea18b",
+        "bytes": 6220
+      },
+      {
+        "path": "apps/web/dist/assets/source-sans-3-vietnamese-700-normal-Bgamivog.woff2",
+        "sha256": "16b08bc821a9a93bc3c7379c41801edb0a35806e1eac54630467a7439ca8ca6c",
+        "bytes": 6136
+      },
+      {
+        "path": "apps/web/dist/assets/use-title-C8riTkCp.js",
+        "sha256": "daa5b0e3fd7204d060dbae5bf9166cac44f39f81f62e0d91ad452e9f97c5855a",
+        "bytes": 100963
+      },
+      {
+        "path": "apps/web/dist/index.html",
+        "sha256": "b02680d1e96019fc74fe01f0078c39213dc4ccc324785efc0676bd0fe769cb77",
+        "bytes": 888
+      },
+      {
+        "path": "apps/web/dist/licenses/noto-sans-OFL.txt",
+        "sha256": "54ec7b5a35310ad66f9f3091426f7028484cbf9ae1ab5da30122ee412a3009e1",
+        "bytes": 4518
+      },
+      {
+        "path": "apps/web/dist/licenses/source-sans-3-OFL.txt",
+        "sha256": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3",
+        "bytes": 4314
+      }
+    ],
+    "apiFiles": [
+      {
+        "path": "dist/app.module.js",
+        "sha256": "2840039177bc450ddf12967e0bbdc581defd75d7ebd06c1603881da809a5f3fa",
+        "bytes": 1421
+      },
+      {
+        "path": "dist/app.module.js.map",
+        "sha256": "0f28a80ec5535b7fc8ebdbd59fc5255439c87ff182fb7bd6592a1d1ebabb23b6",
+        "bytes": 455
+      },
+      {
+        "path": "dist/config/app.config.js",
+        "sha256": "d2efd32500c855ab5dfb2b0aa9e2748a0d4ebcecfb38fa167bcd4230a9f4895a",
+        "bytes": 115
+      },
+      {
+        "path": "dist/config/app.config.js.map",
+        "sha256": "d45d46c70a90f3f508789ea1223082507c3a6dca349fc08b95389792a230baed",
+        "bytes": 131
+      },
+      {
+        "path": "dist/config/config.validation.js",
+        "sha256": "1db87e47dad8fd9c10a60a1aca33409958df83f757c75ae3a629ba82fcf5d5f3",
+        "bytes": 3064
+      },
+      {
+        "path": "dist/config/config.validation.js.map",
+        "sha256": "08f1c8502ec36aa1d7821ab9c37a167cee93c50551da559755ffedc588185f79",
+        "bytes": 3133
+      },
+      {
+        "path": "dist/config/database.config.js",
+        "sha256": "f140b30dcd91d3038e972c5dfa3c2c31fcf1c97af5e23dad61f8fc2f30111b17",
+        "bytes": 2738
+      },
+      {
+        "path": "dist/config/database.config.js.map",
+        "sha256": "8f3a7657a6af6fb4fa2c4648c192ec40b2d4681042f5c7ce7695881433b2ac61",
+        "bytes": 2784
+      },
+      {
+        "path": "dist/infrastructure/database/connection-budget.js",
+        "sha256": "e7186bb453d888fc960de97955ef5294fc684a676e3df002106acc039d1d6bf1",
+        "bytes": 677
+      },
+      {
+        "path": "dist/infrastructure/database/connection-budget.js.map",
+        "sha256": "e8c066ae3e1d45fcd4e7e568998a9cab9f26235cc80162b631a5fc81e21f2f72",
+        "bytes": 685
+      },
+      {
+        "path": "dist/infrastructure/database/database.module.js",
+        "sha256": "553c80884f7413fd2fcf4850d38b856422b43eab74faad3a60c9fab80ac04f3d",
+        "bytes": 1422
+      },
+      {
+        "path": "dist/infrastructure/database/database.module.js.map",
+        "sha256": "8b7ec16d4fd76a90704f045752a686078677956f9d183e365035a474782ad177",
+        "bytes": 496
+      },
+      {
+        "path": "dist/infrastructure/database/load-database-config.js",
+        "sha256": "4ee49d47081292a2e37f91c913e72942dcb923ad43a780f3c149f1b2f60944bf",
+        "bytes": 478
+      },
+      {
+        "path": "dist/infrastructure/database/load-database-config.js.map",
+        "sha256": "c2f16de13920f01271cd046ca9586b312fcdacb09f32306504fbc8f09f5fc99d",
+        "bytes": 423
+      },
+      {
+        "path": "dist/infrastructure/database/migrate.js",
+        "sha256": "9bea5c84698b4d01e28fb4f0724ccad14dd5a398bc91a07993c706c0a1476ea4",
+        "bytes": 938
+      },
+      {
+        "path": "dist/infrastructure/database/migrate.js.map",
+        "sha256": "adaa8385e82c475874d4743fe6bdb293d768bb51f87a6cee0ad5d4274e8ac130",
+        "bytes": 827
+      },
+      {
+        "path": "dist/infrastructure/database/migration-runner.js",
+        "sha256": "671a4a53849de4f9d105b016587f23f37437ff8b18ba9bd59bd01573cf1632b0",
+        "bytes": 5410
+      },
+      {
+        "path": "dist/infrastructure/database/migration-runner.js.map",
+        "sha256": "5e3b170a050b694a12204696fbda62376ccde26d6989b6c3c198578e0edd3d8a",
+        "bytes": 4425
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0001_capability_schema.sql",
+        "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+        "bytes": 19421
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0002_query_indexes.sql",
+        "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+        "bytes": 2289
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0003_runtime_privileges.sql",
+        "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+        "bytes": 1877
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0004_durable_state_guards.sql",
+        "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+        "bytes": 1780
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0005_frozen_category.sql",
+        "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+        "bytes": 920
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0006_immutable_submission.sql",
+        "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+        "bytes": 720
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0007_identity_runtime.sql",
+        "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+        "bytes": 7038
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0008_identity_operations.sql",
+        "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+        "bytes": 6872
+      },
+      {
+        "path": "dist/infrastructure/database/transaction/postgres-database.js",
+        "sha256": "79d68f77c07eddf090e94e5f0a8764e363668d33eca760c41b7809882757133c",
+        "bytes": 8574
+      },
+      {
+        "path": "dist/infrastructure/database/transaction/postgres-database.js.map",
+        "sha256": "9517876fc2608eccedcd6146d99fb94a8bf8598704e37b6b8ee2f85abb743706",
+        "bytes": 7613
+      },
+      {
+        "path": "dist/infrastructure/health/health.module.js",
+        "sha256": "4314ba7753244e868f3b2ce7dbc6c187ed9ee33200e6247000ee54cdf69a5fcd",
+        "bytes": 1934
+      },
+      {
+        "path": "dist/infrastructure/health/health.module.js.map",
+        "sha256": "e2bc6df45f3bd0e6c5604178e188195e02ca21e5f80a2dd4225b2d79d6130587",
+        "bytes": 651
+      },
+      {
+        "path": "dist/infrastructure/health/http/live.controller.js",
+        "sha256": "03d8ee3c25cff27517a335d4e2e6352ce5723d41979de23d70b79c9d9ab6e34e",
+        "bytes": 1406
+      },
+      {
+        "path": "dist/infrastructure/health/http/live.controller.js.map",
+        "sha256": "9774fdf5cd89dfab50e831363f1674638d76cc6eaeefe65aaacfde765696f10a",
+        "bytes": 399
+      },
+      {
+        "path": "dist/infrastructure/health/http/ready.controller.js",
+        "sha256": "8dbeb69c0fd9214260a3e10bceefc9052f74ea2d1679eca0958f79b7ee8d40da",
+        "bytes": 2307
+      },
+      {
+        "path": "dist/infrastructure/health/http/ready.controller.js.map",
+        "sha256": "dd70219fdba3afa4f8d6541666dd56f17471e9760186be6f6f123f786fafee79",
+        "bytes": 930
+      },
+      {
+        "path": "dist/infrastructure/health/postgres-readiness.js",
+        "sha256": "7e00e643e2045f1d288b94d222f9841c1571255aba5727559af56088e8141e69",
+        "bytes": 403
+      },
+      {
+        "path": "dist/infrastructure/health/postgres-readiness.js.map",
+        "sha256": "ae41a7145257da4ec25050dc45ef2fc139a0cc15c31c2b363fc9256f4738ffee",
+        "bytes": 357
+      },
+      {
+        "path": "dist/infrastructure/http/configure-http-application.js",
+        "sha256": "bf7aef54746708d74b55cd4a2ea3575b572fd8c5a4149947d8ac0822d656c0b0",
+        "bytes": 2907
+      },
+      {
+        "path": "dist/infrastructure/http/configure-http-application.js.map",
+        "sha256": "f90a8022178974897cf170ea55f93b91f3783418c7ebe7a00e62ee6a16c15868",
+        "bytes": 2137
+      },
+      {
+        "path": "dist/infrastructure/idempotency/postgres-idempotency.js",
+        "sha256": "37dfade5a7d1ca48a061bc9e8e9e35f2a3bca42c72ceddad98e8ed24ec4ec61b",
+        "bytes": 1231
+      },
+      {
+        "path": "dist/infrastructure/idempotency/postgres-idempotency.js.map",
+        "sha256": "5519c1ab4cdc50b15e50be26b2b13c9543f8c3cc0c979ba45177301484c7f15e",
+        "bytes": 836
+      },
+      {
+        "path": "dist/infrastructure/resilience/shutdown/shutdown-gate.js",
+        "sha256": "fae7b5d0ae48e70c4481bdc8d9bd8f3009b6f6d209ab744bb47bb92337a56e7f",
+        "bytes": 336
+      },
+      {
+        "path": "dist/infrastructure/resilience/shutdown/shutdown-gate.js.map",
+        "sha256": "bdb9ae63750e2873c23eca8bec11c06aca6fe1bed8ff22937ae6f45f7e4bca6a",
+        "bytes": 337
+      },
+      {
+        "path": "dist/infrastructure/security/authentication/secret-loader.js",
+        "sha256": "43a2bbaeb50f164679b8b0b158c6166d5bcd1bcdf88318957490a3b3e4a06d67",
+        "bytes": 3193
+      },
+      {
+        "path": "dist/infrastructure/security/authentication/secret-loader.js.map",
+        "sha256": "03043d38d0c64ca190968254aec7f8d25c51a12fa22da8748620eed3ecfe3654",
+        "bytes": 3133
+      },
+      {
+        "path": "dist/infrastructure/security/authorization/postgres-security.js",
+        "sha256": "301dd6dabd19063e0d4dd58598bcab1198ee70020920531f2e6b0276a6d5655c",
+        "bytes": 5733
+      },
+      {
+        "path": "dist/infrastructure/security/authorization/postgres-security.js.map",
+        "sha256": "42a6c44dd1901027104b681d3e011aece7329480dfa43fcddb16bb6c40110db1",
+        "bytes": 2754
+      },
+      {
+        "path": "dist/main.js",
+        "sha256": "19efc5200a1ce208ad44903d35fc87bb6b5905e5d160bc79e908853782cb51c4",
+        "bytes": 1758
+      },
+      {
+        "path": "dist/main.js.map",
+        "sha256": "f7f17d5699cd360d32463ec4ed208d47d42cf561c61d39d9e8ff289ca407c758",
+        "bytes": 1640
+      },
+      {
+        "path": "dist/modules/assessment/domain/assessment.error.js",
+        "sha256": "af24a9bfac763a695007bec4fae024687c830d41800911656d8010ce850844be",
+        "bytes": 574
+      },
+      {
+        "path": "dist/modules/assessment/domain/assessment.error.js.map",
+        "sha256": "acf06be13d78def8932fa62135fce8c01d2fbb69b45e7152237b40ce9d13e0e6",
+        "bytes": 362
+      },
+      {
+        "path": "dist/modules/assessment/domain/attempt.js",
+        "sha256": "5c98c46c07a1619b9d28f6b4803062e00697f4953e0102d3ded43c65e0788e0c",
+        "bytes": 3493
+      },
+      {
+        "path": "dist/modules/assessment/domain/attempt.js.map",
+        "sha256": "b665e1e606c29f5259b9a4bcada9c8f779bcc237c8082ea8d21773b6065cfd04",
+        "bytes": 3121
+      },
+      {
+        "path": "dist/modules/assessment/domain/scoring.js",
+        "sha256": "9681db905370f5be4590ce39b7ed7e5995824ad24bb43884f2f8ef5ae6383e5e",
+        "bytes": 2423
+      },
+      {
+        "path": "dist/modules/assessment/domain/scoring.js.map",
+        "sha256": "e778ae7459aab0c370da3fbef78c6483b3e644a1fb4c994ad0590a2168e4a09a",
+        "bytes": 2384
+      },
+      {
+        "path": "dist/modules/identity/application/dto/identity.dto.js",
+        "sha256": "46cb2c34f9b5f45460ed576f4c9de5f98834f61705c63fc4b45fbb992c561c77",
+        "bytes": 117
+      },
+      {
+        "path": "dist/modules/identity/application/dto/identity.dto.js.map",
+        "sha256": "ec8b5846ee21f9c94322e7753ce5772fe51b487d826e0b345a94ecc26fb25422",
+        "bytes": 170
+      },
+      {
+        "path": "dist/modules/identity/application/errors/admission-saturated.error.js",
+        "sha256": "5818206cd90780390de3ef4d978cbfa9b53e5cf59f5e86a34fab57ba757f851c",
+        "bytes": 463
+      },
+      {
+        "path": "dist/modules/identity/application/errors/admission-saturated.error.js.map",
+        "sha256": "6474d859fa2c62db60e454748c25eb75e12f83a9134edda8ec3be09264376083",
+        "bytes": 306
+      },
+      {
+        "path": "dist/modules/identity/application/ports/identity-crypto.ports.js",
+        "sha256": "dfc66a1e7f74fc380c5b53a9d949f6f13d8e34d7a0a97b816be9c29c001ab59a",
+        "bytes": 126
+      },
+      {
+        "path": "dist/modules/identity/application/ports/identity-crypto.ports.js.map",
+        "sha256": "dc5cb96b215eeb08fabd16291c5a9bf78d646b8e6ae9123f513d300892f5630a",
+        "bytes": 190
+      },
+      {
+        "path": "dist/modules/identity/application/ports/identity-query.port.js",
+        "sha256": "ef235f2a7a533410a64c5d924d62366a6e102eff09570a88985f29ae33e1da6b",
+        "bytes": 124
+      },
+      {
+        "path": "dist/modules/identity/application/ports/identity-query.port.js.map",
+        "sha256": "c7d4634fc169d881cfd3a1e5e6fc9b8c915ab364148755e111fb65f2a22fb055",
+        "bytes": 186
+      },
+      {
+        "path": "dist/modules/identity/application/ports/operator-admin.port.js",
+        "sha256": "b09b83981203032df768fa84e7250988f9b5cceaa14951e7b46880409256e1f9",
+        "bytes": 124
+      },
+      {
+        "path": "dist/modules/identity/application/ports/operator-admin.port.js.map",
+        "sha256": "2e9cfa366334bfcb144b5e2e15b2a34dd0c213a38869b536463333beb22a6a25",
+        "bytes": 186
+      },
+      {
+        "path": "dist/modules/identity/application/ports/verification-delivery.port.js",
+        "sha256": "744054dbd950faedd304b17c8f2fab5de462f2c7d2364997c478b8fb026b5fdc",
+        "bytes": 381
+      },
+      {
+        "path": "dist/modules/identity/application/ports/verification-delivery.port.js.map",
+        "sha256": "21a1374b2cfbd0e51f8365818ec780ee33cb87027b3e64ad89e86c16085fb749",
+        "bytes": 339
+      },
+      {
+        "path": "dist/modules/identity/application/services/identity.service.js",
+        "sha256": "fb64fbe2ca1769df22e6f84954dd55d9422803e7c5e5a132ff3813f44d4b7bb4",
+        "bytes": 12223
+      },
+      {
+        "path": "dist/modules/identity/application/services/identity.service.js.map",
+        "sha256": "229d0b7560b3876b1eefbd6e6381178a9a4e26e29d168d23d8d06a2d626d5672",
+        "bytes": 11012
+      },
+      {
+        "path": "dist/modules/identity/application/services/verification-worker.js",
+        "sha256": "a9b0a12282c31c3feab4a67ecbc69fbe66561c2e1f5be4691c17a30bd1b6063d",
+        "bytes": 2029
+      },
+      {
+        "path": "dist/modules/identity/application/services/verification-worker.js.map",
+        "sha256": "8aa80b655d01b92cef8de2647b7be60249703fd81bf94dbaad6365efbc2cc7ff",
+        "bytes": 1867
+      },
+      {
+        "path": "dist/modules/identity/domain/entities/identity-state.js",
+        "sha256": "b3fb6e22bfe16f3d2bc3b6b3f1dc2b0738a2fdc4b4b49e88c9499e40a346a93e",
+        "bytes": 119
+      },
+      {
+        "path": "dist/modules/identity/domain/entities/identity-state.js.map",
+        "sha256": "92db3aaec519ee1c5d7f2ec2390f9bcf0d8cce4037684fec6dc8de4a1947c250",
+        "bytes": 174
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/idempotency-conflict.error.js",
+        "sha256": "91297dc172b997861aa98bb44a193c4483303fdc89e2608a4eecf60a0e62c0b7",
+        "bytes": 639
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/idempotency-conflict.error.js.map",
+        "sha256": "90205d03c246163295c94ed06c242e27ac7d392818aa54f5eb1b7d7a6fb1a035",
+        "bytes": 382
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/idempotency-key-expired.error.js",
+        "sha256": "4b007d1a5d27df136f76e78eb1f24596eb50c1854b5b7ab2a9a9c3c551d57ad6",
+        "bytes": 652
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/idempotency-key-expired.error.js.map",
+        "sha256": "12d5cbd39128656632f2543e2709190323d3392288d8ba4b2d8be215b23443d6",
+        "bytes": 388
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/index.js",
+        "sha256": "c28abbb6b1990cb3d6101eb30155847cebdc89fae0d683da6167fbf32d004a8e",
+        "bytes": 1850
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/index.js.map",
+        "sha256": "fead16783c594054a23ec87d6e8d6203b6e7c0784e0142f4b9ba6d3a460be2ec",
+        "bytes": 406
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/invalid-request.error.js",
+        "sha256": "ddea84c48eed864b5f650b81c24381b6b9c2b07f11e15f861db6e885cec2de53",
+        "bytes": 722
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/invalid-request.error.js.map",
+        "sha256": "ae4544eeb9bdf16389a5b737ceb1809e57347bd1131f77a780b6704b12809e2a",
+        "bytes": 452
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/permission-denied.error.js",
+        "sha256": "e4827d93d29ca400125a8115473d0a9b30e121edcbc62eb919f0269280f75093",
+        "bytes": 719
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/permission-denied.error.js.map",
+        "sha256": "14b28ba18f48bcba7b00770ec54ef0e1a2f04643366f19f85cd0b7f8dc1803cb",
+        "bytes": 455
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/rate-limited.error.js",
+        "sha256": "9185ba936825d911ba260feb5563a9fe8dd3f82877e568b830acdd558554366d",
+        "bytes": 694
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/rate-limited.error.js.map",
+        "sha256": "3bf4599c0c8d06e9ea39936a8a35d693ece219b518b02eaa102e24ab1de00987",
+        "bytes": 443
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/revision-conflict.error.js",
+        "sha256": "f641fbdb148a4bdb780471fc931ddb540119b48c2c5a6ec91482b50e72e3f4b1",
+        "bytes": 614
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/revision-conflict.error.js.map",
+        "sha256": "250be51cad72cb1d577187087b7baf9e1d7d8e945c3837e8a4a4627b73b723ea",
+        "bytes": 376
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/unauthenticated.error.js",
+        "sha256": "460f6525a06c3913f5877c7a1ad95ca9fdedaf7e2959dcef56993fc8267bb726",
+        "bytes": 735
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/unauthenticated.error.js.map",
+        "sha256": "d185452207ab05e9909b374dace1835c0b4904fcfbf0191157f1ee0cd9531b66",
+        "bytes": 452
+      },
+      {
+        "path": "dist/modules/identity/domain/identity-policy.js",
+        "sha256": "f252b95b0e092e21473a78ec6cab2853a4b6814968104f70e27fc909edda950a",
+        "bytes": 1541
+      },
+      {
+        "path": "dist/modules/identity/domain/identity-policy.js.map",
+        "sha256": "e68209433146ecc04c63cdeecb285d4a41fd3ca20ee5c6d33bad36fe9e999e61",
+        "bytes": 1370
+      },
+      {
+        "path": "dist/modules/identity/domain/repositories/identity.repository.js",
+        "sha256": "06438038b86682bf0e9df448c48b76c48245d2762c935898729bfc5e45def7b1",
+        "bytes": 124
+      },
+      {
+        "path": "dist/modules/identity/domain/repositories/identity.repository.js.map",
+        "sha256": "6de728a147e12fda7643ee756dcfc919e4302a243d0a753eef56c9b88da306cc",
+        "bytes": 188
+      },
+      {
+        "path": "dist/modules/identity/identity-operator.factory.js",
+        "sha256": "6e6239cd2610cb16ef0825119b1723cc736cc1c48b4c4b6351cab07a00277690",
+        "bytes": 496
+      },
+      {
+        "path": "dist/modules/identity/identity-operator.factory.js.map",
+        "sha256": "4fe9cef59ed751f50cbc47660ba2f2044ded8a60e1c1f5f02695616dbb6c5dcd",
+        "bytes": 295
+      },
+      {
+        "path": "dist/modules/identity/identity-worker.factory.js",
+        "sha256": "ad8e1c3cba9f57ecc8cf8c1c0bce4df88ef80df1e9dd5328329fd06575c45e4f",
+        "bytes": 1685
+      },
+      {
+        "path": "dist/modules/identity/identity-worker.factory.js.map",
+        "sha256": "4000cf5833dc6d6891e162a7f4feaa9f8d603603e051f415fb6804a4cc827fb1",
+        "bytes": 1173
+      },
+      {
+        "path": "dist/modules/identity/identity.module.js",
+        "sha256": "64dbbc6627337b9682b5503c22007f65d8742447d91a210f2432e5d407280e6d",
+        "bytes": 4578
+      },
+      {
+        "path": "dist/modules/identity/identity.module.js.map",
+        "sha256": "a2f39276d1f74b8957440f16ee0b285612fc6810eaa811374d377f126db1c08c",
+        "bytes": 1787
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/http/http-session.js",
+        "sha256": "bce1ae4c374766f03cc3d2436c474c4c7d3ead1bd7546c8148a8efbcc178d335",
+        "bytes": 6120
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/http/http-session.js.map",
+        "sha256": "9d4140010780edaff2c9cd20c8c8f1d82c755095024035b1276843d0d7c60ef8",
+        "bytes": 5900
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/mail/verification-mail.js",
+        "sha256": "12eee31cb19d64219eedcc8bd7edd9dcba2523c21a398deef727de2e961f6bb8",
+        "bytes": 3458
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/mail/verification-mail.js.map",
+        "sha256": "b24e4d426920ebeeac1f3d77e4479b0c8c1f79a8e5268a3c023018f05ed74a79",
+        "bytes": 2467
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.js",
+        "sha256": "23cd55709842d489e8fca84ab6ee7c794ec2d4c57693375d0c9bb372bce335d1",
+        "bytes": 7320
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.js.map",
+        "sha256": "e7ae0fd37af556bc6bf9587145068ea34edb88b46ed908b85e447f1dd94633e3",
+        "bytes": 2020
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.js",
+        "sha256": "10b035345336785b56eb9b6339658b8a2e96a5bcd10caa3e52f781572f9f62a0",
+        "bytes": 2747
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.js.map",
+        "sha256": "dddfcbbe7953aabcfd70dd54a16af28195d3c4835384ab226d5eff8a6937baf5",
+        "bytes": 1105
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.js",
+        "sha256": "6a9b7db7231412ab0b9ad31ed52c3ba9db43f5215b6b85f3dae107e6f1abade0",
+        "bytes": 9192
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.js.map",
+        "sha256": "2f86364d1acbea010f289510f3a88087308aae458a8cb682864f9b3ff304fe56",
+        "bytes": 4946
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/repositories/postgres-operator-admin.js",
+        "sha256": "c23cbc1fd5bee097aea8e11884f315452549795f85fe36e43fb04e12d4fa14c9",
+        "bytes": 556
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/repositories/postgres-operator-admin.js.map",
+        "sha256": "3f81d070db021149819570acaf08f5ba7202a75491611e72d62bc10413c93de8",
+        "bytes": 566
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/security/identity-crypto.js",
+        "sha256": "030aec86797dc0c0a91a6d0744bfab1dd8e0156942b32cabbb7abe0f4743174d",
+        "bytes": 11295
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/security/identity-crypto.js.map",
+        "sha256": "b1ce4369773264be9a069d424b555dcd8e9c0b6c418eaf24352603dd45c3ed38",
+        "bytes": 9407
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/security/identity-runtime.js",
+        "sha256": "2f4db73ca44162dedb99bb2e9c3984bef5c92bb41b02d0f9e1716942dcdbc5c6",
+        "bytes": 862
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/security/identity-runtime.js.map",
+        "sha256": "36aa93d12130c76229ddf5574b0f7bd4eff7259fc131a5c3c55de1b8178b09d7",
+        "bytes": 722
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/dto/identity.dto.js",
+        "sha256": "bc3600608546ffcd0cee600e141873f43d73cdfea3ac020c009efb97e7ac11b6",
+        "bytes": 1855
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/dto/identity.dto.js.map",
+        "sha256": "9509f234af9ce1e39ab2f720c949efae9dc44483e63578e127ced6651e72403a",
+        "bytes": 1955
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/http-session.port.js",
+        "sha256": "c0b9b1c5f588ae4ab83ba3c65248f49b3837c0a4ae882323893068e8e06117fd",
+        "bytes": 200
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/http-session.port.js.map",
+        "sha256": "e1ed03493e2de9831706f03914f5bed88db1b0ba577cd2e29327d97edfca453c",
+        "bytes": 229
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/identity.controller.js",
+        "sha256": "4e8743bf37a050a3cc53f4ff0bf44d2059a15f429e1e8289c5c77603b3e880af",
+        "bytes": 8196
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/identity.controller.js.map",
+        "sha256": "28113fe8d3aedf1ca0980e22f82ba53d0f24c3fab88380f957e2dc7ca5dbdbf8",
+        "bytes": 5692
+      },
+      {
+        "path": "dist/shared/application/errors/unavailable.error.js",
+        "sha256": "09da215626dfab09a6e585fcaa6fc395fb212fd3460f24b7ea91d6b8fe75ef61",
+        "bytes": 422
+      },
+      {
+        "path": "dist/shared/application/errors/unavailable.error.js.map",
+        "sha256": "3f092449b8cf88891174313707b38af1cb05262f31a64d822b87360b5072ccb3",
+        "bytes": 341
+      },
+      {
+        "path": "dist/shared/application/ports/idempotency.js",
+        "sha256": "c8b990a2e3d59998ab1f05d618c69ea10016eb08471a338da1e77d9c5566d7a1",
+        "bytes": 116
+      },
+      {
+        "path": "dist/shared/application/ports/idempotency.js.map",
+        "sha256": "e25bf9eb0d4250d740c15f2801d372d79257e3e377b6ac404cf075f98eaf0177",
+        "bytes": 157
+      },
+      {
+        "path": "dist/shared/application/ports/readiness.js",
+        "sha256": "f3540f88966068cc487f494ee330d152f06b20e6fb9b12f9a7ead6ad7d7acbe1",
+        "bytes": 183
+      },
+      {
+        "path": "dist/shared/application/ports/readiness.js.map",
+        "sha256": "f5f7da832980626c79561fc44d86ac35c1eface1c567e1642da6002905122cc3",
+        "bytes": 200
+      },
+      {
+        "path": "dist/shared/application/ports/security.js",
+        "sha256": "1a9338f233d660312838492d3a92e192e040d17e7133c41432c04525dfdc37df",
+        "bytes": 113
+      },
+      {
+        "path": "dist/shared/application/ports/security.js.map",
+        "sha256": "1c790b9d228add095ba86077b4bb44cca9845058ff27e62dbdc356be2c824bde",
+        "bytes": 151
+      },
+      {
+        "path": "dist/shared/application/unit-of-work/unit-of-work.port.js",
+        "sha256": "06a3ffa02430e4c0d55d777705d653ecfc29ed5ce8dacf819979f2de81d645eb",
+        "bytes": 200
+      },
+      {
+        "path": "dist/shared/application/unit-of-work/unit-of-work.port.js.map",
+        "sha256": "7fe7f0a465a46ab29bdadb02bf95dc63a853be49ac2b84eedf55058c8e578578",
+        "bytes": 223
+      },
+      {
+        "path": "dist/shared/common/filters/domain-exception.filter.js",
+        "sha256": "c9c75c9a16facedf10829a67f381a37896e27c21ea64e6111f51063893f9adfb",
+        "bytes": 3197
+      },
+      {
+        "path": "dist/shared/common/filters/domain-exception.filter.js.map",
+        "sha256": "d187ba8e9be86cbe9caee161870c8a3ac0c00ddace6c59c3b51626f9d590771f",
+        "bytes": 2253
+      },
+      {
+        "path": "dist/shared/common/interceptors/api-response.interceptor.js",
+        "sha256": "c6554c0e76383543ffa146551619ef7ae80661590321c31f5863cf82838c9ec7",
+        "bytes": 1733
+      },
+      {
+        "path": "dist/shared/common/interceptors/api-response.interceptor.js.map",
+        "sha256": "33d9dd321122b89c7328567e4c188ed979f41d37e7d2cd38371f4d5e0cd2fcba",
+        "bytes": 1048
+      },
+      {
+        "path": "dist/shared/domain/exceptions/domain-error.js",
+        "sha256": "237c27d4cb6c7a23951f2aae0de840c4b88a69b2290bc701e3bbb9f373541a14",
+        "bytes": 312
+      },
+      {
+        "path": "dist/shared/domain/exceptions/domain-error.js.map",
+        "sha256": "2214979d4d4a93cd10d57dc5eee7b0a7a00ba3fb3af1a30cfe31dcf005207e5b",
+        "bytes": 317
+      },
+      {
+        "path": "dist/shared/domain/exceptions/error-category.js",
+        "sha256": "baf0741a36c21b24adc4a3f2e6f16e12b53fccdb9bddde664015df9eb6bf8bf7",
+        "bytes": 749
+      },
+      {
+        "path": "dist/shared/domain/exceptions/error-category.js.map",
+        "sha256": "7180618b7a405d6e81725682e319594afca682148edf09c64bb0b10fb6e5d6d6",
+        "bytes": 371
+      },
+      {
+        "path": "dist/workers/operator/operator-admin.main.js",
+        "sha256": "d4d35e838e3c68feb388f45eedb6d2b68c3e879acc0038a2f9be2e81e5384852",
+        "bytes": 1607
+      },
+      {
+        "path": "dist/workers/operator/operator-admin.main.js.map",
+        "sha256": "14b0d90a8db93c8e6676abe173961d3ea14ad48fc6f6d85e0621c3fbbdaffbde",
+        "bytes": 1296
+      },
+      {
+        "path": "dist/workers/outbox/verification.main.js",
+        "sha256": "3e7c070ae828a0b400a3ba432e7bae14b7e7713d206afc99d34c9583cc6ad1d9",
+        "bytes": 3190
+      },
+      {
+        "path": "dist/workers/outbox/verification.main.js.map",
+        "sha256": "4e6d5be1fd51eef0a5e31f1eb989bcc6b3387cc19984df1279730eac608c2b61",
+        "bytes": 3190
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0001_capability_schema.sql",
+      "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+      "builtSha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+      "headUnchanged": true,
+      "matchesTestedBuild": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0002_query_indexes.sql",
+      "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+      "builtSha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+      "headUnchanged": true,
+      "matchesTestedBuild": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0003_runtime_privileges.sql",
+      "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+      "builtSha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+      "headUnchanged": true,
+      "matchesTestedBuild": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0004_durable_state_guards.sql",
+      "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+      "builtSha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+      "headUnchanged": true,
+      "matchesTestedBuild": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0005_frozen_category.sql",
+      "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+      "builtSha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+      "headUnchanged": true,
+      "matchesTestedBuild": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0006_immutable_submission.sql",
+      "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+      "builtSha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+      "headUnchanged": true,
+      "matchesTestedBuild": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0007_identity_runtime.sql",
+      "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+      "builtSha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+      "headUnchanged": true,
+      "matchesTestedBuild": true
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0008_identity_operations.sql",
+      "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+      "builtSha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+      "headUnchanged": true,
+      "matchesTestedBuild": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/green-boundaries.json",
+      "sha256": "5d888ca29f486415515f4cae209c50232e9887d5307cfb9a64e64cc94f29495a",
+      "bytes": 111081
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/green-environment.json",
+      "sha256": "508115fa77413443d2fd4389d4ee5412c6a0d1bfd9355ea7c164bcb758fad16b",
+      "bytes": 36530
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/green-summary.json",
+      "sha256": "bfc9e2ae082b11d5a01767ddf7da058cc40be337517cafe9825b4e6a75998e91",
+      "bytes": 1701
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/harness-diagnostic.json",
+      "sha256": "b36b92f526346cf9717f97bda8c87eb85e3a3ab8d6ec9f23fd9cf21693b9bf23",
+      "bytes": 1543
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-anonymous-verification.json",
+      "sha256": "c6035cf1fbbeb03472fed58214ef0d4c8765c3f0af2f318c87a374e73e6a57bb",
+      "bytes": 299
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-boundaries.json",
+      "sha256": "06ca1857cbf03f3d52fa9847d0ba0dac85facca50028812f31125a8715ce8a67",
+      "bytes": 10923
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-environment.json",
+      "sha256": "a03e7107c5847ab22073cbe3723039d1bd3fce12a658ba7bd9f5f0db25379f11",
+      "bytes": 409
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-profile-reauth.json",
+      "sha256": "2d08765ec62447b9f72e37bc76d68b55d2b3576fabf46fb13c507f1d1eda2ca1",
+      "bytes": 313
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-summary.json",
+      "sha256": "672fb380eef11a62ebb7836600181271d538bb7d89207682c2cce429e0e87e63",
+      "bytes": 1544
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/verification-desktop.png",
+      "sha256": "582a77d2756c78bd0ac939b27fb156ca1384c1b62c7adf253cea35c6af13f6c1",
+      "bytes": 62100
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/verification-mobile.png",
+      "sha256": "6580a216c9bdbe22e67da16648a99aa41977c898a6a691256a7710499cfe0207",
+      "bytes": 46745
+    }
+  ],
+  "checklist": {
+    "productCompleted": 52,
+    "productPending": 164,
+    "frontendCompleted": 7,
+    "frontendPending": 25
+  }
+}

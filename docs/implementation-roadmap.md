@@ -1,10 +1,10 @@
 # Roadmap triển khai có đánh dấu
 
-Cập nhật: 2026-10-06. Đã bàn giao/review **quy chuẩn, bootstrap/domain, contracts, DB-01–11 và lõi Identity/API/email-worker local** theo [ADR-005](adr/005-email-verification-and-signed-tokens.md). **50/216 mục hoàn thành,166 mục chưa hoàn thành.** ID-07/browser HTTPS, ID-11/live SES và DB-12/image compatibility còn PARTIAL; magic link/GitHub LATER. AWS chưa triển khai/đo.
+Cập nhật: 2026-10-07. Đã bàn giao/review **quy chuẩn, bootstrap/domain, contracts, DB-01–11, lõi Identity/API/email-worker và browser HTTPS local** theo [ADR-005](adr/005-email-verification-and-signed-tokens.md). **52/216 mục hoàn thành,164 mục chưa hoàn thành.** ID-07/WEB-02 có [evidence](evidence/identity-https-2026-10-07/README.md) Chromium local; ID-11/live SES và DB-12/image compatibility còn PARTIAL; magic link/GitHub LATER. Public PKI/AWS chưa triển khai/đo.
 
-[Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. Persistence evaluation đã hoàn thành4/4 local theo [ADR-008](adr/008-persistence-evaluation.md), tách khỏi refactor; [raw comparison](../experiments/persistence-comparison/README.md) giữ pg hiện tại, chưa chọn AWS/TCO winner. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–05; RV-06/07 và product acceptance còn pending. Catalog chưa được triển khai trong increment này.
+[Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. Persistence evaluation đã hoàn thành4/4 local theo [ADR-008](adr/008-persistence-evaluation.md), tách khỏi refactor; [raw comparison](../experiments/persistence-comparison/README.md) giữ pg hiện tại, chưa chọn AWS/TCO winner. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–06 local; RV-07 và production acceptance còn pending. Catalog chưa được triển khai trong increment này.
 
-Theo yêu cầu mới, đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. SPA local và kiểm tra build/browser đã có; checklist FE còn 3/32 được tick. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn định hướng static SPA/design/accessibility. WEB-01–10 vẫn mở vì TLS, phát hành asset và nghiệm thu budget chưa đủ. Product 50/216 không đổi.
+Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product52/216 không đồng nghĩa production acceptance.
 
 Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. Git và origin remote hiện đã có, BOOT-09 branch/PR workflow chưa kiểm chứng; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
 
@@ -14,7 +14,7 @@ Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, kh
 | 01: Bootstrap | Runtime API/email-worker local và Git/origin đã có; branch/PR workflow còn pending | Unit/typecheck/build/lint/quality, actual entry-point health/drain |
 | 02: Product/public contracts | Hoàn tất specification + local contract checks | Policy/schema/permissions/workload nhất quán; runtime evidence pending |
 | 03: Database | DB-01–11 hoàn tất nền persistence; DB-12 chưa drill | Business adapters/races và old/new images cần evidence riêng |
-| 04: Identity | Lõi local hoàn tất; ID-07/11 PARTIAL, ID-12/13 LATER | Browser HTTPS/live SES operations trước đóng phase |
+| 04: Identity | Lõi + browser HTTPS local hoàn tất; ID-11 PARTIAL, ID-12/13 LATER | Live SES operations trước đóng phase; AWS TLS vẫn gate riêng |
 | 05–13: Application/operations/AWS | Chưa triển khai các phase sau | Correctness và security trước capacity tuning |
 | 14–19: Dataset/load/failure/FinOps | Chưa đo | Có môi trường kiểm thử và raw evidence |
 | 20: Production acceptance | Chưa đạt | Toàn bộ hard gates và câu hỏi định lượng có evidence |
@@ -99,10 +99,10 @@ Phụ thuộc: 02–03. [Runtime review](phase-04-review.md), [plan](phase-04-pl
 - [x] **ID-01** Register email/password: normalized unique email, pending verification, input limits, strong hash, atomic challenge/intent và generic response chống enumeration. Timing resistance chưa được nghiệm thu từ local diagnostic.
 - [x] **ID-02** Login enabled+verified, bounded hashing/shared atomic failure admission, signed session và safe audit; sequential/concurrent/rate expiry real-PG tests.
 - [x] **ID-03** Hashed refresh, atomic rotate và durable reuse revocation; concurrent refresh/replay tests.
-- [x] **ID-04** Logout/revoke/current permissions/disable/expiry qua hai instances; old-cookie lost-ACK retry HTTP test.
+- [x] **ID-04** Logout/revoke/current permissions/disable/expiry qua hai instances. Browser review reopened fresh-CSRF lost-ACK retry; corrected after RED, both old family nonce and fresh anonymous retry PASS without permitting anonymous logout of a live family.
 - [x] **ID-05** Private-sign/public-verify ES256, strict claims/purpose/TTL, public overlap/removal và real-PG compromised-kid revoke/audit. Actual AWS key propagation/drill còn pending.
 - [x] **ID-06** Principal/permission adapter, tập trung permission matrix/current DB reads và actor ownership; no JWT role authority.
-- [ ] **ID-07 — PARTIAL** Cookie/CSRF/Origin/no-store implementation và server tests đã có; actual browser HTTPS/client single-flight/WEB-02 verification landing còn pending.
+- [x] **ID-07** Same-origin browser HTTPS local: Secure/HttpOnly cookies, Origin/signed CSRF/anonymous verification, no-store, inert/scrubbed landing/final password, shared-cookie two-tab single-flight và lost ACK PASS. [10 Chromium cases](evidence/identity-https-2026-10-07/README.md); scoped leaf trust, không public PKI/AWS TLS acceptance.
 - [x] **ID-08** Audited verified-user admin bootstrap/operator CLI, runtime không tự grant role; dedicated role tests.
 - [x] **ID-09** Unit/real-PG/server HTTP E2E/SMTP/lease/operator cases và benchmark hash/crypto/HTTP/query/pool hai API instances. Browser/AWS acceptance chưa đóng.
 - [x] **ID-10** Single-use30min link/resend/final-password activation/race/expiry/retry/pre-registration/material cleanup; local evidence.
@@ -110,7 +110,7 @@ Phụ thuộc: 02–03. [Runtime review](phase-04-review.md), [plan](phase-04-pl
 - [ ] **ID-12 — LATER** Passwordless email magic link: LOGIN_EMAIL purpose riêng, single-use/login CSRF/browser binding và session policy chung; không dùng VERIFY_EMAIL để login.
 - [ ] **ID-13 — LATER** GitHub OAuth code + state/PKCE, stable provider subject, explicit account linking, email ownership, provider-only schema migration và no privilege escalation.
 
-Gate Phần04 chưa đóng: còn ID-07/11. Local100 unit/tooling +52 integration PASS sau normalization, actual roots smoke/SIGTERM PASS, diagnostic benchmark0 lỗi; tokens không trả JSON/log. Chưa có browser verification page/HTTPS/live SES/AWS key rollout. ID-12/13 LATER. Xem [review](phase-04-review.md); không coi local RPS là sustainable production capacity.
+Gate Phần04 chưa đóng: còn ID-11. Fresh100 backend unit/tooling +53 integration +73 web unit +10 HTTPS browser PASS. Actual roots smoke/SIGTERM/diagnostic là evidence trước đó; không rerun benchmark trong auth increment. Live SES/AWS key rollout/public TLS chưa đo. ID-12/13 LATER. Xem [review](phase-04-review.md); không coi local RPS là sustainable production capacity.
 
 ## 05. Catalog: exam và question bank
 
@@ -186,7 +186,7 @@ Phụ thuộc: public contracts + 04–08.
 - [ ] **WEB-01** Chọn frontend/build strategy, responsive/accessibility budget và S3/CloudFront static asset plan.
 
 WEB-01 PARTIAL: ADR-007/[handoff](web-ui/README.md) đã chốt React/TypeScript/Vite, shells/design tokens, responsive/a11y targets, proposed asset/request budgets và static routing/cache plan. Local `apps/web` build và preview browser checks đã có, xem [fix evidence](web-ui/evidence/fix-2026-10-07/README.md). TLS, chiến lược phát asset trên S3/CloudFront và nghiệm thu budget chưa đủ để tick. FE-01–32 chi tiết hóa WEB-01–10, không phải 32 product items mới.
-- [ ] **WEB-02** Register/email verification/final password/login/logout/refresh: inert verification landing, resend UX và an toàn với cookie/token/CSRF policy đã chọn. Magic link/GitHub UI khi ID-12/13 triển khai sau.
+- [x] **WEB-02** Register/duplicate202, actual local verification mail, inert landing/scrub/reload/final password/replay, resend cooldown, login/logout/refresh/reauth và cookie/CSRF policy đã kiểm chứng trên Chromium HTTPS với API/PG thật. [Evidence](evidence/identity-https-2026-10-07/README.md). Magic link/GitHub sau ID-12/13; SES/AWS/browser matrix vẫn riêng.
 - [ ] **WEB-03** Browse exam/detail và lỗi open/close/attempt limit rõ ràng.
 - [ ] **WEB-04** Start/load questions/answer/mark, section navigation và answer-empty UX.
 - [ ] **WEB-05** Autosave debounce/batching theo query/write budget; hiển thị saving/saved/conflict/failure.

@@ -13,7 +13,8 @@ export interface CoordinationLock {
   exclusive<T>(task: () => Promise<T>): Promise<T>;
 }
 
-export type SessionSignal = { type: "session-epoch"; epoch: number } | { type: "reauth" } | { type: "logout" };
+export type SessionSignal =
+  { type: "session-epoch"; epoch: number } | { type: "reauth" } | { type: "logout" };
 
 export interface SessionBroadcaster {
   post(message: SessionSignal): void;
@@ -26,6 +27,7 @@ export type RecoverResult =
 
 export interface SessionCoordinator {
   recover(): Promise<RecoverResult>;
+  confirmLogin(): void;
   noteExternalEpoch(epoch: number): void;
   currentEpoch(): number;
 }
@@ -38,11 +40,17 @@ export function createSessionCoordinator(deps: {
   let inFlight: Promise<RecoverResult> | null = null;
   let epoch = 0;
   let blocked = false;
+  let generation = 0;
 
   return {
     currentEpoch: () => epoch,
     noteExternalEpoch(next) {
       if (next > epoch) epoch = next;
+    },
+    confirmLogin() {
+      generation += 1;
+      blocked = false;
+      inFlight = null;
     },
     recover() {
       if (!deps.lock.supported) {
@@ -50,17 +58,20 @@ export function createSessionCoordinator(deps: {
       }
       if (blocked) return Promise.resolve({ type: "reauth", reason: "unknown-outcome" });
       if (!inFlight) {
-        inFlight = run().finally(() => {
-          inFlight = null;
+        const startedGeneration = generation;
+        inFlight = run(startedGeneration).finally(() => {
+          if (generation === startedGeneration) inFlight = null;
         });
       }
       return inFlight;
     },
   };
 
-  async function run(): Promise<RecoverResult> {
+  async function run(startedGeneration: number): Promise<RecoverResult> {
     return deps.lock.exclusive(async () => {
+      if (generation !== startedGeneration) return { type: "already-current" };
       const probe = await deps.transport.probe();
+      if (generation !== startedGeneration) return { type: "already-current" };
       if (probe === "authenticated") return { type: "already-current" };
       if (probe === "unknown") {
         blocked = true;
@@ -69,10 +80,12 @@ export function createSessionCoordinator(deps: {
       }
       try {
         const session = await deps.transport.refresh();
+        if (generation !== startedGeneration) return { type: "already-current" };
         epoch += 1;
         deps.broadcast.post({ type: "session-epoch", epoch });
         return { type: "refreshed", session };
       } catch (error) {
+        if (generation !== startedGeneration) return { type: "already-current" };
         if (isApiError(error) && (error.status === 401 || error.status === 403)) {
           deps.broadcast.post({ type: "reauth" });
           return { type: "reauth", reason: "unauthorized" };

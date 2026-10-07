@@ -1,0 +1,309 @@
+.stage {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  min-width: 0;
+  overflow: clip;
+  perspective: 1000px;
+}
+.halo {
+  position: absolute;
+  inset: 12% 0 6%;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--color-public-accent) 16%, transparent),
+    transparent 65%
+  );
+}
+.orbit {
+  position: absolute;
+  left: 0;
+  top: 80px;
+  width: 96%;
+  height: 330px;
+  border: 1px solid color-mix(in srgb, var(--color-public-accent) 24%, transparent);
+  border-radius: 50%;
+  transform: rotate(-29deg);
+}
+.orbit::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--color-public-accent);
+  border-radius: 50%;
+  left: 8%;
+  top: 21%;
+}
+.graphics,
+.fallback {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.graphics canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.stage[data-renderer="webgl"] .fallback {
+  visibility: hidden;
+}
+.sheet {
+  position: absolute;
+  left: 19%;
+  top: 80px;
+  width: 63%;
+  padding: var(--space-5);
+  background: var(--color-public-paper);
+  color: var(--color-public-paper-ink);
+  border-radius: var(--radius-public-panel);
+  transform: rotateY(-18deg) rotateX(14deg) rotateZ(-12deg);
+  box-shadow:
+    -8px 16px 0 var(--color-public-paper-edge),
+    -16px 28px 0 var(--color-public-surface),
+    0 32px 48px rgb(0 0 0 / 30%);
+}
+.paperHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 11px;
+  letter-spacing: 0.7px;
+  color: var(--color-public-paper-muted);
+}
+.paperTitle {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 700;
+  margin: var(--space-4) 0;
+}
+.paperLine {
+  width: 82%;
+  height: 6px;
+  border-radius: var(--radius-control);
+  background: var(--color-public-paper-line);
+  margin-bottom: var(--space-4);
+}
+.option {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-public-paper-line);
+  border-radius: var(--radius-control);
+  font-size: 12px;
+  margin: var(--space-2) 0;
+}
+.option.selected {
+  background: var(--color-public-paper-selected);
+  border-color: var(--color-public-paper-edge);
+}
+.option span:last-child {
+  margin-left: auto;
+}
+.paperFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 12px;
+  color: var(--color-public-paper-muted);
+  margin-top: var(--space-4);
+}
+.pen {
+  position: absolute;
+  width: 16px;
+  height: 220px;
+  background: linear-gradient(
+    90deg,
+    var(--color-public-surface),
+    var(--color-public-paper-edge) 40%,
+    var(--color-public-accent) 70%,
+    var(--color-public-surface)
+  );
+  border-radius: var(--radius-public-detail);
+  right: 13%;
+  top: 176px;
+  transform: rotate(20deg);
+  box-shadow: 8px 12px 16px rgb(0 0 0 / 25%);
+}
+.pen::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 22px solid var(--color-public-paper-edge);
+}
+.tag {
+  position: absolute;
+  z-index: 1;
+  background: var(--color-public-surface);
+  border: 1px solid var(--color-public-border);
+  border-radius: var(--radius-public-detail);
+  box-shadow: 0 12px 24px rgb(0 0 0 / 16%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-public-text);
+  animation: drift 6s ease-in-out infinite;
+  font-size: 12px;
+}
+.tagTop {
+  top: 24px;
+  right: 12px;
+  animation-delay: -2s;
+}
+.tagTop > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-public-accent);
+}
+.tagBottom {
+  bottom: 64px;
+  left: 0;
+  animation-delay: -4s;
+}
+.tagBottom > span {
+  color: var(--color-public-accent);
+  font-size: 24px;
+}
+.tagBottom b {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+.tagBottom div > span {
+  color: var(--color-public-muted);
+}
+.paused .tag {
+  animation-play-state: paused;
+}
+.caption {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  font-size: 12px;
+  color: var(--color-public-muted);
+}
+.motion {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2);
+  font-size: 12px;
+  color: var(--color-public-muted);
+  border: 0;
+  background: transparent;
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@media (max-width: 900px) {
+  .stage {
+    width: min(100%, 520px);
+    height: 460px;
+    justify-self: center;
+  }
+  .sheet {
+    top: 64px;
+  }
+  .orbit {
+    top: 64px;
+    height: 300px;
+  }
+}
+@media (max-width: 600px) {
+  .stage {
+    height: 400px;
+  }
+  .sheet {
+    top: 56px;
+    padding: var(--space-4);
+  }
+  .paperTitle {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .option {
+    font-size: 10px;
+    padding: var(--space-2);
+    gap: var(--space-2);
+    min-height: 36px;
+  }
+  .paperHeader {
+    font-size: 9px;
+  }
+  .paperFooter {
+    font-size: 10px;
+  }
+  .pen {
+    height: 180px;
+    right: 10%;
+    top: 148px;
+  }
+  .tagTop {
+    top: 12px;
+    right: 0;
+  }
+  .tagBottom {
+    bottom: 56px;
+    padding: var(--space-2) var(--space-3);
+  }
+  .tagBottom b {
+    font-size: 12px;
+  }
+  .tag {
+    gap: var(--space-2);
+    font-size: 11px;
+  }
+  .caption {
+    font-size: 11px;
+  }
+  .motion {
+    font-size: 11px;
+  }
+}
+@media (max-width: 360px) {
+  .stage {
+    height: 360px;
+  }
+  .paperTitle {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .paperHeader {
+    font-size: 8px;
+  }
+  .option {
+    font-size: 9px;
+    min-height: 32px;
+    padding: var(--space-1);
+  }
+  .tagBottom {
+    bottom: 56px;
+  }
+  .caption {
+    bottom: 16px;
+    font-size: 10px;
+  }
+  .motion {
+    font-size: 10px;
+  }
+}

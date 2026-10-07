@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { ApiError } from "../../../shared/api/errors";
-import { createSessionCoordinator, type CoordinationLock, type SessionSignal } from "../session-coordinator";
+import {
+  createSessionCoordinator,
+  type CoordinationLock,
+  type SessionSignal,
+} from "../session-coordinator";
 import type { Session } from "../../../shared/api/dto";
 
 const session: Session = {
@@ -72,7 +76,12 @@ describe("session coordinator", () => {
         probe: async () => "anonymous",
         refresh: async () => {
           calls += 1;
-          throw new ApiError({ kind: "network", status: 0, errorCode: "Network", message: "timeout" });
+          throw new ApiError({
+            kind: "network",
+            status: 0,
+            errorCode: "Network",
+            message: "timeout",
+          });
         },
       },
       lock: sharedLock(),
@@ -99,7 +108,68 @@ describe("session coordinator", () => {
       },
       broadcast: { post() {} },
     });
-    expect(await coordinator.recover()).toEqual({ type: "reauth", reason: "unsupported-coordination" });
+    expect(await coordinator.recover()).toEqual({
+      type: "reauth",
+      reason: "unsupported-coordination",
+    });
     expect(calls).toBe(0);
+  });
+
+  it("allows refresh after explicit confirmed login following an unknown outcome", async () => {
+    let calls = 0;
+    const coordinator = createSessionCoordinator({
+      transport: {
+        probe: async () => "anonymous",
+        refresh: async () => {
+          calls += 1;
+          if (calls === 1)
+            throw new ApiError({
+              kind: "network",
+              status: 0,
+              errorCode: "Network",
+              message: "lost ACK",
+            });
+          return session;
+        },
+      },
+      lock: sharedLock(),
+      broadcast: { post() {} },
+    });
+    expect((await coordinator.recover()).type).toBe("reauth");
+    expect((await coordinator.recover()).type).toBe("reauth");
+    expect(calls).toBe(1);
+    coordinator.confirmLogin();
+    expect((await coordinator.recover()).type).toBe("refreshed");
+    expect(calls).toBe(2);
+  });
+
+  it("does not let a late failed recovery block a subsequently confirmed login", async () => {
+    let rejectOld: ((reason: unknown) => void) | undefined;
+    let calls = 0;
+    const coordinator = createSessionCoordinator({
+      transport: {
+        probe: async () => "anonymous",
+        refresh: async () => {
+          calls += 1;
+          if (calls === 1)
+            return new Promise<Session>((_resolve, reject) => {
+              rejectOld = reject;
+            });
+          return session;
+        },
+      },
+      lock: sharedLock(),
+      broadcast: { post() {} },
+    });
+    const old = coordinator.recover();
+    await Promise.resolve();
+    await Promise.resolve();
+    coordinator.confirmLogin();
+    rejectOld?.(
+      new ApiError({ kind: "network", status: 0, errorCode: "Network", message: "late ACK loss" }),
+    );
+    expect((await old).type).toBe("already-current");
+    expect((await coordinator.recover()).type).toBe("refreshed");
+    expect(calls).toBe(2);
   });
 });

@@ -45,7 +45,10 @@ export class HttpSession {
   async csrfResponse(request: FastifyRequest, reply: FastifyReply) {
     return this.writeCsrf(reply, await this.identity.csrfFamily(request.cookies["__Host-refresh"]));
   }
-  async checkUnsafe(request: FastifyRequest, context: "live" | "logout" = "live"): Promise<void> {
+  async checkUnsafe(
+    request: FastifyRequest,
+    context: "live" | "logout" | "anonymous" = "live",
+  ): Promise<void> {
     const reject = () => forbidden();
     if (request.headers.origin !== this.origin) throw reject();
     const token = request.headers["x-csrf-token"],
@@ -70,10 +73,7 @@ export class HttpSession {
       data.expires > Date.now() + 600000
     )
       throw reject();
-    let family = await this.identity.csrfFamily(
-      request.cookies["__Host-refresh"],
-      context === "logout",
-    );
+    let family = await this.identity.csrfFamily(request.cookies["__Host-refresh"]);
     if (!family && request.cookies["__Host-access"]) {
       try {
         family = (await this.identity.authenticate(request.cookies["__Host-access"])).familyId;
@@ -81,7 +81,16 @@ export class HttpSession {
         if (!(e instanceof DomainError)) throw e;
       }
     }
-    if (data.family !== (family ?? "anonymous")) throw reject();
+    if (context === "anonymous" && family) throw reject();
+    if (data.family === (family ?? "anonymous")) return;
+    // A lost logout ACK leaves the revoked cookie in the browser. Fresh anonymous
+    // CSRF is valid without a live family; the original family-bound nonce can also
+    // acknowledge that same logout, but cannot authorize another live mutation.
+    if (context === "logout" && !family && data.family !== "anonymous") {
+      const revokedFamily = await this.identity.csrfFamily(request.cookies["__Host-refresh"], true);
+      if (revokedFamily && data.family === revokedFamily) return;
+    }
+    throw reject();
   }
   async admit(request: FastifyRequest, kind: "read" | "write", actor?: string): Promise<void> {
     // IP is the socket peer unless an explicit trusted proxy is configured at the root.

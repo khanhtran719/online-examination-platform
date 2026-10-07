@@ -45,11 +45,13 @@ Spacing scale:4,8,12,16,24,32,48,64px. Border1px; radius6px controls,8px contain
 
 Motion150–200ms cho hover/dialog; không animate số timer, không pulse cả phòng thi, không confetti khi nộp/đạt điểm. Tôn trọng reduced-motion; skeleton không gây flash/pulsing gắt. Không toast cho mỗi autosave; một trạng thái lưu inline là đủ.
 
+**Public visual increment được yêu cầu 2026-10-07:** homepage dùng “Vào nhịp thi / Cổng ánh sáng” đã xem trong demo. Bổ sung semantic tokens `--color-public-*` cho navy/mint, hero heading 40–64px và radius public 12/20px. Các giá trị này chỉ áp dụng trang giới thiệu và public experience; các form/Assessment/Admin giữ type, contrast và semantic status hiện có. Scene phiếu thi 3D được lazy-load cùng origin, có fallback CSS, nút dừng, reduced-motion, pause hidden/offscreen và cleanup khi rời trang. Không đưa scene hoặc ambient motion vào bài thi thật. Xem [kế hoạch triển khai](vao-nhip-thi-implementation-2026-10-07.md).
+
 ## 3. Layout và navigation
 
 ### 3.1 Public shell
 
-Header64px: logo trái, “Giới thiệu”, “Cách thi”, phải “Đăng nhập” và “Tạo tài khoản”. Main không có fake exam feed công khai: API browse yêu cầu đăng nhập. Home có lời giới thiệu, minh họa workspace, các category, ba bước tạo tài khoản–chọn đề–làm bài và CTA. Không dùng số người dùng, rating, logo khách hàng hoặc testimonial bịa. Footer gồm bản quyền tên tạm và links trợ giúp nội bộ có nội dung thật; legal routes chỉ thêm nếu có policy đã được duyệt.
+Header tối thiểu80px desktop,72px mobile: logo trái, “Trải nghiệm”, “Cách bắt đầu”, “Trợ giúp”, “Đăng nhập” và “Tạo tài khoản”; khi đã đăng nhập thay hai link cuối bằng “Bảng làm việc” và “Đề thi”. Mobile có nút Menu với trạng thái mở/đóng, tự đóng sau khi chọn route. Main không có fake exam feed công khai: API browse yêu cầu đăng nhập. Home có lời giới thiệu, scene phiếu thi, các category, ba bước tạo tài khoản–xác nhận email–chọn đề và làm bài, cùng CTA ba câu mẫu. Không dùng số người dùng, rating, logo khách hàng hoặc testimonial bịa. Footer có tên tạm và links trợ giúp/trải nghiệm nội bộ; legal routes chỉ thêm nếu có policy đã được duyệt.
 
 ### 3.2 Candidate shell
 
@@ -85,36 +87,37 @@ Sidebar240px desktop, topbar64px, main padding24px. Nhóm “Nội dung”: Đ�
 
 Mỗi route phải có page title, loading/empty/error/success và navigation back hợp lý. `:id` là route parameter, không được dùng để suy ra ownership.
 
-| ID    | Browser route                                               | Màn hình / shell                                       |
-| ----- | ----------------------------------------------------------- | ------------------------------------------------------ |
-| PU-01 | `/`                                                         | Giới thiệu / public                                    |
-| AU-01 | `/login`                                                    | Đăng nhập / public                                     |
-| AU-02 | `/register`                                                 | Đăng ký / public                                       |
-| AU-03 | `/check-email`                                              | Hướng dẫn kiểm tra email / public                      |
-| AU-04 | `/verify-email`                                             | Xác thực link + final password / isolated public       |
-| CA-01 | `/dashboard`                                                | Candidate tổng quan                                    |
-| CA-02 | `/exams`                                                    | Danh sách đề                                           |
-| CA-03 | `/exams/:examId`                                            | Chi tiết + start confirmation                          |
-| CA-04 | `/attempts/:attemptId`                                      | Phòng thi / examination                                |
-| CA-05 | `/attempts/:attemptId/status`                               | Đã nhận bài/đang xử lý/thất bại                        |
-| CA-06 | `/attempts/:attemptId/result`                               | Kết quả                                                |
-| CA-07 | `/attempts/:attemptId/review`                               | Xem đáp án/lời giải được phép                          |
-| CA-08 | `/history`                                                  | Lịch sử                                                |
-| CA-09 | `/exams/:examId/versions/:versionId/leaderboard`            | Xếp hạng theo version                                  |
-| CA-10 | `/profile`                                                  | Hồ sơ/leaderboard opt-in                               |
-| AD-01 | `/admin`                                                    | Admin overview từ Metrics, không một API dashboard mới |
-| AD-02 | `/admin/exams`                                              | Quản lý đề                                             |
-| AD-03 | `/admin/exams/new`, `/admin/exams/:examId/edit`             | Form đề/sections/membership/publish                    |
-| AD-04 | `/admin/questions`                                          | Question bank                                          |
-| AD-05 | `/admin/questions/new`, `/admin/questions/:questionId/edit` | Question editor                                        |
-| AD-06 | `/admin/imports/new`, `/admin/imports/:importId`            | JSON import/dry-run/report                             |
-| AD-07 | `/admin/exams/:examId/monitor`                              | Active candidates                                      |
-| AD-08 | `/admin/exams/:examId/submissions`                          | Danh sách bài nộp                                      |
-| AD-09 | `/admin/attempts/:attemptId`                                | Result/admin review/replay                             |
-| AD-10 | `/admin/exams/:examId/versions/:versionId/statistics`       | Question statistics                                    |
-| AD-11 | `/admin/metrics`                                            | System/business metrics                                |
-| AD-12 | `/admin/audit`                                              | Audit list/detail drawer                               |
-| SY-01 | no fixed route                                              | 403/404/unavailable/session-expired components         |
+| ID    | Browser route                                               | Màn hình / shell                                           |
+| ----- | ----------------------------------------------------------- | ---------------------------------------------------------- |
+| PU-01 | `/`                                                         | Giới thiệu / public                                        |
+| PU-02 | `/experience`                                               | Ba câu minh họa công khai / public, chỉ state trong bộ nhớ |
+| AU-01 | `/login`                                                    | Đăng nhập / public                                         |
+| AU-02 | `/register`                                                 | Đăng ký / public                                           |
+| AU-03 | `/check-email`                                              | Hướng dẫn kiểm tra email / public                          |
+| AU-04 | `/verify-email`                                             | Xác thực link + final password / isolated public           |
+| CA-01 | `/dashboard`                                                | Candidate tổng quan                                        |
+| CA-02 | `/exams`                                                    | Danh sách đề                                               |
+| CA-03 | `/exams/:examId`                                            | Chi tiết + start confirmation                              |
+| CA-04 | `/attempts/:attemptId`                                      | Phòng thi / examination                                    |
+| CA-05 | `/attempts/:attemptId/status`                               | Đã nhận bài/đang xử lý/thất bại                            |
+| CA-06 | `/attempts/:attemptId/result`                               | Kết quả                                                    |
+| CA-07 | `/attempts/:attemptId/review`                               | Xem đáp án/lời giải được phép                              |
+| CA-08 | `/history`                                                  | Lịch sử                                                    |
+| CA-09 | `/exams/:examId/versions/:versionId/leaderboard`            | Xếp hạng theo version                                      |
+| CA-10 | `/profile`                                                  | Hồ sơ/leaderboard opt-in                                   |
+| AD-01 | `/admin`                                                    | Admin overview từ Metrics, không một API dashboard mới     |
+| AD-02 | `/admin/exams`                                              | Quản lý đề                                                 |
+| AD-03 | `/admin/exams/new`, `/admin/exams/:examId/edit`             | Form đề/sections/membership/publish                        |
+| AD-04 | `/admin/questions`                                          | Question bank                                              |
+| AD-05 | `/admin/questions/new`, `/admin/questions/:questionId/edit` | Question editor                                            |
+| AD-06 | `/admin/imports/new`, `/admin/imports/:importId`            | JSON import/dry-run/report                                 |
+| AD-07 | `/admin/exams/:examId/monitor`                              | Active candidates                                          |
+| AD-08 | `/admin/exams/:examId/submissions`                          | Danh sách bài nộp                                          |
+| AD-09 | `/admin/attempts/:attemptId`                                | Result/admin review/replay                                 |
+| AD-10 | `/admin/exams/:examId/versions/:versionId/statistics`       | Question statistics                                        |
+| AD-11 | `/admin/metrics`                                            | System/business metrics                                    |
+| AD-12 | `/admin/audit`                                              | Audit list/detail drawer                                   |
+| SY-01 | no fixed route                                              | 403/404/unavailable/session-expired components             |
 
 Không phải thêm mọi folder/page trong một lần. Tuân thứ tự task: foundations→Identity→Catalog→exam engine→results→Admin→QA.
 
@@ -122,7 +125,11 @@ Không phải thêm mọi folder/page trong một lần. Tuân thứ tự task: 
 
 ### PU-01 Home
 
-Headline: “Làm bài thi trực tuyến, theo dõi kết quả rõ ràng.” Subtext nói đúng ba question types v1 và categories. CTA chính “Tạo tài khoản”, phụ “Đăng nhập”. Preview phòng thi là synthetic illustration bằng HTML/SVG, label “Minh họa giao diện”; không countdown chạy như bài thật. Category chips TOEIC/IELTS/IT Certification/Đại học/Tuyển dụng/Nội bộ. Ghi các bài trắc nghiệm chưa tương đương quy đổi điểm kỳ thi chính thức. Logged-in landing có CTA “Đi tới đề thi”.
+Headline: “Vào nhịp thi. Tập trung vào từng câu trả lời.” Subtext giải thích tiến độ, chuyển câu và đánh dấu. CTA chính “Trải nghiệm 3 câu mẫu” tới `/experience`; có đường tạo tài khoản/đăng nhập hoặc tới đề thi khi đã đăng nhập. Hero dùng phiếu thi/bút/đồng hồ 3D với nhãn “Minh họa giao diện”; chữ và CTA hữu dụng ngay cả khi graphics chưa tải. Category chips TOEIC/IELTS/IT Certification/Đại học/Tuyển dụng/Nội bộ dẫn tới browse có auth. Ghi các bài trắc nghiệm chưa tương đương quy đổi điểm kỳ thi chính thức. Nội dung bước bắt đầu gồm tạo tài khoản, xác nhận email, chọn đề và làm bài; FAQ dùng hợp đồng hành vi hiện tại.
+
+### PU-02 Public experience
+
+Ba câu tổng hợp tự tạo, độc lập ngân hàng đề và adapter demo nghiệp vụ, công khai trong cả build live/demo. Có một câu một đáp án, một câu nhiều đáp án, một câu đúng/sai. Chuyển câu, đánh dấu, xóa lựa chọn và quay lại giữ state trong bộ nhớ route. Refresh/rời route bắt đầu lại; không lưu storage, không gọi API hoặc tạo attempt. Chấm exact-match tại client chỉ cho nội dung tổng hợp này, luôn có nhãn “Kết quả mẫu”. Đây là ngoại lệ minh họa, không áp dụng scoring của bài thi thật. Cho xem lại các lựa chọn trước kết quả, thử lại, về giới thiệu và tạo tài khoản qua form thật `/register`. Không báo “Đã lưu” theo nghĩa durable ACK, không countdown deadline, không dùng auth/role switch. Mọi câu/đáp án thuộc bộ mẫu này được phép công khai; không chia sẻ renderer hoặc DTO chứa keys vào phòng thi Candidate.
 
 ### AU-01 Login
 

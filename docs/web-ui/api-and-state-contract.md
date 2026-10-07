@@ -10,6 +10,8 @@ Server state: profile, immutable exam/question pages, authoritative answer versi
 
 Prototype có `DemoApi`; live có `HttpApi`. Chọn một adapter tại bootstrap bằng config rõ ràng. Không catch network error rồi return fixture. Demo role/scenario switches chỉ trong demo build với banner “Dữ liệu mẫu”. Live build không ship mock worker/fixture dataset/scenario permission override; artifact scan và network test xác nhận. Mock không là authorization thực.
 
+Public experience `/experience` được yêu cầu 2026-10-07 là feature minh họa riêng trong cả hai build: ba câu tổng hợp công khai, state trong bộ nhớ và kết quả có nhãn mẫu. Nội dung này không phải fixture dataset của `DemoApi`, không gọi API, không chứa bank/attempt keys và không thay dữ liệu khi live lỗi. Chấm tại client chỉ áp dụng bộ ba câu tổng hợp; kết quả Assessment chính thức vẫn do backend. Bootstrap Identity có thể gọi CSRF/profile theo chính sách phiên hiện tại; thao tác trong mẫu không thêm request nghiệp vụ. Xem PU-02 trong [design spec](design-spec.md).
+
 ## 2. API-to-screen mapping
 
 Business operations hiện44, cộng hai health là46 specified operations. Chỉ chín Identity operations ở nhóm đầu đã chạy local. “Specified” dưới đây nghĩa API có schema, không nghĩa endpoint hoạt động.
