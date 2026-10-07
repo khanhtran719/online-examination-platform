@@ -1,0 +1,97 @@
+{
+  "scope": "local disposable PostgreSQL diagnostic",
+  "notCapacityEvidence": true,
+  "iterations": 25,
+  "pageSize": 20,
+  "poolMax": 10,
+  "statementTimeoutMs": 2000,
+  "lockTimeoutMs": 500,
+  "node": "v24.17.0",
+  "browseMs": {
+    "n": 25,
+    "p50": 1.3772079999998823,
+    "p95": 1.8535000000010768,
+    "p99": 1.8733329999995476
+  },
+  "detailMs": {
+    "n": 25,
+    "p50": 0.9877500000002328,
+    "p95": 1.2985410000001139,
+    "p99": 1.4304159999992407
+  },
+  "detailPayloadBytes": 583,
+  "queryCount": 51,
+  "errorCount": 0,
+  "transactionMs": {
+    "n": 0,
+    "p50": 0,
+    "p95": 0,
+    "p99": 0
+  },
+  "plans": {
+    "browse": {
+      "nodeType": "Limit",
+      "relation": null,
+      "actualRows": 7,
+      "actualTotalTime": 0.024,
+      "sharedHitBlocks": 16,
+      "plans": [
+        {
+          "nodeType": "Sort",
+          "relation": null,
+          "actualRows": 7,
+          "actualTotalTime": 0.023,
+          "sharedHitBlocks": 16,
+          "plans": [
+            {
+              "nodeType": "Nested Loop",
+              "relation": null,
+              "actualRows": 7,
+              "actualTotalTime": 0.02,
+              "sharedHitBlocks": 16,
+              "plans": [
+                {
+                  "nodeType": "Index Scan",
+                  "relation": "exams",
+                  "actualRows": 7,
+                  "actualTotalTime": 0.006,
+                  "sharedHitBlocks": 2
+                },
+                {
+                  "nodeType": "Index Scan",
+                  "relation": "published_versions",
+                  "actualRows": 1,
+                  "actualTotalTime": 0.001,
+                  "sharedHitBlocks": 14
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "detail": {
+      "nodeType": "Nested Loop",
+      "relation": null,
+      "actualRows": 1,
+      "actualTotalTime": 0.018,
+      "sharedHitBlocks": 4,
+      "plans": [
+        {
+          "nodeType": "Index Scan",
+          "relation": "exams",
+          "actualRows": 1,
+          "actualTotalTime": 0.01,
+          "sharedHitBlocks": 2
+        },
+        {
+          "nodeType": "Index Only Scan",
+          "relation": "published_versions",
+          "actualRows": 1,
+          "actualTotalTime": 0.007,
+          "sharedHitBlocks": 2
+        }
+      ]
+    }
+  }
+}

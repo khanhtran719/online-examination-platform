@@ -9,6 +9,8 @@ export type DatabaseOperation =
   | "diagnostic"
   | "identity.read"
   | "identity.write"
+  | "catalog.read"
+  | "catalog.write"
   | "security.rate"
   | "audit.write"
   | "idempotency.read"

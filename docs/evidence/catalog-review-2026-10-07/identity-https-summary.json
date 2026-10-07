@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "tests": [
+    {
+      "name": "H01 TLS validation, security headers and API 404 outside SPA",
+      "status": "passed",
+      "durationMs": 376
+    },
+    {
+      "name": "H02 register, coalesced resend, inert verification, final password and replay",
+      "status": "passed",
+      "durationMs": 1850
+    },
+    {
+      "name": "H03 missing, malformed and expired verification links never activate",
+      "status": "passed",
+      "durationMs": 434
+    },
+    {
+      "name": "H04 exact Origin and signed cookie/header CSRF remain mandatory",
+      "status": "passed",
+      "durationMs": 669
+    },
+    {
+      "name": "H05 two shared-cookie tabs refresh once, preserve conflicts, survive API restart and logout",
+      "status": "passed",
+      "durationMs": 5089
+    },
+    {
+      "name": "H06 lost refresh ACK does not replay, explicit login restores future refresh",
+      "status": "passed",
+      "durationMs": 1031
+    },
+    {
+      "name": "H07 lost logout ACK accepts a fresh CSRF token with the retained revoked cookie",
+      "status": "passed",
+      "durationMs": 715
+    },
+    {
+      "name": "H08 committed profile lost ACK retries its receipt without a second write",
+      "status": "passed",
+      "durationMs": 827
+    },
+    {
+      "name": "H09 database disable takes effect in the browser on the next request",
+      "status": "passed",
+      "durationMs": 880
+    },
+    {
+      "name": "H10 response-body stall times out and preserves the committed profile receipt",
+      "status": "passed",
+      "durationMs": 11118
+    }
+  ],
+  "environment": {
+    "node": "v24.17.0",
+    "browser": "153.0.8010.12",
+    "arch": "arm64",
+    "platform": "darwin",
+    "publicPki": false,
+    "trust": "ephemeral leaf SPKI scoped to Chromium; Node CA/SAN validation",
+    "ignoreHTTPSErrors": false,
+    "backend": "real AppModule",
+    "frontend": "live static build",
+    "mail": "actual worker SMTP to Mailpit"
+  },
+  "buildRecordedAt": "2026-10-07T08:13:49.737Z",
+  "migrationCountVerifiedByReview": 9,
+  "originalEnvironmentMigrationLabelIsStale": true
+}

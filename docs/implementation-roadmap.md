@@ -1,10 +1,10 @@
 # Roadmap triển khai có đánh dấu
 
-Cập nhật: 2026-10-07. Đã bàn giao/review **quy chuẩn, bootstrap/domain, contracts, DB-01–11, lõi Identity/API/email-worker và browser HTTPS local** theo [ADR-005](adr/005-email-verification-and-signed-tokens.md). **52/216 mục hoàn thành,164 mục chưa hoàn thành.** ID-07/WEB-02 có [evidence](evidence/identity-https-2026-10-07/README.md) Chromium local; ID-11/live SES và DB-12/image compatibility còn PARTIAL; magic link/GitHub LATER. Public PKI/AWS chưa triển khai/đo.
+Cập nhật: 2026-10-07. Đã bàn giao/review **quy chuẩn, bootstrap/domain, contracts, DB-01–11, lõi Identity/API/email-worker, browser HTTPS local và CAT-01–09 local sau sửa GR-01–06** theo [ADR-005](adr/005-email-verification-and-signed-tokens.md). **61/216 mục hoàn thành,155 mục chưa hoàn thành.** ID-07/WEB-02 có [evidence](evidence/identity-https-2026-10-07/README.md) Chromium local; ID-11/live SES, DB-12/image compatibility và CAT-10 start-race còn PARTIAL; magic link/GitHub LATER. Public PKI/AWS chưa triển khai/đo. Phase04 không đóng.
 
-[Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. Persistence evaluation đã hoàn thành4/4 local theo [ADR-008](adr/008-persistence-evaluation.md), tách khỏi refactor; [raw comparison](../experiments/persistence-comparison/README.md) giữ pg hiện tại, chưa chọn AWS/TCO winner. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–06 local; RV-07 và production acceptance còn pending. Catalog chưa được triển khai trong increment này.
+[Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. Persistence evaluation đã hoàn thành4/4 local theo [ADR-008](adr/008-persistence-evaluation.md), tách khỏi refactor; [raw comparison](../experiments/persistence-comparison/README.md) giữ pg hiện tại, chưa chọn AWS/TCO winner. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–06 local; RV-07 và production acceptance còn pending. [Review Catalog độc lập](catalog-review-2026-10-07.md) đã mở lại sáu items; [fix closure](catalog-fixes-2026-10-07.md) nghiệm thu lại BOOT-01 và CAT-01/03/04/06/08. [Diagnostic mới](evidence/catalog-fixes-2026-10-07/diagnostic/README.md) ghi exact SQL/publish/provenance, giữ nguyên evidence cũ. CAT-10 còn PARTIAL vì actual Assessment start race. Increment này không đóng Phase04.
 
-Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product52/216 không đồng nghĩa production acceptance.
+Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product61/216 không đồng nghĩa production acceptance.
 
 Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. Git và origin remote hiện đã có, BOOT-09 branch/PR workflow chưa kiểm chứng; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
 
@@ -15,7 +15,8 @@ Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, kh
 | 02: Product/public contracts | Hoàn tất specification + local contract checks | Policy/schema/permissions/workload nhất quán; runtime evidence pending |
 | 03: Database | DB-01–11 hoàn tất nền persistence; DB-12 chưa drill | Business adapters/races và old/new images cần evidence riêng |
 | 04: Identity | Lõi + browser HTTPS local hoàn tất; ID-11 PARTIAL, ID-12/13 LATER | Live SES operations trước đóng phase; AWS TLS vẫn gate riêng |
-| 05–13: Application/operations/AWS | Chưa triển khai các phase sau | Correctness và security trước capacity tuning |
+| 05: Catalog | CAT-01–09 local complete sau fix/review; CAT-10 PARTIAL | Actual Assessment start race để đóng CAT-10; ID-11 vẫn chặn Phase04; AWS/capacity chưa đo |
+| 06–13: Assessment/operations/AWS | Chưa triển khai các phase sau Catalog | Correctness và security trước capacity tuning |
 | 14–19: Dataset/load/failure/FinOps | Chưa đo | Có môi trường kiểm thử và raw evidence |
 | 20: Production acceptance | Chưa đạt | Toàn bộ hard gates và câu hỏi định lượng có evidence |
 
@@ -40,7 +41,7 @@ Hoàn tất khi: tiêu chuẩn không tự mâu thuẫn, quyết định có ADR
 
 Mục đích: bootstrap/dependencies/domain và composition roots; Git/remote vẫn chờ cấu hình.
 
-- [x] **BOOT-01** Tạo package metadata, TypeScript strict config, Jest không phụ thuộc Watchman, ESLint/Prettier và lockfile.
+- [x] **BOOT-01** Tạo package metadata, TypeScript strict config, Jest không phụ thuộc Watchman, ESLint/Prettier và lockfile. GR-05 fixed: root `npm test` chạy đúng89 API/37 tooling/73 Web PASS; [evidence mới](evidence/catalog-fixes-2026-10-07/README.md).
 - [x] **BOOT-02** Cài dependency phục vụ TypeScript/unit/lint. Loại dependency runtime chưa sử dụng khỏi bootstrap; sẽ thêm theo phase có nhu cầu.
 - [x] **BOOT-03** Tạo [compose.yaml](../compose.yaml), PostgreSQL local và ElasticMQ/SQS local chỉ bind localhost.
 - [x] **BOOT-04** Tạo [.env.example](../.env.example), ignore files; không đưa production secret vào repo.
@@ -48,7 +49,7 @@ Mục đích: bootstrap/dependencies/domain và composition roots; Git/remote v�
 - [x] **BOOT-06** Hoàn tất pure [Attempt](../apps/api/src/modules/assessment/domain/attempt.ts), [scoring](../apps/api/src/modules/assessment/domain/scoring.ts) và unit tests; chạy GREEN.
 - [x] **BOOT-07** Chạy typecheck/build/lint/quality; ghi kết quả vào [validation log](validation.md).
 - [x] **BOOT-08** Kiểm tra health PostgreSQL và queue local; đây chỉ là dependency check, chưa phải integration test hệ thống.
-- [ ] **BOOT-09** PARTIAL — Git đã có, baseline commit `cac9416`, remote name `origin` hiện diện; delivery branch/PR workflow và remote connectivity chưa kiểm chứng trong scope docs. Không tạo PR chỉ để đóng checklist.
+- [ ] **BOOT-09** PARTIAL — Git đã có, baseline commit `cac9416`, remote name `origin` hiện diện; branch codex/catalog-review-fixes đã được tạo, nhưng PR workflow và remote connectivity chưa kiểm chứng. Không tạo PR chỉ để đóng checklist.
 - [x] **BOOT-10** Nest composition root/API/email-worker entry points, config fail-fast, health/correlation/error mapper và graceful drain; actual local smoke PASS.
 
 BOOT-06–08 có [bootstrap evidence lịch sử](completed-checklist-review.md). BOOT-10 có [runtime review](phase-04-review.md): actual API/worker live/ready/SIGTERM PASS. Hiện100 unit/tooling +52 integration PASS sau normalization, runtime audit0,20 moderate dev findings. BOOT-09 PARTIAL; không suy ra Docker/AWS readiness từ local roots.
@@ -114,20 +115,20 @@ Gate Phần04 chưa đóng: còn ID-11. Fresh100 backend unit/tooling +53 integr
 
 ## 05. Catalog: exam và question bank
 
-Phụ thuộc: 02–04.
+Phụ thuộc: 02–04. Ngoại lệ local 2026-10-07: Catalog không gửi mail và không chờ ID-11. Phase04 vẫn mở.
 
-- [ ] **CAT-01** CRUD exam draft: title/category/duration/open-close/attempt limit/explanation policy.
-- [ ] **CAT-02** CRUD section và ordering, section points/rules được specification cho phép.
-- [ ] **CAT-03** Question bank CRUD cho Single Choice/Multiple Choice/True-False; option/correct-key validation.
-- [ ] **CAT-04** Gán bank questions vào exam, ordering/points và referential integrity.
-- [ ] **CAT-05** Import questions theo schema có giới hạn kích thước, validation/report lỗi và idempotency.
-- [ ] **CAT-06** Publish atomic: validate đủ nội dung, tạo immutable version/snapshots, lưu audit cùng transaction.
-- [ ] **CAT-07** Unpublish/republish/version edit policy; không sửa nội dung đã dùng bởi attempt.
-- [ ] **CAT-08** Browse/detail/question projections có pagination/column selection, không N+1 và không lộ key.
-- [ ] **CAT-09** Public catalog capability cho Assessment: published policy/version, không export private repository.
-- [ ] **CAT-10** Kiểm thử publish/update/start race, invalid bank choices, explanation leak và quyền admin/import.
+- [x] **CAT-01** CRUD exam draft: title/category/duration/open-close/attempt limit/explanation policy. GR-02/04 fixed: full-size HTTP POST/PUT và strict calendar/Unicode regressions PASS.
+- [x] **CAT-02** CRUD section và ordering, section points/rules được specification cho phép.
+- [x] **CAT-03** Question bank CRUD cho Single Choice/Multiple Choice/True-False; option/correct-key validation. GR-02 fixed: bounded512KiB POST/PUT, maximum UTF-8/escaped BMP/astral Unicode HTTP regressions PASS.
+- [x] **CAT-04** Gán bank questions vào exam, ordering/points và referential integrity. GR-02 fixed:500 actual bank IDs/20 full sections HTTP POST/PUT và ordering regressions PASS.
+- [x] **CAT-05** Import questions theo schema có giới hạn kích thước, validation/report lỗi và idempotency.
+- [x] **CAT-06** Publish atomic: validate đủ nội dung, tạo immutable version/snapshots, lưu audit cùng transaction. GR-01 fixed: post-lock DB time;6 real-PG publish/republish lock-close, timeout/rollback/replay cases PASS.
+- [x] **CAT-07** Unpublish/republish/version edit policy; không sửa nội dung đã dùng bởi attempt.
+- [x] **CAT-08** Browse/detail/question projections có pagination/column selection, không N+1 và không lộ key. GR-03 fixed: exact PublicExam, cursor field giữ nội bộ; actual HTTP/OpenAPI schema và exact-query diagnostic PASS.
+- [x] **CAT-09** Public catalog capability cho Assessment: published policy/version, không export private repository.
+- [ ] **CAT-10 — PARTIAL** Kiểm thử publish/update/start race, invalid bank choices, explanation leak và quyền admin/import. Publish/update, invalid key, leak/revoke, GR-01–04 regressions và GR-06 exact SQL/publish/provenance đã PASS. Start race còn thiếu vì Assessment use case chưa tồn tại; không tạo stub để đóng gate.
 
-Gate: nội dung frozen và read projections đáp ứng contracts; hot-path query budget được ghi nhận.
+Fix gate GR-01–06 CLOSED local theo [report mới](catalog-fixes-2026-10-07.md):199 root unit/tooling/Web +83 integration +10 HTTPS PASS, giữ Architecture Contract. [Evidence cũ](evidence/catalog-2026-10-07/README.md) là lịch sử; [diagnostic mới](evidence/catalog-fixes-2026-10-07/diagnostic/README.md) dùng exact adapter SQL. CAT-10/actual start race chưa đóng; capacity/SLO/AWS chưa đo.
 
 ## 06. Assessment: start, answer, submit, resume
 

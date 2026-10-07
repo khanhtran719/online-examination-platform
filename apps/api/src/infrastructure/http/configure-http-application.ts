@@ -27,6 +27,14 @@ export async function createHttpApplication(
     requestIdHeader: false,
     genReqId: () => randomUUID(),
   });
+  adapter.getInstance().addHook("onRoute", (route) => {
+    // Controllers own payload contracts; the reusable adapter only applies bounded metadata.
+    const limit = (route.config as { requestBodyLimit?: unknown } | undefined)?.requestBodyLimit;
+    if (limit === undefined) return;
+    if (typeof limit !== "number" || !Number.isSafeInteger(limit) || limit < 1 || limit > 1_048_576)
+      throw new Error("Invalid HTTP route body limit");
+    route.bodyLimit = limit;
+  });
   const app = await NestFactory.create<NestFastifyApplication>(root, adapter, { logger: false });
   await app.register(cookie);
   const shutdown = app.get(ShutdownGate);

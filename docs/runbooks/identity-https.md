@@ -25,7 +25,7 @@ Runner build API và Web live, bật dedicated Compose, chạy Playwright rồi 
 | Verification worker | public Identity factory, restricted mail role; runOnce gửi SMTP thật |
 | Secret/certificate files | task-owned temporary directory0700, private files0600; xóa khi teardown |
 
-API dùng examination_runtime; mail dùng examination_mail_worker và không nhận JWT signing/public/CSRF files. DDL dùng examination_owner. Bootstrap chạy8 migration từ build bằng migration runner thật. Fixture administrator chỉ expire/revoke dữ liệu disposable để kiểm tra DB authority; không có test endpoint, runtime bypass hoặc chỉnh cookie flags.
+API dùng examination_runtime; mail dùng examination_mail_worker và không nhận JWT signing/public/CSRF files. DDL dùng examination_owner. Bootstrap chạy toàn bộ migration bundle từ build bằng migration runner thật; hiện có9 files. Environment ghi migrationCount từ built provenance, không hard-code số lượng. Fixture administrator chỉ expire/revoke dữ liệu disposable để kiểm tra DB authority; không có test endpoint, runtime bypass hoặc chỉnh cookie flags.
 
 ## TLS và giới hạn trust
 

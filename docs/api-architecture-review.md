@@ -109,3 +109,25 @@ Decision: giữ pg cho Identity hiện tại theo evidence/control/TCO reasoning
 ## 9. Browser HTTPS closure — 2026-10-07
 
 RV-06 closed locally after [RED/GREEN evidence](evidence/identity-https-2026-10-07/README.md). Fixed fresh-CSRF logout retry, anonymous verification boundary, response-body timeout/classification, confirmed-login recovery reset and profile reauth action. Domain/Application, repositories/UoW, JWT/JSON/event/schema and8 migration bytes remain unchanged. Fresh100 backend unit/tooling +53 integration +73 web unit +10 browser cases PASS. Browser trust is an ephemeral SPKI exception with Node CA/SAN probes; no public PKI or AWS acceptance. RV-07, live SES and other business/cost/load gates remain pending. Section8 is the earlier persistence experiment, whose source/evidence was not rerun or rewritten.
+
+## 10. Catalog implementation 2026-10-07 — acceptance reopened
+
+Catalog lives in `apps/api/src/modules/catalog` with domain, application, infrastructure and presentation. `CatalogModule` wires pg adapters to application ports. Domain and application do not import Nest, pg or an SDK. Identity is used through `identity/application/facades/identity.facade`: authenticate, requirePermission, and `revalidate` inside the caller transaction. Presentation does not import Identity infrastructure. Write repository port stays in domain. Projection and cursor ports stay in application.
+
+Routes follow the existing OpenAPI catalog operations. Sections and membership stay inside `ExamWriteRequest`. There is no separate section route and no attempt route. Permissions are `catalog.read`, `catalog.manage`, `catalog.keys.read` and `catalog.import`. Unsafe writes keep Origin, CSRF, rate admission and the server request id. The actor comes from the session, not the body. List responses use the page envelope `{data, metadata:{next,pageSize}}`.
+
+Publication inserts a new frozen version, sections, questions, options and keys in the same transaction as the exam pointer, audit and receipt. Runtime still has no UPDATE on snapshot tables. Bank edits do not change a committed snapshot. Unpublish clears the current pointer flag and leaves the frozen rows. A second connection does not see the version before commit. Import v1 is JSON, at most100 questions, with malformed input rejected before a report and semantic errors stored as a safe report. Dry-run writes the report without bank rows.
+
+`0009_catalog_question_points.sql` is forward-only. Bytes of0001–0008 are unchanged. The build copies all nine files into `dist`. Evidence and limits are in [the Catalog diagnostic](evidence/catalog-2026-10-07/README.md). CAT-10, ID-11, Assessment start, Reporting, Terraform and production acceptance stay open. This section does not rewrite sections1–9.
+
+## 11. Independent Catalog review 2026-10-07
+
+[Detailed report](catalog-review-2026-10-07.md) supersedes local Catalog closure claims: GR-01 post-lock publication time (P1), GR-02 route body caps (P1), GR-03 exact detail DTO (P2), GR-04 strict calendar validation (P2), GR-05 pre-existing root test discovery (P2), GR-06 diagnostic/provenance gaps (P2). Placement and public-facade boundaries remain valid. Five runtime review assertions are RED, pagination control and existing regressions PASS; no runtime fix is included in the review. CAT-01/03/04/06/08 and BOOT-01 reopened; CAT-10/start race/production remain open. RV-01–06 historical normalization/Identity closure is not overwritten.
+
+## 12. Catalog fixes and architecture conformance closure — 2026-10-07
+
+Section11 records the historical RED review. [Fix report](catalog-fixes-2026-10-07.md) now closes GR-01–06 locally with [fresh evidence](evidence/catalog-fixes-2026-10-07/README.md):199 root tests (89 API/37 tooling/73 Web),83 actual PostgreSQL/SMTP and10 Chromium HTTPS cases PASS. BOOT-01/CAT-01/03/04/06/08 accepted again; CAT-10 actual Assessment start race stays PARTIAL, ID-11 and production remain open.
+
+Catalog owns publication eligibility after serialization locks; the Application coordinates through repository clock/locks and existing UoW. Pure Domain owns calendar/Unicode/shape policies. Presentation owns bounded route body metadata: exam128KiB/question512KiB/import1MiB. Generic global HTTP applies trusted technical metadata without importing a module or recognizing its URLs. SQL query adapters return exact public DTOs, keeping browse cursor state private. pg and five-root layout remain as adopted; no new ORM/layer/architecture exception or ADR is required.
+
+Snapshot/pointer/audit/receipt are atomic, replay and permission revalidation remain intact; real lock/close and timeout regressions prove rollback. Nine source/built migration hashes match baseline. [Diagnostic](evidence/catalog-fixes-2026-10-07/diagnostic/README.md) captures exact adapter EXPLAIN,25 real publish windows and actual transaction/lock/pool observations. Lock round trips are not lock-hold duration, missing samples are null and local sequential latency does not prove production SLO/capacity/cost. Historical evidence is retained, with no claimed optimization improvement.

@@ -1,0 +1,111 @@
+[
+  {
+    "scope": "publication before clock fix",
+    "status": "RED_EXPECTED",
+    "failed": 4,
+    "passed": 2
+  },
+  {
+    "scope": "calendar before strict validation",
+    "status": "RED_EXPECTED",
+    "failed": 4,
+    "passed": 16
+  },
+  {
+    "scope": "HTTP before body/schema/date fixes",
+    "status": "RED_EXPECTED",
+    "failed": 5,
+    "passed": 6
+  },
+  {
+    "scope": "Unicode domain before code-point fix",
+    "status": "RED_EXPECTED",
+    "failed": 3,
+    "passed": 20
+  },
+  {
+    "scope": "Unicode HTTP before code-point/cap fix",
+    "status": "RED_EXPECTED",
+    "failed": 2,
+    "deselected": 11
+  },
+  {
+    "command": "npm test",
+    "status": "PASS",
+    "apiSuites": 13,
+    "apiTests": 89,
+    "toolingTests": 37,
+    "webFiles": 16,
+    "webTests": 73,
+    "total": 199
+  },
+  {
+    "command": "npm run test:integration",
+    "status": "PASS",
+    "suites": 5,
+    "tests": 83,
+    "skipped": 0,
+    "includes": {
+      "database": 31,
+      "identity": 22,
+      "catalog": 11,
+      "catalogPublication": 6,
+      "catalogHttp": 13
+    }
+  },
+  {
+    "command": "npm run test:identity:https",
+    "status": "PASS",
+    "tests": 10,
+    "migrationCount": 9,
+    "runtime": "actual Chromium, latest API/live Web, restricted PostgreSQL and SMTP worker"
+  },
+  {
+    "command": "npm run lint && npm run typecheck && npm run build",
+    "status": "PASS",
+    "includes": [
+      "ESLint",
+      "architecture/docs quality",
+      "OpenAPI/contracts",
+      "strict TypeScript",
+      "migration assets"
+    ],
+    "contractOperations": 46,
+    "contractExamples": 425
+  },
+  {
+    "command": "focused Catalog exact-query diagnostic",
+    "status": "PASS_SELECTED",
+    "passed": 1,
+    "deselected": 10,
+    "runId": "58451c3f-aa1e-4698-86e7-1c1218fad576",
+    "notCapacityEvidence": true
+  },
+  {
+    "command": "Prettier check of changed runtime/regression/tooling files",
+    "status": "PASS"
+  },
+  {
+    "scope": "disposable PostgreSQL cleanup",
+    "extraDatabases": 0,
+    "otherLoginRoles": 0,
+    "taskStartedContainersStopped": true,
+    "volumesPreserved": true,
+    "developmentDbUsed": false
+  },
+  {
+    "scope": "AWS, RPS/concurrency/SLO, saturation, pool selection and performance-cost",
+    "status": "NOT_MEASURED"
+  },
+  {
+    "scope": "final docs quality / git diff check / frozen artifact consistency",
+    "status": "PASS",
+    "generatedSummaryMatchesRaw": true,
+    "roadmapChecked": 61,
+    "roadmapPending": 155,
+    "sourceFilesMatchedFrozenDiagnostic": 104,
+    "sensitiveArtifactScan": "PASS",
+    "migrationFilesVerified": 9,
+    "preservedHistoricalHashes": 4
+  }
+]

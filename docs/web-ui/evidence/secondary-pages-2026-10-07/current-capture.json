@@ -1,259 +1,58 @@
 {
   "captures": [
     {
-      "name": "login",
-      "route": "/login",
-      "role": "public",
-      "title": "Đăng nhập",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Đăng nhập\n\nChỉ dùng email và mật khẩu. Magic link và GitHub chưa có trong contract nên không có nút giả.\n\nEmail\nMật khẩu\nHiện\nĐăng nhập\nChưa có tài khoản"
-    },
-    {
-      "name": "register",
-      "route": "/register",
-      "role": "public",
-      "title": "Tạo tài khoản",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Tạo tài khoản\n\nNếu thông tin hợp lệ, hãy kiểm tra email. Hệ thống không cho biết email đã tồn tại và không đăng nhập ngay.\n\nEmail\nTên hiển thị\nMật khẩu\nHiện\nNhập lại mật khẩu\nHiện\nTạo tài khoản"
-    },
-    {
-      "name": "check-email",
-      "route": "/check-email",
-      "role": "public",
-      "title": "Kiểm tra email",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Kiểm tra email\nĐã nhận yêu cầu\nNếu email hợp lệ, hộp thư sẽ có hướng dẫn xác nhận.\nEmail cần gửi lại\nGửi lại hướng dẫn"
-    },
-    {
-      "name": "verify-email",
-      "route": "/verify-email",
-      "role": "public",
-      "title": "Xác nhận email",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Xác nhận email\n\nMã trong liên kết đã được đưa vào bộ nhớ của trang và xóa khỏi thanh địa chỉ. Trang không tự gửi yêu cầu.\n\nNếu liên kết đã được dùng, gửi lại chỉ xác nhận trạng thái và không đổi mật khẩu đã thiết lập.\n\nLiên kết không có mã\nHãy mở liên kết đầy đủ từ email."
-    },
-    {
-      "name": "how",
-      "route": "/how-it-works",
-      "role": "public",
-      "title": "Cách hoạt động",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Cách hoạt động\nTạo tài khoản. Hệ thống chỉ báo đã nhận yêu cầu, không đăng nhập ngay.\nMở liên kết xác nhận, chọn mật khẩu cuối và bấm xác nhận. Mở liên kết không tự kích hoạt tài khoản.\nĐăng nhập bằng email và mật khẩu. Phiên nằm trong cookie của trình duyệt.\nBắt đầu lượt thi. Câu trả lời được lưu theo lô sau khi máy chủ xác nhận.\nNộp bài. Điểm xuất hiện khi máy chủ xử lý xong, không được tính trong trình duyệt."
-    },
-    {
-      "name": "help",
-      "route": "/help",
-      "role": "public",
-      "title": "Trợ giúp",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Trợ giúp\nLưu câu trả lời\n\n“Đã lưu” chỉ xuất hiện sau khi máy chủ xác nhận. Mất kết nối nghĩa là thay đổi vẫn nằm trên trình duyệt.\n\nXung đột\n\nNếu cùng một câu đổi ở nơi khác, bạn chọn giữ lựa chọn của mình hoặc dùng bản máy chủ. Ứng dụng không tự ghi đè.\n\nHết giờ\n\nĐồng hồ dựa trên giờ máy chủ. Hết giờ thì không lưu thêm; những câu chưa được xác nhận được thông báo riêng.\n\nChưa có kênh hỗ trợ vận hành."
-    },
-    {
-      "name": "not-found",
-      "route": "/missing",
-      "role": "public",
-      "title": "Không có trang này",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Không có trang này\nVề trang chủ"
-    },
-    {
-      "name": "dashboard",
-      "route": "/dashboard",
-      "role": "candidate",
-      "title": "Bảng làm việc",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Bảng làm việc\nTiếp tục\n\nĐang làm bài · phiên bản 00000000\n\nTiêu đề chỉ hiện khi đã mở đúng phiên bản đề. Attempt không trả tiêu đề.\n\nVào phòng thi\nXem lịch sử"
-    },
-    {
-      "name": "catalog",
-      "route": "/exams",
-      "role": "candidate",
-      "title": "Đề thi",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Đề thi\nTất cả\nTOEIC\nIELTS\nIT Certification\nĐại học\nTuyển dụng\nNội bộ\nSố dòng mỗi trang \n20\n100\nIT Certification — Networking Fundamentals\n\nIT Certification · 45 phút · 6 câu · phiên bản 1\n\nMở 12:45 07/10/2026 · đóng 15:45 07/10/2026\n\nTOEIC — Reading practice\n\nTOEIC · 30 phút · 3 câu · phiên bản 1\n\nMở 12:45 07/10/2026 · đóng 13:45 08/10/2026\n\nĐại học — Toán cơ bản dành cho kỳ kiểm tra giữa kỳ với tiêu đề rất dài\n\nĐại học · 45 phút · 1 câu · phiên bản 1\n\nMở 12:45 07/10/2026 · đóng 14:00 07/10/2026"
-    },
-    {
-      "name": "exam-detail",
-      "route": "/exams/00000000-0000-4000-8000-000000000102",
-      "role": "candidate",
-      "title": "TOEIC — Reading practice",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "TOEIC\n\nTOEIC — Reading practice\n\n30 phút · 3 câu · phiên bản 1\n\nMở cửa 12:45 07/10/2026 · đóng 13:45 08/10/2026 (Asia/Ho_Chi_Minh)\n\nGiới hạn 2 lượt. Số lượt đã dùng không nằm trong chi tiết đề.\n\nMở sau khi có kết quả\n\nCó bảng xếp hạng theo phiên bản, chỉ bí danh.\n\nGiờ trên máy này không được dùng để nới thời gian. Máy chủ quyết định hạn nộp khi bắt đầu.\n\nCác phần\nReading · 2 câu · 4 điểm\nVocabulary · 1 câu · 2 điểm\nBắt đầu"
-    },
-    {
       "name": "exam-room",
       "route": "/attempts/00000000-0000-4000-8000-000000000402",
       "role": "candidate",
+      "title": "Đề 00000000",
       "width": 1440,
       "documentWidth": 1440,
-      "text": ""
+      "text": "Đề 00000000\n\nBài làm không kèm tiêu đề đã khóa. Không dùng tiêu đề đề hiện tại thay cho phiên bản 00000000.\n\nHạn nộp 14:32 07/10/2026 · giờ máy chủ 13:57 07/10/2026\n\nCâu 1 · Một lựa chọn · 1 điểm\n\nVersion 1 prompt\nOld A\nOld B\nĐánh dấu để xem lại\nXóa đáp án\nCâu trước\nCâu sau\n\nXem trạng thái xử lý\n\nPhiếu câu hỏi\nChưa trả lời\nĐã trả lời\nĐánh dấu\nChưa lưu\nĐang chọn\nChỉ xem câu đánh dấu\nPhần 00000000\nPhần 00000000\n1"
     },
     {
       "name": "result",
       "route": "/attempts/00000000-0000-4000-8000-000000000401/result",
       "role": "candidate",
+      "title": "Kết quả",
       "width": 1440,
       "documentWidth": 1440,
-      "text": ""
+      "text": "Kết quả\n\n5/6 điểm\n\n2/3 câu khớp chính xác\n\n83.33% theo thang điểm cơ sở\n\nEXACT_MATCH_V1\n\nLượt này được nộp trong hạn.\n\nKhông quy đổi sang IELTS band hoặc TOEIC.\n\nTheo phần\n\nTên phần không có trong kết quả. Trang chỉ hiện mã phần.\n\n00000000 · 5/5 điểm · 2/2 câu\n\n00000000 · 0/1 điểm · 0/1 câu\n\nXem giải thích đã mở\nBảng xếp hạng của phiên bản này"
     },
     {
       "name": "review",
       "route": "/attempts/00000000-0000-4000-8000-000000000401/review",
       "role": "candidate",
+      "title": "Giải thích",
       "width": 1440,
       "documentWidth": 1440,
-      "text": ""
+      "text": "Giải thích\n\nChưa đúng\n\nChoose the best word.\n\naccurate · Đáp án của đề\n\nlate\n\nempty\n\naccurate\n\nChưa đúng\n\nThe invoice was paid.\n\nĐúng\n\nSai · Đáp án của đề\n\nIt was not paid.\n\nChưa đúng\n\nSelect the nouns.\n\nmeeting · Đáp án của đề\n\nquickly\n\nreport · Đáp án của đề\n\nChưa có giải thích."
     },
     {
       "name": "status",
       "route": "/attempts/00000000-0000-4000-8000-000000000403/status",
       "role": "candidate",
+      "title": "Trạng thái bài",
       "width": 1440,
       "documentWidth": 1440,
-      "text": ""
+      "text": "Trạng thái bài\n\nXử lý thất bại\n\nKhông có thanh tiến độ giả. Kết quả chỉ hiện khi máy chủ trả điểm.\n\nKết quả chưa sẵn sàng.\n\nĐã dừng vì trạng thái kết thúc."
     },
     {
       "name": "history",
       "route": "/history",
       "role": "candidate",
+      "title": "Lịch sử",
       "width": 1440,
       "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "profile",
-      "route": "/profile",
-      "role": "candidate",
-      "title": "Hồ sơ",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": "Hồ sơ\n\ncandidate@example.test\n\nRevision 1\n\nQuyền demo hiện tại: catalog.read, assessment.take, assessment.result.read. Công tắc quyền nằm ở thanh dữ liệu mẫu, không phải hồ sơ thật.\n\nTên hiển thị\nHiện bí danh trên bảng xếp hạng. Tên hiển thị không được đưa vào bảng.\nLưu hồ sơ"
+      "text": "Lịch sử\n\nLịch sử không kèm tiêu đề đề. Tiêu đề chỉ hiện nếu bạn đã mở phiên bản này trong phiên làm việc này.\n\nPhiên bản 00000000\n\nĐã có kết quả · 12:57 07/10/2026\n\n5/6\n\nPhiên bản 00000000\n\nĐang làm bài · 13:47 07/10/2026\n\nChưa có điểm\n\nPhiên bản 00000000\n\nXử lý thất bại · 13:07 07/10/2026\n\nChưa có điểm\n\nĐã hết danh sách. Không có số trang."
     },
     {
       "name": "leaderboard",
       "route": "/exams/00000000-0000-4000-8000-000000000102/versions/00000000-0000-4000-8000-000000000202/leaderboard",
       "role": "candidate",
+      "title": "Bảng xếp hạng",
       "width": 1440,
       "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-home",
-      "route": "/admin",
-      "role": "admin",
-      "title": "Quản trị đề và kết quả",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-exams",
-      "route": "/admin/exams",
-      "role": "admin",
-      "title": "Đề thi",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-editor",
-      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/edit",
-      "role": "admin",
-      "title": "TOEIC — Reading practice",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-questions",
-      "route": "/admin/questions",
-      "role": "admin",
-      "title": "Ngân hàng câu",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-question-editor",
-      "route": "/admin/questions/new",
-      "role": "admin",
-      "title": "Tạo câu",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-import",
-      "route": "/admin/imports/new",
-      "role": "admin",
-      "title": "Nhập JSON",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-monitor",
-      "route": "/admin/monitor",
-      "role": "admin",
-      "title": "Giám sát",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-submissions",
-      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/submissions",
-      "role": "admin",
-      "title": "Bài đã nộp",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-attempt",
-      "route": "/admin/attempts/00000000-0000-4000-8000-000000000403",
-      "role": "admin",
-      "title": "Lượt 00000000",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-statistics",
-      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/versions/00000000-0000-4000-8000-000000000202/statistics",
-      "role": "admin",
-      "title": "Thống kê phiên bản 00000000",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-metrics",
-      "route": "/admin/metrics",
-      "role": "admin",
-      "title": "Số liệu",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
-    },
-    {
-      "name": "admin-audit",
-      "route": "/admin/audit",
-      "role": "admin",
-      "title": "Nhật ký",
-      "width": 1440,
-      "documentWidth": 1440,
-      "text": ""
+      "text": "Bảng xếp hạng\n\nPhiên bản 00000000\n\nChỉ bí danh của người đã bật tham gia. Không có cột tên thật và không đánh dấu dòng của bạn.\n\n1. candidate-8b473ec4 · 5/6 · 13:56 07/10/2026\n\n2. candidate-19aa04c0 · 4/6 · 13:55 07/10/2026"
     }
   ],
   "errors": [],

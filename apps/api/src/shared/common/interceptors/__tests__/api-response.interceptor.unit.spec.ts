@@ -33,5 +33,18 @@ describe("API response interceptor", () => {
       message: null,
       status: true,
     });
+    expect(
+      toSuccessEnvelope({
+        kind: "page",
+        items: [{ id: "exam" }],
+        metadata: { next: null, pageSize: 20 },
+      }),
+    ).toEqual({
+      data: [{ id: "exam" }],
+      errorCode: null,
+      message: null,
+      status: true,
+      metadata: { next: null, pageSize: 20 },
+    });
   });
 });

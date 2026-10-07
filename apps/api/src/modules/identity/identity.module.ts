@@ -14,6 +14,12 @@ import { PostgresIdentityRepository } from "./infrastructure/persistence/postgre
 import { HTTP_SESSION } from "./presentation/http/http-session.port";
 import { PostgresIdentityQuery } from "./infrastructure/persistence/postgres/queries/postgres-identity.query";
 import { IdentityController } from "./presentation/http/identity.controller";
+import {
+  IDENTITY_ACCESS,
+  REQUEST_GUARD,
+  RequestGuard,
+} from "./application/facades/identity.facade";
+import { FastifyRequest } from "fastify";
 
 /**
  * Identity composition root. Binds application ports to adapters and registers the HTTP adapter.
@@ -24,8 +30,10 @@ export class IdentityModule {
   static forRoot(config: ApiConfig): DynamicModule {
     return {
       module: IdentityModule,
+      global: true,
       imports: [DatabaseModule],
       controllers: [IdentityController],
+      exports: [IDENTITY_ACCESS, REQUEST_GUARD],
       providers: [
         {
           provide: PostgresSecurity,
@@ -70,6 +78,17 @@ export class IdentityModule {
           inject: [IdentityService, PostgresSecurity],
           useFactory: (identity: IdentityService, security: PostgresSecurity) =>
             new HttpSession(identity, security, config.origin, config.csrfKey),
+        },
+        { provide: IDENTITY_ACCESS, useExisting: IdentityService },
+        {
+          provide: REQUEST_GUARD,
+          inject: [HTTP_SESSION],
+          useFactory: (session: HttpSession): RequestGuard => ({
+            checkUnsafe: (request, context) =>
+              session.checkUnsafe(request as FastifyRequest, context),
+            admit: (request, kind, actor) => session.admit(request as FastifyRequest, kind, actor),
+            access: (request) => session.access(request as FastifyRequest),
+          }),
         },
       ],
     };

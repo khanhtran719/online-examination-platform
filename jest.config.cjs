@@ -3,7 +3,7 @@ module.exports = {
   watchman: false,
   testEnvironment: "node",
   extensionsToTreatAsEsm: [".ts"],
-  testMatch: ["**/__tests__/*.unit.spec.ts"],
+  testMatch: ["<rootDir>/apps/api/src/**/__tests__/*.unit.spec.ts"],
   transform: {
     "^.+\\.tsx?$": [
       "ts-jest",

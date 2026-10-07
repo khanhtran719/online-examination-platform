@@ -1,0 +1,858 @@
+{
+  "schemaVersion": 2,
+  "runId": "58451c3f-aa1e-4698-86e7-1c1218fad576",
+  "recordedAt": "2026-10-07T09:32:12.265Z",
+  "scope": "local restricted PostgreSQL adapter diagnostic; sequential calls, no HTTP session/admission",
+  "notCapacityEvidence": true,
+  "iterations": 25,
+  "pageSize": 20,
+  "poolMax": 10,
+  "statementTimeoutMs": 2000,
+  "lockTimeoutMs": 500,
+  "node": "v24.17.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "postgres": "PostgreSQL 17.11 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "dataset": {
+    "newPublications": 25,
+    "questionsPerPublication": 100,
+    "sectionsPerPublication": 2
+  },
+  "excluded": [
+    "draft/import preparation",
+    "projection capture warm-up",
+    "EXPLAIN",
+    "provenance generation"
+  ],
+  "browseMs": {
+    "n": 25,
+    "p50": 3.1837909999999283,
+    "p95": 5.125916999999845,
+    "p99": 6.270082999999886
+  },
+  "detailMs": {
+    "n": 25,
+    "p50": 1.301792000000205,
+    "p95": 1.6807909999997719,
+    "p99": 2.0598330000002534
+  },
+  "publishMs": {
+    "n": 25,
+    "p50": 27.694582999999966,
+    "p95": 42.7700420000001,
+    "p99": 103.99395800000002
+  },
+  "detailPayloadBytes": 666,
+  "reads": {
+    "queryCount": 50,
+    "errorCount": 0,
+    "transactionMs": {
+      "n": 0,
+      "p50": null,
+      "p95": null,
+      "p99": null
+    },
+    "lockRoundTripMs": {
+      "n": 0,
+      "p50": null,
+      "p95": null,
+      "p99": null
+    },
+    "acquireMs": {
+      "n": 50,
+      "p50": 0.015458999999736989,
+      "p95": 0.04766699999981938,
+      "p99": 0.07662500000014916
+    },
+    "pool": {
+      "observations": 100,
+      "maxTotal": 1,
+      "maxActive": 1,
+      "maxWaiting": 0
+    }
+  },
+  "publication": {
+    "queryCount": 425,
+    "errorCount": 0,
+    "transactionMs": {
+      "n": 25,
+      "p50": 27.51083400000016,
+      "p95": 42.67716700000028,
+      "p99": 103.89520799999991
+    },
+    "lockRoundTripMs": {
+      "n": 75,
+      "p50": 1.0048750000000837,
+      "p95": 5.666374999999789,
+      "p99": 14.306708000000071
+    },
+    "acquireMs": {
+      "n": 25,
+      "p50": 0.020375000000058208,
+      "p95": 0.08512500000006185,
+      "p99": 0.36850000000004
+    },
+    "pool": {
+      "observations": 550,
+      "maxTotal": 1,
+      "maxActive": 1,
+      "maxWaiting": 0
+    },
+    "queriesPerCall": {
+      "n": 25,
+      "p50": 17,
+      "p95": 17,
+      "p99": 17
+    }
+  },
+  "plans": {
+    "browse": {
+      "nodeType": "Nested Loop",
+      "relation": null,
+      "actualRows": 21,
+      "actualTotalTime": 2.003,
+      "sharedHitBlocks": 338,
+      "plans": [
+        {
+          "nodeType": "Result",
+          "relation": null,
+          "actualRows": 1,
+          "actualTotalTime": 0.001,
+          "sharedHitBlocks": 0
+        },
+        {
+          "nodeType": "CTE Scan",
+          "relation": null,
+          "actualRows": 1,
+          "actualTotalTime": 0.003,
+          "sharedHitBlocks": 0
+        },
+        {
+          "nodeType": "Limit",
+          "relation": null,
+          "actualRows": 21,
+          "actualTotalTime": 0.069,
+          "sharedHitBlocks": 52,
+          "plans": [
+            {
+              "nodeType": "Sort",
+              "relation": null,
+              "actualRows": 21,
+              "actualTotalTime": 0.067,
+              "sharedHitBlocks": 52,
+              "plans": [
+                {
+                  "nodeType": "Nested Loop",
+                  "relation": null,
+                  "actualRows": 25,
+                  "actualTotalTime": 0.054,
+                  "sharedHitBlocks": 52,
+                  "plans": [
+                    {
+                      "nodeType": "Nested Loop",
+                      "relation": null,
+                      "actualRows": 25,
+                      "actualTotalTime": 0.044,
+                      "sharedHitBlocks": 52,
+                      "plans": [
+                        {
+                          "nodeType": "Index Scan",
+                          "relation": "exams",
+                          "actualRows": 25,
+                          "actualTotalTime": 0.012,
+                          "sharedHitBlocks": 2
+                        },
+                        {
+                          "nodeType": "Index Scan",
+                          "relation": "published_versions",
+                          "actualRows": 1,
+                          "actualTotalTime": 0.001,
+                          "sharedHitBlocks": 50
+                        }
+                      ]
+                    },
+                    {
+                      "nodeType": "CTE Scan",
+                      "relation": null,
+                      "actualRows": 1,
+                      "actualTotalTime": 0,
+                      "sharedHitBlocks": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeType": "Aggregate",
+          "relation": null,
+          "actualRows": 1,
+          "actualTotalTime": 0.017,
+          "sharedHitBlocks": 122,
+          "plans": [
+            {
+              "nodeType": "Bitmap Heap Scan",
+              "relation": "published_questions",
+              "actualRows": 100,
+              "actualTotalTime": 0.012,
+              "sharedHitBlocks": 122,
+              "plans": [
+                {
+                  "nodeType": "Bitmap Index Scan",
+                  "relation": null,
+                  "actualRows": 100,
+                  "actualTotalTime": 0.003,
+                  "sharedHitBlocks": 65
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeType": "Aggregate",
+          "relation": null,
+          "actualRows": 1,
+          "actualTotalTime": 0.074,
+          "sharedHitBlocks": 164,
+          "plans": [
+            {
+              "nodeType": "Sort",
+              "relation": null,
+              "actualRows": 2,
+              "actualTotalTime": 0.069,
+              "sharedHitBlocks": 164,
+              "plans": [
+                {
+                  "nodeType": "Aggregate",
+                  "relation": null,
+                  "actualRows": 2,
+                  "actualTotalTime": 0.067,
+                  "sharedHitBlocks": 164,
+                  "plans": [
+                    {
+                      "nodeType": "Sort",
+                      "relation": null,
+                      "actualRows": 100,
+                      "actualTotalTime": 0.055,
+                      "sharedHitBlocks": 164,
+                      "plans": [
+                        {
+                          "nodeType": "Hash Join",
+                          "relation": null,
+                          "actualRows": 100,
+                          "actualTotalTime": 0.031,
+                          "sharedHitBlocks": 164,
+                          "plans": [
+                            {
+                              "nodeType": "Bitmap Heap Scan",
+                              "relation": "published_questions",
+                              "actualRows": 100,
+                              "actualTotalTime": 0.01,
+                              "sharedHitBlocks": 122,
+                              "plans": [
+                                {
+                                  "nodeType": "Bitmap Index Scan",
+                                  "relation": null,
+                                  "actualRows": 100,
+                                  "actualTotalTime": 0.003,
+                                  "sharedHitBlocks": 65
+                                }
+                              ]
+                            },
+                            {
+                              "nodeType": "Hash",
+                              "relation": null,
+                              "actualRows": 2,
+                              "actualTotalTime": 0.004,
+                              "sharedHitBlocks": 42,
+                              "plans": [
+                                {
+                                  "nodeType": "Bitmap Heap Scan",
+                                  "relation": "published_sections",
+                                  "actualRows": 2,
+                                  "actualTotalTime": 0.001,
+                                  "sharedHitBlocks": 42,
+                                  "plans": [
+                                    {
+                                      "nodeType": "Bitmap Index Scan",
+                                      "relation": null,
+                                      "actualRows": 2,
+                                      "actualTotalTime": 0.001,
+                                      "sharedHitBlocks": 21
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "detail": {
+      "nodeType": "Nested Loop",
+      "relation": null,
+      "actualRows": 1,
+      "actualTotalTime": 0.117,
+      "sharedHitBlocks": 18,
+      "plans": [
+        {
+          "nodeType": "Index Scan",
+          "relation": "exams",
+          "actualRows": 1,
+          "actualTotalTime": 0.005,
+          "sharedHitBlocks": 2
+        },
+        {
+          "nodeType": "Index Scan",
+          "relation": "published_versions",
+          "actualRows": 1,
+          "actualTotalTime": 0.004,
+          "sharedHitBlocks": 2
+        },
+        {
+          "nodeType": "Aggregate",
+          "relation": null,
+          "actualRows": 1,
+          "actualTotalTime": 0.022,
+          "sharedHitBlocks": 6,
+          "plans": [
+            {
+              "nodeType": "Bitmap Heap Scan",
+              "relation": "published_questions",
+              "actualRows": 100,
+              "actualTotalTime": 0.017,
+              "sharedHitBlocks": 6,
+              "plans": [
+                {
+                  "nodeType": "Bitmap Index Scan",
+                  "relation": null,
+                  "actualRows": 100,
+                  "actualTotalTime": 0.007,
+                  "sharedHitBlocks": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeType": "Aggregate",
+          "relation": null,
+          "actualRows": 1,
+          "actualTotalTime": 0.083,
+          "sharedHitBlocks": 8,
+          "plans": [
+            {
+              "nodeType": "Sort",
+              "relation": null,
+              "actualRows": 2,
+              "actualTotalTime": 0.079,
+              "sharedHitBlocks": 8,
+              "plans": [
+                {
+                  "nodeType": "Aggregate",
+                  "relation": null,
+                  "actualRows": 2,
+                  "actualTotalTime": 0.076,
+                  "sharedHitBlocks": 8,
+                  "plans": [
+                    {
+                      "nodeType": "Sort",
+                      "relation": null,
+                      "actualRows": 100,
+                      "actualTotalTime": 0.065,
+                      "sharedHitBlocks": 8,
+                      "plans": [
+                        {
+                          "nodeType": "Hash Join",
+                          "relation": null,
+                          "actualRows": 100,
+                          "actualTotalTime": 0.042,
+                          "sharedHitBlocks": 8,
+                          "plans": [
+                            {
+                              "nodeType": "Bitmap Heap Scan",
+                              "relation": "published_questions",
+                              "actualRows": 100,
+                              "actualTotalTime": 0.016,
+                              "sharedHitBlocks": 6,
+                              "plans": [
+                                {
+                                  "nodeType": "Bitmap Index Scan",
+                                  "relation": null,
+                                  "actualRows": 100,
+                                  "actualTotalTime": 0.006,
+                                  "sharedHitBlocks": 3
+                                }
+                              ]
+                            },
+                            {
+                              "nodeType": "Hash",
+                              "relation": null,
+                              "actualRows": 2,
+                              "actualTotalTime": 0.005,
+                              "sharedHitBlocks": 2,
+                              "plans": [
+                                {
+                                  "nodeType": "Bitmap Heap Scan",
+                                  "relation": "published_sections",
+                                  "actualRows": 2,
+                                  "actualTotalTime": 0.002,
+                                  "sharedHitBlocks": 2,
+                                  "plans": [
+                                    {
+                                      "nodeType": "Bitmap Index Scan",
+                                      "relation": null,
+                                      "actualRows": 2,
+                                      "actualTotalTime": 0.001,
+                                      "sharedHitBlocks": 1
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "exactSqlSha256": {
+    "browse": "d494e4501ad8cff4673fa38cc8cd2000811ef9679c7413c0d647e2f272ccfa7f",
+    "detail": "e28e7cdfe147cd0e054b0495e73444f6f3599f1cd9c9ed8aa2dd923dc9d2491f"
+  },
+  "source": [
+    {
+      "path": "apps/api/src/app.module.ts",
+      "sha256": "2a13b4c1bb85852a40b277bbfa5e3bb5d2181a8ab44db1be7ba0a059eee0a4c6"
+    },
+    {
+      "path": "apps/api/src/config/__tests__/app-config.unit.spec.ts",
+      "sha256": "262d5f2cd90711235ae1200ca3c67b1e300777079bfebe9e5832c9f01f7493da"
+    },
+    {
+      "path": "apps/api/src/config/__tests__/database-config.unit.spec.ts",
+      "sha256": "91e3974f2506fb11dbadea7bcde0e202e5c2c7ce52517e8cc1c1f0f850b2e127"
+    },
+    {
+      "path": "apps/api/src/config/app.config.ts",
+      "sha256": "d0fd7412bc6d683d2fa3cc78745f99992c4b75b0372b102d9aa82d0d96891034"
+    },
+    {
+      "path": "apps/api/src/config/config.validation.ts",
+      "sha256": "20e8fbccd51ca8281de7b3d78a1fc58bfce792d1aa891c10729e2f2aeb294b87"
+    },
+    {
+      "path": "apps/api/src/config/database.config.ts",
+      "sha256": "e4e07f84ab1f055d92b87ec8da982562874517714b6a1007d208d431a528de97"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/__tests__/migration-runner.unit.spec.ts",
+      "sha256": "632f2ae89e956d3438e9ebd7c20f372362ddf45ab053d2efb50bae3aa6831940"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/connection-budget.ts",
+      "sha256": "476606488dcf67fcb8398f7ee8e5997a6337816915ec2b01017bc06ffed1fa88"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/database.module.ts",
+      "sha256": "b94af40827fd2399d7d862b3266f37cfc59116a63b7b8232cdf0fa2829c29ceb"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/load-database-config.ts",
+      "sha256": "1eea26de2986bfbda99fdba94e4fba8d395d6f10a3c270894c93b5fb31913065"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrate.ts",
+      "sha256": "072cae2d11c93e91a8cdf5cd4f8b0ed478e73540593d0d6a6e9544f0bae89e2c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migration-runner.ts",
+      "sha256": "30fa86c7a9cccee84c04bcc79ed3495686a150143ed2c7348eafb094a6436a1f"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0001_capability_schema.sql",
+      "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0002_query_indexes.sql",
+      "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0003_runtime_privileges.sql",
+      "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0004_durable_state_guards.sql",
+      "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0005_frozen_category.sql",
+      "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0006_immutable_submission.sql",
+      "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0007_identity_runtime.sql",
+      "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0008_identity_operations.sql",
+      "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0009_catalog_question_points.sql",
+      "sha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/transaction/postgres-database.ts",
+      "sha256": "2cd178faba4335a75bb47ec9a99e0fd21aaf03636f176f37082fd5d8b1388a1b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/health/health.module.ts",
+      "sha256": "9112d0d8981a414e395a2849c5990f3b2521bb1b331ef1112fbd42b6759a74ee"
+    },
+    {
+      "path": "apps/api/src/infrastructure/health/http/live.controller.ts",
+      "sha256": "a9ac446889978695ff481fd4a5f079927af3bb06f0103e6199acd9e53b1df219"
+    },
+    {
+      "path": "apps/api/src/infrastructure/health/http/ready.controller.ts",
+      "sha256": "bbd7e46b4084cdcf14a354c599ef77c76c855c72b0479fdf6ade2132e9f0128b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/health/postgres-readiness.ts",
+      "sha256": "3e5d970d88310b97a75b02188e12dd2f471a3ea076b5ce173185848d8991762a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/http/configure-http-application.ts",
+      "sha256": "8c3c4302f791a31a575d0a27e6e4c44890abb916089f08482bc745662ed0c230"
+    },
+    {
+      "path": "apps/api/src/infrastructure/idempotency/postgres-idempotency.ts",
+      "sha256": "8f7a203c91e14e0f4ede0119f3346c483b4ef3569790f6ac7af4fdca8afae384"
+    },
+    {
+      "path": "apps/api/src/infrastructure/resilience/shutdown/shutdown-gate.ts",
+      "sha256": "02ce81ce6b1fce06cae25feaddba201f612820f653e9deeb839c008c3bb3d5b2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/security/authentication/__tests__/secret-loader.unit.spec.ts",
+      "sha256": "1a6282ec42500389efdcadc374094fd730ad31fa0545a0ddc0934b3a8903b8a9"
+    },
+    {
+      "path": "apps/api/src/infrastructure/security/authentication/secret-loader.ts",
+      "sha256": "f510b62bc7f728be444b080afd0a895e293b1d172b24f5be05e7d596d2eb1635"
+    },
+    {
+      "path": "apps/api/src/infrastructure/security/authorization/postgres-security.ts",
+      "sha256": "cb156e01f21a260ceea395252f7952c8635be861780972123e6d10d0ae514c7c"
+    },
+    {
+      "path": "apps/api/src/main.ts",
+      "sha256": "6e3f235aa32a037bcdd34cea8774648f4a5799a71f3864c985df432cebedcd62"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/attempt.unit.spec.ts",
+      "sha256": "da62944a22de739dc1aa0e53d81f6017e7c17ee68e6d8090ff15263c6bcd84c7"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/scoring.unit.spec.ts",
+      "sha256": "4330be1d683d6f3576ce50337a442137440dfdf539c37539adfa88ddf667969e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/assessment.error.ts",
+      "sha256": "55a67bfe967041d7d86b805195aebd9b5db372e96e316ffa000b640a2f7a8b8f"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/attempt.ts",
+      "sha256": "a81a4439e1a0ce95ed3bd82608dd918e3065fa5f82bb4de6ddbff29419883fb0"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/scoring.ts",
+      "sha256": "5784d2d6c66c038c720e7fd8e0251022646a0f0383bff91a42dc3dc5fce22634"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/dto/catalog.dto.ts",
+      "sha256": "eb27d229ad98ef714428fb0b09832d5c74727b0d487c822e8a797fcccfe5d3d9"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/facades/catalog.facade.ts",
+      "sha256": "245a518e85bef1ce3ad12cbe1fdf04c862acf51856235f16f8fa70d424972871"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/ports/catalog-cursor.port.ts",
+      "sha256": "0b2e637043c847cf9007eb78bed01b252b2b48dcca73c139c3265efa67cdd9ed"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/ports/catalog-query.port.ts",
+      "sha256": "22de26103c73ffbd5550f34da489fafa24db5d0febaaf56d74203400bc4ba80a"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/services/catalog.service.ts",
+      "sha256": "f30f6fecb407481f63aa00fd79f7ed43debfadf50025d2f81507a812f97c2c24"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/catalog.module.ts",
+      "sha256": "817d2cb4d955450d6c441fa3566007743b70631c8ee0f19b31fc7481dbe13ddc"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/__tests__/catalog-policy.unit.spec.ts",
+      "sha256": "2430d2c676db0d367bccb49eeab5cd3863634e57a9dad9419f13eb094c196f6b"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/catalog-error.ts",
+      "sha256": "6078ba7805f414c59803665b956ea42cef2932f87eae01c21c84f057b879f5ea"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/catalog-policy.ts",
+      "sha256": "d457a6ade50c0dadb6bcbd48ec89f82140b6d472a994c5e1ccd1b60927e30d25"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/repositories/catalog.repository.ts",
+      "sha256": "0bb64c1dd9d9e6a31c59abce496431c8065e1a1e4699979ad3348d9a7353eefe"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/infrastructure/cursor/catalog-cursor.ts",
+      "sha256": "a37861714dae638dda20cce11b3844366713fde906829c2c2cb8bc7536906945"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/infrastructure/persistence/postgres-catalog.query.ts",
+      "sha256": "5112b972e932229be902879c0de37269b9447c62d5b7239f85bde2d119cc1621"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/infrastructure/persistence/postgres-catalog.repository.ts",
+      "sha256": "89a34906490fcdd9cba42cc598dfda69d762cf6f9f1083d531a57bda533d50c5"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/presentation/http/catalog.controller.ts",
+      "sha256": "a8f64a0197f341f5c196b5a7c77ccf45e48250d9404d283c0fefb6868cc81506"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/presentation/http/dto/catalog.dto.ts",
+      "sha256": "03cb76fefcc3c3a9d51f7bf41723d6a685b09cdc1cd9f612d835c932e4bfe5d6"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/__tests__/admission.unit.spec.ts",
+      "sha256": "d3652d5749151e2505469321c27a5171a0179dc224ac958dbd4ea23bebd8a8af"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/dto/identity.dto.ts",
+      "sha256": "fdf61b22061daf0c5f11ce9ccf3f4b040673357add7b63f0e620bf74ba1192a6"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/errors/admission-saturated.error.ts",
+      "sha256": "cc2ac420e2eb72a107879a0d8b05bb2a54bc71c717f10fefa67ef65eff37f070"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/facades/identity.facade.ts",
+      "sha256": "6d122be94d1f750ba59d450698db93a141ba6229b2d000deca18c495e4338e0a"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/ports/identity-crypto.ports.ts",
+      "sha256": "86c4908ed605138f05d4cafc596d8627852790613c91429c235431122f8324a1"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/ports/identity-query.port.ts",
+      "sha256": "dddc7f2c65192ac35c28c237f17e8a9b056204b952558fac85e0bdbf17b76290"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/ports/operator-admin.port.ts",
+      "sha256": "0832d610cc6952ec2ba0472866e589f0227785b87487f4c1cff087dc946837f6"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/ports/verification-delivery.port.ts",
+      "sha256": "41affdfd8665b5c5bbff4c7da07feb24c9261bd3ad138642d168082064cdbf4f"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/services/identity.service.ts",
+      "sha256": "ed2cd411d533d8efe71214f4ba636702ea4e3acb9dc3ec364ab4d1f729e7ca18"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/services/verification-worker.ts",
+      "sha256": "96f2e79ef09c4d138dc48afddbcaf8938a917a64b47ea86cf64621cc0af90da2"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/__tests__/identity-policy.unit.spec.ts",
+      "sha256": "f959aaad0c5ad84c5b7f687a95764f4abcc182237891fdd983bdc44381b000b5"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/entities/identity-state.ts",
+      "sha256": "a4015b9d9071d72791bc958cf874bced3845d402328faeec6fca5486f8bdc678"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/idempotency-conflict.error.ts",
+      "sha256": "daf75fab25d5e9a4c9fd933898b542a5f03f7e333b934f2ab5ad903a333cfb16"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/idempotency-key-expired.error.ts",
+      "sha256": "4aedec3aeaddce6654694ef0b7a4f02ba9a1eb3198be7cdb61b8552bb22e1d59"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/index.ts",
+      "sha256": "f2e47acf284aa99bf2a1ac0998cee40cc410d1b442c46c3c9dfac3028997f73e"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/invalid-request.error.ts",
+      "sha256": "1a926b7ec151171cff1238c8a99d7899886dd6de2cd0c5e28809159b783d7ae6"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/permission-denied.error.ts",
+      "sha256": "caf94501645060a35ece00abe324d0017b05e1a7a08d34c49f05889006835307"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/rate-limited.error.ts",
+      "sha256": "89c6bf0743c718a34c0a30eab0a7cff6f5a24361100c78a31e6a1c193f37c19e"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/revision-conflict.error.ts",
+      "sha256": "4be1261a9200ed311f47ed3858d9dbcebbe5a0f68e5ae1955b1eb4e35689832b"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/unauthenticated.error.ts",
+      "sha256": "01cca0424acaf1592cf6f0b1425f8b2a2cdb3be58c0d33ec3199a59897214e5c"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/identity-policy.ts",
+      "sha256": "7cf99753d901db8d3929827d9dad99deed962ebc2c6450ddb6b6692770727560"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/repositories/identity.repository.ts",
+      "sha256": "825e0765286fdff4e20b5d03c8a0b0c891808217ab83d24700d3f9716a3009e0"
+    },
+    {
+      "path": "apps/api/src/modules/identity/identity-operator.factory.ts",
+      "sha256": "e236b480747a15d72f5f0c8ae66484541db7e00ab510cff6eb25fc8924e01106"
+    },
+    {
+      "path": "apps/api/src/modules/identity/identity-worker.factory.ts",
+      "sha256": "84ac5faa9c431f3ce625e1daab84dae452fbc60006ccd74306c30194d2ca7729"
+    },
+    {
+      "path": "apps/api/src/modules/identity/identity.module.ts",
+      "sha256": "c27818a15f9f7904c697fe7223b0f9838b52d4059c28b155dd2734f0da573f26"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/http/http-session.ts",
+      "sha256": "fa5b1f37ee080455e6a68128f26a8fbd2118e3a321493250b3ead3cb09e97797"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/mail/__tests__/verification-mail.unit.spec.ts",
+      "sha256": "b6b2eebc3c39766f022acacfa39393449a834ec0d9024cd8fbc362166ca1e54a"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/mail/verification-mail.ts",
+      "sha256": "33755876b6dd111796aa55969ee7bfbac63a4096329cf9190bbbbba0ff167f45"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.ts",
+      "sha256": "5a9d70e71d5de75346fcb3b27a2ea1a00c7a785dc397013f1b4f0bac28a37608"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.ts",
+      "sha256": "86e89f6e4aeb1bb2f2e54e4e8d8531b845ef4019087533522302377b539395d0"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.ts",
+      "sha256": "aa3673fb757d9da778d4523c58d0ff4bcb1a265e7fb6eeb0cbb84f33bf255100"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-operator-admin.ts",
+      "sha256": "8bc8341c5f88072d3cac4d17b2402c7e6fe66e8f322e1d46f3b671818f743f50"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/security/__tests__/identity-crypto.unit.spec.ts",
+      "sha256": "15eb91559d9714f4f49d9bde94da05726292bcc17bcfa5279f2954dc9152d9f7"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/security/identity-crypto.ts",
+      "sha256": "ee8cdb617e35111c613fa2f6f601f98757ecd0559a46899c54ea362093745edf"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/security/identity-runtime.ts",
+      "sha256": "345561a6e18dee7083642234bdab081c986b1eb65d34f8d8c5374d85c5767843"
+    },
+    {
+      "path": "apps/api/src/modules/identity/presentation/http/dto/identity.dto.ts",
+      "sha256": "67be7783a4f6fdebd091d8a2cdfc8efc50da243e7ee6d7cbd1c36f076bdc5da9"
+    },
+    {
+      "path": "apps/api/src/modules/identity/presentation/http/http-session.port.ts",
+      "sha256": "2b475650c4287aaf6f58610ced8719da2293cc560a88a4dee85b5238e7811b7e"
+    },
+    {
+      "path": "apps/api/src/modules/identity/presentation/http/identity.controller.ts",
+      "sha256": "cebce6e528eb6cef2eb36a94fddb1a81f0b73e7338d9a1d93c4429e7cf8abb4a"
+    },
+    {
+      "path": "apps/api/src/shared/application/errors/unavailable.error.ts",
+      "sha256": "1ec18f79cc4ef07bedd86e83b478c992a7c448d05f2174503a0533f0dc762e35"
+    },
+    {
+      "path": "apps/api/src/shared/application/ports/idempotency.ts",
+      "sha256": "186716e77b785a98595b33b7b00836843b4854ec26fee03b60e4c6bee3b3919b"
+    },
+    {
+      "path": "apps/api/src/shared/application/ports/readiness.ts",
+      "sha256": "f4ebf8d15477c507cd370d7f6d9e9b11ac7bdf737197dd0ee13464a1e74c7125"
+    },
+    {
+      "path": "apps/api/src/shared/application/ports/security.ts",
+      "sha256": "86fa0d79aa36033359e0d3e497411bf2d7f6f97f68b35bf776f8eb0cfe8a4970"
+    },
+    {
+      "path": "apps/api/src/shared/application/unit-of-work/unit-of-work.port.ts",
+      "sha256": "a756910fbe639d91b6cba68e117e8e070ba2983fa2018003988d7bf6bfd30c11"
+    },
+    {
+      "path": "apps/api/src/shared/common/filters/__tests__/domain-exception.filter.unit.spec.ts",
+      "sha256": "2f3c954485b78d4712a741dfad0a843ce6ee2248708b2e75fecb50333fb01a70"
+    },
+    {
+      "path": "apps/api/src/shared/common/filters/domain-exception.filter.ts",
+      "sha256": "619ee276547fca94702b9fd5906c7040071619fdfdf35e0a19c63bd329504ebd"
+    },
+    {
+      "path": "apps/api/src/shared/common/interceptors/__tests__/api-response.interceptor.unit.spec.ts",
+      "sha256": "2edf109d3df098edf75b7976e05bf6bb55cd3e9a89d4a5e19bda674e1797dcd3"
+    },
+    {
+      "path": "apps/api/src/shared/common/interceptors/api-response.interceptor.ts",
+      "sha256": "f8f980bbf1b9a1c6f7e8fd08adccbebd97823852cea4079b71b4a437436d9d49"
+    },
+    {
+      "path": "apps/api/src/shared/domain/exceptions/domain-error.ts",
+      "sha256": "bdb9634e09738f4c9498cd774c5c4d0fec069fd598fced9f8b4449513db6677d"
+    },
+    {
+      "path": "apps/api/src/shared/domain/exceptions/error-category.ts",
+      "sha256": "eb8dd815acfd96f55396379b72884865c9528676d34077968dc87126d0a41409"
+    },
+    {
+      "path": "apps/api/src/workers/operator/operator-admin.main.ts",
+      "sha256": "d9762c105a518e86a283898a7a2146fe0ade067678a4f1394fee7bb79e42d0db"
+    },
+    {
+      "path": "apps/api/src/workers/outbox/verification.main.ts",
+      "sha256": "fa9ac385f819db884d03efae76886fbcc50c914f1db6f49ccc8a2429b8f44db5"
+    }
+  ],
+  "testSourceSha256": "afd395c582e73b7cc1c36a0dc17f8c11611c3281e8966bbc070478968ec9ba3b"
+}

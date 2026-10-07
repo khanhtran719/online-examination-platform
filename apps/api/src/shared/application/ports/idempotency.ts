@@ -1,6 +1,7 @@
 export interface StoredReceipt<T> {
   fingerprint: Uint8Array;
   response: T;
+  httpStatus: number;
 }
 
 export interface IdempotencyStore {

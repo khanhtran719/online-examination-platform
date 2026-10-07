@@ -6,12 +6,13 @@ export class PostgresIdempotency implements IdempotencyStore {
 
   async find<T>(actorId: string, key: string): Promise<StoredReceipt<T> | null> {
     const row = (
-      await this.db.query<{ fingerprint: Buffer; response: T }>(
+      await this.db.query<{ fingerprint: Buffer; response: T; httpStatus: number }>(
         "idempotency.read",
         `
         SELECT
           fingerprint,
-          response
+          response,
+          http_status AS "httpStatus"
         FROM
           platform.idempotency_receipts
         WHERE

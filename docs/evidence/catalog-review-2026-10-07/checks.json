@@ -1,0 +1,87 @@
+[
+  {
+    "command": "npm run lint",
+    "status": "PASS",
+    "includes": [
+      "ESLint",
+      "architecture/docs quality",
+      "OpenAPI/contracts"
+    ]
+  },
+  {
+    "command": "npm run typecheck",
+    "status": "PASS"
+  },
+  {
+    "command": "npm run build",
+    "status": "PASS",
+    "migrationFiles": 9
+  },
+  {
+    "command": "npm test",
+    "status": "FAIL",
+    "apiSuitesPassed": 13,
+    "apiTestsPassed": 71,
+    "webSuitesFailedUnderWrongRunner": 2,
+    "nodeToolingTailExecuted": false,
+    "issue": "pre-existing Jest discovery matches Vitest files"
+  },
+  {
+    "command": "node --test scripts/__tests__/*.unit.spec.mjs",
+    "status": "PASS",
+    "testsPassed": 34
+  },
+  {
+    "command": "npm run web:test",
+    "status": "PASS",
+    "testFilesPassed": 16,
+    "testsPassed": 73
+  },
+  {
+    "command": "npm run test:integration -- --testNamePattern='^(?!.*records a browse and publication diagnostic)'",
+    "status": "PASS_SELECTED",
+    "suitesPassed": 3,
+    "testsPassed": 63,
+    "deliberatelyDeselected": 1,
+    "reason": "avoid overwriting dated diagnostic evidence"
+  },
+  {
+    "command": "npm run test:identity:https",
+    "status": "PASS",
+    "testsPassed": 10,
+    "runtime": "actual Chromium/API/SMTP/restricted PostgreSQL"
+  },
+  {
+    "command": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config docs/evidence/catalog-review-2026-10-07/review.jest.cjs --runInBand",
+    "status": "RED_PRODUCT_DEFECTS",
+    "exitCode": 1,
+    "testsFailed": 5,
+    "testsPassed": 1,
+    "groupsOfRuntimeDefects": 4
+  },
+  {
+    "scope": "AWS / sustainable capacity / performance-cost / database saturation",
+    "status": "NOT_MEASURED"
+  },
+  {
+    "command": "npm run quality (after review docs/status updates)",
+    "status": "PASS",
+    "operations": 46,
+    "examples": 425
+  },
+  {
+    "command": "git diff --check",
+    "status": "PASS"
+  },
+  {
+    "command": "Prettier check of independent review fixture/config",
+    "status": "PASS"
+  },
+  {
+    "scope": "disposable PostgreSQL cleanup",
+    "extraDatabases": 0,
+    "catalogTemporaryLogins": 0,
+    "reviewStartedContainersStopped": true,
+    "volumesPreserved": true
+  }
+]

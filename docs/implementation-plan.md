@@ -1,6 +1,68 @@
 # Implementation plan
 
-## Active scope — Identity browser HTTPS COMPLETE locally, 2026-10-07
+## Active scope — Catalog fixes and architecture conformance COMPLETE locally, 2026-10-07
+
+User authorizes fixing GR-01–06 from the independent review while following the existing Architecture Contract. Preserve all prior RED/diagnostic evidence, migrations0001–0009, public OpenAPI behavior, pg decision, worktree UI edits and Phase04/production gates.
+
+| Work | Owner / boundary | Invariant / checks |
+| --- | --- | --- |
+| GR-01 publication | Catalog Application + Domain / repository DB clock and locks | Resolve close eligibility after exam + bank serialization locks; same UoW for version/pointer/audit/receipt. Preserve receipt replay. Real PG lock-close, timeout rollback and republish regressions first. |
+| GR-02 HTTP limits | Catalog Presentation declares bounded limits; reusable global HTTP adapter applies generic route metadata | No Catalog URL/policy table in global infrastructure; POST/PUT exam128KiB, question512KiB, import1MiB cover declared limits plus UTF-8/escaped surrogate-pair JSON. Domain/Presentation/import use Unicode code-point limits. Identity default16KiB unchanged. Actual HTTP valid/oversized/security cases. |
+| GR-03 read DTO | Catalog query adapter maps exact PublicExam | Cursor sorting field stays inside BrowseRow, never leaks into detail. Validate real response with existing OpenAPI schema. |
+| GR-04 calendar | Catalog Domain pure validation | Round-trip UTC components at supported millisecond precision; reject normalized invalid dates, accept valid leap days/fractional precision. Unit and real HTTP cases. |
+| GR-05 test discovery | Root Jest configuration/package tooling | Backend Jest, Node scripts and Web Vitest all run in root verification; no removed/disabled tests. |
+| GR-06 evidence | Integration-only diagnostic instrumentation / module SQL adapters | EXPLAIN actual captured adapter SQL, separate publish window with real transaction/lock/pool observations, null for absent samples. Unique ignored run output, source/config/migration hashes and summary generated from that run. No raw SQL/parameters/credentials in exported diagnostic. |
+
+Plan: preserve baseline hashes → write/run RED regressions → minimal behavioral/boundary corrections → focused GREEN → complete unit/integration and shared HTTP HTTPS checks → capture fresh diagnostic/evidence → self-review/update status. TDD skill delegates independent publication reproduction tests to a subagent; main agent owns runtime fixes and remaining regression/evidence work. No module/ORM/framework migration or Assessment implementation is required by these fixes.
+
+- [x] F-01: RED regressions for publication/body/schema/calendar and runner scope; Unicode mismatch also reproduced before fix.
+- [x] F-02: Fix behavior and keep Presentation → Application → Domain/Ports; pg stays Infrastructure.
+- [x] F-03: Diagnostic exact SQL/publish observations, unique output/provenance and metadata correction; new generated summary frozen separately.
+- [x] F-04:199 root cases,83 real-PG/SMTP and10 HTTPS PASS; full validation/self-review and evidence restore BOOT-01/CAT-01/03/04/06/08 only. CAT-10/ID-11/production remain open.
+
+[Fix report](catalog-fixes-2026-10-07.md) and [evidence](evidence/catalog-fixes-2026-10-07/README.md) are current closure. Roadmap61/216 checked,155 pending. The prior sections below record historical states before these fixes; they do not override current acceptance.
+
+## Historical scope — Independent Catalog review before fixes, 2026-10-07
+
+User yêu cầu review phần Grok đã chạy. Đối chiếu prompt, source/contract/PG behavior và changes ở shared HTTP/Identity; giữ UI work nguyên. Lượt này chỉ thêm reproduction/evidence/report và sửa status, không triển khai runtime fixes hoặc Assessment.
+
+[Review report](catalog-review-2026-10-07.md) ghi GR-01–06. Bộ review riêng: 5 RED / 1 PASS; 63 integration PASS với diagnostic cũ deselected; 71 API Jest PASS nhưng root runner FAIL, 34 Node và73 Web PASS riêng; 10 HTTPS PASS. Migration0001–0008 giữ bytes,0009 built đúng. Root runner issue tồn tại trước Catalog, vẫn mở lại BOOT-01 để sửa discovery. CAT-01/03/04/06/08 mở lại; roadmap55/216 checked. [Evidence](evidence/catalog-review-2026-10-07/README.md).
+
+- [x] Inspect diff và canonical architecture/product/OpenAPI; xác định review scope/owners.
+- [x] Tái hiện trên restricted PostgreSQL/HTTP, kiểm chứng cursor control và shared Identity HTTPS regression.
+- [x] Báo cáo findings theo priority, lưu provenance và cập nhật checklist đúng trạng thái.
+- [ ] Sửa GR-01–04 với regression tests thật; không tick Catalog vì existing happy-path tests PASS.
+- [ ] Sửa GR-05 test discovery và GR-06 diagnostic/provenance; chạy lại review/regressions rồi mới nghiệm thu.
+
+## Prior implementation — Catalog local, 2026-10-07
+
+Phase04 chưa đóng vì ID-11 live SES còn PARTIAL. Increment này chỉ làm Catalog độc lập trên PostgreSQL local: draft/bank, publication bất biến, projection và import v1. Không đóng Phase04, không bỏ gate SES, không làm Assessment lifecycle, scoring/SQS, Reporting, Terraform, magic link, GitHub hay redesign Web. Worktree Web UI chưa commit được giữ nguyên.
+
+Ngoại lệ phạm vi: Catalog không chờ live SES vì không gửi mail và không đọc private repository của Identity. Auth dùng public facade `identity/application/facades/identity.facade` (authenticate, requirePermission, revalidate trong transaction) và request guard bọc HttpSession hiện có. Gap đã đối chiếu, không bịa endpoint: sections/membership chỉ nằm trong `ExamWriteRequest`; không có route section riêng. `QuestionWriteRequest.points` không có cột trên `catalog.questions` (points chỉ ở membership) nên cần migration forward `0009`. Example replace question ghi `expectedRevision: 0` trong khi create mới là revision zero; replace thực thi expectedRevision > 0. Body limit toàn cục 16384 byte không đủ import 1MiB; chỉ route POST import được nâng giới hạn. CAT-10 không tick đủ vì chưa có Assessment start thật.
+
+| Task | Owner | Contract |
+| --- | --- | --- |
+| CAT-01/02/04 draft | Catalog application + domain write repository | In: `ExamWriteRequest`, session cookie, Idempotency-Key UUIDv7, Origin/CSRF. Out: `MutationReceipt` 201/200. Permission `catalog.manage`. Invariant: revision create = 0 rồi lưu 1; replace khớp revision rồi tăng; section/position/bank question không trùng; draft được rỗng nội dung nhưng schedule bắt buộc. Transaction: exam + sections + membership + audit + receipt. Lock: user → exam → bank question id tăng dần. Idempotency: fingerprint SHA-256, receipt trước revision check, retry cùng payload trả receipt cũ. Query: một statement ghi. Tests: revision race, lost ACK, audit rollback. |
+| CAT-03 bank | Catalog | In: `QuestionWriteRequest`. Out: receipt hoặc `AdminQuestion`. Create/replace/archive `catalog.manage`; đọc `catalog.keys.read` và audit-read. Invariant: single một key, multiple tập key thuộc options, true/false đúng hai options và một key; points 1–1000 sau migration; text limits; không HTML trusted. Transaction: question + options + audit + receipt. Lock: user → question. Archive giữ row để draft/snapshot còn tham chiếu. |
+| CAT-05 import | Catalog | In: `ImportRequest` schemaVersion 1, ≤100 câu, ≤1MiB, không CSV/URL. Out: `ImportReport`. Permission `catalog.import`. Malformed 400 và không ghi report. Semantic invalid 200 valid=false committed=false. Dry-run và import thật đều có report/audit/receipt; chỉ import thật insert bank, all-or-nothing. Retry trả cùng report/IDs. Report không chứa prompt/key. |
+| CAT-06/07 publish | Catalog | In: `RevisionRequest`. Permission `catalog.manage`. Invariant: 1–500 câu, 1–20 section không rỗng, duration/attempt limit, open < close, chưa closed theo DB time, timezone IANA, default explanation có thể NEVER. Một transaction: version tăng, snapshot id mới, policy, current pointer, audit, receipt. Không UPDATE snapshot. Unpublish chỉ chặn policy hiện hành. Republish tạo version mới. Bank edit không đổi snapshot. |
+| CAT-08/09 read | Catalog query port + `CatalogFacade` | Browse/detail `catalog.read`: metadata, cursor `(publishedAt, examId)`, filter/watermark/page size, không OFFSET, không question/key. Budget OpenAPI 3 query/request gồm auth + admission + một projection. Facade: `getPublishedPolicy`, `getFrozenQuestionPage`, `getScoringSnapshot` dùng transaction hiện có, không phải HTTP anonymous. Scoring snapshot tách DTO thí sinh. |
+| CAT-10 evidence | tests + diagnostic | Real PG restricted role. Start-race của Assessment giữ PARTIAL. Diagnostic browse/detail/publish ghi query, EXPLAIN, pool, payload, p50/p95/p99; không phải SLO/RPS/AWS. |
+
+- [ ] **CAT-01 — IN PROGRESS** CRUD exam draft với expectedRevision, receipt, audit.
+- [x] **CAT-02** Section và ordering nằm trong replace draft, không route riêng.
+- [ ] **CAT-03 — IN PROGRESS** Question bank single/multiple/true-false và archive giữ reference.
+- [ ] **CAT-04 — IN PROGRESS** Gán bank question, points, không lặp, FK.
+- [x] **CAT-05** Import JSON v1, dry-run, all-or-nothing, retry.
+- [ ] **CAT-06 — IN PROGRESS** Publish atomic snapshot.
+- [x] **CAT-07** Unpublish/republish, không sửa snapshot.
+- [ ] **CAT-08 — IN PROGRESS** Browse/detail/admin projections, không lộ key.
+- [x] **CAT-09** Public facade cho Assessment.
+- [ ] **CAT-10 — PARTIAL** Publish/update concurrency, invalid import key, explanation leak và revoke đã có integration PostgreSQL. Start race của Assessment chưa có nên mục này không được tick. Review bổ sung post-lock clock/body/date/response gaps và exact-query/publish diagnostic pending.
+
+Kết quả local 2026-10-07: migration forward `0009_catalog_question_points.sql` áp trên database disposable; 0001–0008 không đổi byte. Một lần chạy integration 64/64 PASS (database 31, Identity 22, Catalog 11) khi Mailpit local đang chạy. Diagnostic không chứng minh capacity. Phase04 và ID-11 giữ mở.
+
+## Prior scope — Identity browser HTTPS COMPLETE locally, 2026-10-07
 
 User authorizes the next increment after retaining pg and SQL normalization. Finish local ID-07/browser evidence with the existing live SPA, real AppModule/HTTP server, restricted PostgreSQL roles, immutable migrations and actual verification worker/SMTP delivery. Catalog, SES/AWS deployment, public certificates and general frontend acceptance remain separate work.
 

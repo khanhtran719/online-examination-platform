@@ -47,7 +47,12 @@ const test = base.extend({
             ignoreHTTPSErrors: false,
             backend: "real AppModule",
             frontend: "live static build",
-            persistence: "restricted-role PostgreSQL with all eight migrations",
+            persistence: "restricted-role PostgreSQL with the complete built migration bundle",
+            migrationCount: harness.buildProvenance.apiFiles.filter(
+              (file) =>
+                file.path.startsWith("dist/infrastructure/database/migrations/") &&
+                file.path.endsWith(".sql"),
+            ).length,
             mail: "actual worker SMTP to Mailpit",
             buildProvenance: harness.buildProvenance,
           },

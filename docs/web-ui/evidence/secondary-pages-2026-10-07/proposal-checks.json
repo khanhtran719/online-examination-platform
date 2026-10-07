@@ -1,0 +1,630 @@
+{
+  "results": [
+    {
+      "screen": "register",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "login",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "mail",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "verify",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "dashboard",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "catalog",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "detail",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "history",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "leaderboard",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "profile",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "room",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "result",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "review",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "states",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "admin",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "editor",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "bank",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "question-editor",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "import",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "monitor",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "metrics",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "audit",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "how",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "screen": "help",
+      "widths": [
+        {
+          "width": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "external": []
+}

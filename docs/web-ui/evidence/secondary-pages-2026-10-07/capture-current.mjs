@@ -31,7 +31,7 @@ const entries = [
   ["admin-metrics", "/admin/metrics", "admin"], ["admin-audit", "/admin/audit", "admin"],
 ];
 const captures = [];
-for (const [name, route, role] of entries) {
+for (const [name, route, role] of entries.filter(([name]) => !process.argv[2] || process.argv.slice(2).includes(name))) {
   await page.setViewportSize({ width: 1440, height: 1000 });
   if (role) {
     await page.goto(`http://127.0.0.1:4173/login?return=${encodeURIComponent(route)}`);
@@ -45,14 +45,17 @@ for (const [name, route, role] of entries) {
       await page.locator("summary").filter({ hasText: "Kịch bản mẫu" }).click();
     }
   } else await page.goto(`http://127.0.0.1:4173${route}`);
-  await page.locator("h1").first().waitFor();
+  await page.waitForFunction((protectedRoute) => {
+    const title = document.querySelector("h1")?.textContent?.trim();
+    return !!title && (!protectedRoute || title !== "Đăng nhập");
+  }, !!role);
   await page.evaluate(() => document.fonts.ready);
-  await page.waitForTimeout(180);
+  await page.waitForTimeout(450);
   await page.screenshot({ path: `${out}/${name}-1440.png`, fullPage: true });
   const detail = await page.evaluate(() => ({
     title: document.querySelector("h1")?.textContent,
     width: innerWidth, documentWidth: document.documentElement.scrollWidth,
-    text: document.querySelector("main")?.innerText.slice(0, 500) ?? "",
+    text: (document.querySelector("main") ?? document.querySelector("#content") ?? document.body).innerText.slice(0, 700),
   }));
   captures.push({ name, route, role: role ?? "public", ...detail });
   if (["register", "catalog", "exam-room", "admin-editor"].includes(name)) {

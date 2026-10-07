@@ -259,8 +259,17 @@ export class IdentityService {
     // Replayed credentials may reach refresh so the application can durably revoke the family.
     return this.queries.csrfFamily(c, this.tokens.hash(refresh), allowRevoked);
   }
-  requirePermission(principal: Principal, permission: string): void {
+  requirePermission(principal: { permissions: readonly string[] }, permission: string): void {
     if (!principal.permissions.includes(permission)) throw forbidden();
+  }
+  async revalidate(raw: string, permission: string): Promise<Principal> {
+    const claims = await this.tokens.verify(raw, "access");
+    const account = await this.repo.lockAccount(claims.userId);
+    if (!account?.enabled || account.emailVerifiedAt === null) throw unauthenticated();
+    const current = await this.authenticate(raw);
+    if (current.userId !== account.id) throw unauthenticated();
+    this.requirePermission(current, permission);
+    return current;
   }
   async updateProfile(
     raw: string,

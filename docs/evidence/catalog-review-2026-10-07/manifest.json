@@ -1,0 +1,193 @@
+{
+  "recordedAt": "2026-10-07T08:54:57.375582+00:00",
+  "sourceHead": "b057c3da4e8ab847c0af898120004484cf232e77",
+  "reviewedState": "uncommitted Grok Catalog implementation, no review runtime fixes",
+  "platform": "darwin",
+  "arch": "arm64",
+  "node": "v24.17.0",
+  "postgres": "17 / local dedicated compose service",
+  "databasePort": 55435,
+  "runtimePoolMax": 10,
+  "statementTimeoutMs": 2000,
+  "lockTimeoutMs": 500,
+  "closeProbeWindowMs": 250,
+  "migrations": [
+    {
+      "file": "0001_capability_schema.sql",
+      "sourceSha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+      "builtSha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+      "builtMatchesSource": true,
+      "headSha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+      "unchangedFromHead": true
+    },
+    {
+      "file": "0002_query_indexes.sql",
+      "sourceSha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+      "builtSha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+      "builtMatchesSource": true,
+      "headSha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+      "unchangedFromHead": true
+    },
+    {
+      "file": "0003_runtime_privileges.sql",
+      "sourceSha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+      "builtSha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+      "builtMatchesSource": true,
+      "headSha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+      "unchangedFromHead": true
+    },
+    {
+      "file": "0004_durable_state_guards.sql",
+      "sourceSha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+      "builtSha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+      "builtMatchesSource": true,
+      "headSha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+      "unchangedFromHead": true
+    },
+    {
+      "file": "0005_frozen_category.sql",
+      "sourceSha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+      "builtSha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+      "builtMatchesSource": true,
+      "headSha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+      "unchangedFromHead": true
+    },
+    {
+      "file": "0006_immutable_submission.sql",
+      "sourceSha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+      "builtSha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+      "builtMatchesSource": true,
+      "headSha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+      "unchangedFromHead": true
+    },
+    {
+      "file": "0007_identity_runtime.sql",
+      "sourceSha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+      "builtSha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+      "builtMatchesSource": true,
+      "headSha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+      "unchangedFromHead": true
+    },
+    {
+      "file": "0008_identity_operations.sql",
+      "sourceSha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+      "builtSha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+      "builtMatchesSource": true,
+      "headSha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+      "unchangedFromHead": true
+    },
+    {
+      "file": "0009_catalog_question_points.sql",
+      "sourceSha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1",
+      "builtSha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1",
+      "builtMatchesSource": true
+    }
+  ],
+  "files": [
+    {
+      "path": "apps/api/src/infrastructure/http/configure-http-application.ts",
+      "sha256": "551322a9fe3051b66c7ca34161e2c3be1e7be8c47e8e8366a0b5f9a83b5de676"
+    },
+    {
+      "path": "apps/api/src/infrastructure/idempotency/postgres-idempotency.ts",
+      "sha256": "8f7a203c91e14e0f4ede0119f3346c483b4ef3569790f6ac7af4fdca8afae384"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/dto/catalog.dto.ts",
+      "sha256": "eb27d229ad98ef714428fb0b09832d5c74727b0d487c822e8a797fcccfe5d3d9"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/facades/catalog.facade.ts",
+      "sha256": "245a518e85bef1ce3ad12cbe1fdf04c862acf51856235f16f8fa70d424972871"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/ports/catalog-cursor.port.ts",
+      "sha256": "0b2e637043c847cf9007eb78bed01b252b2b48dcca73c139c3265efa67cdd9ed"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/ports/catalog-query.port.ts",
+      "sha256": "22de26103c73ffbd5550f34da489fafa24db5d0febaaf56d74203400bc4ba80a"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/services/catalog.service.ts",
+      "sha256": "70bc1b70c114800f3023042e8e83e650d456914d15257aad861b7b4dcb2a149b"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/catalog.module.ts",
+      "sha256": "817d2cb4d955450d6c441fa3566007743b70631c8ee0f19b31fc7481dbe13ddc"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/__tests__/catalog-policy.unit.spec.ts",
+      "sha256": "53c743ea6a93579316560fa3f9dd465baa687b4156ad71e11d9d6911b323f0a7"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/catalog-error.ts",
+      "sha256": "6078ba7805f414c59803665b956ea42cef2932f87eae01c21c84f057b879f5ea"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/catalog-policy.ts",
+      "sha256": "0aaf77d6e2aabaf8ebd44f82c2f50d97164a1fbaebe2f6d0027627e3dd9670a8"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/repositories/catalog.repository.ts",
+      "sha256": "0bb64c1dd9d9e6a31c59abce496431c8065e1a1e4699979ad3348d9a7353eefe"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/infrastructure/cursor/catalog-cursor.ts",
+      "sha256": "a37861714dae638dda20cce11b3844366713fde906829c2c2cb8bc7536906945"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/infrastructure/persistence/postgres-catalog.query.ts",
+      "sha256": "8322af8ca0030b16dff22254df76ee7ad35c2af1c3ebf995d1cbbb1ea46adf15"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/infrastructure/persistence/postgres-catalog.repository.ts",
+      "sha256": "e0565481ac9f830dea2db3c835711daec0ee5a5d1913a0151b88a4d364a89c49"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/presentation/http/catalog.controller.ts",
+      "sha256": "d9561175bbe3f4515927cfc7374fd48479ba00a07bdfe16d7fc0d0ec986a1fbd"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/presentation/http/dto/catalog.dto.ts",
+      "sha256": "69409138a385f307a40fd8e95dab94c3dafc2fc20e37e6acf888fe32e0af9ace"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/services/identity.service.ts",
+      "sha256": "ed2cd411d533d8efe71214f4ba636702ea4e3acb9dc3ec364ab4d1f729e7ca18"
+    },
+    {
+      "path": "apps/api/src/modules/identity/identity.module.ts",
+      "sha256": "c27818a15f9f7904c697fe7223b0f9838b52d4059c28b155dd2734f0da573f26"
+    },
+    {
+      "path": "apps/api/src/shared/common/interceptors/api-response.interceptor.ts",
+      "sha256": "f8f980bbf1b9a1c6f7e8fd08adccbebd97823852cea4079b71b4a437436d9d49"
+    },
+    {
+      "path": "apps/api/tests/integration/catalog.spec.ts",
+      "sha256": "26c3640b281f4ea722e5e2347a3084bc275e551b4e293207b580d2c836e5c04c"
+    },
+    {
+      "path": "docs/evidence/catalog-2026-10-07/diagnostic.json",
+      "sha256": "270ca2ca6d8ab747d112f235645441209c4be56c06a7481392198d6f88cac50f"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/probes.json",
+      "sha256": "d9110ad5f8c057ebaf98c2e56818cb8eb986a654f8ed21224a0be15b05fb56b1"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/review.jest.cjs",
+      "sha256": "874287349ceeb0026a2faf09cae82230eb444daa2ca7aa170437a5671ce0edf5"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/review.spec.ts",
+      "sha256": "256e855ceb36082652afdc51ac2778ebae3b525bdb2b4776f0c38959cedc7483"
+    },
+    {
+      "path": "jest.config.cjs",
+      "sha256": "214b18d61b02e901f831f28b7cdfea7171e7e19f6f1caf1dbe52dd740bff53ce"
+    }
+  ],
+  "notCapacityEvidence": true
+}

@@ -293,3 +293,72 @@ Self-review under R-58/R-59/workflow47: Identity transport/controller retains ow
 Cleanup: normal fixture teardown closes browser/gateway/API/worker/pools, drops its disposable database/logins, restores environment and removes temporary key/certificate/static snapshot files. Dedicated PostgreSQL/Mailpit and the root Mailpit opened for integration are stopped, volumes retained. No Git staging/commit/PR occurred; concurrent public-experience source/tests/design documents were preserved. Final document guards and whitespace check are recorded below.
 
 Final closure: `npm run lint`/quality/contracts, root and Web typecheck/lint,19-file Prettier check and `git diff --check` PASS after implementation/evidence updates. Counts verified52/164 product and7/25 FE. Final GREEN preserves10/10 cases in the isolated snapshot run; manifest JSON/credential scan and all8 tested-build migration digests PASS. Both safe screenshots were visually inspected. Historical ORM measurements and RED files remain unchanged.
+
+
+## Grok Catalog prompt handoff — 2026-10-07
+
+Delivered [997-word copyable prompt](grok-catalog-implementation-prompt.md), counted by whitespace in the body after the separator. Scope is the next Catalog backend increment, CAT-01–10 staged; no runtime work started by this handoff. Prompt preserves current pg/SQL architecture, immutable migrations, authenticated projections, admin permissions/audit/receipts, atomic frozen publication, bounded JSON import and real-PG evidence requirements. It explicitly keeps full publish/start race acceptance pending until actual Assessment integration exists, and records local Catalog scope separately from the open ID-11/SES/production gate.
+
+Fresh documentation checks: `npm run quality` PASS (links/anchors/context/boundaries/contracts46 operations/425 examples) and `git diff --check` PASS. No dependency/source/schema/roadmap checkbox or historical benchmark artifact changed; runtime/browser tests were not rerun for this documentation-only task. Existing user/UI/Identity worktree changes preserved.
+
+## Catalog local 2026-10-07
+
+Implemented Catalog draft, question bank, immutable publication, projections, Assessment capabilities and JSON import v1. Migration `0009_catalog_question_points.sql` is forward-only. `git diff` shows no change to 0001–0008. Build copies all nine SQL files byte-for-byte into `dist/infrastructure/database/migrations`.
+
+| Check | Result |
+| --- | --- |
+| `npx tsc --noEmit` | PASS |
+| `npm run lint` (ESLint, quality, contracts 46 operations / 425 examples) | PASS before the documentation update in this section |
+| API Jest, `testPath` not including the two web Vitest files | 13 suites, 71 tests PASS |
+| `node --test scripts/__tests__/*.unit.spec.mjs` | 34 PASS |
+| Root `npm test` | exits 1 because Jest also loads `apps/web/src/features/experience/__tests__/*.unit.spec.ts`; those committed Vitest files were not edited |
+| `npm run build` | PASS; nine migration files match source |
+| Integration on disposable PostgreSQL 17, Mailpit stopped | database PASS, Catalog 11 PASS, Identity 21 PASS and 1 SMTP `ECONNREFUSED` on port 18025 |
+| `docker compose up -d --wait mailpit`, then Identity spec | 22 PASS |
+| Full integration after Mailpit was healthy | 64 PASS (database 31, Identity 22, Catalog 11) |
+| Port 55432 | not used; it belongs to another running Postgres. Catalog tests used a task-owned Postgres 17 on 127.0.0.1:55436 with `pg_stat_statements` |
+| Development database | not migrated and not truncated |
+| `npm run test:identity:https` | 10/10 Chromium cases H01–H10 PASS after API and live web builds; the harness stopped its own Postgres and Mailpit |
+
+Catalog integration covers revision and lost-ACK receipts, audit rollback, archive references, immutable publish/unpublish/republish, a second connection hiding an uncommitted version, publish against replace, semantic and dry-run import, permission revoke inside the write transaction, and HTTP Origin/CSRF, envelope and the 1MiB import limit. [Diagnostic](evidence/catalog-2026-10-07/README.md) is not capacity evidence. CAT-10 stays open because Assessment start does not exist. ID-11 and Phase04 stay open. No Redis, Kafka, RDS Proxy or AWS service was added. User web-ui evidence and this handoff section were left intact. Nothing was staged or committed.
+
+## Independent review of Grok Catalog — 2026-10-07
+
+Outcome: **NOT ACCEPTED locally until GR-01–06 are addressed**; see [report](catalog-review-2026-10-07.md) and [evidence](evidence/catalog-review-2026-10-07/README.md). Source baseline `b057c3d`, Node24.17/darwinARM64, dedicated loopback PostgreSQL17 on55435, restricted runtime role/all9 migrations. DevelopmentDB55432 untouched. All original0001–0008 bytes matchHEAD; built9-file bundle matches source.
+
+| Review check | Actual result |
+| --- | --- |
+| Lint/architecture quality/OpenAPI, typecheck, API build | PASS |
+| Root `npm test` | FAIL;71 API cases PASS but2 committed Web/Vitest suites fail under Jest; Node tail not run |
+| Node tooling separately |34 PASS |
+| `npm run web:test` |73 PASS /16 files |
+| Existing integration, diagnostic writer deliberately filtered out |63 PASS,1 deselected /3 suites |
+| Actual Identity Chromium HTTPS |10 PASS; actual AppModule/SMTP worker/restricted PG |
+| Independent review suite/default500ms lock and2000ms statement timeouts |5 RED,1 PASS; expected exit1 |
+| Migration hashes/diff checks | Preserved immutable migrations,9 built assets identical |
+
+Review reproductions: closed publication commits1 late version; valid36,377-byte question and42,231-byte500-question draft return400; detail emits undocumented`publishedAt`; February30 normalizes toMarch2/201. Pagination control sees503/503 bank IDs. No correctness fix was made during review. Root runner defect predates Catalog; Grok disclosed it. Historical diagnostic remains unmodified: only browse/detail measured, simplified EXPLAIN and summary/raw mismatch require new run evidence. HTTPS environment's “eight migrations” string is stale; fixture loads all9 built files.
+
+Reopened BOOT-01 andCAT-01/03/04/06/08; roadmap55/216 checked,161 pending. CAT-10 remainsPARTIAL with Assessment race and diagnostic gaps. Phase04/ID-11/AWS/production ledger unchanged. Review-owned containers stopped after checks, volumes preserved; disposable DB/logins removed. No stage/commit or unrelated Web edits.
+
+Final review closure: `npm run quality` PASS after report/status/evidence updates (46 operations/425 examples); review fixture/config Prettier check and `git diff --check` PASS. Recounted55 checked/161 pending. PostgreSQL cleanup check found0 extra databases and0 temporary Catalog logins; dedicated Postgres and root Mailpit stopped with volumes retained.
+
+## Catalog fixes and architecture conformance — 2026-10-07
+
+[Report](catalog-fixes-2026-10-07.md)/[new evidence](evidence/catalog-fixes-2026-10-07/README.md) close GR-01–06 locally. Correctness fixes preserve pure business layers, public facades, UoW/lock order, receipt replay, pg/SQL decision and immutable migrations. Presentation declares128KiB exam/512KiB question/1MiB import caps; global HTTP has only generic bounded metadata. Unicode counting aligns with JSON Schema, UTC calendars reject impossible dates and public projections match exact OpenAPI DTOs.
+
+| Check | Fresh result |
+| --- | --- |
+| Publication RED/GREEN |4 failed/2 passed before clock fix →6 PASS; real blocked connections, initial/republish, exam/question lock-close, timeout/rollback/same-key retry/replay |
+| Calendar RED/GREEN |4 failed/16 passed →20 PASS; final23 Catalog policy cases include3 later Unicode regressions |
+| HTTP RED/GREEN |5 failed/6 passed →11 PASS; Unicode extension2 failed →final13 PASS |
+| Root npm test |PASS:89 API Jest/13 suites +37 Node +73 Web Vitest/16 files =199 cases |
+| Full real-PG/HTTP/SMTP |83 PASS/5 suites,0 skipped; all9 migrations/restricted roles |
+| Identity browser HTTPS |10 PASS; actual latest AppModule/Web live build/SMTP; migrationCount9 derived from built provenance |
+| Lint/quality/contracts/typecheck/build |PASS;46 operations/425 examples and normalized import boundaries |
+| Fresh focused diagnostic |1 PASS/10 intentionally deselected only for this additional measurement; full83-case run above has0 skipped |
+| Formatting/assets/diff/cleanup |Recorded in new checks.json/manifest; nine source/built migrations match baseline, historical raw review/diagnostic hashes retained |
+
+Final frozen run58451c3f-aa1e-4698-86e7-1c1218fad576 executed alone after the full suites.25 samples/operation,100 questions/2 sections per new publication: browse p95/p99=5.126/6.270ms; detail1.681/2.060ms; publish42.770/103.994ms.50 read statements,425 publish statements,0 errors,25 transaction/75 lock observations. Read transaction n0 has null percentiles, not0ms. Exact SQL capture/stripped plans/source/config hashes and generated README come from the same raw file. Not comparable to historical reduced-query/different-dataset runs; no SLO/RPS/AWS/cost improvement claim.
+
+Harness corrections before acceptance: unused HTTP fixture variables fixed after lint failure; a missing TEST_DATABASE_ADMIN_URL invocation aborted before cases; CSRF expected403 matches existing contract; rounding fixture adjusted for floating-point tie. Old review fixture was not rerun because it writes archived probes. DevelopmentDB55432 and unrelated UI visual artifacts preserved. BOOT-01/CAT-01/03/04/06/08 restored:61/216 checked,155 pending. CAT-10 actual Assessment start race, ID-11/live SES, Phase04 and production ledger remain open.

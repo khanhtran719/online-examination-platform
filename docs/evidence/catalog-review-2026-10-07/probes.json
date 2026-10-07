@@ -1,0 +1,42 @@
+[
+  {
+    "case": "R01 post-lock publish clock",
+    "expected": "Exam is closed / no version",
+    "actualError": null,
+    "committedLateVersions": 1
+  },
+  {
+    "case": "R02 valid large question",
+    "bodyBytes": 36377,
+    "expectedStatus": 201,
+    "actualStatus": 400,
+    "errorCode": "Invalid request"
+  },
+  {
+    "case": "R03 valid 500-question draft",
+    "bodyBytes": 42231,
+    "questionCount": 500,
+    "expectedStatus": 201,
+    "actualStatus": 400,
+    "errorCode": "Invalid request"
+  },
+  {
+    "case": "R04 detail additionalProperties",
+    "actualStatus": 200,
+    "extraFields": [
+      "publishedAt"
+    ]
+  },
+  {
+    "case": "R05 invalid calendar date",
+    "expectedStatus": 400,
+    "actualStatus": 201,
+    "inputOpenAt": "2027-02-30T10:00:00.000Z",
+    "storedOpenAt": "2027-03-02T10:00:00.000Z"
+  },
+  {
+    "case": "C01 bank timestamp precision control",
+    "expectedRows": 503,
+    "seenRows": 503
+  }
+]

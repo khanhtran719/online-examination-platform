@@ -8,7 +8,9 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand && node --test scripts/__tests__/*.unit.spec.mjs",
+    "test": "npm run test:api && npm run test:tooling && npm run web:test",
+    "test:api": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
+    "test:tooling": "node --test scripts/__tests__/*.unit.spec.mjs",
     "contracts:check": "node scripts/contracts.mjs",
     "quality": "node scripts/quality.mjs && npm run contracts:check",
     "lint": "eslint apps scripts && npm run quality",
