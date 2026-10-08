@@ -1,0 +1,1808 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/admin/__tests__/admin-workflows.unit.spec.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/admin-workflows.unit.spec.ts (6 tests | 6 failed) 4535ms
+   × preserves draft fields across editor steps and prevents selecting the same bank question in two sections 201ms
+   × loads the new exam draft and revision when the edit route changes 1052ms
+   × clears a loaded exam editor and its query payload after a403 response 1052ms
+   × uses native answer keys and asks before a type conversion discards multiple keys 159ms
+   × rejects an oversized JSON file before reading it 1022ms
+   × requires an explicit commit confirmation after a successful dry run and uses a distinct key 1048ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/admin-workflows.unit.spec.ts > preserves draft fields across editor steps and prevents selecting the same bank question in two sections
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Các phần & câu hỏi"
+
+Here are the accessible roles:
+
+  link:
+
+  Name "Đề tiếp theo":
+  [36m<a[39m
+    [33mdata-discover[39m=[32m"true"[39m
+    [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Cập nhật quyền":
+  [36m<button />[39m
+
+  Name "Thêm: Bank A · 2 điểm ngân hàng":
+  [36m<button[39m
+    [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Thêm: Bank B · 3 điểm ngân hàng":
+  [36m<button[39m
+    [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Thêm phần":
+  [36m<button[39m
+    [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Lưu nháp":
+  [36m<button[39m
+    [33mclass[39m=[32m"_button_f905bc"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Lưu và phát hành":
+  [36m<button[39m
+    [33mclass[39m=[32m"_button_f905bc"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Tạo bản nháp":
+  [36m<h1[39m
+    [33mclass[39m=[32m"_title_24c302"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_muted_24c302"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_muted_24c302"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Tiêu đề":
+  [36m<input[39m
+    [33mid[39m=[32m"_r_0_"[39m
+    [33mvalue[39m=[32m"New exam"[39m
+  [36m/>[39m
+
+  Name "Thời lượng (giây)":
+  [36m<input[39m
+    [33mid[39m=[32m"_r_2_"[39m
+    [33mvalue[39m=[32m"2700"[39m
+  [36m/>[39m
+
+  Name "Giới hạn lượt":
+  [36m<input[39m
+    [33mid[39m=[32m"_r_6_"[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "Tên phần":
+  [36m<input[39m
+    [33mid[39m=[32m"_r_8_"[39m
+    [33mvalue[39m=[32m"Phần 1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  combobox:
+
+  Name "Danh mục":
+  [36m<select[39m
+    [33mid[39m=[32m"_r_1_"[39m
+  [36m/>[39m
+
+  Name "Múi giờ hiển thị":
+  [36m<select[39m
+    [33mid[39m=[32m"_r_3_"[39m
+  [36m/>[39m
+
+  Name "Khi mở giải thích":
+  [36m<select[39m
+    [33mid[39m=[32m"_r_7_"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "TOEIC":
+  [36m<option[39m
+    [33mvalue[39m=[32m"TOEIC"[39m
+  [36m/>[39m
+
+  Name "IELTS":
+  [36m<option[39m
+    [33mvalue[39m=[32m"IELTS"[39m
+  [36m/>[39m
+
+  Name "IT Certification":
+  [36m<option[39m
+    [33mvalue[39m=[32m"IT_CERTIFICATION"[39m
+  [36m/>[39m
+
+  Name "Đại học":
+  [36m<option[39m
+    [33mvalue[39m=[32m"UNIVERSITY"[39m
+  [36m/>[39m
+
+  Name "Tuyển dụng":
+  [36m<option[39m
+    [33mvalue[39m=[32m"RECRUITMENT"[39m
+  [36m/>[39m
+
+  Name "Nội bộ":
+  [36m<option[39m
+    [33mvalue[39m=[32m"CORPORATE"[39m
+  [36m/>[39m
+
+  Name "Asia/Ho_Chi_Minh":
+  [36m<option[39m
+    [33mvalue[39m=[32m"Asia/Ho_Chi_Minh"[39m
+  [36m/>[39m
+
+  Name "Asia/Bangkok":
+  [36m<option[39m
+    [33mvalue[39m=[32m"Asia/Bangkok"[39m
+  [36m/>[39m
+
+  Name "Asia/Tokyo":
+  [36m<option[39m
+    [33mvalue[39m=[32m"Asia/Tokyo"[39m
+  [36m/>[39m
+
+  Name "UTC":
+  [36m<option[39m
+    [33mvalue[39m=[32m"UTC"[39m
+  [36m/>[39m
+
+  Name "America/New_York":
+  [36m<option[39m
+    [33mvalue[39m=[32m"America/New_York"[39m
+  [36m/>[39m
+
+  Name "Europe/London":
+  [36m<option[39m
+    [33mvalue[39m=[32m"Europe/London"[39m
+  [36m/>[39m
+
+  Name "Không mở đáp án":
+  [36m<option[39m
+    [33mvalue[39m=[32m"NEVER"[39m
+  [36m/>[39m
+
+  Name "Mở sau khi có kết quả":
+  [36m<option[39m
+    [33mvalue[39m=[32m"AFTER_COMPLETION"[39m
+  [36m/>[39m
+
+  Name "Mở sau khi đề đóng":
+  [36m<option[39m
+    [33mvalue[39m=[32m"AFTER_EXAM_CLOSE"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Bật bảng xếp hạng bí danh":
+  [36m<input[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "Phần 1":
+  [36m<fieldset[39m
+    [33mclass[39m=[32m"_card_24c302"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<a[39m
+      [33mdata-discover[39m=[32m"true"[39m
+      [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+    [36m>[39m
+      [0mĐề tiếp theo[0m
+    [36m</a>[39m
+    [36m<button>[39m
+      [0mCập nhật quyền[0m
+    [36m</button>[39m
+    [36m<h1[39m
+      [33mclass[39m=[32m"_title_24c302"[39m
+    [36m>[39m
+      [0mTạo bản nháp[0m
+    [36m</h1>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"_muted_24c302"[39m
+    [36m>[39m
+      [0mGiờ mở và giờ đóng được nhập theo múi giờ của đề, rồi lưu thành giờ UTC. Danh sách phiên bản cũ không có trên trang này.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mfor[39m=[32m"_r_0_"[39m
+      [36m>[39m
+        [0mTiêu đề[0m
+      [36m</label>[39m
+      [36m<input[39m
+        [33mid[39m=[32m"_r_0_"[39m
+        [33mvalue[39m=[32m"New exam"[39m
+      [36m/>[39m
+    [36m</div>[39m
+    [36m<label[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+      [33mfor[39m=[32m"_r_1_"[39m
+    [36m>[39m
+      [36m<span>[39m
+        [0mDanh mục[0m
+      [36m</span>[39m
+      [36m<select[39m
+        [33mid[39m=[32m"_r_1_"[39m
+      [36m>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"TOEIC"[39m
+        [36m>[39m
+          [0mTOEIC[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"IELTS"[39m
+        [36m>[39m
+          [0mIELTS[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"IT_CERTIFICATION"[39m
+        [36m>[39m
+          [0mIT Certification[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"UNIVERSITY"[39m
+        [36m>[39m
+          [0mĐại học[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"RECRUITMENT"[39m
+        [36m>[39m
+          [0mTuyển dụng[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"CORPORATE"[39m
+        [36m>[39m
+          [0mNội bộ[0m
+        [36m</option>[39m
+      [36m</select>[39m
+    [36m</label>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mfor[39m=[32m"_r_2_"[39m
+      [36m>[39m
+        [0mThời lượng (giây)[0m
+      [36m</label>[39m
+      [36m<input[39m
+        [33mid[39m=[32m"_r_2_"[39m
+        [33mvalue[39m=[32m"2700"[39m
+      [36m/>[39m
+    [36m</div>[39m
+    [36m<label[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+      [33mfor[39m=[32m"_r_3_"[39m
+    [36m>[39m
+      [36m<span>[39m
+        [0mMúi giờ hiển thị[0m
+      [36m</span>[39m
+      [36m<select[39m
+        [33mid[39m=[32m"_r_3_"[39m
+      [36m>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"Asia/Ho_Chi_Minh"[39m
+        [36m>[39m
+          [0mAsia/Ho_Chi_Minh[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"Asia/Bangkok"[39m
+        [36m>[39m
+          [0mAsia/Bangkok[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"Asia/Tokyo"[39m
+        [36m>[39m
+          [0mAsia/Tokyo[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"UTC"[39m
+        [36m>[39m
+          [0mUTC[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"America/New_York"[39m
+        [36m>[39m
+          [0mAmerica/New_York[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"Europe/London"[39m
+        [36m>[39m
+          [0mEurope/London[0m
+        [36m</option>[39m
+      [36m</select>[39m
+    [36m</label>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mfor[39m=[32m"_r_4_"[39m
+      [36m>[39m
+        [0mMở[0m
+      [36m</label>[39m
+      [36m<input[39m
+        [33mid[39m=[32m"_r_4_"[39m
+        [33mtype[39m=[32m"datetime-local"[39m
+        [33mvalue[39m=[32m"2026-10-07T23:22"[39m
+      [36m/>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mfor[39m=[32m"_r_5_"[39m
+      [36m>[39m
+        [0mĐóng[0m
+      [36m</label>[39m
+      [36m<input[39m
+        [33mid[39m=[32m"_r_5_"[39m
+        [33mtype[39m=[32m"datetime-local"[39m
+        [33mvalue[39m=[32m"2026-10-14T23:22"[39m
+      [36m/>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mfor[39m=[32m"_r_6_"[39m
+      [36m>[39m
+        [0mGiới hạn lượt[0m
+      [36m</label>[39m
+      [36m<input[39m
+        [33mid[39m=[32m"_r_6_"[39m
+        [33mvalue[39m=[32m"1"[39m
+      [36m/>[39m
+    [36m</div>[39m
+    [36m<label[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+      [33mfor[39m=[32m"_r_7_"[39m
+    [36m>[39m
+      [36m<span>[39m
+        [0mKhi mở giải thích[0m
+      [36m</span>[39m
+      [36m<select[39m
+        [33mid[39m=[32m"_r_7_"[39m
+      [36m>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"NEVER"[39m
+        [36m>[39m
+          [0mKhông mở đáp án[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"AFTER_COMPLETION"[39m
+        [36m>[39m
+          [0mMở sau khi có kết quả[0m
+        [36m</option>[39m
+        [36m<option[39m
+          [33mvalue[39m=[32m"AFTER_EXAM_CLOSE"[39m
+        [36m>[39m
+          [0mMở sau khi đề đóng[0m
+        [36m</option>[39m
+      [36m</select>[39m
+    [36m</label>[39m
+    [36m<label[39m
+      [33mclass[39m=[32m"_row_24c302"[39m
+    [36m>[39m
+      [36m<input[39m
+        [33mtype[39m=[32m"checkbox"[39m
+      [36m/>[39m
+      [0mBật bảng xếp hạng bí danh[0m
+    [36m</label>[39m
+    [36m<fieldset[39m
+      [33mclass[39m=[32m"_card_24c302"[39m
+    [36m>[39m
+      [36m<legend>[39m
+        [0mPhần [0m
+        [0m1[0m
+      [36m</legend>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_8_"[39m
+        [36m>[39m
+          [0mTên phần[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_8_"[39m
+          [33mvalue[39m=[32m"Phần 1"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_stack_24c302"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mThêm: [0m
+          [0mBank A[0m
+          [0m · [0m
+          [0m2[0m
+          [0m điểm ngân hàng[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mThêm: [0m
+          [0mBank B[0m
+          [0m · [0m
+          [0m3[0m
+          [0m điểm ngân hàng[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"_muted_24c302"[39m
+      [36m>[39m
+        [0mNgân hàng không có tổng số câu.[0m
+      [36m</p>[39m
+    [36m</fieldset>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+      [33mtype[39m=[32m"button"[39m
+    [36m>[39m
+      [0mThêm phần[0m
+    [36m</button>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_row_24c302"[39m
+    [36m>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_button_f905bc"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mLưu nháp[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_button_f905bc"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mLưu và phát hành[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/admin/__tests__/admin-workflows.unit.spec.ts:106:32
+    104|   mount(AdminExamEditorPage, "/admin/exams/new", "/admin/exams/new");
+    105|   await userEvent.type(screen.getByLabelText("Tiêu đề"), "New exam");
+    106|   await userEvent.click(screen.getByRole("button", { name: "Các phần &…
+       |                                ^
+    107|   await userEvent.click(screen.getByRole("button", { name: "Chọn câu c…
+    108|   const picker = await screen.findByRole("dialog", { name: "Chọn câu t…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/features/admin/__tests__/admin-workflows.unit.spec.ts > loads the new exam draft and revision when the edit route changes
+AssertionError: expected 'Draft first' to be 'Draft second' // Object.is equality
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head>[39m
+    [36m<title>[39m
+      [0mSửa đề · Phòng thi[0m
+    [36m</title>[39m
+  [36m</head>[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<a[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+      [36m>[39m
+        [0mĐề tiếp theo[0m
+      [36m</a>[39m
+      [36m<button>[39m
+        [0mCập nhật quyền[0m
+      [36m</button>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"_title_24c302"[39m
+      [36m>[39m
+        [0mDraft second[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"_muted_24c302"[39m
+      [36m>[39m
+        [0mGiờ mở và giờ đóng được nhập theo múi giờ của đề, rồi lưu thành giờ UTC. Danh sách phiên bản cũ không có trên trang này.[0m
+      [36m</p>[39m
+      [36m<p>[39m
+        [0mRevision [0m
+        [0m4[0m
+        [0m. [0m
+        [0mChưa phát hành[0m
+        [0m.[0m
+      [36m</p>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_9_"[39m
+        [36m>[39m
+          [0mTiêu đề[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_9_"[39m
+          [33mvalue[39m=[32m"Draft first"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+        [33mfor[39m=[32m"_r_a_"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0mDanh mục[0m
+        [36m</span>[39m
+        [36m<select[39m
+          [33mid[39m=[32m"_r_a_"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"TOEIC"[39m
+          [36m>[39m
+            [0mTOEIC[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"IELTS"[39m
+          [36m>[39m
+            [0mIELTS[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"IT_CERTIFICATION"[39m
+          [36m>[39m
+            [0mIT Certification[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"UNIVERSITY"[39m
+          [36m>[39m
+            [0mĐại học[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"RECRUITMENT"[39m
+          [36m>[39m
+            [0mTuyển dụng[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"CORPORATE"[39m
+          [36m>[39m
+            [0mNội bộ[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_b_"[39m
+        [36m>[39m
+          [0mThời lượng (giây)[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_b_"[39m
+          [33mvalue[39m=[32m"2700"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+        [33mfor[39m=[32m"_r_c_"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0mMúi giờ hiển thị[0m
+        [36m</span>[39m
+        [36m<select[39m
+          [33mid[39m=[32m"_r_c_"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"Asia/Ho_Chi_Minh"[39m
+          [36m>[39m
+            [0mAsia/Ho_Chi_Minh[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"Asia/Bangkok"[39m
+          [36m>[39m
+            [0mAsia/Bangkok[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"Asia/Tokyo"[39m
+          [36m>[39m
+            [0mAsia/Tokyo[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"UTC"[39m
+          [36m>[39m
+            [0mUTC[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"America/New_York"[39m
+          [36m>[39m
+            [0mAmerica/New_York[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"Europe/London"[39m
+          [36m>[39m
+            [0mEurope/London[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_d_"[39m
+        [36m>[39m
+          [0mMở[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_d_"[39m
+          [33mtype[39m=[32m"datetime-local"[39m
+          [33mvalue[39m=[32m"2026-10-01T07:00"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_e_"[39m
+        [36m>[39m
+          [0mĐóng[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_e_"[39m
+          [33mtype[39m=[32m"datetime-local"[39m
+          [33mvalue[39m=[32m"2026-12-01T07:00"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_f_"[39m
+        [36m>[39m
+          [0mGiới hạn lượt[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_f_"[39m
+          [33mvalue[39m=[32m"1"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+        [33mfor[39m=[32m"_r_g_"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0mKhi mở giải thích[0m
+        [36m</span>[39m
+        [36m<select[39m
+          [33mid[39m=[32m"_r_g_"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"NEVER"[39m
+          [36m>[39m
+            [0mKhông mở đáp án[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"AFTER_COMPLETION"[39m
+          [36m>[39m
+            [0mMở sau khi có kết quả[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"AFTER_EXAM_CLOSE"[39m
+          [36m>[39m
+            [0mMở sau khi đề đóng[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_row_24c302"[39m
+      [36m>[39m
+        [36m<input[39m
+          [33mtype[39m=[32m"checkbox"[39m
+        [36m/>[39m
+        [0mBật bảng xếp hạng bí danh[0m
+      [36m</label>[39m
+      [36m<fieldset[39m
+        [33mclass[39m=[32m"_card_24c302"[39m
+      [36m>[39m
+        [36m<legend>[39m
+          [0mPhần [0m
+          [0m1[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_field_f905bc"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"_r_h_"[39m
+          [36m>[39m
+            [0mTên phần[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"_r_h_"[39m
+            [33mvalue[39m=[32m"Phần 1"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_stack_24c302"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_row_24c302"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mBank A[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_field_f905bc"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mfor[39m=[32m"_r_i_"[39m
+              [36m>[39m
+                [0mĐiểm câu 1[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33mid[39m=[32m"_r_i_"[39m
+                [33mvalue[39m=[32m"2"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mLên[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mXuống[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mBỏ khỏi phần[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mThêm: [0m
+            [0mBank B[0m
+            [0m · [0m
+            [0m3[0m
+            [0m điểm ngân hàng[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_muted_24c302"[39m
+        [36m>[39m
+          [0mNgân hàng không có tổng số câu.[0m
+        [36m</p>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mThêm phần[0m
+      [36m</button>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_row_24c302"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_button_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mLưu nháp[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_button_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mLưu và phát hành[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mPhát hành[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_buttonDanger_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mLưu trữ[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"_chip_24c302"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/exams/second"[39m
+        [36m>[39m
+          [0mXem như thí sinh[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"_chip_24c302"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/admin/exams/second/monitor"[39m
+      [36m>[39m
+        [0mGiám sát đề này[0m
+      [36m</a>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+
+Expected: "Draft second"
+Received: "Draft first"
+
+ ❯ src/features/admin/__tests__/admin-workflows.unit.spec.ts:143:74
+    141|   await userEvent.click(screen.getByRole("link", { name: "Đề tiếp theo…
+    142|   await waitFor(() =>
+    143|     expect((screen.getByLabelText("Tiêu đề") as HTMLInputElement).valu…
+       |                                                                          ^
+    144|   );
+    145| });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/features/admin/__tests__/admin-workflows.unit.spec.ts > clears a loaded exam editor and its query payload after a403 response
+AssertionError: expected <input id="_r_j_" …(1)></input> to be null
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head>[39m
+    [36m<title>[39m
+      [0mSửa đề · Phòng thi[0m
+    [36m</title>[39m
+  [36m</head>[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<a[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+      [36m>[39m
+        [0mĐề tiếp theo[0m
+      [36m</a>[39m
+      [36m<button>[39m
+        [0mCập nhật quyền[0m
+      [36m</button>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"_title_24c302"[39m
+      [36m>[39m
+        [0mDraft first[0m
+      [36m</h1>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"_muted_24c302"[39m
+      [36m>[39m
+        [0mGiờ mở và giờ đóng được nhập theo múi giờ của đề, rồi lưu thành giờ UTC. Danh sách phiên bản cũ không có trên trang này.[0m
+      [36m</p>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_alert_f905bc"[39m
+        [33mrole[39m=[32m"alert"[39m
+      [36m>[39m
+        [36m<strong>[39m
+          [0mBạn không có quyền thực hiện việc này[0m
+        [36m</strong>[39m
+        [36m<div>[39m
+          [36m<p>[39m
+            [0mKhông có quyền[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"_button_f905bc"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mThử lại[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<p>[39m
+        [0mRevision [0m
+        [0m4[0m
+        [0m. [0m
+        [0mChưa phát hành[0m
+        [0m.[0m
+      [36m</p>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_j_"[39m
+        [36m>[39m
+          [0mTiêu đề[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_j_"[39m
+          [33mvalue[39m=[32m"Draft first"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+        [33mfor[39m=[32m"_r_k_"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0mDanh mục[0m
+        [36m</span>[39m
+        [36m<select[39m
+          [33mid[39m=[32m"_r_k_"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"TOEIC"[39m
+          [36m>[39m
+            [0mTOEIC[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"IELTS"[39m
+          [36m>[39m
+            [0mIELTS[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"IT_CERTIFICATION"[39m
+          [36m>[39m
+            [0mIT Certification[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"UNIVERSITY"[39m
+          [36m>[39m
+            [0mĐại học[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"RECRUITMENT"[39m
+          [36m>[39m
+            [0mTuyển dụng[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"CORPORATE"[39m
+          [36m>[39m
+            [0mNội bộ[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_l_"[39m
+        [36m>[39m
+          [0mThời lượng (giây)[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_l_"[39m
+          [33mvalue[39m=[32m"2700"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+        [33mfor[39m=[32m"_r_m_"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0mMúi giờ hiển thị[0m
+        [36m</span>[39m
+        [36m<select[39m
+          [33mid[39m=[32m"_r_m_"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"Asia/Ho_Chi_Minh"[39m
+          [36m>[39m
+            [0mAsia/Ho_Chi_Minh[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"Asia/Bangkok"[39m
+          [36m>[39m
+            [0mAsia/Bangkok[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"Asia/Tokyo"[39m
+          [36m>[39m
+            [0mAsia/Tokyo[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"UTC"[39m
+          [36m>[39m
+            [0mUTC[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"America/New_York"[39m
+          [36m>[39m
+            [0mAmerica/New_York[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"Europe/London"[39m
+          [36m>[39m
+            [0mEurope/London[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_n_"[39m
+        [36m>[39m
+          [0mMở[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_n_"[39m
+          [33mtype[39m=[32m"datetime-local"[39m
+          [33mvalue[39m=[32m"2026-10-01T07:00"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_o_"[39m
+        [36m>[39m
+          [0mĐóng[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_o_"[39m
+          [33mtype[39m=[32m"datetime-local"[39m
+          [33mvalue[39m=[32m"2026-12-01T07:00"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_p_"[39m
+        [36m>[39m
+          [0mGiới hạn lượt[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_p_"[39m
+          [33mvalue[39m=[32m"1"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+        [33mfor[39m=[32m"_r_q_"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0mKhi mở giải thích[0m
+        [36m</span>[39m
+        [36m<select[39m
+          [33mid[39m=[32m"_r_q_"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"NEVER"[39m
+          [36m>[39m
+            [0mKhông mở đáp án[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"AFTER_COMPLETION"[39m
+          [36m>[39m
+            [0mMở sau khi có kết quả[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"AFTER_EXAM_CLOSE"[39m
+          [36m>[39m
+            [0mMở sau khi đề đóng[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_row_24c302"[39m
+      [36m>[39m
+        [36m<input[39m
+          [33mtype[39m=[32m"checkbox"[39m
+        [36m/>[39m
+        [0mBật bảng xếp hạng bí danh[0m
+      [36m</label>[39m
+      [36m<fieldset[39m
+        [33mclass[39m=[32m"_card_24c302"[39m
+      [36m>[39m
+        [36m<legend>[39m
+          [0mPhần [0m
+          [0m1[0m
+        [36m</legend>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_field_f905bc"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"_r_r_"[39m
+          [36m>[39m
+            [0mTên phần[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mid[39m=[32m"_r_r_"[39m
+            [33mvalue[39m=[32m"Phần 1"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_stack_24c302"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_row_24c302"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mBank A[0m
+            [36m</span>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"_field_f905bc"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mfor[39m=[32m"_r_s_"[39m
+              [36m>[39m
+                [0mĐiểm câu 1[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33mid[39m=[32m"_r_s_"[39m
+                [33mvalue[39m=[32m"2"[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mLên[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mXuống[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mBỏ khỏi phần[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mThêm: [0m
+            [0mBank B[0m
+            [0m · [0m
+            [0m3[0m
+            [0m điểm ngân hàng[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_muted_24c302"[39m
+        [36m>[39m
+          [0mNgân hàng không có tổng số câu.[0m
+        [36m</p>[39m
+      [36m</fieldset>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mThêm phần[0m
+      [36m</button>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_row_24c302"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_button_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mLưu nháp[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_button_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mLưu và phát hành[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mPhát hành[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_buttonDanger_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mLưu trữ[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"_chip_24c302"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/exams/first"[39m
+        [36m>[39m
+          [0mXem như thí sinh[0m
+        [36m</a>[39m
+      [36m</div>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"_chip_24c302"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/admin/exams/first/monitor"[39m
+      [36m>[39m
+        [0mGiám sát đề này[0m
+      [36m</a>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+
+- Expected:
+null
+
++ Received:
+<input
+  id="_r_j_"
+  value="Draft first"
+/>
+
+ ❯ src/features/admin/__tests__/admin-workflows.unit.spec.ts:157:48
+    155|   await userEvent.click(screen.getByRole("button", { name: "Cập nhật q…
+    156|   await waitFor(() => {
+    157|     expect(screen.queryByLabelText("Tiêu đề")).toBeNull();
+       |                                                ^
+    158|     expect(client.getQueryData(["admin-exam", "first"])).toBeUndefined…
+    159|   });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/features/admin/__tests__/admin-workflows.unit.spec.ts > uses native answer keys and asks before a type conversion discards multiple keys
+TestingLibraryElementError: Unable to find an accessible element with the role "checkbox" and name "Đáp án đúng 3"
+
+Here are the accessible roles:
+
+  link:
+
+  Name "Đề tiếp theo":
+  [36m<a[39m
+    [33mdata-discover[39m=[32m"true"[39m
+    [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Cập nhật quyền":
+  [36m<button />[39m
+
+  Name "Thêm lựa chọn":
+  [36m<button[39m
+    [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Bớt lựa chọn":
+  [36m<button[39m
+    [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Lưu câu":
+  [36m<button[39m
+    [33mclass[39m=[32m"_button_f905bc"[39m
+    [33mtype[39m=[32m"submit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Tạo câu":
+  [36m<h1[39m
+    [33mclass[39m=[32m"_title_24c302"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  combobox:
+
+  Name "Loại":
+  [36m<select[39m
+    [33mid[39m=[32m"_r_t_"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "SINGLE_CHOICE":
+  [36m<option[39m
+    [33mvalue[39m=[32m"SINGLE_CHOICE"[39m
+  [36m/>[39m
+
+  Name "MULTIPLE_CHOICE":
+  [36m<option[39m
+    [33mvalue[39m=[32m"MULTIPLE_CHOICE"[39m
+  [36m/>[39m
+
+  Name "TRUE_FALSE":
+  [36m<option[39m
+    [33mvalue[39m=[32m"TRUE_FALSE"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Đề bài":
+  [36m<textarea[39m
+    [33mid[39m=[32m"_r_u_"[39m
+  [36m/>[39m
+
+  Name "Lựa chọn 1":
+  [36m<input[39m
+    [33mid[39m=[32m"_r_v_"[39m
+    [33mvalue[39m=[32m"One"[39m
+  [36m/>[39m
+
+  Name "Lựa chọn 2":
+  [36m<input[39m
+    [33mid[39m=[32m"_r_10_"[39m
+    [33mvalue[39m=[32m"Two"[39m
+  [36m/>[39m
+
+  Name "Lựa chọn 3":
+  [36m<input[39m
+    [33mid[39m=[32m"_r_14_"[39m
+    [33mvalue[39m=[32m"Three"[39m
+  [36m/>[39m
+
+  Name "Vị trí đáp án đúng, cách nhau bởi dấu phẩy":
+  [36m<input[39m
+    [33mid[39m=[32m"_r_11_"[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "Điểm":
+  [36m<input[39m
+    [33mid[39m=[32m"_r_12_"[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "Giải thích":
+  [36m<textarea[39m
+    [33mid[39m=[32m"_r_13_"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<a[39m
+      [33mdata-discover[39m=[32m"true"[39m
+      [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+    [36m>[39m
+      [0mĐề tiếp theo[0m
+    [36m</a>[39m
+    [36m<button>[39m
+      [0mCập nhật quyền[0m
+    [36m</button>[39m
+    [36m<form[39m
+      [33mclass[39m=[32m"_stack_24c302"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"_title_24c302"[39m
+      [36m>[39m
+        [0mTạo câu[0m
+      [36m</h1>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+        [33mfor[39m=[32m"_r_t_"[39m
+      [36m>[39m
+        [36m<span>[39m
+          [0mLoại[0m
+        [36m</span>[39m
+        [36m<select[39m
+          [33mid[39m=[32m"_r_t_"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"SINGLE_CHOICE"[39m
+          [36m>[39m
+            [0mSINGLE_CHOICE[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"MULTIPLE_CHOICE"[39m
+          [36m>[39m
+            [0mMULTIPLE_CHOICE[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"TRUE_FALSE"[39m
+          [36m>[39m
+            [0mTRUE_FALSE[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_u_"[39m
+        [36m>[39m
+          [0mĐề bài[0m
+        [36m</label>[39m
+        [36m<textarea[39m
+          [33mid[39m=[32m"_r_u_"[39m
+        [36m>[39m
+          [0mPick words[0m
+        [36m</textarea>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_v_"[39m
+        [36m>[39m
+          [0mLựa chọn 1[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_v_"[39m
+          [33mvalue[39m=[32m"One"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_10_"[39m
+        [36m>[39m
+          [0mLựa chọn 2[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_10_"[39m
+          [33mvalue[39m=[32m"Two"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_14_"[39m
+        [36m>[39m
+          [0mLựa chọn 3[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_14_"[39m
+          [33mvalue[39m=[32m"Three"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_row_24c302"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mThêm lựa chọn[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mBớt lựa chọn[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_11_"[39m
+        [36m>[39m
+          [0mVị trí đáp án đúng, cách nhau bởi dấu phẩy[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_11_"[39m
+          [33mvalue[39m=[32m"1"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_12_"[39m
+        [36m>[39m
+          [0mĐiểm[0m
+        [36m</label>[39m
+        [36m<input[39m
+          [33mid[39m=[32m"_r_12_"[39m
+          [33mvalue[39m=[32m"1"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_13_"[39m
+        [36m>[39m
+          [0mGiải thích[0m
+        [36m</label>[39m
+        [36m<textarea[39m
+          [33mid[39m=[32m"_r_13_"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_button_f905bc"[39m
+        [33mtype[39m=[32m"submit"[39m
+      [36m>[39m
+        [0mLưu câu[0m
+      [36m</button>[39m
+    [36m</form>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/admin/__tests__/admin-workflows.unit.spec.ts:170:32
+    168|   await userEvent.type(screen.getByLabelText("Lựa chọn 3"), "Three");
+    169|   await userEvent.selectOptions(screen.getByLabelText("Loại"), "MULTIP…
+    170|   await userEvent.click(screen.getByRole("checkbox", { name: "Đáp án đ…
+       |                                ^
+    171|   await userEvent.selectOptions(screen.getByLabelText("Loại"), "SINGLE…
+    172|   const dialog = await screen.findByRole("dialog", { name: "Đổi loại c…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/features/admin/__tests__/admin-workflows.unit.spec.ts > rejects an oversized JSON file before reading it
+TestingLibraryElementError: Unable to find an element with the text: Tệp vượt quá 1 MiB.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<a[39m
+      [33mdata-discover[39m=[32m"true"[39m
+      [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+    [36m>[39m
+      [0mĐề tiếp theo[0m
+    [36m</a>[39m
+    [36m<button>[39m
+      [0mCập nhật quyền[0m
+    [36m</button>[39m
+    [36m<h1[39m
+      [33mclass[39m=[32m"_title_24c302"[39m
+    [36m>[39m
+      [0mNhập JSON[0m
+    [36m</h1>[39m
+    [36m<p>[39m
+      [0mTệp tối đa 1 MiB, đúng mẫu JSON phiên bản 1, từ 1 đến 100 câu. Kiểm tra dữ liệu không ghi ngân hàng. Nếu chưa rõ máy chủ đã ghi chưa, thử lại gửi đúng nội dung cũ.[0m
+    [36m</p>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"_muted_24c302"[39m
+    [36m>[39m
+      [0m2[0m
+      [0m byte UTF-8.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_alert_f905bc"[39m
+      [33mrole[39m=[32m"alert"[39m
+    [36m>[39m
+      [36m<strong>[39m
+        [0mJSON chưa hợp lệ[0m
+      [36m</strong>[39m
+      [36m<div>[39m
+        [0mCần schemaVersion 1 và mảng questions.[0m
+      [36m</div>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mfor[39m=[32m"_r_15_"[39m
+      [36m>[39m
+        [0mNội dung JSON[0m
+      [36m</label>[39m
+      [36m<textarea[39m
+        [33mid[39m=[32m"_r_15_"[39m
+      [36m>[39m
+        [0m{}[0m
+      [36m</textarea>[39m
+    [36m</div>[39m
+    [36m<input[39m
+      [33maccept[39m=[32m"application/json"[39m
+      [33maria-label[39m=[32m"Chọn tệp JSON"[39m
+      [33mtype[39m=[32m"file"[39m
+    [36m/>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_row_24c302"[39m
+    [36m>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_button_f905bc"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mKiểm tra dữ liệu[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_button_f905bc"[39m
+        [33mdisabled[39m=[32m""[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mNhập câu hỏi[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<a[39m
+      [33mdata-discover[39m=[32m"true"[39m
+      [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+    [36m>[39m
+      [0mĐề tiếp theo[0m
+    [36m</a>[39m
+    [36m<button>[39m
+      [0mCập nhật quyền[0m
+    [36m</button>[39m
+    [36m<h1[39m
+      [33mclass[39m=[32m"_title_24c302"[39m
+    [36m>[39m
+      [0mNhập JSON[0m
+    [36m</h1>[39m
+    [36m<p>[39m
+      [0mTệp tối đa 1 MiB, đúng mẫu JSON phiên bản 1, từ 1 đến 100 câu. Kiểm tra dữ liệu không ghi ngân hàng. Nếu chưa rõ máy chủ đã ghi chưa, thử lại gửi đúng nội dung cũ.[0m
+    [36m</p>[39m
+    [36m<p[39m
+      [33mclass[39m=[32m"_muted_24c302"[39m
+    [36m>[39m
+      [0m2[0m
+      [0m byte UTF-8.[0m
+    [36m</p>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_alert_f905bc"[39m
+      [33mrole[39m=[32m"alert"[39m
+    [36m>[39m
+      [36m<strong>[39m
+        [0mJSON chưa hợp lệ[0m
+      [36m</strong>[39m
+      [36m<div>[39m
+        [0mCần schemaVersion 1 và mảng questions.[0m
+      [36m</div>[39m
+    [36m</div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_field_f905bc"[39m
+    [36m>[39m
+      [36m<label[39m
+        [33mfor[39m=[32m"_r_15_"[39m
+      [36m>[39m
+        [0mNội dung JSON[0m
+      [36m</label>[39m
+      [36m<textarea[39m
+        [33mid[39m=[32m"_r_15_"[39m
+      [36m>[39m
+        [0m{}[0m
+      [36m</textarea>[39m
+    [36m</div>[39m
+    [36m<input[39m
+      [33maccept[39m=[32m"application/json"[39m
+      [33maria-label[39m=[32m"Chọn tệp JSON"[39m
+      [33mtype[39m=[32m"file"[39m
+    [36m/>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_row_24c302"[39m
+    [36m>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_button_f905bc"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mKiểm tra dữ liệu[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_button_f905bc"[39m
+        [33mdisabled[39m=[32m""[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mNhập câu hỏi[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/admin/__tests__/admin-workflows.unit.spec.ts:195:16
+    193|   Object.defineProperty(file, "text", { value: read });
+    194|   await userEvent.upload(screen.getByLabelText("Chọn tệp JSON"), file);
+    195|   await screen.findByText("Tệp vượt quá 1 MiB.");
+       |                ^
+    196|   expect(read).not.toHaveBeenCalled();
+    197|   expect(api.importQuestions).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  src/features/admin/__tests__/admin-workflows.unit.spec.ts > requires an explicit commit confirmation after a successful dry run and uses a distinct key
+TestingLibraryElementError: Unable to find role="dialog" and name "Xác nhận nhập câu hỏi"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<a[39m
+      [33mdata-discover[39m=[32m"true"[39m
+      [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+    [36m>[39m
+      [0mĐề tiếp theo[0m
+    [36m</a>[39m
+    [36m<button>[39m
+      [0mCập nhật quyền[0m
+    [36m</button>[39m
+    [36m<p>[39m
+      [0mĐã nhập[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<a[39m
+      [33mdata-discover[39m=[32m"true"[39m
+      [33mhref[39m=[32m"/admin/exams/second/edit"[39m
+    [36m>[39m
+      [0mĐề tiếp theo[0m
+    [36m</a>[39m
+    [36m<button>[39m
+      [0mCập nhật quyền[0m
+    [36m</button>[39m
+    [36m<p>[39m
+      [0mĐã nhập[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/admin/__tests__/admin-workflows.unit.spec.ts:217:31
+    215|   await screen.findByText("Chưa ghi ngân hàng");
+    216|   await userEvent.click(screen.getByRole("button", { name: "Nhập câu h…
+    217|   const dialog = await screen.findByRole("dialog", { name: "Xác nhận n…
+       |                               ^
+    218|   expect(api.importQuestions).toHaveBeenCalledTimes(1);
+    219|   await userEvent.click(within(dialog).getByRole("button", { name: "Nh…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed (6)
+   Start at  23:22:05
+   Duration  5.52s (tests 83%, environment 11%, import 3%, transform 2%)
+

@@ -36,11 +36,14 @@ import {
   AdminQuestion,
   CandidateQuestion,
   Commit,
+  FrozenChoice,
+  FrozenRow,
   ImportReport,
   MutationReceipt,
   PageResult,
   PublicExam,
   ScoringItem,
+  SharedPublication,
 } from "../dto/catalog.dto";
 import { CatalogAccess } from "../facades/catalog.facade";
 import { CatalogCursor, CursorClaims } from "../ports/catalog-cursor.port";
@@ -184,6 +187,42 @@ export class CatalogService implements CatalogAccess {
 
   getPublishedPolicy(examId: string): Promise<PublicExam | null> {
     return this.projections.publishedExam(examId);
+  }
+
+  async sharePublication(examId: string): Promise<SharedPublication | null> {
+    const row = await this.repo.shareExam(examId);
+    if (!row) return null;
+    return {
+      id: row.id,
+      serverNow: row.serverNow,
+      published: row.published,
+      archived: row.archived,
+      versionId: row.versionId,
+      durationSeconds: row.durationSeconds === null ? null : Number(row.durationSeconds),
+      attemptLimit: row.attemptLimit === null ? null : Number(row.attemptLimit),
+      openAt: row.openAt === null ? null : Number(row.openAt),
+      closeAt: row.closeAt === null ? null : Number(row.closeAt),
+    };
+  }
+
+  async frozenQuestionSlice(
+    versionId: string,
+    cursor: { sectionPosition: number; questionPosition: number; questionId: string } | null,
+    limit: number,
+  ): Promise<{ present: boolean; rows: FrozenRow[] }> {
+    if (!Number.isSafeInteger(limit) || limit < 1 || limit > 101) throw invalidRequest();
+    return this.projections.frozenPage({
+      versionId,
+      limit,
+      sectionPosition: cursor?.sectionPosition ?? null,
+      questionPosition: cursor?.questionPosition ?? null,
+      questionId: cursor?.questionId ?? null,
+    });
+  }
+
+  frozenChoices(versionId: string, questionIds: readonly string[]): Promise<FrozenChoice[]> {
+    if (questionIds.length < 1 || questionIds.length > 20) return Promise.reject(invalidRequest());
+    return this.projections.frozenChoices(versionId, questionIds);
   }
 
   async getFrozenQuestionPage(

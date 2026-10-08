@@ -4,6 +4,7 @@ import {
   AdminQuestion,
   AdminQuestionRow,
   BrowseRow,
+  FrozenChoice,
   FrozenRow,
   ImportReport,
   PublicExam,
@@ -38,5 +39,6 @@ export interface CatalogQuery {
   question(questionId: string): Promise<AdminQuestion | null>;
   importReport(id: string, actorId: string): Promise<ImportReport | null>;
   frozenPage(input: FrozenInput): Promise<{ present: boolean; rows: FrozenRow[] }>;
+  frozenChoices(versionId: string, questionIds: readonly string[]): Promise<FrozenChoice[]>;
   scoring(versionId: string): Promise<ScoringItem[] | null>;
 }

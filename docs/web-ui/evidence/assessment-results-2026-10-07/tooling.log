@@ -1,0 +1,49 @@
+
+> online-examination-platform@0.1.0 test:tooling
+> node --test scripts/__tests__/*.unit.spec.mjs
+
+✔ generates latency summary from its own raw run rather than a previous run (0.723166ms)
+✔ absent transaction samples remain not measured and zero-valued evidence is rejected (1.539958ms)
+✔ freezing an existing evidence directory cannot replace its raw sample or summary (11.828083ms)
+✔ validates the complete OpenAPI contract and its payload examples (192.269667ms)
+✔ verification is an explicit public POST with a bounded one-use token and final password (1.409125ms)
+✔ signed token contract keeps access and refresh separate and PostgreSQL authoritative (3.187042ms)
+✔ contract checks reject a refresh audience reused for access (1.189916ms)
+✔ email login rejects alternate usernames and Session rejects raw credential fields (0.315ms)
+✔ email schemas reject non-ASCII identifiers consistently with the PostgreSQL identity policy (0.263333ms)
+✔ accepts a submitted event and rejects answer data anywhere in it (0.437209ms)
+✔ rejects an event for another aggregate, schema version or invalid timestamp (0.116833ms)
+✔ candidate question schema rejects keys and explanation leaks (0.123166ms)
+✔ rejects non-finite timestamps rather than treating them as a manual submission (0.09125ms)
+✔ save contract accepts clearing and rejects duplicate options and oversized batches (0.117375ms)
+✔ rejects an admin operation made public even when the document remains valid OpenAPI (1.501375ms)
+✔ does not allow an admin route to inherit a public operation name (0.964209ms)
+✔ rejects a critical mutation without an idempotency header (0.91125ms)
+✔ rejects unsafe browser operations without Origin or CSRF contract (1.120542ms)
+✔ rejects undocumented owners, acceptance cases and unbounded list pagination (1.117125ms)
+✔ packages immutable SQL bytes and ordered filenames independently of process cwd (12.381833ms)
+✔ fails build rather than silently packaging missing or symlinked migrations (4.060542ms)
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (4.321916ms)
+✔ detects module-private and same-module infrastructure access from application (0.666583ms)
+✔ permits a public application capability and infrastructure driver adapter (0.612375ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.413708ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (0.480959ms)
+✔ checks TypeScript import types and import-equals dependencies (0.534792ms)
+✔ rejects Node network imports with or without node prefix (0.172167ms)
+✔ checks technical folder barrel imports without a trailing slash (0.171291ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.374417ms)
+✔ keeps domain independent of application orchestration (0.318875ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.336792ms)
+✔ keeps all global technical roots independent from business modules (0.26275ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.198291ms)
+✔ requires module composition to use explicit public capabilities of another module (0.480833ms)
+✔ rejects legacy placement after normalization closes (1.344125ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (1.074833ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 353.705209

@@ -1,0 +1,89 @@
+
+> online-examination-platform@0.1.0 test:identity:https
+> node scripts/identity-https.mjs
+
+
+> online-examination-platform@0.1.0 build
+> node scripts/build.mjs
+
+
+> online-examination-platform@0.1.0 web:build
+> npm --prefix apps/web run build
+
+
+> @exam/web@0.1.0 build
+> tsc -p tsconfig.json --noEmit && vite build --mode live
+
+vite v8.3.3 building client environment for live...
+transforming...
+✓ 245 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                   0.88 kB │ gzip:   0.50 kB
+dist/assets/noto-sans-vietnamese-400-normal-D2wP-Vm-.woff2        5.31 kB
+dist/assets/noto-sans-vietnamese-500-normal-B_DgfjT4.woff2        5.72 kB
+dist/assets/noto-sans-vietnamese-600-normal-mhyQDSzg.woff2        5.83 kB
+dist/assets/source-sans-3-vietnamese-700-normal-Bgamivog.woff2    6.13 kB
+dist/assets/source-sans-3-vietnamese-600-normal-B2sTNYey.woff2    6.22 kB
+dist/assets/noto-sans-latin-400-normal-BTkUljjl.woff2            13.12 kB
+dist/assets/noto-sans-latin-500-normal-DCA2Z9Cj.woff2            13.49 kB
+dist/assets/noto-sans-latin-600-normal-Dkgu5AE5.woff2            13.49 kB
+dist/assets/source-sans-3-latin-700-normal-CkzU-mV9.woff2        15.59 kB
+dist/assets/source-sans-3-latin-600-normal-DeckBYAU.woff2        15.66 kB
+dist/assets/memory-BgSLLubf.css                                   4.31 kB │ gzip:   1.31 kB
+dist/assets/ui-DHxfIuBN.css                                       5.21 kB │ gzip:   1.30 kB
+dist/assets/exam-room-CVBiBebz.css                                6.07 kB │ gzip:   1.68 kB
+dist/assets/index-CxF607CL.css                                    6.93 kB │ gzip:   1.79 kB
+dist/assets/result-pages-lcSmu8t1.css                             8.12 kB │ gzip:   1.92 kB
+dist/assets/admin-ui-BsZujlvQ.css                                 9.24 kB │ gzip:   2.07 kB
+dist/assets/sample-experience-DeOYkbge.css                        9.86 kB │ gzip:   2.20 kB
+dist/assets/mount-D3HTjEMD.css                                   31.57 kB │ gzip:   6.27 kB
+dist/assets/protected-access-Ceov3KpZ.js                          0.34 kB │ gzip:   0.26 kB
+dist/assets/progress-CrhD1lsq.js                                  0.37 kB │ gzip:   0.29 kB
+dist/assets/polling-DFBeh31A.js                                   0.50 kB │ gzip:   0.30 kB
+dist/assets/mutation-intent-DIWikAAn.js                           0.69 kB │ gzip:   0.33 kB
+dist/assets/gate-CYJXVfdx.js                                      0.84 kB │ gzip:   0.56 kB
+dist/assets/memory-ijOhyfKM.js                                    1.55 kB │ gzip:   0.73 kB
+dist/assets/admin-ui-CwEt_eAs.js                                  2.35 kB │ gzip:   1.06 kB
+dist/assets/index-DUMeM_Kv.js                                     2.70 kB │ gzip:   1.35 kB
+dist/assets/admin-layout-BJHZUYP8.js                              4.28 kB │ gzip:   1.74 kB
+dist/assets/admin-import-B2eTtUp7.js                              7.13 kB │ gzip:   2.66 kB
+dist/assets/ui-DsVgYuLj.js                                        7.38 kB │ gzip:   2.57 kB
+dist/assets/admin-insights-BZD7ylbw.js                            7.96 kB │ gzip:   2.80 kB
+dist/assets/sample-experience-DppGmVgv.js                        10.39 kB │ gzip:   3.46 kB
+dist/assets/admin-questions-Cq3DMrPi.js                          11.08 kB │ gzip:   4.07 kB
+dist/assets/admin-monitor-BhoI9j9A.js                            13.71 kB │ gzip:   4.53 kB
+dist/assets/result-pages-Dbycd8rP.js                             20.03 kB │ gzip:   5.79 kB
+dist/assets/admin-exams-DUuu5n9g.js                              21.21 kB │ gzip:   6.81 kB
+dist/assets/format-Cj-520et.js                                   23.93 kB │ gzip:   8.24 kB
+dist/assets/exam-room-BeoOKvmu.js                                32.27 kB │ gzip:   9.93 kB
+dist/assets/use-title-9_6FOFxH.js                               100.96 kB │ gzip:  33.28 kB
+dist/assets/mount-CI9wdY2g.js                                   305.65 kB │ gzip:  92.06 kB
+dist/assets/mount-scene-DL16NffI.js                             520.18 kB │ gzip: 132.21 kB
+
+✓ built in 291ms
+ Container examination-identity-https-postgres-1 Running 
+ Container examination-identity-https-mailpit-1 Starting 
+ Container examination-identity-https-mailpit-1 Started 
+ Container examination-identity-https-mailpit-1 Waiting 
+ Container examination-identity-https-postgres-1 Waiting 
+ Container examination-identity-https-postgres-1 Healthy 
+ Container examination-identity-https-mailpit-1 Healthy 
+
+> @exam/web@0.1.0 test:identity:https
+> playwright test --config playwright.identity-https.config.ts
+
+PASSED H01 TLS validation, security headers and API 404 outside SPA
+PASSED H02 register, coalesced resend, inert verification, final password and replay
+PASSED H03 missing, malformed and expired verification links never activate
+PASSED H04 exact Origin and signed cookie/header CSRF remain mandatory
+PASSED H05 two shared-cookie tabs refresh once, preserve conflicts, survive API restart and logout
+PASSED H06 lost refresh ACK does not replay, explicit login restores future refresh
+PASSED H07 lost logout ACK accepts a fresh CSRF token with the retained revoked cookie
+PASSED H08 committed profile lost ACK retries its receipt without a second write
+PASSED H09 database disable takes effect in the browser on the next request
+PASSED H10 response-body stall times out and preserves the committed profile receipt
+ Container examination-identity-https-mailpit-1 Stopping 
+ Container examination-identity-https-postgres-1 Stopping 
+ Container examination-identity-https-postgres-1 Stopped 
+ Container examination-identity-https-mailpit-1 Stopped 

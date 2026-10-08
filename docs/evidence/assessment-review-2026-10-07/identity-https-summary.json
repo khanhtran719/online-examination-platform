@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "tests": [
+    {
+      "name": "H01 TLS validation, security headers and API 404 outside SPA",
+      "status": "passed",
+      "durationMs": 375
+    },
+    {
+      "name": "H02 register, coalesced resend, inert verification, final password and replay",
+      "status": "passed",
+      "durationMs": 2067
+    },
+    {
+      "name": "H03 missing, malformed and expired verification links never activate",
+      "status": "passed",
+      "durationMs": 494
+    },
+    {
+      "name": "H04 exact Origin and signed cookie/header CSRF remain mandatory",
+      "status": "passed",
+      "durationMs": 680
+    },
+    {
+      "name": "H05 two shared-cookie tabs refresh once, preserve conflicts, survive API restart and logout",
+      "status": "passed",
+      "durationMs": 5148
+    },
+    {
+      "name": "H06 lost refresh ACK does not replay, explicit login restores future refresh",
+      "status": "passed",
+      "durationMs": 1056
+    },
+    {
+      "name": "H07 lost logout ACK accepts a fresh CSRF token with the retained revoked cookie",
+      "status": "passed",
+      "durationMs": 770
+    },
+    {
+      "name": "H08 committed profile lost ACK retries its receipt without a second write",
+      "status": "passed",
+      "durationMs": 862
+    },
+    {
+      "name": "H09 database disable takes effect in the browser on the next request",
+      "status": "passed",
+      "durationMs": 689
+    },
+    {
+      "name": "H10 response-body stall times out and preserves the committed profile receipt",
+      "status": "passed",
+      "durationMs": 11185
+    }
+  ],
+  "recordedAt": "2026-10-08T01:55:25.013Z",
+  "traces": false,
+  "rawCookies": false,
+  "rawEmailLinks": false
+}

@@ -1,3 +1,4 @@
+import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
 import { generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
@@ -120,6 +121,7 @@ beforeAll(async () => {
     security,
     receipts,
     new PostgresIdentityQuery(db),
+    new PostgresAuthenticatedWriteAdmission(db),
   );
   catalog = new CatalogService(
     identity,

@@ -18,9 +18,9 @@ Các tài liệu này đặc tả Web, không thay Architecture Contract. Nếu 
 
 Tên hiển thị tạm: **Exam Platform**; không tạo một thương hiệu mới hoặc dùng logo của TOEIC/IELTS. Phong cách **phòng thi số**: nền xám sáng, bề mặt trắng, navy làm chữ/chrome, teal cho hành động, amber cho cần chú ý. Điểm nhận diện là bộ thời gian–tiến độ–trạng thái lưu và bản đồ câu hỏi giống phiếu trả lời; trang trí giữ tiết chế để người thi tập trung.
 
-Tiếng Việt mặc định, thuật ngữ tiếng Anh dùng khi thuộc nội dung câu hỏi. Light theme là baseline. Candidate dùng top navigation; phòng thi là layout riêng; Admin dùng sidebar và bảng dữ liệu. Không carousel, gradient lớn, hình stock, leaderboard podium hoạt họa, biểu đồ giả hoặc dark theme trước khi baseline hoàn tất.
+Tiếng Việt mặc định, thuật ngữ tiếng Anh dùng khi thuộc nội dung câu hỏi. Workspace light theme, Candidate/Admin dùng rail navy trên desktop và menu mobile theo đợt1; phòng thi là layout riêng. Theo yêu cầu đợt2, auth có split panel và giấy/bút CSS3D; dashboard/detail có illustration nhỏ. Không đưa ambient motion vào phòng thi, không có biểu đồ hoặc số liệu giả.
 
-Frontend chọn **React + TypeScript strict + Vite static SPA**, React Router, TanStack Query cho server reads, CSS variables/CSS Modules cho tokens và styles. State thi dùng reducer/coordinator riêng, không giao mutation correctness cho cache defaults. Test tools dự kiến Vitest/Testing Library và Playwright/axe. Chưa cài dependency; Grok phải kiểm tra compatibility/lockfile lúc triển khai. [ADR-007](../adr/007-web-ui-implementation-direction.md) ghi lý do và giới hạn của quyết định.
+Frontend đã dùng **React + TypeScript strict + Vite static SPA**, React Router, TanStack Query cho server reads, CSS variables/CSS Modules cho tokens và styles. State thi dùng reducer/coordinator riêng, không giao mutation correctness cho cache defaults. Vitest/Testing Library và Playwright/axe đã có trong lockfile. [ADR-007](../adr/007-web-ui-implementation-direction.md) ghi lý do và giới hạn của quyết định.
 
 ## 3. Hai đường triển khai
 
@@ -29,7 +29,7 @@ Frontend chọn **React + TypeScript strict + Vite static SPA**, React Router, T
 | Demo có tương tác | Hoàn thiện toàn bộ Candidate/Admin UI và scenarios khi business API chưa có | Banner cố định “Dữ liệu mẫu”; fixture tổng hợp, có state transitions/save conflict/error; không giả đã gọi AWS/backend  |
 | Live integration  | Nối Identity hiện có và những capability được backend triển khai sau        | Không fallback sang dữ liệu mẫu khi lỗi. Capability thiếu hiển thị unavailable hoặc route bị chặn; giữ error state đúng |
 
-Hiện có **9 business API Identity chạy local**. Catalog/Assessment/Reporting/Admin APIs là specification, chưa triển khai. Browser HTTPS cũng chưa được kiểm chứng. `/v1/me` trả Profile, **không trả permissions**; frontend chưa có nguồn authoritative để tự bật menu Admin. Xem dependency register trong API document. Chế độ demo có thể mô phỏng permissions để nghiệm thu UI; live mode không lấy quyền từ lựa chọn vai trò, localStorage hay JWT decode.
+Hiện có **9 business API Identity và Catalog exam/question/import chạy local** theo [project profile](../project-profile.md). Identity browser HTTPS có10 ca PASS với API/PG/SMTP thật. Assessment core vừa được triển khai local trong increment backend riêng; Reporting còn là specification. Live UI Catalog/Assessment vẫn cần matrix integration riêng. `/v1/me` trả Profile, **không trả permissions**; frontend chưa có nguồn authoritative để tự bật menu Admin. Chế độ demo mô phỏng permissions; live mode không lấy quyền từ lựa chọn vai trò, localStorage hay JWT decode.
 
 Outcome cần Grok giao: app static chạy được, UI đủ luồng demo, Identity live theo contract khi môi trường có HTTPS, tests/screenshots/report, và danh sách live dependency chưa giải quyết. “UI demo hoàn chỉnh”, “đã tích hợp Identity”, “full live system”, “production accepted” là bốn trạng thái khác nhau.
 
@@ -41,7 +41,7 @@ Outcome cần Grok giao: app static chạy được, UI đủ luồng demo, Iden
 - [x] UI-DOC-04 — Viết scenarios/nghiệm thu và yêu cầu evidence.
 - [x] UI-DOC-05 — Viết prompt khoảng 1.000 từ cho Grok.
 
-**FE implementation sau review và lần sửa 2026-10-07:** 3/32 task còn được tick (FE-01, FE-03, FE-04). [Review](review-2026-10-07.md) giữ nguyên kết quả RED. [Fix evidence](evidence/fix-2026-10-07/README.md) ghi các ca W-14, W-06, W-16, W-18 và FE-23 đã PASS trên preview, cùng hai smoke cũ FAIL vì copy không còn mã `UI-GAP` và menu thí sinh không hiện “Quản trị”. FE-32 vẫn IN PROGRESS. Product roadmap không được cộng số và WEB-01–10 không được tick. HTTPS Identity vẫn BLOCKED.
+**FE hiện tại:7/32 checked** theo [implementation tasks](implementation-tasks.md); FE32 IN PROGRESS. [Review](review-2026-10-07.md) và [fix evidence](evidence/fix-2026-10-07/README.md) giữ kết quả lịch sử; sau đó HTTPS Identity local đã đóng named scope WEB02. Các đợt visual chỉ đóng phạm vi ghi trong report riêng, không cộng acceptance cho toàn frontend/production.
 
 ## 5. Những gì không giao Grok làm trong UI increment
 
@@ -50,3 +50,9 @@ Không đổi pg/ORM, migration, backend auth, scoring, SLO, Terraform hoặc AW
 Nếu Grok chỉ có môi trường sinh frontend và không có repository, phải đính kèm ít nhất toàn bộ bộ tài liệu này, OpenAPI, product và security contract; nó chỉ được báo demo hoàn tất. Live auth/browser/security acceptance cần repository và backend/environment thật.
 
 [Web UI đợt1 — nền tảng giao diện](foundation-implementation-2026-10-07.md): Brand/navy/mint, shared controls và Candidate/Admin navigation theo bộ mẫu secondary pages. Named scope độc lập với full FE/production acceptance.
+
+[Web UI đợt2 — onboarding và catalog](onboarding-catalog-implementation-2026-10-07.md):7 pages, CSS3D paper art, dashboard/history scope, browse và detail;18 browser +10 HTTPS cases,65 visual probes và26 axe scans.
+
+[Web UI đợt3 — làm bài và kết quả](assessment-results-implementation-2026-10-07.md):6 pages, thẻ câu hỏi/phiếu trả lời, điểm và giải thích, history/leaderboard có vùng cuộn keyboard và refresh. Evidence riêng cho visual và regression; không đóng nghiệm thu live Assessment/Reporting.
+
+[Web UI đợt4 — Admin](admin-implementation-2026-10-07.md):14 page exports, overview CSS3D, editor3 bước/picker, native answer keys, import/archive confirmation và bảng giám sát/báo cáo. Final2026-10-08:224 root tests,24 Chromium cases,155 layout probes và62 axe scans. Live Admin vẫn chặn khi chưa có nguồn quyền authoritative.

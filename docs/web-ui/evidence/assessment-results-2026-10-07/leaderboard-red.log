@@ -1,0 +1,144 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/results/__tests__/leaderboard-refresh.test.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/results/__tests__/leaderboard-refresh.test.tsx (2 tests | 2 failed) 163ms
+   × resets the version watermark on manual refresh instead of retaining a previous page 141ms
+   × removes a previously loaded board when the server denies access 21ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/results/__tests__/leaderboard-refresh.test.tsx > resets the version watermark on manual refresh instead of retaining a previous page
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Làm mới"
+
+Here are the accessible roles:
+
+  heading:
+
+  Name "Bảng xếp hạng":
+  [36m<h1[39m
+    [33mclass[39m=[32m"_title_24c302"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_muted_24c302"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_wrap_24c302"[39m
+    [36m>[39m
+      [36m<h1[39m
+        [33mclass[39m=[32m"_title_24c302"[39m
+      [36m>[39m
+        [0mBảng xếp hạng[0m
+      [36m</h1>[39m
+      [36m<p>[39m
+        [0mPhiên bản version[0m
+      [36m</p>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"_muted_24c302"[39m
+      [36m>[39m
+        [0mChỉ bí danh của người đã bật tham gia. Không có cột tên thật và không đánh dấu dòng của bạn.[0m
+      [36m</p>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_stack_24c302"[39m
+      [36m>[39m
+        [36m<p>[39m
+          [0m1[0m
+          [0m. [0m
+          [0mpaper-first[0m
+          [0m · [0m
+          [0m5[0m
+          [0m/[0m
+          [0m6[0m
+          [0m ·[0m
+          [0m [0m
+          [0m08:00 07/10/2026[0m
+        [36m</p>[39m
+        [36m<p>[39m
+          [0m2[0m
+          [0m. [0m
+          [0mpaper-old-page[0m
+          [0m · [0m
+          [0m5[0m
+          [0m/[0m
+          [0m6[0m
+          [0m ·[0m
+          [0m [0m
+          [0m08:00 07/10/2026[0m
+        [36m</p>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/results/__tests__/leaderboard-refresh.test.tsx:21:32
+     19|   await screen.findByText(/paper-old-page/);
+     20|   fresh = true;
+     21|   await userEvent.click(screen.getByRole("button", { name: "Làm mới" }…
+       |                                ^
+     22|   await screen.findByText(/paper-new/);
+     23|   expect(screen.queryByText(/paper-old-page/)).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/features/results/__tests__/leaderboard-refresh.test.tsx > removes a previously loaded board when the server denies access
+AssertionError: expected <p></p> to be null
+
+- Expected:
+null
+
++ Received:
+<p>
+  1
+  . 
+  private-board
+   · 
+  5
+  /
+  6
+   ·
+   
+  08:00 07/10/2026
+</p>
+
+ ❯ src/features/results/__tests__/leaderboard-refresh.test.tsx:34:47
+     32|   await userEvent.click(screen.getByRole("button", { name: "Cập nhật q…
+     33|   await screen.findByRole("heading", { name: "Bảng xếp hạng không mở" …
+     34|   expect(screen.queryByText(/private-board/)).toBeNull();
+       |                                               ^
+     35|   expect(client.getQueryData(["leaderboard", "exam", "version"])).toBe…
+     36| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  22:29:28
+   Duration  1.33s (environment 50%, transform 18%, import 18%, tests 13%)
+

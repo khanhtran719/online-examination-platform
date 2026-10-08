@@ -1,4 +1,5 @@
 import { DynamicModule, Module } from "@nestjs/common";
+import { AssessmentModule } from "./modules/assessment/assessment.module";
 import { CatalogModule } from "./modules/catalog/catalog.module";
 import { IdentityModule } from "./modules/identity/identity.module";
 import { DatabaseModule } from "./infrastructure/database/database.module";
@@ -15,6 +16,7 @@ export class AppModule {
         HealthModule,
         IdentityModule.forRoot(config),
         CatalogModule.forRoot(config),
+        AssessmentModule.forRoot(config),
       ],
     };
   }

@@ -1,3 +1,4 @@
+import { PostgresAuthenticatedWriteAdmission } from "./infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
 import { DynamicModule, Module } from "@nestjs/common";
 import { DatabaseModule } from "../../infrastructure/database/database.module";
 import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
@@ -70,6 +71,7 @@ export class IdentityModule {
               security,
               new PostgresIdempotency(database),
               new PostgresIdentityQuery(database),
+              new PostgresAuthenticatedWriteAdmission(database),
             );
           },
         },
@@ -84,6 +86,8 @@ export class IdentityModule {
           provide: REQUEST_GUARD,
           inject: [HTTP_SESSION],
           useFactory: (session: HttpSession): RequestGuard => ({
+            authorizeWrite: (request, permission) =>
+              session.authorizeWrite(request as FastifyRequest, permission),
             checkUnsafe: (request, context) =>
               session.checkUnsafe(request as FastifyRequest, context),
             admit: (request, kind, actor) => session.admit(request as FastifyRequest, kind, actor),

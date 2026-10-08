@@ -1,0 +1,432 @@
+{
+  "checks": [
+    {
+      "name": "login",
+      "route": "/login",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "reducedMotion": {
+        "animation": "none",
+        "transform": "matrix3d(0.922806, -0.329883, 0.199013, -0.000234133, 0.230081, 0.886211, 0.40211, -0.000473071, -0.309017, -0.32528, 0.893701, -0.00105141, 0, 0, 0, 1)"
+      },
+      "zoom": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "fits": true
+      }
+    },
+    {
+      "name": "register",
+      "route": "/register",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "check-email",
+      "route": "/check-email",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "verify",
+      "route": "/verify-email",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "verify-missing",
+      "route": "/verify-email",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "verify-invalid",
+      "route": "/verify-email",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "dashboard",
+      "route": "/dashboard",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "catalog",
+      "route": "/exams",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "catalog-empty",
+      "route": "/exams?category=IELTS",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "catalog-invalid",
+      "route": "/exams?category=unknown",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "detail",
+      "route": "/exams/00000000-0000-4000-8000-000000000101",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "detail-long",
+      "route": "/exams/00000000-0000-4000-8000-000000000103",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "start-dialog",
+      "route": "/exams/00000000-0000-4000-8000-000000000103",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "mode": "demo only; synthetic fixtures; screenshots contain no live credentials"
+}

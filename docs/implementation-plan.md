@@ -1,5 +1,73 @@
 # Implementation plan
 
+## Active scope — Assessment review fixes COMPLETE locally, 2026-10-08
+
+User authorizes AR-01–05 fixes from the independent review. Preserve unrelated Web work, applied migrations and archived evidence. No scheduler, grading, SQS, AWS, production acceptance or commit is included.
+
+- [x] AF-01: Capture current source/migration/evidence hashes; run supported regression tests RED and comparable 25-actor diagnostic before changing runtime.
+- [x] AF-02: Catalog locks the exam in one statement and reads the current frozen publication in a fresh statement; hold the shared lock through Assessment commit. Add post-lock server time to the public result.
+- [x] AF-03: Normalize UUIDs and only set-valued option IDs before fingerprint and validation; bound the full encoded HTTP question page through an outer-layer measurement callback. Preserve cursor continuation without skips.
+- [x] AF-04: Optimize measured writes: one authenticated admission query preserves access/refresh/CSRF/permission/rate controls; transactional revalidation stays fresh after the user lock. Materialized attempt lock supplies post-lock clock. Bounded answer UPSERT/selection replacement/revision CTE removes four round trips without relaxing invariants or grants. Keep ceilings start12/save11/submit10.
+- [x] AF-05: Prove correctness/security/races and query ceilings on restricted PostgreSQL; rerun comparable diagnostics, unit/architecture/contract/build and Identity HTTPS checks; self-review boundaries and immutable evidence.
+- [x] AF-06: Write closure evidence/report and update only proven roadmap items. Local measurements do not establish AWS capacity, cost savings or SLO acceptance.
+
+Outcome: [Closure report](assessment-fixes-2026-10-08.md)/[evidence](evidence/assessment-fixes-2026-10-08/README.md): AR-01–05 CLOSED locally;234 root/105 integration/10 HTTPS PASS, start11/save11/submit10 queries. CAT-09/10 and ATT-01–04 restored:69/216. Ten migrations/archived evidence preserved; scheduler/restart/retention/production remain open.
+
+Owners: Identity owns authenticated admission and public guard; Catalog owns publication locking/snapshot; Assessment owns attempt/answer invariants and UoW; Presentation owns HTTP encoding. All SQL remains Infrastructure, business writes join the same UoW, receipts/outbox remain atomic and response follows commit. No new resource or schema migration is proposed.
+
+## Prior independent Assessment API review COMPLETE, 2026-10-08
+
+User yêu cầu review code API mới của Grok. Phạm vi: Assessment, public capabilities Catalog mới, migration0010 và composition/database liên quan. [Report](assessment-review-2026-10-07.md)/[evidence](evidence/assessment-review-2026-10-07/README.md) ghi5 findings,6 RED assertions và3 PASS controls. Không sửa runtime, triển khai worker/Web/AWS hay stage/commit. Mọi source/migration/evidence cũ giữ nguyên.
+
+- [x] Đối chiếu architecture/rules, prompt, product, ADR-003, HTTP/events/query budgets và source/tests.
+- [x] Kiểm tra ownership, UoW/locks/time/receipts/outbox/grants/DTO/cursor và actual HTTP responses.
+- [x] Run quality/contracts/lint/typecheck/build/root217; restrictedPG/SMTP90 (3 diagnostic writers deselected); actual HTTPS10.
+- [x] Reproduce độc lập option-set retry, whole-page bytes, publish/republish lock race, UUID spelling và query ceilings. RED có safe evidence; concurrent saves/submit controls PASS.
+- [x] Bảo toàn source/10 migrations/archived evidence, cập nhật status và dọn fixture/services.
+- [x] **Fix follow-up** AR-01–05 CLOSED locally theo [closure2026-10-08](assessment-fixes-2026-10-08.md). Trạng thái63/216 của review là lịch sử; sau fix69/216. Ceilings không đổi.
+
+## Prior implementation — Assessment core local, 2026-10-07
+
+User yêu cầu thí sinh bắt đầu, tiếp tục, lưu và nộp bài bền vững trên PostgreSQL local. Increment này làm ATT-01–06, race start/publish của ATT-10 và CAT-10, subset trạng thái bền của ATT-08, subset lỗi backend/ownership của ATT-11, và ASYNC-01 ở phía transaction. Không làm ATT-07 scheduler, ATT-09 retention, chấm điểm, SQS, Reporting, Web, AWS, magic link hay GitHub. ID-11 và Phase04 giữ mở: Assessment local không gửi mail và không phụ thuộc SES.
+
+Ngoại lệ đã đối chiếu trên source: `getPublishedPolicy` không giữ lock; HTTP yêu cầu `revision` nhưng `assessment.attempts` chưa có cột; runtime không được UPDATE toàn bộ attempt/answer selection; `platform.outbox` đã có và không được dùng lại email outbox của Identity. Không bịa route result/review. Baseline 199/83/10 là lịch sử, không phải evidence của increment này.
+
+| Use case | Owner | Contract |
+| --- | --- | --- |
+| ATT-01 start | Assessment application + domain write repository; Catalog `sharePublication` | In: examId path, session, Idempotency-Key UUIDv7, Origin/CSRF. Out: Attempt 201. Permission `assessment.take`. Invariant: một active attempt mỗi user/exam; deadline = min(startedAt+duration, frozen close); EXPIRED/FAILED vẫn tính quota; active cũ giữ nguyên deadline kể cả unpublish/quá hạn. UoW một transaction. Lock: `identity.users` FOR UPDATE trong revalidate, receipt, active attempt FOR UPDATE, chỉ path tạo mới mới `FOR SHARE` exam. Không khóa mọi thí sinh của exam nóng. Receipt actor/key, fingerprint method/path/`{}`, lookup trước effect. Budget OpenAPI 12 gồm auth, CSRF family, rate, BEGIN/COMMIT; vượt thì ghi số đo và lý do, không nâng ceiling. |
+| ATT-02 resume/questions/answers | Assessment query + Catalog `frozenQuestionSlice` | In: attemptId, cursor, pageSize 1–100 mặc định 20. Out: Attempt hoặc page. Owner trước khi gọi Catalog. Foreign id là 404. Frozen version của attempt, không theo republish/archive. Questions một projection Catalog sau ownership; answers một statement assessment vì budget 4 không còn lượt cho capability thứ hai, chỉ lấy position/option id, không prompt/key/explanation. Cursor `assessment.cursor.v1` gắn actor, attempt, version, page size, 15 phút theo DB clock. Page cắt 256KiB giữ cursor tại item cuối thực trả. Budget resume/status 3, questions/answers 4. |
+| ATT-03/05 save, clear, mark | Assessment | In: 1–20 mutation, full `selectedOptionIds`, marked, expectedVersion. Out: SaveReceipt 200, không chứa nội dung đáp án. Một UoW: user lock, receipt, attempt lock, DB clock sau lock, validate mọi version, choices bounded, ghi batch, tăng `attempts.revision` một lần. Một conflict rollback cả batch. Untouched không có row và đọc là version 0. Mutation được chấp nhận tăng version kể cả cùng giá trị. Empty selection xóa lựa chọn. Single/true-false tối đa một option. Mark không ghi score. |
+| ATT-04 retry | Assessment + `platform.idempotency_receipts` | Fingerprint actor/key trên mọi operation, method, path, canonical validated payload phải sort object keys và set-valued IDs theo ADR-003; implementation hiện giữ mọi thứ tự mảng, là defect AR-01 cần sửa. Receipt trước version/deadline. Cùng payload trả ACK cũ và không ghi đè đáp án mới. Payload khác 409. Key v7 cũ hơn 24 giờ theo DB time, khi không còn receipt, 409 và không thành mutation mới. Không triển khai ATT-09. |
+| ATT-06 + ASYNC-01 submit | Assessment + outbox port của Assessment | In: không body đáp án. Out: SubmitReceipt 202, Retry-After 2. Trước deadline SUBMITTED; tại/sau deadline EXPIRED và expired=true. Commit state, submissionId, eventId, outbox `attempt.submitted.v1`, receipt. Event không có answers/keys/token. Insert outbox hoặc receipt lỗi thì rollback. Key khác sau khi đã nộp trả acceptance cũ, không thêm event. Không SQS, không fire-and-forget, không PROCESSING/COMPLETED/score giả. Publisher để phase sau; intent đã ACK nằm chờ dispatcher. |
+| ATT-08/11 subset | Assessment read + HTTP | Status đọc trạng thái bền, serverNow, canSave, replayPending, pollAfterSeconds. Result chỉ available khi COMPLETED thật. Proved: lost ACK/retry, resume connection khác, session revoke 401, foreign 404, outbox failure rollback. Không đóng full ATT-08/10/11. |
+| CAT-10 start race | Catalog lock + Assessment start | Chứng minh request bị block bằng `pg_stat_activity`, không sleep rồi giả định. CAT-10 bị mở lại: locking JOIN sau publish/republish commit còn đọc version từ snapshot cũ (AR-03). |
+
+Evidence local: [raw run 32982df5-10c4-4e5d-aecc-fb0e3cde5938](evidence/assessment-2026-10-07/32982df5-10c4-4e5d-aecc-fb0e3cde5938.json) và [summary](evidence/assessment-2026-10-07/summary.md) sinh từ raw đó. Hai JSON trước đó cùng ngày là sample tuần tự khác, không bị ghi đè. Query thực tế: start 13/12, questions 4/4, answers 4/4, save 18/11, submit 13/10, status 3/3. Vượt trần vì CSRF family lookup, authenticate ngoài transaction, revalidate trong transaction, và save cần năm statement selection/answer. Không nâng `x-query-budget`.
+
+- [ ] **ATT-01 — IN PROGRESS after independent review** Start atomic, quota, active attempt, receipt.
+- [ ] **ATT-02 — IN PROGRESS after independent review** Resume, questions, answers, frozen version, byte cursor.
+- [ ] **ATT-03 — IN PROGRESS after independent review** Save batch all-or-nothing và optimistic version.
+- [ ] **ATT-04 — IN PROGRESS after independent review** Receipt/fingerprint và key cũ đã prune.
+- [x] **ATT-05** Clear và mark.
+- [x] **ATT-06** Manual submit trước/sau deadline.
+- [ ] **ATT-08 — SUBSET** Status bền đã chứng minh. Result/history không đóng.
+- [ ] **ATT-10 — SUBSET** Lock qua deadline, duplicate start, republish freeze đã chứng minh. Review mới bổ sung hai save và observed save/submit race PASS; publication/start còn AR-03. Không đóng toàn bộ.
+- [ ] **ATT-11 — SUBSET** Replay, resume connection khác, revoke, foreign owner, outbox rollback đã chứng minh. Process restart sau commit mất ACK chưa có. Không đóng toàn bộ.
+- [x] **ASYNC-01** Outbox trong transaction submit. Không có dispatcher.
+- [ ] **CAT-10 — IN PROGRESS after independent review** Unpublish/start control PASS; first-publish và republish/start races RED (AR-03).
+
+## Active scope — Grok Assessment core handoff, 2026-10-07
+
+User requests the prompt for the next increment. Deliver [993-word handoff](grok-assessment-core-implementation-prompt.md), grounded in current source/schema/OpenAPI and Catalog fix closure. This increment edits documentation only; it does not implement or accept Assessment runtime, migrate a database or deploy AWS.
+
+Proposed Grok scope: ATT-01–06; actual start/publication concurrency from ATT-10/CAT-10; durable status subset ATT-08 and backend fault/ownership subset ATT-11. Include transaction-side outbox ASYNC-01 because submit durability requires it. Keep scheduler/retention, full result/review acceptance, grading/SQS/Reporting/Web/AWS and ID-11/Phase04 pending. Do not tick wider items from a partial subset. Record independent local scope before Grok code starts; SES is not waived or marked complete.
+
+Inspected gaps included explicitly: getPublishedPolicy is a nonlocking projection; item-limited frozen questions need decoded-byte pagination for the Assessment HTTP contract; attempts lacks the required revision column. Public capability extensions and forward migrations must remain owned, tested and bounded; no Catalog-private access or contract relaxation.
+
+- [x] Inspect current roadmap, pure Assessment helper, Catalog public capabilities/SQL, persisted attempts/answers/outbox and HTTP/event contracts.
+- [x] Write ordered prompt with boundaries, transactions/retry, RED concurrency/security/fault tests, diagnostics and honest status/evidence rules.
+- [x] Validate links/contracts/import guards, prompt word count/scope and documentation diff; quality/contracts/diff PASS,993 words/12 steps, product count61/216 unchanged. No runtime tests rerun for this documentation-only handoff.
+
 ## Active scope — Catalog fixes and architecture conformance COMPLETE locally, 2026-10-07
 
 User authorizes fixing GR-01–06 from the independent review while following the existing Architecture Contract. Preserve all prior RED/diagnostic evidence, migrations0001–0009, public OpenAPI behavior, pg decision, worktree UI edits and Phase04/production gates.

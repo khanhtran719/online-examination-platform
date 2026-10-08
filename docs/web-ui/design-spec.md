@@ -6,7 +6,7 @@ Status: spec vẫn là hợp đồng hành vi. SPA local đã có trong `apps/we
 
 **Phòng thi số, chính xác và bình tĩnh.** Bố cục lấy cảm hứng từ phiếu trả lời và bàn làm bài: câu hỏi là trọng tâm, thời gian và trạng thái lưu luôn nhìn thấy, sơ đồ câu hỏi giúp định hướng. Phần khác giữ nhẹ để không cạnh tranh sự chú ý. Không dựng dashboard bằng một loạt card số liệu lớn khi API chưa cung cấp số liệu đó.
 
-Tên tạm “ExamPlatform”, dùng một logo chữ chung với mark e nghiêng và cạnh mint như phiếu thi. Hero trang giới thiệu dùng một preview workspace có chú thích “Minh họa”, không stock photo. Trong workspace thật không có illustration hoặc hero. Dùng sentence case: “Bắt đầu bài thi”, “Nộp bài”, “Đã lưu”, “Lưu thay đổi”. Tiếng Việt có dấu đầy đủ. Nội dung câu hỏi có thể là tiếng Anh và không tự dịch.
+Tên tạm “ExamPlatform”, dùng một logo chữ chung với mark e nghiêng và cạnh mint như phiếu thi. Hero trang giới thiệu dùng một preview workspace có chú thích “Minh họa”, không stock photo. Theo yêu cầu đợt2, illustration nhỏ dùng trên auth/dashboard/detail; phòng thi thật giữ trọng tâm câu hỏi, timer và save status. Dùng sentence case: “Bắt đầu bài thi”, “Nộp bài”, “Đã lưu”, “Lưu thay đổi”. Tiếng Việt có dấu đầy đủ. Nội dung câu hỏi có thể là tiếng Anh và không tự dịch.
 
 Điểm nhận diện duy nhất là **Answer sheet navigator**: ô số câu, trạng thái đã trả lời/chưa trả lời/đánh dấu/chưa lưu, cùng timer có chữ số tabular và một thanh tiến độ mỏng. Ô đã chọn có viền, dấu lưu có icon/check và label trong legend; không dùng màu là tín hiệu duy nhất. Không cho các ô màu giống một gameboard.
 
@@ -49,7 +49,13 @@ Motion150–200ms cho hover/dialog; không animate số timer, không pulse cả
 
 **Foundation increment được yêu cầu 2026-10-07:** Brand/navy/mint dùng chung qua Public/Candidate/Admin; các public color names là aliases để scene giữ nhận diện. Radius10/16px và surface shadow nhẹ cho shared primitives; type scale mobile26/34px và22/30px. Brand/card links có hover nâng nhẹ, reduced-motion tắt transition. Không thêm scene/ambient motion vào workspace hoặc phòng thi. Labels, IDs/helpers/errors/disabled của form vẫn semantic; bảng có vùng cuộn được đặt tên và truy cập bằng keyboard. Xem [kế hoạch và evidence đợt1](foundation-implementation-2026-10-07.md).
 
+**Onboarding/Catalog increment được yêu cầu 2026-10-07:** Auth split navy/white, heading36px desktop/30px mobile, form trước story trên mobile; giấy/bút CSS perspective với entrance850ms hữu hạn, reduced-motion tắt animation. Dashboard có welcome mint và illustration nhỏ, resume + recent từ history đã tải; browse dùng hàng đề với paper icon nổi; detail cấu trúc/lịch và start sidebar. Không thêm runtime WebGL cho các page này. Giữ generic202, inert verification, frozen version, server scores/deadline và start key. [Kế hoạch và evidence đợt2](onboarding-catalog-implementation-2026-10-07.md) chuyên biệt hóa visual rules ban đầu theo yêu cầu user, không thay API/behavior contract.
+
+**Assessment/Results increment được yêu cầu 2026-10-07:** Phòng thi dùng thẻ giấy trắng với viền teal, native fieldset/legend, ký hiệu A/B/C và timer/save status tách rõ; không ambient motion. Navigator có cả chữ và ký hiệu, mobile dùng dock và dialog. Status dùng các bước theo lifecycle thật, có “Kiểm tra lại” sau khi polling dừng; không phần trăm hoặc ETA xử lý giả. Result có score panel navy/mint và điểm theo phần; review chỉ đọc, đánh dấu lựa chọn và đáp án đã được công bố. History/leaderboard dùng semantic table với vùng cuộn keyboard, refresh reset cursor/watermark, không tính aggregate từ partial page hoặc nối bí danh với danh tính. [Kế hoạch và evidence đợt3](assessment-results-implementation-2026-10-07.md) ghi phạm vi visual và các regression.
+
 ## 3. Layout và navigation
+
+**Admin increment được triển khai 2026-10-07/08:** Overview dùng giấy/bút CSS3D hữu hạn và task shortcuts; các trang quản trị dùng navy/mint, panel trắng nổi, heading36/44px desktop và28/36px mobile. Bảng semantic có region cuộn keyboard, status có chữ. Exam editor3 bước giữ draft và có bank picker chung, local summary; actions nằm sau form để không che nội dung. Question keys dùng controls native, Candidate preview chỉ nhận nội dung; type/archive/import có native dialog. Statistics/metrics chỉ dùng count/snapshot thật từ DTO, không sinh lịch sử hoặc số liệu giả. [Đợt4 và evidence](admin-implementation-2026-10-07.md) đóng named visual/demo scope, không thay live capability contract.
 
 ### 3.1 Public shell
 

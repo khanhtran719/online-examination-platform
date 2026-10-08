@@ -26,6 +26,27 @@ afterEach(() => {
 });
 
 describe("QuestionView", () => {
+  it("provides a native choice group with instructions and keeps a locked answer unchanged", async () => {
+    const onSelected = vi.fn();
+    render(
+      <QuestionView
+        question={question}
+        selected={[question.options[0]!.id]}
+        marked={false}
+        disabled
+        onSelected={onSelected}
+        onMarked={vi.fn()}
+        onClear={vi.fn()}
+      />,
+    );
+    const group = screen.getByRole("group", { name: "Chọn các đáp án bạn cho là đúng." });
+    expect(group.tagName).toBe("FIELDSET");
+    await userEvent.click(screen.getByRole("checkbox", { name: /10.0.0.0/ }));
+    expect(onSelected).not.toHaveBeenCalled();
+    expect((screen.getByRole("checkbox", { name: /10.0.0.0/ }) as HTMLInputElement).checked).toBe(
+      true,
+    );
+  });
   it("renders prompt and options as text", () => {
     const { container } = render(
       <QuestionView

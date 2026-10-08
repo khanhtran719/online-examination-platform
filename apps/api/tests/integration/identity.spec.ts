@@ -1,3 +1,4 @@
+import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
 import { generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { Module } from "@nestjs/common";
@@ -108,6 +109,7 @@ beforeAll(async () => {
       new PostgresSecurity(database, rateKey),
       new PostgresIdempotency(database),
       new PostgresIdentityQuery(database),
+      new PostgresAuthenticatedWriteAdmission(database),
     );
   identity = make(db);
   second = make(db2);

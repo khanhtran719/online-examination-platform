@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useId, useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router";
 import { useTitle } from "../../app/use-title";
 import { useRuntime } from "../../app/runtime";
@@ -8,6 +8,8 @@ import { safeReturnPath } from "../../shared/format";
 import { validateFinalPassword, validateLogin, validateRegister } from "../../shared/validation";
 import { Alert, Button, PasswordField, TextField } from "../../shared/ui/ui";
 import styles from "../../shared/styles/layout.module.css";
+import { AuthFrame } from "./auth-frame";
+import authStyles from "./auth-frame.module.css";
 
 export function HowPage() {
   useTitle("Cách hoạt động");
@@ -76,6 +78,7 @@ export function RegisterForm({
 }: {
   onSubmit: (body: { email: string; displayName: string; password: string }) => Promise<void>;
 }) {
+  const hintId = useId();
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
@@ -114,10 +117,14 @@ export function RegisterForm({
       <PasswordField
         label="Mật khẩu"
         autoComplete="new-password"
+        aria-describedby={hintId}
         value={password}
         error={errors.password}
         onChange={(event) => setPassword(event.target.value)}
       />
+      <p id={hintId} className={authStyles.hint}>
+        Tối thiểu mười lăm ký tự. Bạn có thể dùng một cụm từ dễ nhớ.
+      </p>
       <PasswordField
         label="Nhập lại mật khẩu"
         autoComplete="new-password"
@@ -138,12 +145,17 @@ export function RegisterPage() {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   return (
-    <div className={`${styles.wrap} ${styles.narrow}`}>
-      <h1 className={styles.title}>Tạo tài khoản</h1>
-      <p>
-        Nếu thông tin hợp lệ, hãy kiểm tra email. Hệ thống không cho biết email đã tồn tại và không
-        đăng nhập ngay.
-      </p>
+    <AuthFrame
+      title="Tạo tài khoản"
+      description="Bắt đầu với nhịp thi của bạn. Xác nhận email trước khi đăng nhập."
+      step={1}
+      footer={
+        <>
+          <span>Đã có tài khoản?</span>
+          <Link to="/login">Đăng nhập</Link>
+        </>
+      }
+    >
       {error ? <Alert title="Chưa gửi được yêu cầu">{error}</Alert> : null}
       <RegisterForm
         onSubmit={async (body) => {
@@ -157,7 +169,7 @@ export function RegisterPage() {
           }
         }}
       />
-    </div>
+    </AuthFrame>
   );
 }
 
@@ -216,12 +228,17 @@ export function LoginPage() {
   const verified = (location.state as { verified?: boolean } | null)?.verified === true;
   const [error, setError] = useState<string | null>(null);
   return (
-    <div className={`${styles.wrap} ${styles.narrow}`}>
-      <h1 className={styles.title}>Đăng nhập</h1>
-      <p>
-        Chỉ dùng email và mật khẩu. Magic link và GitHub chưa có trong contract nên không có nút
-        giả.
-      </p>
+    <AuthFrame
+      title="Đăng nhập"
+      description="Tiếp tục bài đang làm hoặc chọn một đề mới. Dùng email và mật khẩu của bạn."
+      step={3}
+      footer={
+        <>
+          <Link to="/register">Chưa có tài khoản</Link>
+          <Link to="/check-email">Gửi lại email xác nhận</Link>
+        </>
+      }
+    >
       {verified ? (
         <Alert tone="success" title="Email đã xác nhận">
           Hãy đăng nhập bằng mật khẩu đã thiết lập khi xác nhận lần đầu.
@@ -246,8 +263,7 @@ export function LoginPage() {
           }
         }}
       />
-      <Link to="/register">Chưa có tài khoản</Link>
-    </div>
+    </AuthFrame>
   );
 }
 
@@ -257,7 +273,10 @@ export function CheckEmailPage() {
   const location = useLocation();
   const initial = (location.state as { email?: string } | null)?.email ?? "";
   const [email, setEmail] = useState(initial);
-  const [message, setMessage] = useState("Nếu email hợp lệ, hộp thư sẽ có hướng dẫn xác nhận.");
+  const [message, setMessage] = useState(
+    "Nếu email đủ điều kiện, hệ thống sẽ gửi hướng dẫn xác nhận. Hãy kiểm tra cả thư rác.",
+  );
+  const [feedback, setFeedback] = useState<"initial" | "accepted" | "limited" | "error">("initial");
   const [cooldownUntil, setCooldownUntil] = useState<number | null>(null);
   const [now, setNow] = useState(() => Date.now());
   const [pending, setPending] = useState(false);
@@ -269,18 +288,21 @@ export function CheckEmailPage() {
     try {
       await api.requestEmailVerification({ email: email.trim().toLowerCase() });
       demo?.notify();
+      setFeedback("accepted");
       setMessage(
         "Nếu email hợp lệ, hướng dẫn mới sẽ được gửi. Thông báo này không cho biết email có tồn tại hay không.",
       );
       setCooldownUntil(started + 60_000);
     } catch (caught) {
       if (isApiError(caught) && caught.status === 429) {
+        setFeedback("limited");
         const wait = (caught.retryAfterSeconds ?? 60) * 1000;
         setCooldownUntil(Date.now() + wait);
         setMessage(
           `Máy chủ yêu cầu chờ ${caught.retryAfterSeconds ?? 60} giây. Tải lại trang không tự xóa giới hạn của máy chủ.`,
         );
       } else {
+        setFeedback("error");
         setMessage(isApiError(caught) ? caught.message : "Chưa gửi lại được.");
       }
     } finally {
@@ -289,22 +311,51 @@ export function CheckEmailPage() {
     }
   }
   return (
-    <div className={`${styles.wrap} ${styles.narrow}`}>
-      <h1 className={styles.title}>Kiểm tra email</h1>
-      <Alert tone="success" title="Đã nhận yêu cầu">
+    <AuthFrame
+      title="Kiểm tra email"
+      description="Thêm một bước để mở không gian làm bài của bạn."
+      step={2}
+      footer={
+        <>
+          <Link to="/login">Về đăng nhập</Link>
+          <Link to="/register">Tạo tài khoản</Link>
+        </>
+      }
+    >
+      <Alert
+        tone={feedback === "error" ? "danger" : feedback === "limited" ? "warning" : "success"}
+        title={
+          feedback === "error"
+            ? "Chưa gửi lại được"
+            : feedback === "limited"
+              ? "Hãy chờ trước khi gửi lại"
+              : feedback === "accepted"
+                ? "Đã nhận yêu cầu"
+                : "Mở hướng dẫn trong hộp thư"
+        }
+      >
         {message}
       </Alert>
+      <ol className={authStyles.instructions}>
+        <li>Tìm email xác nhận và mở liên kết trong thư.</li>
+        <li>Thiết lập mật khẩu rồi đăng nhập để chọn đề.</li>
+      </ol>
       <TextField
         label="Email cần gửi lại"
         type="email"
+        autoComplete="email"
         value={email}
         onChange={(event) => setEmail(event.target.value)}
       />
       <Button disabled={pending || remaining > 0} onClick={() => void resend()}>
-        {remaining > 0 ? `Gửi lại sau ${remaining} giây` : "Gửi lại hướng dẫn"}
+        {pending
+          ? "Đang gửi…"
+          : remaining > 0
+            ? `Gửi lại sau ${remaining} giây`
+            : "Gửi lại hướng dẫn"}
       </Button>
       <CooldownClock cooldownUntil={cooldownUntil} onTick={setNow} />
-    </div>
+    </AuthFrame>
   );
 }
 
@@ -328,6 +379,7 @@ export function VerifyForm({
 }: {
   onSubmit: (body: { password: string }) => Promise<void>;
 }) {
+  const hintId = useId();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -349,10 +401,14 @@ export function VerifyForm({
       <PasswordField
         label="Mật khẩu mới"
         autoComplete="new-password"
+        aria-describedby={hintId}
         value={password}
         error={errors.password}
         onChange={(event) => setPassword(event.target.value)}
       />
+      <p id={hintId} className={authStyles.hint}>
+        Tối thiểu mười lăm ký tự. Đây là mật khẩu dùng để đăng nhập sau khi xác nhận.
+      </p>
       <PasswordField
         label="Nhập lại mật khẩu"
         autoComplete="new-password"
@@ -376,16 +432,17 @@ export function VerifyPage() {
   const missing = verifyToken === "";
   const invalid = verifyToken === "invalid";
   return (
-    <div className={`${styles.wrap} ${styles.narrow}`}>
-      <h1 className={styles.title}>Xác nhận email</h1>
-      <p>
-        Mã trong liên kết đã được đưa vào bộ nhớ của trang và xóa khỏi thanh địa chỉ. Trang không tự
-        gửi yêu cầu.
-      </p>
-      <p>
-        Nếu liên kết đã được dùng, gửi lại chỉ xác nhận trạng thái và không đổi mật khẩu đã thiết
-        lập.
-      </p>
+    <AuthFrame
+      title="Xác nhận email"
+      description="Chọn mật khẩu và bấm xác nhận để hoàn tất. Liên kết đã dùng sẽ không thay đổi mật khẩu cũ."
+      step={2}
+      footer={
+        <>
+          <Link to="/check-email">Gửi lại email xác nhận</Link>
+          <Link to="/login">Về đăng nhập</Link>
+        </>
+      }
+    >
       {missing ? (
         <Alert title="Liên kết không có mã">Hãy mở liên kết đầy đủ từ email.</Alert>
       ) : null}
@@ -418,6 +475,6 @@ export function VerifyPage() {
           />
         </>
       ) : null}
-    </div>
+    </AuthFrame>
   );
 }

@@ -1,0 +1,225 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/assessment/__tests__/question-view.test.tsx src/features/results/__tests__/status-page.test.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/assessment/__tests__/question-view.test.tsx (3 tests | 1 failed) 126ms
+   ❯ QuestionView (3)
+     × provides a native choice group with instructions and keeps a locked answer unchanged 99ms
+ ❯ src/features/results/__tests__/status-page.test.tsx (1 test | 1 failed) 115ms
+   × clears the previous attempt and result action when navigating to another status route 114ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/assessment/__tests__/question-view.test.tsx > QuestionView > provides a native choice group with instructions and keeps a locked answer unchanged
+TestingLibraryElementError: Unable to find an accessible element with the role "group" and name "Chọn các đáp án bạn cho là đúng."
+
+Here are the accessible roles:
+
+  article:
+
+  Name "Select every private address block.
+  <script>alert(1)</script>":
+  [36m<article[39m
+    [33maria-labelledby[39m=[32m"prompt-00000000-0000-4000-8000-000000000010"[39m
+    [33mclass[39m=[32m"_stack_24c302"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_muted_24c302"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Select every private address block.
+  <script>alert(1)</script>":
+  [36m<h2[39m
+    [33mclass[39m=[32m"_prompt_f905bc"[39m
+    [33mid[39m=[32m"prompt-00000000-0000-4000-8000-000000000010"[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "Select every private address block.
+  <script>alert(1)</script>":
+  [36m<div[39m
+    [33maria-labelledby[39m=[32m"prompt-00000000-0000-4000-8000-000000000010"[39m
+    [33mclass[39m=[32m"_choices_24c302"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "10.0.0.0/8Đã chọn":
+  [36m<input[39m
+    [33mchecked[39m=[32m""[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mname[39m=[32m"question-00000000-0000-4000-8000-000000000010"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "<img src=x onerror=alert(1)>":
+  [36m<input[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mname[39m=[32m"question-00000000-0000-4000-8000-000000000010"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "Đánh dấu để xem lại":
+  [36m<input[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Xóa đáp án":
+  [36m<button[39m
+    [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<article[39m
+      [33maria-labelledby[39m=[32m"prompt-00000000-0000-4000-8000-000000000010"[39m
+      [33mclass[39m=[32m"_stack_24c302"[39m
+    [36m>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"_muted_24c302"[39m
+      [36m>[39m
+        [0mCâu [0m
+        [0m3[0m
+        [0m · [0m
+        [0mNhiều lựa chọn[0m
+        [0m · [0m
+        [0m2[0m
+        [0m điểm[0m
+      [36m</p>[39m
+      [36m<h2[39m
+        [33mclass[39m=[32m"_prompt_f905bc"[39m
+        [33mid[39m=[32m"prompt-00000000-0000-4000-8000-000000000010"[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [0mSelect every private address block.
+&lt;script&gt;alert(1)&lt;/script&gt;[0m
+      [36m</h2>[39m
+      [36m<div[39m
+        [33maria-labelledby[39m=[32m"prompt-00000000-0000-4000-8000-000000000010"[39m
+        [33mclass[39m=[32m"_choices_24c302"[39m
+        [33mrole[39m=[32m"group"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"_choice_f905bc _choiceSelected_f905bc"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mchecked[39m=[32m""[39m
+            [33mdisabled[39m=[32m""[39m
+            [33mname[39m=[32m"question-00000000-0000-4000-8000-000000000010"[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"_prompt_24c302"[39m
+          [36m>[39m
+            [0m10.0.0.0/8[0m
+          [36m</span>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"_muted_24c302"[39m
+          [36m>[39m
+            [0mĐã chọn[0m
+          [36m</span>[39m
+        [36m</label>[39m
+        [36m<label[39m
+          [33mclass[39m=[32m"_choice_f905bc"[39m
+        [36m>[39m
+          [36m<input[39m
+            [33mdisabled[39m=[32m""[39m
+            [33mname[39m=[32m"question-00000000-0000-4000-8000-000000000010"[39m
+            [33mtype[39m=[32m"checkbox"[39m
+          [36m/>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"_prompt_24c302"[39m
+          [36m>[39m
+            [0m&lt;img src=x onerror=alert(1)&gt;[0m
+          [36m</span>[39m
+        [36m</label>[39m
+      [36m</div>[39m
+      [36m<label[39m
+        [33mclass[39m=[32m"_row_24c302"[39m
+      [36m>[39m
+        [36m<input[39m
+          [33mdisabled[39m=[32m""[39m
+          [33mtype[39m=[32m"checkbox"[39m
+        [36m/>[39m
+        [0mĐánh dấu để xem lại[0m
+      [36m</label>[39m
+      [36m<button[39m
+        [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+        [33mdisabled[39m=[32m""[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mXóa đáp án[0m
+      [36m</button>[39m
+    [36m</article>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/assessment/__tests__/question-view.test.tsx:32:26
+     30|     const onSelected = vi.fn();
+     31|     render(<QuestionView question={question} selected={[question.optio…
+     32|     const group = screen.getByRole("group", { name: "Chọn các đáp án b…
+       |                          ^
+     33|     expect(group.tagName).toBe("FIELDSET");
+     34|     await userEvent.click(screen.getByRole("checkbox", { name: /10.0.0…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/features/results/__tests__/status-page.test.tsx > clears the previous attempt and result action when navigating to another status route
+AssertionError: expected <a class="_chip_24c302" …(2)></a> to be null
+
+- Expected:
+null
+
++ Received:
+<a
+  class="_chip_24c302"
+  data-discover="true"
+  href="/attempts/first/result"
+>
+  Xem kết quả
+</a>
+
+ ❯ src/features/results/__tests__/status-page.test.tsx:17:63
+     15|   expect(action.getAttribute("href")).toBe("/attempts/first/result");
+     16|   await userEvent.click(screen.getByRole("link", { name: "Lượt tiếp th…
+     17|   expect(screen.queryByRole("link", { name: "Xem kết quả" })).toBeNull…
+       |                                                               ^
+     18|   expect(screen.queryByText("Đã có kết quả")).toBeNull();
+     19| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  2 failed | 2 passed (4)
+   Start at  22:23:31
+   Duration  1.30s (environment 66%, import 16%, tests 10%, transform 7%)
+

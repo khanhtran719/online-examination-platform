@@ -24,6 +24,11 @@ import { IdentityRepository } from "../../domain/repositories/identity.repositor
 import { Principal, MutationReceipt } from "../dto/identity.dto";
 import { IdentityQuery } from "../ports/identity-query.port";
 import {
+  AuthenticatedWriteAdmission,
+  WRITE_ADMISSION_INTERVAL_MS,
+  WRITE_ADMISSION_BURST,
+} from "../ports/authenticated-write-admission.port";
+import {
   Passwords,
   SessionTokens,
   VerificationSecrets,
@@ -40,6 +45,7 @@ export class IdentityService {
     private readonly security: SecurityControls,
     private readonly receipts: IdempotencyStore,
     private readonly queries: IdentityQuery,
+    private readonly writeAdmission: AuthenticatedWriteAdmission,
   ) {}
   private async challenge(account: Account, now: number): Promise<void> {
     let challenge = await this.repo.activeChallenge(account.id, now);
@@ -248,6 +254,40 @@ export class IdentityService {
     if (!principal) throw unauthenticated();
     return principal;
   }
+  async authorizeWrite(
+    raw: string,
+    refreshRaw: string | undefined,
+    csrfFamily: string,
+    permission: string,
+  ): Promise<Principal> {
+    const claims = await this.tokens.verify(raw, "access");
+    let refresh = null;
+    if (refreshRaw) {
+      try {
+        refresh = {
+          claims: await this.tokens.verify(refreshRaw, "refresh"),
+          hash: this.tokens.hash(refreshRaw),
+        };
+      } catch {
+        // Invalid/expired refresh falls back to the live access family, as checkUnsafe does.
+      }
+    }
+    const decision = await this.writeAdmission.admit({
+      access: { claims, hash: this.tokens.hash(raw) },
+      refresh,
+      csrfFamily,
+      permission,
+      subjectHash: this.security.rateSubject("actor.write", claims.userId),
+      intervalMs: WRITE_ADMISSION_INTERVAL_MS,
+      burst: WRITE_ADMISSION_BURST,
+    });
+    if (!decision.csrfValid) throw forbidden();
+    if (!decision.principal) throw unauthenticated();
+    this.requirePermission(decision.principal, permission);
+    if (!decision.allowed) throw rateLimited();
+    return decision.principal;
+  }
+
   async csrfFamily(refresh?: string, allowRevoked = false): Promise<string | null> {
     if (!refresh) return null;
     let c;

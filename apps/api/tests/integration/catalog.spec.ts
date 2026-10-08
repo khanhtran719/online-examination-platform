@@ -1,3 +1,4 @@
+import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
 import { createHash, generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -240,6 +241,7 @@ beforeAll(async () => {
       new PostgresSecurity(database, rateKey),
       new PostgresIdempotency(database),
       new PostgresIdentityQuery(database),
+      new PostgresAuthenticatedWriteAdmission(database),
     );
   identity = makeIdentity(db);
   secondIdentity = makeIdentity(db2);
@@ -807,6 +809,7 @@ describe("Catalog on real restricted PostgreSQL", () => {
           provide: REQUEST_GUARD,
           inject: [HTTP_SESSION],
           useFactory: (session: HttpSession): RequestGuard => ({
+            authorizeWrite: (request, permission) => session.authorizeWrite(request, permission),
             checkUnsafe: (request, context) => session.checkUnsafe(request, context),
             admit: (request, kind, actor) => session.admit(request, kind, actor),
             access: (request) => session.access(request),

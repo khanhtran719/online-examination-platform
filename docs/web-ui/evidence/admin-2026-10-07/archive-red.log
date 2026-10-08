@@ -1,0 +1,46 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/admin/__tests__/admin-workflows.unit.spec.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/admin-workflows.unit.spec.ts (7 tests | 1 failed) 898ms
+   × asks before archiving a question and sends the current revision only after confirmation 163ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/admin-workflows.unit.spec.ts > asks before archiving a question and sends the current revision only after confirmation
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "bank-0",
+      "01a11938-c16b-7aeb-9057-a07ff5e7c3d0",
+      Object {
+        "expectedRevision": 1,
+      },
+    ]
+
+
+Number of calls: 1
+
+ ❯ src/features/admin/__tests__/admin-workflows.unit.spec.ts:79:39
+     77|   await screen.findByRole("heading", { name: "Sửa câu" });
+     78|   await userEvent.click(screen.getByRole("button", { name: "Lưu trữ" }…
+     79|   expect(api.archiveBankQuestion).not.toHaveBeenCalled();
+       |                                       ^
+     80|   const dialog = await screen.findByRole("dialog", { name: "Lưu trữ câ…
+     81|   await userEvent.click(within(dialog).getByRole("button", { name: "Hủ…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  08:55:10
+   Duration  2.13s (tests 44%, environment 34%, import 12%, transform 9%)
+

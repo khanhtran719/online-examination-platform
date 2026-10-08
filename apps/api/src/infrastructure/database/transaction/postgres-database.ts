@@ -11,6 +11,8 @@ export type DatabaseOperation =
   | "identity.write"
   | "catalog.read"
   | "catalog.write"
+  | "assessment.read"
+  | "assessment.write"
   | "security.rate"
   | "audit.write"
   | "idempotency.read"

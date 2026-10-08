@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { useMemory } from "../../app/memory";
 import { useTitle } from "../../app/use-title";
-import { formatClock, formatDateTime, shortId } from "../../shared/format";
+import { formatDateTime, shortId } from "../../shared/format";
 import { validateLogin } from "../../shared/validation";
 import {
   Alert,
@@ -15,122 +15,14 @@ import {
   sheetClass,
 } from "../../shared/ui/ui";
 import styles from "../../shared/styles/layout.module.css";
-import { dirtyCount, saveStatusLabel, viewAnswer } from "./autosave";
-import { passesSheetFilter, sheetLabel } from "./sheet";
-import { formatRemaining } from "./clock";
+import { dirtyCount, viewAnswer } from "./autosave";
 import { progressCopy } from "./progress";
 import { QuestionView } from "./question-view";
 import { useExamRoom } from "./use-exam-room";
-
-function Navigator({
-  questions,
-  sections,
-  currentId,
-  save,
-  markedOnly,
-  onMarkedOnly,
-  onPick,
-}: {
-  questions: { id: string; position: number; sectionId: string }[];
-  sections: { id: string; title: string }[];
-  currentId: string | null;
-  save: ReturnType<typeof useExamRoom>["save"];
-  markedOnly: boolean;
-  onMarkedOnly: (value: boolean) => void;
-  onPick: (id: string) => void;
-}) {
-  const titles = new Map(sections.map((section) => [section.id, section.title]));
-  const grouped: { id: string; title: string; items: typeof questions }[] = [];
-  for (const question of questions) {
-    const current = grouped.find((group) => group.id === question.sectionId);
-    if (current) current.items.push(question);
-    else {
-      grouped.push({
-        id: question.sectionId,
-        title: titles.get(question.sectionId) ?? `Phần ${shortId(question.sectionId)}`,
-        items: [question],
-      });
-    }
-  }
-  const visible = grouped
-    .map((group) => ({
-      ...group,
-      items: group.items.filter((question) =>
-        passesSheetFilter(markedOnly, viewAnswer(save, question.id).marked),
-      ),
-    }))
-    .filter((group) => group.items.length > 0);
-  return (
-    <div className={styles.stack}>
-      <ul className={styles.legend} aria-label="Chú giải phiếu">
-        <li>Chưa trả lời</li>
-        <li>Đã trả lời</li>
-        <li>Đánh dấu</li>
-        <li>Chưa lưu</li>
-        <li>Đang chọn</li>
-      </ul>
-      <label className={styles.row}>
-        <input
-          type="checkbox"
-          checked={markedOnly}
-          onChange={(event) => onMarkedOnly(event.target.checked)}
-        />
-        Chỉ xem câu đánh dấu
-      </label>
-      <div className={styles.row}>
-        {grouped.map((group) => (
-          <Button
-            key={group.id}
-            variant="secondary"
-            onClick={() => onPick(group.items[0]?.id ?? "")}
-          >
-            {group.title}
-          </Button>
-        ))}
-      </div>
-      {visible.length === 0 ? <p>Không có câu đánh dấu trong phần đã tải.</p> : null}
-      {visible.map((group) => (
-        <section key={group.id} className={styles.stack}>
-          <h3>{group.title}</h3>
-          <div className={styles.sheetGrid}>
-            {group.items.map((question) => {
-              const view = viewAnswer(save, question.id);
-              const current = question.id === currentId;
-              const label = sheetLabel({
-                known: view.known,
-                selectedCount: view.selectedOptionIds.length,
-                marked: view.marked,
-                dirty: question.id in save.drafts,
-                current,
-              });
-              const className = [
-                styles.sheetCell,
-                current ? styles.sheetCurrent : "",
-                view.known && view.selectedOptionIds.length > 0 ? styles.sheetAnswered : "",
-                view.marked ? styles.sheetMarked : "",
-                question.id in save.drafts ? styles.sheetPending : "",
-              ]
-                .filter(Boolean)
-                .join(" ");
-              return (
-                <button
-                  key={question.id}
-                  type="button"
-                  className={className}
-                  aria-current={current ? "true" : undefined}
-                  aria-label={`Câu ${question.position}, ${label}`}
-                  onClick={() => onPick(question.id)}
-                >
-                  {question.position}
-                </button>
-              );
-            })}
-          </div>
-        </section>
-      ))}
-    </div>
-  );
-}
+import { RoomNavigator } from "./room-navigator";
+import { RoomToolbar } from "./room-toolbar";
+import { RoomDialogs } from "./room-dialogs";
+import roomStyles from "./room.module.css";
 
 export function ExamRoomPage() {
   const { attemptId = "" } = useParams();
@@ -180,7 +72,7 @@ export function ExamRoomPage() {
     setSheet(false);
   }
   const navigator = (
-    <Navigator
+    <RoomNavigator
       questions={loaded}
       sections={frozen?.sections ?? []}
       currentId={activeId}
@@ -193,38 +85,27 @@ export function ExamRoomPage() {
 
   return (
     <>
-      <header className={styles.examBar}>
-        <div className={styles.row}>
-          <Button
-            variant="secondary"
-            onClick={() => (dirtyCount(room.save) > 0 ? setLeave(true) : navigate("/dashboard"))}
-          >
-            Rời phòng thi
-          </Button>
-          <p className={styles.timer} aria-label="Thời gian còn lại">
-            {room.remaining === null ? "—:—" : formatRemaining(room.remaining)}
-          </p>
-          <Button
-            disabled={room.submit.phase !== "idle" || !room.save.canSave}
-            onClick={() => setConfirmSubmit(true)}
-          >
-            Nộp bài
-          </Button>
-        </div>
-        <p role="status">{saveStatusLabel(room.save, formatClock(room.save.lastAcceptedAt))}</p>
-        <p>
-          {progressCopy({
-            loaded: loaded.length,
-            answered,
-            versionTotal: title ? (frozen?.questionCount ?? null) : null,
-          })}
-        </p>
-        {room.milestone ? <p role="status">{room.milestone}</p> : null}
-      </header>
+      <RoomToolbar
+        save={room.save}
+        remaining={room.remaining}
+        answered={answered}
+        loaded={loaded.length}
+        progress={progressCopy({
+          loaded: loaded.length,
+          answered,
+          versionTotal: title ? (frozen?.questionCount ?? null) : null,
+        })}
+        milestone={room.milestone}
+        canSubmit={room.submit.phase === "idle" && room.save.canSave}
+        onLeave={() => (dirtyCount(room.save) > 0 ? setLeave(true) : navigate("/dashboard"))}
+        onSubmit={() => setConfirmSubmit(true)}
+      />
       <div id="content" className={styles.examScroll}>
         <div className={styles.room}>
-          <section className={styles.stack}>
-            <h1 className={styles.title}>{title ?? `Đề ${shortId(attempt.publishedVersionId)}`}</h1>
+          <section className={`${styles.stack} ${roomStyles.mainColumn}`}>
+            <h1 className={`${styles.title} ${roomStyles.title}`}>
+              {title ?? `Đề ${shortId(attempt.publishedVersionId)}`}
+            </h1>
             {!title ? (
               <p className={styles.muted}>
                 Bài làm không kèm tiêu đề đã khóa. Không dùng tiêu đề đề hiện tại thay cho phiên bản{" "}
@@ -364,13 +245,16 @@ export function ExamRoomPage() {
               <Link to={`/attempts/${attempt.id}/status`}>Xem trạng thái xử lý</Link>
             </p>
           </section>
-          <aside className={styles.navigator} aria-label="Phiếu câu hỏi">
+          <aside
+            className={`${styles.navigator} ${roomStyles.navigator}`}
+            aria-label="Phiếu câu hỏi"
+          >
             <h2>Phiếu câu hỏi</h2>
             {navigator}
           </aside>
         </div>
       </div>
-      <div className={styles.examDock}>
+      <div className={`${styles.examDock} ${roomStyles.dock}`}>
         <Button
           variant="secondary"
           disabled={index <= 0}
@@ -405,101 +289,19 @@ export function ExamRoomPage() {
           {navigator}
         </Dialog>
       ) : null}
-      {confirmSubmit ? (
-        <Dialog title="Nộp bài" onClose={() => setConfirmSubmit(false)}>
-          <p>
-            Các thay đổi chưa được xác nhận sẽ được lưu trước nếu còn giờ. Nộp bài không gửi lại nội
-            dung đáp án.
-          </p>
-          <p>
-            {progressCopy({
-              loaded: loaded.length,
-              answered,
-              versionTotal: title ? (frozen?.questionCount ?? null) : null,
-            })}
-          </p>
-          <div className={styles.row}>
-            <Button variant="secondary" onClick={() => setConfirmSubmit(false)}>
-              Chưa nộp
-            </Button>
-            <Button
-              onClick={() => {
-                setConfirmSubmit(false);
-                room.requestSubmit();
-              }}
-            >
-              Nộp các đáp án đã lưu
-            </Button>
-          </div>
-        </Dialog>
-      ) : null}
-      {room.submit.phase === "save-blocked" ? (
-        <Dialog title="Chưa lưu được trước khi nộp">
-          <p>
-            Còn giờ, nhưng một phần thay đổi chưa được máy chủ xác nhận. Có thể thử lại hoặc hủy
-            nộp.
-          </p>
-          <div className={styles.row}>
-            <Button variant="secondary" onClick={room.cancelSubmit}>
-              Hủy nộp
-            </Button>
-            <Button onClick={room.retrySubmit}>Thử lưu lại</Button>
-          </div>
-        </Dialog>
-      ) : null}
-      {room.save.phase === "conflict" ? (
-        <Dialog title="Đáp án đã thay đổi ở nơi khác">
-          <p>
-            Bản trên trình duyệt được giữ. Hãy chọn một cách xử lý. Ứng dụng không tự lấy bản ghi
-            sau cùng.
-          </p>
-          {room.conflictError ? (
-            <ErrorPanel error={room.conflictError} onRetry={room.reloadConflict} />
-          ) : null}
-          <ul>
-            {room.save.conflictQuestionIds.map((questionId) => {
-              const mine = viewAnswer(room.save, questionId);
-              const server = room.conflictAnswers.find(
-                (answer) => answer.questionId === questionId,
-              );
-              return (
-                <li key={questionId}>
-                  Câu {shortId(questionId)} · của bạn {mine.selectedOptionIds.length} lựa chọn · máy
-                  chủ{" "}
-                  {server
-                    ? `${server.selectedOptionIds.length} lựa chọn, phiên bản ${server.version}`
-                    : "chưa tải"}
-                </li>
-              );
-            })}
-          </ul>
-          <div className={styles.row}>
-            <Button
-              variant="secondary"
-              disabled={room.conflictAnswers.length === 0}
-              onClick={room.resolveServer}
-            >
-              Dùng bản máy chủ
-            </Button>
-            <Button disabled={room.conflictAnswers.length === 0} onClick={room.resolveMine}>
-              Giữ lựa chọn của tôi
-            </Button>
-          </div>
-        </Dialog>
-      ) : null}
-      {leave ? (
-        <Dialog title="Rời phòng khi còn thay đổi" onClose={() => setLeave(false)}>
-          <p>Thay đổi chưa xác nhận sẽ mất khỏi trình duyệt.</p>
-          <div className={styles.row}>
-            <Button variant="secondary" onClick={() => setLeave(false)}>
-              Ở lại
-            </Button>
-            <Button variant="danger" onClick={() => navigate("/dashboard")}>
-              Vẫn rời
-            </Button>
-          </div>
-        </Dialog>
-      ) : null}
+      <RoomDialogs
+        room={room}
+        progress={progressCopy({
+          loaded: loaded.length,
+          answered,
+          versionTotal: title ? (frozen?.questionCount ?? null) : null,
+        })}
+        confirmSubmit={confirmSubmit}
+        leave={leave}
+        onCloseSubmit={() => setConfirmSubmit(false)}
+        onCloseLeave={() => setLeave(false)}
+        onLeave={() => navigate("/dashboard")}
+      />
     </>
   );
 }

@@ -1,0 +1,139 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --config docs/evidence/assessment-review-2026-10-07/review.jest.cjs
+
+(node:25673) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL docs/evidence/assessment-review-2026-10-07/review.spec.ts
+  ● Independent Assessment API review › AR-01 replays semantically identical selected-option sets
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 409
+
+      681 |       };
+      682 |       expect(first.statusCode).toBe(200);
+    > 683 |       expect(second.statusCode).toBe(200);
+          |                                 ^
+      684 |       expect(second.headers["idempotency-replayed"]).toBe("true");
+      685 |       expect(second.json()).toEqual(first.json());
+      686 |     });
+
+      at docs/evidence/assessment-review-2026-10-07/review.spec.ts:683:33
+      at withHttp (docs/evidence/assessment-review-2026-10-07/review.spec.ts:337:5)
+      at Object.<anonymous> (docs/evidence/assessment-review-2026-10-07/review.spec.ts:645:5)
+
+  ● Independent Assessment API review › AR-02 bounds the whole decoded HTTP question page
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 262144
+    Received:    262664
+
+      761 |       expect(allIds.length).toBe(11);
+      762 |       expect(new Set(allIds).size).toBe(11);
+    > 763 |       expect(bytes).toBeLessThanOrEqual(262144);
+          |                     ^
+      764 |     });
+      765 |   });
+      766 |
+
+      at docs/evidence/assessment-review-2026-10-07/review.spec.ts:763:21
+      at withHttp (docs/evidence/assessment-review-2026-10-07/review.spec.ts:337:5)
+      at Object.<anonymous> (docs/evidence/assessment-review-2026-10-07/review.spec.ts:730:5)
+
+  ● Independent Assessment API review › AR-03 starts with the version committed by an observed first-publication lock
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 422
+
+      769 |     probes.firstPublicationRace = result;
+      770 |     expect(result.waiting).toBe(true);
+    > 771 |     expect(result.status).toBe(201);
+          |                           ^
+      772 |     expect(result.matchesCurrentVersion).toBe(true);
+      773 |   });
+      774 |
+
+      at Object.<anonymous> (docs/evidence/assessment-review-2026-10-07/review.spec.ts:771:27)
+
+  ● Independent Assessment API review › AR-03 starts with the version committed by an observed republish lock
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 422
+
+      777 |     probes.republicationRace = result;
+      778 |     expect(result.waiting).toBe(true);
+    > 779 |     expect(result.status).toBe(201);
+          |                           ^
+      780 |     expect(result.matchesCurrentVersion).toBe(true);
+      781 |   });
+      782 |
+
+      at Object.<anonymous> (docs/evidence/assessment-review-2026-10-07/review.spec.ts:779:27)
+
+  ● Independent Assessment API review › AR-04 accepts the UUID spelling allowed by the HTTP validator
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 400
+
+      812 |         ),
+      813 |       };
+    > 814 |       expect(response.statusCode).toBe(200);
+          |                                   ^
+      815 |     });
+      816 |   });
+      817 |
+
+      at docs/evidence/assessment-review-2026-10-07/review.spec.ts:814:35
+      at withHttp (docs/evidence/assessment-review-2026-10-07/review.spec.ts:337:5)
+      at Object.<anonymous> (docs/evidence/assessment-review-2026-10-07/review.spec.ts:788:5)
+
+  ● Independent Assessment API review › control serializes two save writers on separate UnitOfWork instances
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Answer version conflict"
+    Received: "Revision conflict"
+
+      849 |     };
+      850 |     expect(outcomes.filter((o) => o.status === "fulfilled")).toHaveLength(1);
+    > 851 |     expect(rejected?.reason.message).toBe("Answer version conflict");
+          |                                      ^
+      852 |     expect(view.revision).toBe(2);
+      853 |   });
+      854 |
+
+      at Object.<anonymous> (docs/evidence/assessment-review-2026-10-07/review.spec.ts:851:38)
+
+  ● Independent Assessment API review › AR-05 respects the existing auth-inclusive write query ceilings
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 12
+    Received:    13
+
+      930 |       expect(saved.statusCode).toBe(200);
+      931 |       expect(submitted.statusCode).toBe(202);
+    > 932 |       expect(startCount).toBeLessThanOrEqual(12);
+          |                          ^
+      933 |       expect(saveCount).toBeLessThanOrEqual(11);
+      934 |       expect(submitCount).toBeLessThanOrEqual(10);
+      935 |     });
+
+      at docs/evidence/assessment-review-2026-10-07/review.spec.ts:932:26
+      at withHttp (docs/evidence/assessment-review-2026-10-07/review.spec.ts:337:5)
+      at Object.<anonymous> (docs/evidence/assessment-review-2026-10-07/review.spec.ts:894:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       7 failed, 1 passed, 8 total
+Snapshots:   0 total
+Time:        4.442 s
+Ran all test suites.

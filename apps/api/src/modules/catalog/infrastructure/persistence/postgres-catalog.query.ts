@@ -7,6 +7,7 @@ import {
   AdminQuestionRow,
   BrowseRow,
   CandidateOption,
+  FrozenChoice,
   FrozenRow,
   ImportReport,
   PublicExam,
@@ -737,6 +738,46 @@ export class PostgresCatalogQuery implements CatalogQuery {
           options: json(row.options, []),
         })),
     };
+  }
+
+  async frozenChoices(versionId: string, questionIds: readonly string[]): Promise<FrozenChoice[]> {
+    const rows = (
+      await this.db.query<{
+        questionId: string;
+        type: QuestionType;
+        optionIds: string[] | string;
+      }>(
+        "catalog.read",
+        `
+        SELECT
+          q.id AS "questionId",
+          q.type,
+          coalesce(
+            (
+              SELECT
+                json_agg(o.id ORDER BY o.position)
+              FROM
+                catalog.published_options o
+              WHERE
+                o.version_id = q.version_id
+                AND o.question_id = q.id
+            ),
+            '[]'::json
+          ) AS "optionIds"
+        FROM
+          catalog.published_questions q
+        WHERE
+          q.version_id = $1
+          AND q.id = ANY ($2::uuid[])
+        `,
+        [versionId, [...questionIds]],
+      )
+    ).rows;
+    return rows.map((row) => ({
+      questionId: row.questionId,
+      type: row.type,
+      optionIds: json(row.optionIds, []),
+    }));
   }
 
   async scoring(versionId: string): Promise<ScoringItem[] | null> {

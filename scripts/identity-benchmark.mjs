@@ -55,6 +55,9 @@ const {
 const {
   PostgresIdentityQuery,
 } = require("../dist/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.js");
+const {
+  PostgresAuthenticatedWriteAdmission,
+} = require("../dist/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission.js");
 const base = new URL(process.env.TEST_DATABASE_ADMIN_URL ?? "");
 if (process.env.NODE_ENV === "production" || !["127.0.0.1", "localhost"].includes(base.hostname))
   throw new Error("Disposable local benchmark only");
@@ -183,6 +186,7 @@ try {
         security,
         new PostgresIdempotency(db),
         new PostgresIdentityQuery(db),
+        new PostgresAuthenticatedWriteAdmission(db),
       );
     identities.push(identity);
     class BenchModule {}

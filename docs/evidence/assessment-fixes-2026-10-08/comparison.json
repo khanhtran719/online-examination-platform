@@ -1,0 +1,152 @@
+{
+  "beforeRunId": "8b500b7f-f8ac-41f2-a536-a38f8b25442a",
+  "finalRunId": "11e84464-706c-46ad-b0a7-827bf3c88feb",
+  "identicalConfiguration": true,
+  "notCapacityEvidence": true,
+  "rows": [
+    {
+      "operation": "start",
+      "beforeQueries": 13,
+      "afterQueries": 11,
+      "samplesPerRun": 25,
+      "beforeMs": {
+        "n": 25,
+        "min": 8.522624999999607,
+        "p50": 11.292249999998603,
+        "p95": 23.254499999999098,
+        "p99": 23.836750000000393,
+        "max": 23.836750000000393
+      },
+      "afterMs": {
+        "n": 25,
+        "min": 10.27966699999979,
+        "p50": 11.687750000000051,
+        "p95": 14.9893749999992,
+        "p99": 16.67491699999937,
+        "max": 16.67491699999937
+      },
+      "beforeTransactionP95Ms": 14.650625000000218,
+      "afterTransactionP95Ms": 12.114583999999013
+    },
+    {
+      "operation": "questions",
+      "beforeQueries": 4,
+      "afterQueries": 4,
+      "samplesPerRun": 25,
+      "beforeMs": {
+        "n": 25,
+        "min": 11.04870800000026,
+        "p50": 11.992583000000195,
+        "p95": 23.344499999999243,
+        "p99": 56.00129199999901,
+        "max": 56.00129199999901
+      },
+      "afterMs": {
+        "n": 25,
+        "min": 6.0206249999992,
+        "p50": 7.230125000000044,
+        "p95": 17.73412499999904,
+        "p99": 30.76641699999982,
+        "max": 30.76641699999982
+      },
+      "beforeTransactionP95Ms": null,
+      "afterTransactionP95Ms": null
+    },
+    {
+      "operation": "answers",
+      "beforeQueries": 4,
+      "afterQueries": 4,
+      "samplesPerRun": 25,
+      "beforeMs": {
+        "n": 25,
+        "min": 3.865958000000319,
+        "p50": 5.174082999999882,
+        "p95": 9.468708000000333,
+        "p99": 9.505291999999827,
+        "max": 9.505291999999827
+      },
+      "afterMs": {
+        "n": 25,
+        "min": 4.483417000000372,
+        "p50": 5.654583000000457,
+        "p95": 11.254124999999476,
+        "p99": 11.370167000000038,
+        "max": 11.370167000000038
+      },
+      "beforeTransactionP95Ms": null,
+      "afterTransactionP95Ms": null
+    },
+    {
+      "operation": "save",
+      "beforeQueries": 18,
+      "afterQueries": 11,
+      "samplesPerRun": 25,
+      "beforeMs": {
+        "n": 25,
+        "min": 10.490707999999358,
+        "p50": 14.105250000000524,
+        "p95": 24.444665999999415,
+        "p99": 30.074083999999857,
+        "max": 30.074083999999857
+      },
+      "afterMs": {
+        "n": 25,
+        "min": 10.28662500000064,
+        "p50": 12.725166000000172,
+        "p95": 17.847082999999657,
+        "p99": 20.59112499999901,
+        "max": 20.59112499999901
+      },
+      "beforeTransactionP95Ms": 19.10045899999932,
+      "afterTransactionP95Ms": 13.085541999999805
+    },
+    {
+      "operation": "submit",
+      "beforeQueries": 13,
+      "afterQueries": 10,
+      "samplesPerRun": 25,
+      "beforeMs": {
+        "n": 25,
+        "min": 8.055707999999868,
+        "p50": 10.413708000000042,
+        "p95": 25.55754100000013,
+        "p99": 236.46329100000003,
+        "max": 236.46329100000003
+      },
+      "afterMs": {
+        "n": 25,
+        "min": 9.023457999999664,
+        "p50": 11.082875000000058,
+        "p95": 18.323833000000377,
+        "p99": 18.92883400000028,
+        "max": 18.92883400000028
+      },
+      "beforeTransactionP95Ms": 19.606291000000056,
+      "afterTransactionP95Ms": 13.54466599999978
+    },
+    {
+      "operation": "status",
+      "beforeQueries": 3,
+      "afterQueries": 3,
+      "samplesPerRun": 25,
+      "beforeMs": {
+        "n": 25,
+        "min": 2.3567500000008295,
+        "p50": 3.6067089999996824,
+        "p95": 6.334582999999839,
+        "p99": 15.848707999999533,
+        "max": 15.848707999999533
+      },
+      "afterMs": {
+        "n": 25,
+        "min": 2.9255000000002838,
+        "p50": 3.9018749999995634,
+        "p95": 7.135874999999942,
+        "p99": 8.70325000000048,
+        "max": 8.70325000000048
+      },
+      "beforeTransactionP95Ms": null,
+      "afterTransactionP95Ms": null
+    }
+  ]
+}

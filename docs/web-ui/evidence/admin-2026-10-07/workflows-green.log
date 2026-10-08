@@ -1,0 +1,13 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/admin/__tests__/admin-workflows.unit.spec.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  09:06:10
+   Duration  2.06s (tests 45%, environment 35%, import 11%, transform 9%)
+

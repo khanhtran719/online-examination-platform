@@ -1,7 +1,6 @@
 import type { CandidateQuestion } from "../../shared/api/dto";
-import { choiceClass, promptClass } from "../../shared/ui/ui";
 import { Button } from "../../shared/ui/ui";
-import styles from "../../shared/styles/layout.module.css";
+import styles from "./room.module.css";
 
 const typeLabel = {
   SINGLE_CHOICE: "Một lựa chọn",
@@ -39,18 +38,21 @@ export function QuestionView({
     onSelected([optionId]);
   }
   return (
-    <article className={styles.stack} aria-labelledby={`prompt-${question.id}`}>
-      <p className={styles.muted}>
+    <article className={styles.question} aria-labelledby={`prompt-${question.id}`}>
+      <p className={styles.questionMeta}>
         Câu {question.position} · {typeLabel[question.type]} · {question.points} điểm
       </p>
-      <h2 id={`prompt-${question.id}`} tabIndex={-1} className={promptClass}>
+      <h2 id={`prompt-${question.id}`} tabIndex={-1} className={styles.prompt}>
         {question.prompt}
       </h2>
-      <div className={styles.choices} role="group" aria-labelledby={`prompt-${question.id}`}>
-        {question.options.map((option) => {
+      <fieldset className={styles.choices} aria-describedby={`prompt-${question.id}`}>
+        <legend>
+          {multiple ? "Chọn các đáp án bạn cho là đúng." : "Chọn một đáp án bạn cho là đúng."}
+        </legend>
+        {question.options.map((option, index) => {
           const checked = selected.includes(option.id);
           return (
-            <label key={option.id} className={choiceClass(checked)}>
+            <label key={option.id} className={`${styles.choice} ${checked ? styles.selected : ""}`}>
               <input
                 type={multiple ? "checkbox" : "radio"}
                 name={`question-${question.id}`}
@@ -58,24 +60,33 @@ export function QuestionView({
                 disabled={disabled}
                 onChange={() => toggle(option.id)}
               />
+              <span className={styles.letter} aria-hidden="true">
+                {String.fromCharCode(65 + index)}
+              </span>
               <span className={styles.prompt}>{option.text}</span>
-              {checked ? <span className={styles.muted}>Đã chọn</span> : null}
+              {checked ? (
+                <span className={styles.selectedLabel} aria-hidden="true">
+                  ✓ Đã chọn
+                </span>
+              ) : null}
             </label>
           );
         })}
+      </fieldset>
+      <div className={styles.questionTools}>
+        <label className={styles.markToggle}>
+          <input
+            type="checkbox"
+            checked={marked}
+            disabled={disabled}
+            onChange={(event) => onMarked(event.target.checked)}
+          />
+          <span aria-hidden="true">⚑</span> Đánh dấu để xem lại
+        </label>
+        <Button variant="secondary" disabled={disabled || selected.length === 0} onClick={onClear}>
+          Xóa đáp án
+        </Button>
       </div>
-      <label className={styles.row}>
-        <input
-          type="checkbox"
-          checked={marked}
-          disabled={disabled}
-          onChange={(event) => onMarked(event.target.checked)}
-        />
-        Đánh dấu để xem lại
-      </label>
-      <Button variant="secondary" disabled={disabled || selected.length === 0} onClick={onClear}>
-        Xóa đáp án
-      </Button>
     </article>
   );
 }

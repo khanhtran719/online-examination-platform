@@ -1,0 +1,58 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test e2e/assessment-results.e2e-spec.ts
+
+
+Running 2 tests using 1 worker
+
+(node:14212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › e2e/assessment-results.e2e-spec.ts:11:1 › mobile room saves three native question types before submitting and opening released review (8.9s)
+(node:14255) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [chromium] › e2e/assessment-results.e2e-spec.ts:56:1 › history and pseudonymous leaderboard remain keyboard scrollable on narrow screens (3.1s)
+
+
+  1) [chromium] › e2e/assessment-results.e2e-spec.ts:11:1 › mobile room saves three native question types before submitting and opening released review 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Giải thích', exact: true })
+    Expected: visible
+    Error: strict mode violation: getByRole('heading', { name: 'Giải thích', exact: true }) resolved to 4 elements:
+        1) <h1 class="_title_1xsu8_62">Giải thích</h1> aka locator('h1')
+        2) <h3>Giải thích</h3> aka getByRole('article').filter({ hasText: 'Câu 1 · 2 điểm✓ ĐúngChoose' }).locator('h3')
+        3) <h3>Giải thích</h3> aka getByRole('article').filter({ hasText: 'Câu 2 · 2 điểm✓ ĐúngThe' }).locator('h3')
+        4) <h3>Giải thích</h3> aka getByRole('article').filter({ hasText: 'Câu 1 · 2 điểm✓ ĐúngSelect' }).locator('h3')
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Giải thích', exact: true }) with timeout 12000ms
+      - waiting for getByRole('heading', { name: 'Giải thích', exact: true })
+
+
+      48 |   await expect(page.getByText("100.00%", { exact: true })).toBeVisible();
+      49 |   await page.getByRole("link", { name: "Xem giải thích đã mở" }).click();
+    > 50 |   await expect(page.getByRole("heading", { name: "Giải thích", exact: true })).toBeVisible();
+         |                                                                                ^
+      51 |   await expect(page.getByText(/Bạn đã chọn · ✓ Đáp án của đề/)).toHaveCount(4);
+      52 |   await expect(page.getByRole("radio")).toHaveCount(0);
+      53 |   await expect(page.getByRole("checkbox")).toHaveCount(0);
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/assessment-results.e2e-spec.ts:50:80
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/assessment-results.e2e-spe-858aa-and-opening-released-review-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/assessment-results.e2e-spe-858aa-and-opening-released-review-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/assessment-results.e2e-spe-858aa-and-opening-released-review-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/assessment-results.e2e-spe-858aa-and-opening-released-review-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/assessment-results.e2e-spec.ts:11:1 › mobile room saves three native question types before submitting and opening released review 
+  1 passed (13.0s)

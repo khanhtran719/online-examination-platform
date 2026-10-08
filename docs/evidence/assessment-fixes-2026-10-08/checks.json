@@ -1,0 +1,69 @@
+{
+  "apiUnit": {
+    "passed": 104,
+    "suites": 15,
+    "log": "unit-tooling-web.log"
+  },
+  "toolingUnit": {
+    "passed": 37,
+    "log": "unit-tooling-web.log"
+  },
+  "webUnit": {
+    "passed": 93,
+    "suites": 23,
+    "log": "unit-tooling-web.log",
+    "scope": "regression only; includes unrelated Web work"
+  },
+  "integration": {
+    "passed": 105,
+    "skipped": 1,
+    "suites": 6,
+    "log": "integration-final.log",
+    "skipReason": "historical Catalog diagnostic writer"
+  },
+  "assessmentFocused": {
+    "passed": 23,
+    "log": "assessment-green.log"
+  },
+  "identityHttps": {
+    "passed": 10,
+    "log": "identity-https.log",
+    "scope": "Identity; not Assessment restart acceptance"
+  },
+  "lintQualityContracts": {
+    "status": "PASS",
+    "log": "lint.log",
+    "operations": 46,
+    "examples": 425
+  },
+  "typecheckBuild": {
+    "status": "PASS",
+    "buildLog": "identity-https.log",
+    "migrationCount": 10
+  },
+  "roadmap": {
+    "checked": 69,
+    "pending": 147,
+    "total": 216
+  },
+  "sourceAndEvidencePreservation": {
+    "status": "PASS",
+    "artifact": "preservation.json"
+  },
+  "productionCapacitySloCost": {
+    "status": "UNMEASURED"
+  },
+  "finalDocumentationQuality": {
+    "status": "PASS",
+    "log": "quality-final.log"
+  },
+  "finalTypecheck": {
+    "status": "PASS",
+    "log": "typecheck-final.log"
+  },
+  "format": {
+    "status": "PASS",
+    "log": "format-final.log"
+  },
+  "protectedArtifacts": 33
+}

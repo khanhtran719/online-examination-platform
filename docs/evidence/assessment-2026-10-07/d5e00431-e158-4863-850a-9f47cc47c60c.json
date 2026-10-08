@@ -1,0 +1,2060 @@
+{
+  "schemaVersion": 1,
+  "runId": "d5e00431-e158-4863-850a-9f47cc47c60c",
+  "recordedAt": "2026-10-07T15:49:31.843Z",
+  "scope": "local restricted PostgreSQL HTTP diagnostic; sequential calls on one attempt; includes CSRF, authenticate, admission and the unit of work",
+  "notCapacityEvidence": true,
+  "offeredConcurrency": 1,
+  "achievedConcurrency": 1,
+  "poolMax": 10,
+  "statementTimeoutMs": 2000,
+  "lockTimeoutMs": 500,
+  "node": "v24.17.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "postgres": "PostgreSQL 17.11 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "samples": {
+    "start": {
+      "n": 1,
+      "min": 9.276832999999897,
+      "p50": 9.276832999999897,
+      "p95": 9.276832999999897,
+      "p99": 9.276832999999897,
+      "max": 9.276832999999897
+    },
+    "questions": {
+      "n": 6,
+      "min": 3.390209000000141,
+      "p50": 3.775749999999789,
+      "p95": 4.845499999999447,
+      "p99": 4.845499999999447,
+      "max": 4.845499999999447
+    },
+    "answers": {
+      "n": 4,
+      "min": 4.114083000000392,
+      "p50": 4.208083999999872,
+      "p95": 4.986708999999792,
+      "p99": 4.986708999999792,
+      "max": 4.986708999999792
+    },
+    "save": {
+      "n": 6,
+      "min": 10.024916999999732,
+      "p50": 11.107125000000451,
+      "p95": 12.44316600000002,
+      "p99": 12.44316600000002,
+      "max": 12.44316600000002
+    },
+    "submit": {
+      "n": 1,
+      "min": 8.552082999999584,
+      "p50": 8.552082999999584,
+      "p95": 8.552082999999584,
+      "p99": 8.552082999999584,
+      "max": 8.552082999999584
+    },
+    "status": {
+      "n": 18,
+      "min": 2.448417000000518,
+      "p50": 2.7354160000004413,
+      "p95": 3.5677919999998267,
+      "p99": 3.5677919999998267,
+      "max": 3.5677919999998267
+    }
+  },
+  "payloadBytes": {
+    "start": 477,
+    "questions": 423,
+    "answers": 96,
+    "status": 477,
+    "save": 225,
+    "submit": 247
+  },
+  "queries": {
+    "start": {
+      "queryCount": 13,
+      "errorCount": 0,
+      "byOperation": {
+        "identity.read": 3,
+        "security.rate": 1,
+        "transaction.begin": 1,
+        "lock.acquire": 3,
+        "idempotency.read": 1,
+        "assessment.read": 1,
+        "assessment.write": 1,
+        "idempotency.write": 1,
+        "transaction.commit": 1
+      }
+    },
+    "questions": {
+      "queryCount": 4,
+      "errorCount": 0,
+      "byOperation": {
+        "identity.read": 1,
+        "security.rate": 1,
+        "assessment.read": 1,
+        "catalog.read": 1
+      }
+    },
+    "answers": {
+      "queryCount": 4,
+      "errorCount": 0,
+      "byOperation": {
+        "identity.read": 1,
+        "security.rate": 1,
+        "assessment.read": 2
+      }
+    },
+    "status": {
+      "queryCount": 3,
+      "errorCount": 0,
+      "byOperation": {
+        "identity.read": 1,
+        "security.rate": 1,
+        "assessment.read": 1
+      }
+    },
+    "save": {
+      "queryCount": 18,
+      "errorCount": 0,
+      "byOperation": {
+        "identity.read": 3,
+        "security.rate": 1,
+        "transaction.begin": 1,
+        "lock.acquire": 2,
+        "idempotency.read": 1,
+        "assessment.read": 2,
+        "catalog.read": 1,
+        "assessment.write": 5,
+        "idempotency.write": 1,
+        "transaction.commit": 1
+      }
+    },
+    "submit": {
+      "queryCount": 13,
+      "errorCount": 0,
+      "byOperation": {
+        "identity.read": 3,
+        "security.rate": 1,
+        "transaction.begin": 1,
+        "lock.acquire": 2,
+        "idempotency.read": 1,
+        "assessment.read": 1,
+        "assessment.write": 2,
+        "idempotency.write": 1,
+        "transaction.commit": 1
+      }
+    }
+  },
+  "budget": [
+    {
+      "operation": "start",
+      "ceiling": 12,
+      "actual": 13,
+      "exceeded": true
+    },
+    {
+      "operation": "questions",
+      "ceiling": 4,
+      "actual": 4,
+      "exceeded": false
+    },
+    {
+      "operation": "answers",
+      "ceiling": 4,
+      "actual": 4,
+      "exceeded": false
+    },
+    {
+      "operation": "save",
+      "ceiling": 11,
+      "actual": 18,
+      "exceeded": true
+    },
+    {
+      "operation": "submit",
+      "ceiling": 10,
+      "actual": 13,
+      "exceeded": true
+    },
+    {
+      "operation": "status",
+      "ceiling": 3,
+      "actual": 3,
+      "exceeded": false
+    }
+  ],
+  "reliabilityReason": "HTTP writes authenticate and admit before the transaction, then revalidate the account inside it. CSRF adds a family lookup when a refresh cookie is present. Save uses separate selection and answer statements because a data-modifying CTE cannot see its own row changes and runtime has no UPDATE on answer selections.",
+  "plans": [
+    {
+      "label": "start",
+      "operation": "identity.read",
+      "sha256": "0d9497a80df57a737292cfad4000a38b12c579099252b5d70c1e66175087b907",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.05,
+        "sharedHitBlocks": 6,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.038,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "sessions",
+                "actualRows": 1,
+                "actualTotalTime": 0.024,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "session_families",
+                "actualRows": 1,
+                "actualTotalTime": 0.013,
+                "sharedHitBlocks": 2
+              }
+            ]
+          },
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": 1,
+            "actualTotalTime": 0.01,
+            "sharedHitBlocks": 2
+          }
+        ]
+      }
+    },
+    {
+      "label": "start",
+      "operation": "identity.read",
+      "sha256": "40ab9bc2f816a8155f1879df09d41c22d75e363cae9c36b7cdf3deb54001a482",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.12,
+        "sharedHitBlocks": 9,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.023,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "sessions",
+                "actualRows": 1,
+                "actualTotalTime": 0.011,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "session_families",
+                "actualRows": 1,
+                "actualTotalTime": 0.011,
+                "sharedHitBlocks": 2
+              }
+            ]
+          },
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": 1,
+            "actualTotalTime": 0.009,
+            "sharedHitBlocks": 2
+          },
+          {
+            "nodeType": "Aggregate",
+            "relation": null,
+            "actualRows": 5,
+            "actualTotalTime": 0.037,
+            "sharedHitBlocks": 3,
+            "plans": [
+              {
+                "nodeType": "Hash Join",
+                "relation": null,
+                "actualRows": 5,
+                "actualTotalTime": 0.033,
+                "sharedHitBlocks": 3,
+                "plans": [
+                  {
+                    "nodeType": "Seq Scan",
+                    "relation": "role_permissions",
+                    "actualRows": 16,
+                    "actualTotalTime": 0.004,
+                    "sharedHitBlocks": 1
+                  },
+                  {
+                    "nodeType": "Hash",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.014,
+                    "sharedHitBlocks": 2,
+                    "plans": [
+                      {
+                        "nodeType": "Bitmap Heap Scan",
+                        "relation": "user_roles",
+                        "actualRows": 1,
+                        "actualTotalTime": 0.01,
+                        "sharedHitBlocks": 2,
+                        "plans": [
+                          {
+                            "nodeType": "Bitmap Index Scan",
+                            "relation": null,
+                            "actualRows": 1,
+                            "actualTotalTime": 0.006,
+                            "sharedHitBlocks": 1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "start",
+      "operation": "security.rate",
+      "sha256": "d70176970b535af0202255ea717a45a64eb9803e572b1fef3bbf69fbbcb0c361",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "request_limits",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "start",
+      "operation": "lock.acquire",
+      "sha256": "bca6182d3f8d0d9ae4f5dfec00c9f8e92cb945905ab5cd1629a763cc5b74fabb",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "LockRows",
+        "relation": null,
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "start",
+      "operation": "idempotency.read",
+      "sha256": "9b8dd0e1534a42dea681c7c11ec15204105f0e1d8e052bf98cf81b4b8effa3ba",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Index Scan",
+        "relation": "idempotency_receipts",
+        "actualRows": 1,
+        "actualTotalTime": 0.016,
+        "sharedHitBlocks": 2
+      }
+    },
+    {
+      "label": "start",
+      "operation": "lock.acquire",
+      "sha256": "031cc70ffe807d3d54b391f1758d097c84a916e2ec5f4f360f74331c0b3a5a6b",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "LockRows",
+        "relation": null,
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "attempts",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "start",
+      "operation": "lock.acquire",
+      "sha256": "f9107c05a353ba53872712dc4f0e11c13a3f0caabd319e5823e038de60f64988",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "LockRows",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.063,
+        "sharedHitBlocks": 5,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.051,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "exams",
+                "actualRows": 1,
+                "actualTotalTime": 0.008,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "published_versions",
+                "actualRows": 1,
+                "actualTotalTime": 0.01,
+                "sharedHitBlocks": 2
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "start",
+      "operation": "assessment.read",
+      "sha256": "182dd86484b011b25071656f9a35b2a791fbc0366447bb054ab85563afbfd023",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Result",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.006,
+        "sharedHitBlocks": 0
+      }
+    },
+    {
+      "label": "start",
+      "operation": "assessment.write",
+      "sha256": "4c6a16d0da6ea20331c93effa39d8a56d78924bdce26d3343c9bd186cba294d0",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "attempts",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Subquery Scan",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null,
+            "plans": [
+              {
+                "nodeType": "Aggregate",
+                "relation": null,
+                "actualRows": null,
+                "actualTotalTime": null,
+                "sharedHitBlocks": null,
+                "plans": [
+                  {
+                    "nodeType": "Index Only Scan",
+                    "relation": "attempts",
+                    "actualRows": null,
+                    "actualTotalTime": null,
+                    "sharedHitBlocks": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "start",
+      "operation": "idempotency.write",
+      "sha256": "e8616c1975e292615e3ce35c3dbfd614f96799a8e1f0ad3f0a927ab82e605253",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "idempotency_receipts",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "questions",
+      "operation": "identity.read",
+      "sha256": "40ab9bc2f816a8155f1879df09d41c22d75e363cae9c36b7cdf3deb54001a482",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.069,
+        "sharedHitBlocks": 9,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.021,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "sessions",
+                "actualRows": 1,
+                "actualTotalTime": 0.013,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "session_families",
+                "actualRows": 1,
+                "actualTotalTime": 0.007,
+                "sharedHitBlocks": 2
+              }
+            ]
+          },
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": 1,
+            "actualTotalTime": 0.01,
+            "sharedHitBlocks": 2
+          },
+          {
+            "nodeType": "Aggregate",
+            "relation": null,
+            "actualRows": 5,
+            "actualTotalTime": 0.026,
+            "sharedHitBlocks": 3,
+            "plans": [
+              {
+                "nodeType": "Hash Join",
+                "relation": null,
+                "actualRows": 5,
+                "actualTotalTime": 0.022,
+                "sharedHitBlocks": 3,
+                "plans": [
+                  {
+                    "nodeType": "Seq Scan",
+                    "relation": "role_permissions",
+                    "actualRows": 16,
+                    "actualTotalTime": 0.005,
+                    "sharedHitBlocks": 1
+                  },
+                  {
+                    "nodeType": "Hash",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.009,
+                    "sharedHitBlocks": 2,
+                    "plans": [
+                      {
+                        "nodeType": "Bitmap Heap Scan",
+                        "relation": "user_roles",
+                        "actualRows": 1,
+                        "actualTotalTime": 0.006,
+                        "sharedHitBlocks": 2,
+                        "plans": [
+                          {
+                            "nodeType": "Bitmap Index Scan",
+                            "relation": null,
+                            "actualRows": 1,
+                            "actualTotalTime": 0.002,
+                            "sharedHitBlocks": 1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "questions",
+      "operation": "security.rate",
+      "sha256": "d70176970b535af0202255ea717a45a64eb9803e572b1fef3bbf69fbbcb0c361",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "request_limits",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "questions",
+      "operation": "assessment.read",
+      "sha256": "5d76d709d48b103f1e7de4bdd9a7a572515ceefaf464ba50ad976bd48fd0cc96",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Index Scan",
+        "relation": "attempts",
+        "actualRows": 1,
+        "actualTotalTime": 0.024,
+        "sharedHitBlocks": 3
+      }
+    },
+    {
+      "label": "questions",
+      "operation": "catalog.read",
+      "sha256": "34c379b91599a4cf34f37f4e14793aa65832eccfc2f253b26a07e5349a3d0d60",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.058,
+        "sharedHitBlocks": 14,
+        "plans": [
+          {
+            "nodeType": "Index Only Scan",
+            "relation": "published_versions",
+            "actualRows": 1,
+            "actualTotalTime": 0.01,
+            "sharedHitBlocks": 2
+          },
+          {
+            "nodeType": "Limit",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.047,
+            "sharedHitBlocks": 12,
+            "plans": [
+              {
+                "nodeType": "Result",
+                "relation": null,
+                "actualRows": 1,
+                "actualTotalTime": 0.046,
+                "sharedHitBlocks": 12,
+                "plans": [
+                  {
+                    "nodeType": "Sort",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.032,
+                    "sharedHitBlocks": 10,
+                    "plans": [
+                      {
+                        "nodeType": "Nested Loop",
+                        "relation": null,
+                        "actualRows": 1,
+                        "actualTotalTime": 0.013,
+                        "sharedHitBlocks": 4,
+                        "plans": [
+                          {
+                            "nodeType": "Bitmap Heap Scan",
+                            "relation": "published_sections",
+                            "actualRows": 1,
+                            "actualTotalTime": 0.004,
+                            "sharedHitBlocks": 2,
+                            "plans": [
+                              {
+                                "nodeType": "Bitmap Index Scan",
+                                "relation": null,
+                                "actualRows": 1,
+                                "actualTotalTime": 0.001,
+                                "sharedHitBlocks": 1
+                              }
+                            ]
+                          },
+                          {
+                            "nodeType": "Materialize",
+                            "relation": null,
+                            "actualRows": 1,
+                            "actualTotalTime": 0.008,
+                            "sharedHitBlocks": 2,
+                            "plans": [
+                              {
+                                "nodeType": "Bitmap Heap Scan",
+                                "relation": "published_questions",
+                                "actualRows": 1,
+                                "actualTotalTime": 0.006,
+                                "sharedHitBlocks": 2,
+                                "plans": [
+                                  {
+                                    "nodeType": "Bitmap Index Scan",
+                                    "relation": null,
+                                    "actualRows": 1,
+                                    "actualTotalTime": 0.001,
+                                    "sharedHitBlocks": 1
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "Aggregate",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.012,
+                    "sharedHitBlocks": 2,
+                    "plans": [
+                      {
+                        "nodeType": "Index Scan",
+                        "relation": "published_options",
+                        "actualRows": 2,
+                        "actualTotalTime": 0.005,
+                        "sharedHitBlocks": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "answers",
+      "operation": "identity.read",
+      "sha256": "40ab9bc2f816a8155f1879df09d41c22d75e363cae9c36b7cdf3deb54001a482",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.062,
+        "sharedHitBlocks": 9,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.017,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "sessions",
+                "actualRows": 1,
+                "actualTotalTime": 0.011,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "session_families",
+                "actualRows": 1,
+                "actualTotalTime": 0.005,
+                "sharedHitBlocks": 2
+              }
+            ]
+          },
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": 1,
+            "actualTotalTime": 0.01,
+            "sharedHitBlocks": 2
+          },
+          {
+            "nodeType": "Aggregate",
+            "relation": null,
+            "actualRows": 5,
+            "actualTotalTime": 0.023,
+            "sharedHitBlocks": 3,
+            "plans": [
+              {
+                "nodeType": "Hash Join",
+                "relation": null,
+                "actualRows": 5,
+                "actualTotalTime": 0.02,
+                "sharedHitBlocks": 3,
+                "plans": [
+                  {
+                    "nodeType": "Seq Scan",
+                    "relation": "role_permissions",
+                    "actualRows": 16,
+                    "actualTotalTime": 0.004,
+                    "sharedHitBlocks": 1
+                  },
+                  {
+                    "nodeType": "Hash",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.008,
+                    "sharedHitBlocks": 2,
+                    "plans": [
+                      {
+                        "nodeType": "Bitmap Heap Scan",
+                        "relation": "user_roles",
+                        "actualRows": 1,
+                        "actualTotalTime": 0.005,
+                        "sharedHitBlocks": 2,
+                        "plans": [
+                          {
+                            "nodeType": "Bitmap Index Scan",
+                            "relation": null,
+                            "actualRows": 1,
+                            "actualTotalTime": 0.002,
+                            "sharedHitBlocks": 1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "answers",
+      "operation": "security.rate",
+      "sha256": "d70176970b535af0202255ea717a45a64eb9803e572b1fef3bbf69fbbcb0c361",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "request_limits",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "answers",
+      "operation": "assessment.read",
+      "sha256": "5d76d709d48b103f1e7de4bdd9a7a572515ceefaf464ba50ad976bd48fd0cc96",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Index Scan",
+        "relation": "attempts",
+        "actualRows": 1,
+        "actualTotalTime": 0.022,
+        "sharedHitBlocks": 2
+      }
+    },
+    {
+      "label": "answers",
+      "operation": "assessment.read",
+      "sha256": "7e4a876736241b95d9792dbccaa628da575a169ce70d5e10814e009014521edc",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.074,
+        "sharedHitBlocks": 14,
+        "plans": [
+          {
+            "nodeType": "Index Only Scan",
+            "relation": "attempts",
+            "actualRows": 1,
+            "actualTotalTime": 0.011,
+            "sharedHitBlocks": 2
+          },
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.004,
+            "sharedHitBlocks": 0
+          },
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.017,
+            "sharedHitBlocks": 2,
+            "plans": [
+              {
+                "nodeType": "CTE Scan",
+                "relation": null,
+                "actualRows": 1,
+                "actualTotalTime": 0.011,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "CTE Scan",
+                "relation": null,
+                "actualRows": 1,
+                "actualTotalTime": 0.004,
+                "sharedHitBlocks": 0
+              }
+            ]
+          },
+          {
+            "nodeType": "Limit",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.056,
+            "sharedHitBlocks": 12,
+            "plans": [
+              {
+                "nodeType": "Result",
+                "relation": null,
+                "actualRows": 1,
+                "actualTotalTime": 0.056,
+                "sharedHitBlocks": 12,
+                "plans": [
+                  {
+                    "nodeType": "Sort",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.032,
+                    "sharedHitBlocks": 6,
+                    "plans": [
+                      {
+                        "nodeType": "Nested Loop",
+                        "relation": null,
+                        "actualRows": 1,
+                        "actualTotalTime": 0.025,
+                        "sharedHitBlocks": 6,
+                        "plans": [
+                          {
+                            "nodeType": "Nested Loop",
+                            "relation": null,
+                            "actualRows": 1,
+                            "actualTotalTime": 0.017,
+                            "sharedHitBlocks": 4,
+                            "plans": [
+                              {
+                                "nodeType": "Nested Loop",
+                                "relation": null,
+                                "actualRows": 1,
+                                "actualTotalTime": 0.006,
+                                "sharedHitBlocks": 2,
+                                "plans": [
+                                  {
+                                    "nodeType": "CTE Scan",
+                                    "relation": null,
+                                    "actualRows": 1,
+                                    "actualTotalTime": 0.001,
+                                    "sharedHitBlocks": 0
+                                  },
+                                  {
+                                    "nodeType": "Bitmap Heap Scan",
+                                    "relation": "published_questions",
+                                    "actualRows": 1,
+                                    "actualTotalTime": 0.004,
+                                    "sharedHitBlocks": 2,
+                                    "plans": [
+                                      {
+                                        "nodeType": "Bitmap Index Scan",
+                                        "relation": null,
+                                        "actualRows": 1,
+                                        "actualTotalTime": 0.001,
+                                        "sharedHitBlocks": 1
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "nodeType": "Index Scan",
+                                "relation": "answers",
+                                "actualRows": 1,
+                                "actualTotalTime": 0.009,
+                                "sharedHitBlocks": 2
+                              }
+                            ]
+                          },
+                          {
+                            "nodeType": "Index Scan",
+                            "relation": "published_sections",
+                            "actualRows": 1,
+                            "actualTotalTime": 0.006,
+                            "sharedHitBlocks": 2
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "Aggregate",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.022,
+                    "sharedHitBlocks": 6,
+                    "plans": [
+                      {
+                        "nodeType": "Nested Loop",
+                        "relation": null,
+                        "actualRows": 1,
+                        "actualTotalTime": 0.019,
+                        "sharedHitBlocks": 6,
+                        "plans": [
+                          {
+                            "nodeType": "Index Scan",
+                            "relation": "published_options",
+                            "actualRows": 2,
+                            "actualTotalTime": 0.004,
+                            "sharedHitBlocks": 2
+                          },
+                          {
+                            "nodeType": "Index Only Scan",
+                            "relation": "answer_selections",
+                            "actualRows": 1,
+                            "actualTotalTime": 0.006,
+                            "sharedHitBlocks": 4
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "status",
+      "operation": "identity.read",
+      "sha256": "40ab9bc2f816a8155f1879df09d41c22d75e363cae9c36b7cdf3deb54001a482",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.091,
+        "sharedHitBlocks": 9,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.019,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "sessions",
+                "actualRows": 1,
+                "actualTotalTime": 0.012,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "session_families",
+                "actualRows": 1,
+                "actualTotalTime": 0.006,
+                "sharedHitBlocks": 2
+              }
+            ]
+          },
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": 1,
+            "actualTotalTime": 0.007,
+            "sharedHitBlocks": 2
+          },
+          {
+            "nodeType": "Aggregate",
+            "relation": null,
+            "actualRows": 5,
+            "actualTotalTime": 0.03,
+            "sharedHitBlocks": 3,
+            "plans": [
+              {
+                "nodeType": "Hash Join",
+                "relation": null,
+                "actualRows": 5,
+                "actualTotalTime": 0.026,
+                "sharedHitBlocks": 3,
+                "plans": [
+                  {
+                    "nodeType": "Seq Scan",
+                    "relation": "role_permissions",
+                    "actualRows": 16,
+                    "actualTotalTime": 0.008,
+                    "sharedHitBlocks": 1
+                  },
+                  {
+                    "nodeType": "Hash",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.01,
+                    "sharedHitBlocks": 2,
+                    "plans": [
+                      {
+                        "nodeType": "Bitmap Heap Scan",
+                        "relation": "user_roles",
+                        "actualRows": 1,
+                        "actualTotalTime": 0.006,
+                        "sharedHitBlocks": 2,
+                        "plans": [
+                          {
+                            "nodeType": "Bitmap Index Scan",
+                            "relation": null,
+                            "actualRows": 1,
+                            "actualTotalTime": 0.002,
+                            "sharedHitBlocks": 1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "status",
+      "operation": "security.rate",
+      "sha256": "d70176970b535af0202255ea717a45a64eb9803e572b1fef3bbf69fbbcb0c361",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "request_limits",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "status",
+      "operation": "assessment.read",
+      "sha256": "5d76d709d48b103f1e7de4bdd9a7a572515ceefaf464ba50ad976bd48fd0cc96",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Index Scan",
+        "relation": "attempts",
+        "actualRows": 1,
+        "actualTotalTime": 0.023,
+        "sharedHitBlocks": 2
+      }
+    },
+    {
+      "label": "save",
+      "operation": "identity.read",
+      "sha256": "0d9497a80df57a737292cfad4000a38b12c579099252b5d70c1e66175087b907",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.033,
+        "sharedHitBlocks": 6,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.024,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "sessions",
+                "actualRows": 1,
+                "actualTotalTime": 0.017,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "session_families",
+                "actualRows": 1,
+                "actualTotalTime": 0.006,
+                "sharedHitBlocks": 2
+              }
+            ]
+          },
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": 1,
+            "actualTotalTime": 0.008,
+            "sharedHitBlocks": 2
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "identity.read",
+      "sha256": "40ab9bc2f816a8155f1879df09d41c22d75e363cae9c36b7cdf3deb54001a482",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.102,
+        "sharedHitBlocks": 9,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.032,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "sessions",
+                "actualRows": 1,
+                "actualTotalTime": 0.024,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "session_families",
+                "actualRows": 1,
+                "actualTotalTime": 0.006,
+                "sharedHitBlocks": 2
+              }
+            ]
+          },
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": 1,
+            "actualTotalTime": 0.016,
+            "sharedHitBlocks": 2
+          },
+          {
+            "nodeType": "Aggregate",
+            "relation": null,
+            "actualRows": 5,
+            "actualTotalTime": 0.036,
+            "sharedHitBlocks": 3,
+            "plans": [
+              {
+                "nodeType": "Hash Join",
+                "relation": null,
+                "actualRows": 5,
+                "actualTotalTime": 0.032,
+                "sharedHitBlocks": 3,
+                "plans": [
+                  {
+                    "nodeType": "Seq Scan",
+                    "relation": "role_permissions",
+                    "actualRows": 16,
+                    "actualTotalTime": 0.005,
+                    "sharedHitBlocks": 1
+                  },
+                  {
+                    "nodeType": "Hash",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.012,
+                    "sharedHitBlocks": 2,
+                    "plans": [
+                      {
+                        "nodeType": "Bitmap Heap Scan",
+                        "relation": "user_roles",
+                        "actualRows": 1,
+                        "actualTotalTime": 0.007,
+                        "sharedHitBlocks": 2,
+                        "plans": [
+                          {
+                            "nodeType": "Bitmap Index Scan",
+                            "relation": null,
+                            "actualRows": 1,
+                            "actualTotalTime": 0.002,
+                            "sharedHitBlocks": 1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "security.rate",
+      "sha256": "d70176970b535af0202255ea717a45a64eb9803e572b1fef3bbf69fbbcb0c361",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "request_limits",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "lock.acquire",
+      "sha256": "bca6182d3f8d0d9ae4f5dfec00c9f8e92cb945905ab5cd1629a763cc5b74fabb",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "LockRows",
+        "relation": null,
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "idempotency.read",
+      "sha256": "9b8dd0e1534a42dea681c7c11ec15204105f0e1d8e052bf98cf81b4b8effa3ba",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Index Scan",
+        "relation": "idempotency_receipts",
+        "actualRows": 1,
+        "actualTotalTime": 0.019,
+        "sharedHitBlocks": 2
+      }
+    },
+    {
+      "label": "save",
+      "operation": "lock.acquire",
+      "sha256": "b705f8dfbcbe4f6e3e229a738d2a85fe74f3f2321767b72f48d3c985f5e5a354",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "LockRows",
+        "relation": null,
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "attempts",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "assessment.read",
+      "sha256": "182dd86484b011b25071656f9a35b2a791fbc0366447bb054ab85563afbfd023",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Result",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.006,
+        "sharedHitBlocks": 0
+      }
+    },
+    {
+      "label": "save",
+      "operation": "assessment.read",
+      "sha256": "035605e66738dd167ec92da01edef2db0cec234d86a31c5ca06d83ceb0086648",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Index Scan",
+        "relation": "answers",
+        "actualRows": 1,
+        "actualTotalTime": 0.017,
+        "sharedHitBlocks": 3
+      }
+    },
+    {
+      "label": "save",
+      "operation": "catalog.read",
+      "sha256": "078906bbc3e297c117e6958a071dbcc384f0ff0dcf49ce0d038de9aa350a4df2",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Index Scan",
+        "relation": "published_questions",
+        "actualRows": 1,
+        "actualTotalTime": 0.024,
+        "sharedHitBlocks": 4,
+        "plans": [
+          {
+            "nodeType": "Aggregate",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.011,
+            "sharedHitBlocks": 2,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "published_options",
+                "actualRows": 2,
+                "actualTotalTime": 0.006,
+                "sharedHitBlocks": 2
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "assessment.write",
+      "sha256": "940e6d30f1da6a1caab146375f3593c41c7f3ae73e0194f514116b4972d294b8",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "answer_selections",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "answer_selections",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "assessment.write",
+      "sha256": "92fdb41c89eb6615aecdda7fedbee1a9936c00f404a4f9bbd41a25a30e199197",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "answers",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "answers",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "assessment.write",
+      "sha256": "24eb403f492879cca1b301edd5ad0e1fd68348673b2439feb1d0e3f39a9356bc",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "answers",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Function Scan",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "assessment.write",
+      "sha256": "e7df035c037f1007db19ac673d45f5b8885a12708813ded25c539182fb058ed7",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "answer_selections",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null,
+            "plans": [
+              {
+                "nodeType": "Function Scan",
+                "relation": null,
+                "actualRows": null,
+                "actualTotalTime": null,
+                "sharedHitBlocks": null
+              },
+              {
+                "nodeType": "Function Scan",
+                "relation": null,
+                "actualRows": null,
+                "actualTotalTime": null,
+                "sharedHitBlocks": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "assessment.write",
+      "sha256": "0c96f92870421e7a59fd58e53dc64b6dab8727469d573d669e067f0f6d2e6c89",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "attempts",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "attempts",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "save",
+      "operation": "idempotency.write",
+      "sha256": "e8616c1975e292615e3ce35c3dbfd614f96799a8e1f0ad3f0a927ab82e605253",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "idempotency_receipts",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "identity.read",
+      "sha256": "0d9497a80df57a737292cfad4000a38b12c579099252b5d70c1e66175087b907",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.027,
+        "sharedHitBlocks": 6,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.02,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "sessions",
+                "actualRows": 1,
+                "actualTotalTime": 0.013,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "session_families",
+                "actualRows": 1,
+                "actualTotalTime": 0.006,
+                "sharedHitBlocks": 2
+              }
+            ]
+          },
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": 1,
+            "actualTotalTime": 0.006,
+            "sharedHitBlocks": 2
+          }
+        ]
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "identity.read",
+      "sha256": "40ab9bc2f816a8155f1879df09d41c22d75e363cae9c36b7cdf3deb54001a482",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Nested Loop",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.061,
+        "sharedHitBlocks": 9,
+        "plans": [
+          {
+            "nodeType": "Nested Loop",
+            "relation": null,
+            "actualRows": 1,
+            "actualTotalTime": 0.015,
+            "sharedHitBlocks": 4,
+            "plans": [
+              {
+                "nodeType": "Index Scan",
+                "relation": "sessions",
+                "actualRows": 1,
+                "actualTotalTime": 0.009,
+                "sharedHitBlocks": 2
+              },
+              {
+                "nodeType": "Index Scan",
+                "relation": "session_families",
+                "actualRows": 1,
+                "actualTotalTime": 0.005,
+                "sharedHitBlocks": 2
+              }
+            ]
+          },
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": 1,
+            "actualTotalTime": 0.01,
+            "sharedHitBlocks": 2
+          },
+          {
+            "nodeType": "Aggregate",
+            "relation": null,
+            "actualRows": 5,
+            "actualTotalTime": 0.023,
+            "sharedHitBlocks": 3,
+            "plans": [
+              {
+                "nodeType": "Hash Join",
+                "relation": null,
+                "actualRows": 5,
+                "actualTotalTime": 0.02,
+                "sharedHitBlocks": 3,
+                "plans": [
+                  {
+                    "nodeType": "Seq Scan",
+                    "relation": "role_permissions",
+                    "actualRows": 16,
+                    "actualTotalTime": 0.004,
+                    "sharedHitBlocks": 1
+                  },
+                  {
+                    "nodeType": "Hash",
+                    "relation": null,
+                    "actualRows": 1,
+                    "actualTotalTime": 0.009,
+                    "sharedHitBlocks": 2,
+                    "plans": [
+                      {
+                        "nodeType": "Bitmap Heap Scan",
+                        "relation": "user_roles",
+                        "actualRows": 1,
+                        "actualTotalTime": 0.005,
+                        "sharedHitBlocks": 2,
+                        "plans": [
+                          {
+                            "nodeType": "Bitmap Index Scan",
+                            "relation": null,
+                            "actualRows": 1,
+                            "actualTotalTime": 0.002,
+                            "sharedHitBlocks": 1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "security.rate",
+      "sha256": "d70176970b535af0202255ea717a45a64eb9803e572b1fef3bbf69fbbcb0c361",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "request_limits",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "lock.acquire",
+      "sha256": "bca6182d3f8d0d9ae4f5dfec00c9f8e92cb945905ab5cd1629a763cc5b74fabb",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "LockRows",
+        "relation": null,
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "users",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "idempotency.read",
+      "sha256": "9b8dd0e1534a42dea681c7c11ec15204105f0e1d8e052bf98cf81b4b8effa3ba",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Index Scan",
+        "relation": "idempotency_receipts",
+        "actualRows": 1,
+        "actualTotalTime": 0.014,
+        "sharedHitBlocks": 2
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "lock.acquire",
+      "sha256": "b705f8dfbcbe4f6e3e229a738d2a85fe74f3f2321767b72f48d3c985f5e5a354",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "LockRows",
+        "relation": null,
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "attempts",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "assessment.read",
+      "sha256": "182dd86484b011b25071656f9a35b2a791fbc0366447bb054ab85563afbfd023",
+      "analyzed": true,
+      "plan": {
+        "nodeType": "Result",
+        "relation": null,
+        "actualRows": 1,
+        "actualTotalTime": 0.006,
+        "sharedHitBlocks": 0
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "assessment.write",
+      "sha256": "fc1c69fdbc2bc030ac6917e20fe730b322b5dc51c050df287bf472fbcd588ff7",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "attempts",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Index Scan",
+            "relation": "attempts",
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "assessment.write",
+      "sha256": "d44352a67af86b249dc2bb5d7c74dcaff08edda0a9b40dc802edb4f557e3427c",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "outbox",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "submit",
+      "operation": "idempotency.write",
+      "sha256": "e8616c1975e292615e3ce35c3dbfd614f96799a8e1f0ad3f0a927ab82e605253",
+      "analyzed": false,
+      "plan": {
+        "nodeType": "ModifyTable",
+        "relation": "idempotency_receipts",
+        "actualRows": null,
+        "actualTotalTime": null,
+        "sharedHitBlocks": null,
+        "plans": [
+          {
+            "nodeType": "Result",
+            "relation": null,
+            "actualRows": null,
+            "actualTotalTime": null,
+            "sharedHitBlocks": null
+          }
+        ]
+      }
+    }
+  ],
+  "migrations": [
+    {
+      "file": "0001_capability_schema.sql",
+      "bytes": 19421,
+      "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95"
+    },
+    {
+      "file": "0002_query_indexes.sql",
+      "bytes": 2289,
+      "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158"
+    },
+    {
+      "file": "0003_runtime_privileges.sql",
+      "bytes": 1877,
+      "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9"
+    },
+    {
+      "file": "0004_durable_state_guards.sql",
+      "bytes": 1780,
+      "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8"
+    },
+    {
+      "file": "0005_frozen_category.sql",
+      "bytes": 920,
+      "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b"
+    },
+    {
+      "file": "0006_immutable_submission.sql",
+      "bytes": 720,
+      "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043"
+    },
+    {
+      "file": "0007_identity_runtime.sql",
+      "bytes": 7038,
+      "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6"
+    },
+    {
+      "file": "0008_identity_operations.sql",
+      "bytes": 6872,
+      "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67"
+    },
+    {
+      "file": "0009_catalog_question_points.sql",
+      "bytes": 474,
+      "sha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1"
+    },
+    {
+      "file": "0010_attempt_revision.sql",
+      "bytes": 750,
+      "sha256": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26"
+    }
+  ],
+  "source": [
+    {
+      "path": "apps/api/src/modules/assessment/application/dto/assessment.dto.ts",
+      "sha256": "487b74c6dba2f906bbd37191718c6cba27cf70e4461d116f634028a993752582"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/assessment-cursor.port.ts",
+      "sha256": "beb4a40c1a44ba14d7b9391e912cf2ab1382e04cd41ee5f081a80d7c8148d457"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/attempt-query.port.ts",
+      "sha256": "ef82c3fea80c6c0cbc72076884d54237ad2e7631f32706dd05263f12e292049e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/submission-outbox.ts",
+      "sha256": "6262d02316647cf8298c3ad01f5b85c4763169c749d5c27f1376a54e07b3ac96"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/assessment.service.ts",
+      "sha256": "e9f8631e59698f9a23a9ad97bfb764fe2d441a75fea532549dde1d9910b33071"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/assessment.module.ts",
+      "sha256": "5eda831f848c009980ae3370ed30178658f31e8c88fce74b6ef0c94d67cb95d4"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/assessment-policy.unit.spec.ts",
+      "sha256": "3b42c2cb6ee8e043d64e2a5e416514121c19df91fc4a4924bc919f4b72c578ea"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/attempt.unit.spec.ts",
+      "sha256": "29a8ab8e3907d95674a957f9ed5633aaa21855007914d9fbe4e2f3fc87114cdb"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/scoring.unit.spec.ts",
+      "sha256": "4330be1d683d6f3576ce50337a442137440dfdf539c37539adfa88ddf667969e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/assessment-policy.ts",
+      "sha256": "98e0868cacc80200450996bf7af69b733637816a3fec806842e09587f778cc94"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/assessment.error.ts",
+      "sha256": "cbb9f3180bb8694247f42399a0820dc3ffca7ce0ee05773a7f7f854a948bc2b9"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/attempt.ts",
+      "sha256": "a81a4439e1a0ce95ed3bd82608dd918e3065fa5f82bb4de6ddbff29419883fb0"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/repositories/attempt.repository.ts",
+      "sha256": "c4b71fb2b7a5e1b85639128b21406ae6adc4bee7a00ac71a19ac1f44740bda8b"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/scoring.ts",
+      "sha256": "5784d2d6c66c038c720e7fd8e0251022646a0f0383bff91a42dc3dc5fce22634"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/cursor/assessment-cursor.ts",
+      "sha256": "1d8c193b02e4d5a491174c4d81e4a7af7e4205408bc41e2238507e23a2d82340"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.query.ts",
+      "sha256": "eefd3bd212b9479994eaa7480d7be18d22bbd21c1dd43d5f4353b8ee571b8e94"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.repository.ts",
+      "sha256": "a769c48282d9efe6801dd16c2f319cd9787c5b5a1c1e0408ab1cb30718de3601"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-submission-outbox.ts",
+      "sha256": "0c34ee038f076af8d7aafeb942661e9348b01a7087cf937648663849b974bca6"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/presentation/http/assessment.controller.ts",
+      "sha256": "7886059c6b3e44ce7b323d777cf29903d7dda455919e3f19dd3163f3afc662a1"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/presentation/http/dto/assessment.dto.ts",
+      "sha256": "845ff2fb7ca06ae391d029f4a0b0dda4415d961e672e74c94789e9caab13016a"
+    }
+  ],
+  "testSourceSha256": "627a37c1a154fa2f1cf2259209a2cdd546c38c1fd2345f12b6fd69332a558179"
+}

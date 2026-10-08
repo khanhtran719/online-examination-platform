@@ -1,0 +1,168 @@
+.stage {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  max-width: 380px;
+  margin: auto;
+  isolation: isolate;
+  pointer-events: none;
+  --paper-pose: perspective(850px) rotateX(20deg) rotateY(-18deg) rotateZ(-14deg);
+}
+.orbit {
+  position: absolute;
+  width: 90%;
+  height: 65%;
+  border: 1px solid var(--color-brand-edge);
+  border-radius: 50%;
+  top: 24%;
+  left: 5%;
+  transform: rotate(-25deg);
+  opacity: 0.35;
+}
+.shadow {
+  position: absolute;
+  width: 66%;
+  height: 15%;
+  background: var(--color-brand-canvas);
+  filter: blur(18px);
+  border-radius: 50%;
+  opacity: 0.22;
+  bottom: 5%;
+  left: 14%;
+}
+.paper {
+  position: absolute;
+  width: 190px;
+  height: 248px;
+  top: 8px;
+  left: calc(50% - 100px);
+  padding: 22px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  border-radius: var(--radius-brand);
+  background: var(--color-public-paper);
+  color: var(--color-public-paper-ink);
+  box-shadow:
+    4px 5px 0 var(--color-public-paper-line),
+    8px 10px 0 var(--color-brand-edge),
+    22px 30px 24px rgb(0 0 0 / 15%);
+  transform: var(--paper-pose);
+  animation: arrive 850ms var(--ease-control) both;
+}
+.corner {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  background: var(--color-public-paper-line);
+  border-radius: 0 var(--radius-brand) 0 var(--radius-brand);
+}
+.mark {
+  font: 700 32px/1 var(--font-heading);
+}
+.line {
+  height: 5px;
+  width: 100%;
+  border-radius: 4px;
+  background: var(--color-public-paper-line);
+}
+.short {
+  width: 60%;
+  margin-bottom: 2px;
+}
+.answers {
+  display: flex;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--color-public-paper-line);
+}
+.answers span {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-brand-edge);
+  border-radius: 50%;
+}
+.answers .selected {
+  background: var(--color-primary);
+  box-shadow: inset 0 0 0 4px var(--color-public-paper);
+}
+.stamp {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-public-paper-selected);
+  text-align: center;
+  font-weight: 700;
+}
+.pen {
+  position: absolute;
+  width: 13px;
+  height: 185px;
+  left: calc(50% + 88px);
+  top: 85px;
+  border-radius: 7px 7px 1px 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-hover),
+    var(--color-brand-accent),
+    var(--color-primary)
+  );
+  box-shadow: 9px 12px 10px rgb(0 0 0 / 15%);
+  transform: rotate(29deg);
+}
+.pen::before {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  border-left: 6px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 18px solid var(--color-public-paper);
+}
+.pen span {
+  position: absolute;
+  top: 15px;
+  right: 2px;
+  width: 3px;
+  height: 45px;
+  border-radius: 3px;
+  background: var(--color-public-paper);
+}
+.spark {
+  position: absolute;
+  left: 12%;
+  top: 7%;
+  font-size: 30px;
+  color: var(--color-brand-accent);
+}
+.compact {
+  width: 220px;
+  height: 180px;
+  transform: scale(0.7);
+  transform-origin: center;
+  margin: -28px -20px;
+}
+.compact .paper {
+  top: -36px;
+}
+.compact .pen {
+  top: 34px;
+}
+@keyframes arrive {
+  from {
+    transform: var(--paper-pose) translateY(22px);
+  }
+  to {
+    transform: var(--paper-pose);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .paper {
+    animation: none;
+  }
+}

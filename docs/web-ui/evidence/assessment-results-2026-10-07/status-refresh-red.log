@@ -1,0 +1,224 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/results/__tests__/status-page.test.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/results/__tests__/status-page.test.tsx (2 tests | 1 failed) 128ms
+   × checks a stopped failed attempt again only after a manual request 21ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/results/__tests__/status-page.test.tsx > checks a stopped failed attempt again only after a manual request
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Kiểm tra lại"
+
+Here are the accessible roles:
+
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"_heading_01ce50"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_eyebrow_01ce50"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_muted_24c302"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_muted_24c302"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_caption_01ce50"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Trạng thái bài":
+  [36m<h1[39m
+    [33mclass[39m=[32m"_title_24c302"[39m
+  [36m/>[39m
+
+  Name "Bài chưa xử lý xong":
+  [36m<h2 />[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "Các bước xử lý bài":
+  [36m<ol[39m
+    [33maria-label[39m=[32m"Các bước xử lý bài"[39m
+    [33mclass[39m=[32m"_steps_01ce50"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li[39m
+    [33mdata-done[39m=[32m"true"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33maria-current[39m=[32m"step"[39m
+    [33mdata-done[39m=[32m"false"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Về lịch sử":
+  [36m<a[39m
+    [33mclass[39m=[32m"_chip_24c302"[39m
+    [33mdata-discover[39m=[32m"true"[39m
+    [33mhref[39m=[32m"/history"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_wrap_24c302"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"_heading_01ce50"[39m
+      [36m>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_eyebrow_01ce50"[39m
+        [36m>[39m
+          [0mSAU KHI LÀM BÀI[0m
+        [36m</p>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"_title_24c302"[39m
+        [36m>[39m
+          [0mTrạng thái bài[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_muted_24c302"[39m
+        [36m>[39m
+          [0mTheo dõi lượt thi và mở kết quả khi đã sẵn sàng.[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"_statusPanel_01ce50"[39m
+        [33mdata-failed[39m=[32m"true"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33maria-hidden[39m=[32m"true"[39m
+          [33mclass[39m=[32m"_statusIcon_01ce50"[39m
+        [36m>[39m
+          [0m![0m
+        [36m</div>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"_badge_01ce50"[39m
+        [36m>[39m
+          [0mXử lý thất bại[0m
+        [36m</span>[39m
+        [36m<h2>[39m
+          [0mBài chưa xử lý xong[0m
+        [36m</h2>[39m
+        [36m<p>[39m
+          [0mChưa có kết quả để xem. Bạn có thể quay lại kiểm tra trạng thái sau.[0m
+        [36m</p>[39m
+        [36m<ol[39m
+          [33maria-label[39m=[32m"Các bước xử lý bài"[39m
+          [33mclass[39m=[32m"_steps_01ce50"[39m
+        [36m>[39m
+          [36m<li[39m
+            [33mdata-done[39m=[32m"true"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+            [36m>[39m
+              [0m✓[0m
+            [36m</span>[39m
+            [0mNhận bài[0m
+          [36m</li>[39m
+          [36m<li[39m
+            [33maria-current[39m=[32m"step"[39m
+            [33mdata-done[39m=[32m"false"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+            [36m>[39m
+              [0m![0m
+            [36m</span>[39m
+            [0mXử lý bài[0m
+          [36m</li>[39m
+          [36m<li>[39m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+            [36m>[39m
+              [0m3[0m
+            [36m</span>[39m
+            [0mCó kết quả[0m
+          [36m</li>[39m
+        [36m</ol>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_actions_01ce50"[39m
+        [36m>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"_muted_24c302"[39m
+          [36m>[39m
+            [0mKết quả chưa sẵn sàng.[0m
+          [36m</p>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"_chip_24c302"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/history"[39m
+          [36m>[39m
+            [0mVề lịch sử[0m
+          [36m</a>[39m
+        [36m</div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_caption_01ce50"[39m
+        [36m>[39m
+          [0mĐã dừng cập nhật tự động. Mở lại lượt từ lịch sử để kiểm tra trạng thái mới.[0m
+        [36m</p>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/results/__tests__/status-page.test.tsx:62:32
+     60|   await screen.findByText("Bài chưa xử lý xong");
+     61|   expect(readStatus).toHaveBeenCalledTimes(1);
+     62|   await userEvent.click(screen.getByRole("button", { name: "Kiểm tra l…
+       |                                ^
+     63|   expect((await screen.findByRole("link", { name: "Xem kết quả" })).ge…
+     64|   expect(readStatus).toHaveBeenCalledTimes(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  22:50:23
+   Duration  1.20s (environment 56%, import 19%, transform 12%, tests 12%)
+

@@ -1,0 +1,106 @@
+{
+  "recordedAt": "2026-10-08T01:53:13.520Z",
+  "scope": "independent real PostgreSQL and HTTP review",
+  "probes": {
+    "optionSetRetry": {
+      "firstStatus": 200,
+      "retryStatus": 409,
+      "replayed": false,
+      "error": "Idempotency key conflict",
+      "receipts": 1,
+      "storedAnswerVersion": 1
+    },
+    "questionBytes": {
+      "status": 200,
+      "decodedBytes": 262664,
+      "cap": 262144,
+      "itemsBytes": 262112,
+      "firstItems": 10,
+      "nextItems": 1,
+      "noSkippedOrRepeatedItems": true,
+      "nextCursorPresent": true
+    },
+    "firstPublicationRace": {
+      "waiting": true,
+      "status": 422,
+      "error": "Exam is not published",
+      "matchesCurrentVersion": false,
+      "attempts": 0
+    },
+    "republicationRace": {
+      "waiting": true,
+      "status": 422,
+      "error": "Exam is not published",
+      "matchesCurrentVersion": false,
+      "attempts": 0
+    },
+    "uuidSpelling": {
+      "status": 400,
+      "error": "Invalid request",
+      "acceptedByUuidRegex": true,
+      "storedAnswers": 0
+    },
+    "concurrentSaves": {
+      "accepted": 1,
+      "rejected": 1,
+      "rejection": "Revision conflict",
+      "attemptRevision": 2,
+      "answerVersion": 1
+    },
+    "duplicateSubmit": {
+      "sameAcceptance": true,
+      "outboxRows": 1,
+      "duplicateKeyReceipts": 0
+    },
+    "saveSubmitRaces": [
+      {
+        "waiting": true,
+        "saveAccepted": true,
+        "submitAccepted": true,
+        "answerRows": 1,
+        "outboxRows": 1,
+        "status": "SUBMITTED"
+      },
+      {
+        "waiting": true,
+        "saveAccepted": false,
+        "submitAccepted": true,
+        "answerRows": 0,
+        "outboxRows": 1,
+        "status": "SUBMITTED"
+      },
+      {
+        "waiting": true,
+        "saveAccepted": true,
+        "submitAccepted": true,
+        "answerRows": 1,
+        "outboxRows": 1,
+        "status": "SUBMITTED"
+      },
+      {
+        "waiting": true,
+        "saveAccepted": false,
+        "submitAccepted": true,
+        "answerRows": 0,
+        "outboxRows": 1,
+        "status": "SUBMITTED"
+      }
+    ],
+    "queryBudgets": {
+      "start": {
+        "actual": 13,
+        "ceiling": 12
+      },
+      "save": {
+        "actual": 18,
+        "ceiling": 11
+      },
+      "submit": {
+        "actual": 13,
+        "ceiling": 10
+      },
+      "saveStatus": 200,
+      "submitStatus": 202
+    }
+  }
+}

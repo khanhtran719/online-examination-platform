@@ -6,6 +6,7 @@ import {
   ImportedQuestion,
   LockedExam,
   LockedQuestion,
+  SharedExam,
 } from "../../domain/repositories/catalog.repository";
 
 interface ExamSectionRow {
@@ -28,6 +29,51 @@ interface LockedExamRow {
 
 export class PostgresCatalogRepository implements CatalogRepository {
   constructor(private readonly db: PostgresDatabase) {}
+
+  async shareExam(id: string): Promise<SharedExam | null> {
+    // The lock statement may wait for publish. A separate READ COMMITTED statement
+    // then sees its committed version and children while the exam lock stays held.
+    const locked = await this.db.query<{ id: string }>(
+      "lock.acquire",
+      `
+      SELECT
+        id
+      FROM
+        catalog.exams
+      WHERE
+        id = $1
+      FOR SHARE
+      `,
+      [id],
+    );
+    if (!locked.rowCount) return null;
+    const row = (
+      await this.db.query<SharedExam>(
+        "catalog.read",
+        `
+        SELECT
+          e.id,
+          to_char(clock_timestamp() AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS "serverNow",
+          e.published,
+          e.archived_at IS NOT NULL AS archived,
+          v.id AS "versionId",
+          v.duration_seconds AS "durationSeconds",
+          v.attempt_limit AS "attemptLimit",
+          (extract(epoch FROM v.opens_at) * 1000)::float8 AS "openAt",
+          (extract(epoch FROM v.closes_at) * 1000)::float8 AS "closeAt"
+        FROM
+          catalog.exams e
+          LEFT JOIN catalog.published_versions v
+            ON v.id = e.current_version_id
+            AND v.exam_id = e.id
+        WHERE
+          e.id = $1
+        `,
+        [id],
+      )
+    ).rows[0];
+    return row ?? null;
+  }
 
   async now(): Promise<number> {
     const row = (

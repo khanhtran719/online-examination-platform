@@ -17,6 +17,7 @@ export class CatalogModule {
   static forRoot(config: ApiConfig): DynamicModule {
     return {
       module: CatalogModule,
+      global: true,
       imports: [DatabaseModule],
       controllers: [CatalogController],
       providers: [

@@ -22,6 +22,10 @@ export interface GuardedRequest {
 }
 
 export interface RequestGuard {
+  authorizeWrite(
+    request: GuardedRequest,
+    permission: string,
+  ): Promise<{ raw: string; userId: string }>;
   checkUnsafe(request: GuardedRequest, context?: "live" | "logout" | "anonymous"): Promise<void>;
   admit(request: GuardedRequest, kind: "read" | "write", actor?: string): Promise<void>;
   access(request: GuardedRequest): string;

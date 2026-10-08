@@ -150,3 +150,22 @@ export interface AdminQuestionRow extends AdminQuestion {
 export interface FrozenRow extends CandidateQuestion {
   sectionPosition: number;
 }
+
+export interface SharedPublication {
+  id: string;
+  /** Database time read after the publication lock has been acquired. */
+  serverNow: string;
+  published: boolean;
+  archived: boolean;
+  versionId: string | null;
+  durationSeconds: number | null;
+  attemptLimit: number | null;
+  openAt: number | null;
+  closeAt: number | null;
+}
+
+export interface FrozenChoice {
+  questionId: string;
+  type: QuestionType;
+  optionIds: string[];
+}

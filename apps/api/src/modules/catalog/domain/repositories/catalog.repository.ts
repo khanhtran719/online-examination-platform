@@ -39,8 +39,22 @@ export interface ImportedQuestion {
  * Snapshot children must be inserted in that same transaction: the publication
  * seal trigger rejects a row whose version xid is not the current transaction.
  */
+export interface SharedExam {
+  id: string;
+  /** Database time read after the publication lock has been acquired. */
+  serverNow: string;
+  published: boolean;
+  archived: boolean;
+  versionId: string | null;
+  durationSeconds: number | null;
+  attemptLimit: number | null;
+  openAt: number | null;
+  closeAt: number | null;
+}
+
 export interface CatalogRepository {
   now(): Promise<number>;
+  shareExam(id: string): Promise<SharedExam | null>;
   lockQuestions(ids: string[]): Promise<LockedQuestion[]>;
   lockExam(id: string): Promise<LockedExam | null>;
   lockQuestion(id: string): Promise<{ id: string; revision: number; archived: boolean } | null>;

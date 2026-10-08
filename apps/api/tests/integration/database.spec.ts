@@ -256,7 +256,16 @@ async function attempt(p: Awaited<ReturnType<typeof publication>>, actor?: strin
     "diagnostic",
     `
     INSERT INTO
-      assessment.attempts (id, user_id, exam_id, version_id, status, started_at, deadline)
+      assessment.attempts (
+        id,
+        user_id,
+        exam_id,
+        version_id,
+        status,
+        started_at,
+        deadline,
+        revision
+      )
     VALUES
       (
         $1,
@@ -265,7 +274,8 @@ async function attempt(p: Awaited<ReturnType<typeof publication>>, actor?: strin
         $4,
         'IN_PROGRESS',
         clock_timestamp(),
-        clock_timestamp() + interval '1 hour'
+        clock_timestamp() + interval '1 hour',
+        1
       )
     `,
     [id, owner, p.exam, p.version],

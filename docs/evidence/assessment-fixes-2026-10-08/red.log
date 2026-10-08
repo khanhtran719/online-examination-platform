@@ -1,0 +1,141 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/assessment.spec.ts -t Assessment review regressions
+
+(node:60076) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment.spec.ts
+  ● Assessment review regressions on restricted PostgreSQL › AR-01 replays semantically identical selected-option sets
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 409
+
+      2267 |       });
+      2268 |       expect(first.statusCode).toBe(200);
+    > 2269 |       expect(second.statusCode).toBe(200);
+           |                                 ^
+      2270 |       expect(second.headers["idempotency-replayed"]).toBe("true");
+      2271 |       expect(second.json()).toEqual(first.json());
+      2272 |       const changed = await http.inject({
+
+      at apps/api/tests/integration/assessment.spec.ts:2269:33
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:334:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2245:5)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-02 bounds the whole decoded HTTP question page
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 262144
+    Received:    262664
+
+      2388 |         ),
+      2389 |       ).toEqual(Array.from({ length: 11 }, (_, index) => index + 1));
+    > 2390 |       expect(bytes).toBeLessThanOrEqual(262144);
+           |                     ^
+      2391 |     });
+      2392 |   });
+      2393 |
+
+      at apps/api/tests/integration/assessment.spec.ts:2390:21
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:334:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2352:5)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-03 starts with the version committed by an observed first-publication lock
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 422
+
+      2395 |     const result = await publicationRace(true);
+      2396 |     expect(result.waiting).toBe(true);
+    > 2397 |     expect(result.status).toBe(201);
+           |                           ^
+      2398 |     expect(result.matchesCurrentVersion).toBe(true);
+      2399 |     expect(result.attempts).toBe(1);
+      2400 |   });
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2397:27)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-03 starts with the version committed by an observed republish lock
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 422
+
+      2403 |     const result = await publicationRace(false);
+      2404 |     expect(result.waiting).toBe(true);
+    > 2405 |     expect(result.status).toBe(201);
+           |                           ^
+      2406 |     expect(result.matchesCurrentVersion).toBe(true);
+      2407 |     expect(result.attempts).toBe(1);
+      2408 |   });
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2405:27)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-04 accepts the UUID spelling allowed by the HTTP validator
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 400
+
+      2431 |         },
+      2432 |       });
+    > 2433 |       expect(response.statusCode).toBe(200);
+           |                                   ^
+      2434 |       const retry = await http.inject({
+      2435 |         method: "PUT",
+      2436 |         url: `/v1/attempts/${attempt.body.id.toUpperCase()}/answers`,
+
+      at apps/api/tests/integration/assessment.spec.ts:2433:35
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:334:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2415:5)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-04 canonicalizes UUID paths for start replay, question cursors and submit replay
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 409
+
+      2513 |         headers: writeHeaders(session, key),
+      2514 |       });
+    > 2515 |       expect(replay.statusCode).toBe(201);
+           |                                 ^
+      2516 |       expect(replay.headers["idempotency-replayed"]).toBe("true");
+      2517 |       expect(replay.json()).toEqual(first.json());
+      2518 |       const attemptId = first.json().data.id as string;
+
+      at apps/api/tests/integration/assessment.spec.ts:2515:33
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:334:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2501:5)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-05 respects the existing auth-inclusive write query ceilings
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 12
+    Received:    13
+
+      2776 |       expect(saved.statusCode).toBe(200);
+      2777 |       expect(submitted.statusCode).toBe(202);
+    > 2778 |       expect(startCount).toBeLessThanOrEqual(12);
+           |                          ^
+      2779 |       expect(saveCount).toBeLessThanOrEqual(11);
+      2780 |       expect(submitCount).toBeLessThanOrEqual(10);
+      2781 |     });
+
+      at apps/api/tests/integration/assessment.spec.ts:2778:26
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:334:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2747:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       7 failed, 10 skipped, 5 passed, 22 total
+Snapshots:   0 total
+Time:        5.039 s, estimated 10 s
+Ran all test suites within paths "apps/api/tests/integration/assessment.spec.ts".

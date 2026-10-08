@@ -22,6 +22,11 @@ describe("Attempt lifecycle", () => {
     expect(a.submit(4500)).toBe(false);
     expect(a.snapshot().submittedAt).toBe(4000);
   });
+  it("expires a submission at the exact server deadline", () => {
+    const a = Attempt.restore(state());
+    expect(a.submit(5000)).toBe(true);
+    expect(a.snapshot()).toMatchObject({ status: "EXPIRED", expired: true, submittedAt: 5000 });
+  });
   it("records server expiration and keeps it after completion", () => {
     const a = Attempt.restore(state());
     a.submit(5001);

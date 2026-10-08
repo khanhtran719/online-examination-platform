@@ -362,3 +362,51 @@ Final review closure: `npm run quality` PASS after report/status/evidence update
 Final frozen run58451c3f-aa1e-4698-86e7-1c1218fad576 executed alone after the full suites.25 samples/operation,100 questions/2 sections per new publication: browse p95/p99=5.126/6.270ms; detail1.681/2.060ms; publish42.770/103.994ms.50 read statements,425 publish statements,0 errors,25 transaction/75 lock observations. Read transaction n0 has null percentiles, not0ms. Exact SQL capture/stripped plans/source/config hashes and generated README come from the same raw file. Not comparable to historical reduced-query/different-dataset runs; no SLO/RPS/AWS/cost improvement claim.
 
 Harness corrections before acceptance: unused HTTP fixture variables fixed after lint failure; a missing TEST_DATABASE_ADMIN_URL invocation aborted before cases; CSRF expected403 matches existing contract; rounding fixture adjusted for floating-point tie. Old review fixture was not rerun because it writes archived probes. DevelopmentDB55432 and unrelated UI visual artifacts preserved. BOOT-01/CAT-01/03/04/06/08 restored:61/216 checked,155 pending. CAT-10 actual Assessment start race, ID-11/live SES, Phase04 and production ledger remain open.
+
+## Grok Assessment core handoff — 2026-10-07
+
+Delivered [993-word prompt](grok-assessment-core-implementation-prompt.md), counted by whitespace after its separator, with12 ordered steps. Inspected current Assessment helper, Catalog public facade/service/query, attempt/answer/receipt/outbox schema, product/permissions/HTTP/event/SLO and roadmap contracts. Scope ATT-01–06 plus relevant concurrency/status/backend-fault subsets and transaction-side ASYNC-01; scheduler/retention/full result-review/worker/AWS remain later. Explicit source gaps: nonlocking published-policy read, missing decoded-byte page cutoff and absent persisted attempt revision. Resolve through owned capabilities/forward migration, not private access or relaxed contracts.
+
+Documentation-only checks: quality PASS (links/anchors/section IDs/import guards), contracts PASS (46 operations/425 examples), diff whitespace PASS,993 words/12 steps and61 checked/155 pending unchanged. No runtime tests, database changes or new product acceptance in this handoff. Historical Catalog fix evidence/manifest remain frozen at their prior source/document state. Working-tree edits preserved; no stage/commit.
+
+## Assessment core — 2026-10-07
+
+Local Assessment start, resume, questions, answers, save, submit and status. Migration `0010_attempt_revision.sql` is forward-only. Bytes of 0001–0009 are unchanged. The build copies all ten SQL files into `dist`. Catalog public capabilities `sharePublication`, `frozenQuestionSlice` and `frozenChoices` stay on the Catalog facade. Assessment outbox uses `platform.outbox` and does not reuse the Identity email outbox. No SQS client runs in the submit transaction.
+
+| Check | Fresh result |
+| --- | --- |
+| Assessment policy and attempt unit | 4 policy PASS after the event validator included `correlationId`; 13 attempt cases PASS, including submit at the exact deadline |
+| Assessment integration, first execution | 8 PASS, then HTTP 400 because start sent `content-type: application/json` with an empty body; then admin 201 because the admin fixture still had `CANDIDATE` and therefore `assessment.take` |
+| Assessment integration after those harness fixes | 10 PASS. Locks were acquired before the request and observed in `pg_stat_activity` |
+| Root `npm test` | 94 API Jest / 14 suites + 37 Node + 85 Web Vitest / 21 files = 216 PASS |
+| `npm run lint` | PASS. Quality boundaries PASS. Contracts 46 operations / 425 examples PASS |
+| `npm run typecheck` and `npm run build` | PASS. Ten source and built migration files match |
+| Full real-PG/HTTP/SMTP | 93 PASS / 6 suites, 0 skipped, on disposable PostgreSQL 17.11 at 127.0.0.1:55438 with Mailpit 11025/18025. Port 55432 was not used |
+| Query budget | start 13/12, save 18/11, submit 13/10 exceeded; questions 4/4, answers 4/4, status 3/3 met. Ceilings unchanged. Reason recorded in the generated summary |
+| Frozen diagnostic | [summary](evidence/assessment-2026-10-07/summary.md) generated from raw `32982df5-10c4-4e5d-aecc-fb0e3cde5938`. Offered and achieved concurrency are both 1. Not capacity, SLO or AWS evidence |
+
+Identity HTTPS: 10/10 Chromium cases H01–H10 PASS on the current AppModule and live web build. The harness stopped its own Postgres and Mailpit. Roadmap recount after the checkbox edit: 69 checked, 147 open, 216 total. ATT-07, ATT-08, ATT-09, ATT-10 and ATT-11 stay open. ATT-08/10/11 have a proved subset only. ID-11, Phase04, grading, SQS, Reporting and production acceptance stay open. The development database was not migrated. Nothing was staged or committed.
+
+## Independent Assessment API review — 2026-10-08
+
+[Report](assessment-review-2026-10-07.md)/[evidence](evidence/assessment-review-2026-10-07/README.md):5 findings,6 expected RED assertions and3 PASS controls. P1 stale publication snapshot remains after observed first-publish/republish lock; P2 set-valued retry, decoded HTTP byte cap, resource UUID spelling and existing write query ceilings. CAT-09/10 and ATT-01–04 reopened;63/216 checked,153 pending. Runtime/10 migrations/archived raw evidence preserved; review edits docs/status and adds evidence only.
+
+| Check | Fresh result |
+| --- | --- |
+| lint/quality/contracts | PASS;46 operations/425 examples |
+| typecheck/build | PASS;10 migration assets |
+| root npm test | 94 API +37 tooling +86 Web =217 PASS |
+| real-PG/HTTP/SMTP regressions | 90 PASS/6 suites;3 diagnostic writers deliberately deselected |
+| independent review | 6 RED/3 PASS/9 cases; observed save/submit race control includes4 rounds |
+| Identity HTTPS/AppModule | 10/10 PASS; Identity restart/lost ACK only |
+| preservation/cleanup | baseline/manifest checks and owned service shutdown; see checks.json |
+
+Sandbox EPERM initially prevented local socket access before setup; permitted run passed. Initial control used wrong expected conflict text; review fixture corrected to existing Revision conflict and initial evidence retained. No runtime fix, deploy, stage/commit, sustainable load, SLO, AWS cost or wider Web acceptance. Grok's frozen diagnostic was deliberately not overwritten.
+
+## Assessment fixes — 2026-10-08
+
+[Report](assessment-fixes-2026-10-08.md)/[evidence](evidence/assessment-fixes-2026-10-08/README.md) closes AR-01–05 locally. Supported RED7 FAIL/5 PASS, intermediate11 PASS/1 query-gate FAIL, final Assessment23 PASS. Root234 PASS (104 API/37 tooling/93 Web), six restricted-PG/HTTP/SMTP suites105 PASS/1 deliberately deselected Catalog diagnostic, actual Identity HTTPS10 PASS. Lint/quality/contracts/typecheck/build/diff PASS;46 operations/425 examples remain intact.
+
+Same-config25-actor/100-question sequential before/final diagnostic records start13→11, save18→11, submit13→10 and read4/4/3, with all unchanged ceilings met. Full-response byte cap, set fingerprint/UUID spelling, observed publication snapshot races and security/transaction controls pass. Complete raw CPU/RSS/query/lock/pool/transaction/stripped plans are retained. Planning-only DML plans, n25 p99, same-process overhead and concurrency1 cannot establish production capacity/SLO/AWS savings. [Comparison](evidence/assessment-fixes-2026-10-08/comparison.json) preserves increases as well as decreases.
+
+All10 migrations and protected original Assessment/review artifacts match baseline; compiled assets match. Fixture DBs/logins cleaned, owned services stopped/volumes retained. One new security fixture initially omitted Idempotency-Key; corrected with full rerun. Final source hashes match diagnostic provenance. No deploy, schema/grant/dependency change, stage/commit or unrelated Web edit. CAT-09/10 and ATT-01–04 restored69/216; broader ATT-07–11, ID-11/Phase04 and production remain open.

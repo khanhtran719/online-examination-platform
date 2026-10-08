@@ -1,0 +1,34 @@
+
+> online-examination-platform@0.1.0 test
+> npm run test:api && npm run test:tooling && npm run web:test
+
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand
+
+(node:11731) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/src/modules/assessment/domain/__tests__/assessment-policy.unit.spec.ts
+  ● assessment policy › builds a submission event without answer content
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:144:11)
+      at manualSubmissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:135:3)
+      at Object.<anonymous> (apps/api/src/modules/assessment/domain/__tests__/assessment-policy.unit.spec.ts:67:19)
+
+
+Test Suites: 1 failed, 13 passed, 14 total
+Tests:       1 failed, 93 passed, 94 total
+Snapshots:   0 total
+Time:        4.18 s
+Ran all test suites.

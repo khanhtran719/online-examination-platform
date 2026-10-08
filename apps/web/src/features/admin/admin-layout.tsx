@@ -1,9 +1,12 @@
-import { NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 import { WorkspaceFrame } from "../../app/workspace-frame";
 import { useRuntime } from "../../app/runtime";
 import { useTitle } from "../../app/use-title";
 import type { Permission } from "../../shared/api/dto";
 import { Alert } from "../../shared/ui/ui";
+import { PaperArt } from "../../shared/ui/paper-art";
+import { AdminHeading } from "./admin-ui";
+import adminStyles from "./admin.module.css";
 import styles from "../../shared/styles/layout.module.css";
 
 const links = [
@@ -93,13 +96,70 @@ export function AdminLayout() {
 
 export function AdminHomePage() {
   useTitle("Tổng quan quản trị");
+  const { demo } = useRuntime();
+  const tasks: { to: string; title: string; copy: string; permission: Permission }[] = [
+    {
+      to: "/admin/exams",
+      title: "Soạn và phát hành đề",
+      copy: "Tổ chức các phần, chọn câu và kiểm tra bản nháp trước khi mở thi.",
+      permission: "catalog.manage",
+    },
+    {
+      to: "/admin/questions",
+      title: "Ngân hàng câu hỏi",
+      copy: "Biên soạn lựa chọn, điểm và đáp án trong một không gian rõ ràng.",
+      permission: "catalog.manage",
+    },
+    {
+      to: "/admin/monitor",
+      title: "Theo dõi các lượt thi",
+      copy: "Xem lượt đang làm, bài đã nộp và kết quả theo từng phiên bản.",
+      permission: "reporting.read",
+    },
+    {
+      to: "/admin/imports/new",
+      title: "Nhập câu từ JSON",
+      copy: "Kiểm tra tệp, đọc lỗi từng dòng rồi xác nhận ghi vào ngân hàng.",
+      permission: "catalog.import",
+    },
+  ];
   return (
-    <section className={styles.stack}>
-      <h1 className={styles.title}>Quản trị đề và kết quả</h1>
-      <p>Mỗi việc kiểm tra một capability riêng. Thiếu quyền thì nút không gọi API.</p>
-      <p className={styles.muted}>
-        catalog.manage không bao gồm quyền xem đáp án. catalog.keys.read là quyền riêng.
-      </p>
-    </section>
+    <>
+      <AdminHeading
+        title="Quản trị đề và kết quả"
+        eyebrow="KHÔNG GIAN QUẢN TRỊ"
+        description="Từ câu hỏi đầu tiên đến phiên bản sẵn sàng cho kỳ thi."
+      />
+      <section className={adminStyles.welcome}>
+        <div>
+          <p className={adminStyles.eyebrow}>MỘT KỲ THI TỐT BẮT ĐẦU TỪ ĐÂY</p>
+          <h2>
+            Chuẩn bị rõ ràng.
+            <br />
+            Phát hành tự tin.
+          </h2>
+          <p>
+            Giữ bản nháp linh hoạt, khóa nội dung khi phát hành và theo dõi từng lượt thi từ một
+            nơi.
+          </p>
+        </div>
+        <div>
+          <PaperArt compact />
+        </div>
+      </section>
+      <nav className={adminStyles.shortcuts} aria-label="Công việc quản trị">
+        {tasks
+          .filter((task) => demo?.permissions.includes(task.permission))
+          .map((task) => (
+            <Link key={task.to} className={adminStyles.shortcut} to={task.to}>
+              <span className={adminStyles.shortcutTitle}>
+                {task.title}
+                <span aria-hidden="true">↗</span>
+              </span>
+              <p>{task.copy}</p>
+            </Link>
+          ))}
+      </nav>
+    </>
   );
 }

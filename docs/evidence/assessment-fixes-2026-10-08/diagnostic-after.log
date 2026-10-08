@@ -1,0 +1,11 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/assessment.spec.ts -t records auth-inclusive adapter diagnostics
+
+(node:66051) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Test Suites: 1 passed, 1 total
+Tests:       22 skipped, 1 passed, 23 total
+Snapshots:   0 total
+Time:        9.05 s, estimated 15 s
+Ran all test suites within paths "apps/api/tests/integration/assessment.spec.ts".

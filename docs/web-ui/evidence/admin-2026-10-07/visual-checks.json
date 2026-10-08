@@ -1,0 +1,1017 @@
+{
+  "checks": [
+    {
+      "name": "overview",
+      "route": "/admin",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "runningAnimations": 0,
+      "cssZoom200": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "fits": true
+      }
+    },
+    {
+      "name": "exams",
+      "route": "/admin/exams",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "exam-new",
+      "route": "/admin/exams/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "exam-information",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/edit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "runningAnimations": 0,
+      "cssZoom200": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "fits": true
+      }
+    },
+    {
+      "name": "exam-structure",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/edit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "exam-picker",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/edit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "exam-check",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/edit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "exam-publish-confirm",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/edit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "questions",
+      "route": "/admin/questions",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "question-new",
+      "route": "/admin/questions/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "question-edit",
+      "route": "/admin/questions/00000000-0000-4000-8000-000000000b01/edit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "question-archive-confirm",
+      "route": "/admin/questions/00000000-0000-4000-8000-000000000b01/edit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "question-multiple",
+      "route": "/admin/questions/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "question-type-confirm",
+      "route": "/admin/questions/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "import",
+      "route": "/admin/imports/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "import-dry-run",
+      "route": "/admin/imports/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "import-invalid",
+      "route": "/admin/imports/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "import-confirm",
+      "route": "/admin/imports/new",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "import-report",
+      "route": "/admin/imports/01a11944-66c5-7e42-85fc-7e06179de1d9",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "monitor-index",
+      "route": "/admin/monitor",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "monitor",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000103/monitor",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "monitor-empty",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/monitor",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "submissions",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/submissions",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "attempt-completed",
+      "route": "/admin/attempts/00000000-0000-4000-8000-000000000401",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "attempt-failed",
+      "route": "/admin/attempts/00000000-0000-4000-8000-000000000403",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "statistics",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000102/versions/00000000-0000-4000-8000-000000000202/statistics",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "statistics-zero",
+      "route": "/admin/exams/00000000-0000-4000-8000-000000000103/versions/00000000-0000-4000-8000-000000000203/statistics",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "metrics",
+      "route": "/admin/metrics",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "runningAnimations": 0,
+      "cssZoom200": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "fits": true
+      }
+    },
+    {
+      "name": "audit",
+      "route": "/admin/audit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "audit-detail",
+      "route": "/admin/audit",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "admin-denied",
+      "route": "/admin",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "mode": "demo fixtures only; CSS zoom is not browser zoom"
+}

@@ -1,0 +1,557 @@
+{
+  "checks": [
+    {
+      "name": "room",
+      "route": "/exams/00000000-0000-4000-8000-000000000102",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": [],
+      "runningAnimations": 0,
+      "zoom": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "fits": true
+      }
+    },
+    {
+      "name": "room-selected",
+      "route": "/exams/00000000-0000-4000-8000-000000000102",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "room-multiple",
+      "route": "/exams/00000000-0000-4000-8000-000000000102",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "room-true-false",
+      "route": "/exams/00000000-0000-4000-8000-000000000102",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "room-paged",
+      "route": "/dashboard",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "room-long",
+      "route": "/attempts/00000000-0000-4000-8000-000000000402",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "room-frozen",
+      "route": "/attempts/00000000-0000-4000-8000-000000000402",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "room-conflict",
+      "route": "/attempts/00000000-0000-4000-8000-000000000402",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "status-active",
+      "route": "/attempts/00000000-0000-4000-8000-000000000402/status",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "status-failed",
+      "route": "/attempts/00000000-0000-4000-8000-000000000403/status",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "status-completed",
+      "route": "/attempts/00000000-0000-4000-8000-000000000401/status",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "result",
+      "route": "/attempts/00000000-0000-4000-8000-000000000401/result",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "review",
+      "route": "/attempts/00000000-0000-4000-8000-000000000401/review",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "review-locked",
+      "route": "/attempts/00000000-0000-4000-8000-000000000403/review",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "history",
+      "route": "/history",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "leaderboard",
+      "route": "/exams/00000000-0000-4000-8000-000000000102/versions/00000000-0000-4000-8000-000000000202/leaderboard",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    },
+    {
+      "name": "leaderboard-denied",
+      "route": "/exams/00000000-0000-4000-8000-000000000103/versions/00000000-0000-4000-8000-000000000203/leaderboard",
+      "widths": [
+        {
+          "width": 320,
+          "documentWidth": 320,
+          "fits": true
+        },
+        {
+          "width": 390,
+          "documentWidth": 390,
+          "fits": true
+        },
+        {
+          "width": 768,
+          "documentWidth": 768,
+          "fits": true
+        },
+        {
+          "width": 1024,
+          "documentWidth": 1024,
+          "fits": true
+        },
+        {
+          "width": 1440,
+          "documentWidth": 1440,
+          "fits": true
+        }
+      ],
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "mode": "demo only; synthetic fixtures; no live credentials"
+}

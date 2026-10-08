@@ -12,7 +12,7 @@ export class PostgresSecurity implements SecurityControls, SecurityMaintenance {
   ) {
     if (key.length !== 32) throw new Error("Invalid rate key");
   }
-  private subject(scope: string, value: string): Buffer {
+  rateSubject(scope: string, value: string): Buffer {
     return createHmac("sha256", this.key)
       .update(scope + "\0" + value)
       .digest();
@@ -72,12 +72,12 @@ export class PostgresSecurity implements SecurityControls, SecurityMaintenance {
       RETURNING
         scope
       `,
-      [scope, this.subject(scope, subject), intervalMs, burst],
+      [scope, this.rateSubject(scope, subject), intervalMs, burst],
     );
     return Boolean(r.rowCount);
   }
   async reserveLogin(email: string): Promise<string | null> {
-    const hash = this.subject("login.failure", email);
+    const hash = this.rateSubject("login.failure", email);
     return this.db.transaction(async () => {
       // A new statement after the lock sees preceding commits under READ COMMITTED.
       await this.db.query("lock.acquire", "SELECT pg_advisory_xact_lock($1, $2)", [
@@ -132,7 +132,7 @@ export class PostgresSecurity implements SecurityControls, SecurityMaintenance {
     });
   }
   async releaseLogin(email: string, window: string): Promise<void> {
-    const hash = this.subject("login.failure", email);
+    const hash = this.rateSubject("login.failure", email);
     await this.db.transaction(async () => {
       await this.db.query("lock.acquire", "SELECT pg_advisory_xact_lock($1, $2)", [
         hash.readInt32BE(0),
