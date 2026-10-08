@@ -1,0 +1,1766 @@
+{
+  "requestedByUserOn": "2026-10-08",
+  "scope": "Local old/superseded UI image files only; current V3 templates, linked historical screenshots and defect evidence retained",
+  "removedCount": 293,
+  "removedBytes": 56840545,
+  "files": [
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/public-experience/live-home-1024.png",
+      "bytes": 467888,
+      "sha256": "e40663353ceb22cf907b6b6abbe801f0242e1280df57991e5f85e1dda1d7995b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/public-experience/live-result-390.png",
+      "bytes": 97230,
+      "sha256": "c05c94af087c3b7d5cc5f44e34c2941d4820a82b761727aec8213ef9c80ce03d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/public-experience/demo-result-390.png",
+      "bytes": 107102,
+      "sha256": "5e525958273ca24fc82004a2397274de8b7209cc8d514f9fe49004cb0efaffdb",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/public-experience/live-home-320.png",
+      "bytes": 319169,
+      "sha256": "e4cdf00567b863ebb410cfe573f4dd2a46ce47de94fdd548cdf03862b79690ac",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/public-experience/live-sample-390.png",
+      "bytes": 74057,
+      "sha256": "90b00d9a48645f131491d00f9abf5dbef3aca53d48810a296dce40c64f3ca0d3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/public-experience/demo-home-320.png",
+      "bytes": 328380,
+      "sha256": "d77a41d915f16f4696928b12626680143ec6585955895db1e0bee3963ecb0c67",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/public-experience/demo-sample-390.png",
+      "bytes": 83887,
+      "sha256": "eeeab851c9436b0ba61010696149640c0692b2005143f5157a59f3465f42521d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/public-experience/demo-home-1024.png",
+      "bytes": 486747,
+      "sha256": "27769a212587af4eb7ff59ea3ee8b30d267dde73290cfa93738d228e12b6e7a9",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-long-390.png",
+      "bytes": 105717,
+      "sha256": "f198fce55a3fe8ac17a2d6d3b849f1e70d7fd1850a3c960c5a241d7480a0ad97",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/review-locked-390.png",
+      "bytes": 39332,
+      "sha256": "f86e8af1f9855b5c767f489f758b958f1b740328e57e92d56d6dfe31fc96ecfc",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-paged-1440.png",
+      "bytes": 111931,
+      "sha256": "549db3a6e295b7fab080fdf1f1f765991e37faa70fbf1a2ee9c873d9d4f9ad37",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-conflict-390.png",
+      "bytes": 71289,
+      "sha256": "138f8df5ca093cd9a19f95253e0b0e20fbf3a386d73ed00f227f2c9b202c15c9",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/status-completed-390.png",
+      "bytes": 66495,
+      "sha256": "dfb69307104a3bda8fa56b0becba3b1e17a3a27a2861147ab9918754e5c26021",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/status-failed-1440.png",
+      "bytes": 94282,
+      "sha256": "4a435cc9b7bb92e4c3b40e9fb8e3bf91bb17bca37fff2c2a93d737afdf19eefd",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/status-active-1440.png",
+      "bytes": 81971,
+      "sha256": "4c468cc0650395e63ca9298845a528cb33f9185fb19e99a6396e48d97f412c05",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-selected-390.png",
+      "bytes": 68961,
+      "sha256": "514db15b380e36418f48785bb4cdd7e20994b92a8b4cb9379ff420a245576eaa",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-true-false-390.png",
+      "bytes": 66803,
+      "sha256": "74ed48b5501d9b02f5e1045a77204a12d0fdd8cfd548b03e80f8682f0b75faf7",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/status-completed-1440.png",
+      "bytes": 86691,
+      "sha256": "a043d433511f655ce367ebbb50c7197bfd284bc8141eca9c0aee101a361054d7",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/leaderboard-denied-390.png",
+      "bytes": 66077,
+      "sha256": "fc46e1713390214cc91f96e1983507c0966d79a5c530b3a043169a5a30964342",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-frozen-1440.png",
+      "bytes": 104907,
+      "sha256": "d3cf310944d0a32d398e1fe94956704a93c200250f32da9ecf4dc04a8ae7fe61",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-frozen-390.png",
+      "bytes": 72720,
+      "sha256": "d417efd76af2ef32034ff9f68323496d9e8f9c45760290f417ca9ae2bf670303",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/result-390.png",
+      "bytes": 111618,
+      "sha256": "507a71fd28269553593f7608adedd71c9870cce0305643c6ba357b5d245c84d5",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-390.png",
+      "bytes": 70569,
+      "sha256": "e7c398d720b687407572e0878b5516f7755baeec76b5b2a9b730cd9cbe7833ef",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/review-locked-1440.png",
+      "bytes": 56564,
+      "sha256": "344921c6d3112e73cdf85f4a95325e5c366a1c2b623b29228328f547d98299c4",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-long-1440.png",
+      "bytes": 185200,
+      "sha256": "325a43175d4e44b528cc7c57082913baf75fd2d8938cd0ec583841a515e0021e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-1440.png",
+      "bytes": 105396,
+      "sha256": "fbe6a027b425c35c18cf8cbae47c0e676730729d28670a75a011abfa0b82191d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/status-active-390.png",
+      "bytes": 61775,
+      "sha256": "d7e40014150df2dd849f57518808db5fd3899f53c1d86235b66856424f0ae489",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/history-390.png",
+      "bytes": 75983,
+      "sha256": "1b54f10206c43949def2251971f39ba1be176567e292b46d292d067a8c3f207b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/leaderboard-390.png",
+      "bytes": 60567,
+      "sha256": "83afba214fb545fc7646e41882680d329fa49ed562bfc4a47cd76b4eefaf2ab3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-zoom-200.png",
+      "bytes": 219869,
+      "sha256": "b648c12f953677186ab4b564100cc08c11569d9a4bb45cabd87bffdfba25f4ac",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/leaderboard-denied-1440.png",
+      "bytes": 88281,
+      "sha256": "f0ff503ff8ee09c1d7b98eade1edeaf59058324a3a56acc67ed89c4ed8b1347a",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-paged-390.png",
+      "bytes": 66826,
+      "sha256": "18b3718b648359c8443758e17fff3f21290c1a7fa5646a74aeb706dcfddbb504",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/review-1440.png",
+      "bytes": 129031,
+      "sha256": "f294b50094f57922bd0a35262a49cb4e486ebb207cc830d5073ccb852a1a7425",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-conflict-1440.png",
+      "bytes": 136311,
+      "sha256": "8b2e38bbbe3b114b406151c232283ab68daaea8075c9aca22534ad7b1e6ca802",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-multiple-1440.png",
+      "bytes": 106570,
+      "sha256": "535551483a43ef8fdfdefb64d91051f49857dec0bfee2b4f89f95cefe34eeb36",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/screenshots/room-true-false-1440.png",
+      "bytes": 101542,
+      "sha256": "36a372f37d8fecadfc04ed55ba23377a274fdf2cfb5873dcf06b84176379bcd2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/home-320.png",
+      "bytes": 323347,
+      "sha256": "b55af7a8fc23698550e31a7e44ce87dd682f4000105b286799d080594523454e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/exam-conflict-1440.png",
+      "bytes": 192831,
+      "sha256": "4aada67a6dcc7e87c2f2fcb911705031dac66f6b4f727b4924cd7f75e282e8fd",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/admin-denied-candidate-1024.png",
+      "bytes": 53311,
+      "sha256": "e9174abf7ee7e7e9d78b6404b2ab7adc2d418b6957ee9b9dcb02cb74418c257b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/exam-sheet-320.png",
+      "bytes": 123779,
+      "sha256": "f942bf2dba3e2c220cb4db63af9aef1b14684a76692e9e410acbbcc290a25b3b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/register-short-password-390.png",
+      "bytes": 96793,
+      "sha256": "eaa2a690dc24527ba862a012be031689dc6f18a1efe7a095145211c76a63eff9",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/admin-reviewer-denied-questions-1024.png",
+      "bytes": 113700,
+      "sha256": "10ccfd2ad92024e63cad005752e9b1992c38a5cbfbb4538de48e3bca29e6b7a3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/login-401-390.png",
+      "bytes": 89566,
+      "sha256": "ef165c3fb17591164bd1ed162072174a32f6c0c4582ef0251ba379aa5cd79348",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/result-8333-768.png",
+      "bytes": 179014,
+      "sha256": "e309ab843c30ad5ddb54108028c521a6a7df29938c3dbee8b114117e09b7acb6",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/live-login-unavailable-1440.png",
+      "bytes": 244047,
+      "sha256": "d51d67aa7c5e6acac1efec54af8c9d5ff0403049734398659c0095a6e598bdb8",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/live-home-1440.png",
+      "bytes": 573818,
+      "sha256": "71c1ae8c213abe8fa79af847eb6dac1d9002b7624cd08701c018c75747486051",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/live-session-unavailable-1440.png",
+      "bytes": 26251,
+      "sha256": "19ab2cf8aa4a17ddb1e1b0e10c1b798e368b63696a2a7a41cd3c804a0565ad6e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/exam-detail-long-title-1440.png",
+      "bytes": 154419,
+      "sha256": "c4f290f86dec8d23dc3e3ee2927cd9068c627016f5e74f2a368430387aece168",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/home-768.png",
+      "bytes": 518784,
+      "sha256": "f0ee3607f135a5a9796c55514be3a0962ed120a64a4249b4d6553328a8998f53",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/home-390.png",
+      "bytes": 345989,
+      "sha256": "2f7e38ccc486259a8eea0bfa83a24dbd2868d91662e81d64a4a57a345603fc79",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/admin-audit-1024.png",
+      "bytes": 129255,
+      "sha256": "ead40287525b32eb9a9d84bfa0cd0c5968024987856a8416880f45bb59f309ea",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/home-1440.png",
+      "bytes": 597769,
+      "sha256": "6e1d693d0a3dcb2dcaae1d45d19d8d34ee1741528b64908f9e726b78e5234bb4",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/exam-room-saved-1440.png",
+      "bytes": 100070,
+      "sha256": "320b74c3e562319da2075f94b8bb4b97d7f9475e7445538deceb5edac976e195",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/dashboard-1440.png",
+      "bytes": 159673,
+      "sha256": "db9519d1a3eab6e083828b4b34d468929259e4d052447c267c8bf2ae110d53e1",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/admin-metrics-missing-1024.png",
+      "bytes": 176403,
+      "sha256": "f7671d37445fd5f5010f08cff81e444574dd3b7d7692d372762ba8a887adb98b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/home-1024.png",
+      "bytes": 486291,
+      "sha256": "c2040354701955148cca688a01ee7d8f680ccdf57f94c4e900cd36d551750824",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/admin-exams-1024.png",
+      "bytes": 147190,
+      "sha256": "f5e915f6ef86baabbc9d17aa8b34f87d9e088598aa4604cdf0acd2510b23d530",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/not-found-390.png",
+      "bytes": 31055,
+      "sha256": "03abf723ef9b9c8543f4f0598f706ad41bc2e6a93029dc394ff53dda743ac0e2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/assessment-results-2026-10-07/regression/frozen-attempt-gap-1024.png",
+      "bytes": 160772,
+      "sha256": "29e8a76c3a9107a67e7e96d31fd5c2c8373adbab6783f33c11bbeabd044cb596",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/home-320.png",
+      "bytes": 68759,
+      "sha256": "7c00a5b054d5ca63de386a6056a8b8286792c35ee8d8165f2479eaf77488cf85",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/exam-conflict-1440.png",
+      "bytes": 164864,
+      "sha256": "9887b306eafaa0fd827247cbf116cf78a59c4e35c8d27bbb3cdcb79e1d4a4cec",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/admin-denied-candidate-1024.png",
+      "bytes": 34581,
+      "sha256": "3024c92ae4a1e8206ecf11343ec3b3ca978cb8d5127524a5d9388888a20a0091",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/exam-sheet-320.png",
+      "bytes": 116684,
+      "sha256": "c12e2a10ddb61e89542a1d847676e4b61479cc7d5a9999ae1ed66fdf0b845889",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/register-short-password-390.png",
+      "bytes": 57399,
+      "sha256": "a7e444c8c88906dc6374187ec55218dd5c99929bbffd4302cbdec81861a5d7f2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/admin-reviewer-denied-questions-1024.png",
+      "bytes": 101285,
+      "sha256": "e6c6562b7ddfe9c372635bad31bad740f90705e5c9873c72ee9e2d4a03064db7",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/login-401-390.png",
+      "bytes": 54854,
+      "sha256": "d6071cbdac9743a2896e629eda9dee39a77164d56b256db2b0abf4f3f2f8c33d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/result-8333-768.png",
+      "bytes": 142144,
+      "sha256": "f0ebdbfad6a9d469d34579acf861f70c82fe8d83f31ba3b3014bb26ebbb4539d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/live-login-unavailable-1440.png",
+      "bytes": 59484,
+      "sha256": "92d6227e675877b8e5acd3b312058c077edec0993a6a55d85785a16e07e01a2c",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/live-home-1440.png",
+      "bytes": 66754,
+      "sha256": "37cfe630aa7ed8c2cc92150feed0a93287a72a3ad34eed160739960174cc68f1",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/live-session-unavailable-1440.png",
+      "bytes": 26500,
+      "sha256": "7aae763cc13ae2c5dbcbe1a7232fffccd954d4b6f55626bc7f974d82b40cf4f5",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/exam-detail-long-title-1440.png",
+      "bytes": 95471,
+      "sha256": "d7f10d20c2845c15e1637393656cd87fd362c90a11dfeda640f4b73f3727c76e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/home-768.png",
+      "bytes": 72127,
+      "sha256": "0033a74c046218b6f93315f432bb59fe46788fa26bb9a9a3c9775f5627b07e10",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/home-390.png",
+      "bytes": 67993,
+      "sha256": "1477aa97108bf480ed3b572c341e6f0c7232dcb1c012a8ba260cb1f1d7fff9b7",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/admin-audit-1024.png",
+      "bytes": 108431,
+      "sha256": "fd4eab9332b8a21c5db696c989a7a150a3475af8b80e8482cc03c9e8424e0020",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/home-1440.png",
+      "bytes": 78104,
+      "sha256": "7efc5267af15cc8f2626ae49b65cea8bd33965d3754b76020d1cef5825963082",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/exam-room-saved-1440.png",
+      "bytes": 82631,
+      "sha256": "36fcfb9e7b3bb284299f1092cdca4fbef3ccbcab16c29083ef50c4f2966c8682",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/dashboard-1440.png",
+      "bytes": 62170,
+      "sha256": "1fbbe15975e742979c96306e6f41108213cefa2fac97817c61728437609b4d33",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/admin-metrics-missing-1024.png",
+      "bytes": 146663,
+      "sha256": "77efff043014ba61fba5b3357ce7051b5700c3eab6ea78bcbe2e2ede5bd8e9b4",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/home-1024.png",
+      "bytes": 74872,
+      "sha256": "f5fd21cfc183e85be48e1cd071ce88e9a11af2d44d295138f9e507f8689c6bd4",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/admin-exams-1024.png",
+      "bytes": 125507,
+      "sha256": "94f9ee7bb846213271b682b89b03a456d45ed0b1322ac7d608e528304264bfe5",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/not-found-390.png",
+      "bytes": 33076,
+      "sha256": "55bcef9b9130fbe77ece24d2648570eff98b3d67e4403d14b4f06530bcfb1fe1",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/screenshots/frozen-attempt-gap-1024.png",
+      "bytes": 143208,
+      "sha256": "e8559d606fa5765202ffe3ab5a81b20e26db2b50df5dbcd6e7569493cbaeb04e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/public-experience/live-home-1024.png",
+      "bytes": 444223,
+      "sha256": "ba145d408724c580f08d476987140530fd04b038235b19275e6b4441323e03d4",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/public-experience/live-result-390.png",
+      "bytes": 95651,
+      "sha256": "86f8652e23cea0c091d20afbb10ae961d95b6cb043d1ad602dd9c49a28043e58",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/public-experience/live-home-320.png",
+      "bytes": 370869,
+      "sha256": "affec45d08e3ba986cb73117e5f48834976b9c4eaef051368fc17291e5d6ee4a",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/public-experience/live-sample-390.png",
+      "bytes": 72705,
+      "sha256": "48ec9173a2828a74e3f8b8e4475e0a34d6d13129818dc01bfb2c3ca5c9d7fb0e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/public-experience/demo-home-320.png",
+      "bytes": 381287,
+      "sha256": "53ce7dabf76241d04cd7427ccd54662acd084a5c732a7cc279e9667a390fb50d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/public-experience/demo-home-1024.png",
+      "bytes": 454073,
+      "sha256": "8404ff1265db4790d5e4466b5d8cc76f3299595d3d006b21cacfc707162fa3f9",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/admin-denied-candidate-1024.png",
+      "bytes": 52801,
+      "sha256": "4d4627dde82eb457d00cc14687c45567c90aeee59308aaea5cbddc9999cf88c4",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/register-short-password-390.png",
+      "bytes": 95348,
+      "sha256": "b97dc07485b805c80fd89cc7cbe71033b6433beb282eb0f0e2f9db74333e5aca",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/admin-reviewer-denied-questions-1024.png",
+      "bytes": 113305,
+      "sha256": "2a97584a4dd0e7869fd4742123141de3bdfe494a9548130011ce013fd8e96947",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/login-401-390.png",
+      "bytes": 88183,
+      "sha256": "1b3f0b75e3c4ca21e18cb382242990b12fcaa031782be10dab2d8f31e3a60754",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/result-8333-768.png",
+      "bytes": 178606,
+      "sha256": "1a7d9585720d31b2428c231a1ce40a03d7f3efa377ade9efe19ad31c100cbfde",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/live-login-unavailable-1440.png",
+      "bytes": 242530,
+      "sha256": "85f5ff0753e8fd7d706e2db80aa1f0568ecb5a79be566cdcada8a6e93f5e7f08",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/live-home-1440.png",
+      "bytes": 471136,
+      "sha256": "7fd461db14da49cf9a5355aa044d7eeade6ce23438e2a039d93daa680cf53a44",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/exam-detail-long-title-1440.png",
+      "bytes": 153926,
+      "sha256": "11b08f73fda07e747f58649c432018c1d1d45a1ae8e86d69a1c19698eb7574b8",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/home-768.png",
+      "bytes": 434662,
+      "sha256": "54e27edc4a1eac47acb5950f812bd8962f53cecd7e5f4427da23f3407bff7113",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/admin-audit-1024.png",
+      "bytes": 136964,
+      "sha256": "275054688c2ad5d6fbbd70b91df491444bfb419084b68a552b45c21abe647aba",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/admin-metrics-missing-1024.png",
+      "bytes": 162247,
+      "sha256": "010d49ad7c36252455b83dbfdccc708cb026abbfdedbdd9df5dddccd7a8e54c5",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/home-1024.png",
+      "bytes": 454313,
+      "sha256": "3d1679f22b66942b91176a2e13f1e4dc09df1d5440f37dbb388dcd4334aa3b71",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/admin-exams-1024.png",
+      "bytes": 186378,
+      "sha256": "d48cef7fa7ed8be9a42d787efb914f1ee2263906e1652bd6bf26b3ece859cbe3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-port-2026-10-08/regression/not-found-390.png",
+      "bytes": 29639,
+      "sha256": "8c49a86db4ceab86a3f80a90f0fff8ca0949f46156a2243fe7a397bd4b4363aa",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/public-experience/live-home-1024.png",
+      "bytes": 468651,
+      "sha256": "8ca4c87ed5e7a10125dc4bc8ec40119da030ec3de516702a130dde1d30fbbf8e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/public-experience/live-result-390.png",
+      "bytes": 97230,
+      "sha256": "c05c94af087c3b7d5cc5f44e34c2941d4820a82b761727aec8213ef9c80ce03d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/public-experience/demo-result-390.png",
+      "bytes": 107102,
+      "sha256": "5e525958273ca24fc82004a2397274de8b7209cc8d514f9fe49004cb0efaffdb",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/public-experience/live-home-320.png",
+      "bytes": 319564,
+      "sha256": "772f169004c242a1671868e26396e6cfd0a8f519637ce5b2705b9829d499f2de",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/public-experience/live-sample-390.png",
+      "bytes": 74057,
+      "sha256": "90b00d9a48645f131491d00f9abf5dbef3aca53d48810a296dce40c64f3ca0d3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/public-experience/demo-home-320.png",
+      "bytes": 328642,
+      "sha256": "4151553004f456c5cefffbf6bf7d95e1d5c360690d72a3152b12dec71f508181",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/public-experience/demo-sample-390.png",
+      "bytes": 83901,
+      "sha256": "4a5045b3bfcaab5e10d5ba372495d1ff1417fcf2a54d6a06a7253fb5d44cc586",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/public-experience/demo-home-1024.png",
+      "bytes": 486708,
+      "sha256": "0ae40116450739641151866c305a9b7c07681ba2e2e885d352fc9469802a5855",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/import-dry-run-1440.png",
+      "bytes": 127990,
+      "sha256": "0e71f3e23be29a750705ec031baf1b39fd6f9007f20699d944dfb3eb0b29b878",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-check-390.png",
+      "bytes": 144634,
+      "sha256": "478655f3a0e1eacf7605dbac03545a382f76af8388308d8c8c6eb78007d4482e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/question-new-1440.png",
+      "bytes": 142804,
+      "sha256": "29ee1e488bd8c80c380828c7fca7c3a03c9faabc4459de38af1d0f0706591d50",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/statistics-390.png",
+      "bytes": 125726,
+      "sha256": "7ba1d0cbd33f2cf8032a903bec2b213e5d50838f890b52f51f84741918b83fd3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/question-new-390.png",
+      "bytes": 113854,
+      "sha256": "5005acef31da06e7bb44837504f770b152642d79e9bf68c1c4b696230d3b7098",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/import-dry-run-390.png",
+      "bytes": 94694,
+      "sha256": "c8219291f5b651b206a5fd409c4374305f1b6f6127f542e4b765114ea72226dd",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/audit-1440.png",
+      "bytes": 79685,
+      "sha256": "aa73bf19ba73ed46ad7eab52b70e7aefbdb011824a7521174a1fc1896aab6aae",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/monitor-390.png",
+      "bytes": 55954,
+      "sha256": "f75d16f3fa35b6374369e79509e1d3c535e58b5fc3e672133fa70d5a8480e752",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-new-390.png",
+      "bytes": 127476,
+      "sha256": "7d04c3e5fc04c29b9985b0365891eaa36068f9dccb155df787545b15c6c88ab1",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/submissions-1440.png",
+      "bytes": 89487,
+      "sha256": "305a424903076a25a9775e89de9d38bc7c0594820b31ed3d50c55c966bc1c3c6",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/attempt-completed-390.png",
+      "bytes": 130598,
+      "sha256": "0bdc541734a77637702629e6ea55d6d76dcec5f934f6d8ff0b765655a6e276f6",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/monitor-index-1440.png",
+      "bytes": 112677,
+      "sha256": "d8b52d2e7730a9c83cc98a8bda542430cc8233a8c3ad9c53ec5b6392d891df71",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/metrics-css-zoom-200.png",
+      "bytes": 220645,
+      "sha256": "ac50ab3208035721e9a357a21b4c89fba212cbd09f53f65ee709de433e8513dc",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/import-390.png",
+      "bytes": 83124,
+      "sha256": "6de6700799af5d2bc71ba944f1d21cdb1e8b3374a39371de2cc179a0e38b2987",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-publish-confirm-1440.png",
+      "bytes": 187412,
+      "sha256": "808462f3189ed18bcb624b3a315da921632133efc0a30f208842036c83c95c5c",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/attempt-failed-390.png",
+      "bytes": 70895,
+      "sha256": "2315a41cc12d6b009a8b4a86b534f4d91dec61614c305450a65229efb4a1b196",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-information-css-zoom-200.png",
+      "bytes": 346924,
+      "sha256": "48b4926f0c287403827071d407e3f11e4b75feda715884066c77c9a88e80a683",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/questions-1440.png",
+      "bytes": 205298,
+      "sha256": "544a950592f764e6c80369cd19bc7ecc9bbd5c59ee12cb1a6cb1d65877c41d69",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-information-390.png",
+      "bytes": 147157,
+      "sha256": "831068c4635703f5d40e49d382b8b5238ec663a4c95905cdbd4f66c634dc41d0",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/metrics-390.png",
+      "bytes": 81208,
+      "sha256": "9dbd99385636a485d7a9f49dc64cf3f7665cc6bbfa61933d0f1af42474ecccd4",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/question-type-confirm-1440.png",
+      "bytes": 196686,
+      "sha256": "00d8c65625853006e80d755689f203e9428e1982635c46cf9ed59238d2b4ce05",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/import-1440.png",
+      "bytes": 115651,
+      "sha256": "82e346728e1a734011ea7d4a53ee94c19ea67db8335bba19229ff77833f30360",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/questions-390.png",
+      "bytes": 130436,
+      "sha256": "25e33019818d273a8d54be60693233100bc07e029ec3ed6f121497b0d9834775",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-check-1440.png",
+      "bytes": 174909,
+      "sha256": "c4330a72b96c30c87065a16b8d2651e6e4175dfd6ba4df9b67f243aa2fab48e1",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/monitor-index-390.png",
+      "bytes": 71053,
+      "sha256": "1f73bcf82c1213a52da91fa02e0ac24e108a1b03abf8f28b234133cbeb86beb8",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exams-1440.png",
+      "bytes": 127808,
+      "sha256": "cbd61a1d8f64ae7ee186bea1f1724cff01c89a51966e192a905ca37cc0e7761b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/question-type-confirm-390.png",
+      "bytes": 152360,
+      "sha256": "04b5f5abaf120d97a6529e534bac06cddd84d69286aace582ba05d834b49608d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/audit-detail-1440.png",
+      "bytes": 96620,
+      "sha256": "eecc6f7247837f63f6c5f0a114d7b6833446ea9b4d2ecc03a56939b27e5058d7",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/statistics-zero-1440.png",
+      "bytes": 100118,
+      "sha256": "d022833ab0214a2b0067a673574fe89e11be709805dc83eb862758bce263f9bb",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/question-multiple-1440.png",
+      "bytes": 180591,
+      "sha256": "775eaf70fce85cc848c30b8e5b245e05c5bc32ce8cb3a991c44de3cc7af35553",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/import-invalid-390.png",
+      "bytes": 72925,
+      "sha256": "59e5e3c97c57108293d21c1778f6335987f4a44bcdb3dc6c0e514f80fd35e671",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/question-archive-confirm-1440.png",
+      "bytes": 162300,
+      "sha256": "f9f99dbc7bb1b379fc394706f4166c3ee22dbb39556a4af214eefbfb00e7541f",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/monitor-empty-1440.png",
+      "bytes": 83554,
+      "sha256": "3c6e4eedba944e000c666d8d050919d2e4f229038ee78d9d025b9e11ada3e21e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/question-edit-390.png",
+      "bytes": 115376,
+      "sha256": "a4e90ee7dbc8a3598a685e994ee427a4e83837ac2cd2db0b20e0bf14256eccab",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/import-invalid-1440.png",
+      "bytes": 100662,
+      "sha256": "16761bd7356ed78d0e49e0c12549e9b8378208f87cbf6aab8a99066b462c9891",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exams-390.png",
+      "bytes": 89055,
+      "sha256": "4b8845ba31327bf3addac484cb59ea8e5c4ef623240c7286b6d27c58b63f2cc6",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/admin-denied-390.png",
+      "bytes": 44302,
+      "sha256": "da45cac884a01893875c806c0e705714956c9593f8d88717ea3ce6ba9e7fe6bc",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/import-report-390.png",
+      "bytes": 61303,
+      "sha256": "9b0b18f5cab3a87985ea603acff6f8493bd8e897e412317210f03c42f8866f1e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/monitor-empty-390.png",
+      "bytes": 56033,
+      "sha256": "883f53f7dad9b79e1fec757c6a78c1d1a5cd3cf5e86a6b706b32b8bb3664bddb",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/overview-390.png",
+      "bytes": 101762,
+      "sha256": "a06e7bcd52b1c89e9dbb4f6604525b033c8358b3e07140d0b735eccda80d4af7",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/admin-denied-1440.png",
+      "bytes": 55686,
+      "sha256": "531e9b2ba6d2d24813cd8807b46fcc6f5b8ac8241e7e9730b54e41967b68f8a5",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/attempt-failed-1440.png",
+      "bytes": 96520,
+      "sha256": "cba7b6f061f09b0d521321c1cce376d7750283968f165c77865d37581efcebc8",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/question-edit-1440.png",
+      "bytes": 144497,
+      "sha256": "cd290e961bd22003e589976d78ee85408e4ac7bf17848bb545899b05c2008ed2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-new-1440.png",
+      "bytes": 153325,
+      "sha256": "341070ef32b91441dc5cff9a2d5327cfbc5e20dc1559393caddd0d8038dab420",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-structure-390.png",
+      "bytes": 159424,
+      "sha256": "9701bf3fc7121874fcd1019e78c536cb71de74864bda9c723a0d2704a17e79b0",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-publish-confirm-390.png",
+      "bytes": 154001,
+      "sha256": "8647d230726ad1533061b5d01149a25424e331e567d310cb89e11f27c7317ebd",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/import-confirm-1440.png",
+      "bytes": 144361,
+      "sha256": "bae7079e191762acd68eb8a366b98cbb778e649d1e57adef270116defaa6891b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/overview-css-zoom-200.png",
+      "bytes": 326839,
+      "sha256": "7d4dcf7433f675dc558ec2e125d8ba3fbc3455d652d5e25a8d114533f098a418",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/exam-picker-1440.png",
+      "bytes": 276930,
+      "sha256": "d2415f5edfb97824bc48bb4c4ebbb0cdf2a987a1298b2fd2ff62f57a8236d876",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/screenshots/audit-390.png",
+      "bytes": 48290,
+      "sha256": "22a9fa96fa68fc64289b13b5de3fa5cabffefe968f5a72c8b9cd881c5f47ea1c",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/home-320.png",
+      "bytes": 323347,
+      "sha256": "b55af7a8fc23698550e31a7e44ce87dd682f4000105b286799d080594523454e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/exam-conflict-1440.png",
+      "bytes": 192721,
+      "sha256": "ba2ed766d35e994ced9b2d5498fca9253ac466d0fbd868afb011ff603bb3a5ee",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/admin-denied-candidate-1024.png",
+      "bytes": 53311,
+      "sha256": "e9174abf7ee7e7e9d78b6404b2ab7adc2d418b6957ee9b9dcb02cb74418c257b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/exam-sheet-320.png",
+      "bytes": 123568,
+      "sha256": "bd182ebd250a10dd8624aa9e42cc8642c208e121765b42c1245e92a9f52589b0",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/register-short-password-390.png",
+      "bytes": 96793,
+      "sha256": "eaa2a690dc24527ba862a012be031689dc6f18a1efe7a095145211c76a63eff9",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/admin-reviewer-denied-questions-1024.png",
+      "bytes": 113700,
+      "sha256": "10ccfd2ad92024e63cad005752e9b1992c38a5cbfbb4538de48e3bca29e6b7a3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/login-401-390.png",
+      "bytes": 89566,
+      "sha256": "ef165c3fb17591164bd1ed162072174a32f6c0c4582ef0251ba379aa5cd79348",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/result-8333-768.png",
+      "bytes": 179087,
+      "sha256": "25e9b38f5579d4f21074e1d1a4b24c54602cdafd4b49fa61cb18d17d73d10087",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/live-login-unavailable-1440.png",
+      "bytes": 244087,
+      "sha256": "a5df49c4bee5419f15f9bd33f49f657d47695000467253b39497e3b3e170a89e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/live-home-1440.png",
+      "bytes": 573922,
+      "sha256": "29bd5f7acb568133a715031285ffced093d5242e6bd081d7b4a7938127dd909b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/live-session-unavailable-1440.png",
+      "bytes": 26251,
+      "sha256": "19ab2cf8aa4a17ddb1e1b0e10c1b798e368b63696a2a7a41cd3c804a0565ad6e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/exam-detail-long-title-1440.png",
+      "bytes": 154387,
+      "sha256": "22a7c4796b192b4a08de7803d8def706daf26f9fedc48f3bab90d4813be61937",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/home-768.png",
+      "bytes": 517923,
+      "sha256": "73e417c7b30eefbe6e9fe5d3189fe7f8ae2a0716cfa8c8cb3069b28b54a47ea6",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/home-390.png",
+      "bytes": 345989,
+      "sha256": "2f7e38ccc486259a8eea0bfa83a24dbd2868d91662e81d64a4a57a345603fc79",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/admin-audit-1024.png",
+      "bytes": 136913,
+      "sha256": "eb0f1d33520bb20cb7908afb577e59b5070fb877a2c71fe790aab920eb0635c3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/home-1440.png",
+      "bytes": 597144,
+      "sha256": "b5b7751a896373cc80e70298610c0293bcf1dcff20bb1d23b802685f5fa1503e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/exam-room-saved-1440.png",
+      "bytes": 100128,
+      "sha256": "71a04ba52d9aad22fbdaaf4d8a6b110b4a7df701f2d0ae603960fbf587483eb1",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/dashboard-1440.png",
+      "bytes": 159967,
+      "sha256": "cb090307a5ed84cda68ea9510c09ab6d9c1cd92b0282593b63c9e747c49de15d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/admin-metrics-missing-1024.png",
+      "bytes": 162399,
+      "sha256": "566c9a03c656e7b609c423d041a76d9516eb27bd13b325efa188cc1e4da1f933",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/home-1024.png",
+      "bytes": 486221,
+      "sha256": "7f8c4f185eb53f6fc8ac24270e3cf92e2565b01a311777f193fa72a2d3d0dd5f",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/admin-exams-1024.png",
+      "bytes": 186684,
+      "sha256": "a49f88a02c97f11c1f35eb2b4de14e0ae3fa681eb4241e83046d8587c79def02",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/not-found-390.png",
+      "bytes": 31055,
+      "sha256": "03abf723ef9b9c8543f4f0598f706ad41bc2e6a93029dc394ff53dda743ac0e2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/admin-2026-10-07/regression/frozen-attempt-gap-1024.png",
+      "bytes": 160763,
+      "sha256": "d33c872f9227a827aadc9cc7c3f95663c93a4e079b8cfc388863d3619773e120",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/public-experience/live-home-1024.png",
+      "bytes": 467501,
+      "sha256": "5603aa10ba1bd2efe5d4eb81f3d1548acb0097126d24dc09d7a7fcb108cf59b6",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/public-experience/live-result-390.png",
+      "bytes": 97230,
+      "sha256": "c05c94af087c3b7d5cc5f44e34c2941d4820a82b761727aec8213ef9c80ce03d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/public-experience/demo-result-390.png",
+      "bytes": 107102,
+      "sha256": "5e525958273ca24fc82004a2397274de8b7209cc8d514f9fe49004cb0efaffdb",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/public-experience/live-home-320.png",
+      "bytes": 319483,
+      "sha256": "92281a8453f0ac28fd63f4648c1428b5d356514e08be53e24144d9ff880f21a1",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/public-experience/live-sample-390.png",
+      "bytes": 74057,
+      "sha256": "90b00d9a48645f131491d00f9abf5dbef3aca53d48810a296dce40c64f3ca0d3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/public-experience/demo-home-320.png",
+      "bytes": 328801,
+      "sha256": "0b4644a6bec754b19ecf93d712199b1a01d6aff38ecc01105ee8a935d5825980",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/public-experience/demo-sample-390.png",
+      "bytes": 83882,
+      "sha256": "e5dddda33c296ed761f50d33554eaa278b406f9f9954022f2b5eeb4ecc180ede",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/public-experience/demo-home-1024.png",
+      "bytes": 486529,
+      "sha256": "0ed6f84bf6307a6154d6282aa2cd518884aaa1cccf5d8bbf5ea4b551cddbaf82",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/check-email-1440.png",
+      "bytes": 263349,
+      "sha256": "654942881b2eeaadd1f9e157c2a8488760651d0a32f287975dacec09fb38e222",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/catalog-invalid-1440.png",
+      "bytes": 159907,
+      "sha256": "f052aa11240e3d2a98e42352ab32adc3321dd413a2e95acd86071fe67ae5c09c",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/verify-1440.png",
+      "bytes": 254031,
+      "sha256": "51325f46792703c7270fef7e5914dd0140f5b9c3d59ece5d7393f7645c2561c8",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/verify-invalid-1440.png",
+      "bytes": 248518,
+      "sha256": "2b3919decf13a277fa841d80fda62928219f4d15bced7710d6329867d8fc648e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/detail-long-1440.png",
+      "bytes": 154062,
+      "sha256": "93a4bf62e43c0dd33051ba842a4866bec25ca5d896b6463720ab54d829b3ae7a",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/dashboard-390.png",
+      "bytes": 113830,
+      "sha256": "9d2c25ad29ba02d2dea829faf2ff0a4a447f7ed2ebcc3d106ff066ae1fc5cc8e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/catalog-invalid-390.png",
+      "bytes": 130245,
+      "sha256": "6bf73478a31ecf0ec2799b6e673e723b50ef033f30b4f6a1497e37d4cf7ba418",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/verify-390.png",
+      "bytes": 88492,
+      "sha256": "22e959d634d7e40caaf651dc3a88c69b45b992db6ba789b1236909dc837c5187",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/catalog-empty-1440.png",
+      "bytes": 88998,
+      "sha256": "167c1d68211215334457217f416d25ac9761f17f87277e362ea918278573d90b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/start-dialog-1440.png",
+      "bytes": 179529,
+      "sha256": "0e31d45f550889ec07acaf6f02bd8c76afaddf8b60396851d4fffadcf2be98b2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/catalog-390.png",
+      "bytes": 119277,
+      "sha256": "b3369f9aa2ca43086a192d007146b5f007270b60c4319ed5724a88331c978af3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/login-390.png",
+      "bytes": 77929,
+      "sha256": "c091ba85685a2acae53a20bb29931b2aff79815d9b322796bcd4f7418663191d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/verify-missing-390.png",
+      "bytes": 80571,
+      "sha256": "f63966adea1e98d8e8a87e70bc0d0525856c9e46da1c79bd28ad88d15471026a",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/login-zoom-200.png",
+      "bytes": 555914,
+      "sha256": "1fdef142c442dac0d8c2fcf02b3198a06635a373c80fc47d7e200735a6c51427",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/verify-missing-1440.png",
+      "bytes": 246734,
+      "sha256": "1e3f6b40e419a58e713bf9785c68239e3d884313f20942fee0702d590724a9b2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/start-dialog-390.png",
+      "bytes": 135012,
+      "sha256": "acae673c9bcf82ac908407d05fa4b58b965857725cebd43d91b0fc42e9de6a60",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/catalog-empty-390.png",
+      "bytes": 70061,
+      "sha256": "430a5ae7979abd104a3a1b062eae319f085a048dfa8c18c93f81682ed62d598e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/check-email-390.png",
+      "bytes": 98291,
+      "sha256": "dff0a70791772232985a8decc3307757d39338e6c25790abddd6d683f25187e7",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/verify-invalid-390.png",
+      "bytes": 82425,
+      "sha256": "64765342688701ef604e6ebfce3f16cc2b6b756e849f9f7943ef18ab254700e4",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/detail-390.png",
+      "bytes": 132575,
+      "sha256": "c3c74142aa3ebed87842e2d19e5ce6547d2d7eca3bf523a770d7535bab7f36d9",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/screenshots/register-1440.png",
+      "bytes": 257705,
+      "sha256": "d743a0c3acad1a721f3a2062596e8bed48d51b4a0f095931700eb5401b85b0f7",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/home-320.png",
+      "bytes": 323413,
+      "sha256": "534f84cfd119ec3946ff7ee611fcb2aa174ea42fe8d21c56c60bcdd95937bb9e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/exam-conflict-1440.png",
+      "bytes": 175500,
+      "sha256": "fcb0c387757d20d48f71e2ee54880cb61c1e59e506d45015e15da750361df377",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/admin-denied-candidate-1024.png",
+      "bytes": 53311,
+      "sha256": "e9174abf7ee7e7e9d78b6404b2ab7adc2d418b6957ee9b9dcb02cb74418c257b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/exam-sheet-320.png",
+      "bytes": 120102,
+      "sha256": "2fb49e39d5c4f43816c47e0823bf3466ee59e42beb5eea3ff17df4630aa337b8",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/register-short-password-390.png",
+      "bytes": 96786,
+      "sha256": "9cb52c9d22c19bb3d9718d7063cfc3f50bfead403ca59a64c78a362b3eb3dd83",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/admin-reviewer-denied-questions-1024.png",
+      "bytes": 113700,
+      "sha256": "10ccfd2ad92024e63cad005752e9b1992c38a5cbfbb4538de48e3bca29e6b7a3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/login-401-390.png",
+      "bytes": 89512,
+      "sha256": "6aecb4de2c33048f85c09b03076da7aba7a7bd013a6accfed530162c8bfbdf76",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/result-8333-768.png",
+      "bytes": 140005,
+      "sha256": "f8e9a2beb0f779e6eb03f7968563205933de314b0adb9df5f8b8f54dc1a150d5",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/live-login-unavailable-1440.png",
+      "bytes": 244114,
+      "sha256": "e21983372d14e46177d1506e590d2caa846bf0d1efa73d5bcc3f7f0502c28f72",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/live-home-1440.png",
+      "bytes": 573602,
+      "sha256": "c3aa27f49684117b9c0c8b2b9d579d7328e9f293bdea10a5d767301e851d2e5b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/live-session-unavailable-1440.png",
+      "bytes": 26251,
+      "sha256": "19ab2cf8aa4a17ddb1e1b0e10c1b798e368b63696a2a7a41cd3c804a0565ad6e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/exam-detail-long-title-1440.png",
+      "bytes": 154077,
+      "sha256": "48dc6c9a38b0dda9aef4732c401bdf221f558d279a3a119575e559bab16b0fd2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/home-768.png",
+      "bytes": 482339,
+      "sha256": "108292bf18d0e5fa320fcb76acceb124f4dfd4ebb435e48020957ac0e0b8d886",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/home-390.png",
+      "bytes": 345989,
+      "sha256": "2f7e38ccc486259a8eea0bfa83a24dbd2868d91662e81d64a4a57a345603fc79",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/admin-audit-1024.png",
+      "bytes": 129076,
+      "sha256": "396eaaccd6cc2966b46df960461a7ce211a971ef8090f817228135bd9684fbb5",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/home-1440.png",
+      "bytes": 597572,
+      "sha256": "78e95d25a3baadc95175c8bdd293c5749c488b522c304c54e1df9bb18ea944ba",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/exam-room-saved-1440.png",
+      "bytes": 90025,
+      "sha256": "e3439513e23540f6134d99ba5add0f6e68ba35988393a82e5daa836ba556d4c2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/dashboard-1440.png",
+      "bytes": 159493,
+      "sha256": "ea156253c632f815c8e6fa460989a75f7825b40a71939f17f1a7eabf01ad337a",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/admin-metrics-missing-1024.png",
+      "bytes": 176271,
+      "sha256": "27105b45d78f387cb67105360640c64737b4bf53f2ec1b5680c35b8b827c4300",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/home-1024.png",
+      "bytes": 486735,
+      "sha256": "b1df464362a34b6742180a6053c362ba5e4df88315522c169a557ba648e67a8d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/admin-exams-1024.png",
+      "bytes": 147190,
+      "sha256": "f5e915f6ef86baabbc9d17aa8b34f87d9e088598aa4604cdf0acd2510b23d530",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/not-found-390.png",
+      "bytes": 31055,
+      "sha256": "03abf723ef9b9c8543f4f0598f706ad41bc2e6a93029dc394ff53dda743ac0e2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/onboarding-catalog-2026-10-07/regression/frozen-attempt-gap-1024.png",
+      "bytes": 151168,
+      "sha256": "585f7edd133269cd519d28c03e72098a534f3482862c4eff87b5259a93971e68",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/home-320.png",
+      "bytes": 323347,
+      "sha256": "b55af7a8fc23698550e31a7e44ce87dd682f4000105b286799d080594523454e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/exam-conflict-1440.png",
+      "bytes": 192781,
+      "sha256": "8a25b902e1c98f90aa884ff235a636c3f59427693f68edd5963286286948f93e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/admin-denied-candidate-1024.png",
+      "bytes": 53311,
+      "sha256": "e9174abf7ee7e7e9d78b6404b2ab7adc2d418b6957ee9b9dcb02cb74418c257b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/exam-sheet-320.png",
+      "bytes": 123791,
+      "sha256": "869b40bd992ffda00ed1c70a61ebcceef41bcb0cc11ae47d17acf682c16d7c9d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/register-short-password-390.png",
+      "bytes": 96793,
+      "sha256": "eaa2a690dc24527ba862a012be031689dc6f18a1efe7a095145211c76a63eff9",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/admin-reviewer-denied-questions-1024.png",
+      "bytes": 113700,
+      "sha256": "10ccfd2ad92024e63cad005752e9b1992c38a5cbfbb4538de48e3bca29e6b7a3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/login-401-390.png",
+      "bytes": 89566,
+      "sha256": "ef165c3fb17591164bd1ed162072174a32f6c0c4582ef0251ba379aa5cd79348",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/result-8333-768.png",
+      "bytes": 178929,
+      "sha256": "a82757c7ab5e6c80e7375e611f8d30cfb7c3f609ebcb9653e3bc4f19375c29d1",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/live-login-unavailable-1440.png",
+      "bytes": 244087,
+      "sha256": "a5df49c4bee5419f15f9bd33f49f657d47695000467253b39497e3b3e170a89e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/live-home-1440.png",
+      "bytes": 574262,
+      "sha256": "e06f081538186b158a3b2a09e8a8bbdb78d80fd35feff907308bd30e42c0d38d",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/live-session-unavailable-1440.png",
+      "bytes": 26251,
+      "sha256": "19ab2cf8aa4a17ddb1e1b0e10c1b798e368b63696a2a7a41cd3c804a0565ad6e",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/exam-detail-long-title-1440.png",
+      "bytes": 154632,
+      "sha256": "a5aa72c92efdbca940720103019a7eabe15892606309bca1a31672a785da20af",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/home-768.png",
+      "bytes": 518157,
+      "sha256": "81faebccef32965f2e76f10d0af8c8ae1217e2855f541804b729ec733fcafd25",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/home-390.png",
+      "bytes": 345989,
+      "sha256": "2f7e38ccc486259a8eea0bfa83a24dbd2868d91662e81d64a4a57a345603fc79",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/admin-audit-1024.png",
+      "bytes": 136858,
+      "sha256": "e1af815cf3862208ad1f26ed70679348ef78366be088d57cfbc0d1c8fbe59d42",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/home-1440.png",
+      "bytes": 597469,
+      "sha256": "8eaa8d05dd4d1adb80a86a1dd642b5e792928b26258a364ff144139cbb0d1de6",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/exam-room-saved-1440.png",
+      "bytes": 100127,
+      "sha256": "5fc0bc2a59780eb34db503ce14b55768a640cb37d384f3d8b7eaf0b0dfcec885",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/dashboard-1440.png",
+      "bytes": 160066,
+      "sha256": "88e9f03b160dd9aefbebd3ecfefaca43699b3cd8c88232233d9396ecbfba14a3",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/admin-metrics-missing-1024.png",
+      "bytes": 162464,
+      "sha256": "ecd84a0191e60fb54bb63b2bcd40ed12dc6a7966b33ed7ad5e6602f56a89ad43",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/home-1024.png",
+      "bytes": 487133,
+      "sha256": "c081d3a994d96038df9ca85c9c6332911f6dcca0f4a3af67c16eac8d2765c972",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/admin-exams-1024.png",
+      "bytes": 186684,
+      "sha256": "a49f88a02c97f11c1f35eb2b4de14e0ae3fa681eb4241e83046d8587c79def02",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/not-found-390.png",
+      "bytes": 31055,
+      "sha256": "03abf723ef9b9c8543f4f0598f706ad41bc2e6a93029dc394ff53dda743ac0e2",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression/frozen-attempt-gap-1024.png",
+      "bytes": 160809,
+      "sha256": "066897fc9383870f8afbc6fc04e9282c1d189a4b86f67494fa50412d3c4e1a79",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/home-320.png",
+      "bytes": 111341,
+      "sha256": "33e5ef5a18ae1d3d6dd2de03fb0fc17f4785e445ae17285816e7a8651e91d405",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/exam-layout-384.png",
+      "bytes": 55643,
+      "sha256": "462e0683f9644f48b9b5bdfcb040cfbc1443a2cabeaf63447306a83cfc90a80a",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/exam-zoom-200-1440.png",
+      "bytes": 130952,
+      "sha256": "59d83bd5c0889f00d8bbe5e5259fad4e8b66316c5c2ade47d4cdd01e9488ceba",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/exam-zoom-200-320.png",
+      "bytes": 32209,
+      "sha256": "4205e9ba0152e768a0ac3aa3d4d15b876920fc332dcd0896fb93ed0449a5c0cd",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/fixture-500.png",
+      "bytes": 93467,
+      "sha256": "3b0614c652a1942cf2fb6f4d9f7e7e04650eedc04e0a775489f07178315bdf1b",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/exam-focus-320.png",
+      "bytes": 52158,
+      "sha256": "445aa3660117ff859e778e508fd51757c70390cbb86c5c602f5f3c754f921f79",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/home-768.png",
+      "bytes": 113830,
+      "sha256": "639e458a1888073a1f7be46d0a040a16406ac76aed7676a21037d5273cc520dd",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/home-390.png",
+      "bytes": 110666,
+      "sha256": "2b8f2729cf06cd7c78cbee9ae4d5e23dafddd43f54fcee4331ec80d08c33cfb8",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/home-1440.png",
+      "bytes": 119764,
+      "sha256": "3041fa9df30d5bf557ec5215188c4012bc56ca6c2db9f13ca8ed60a3eba3bfb7",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/fix-2026-10-07/screenshots/home-1024.png",
+      "bytes": 115806,
+      "sha256": "0388ebc82017037fe7599b1920b43e51f6e542ae5b94cf17bd5b2ad1bea9c006",
+      "reason": "Old UI screenshot without resolved direct reference"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-desktop-v2.png",
+      "bytes": 1067273,
+      "sha256": "3f3c0dc6341ed5b86651e069bdb54d303ea35621634cddb2936ad01b7c6561ab",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/exam-mobile-v3.png",
+      "bytes": 247935,
+      "sha256": "98a734907b46306de3a003747055da37ea8c684fde32b9516d0daeb39f0ae25a",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-desktop-v3.png",
+      "bytes": 948430,
+      "sha256": "a18076e1a42716fc1d4e723b28d7704abc01b0562b2e55e446b2c826065090d8",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-mobile-v2-middle.png",
+      "bytes": 302944,
+      "sha256": "5ecf7a946ba74f5df8929413bf07d09da21d76a4425e22e9ec43e7a370183f1d",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/exam-desktop-v3-1280.png",
+      "bytes": 255978,
+      "sha256": "e038ef45bdbc7fc782038d4def49592ca8b1859d670f112be0ed847cb73444c2",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/exam-desktop-v2-1280.png",
+      "bytes": 433213,
+      "sha256": "bdcb785223242951b1ee658a741dca6627a4267f2fc429b1ea2cc5e761a698ae",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-mobile-v3-bottom.png",
+      "bytes": 307240,
+      "sha256": "98312a5ea2dc10c5e9ee846f674d4fe439bd5e9518a9f668163792c758d5c5bd",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-desktop-v2-top.png",
+      "bytes": 204307,
+      "sha256": "98a7d8c03e8be475a7bf15cb701aec9737a746a95246e7ce9f12317895d00330",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-desktop-v2-middle.png",
+      "bytes": 256158,
+      "sha256": "333b2b824c16b636cf840b2abd94cb4d812254a949276729085a566e2445180b",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-desktop-v3-top.png",
+      "bytes": 197306,
+      "sha256": "bbfcb3100395d4fac5b36251c4dbeae94745bbdd94ce1a6798a1b883d565de3a",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-desktop-v3-bottom.png",
+      "bytes": 189431,
+      "sha256": "ffda8e4496c97a877a66a4b3d51d6513f2f097447caed32f815f370ef540394b",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-mobile-v2.png",
+      "bytes": 937132,
+      "sha256": "e355bf2df80db6bb0248e7f517c55d3208b5fbe9e3283fbceb383a778a9a27bb",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/dashboard-desktop-v2.png",
+      "bytes": 740350,
+      "sha256": "15688145acd8f3e0f1e9cfd03b752941a28616eef4f49966781f20fa4c5f3d5e",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-mobile-v3-middle.png",
+      "bytes": 289608,
+      "sha256": "c592043f91efc69964d12cfcd1c01b3b5703bde35a98082bc7e578d844c64739",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-mobile-v3.png",
+      "bytes": 882704,
+      "sha256": "6003f773b2e6360e80f1a0878399f9448d7a01da0125caecd8b92912acf0610d",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-mobile-v2-top.png",
+      "bytes": 263162,
+      "sha256": "301790a92d07a54f6b27ed813d4e4cfb68597b1ec78aa5c08f960d238200e62c",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-mobile-v2-bottom.png",
+      "bytes": 345693,
+      "sha256": "69906a0a52a2af0946b61a98c44472b219cbb8abe41742fadbbc0eaec411680e",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/exam-desktop-v3.png",
+      "bytes": 408813,
+      "sha256": "a7af7988cb8b166a6c91742745bc3ec44a2c06435eb54fb09b036f5cf9037079",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/exam-desktop-v2.png",
+      "bytes": 670880,
+      "sha256": "66ae267589f0065b879e742c7adc1687245a0895654ed4f561654e526b3601bb",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/dashboard-desktop-v2-1280.png",
+      "bytes": 466450,
+      "sha256": "f507e881a14a3226f3a2d7c9985005348bef32b208751a4f9182d286e4c4c6a7",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-mobile-v3-top.png",
+      "bytes": 264292,
+      "sha256": "d475bed5e6698d833acf889389b78bc8b792d3b68527ef4edbb3d8f146ac0f31",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/exam-mobile-sheet-v3.png",
+      "bytes": 151586,
+      "sha256": "bff273028a0b2ad1eeb03712da7c1a2c3e8576814c719775887571540490cb54",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-desktop-v3-middle.png",
+      "bytes": 256158,
+      "sha256": "333b2b824c16b636cf840b2abd94cb4d812254a949276729085a566e2445180b",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/home-desktop-v2-bottom.png",
+      "bytes": 204592,
+      "sha256": "f11d7b4c30d128b6308a93ee7480c70d25f785851304243a35a4c42e4763d894",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    },
+    {
+      "path": "docs/web-ui/evidence/stitch-v3-review-2026-10-08/dashboard-mobile-v3.png",
+      "bytes": 437815,
+      "sha256": "b629f55c915fb8c608d3225950ec30c7f9466bbd7d80b00d7e9a8701ea5a5af0",
+      "reason": "Consolidated into current template or superseded inspection crop"
+    }
+  ]
+}

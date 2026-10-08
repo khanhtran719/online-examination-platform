@@ -16,6 +16,8 @@ Các tài liệu này đặc tả Web, không thay Architecture Contract. Nếu 
 
 ## 2. Quyết định thiết kế đã chốt
 
+**Hướng thị giác hiện hành (2026-10-08):** [bộ template Stitch V3](templates/stitch-v3/README.md), giữ Dashboard desktop V2 làm chuẩn workspace. Người dùng chọn Cobalt–Apricot, rail trắng và soft bento; tạo đủ page trên Stitch trước khi port lại UI. [Bộ prompt các page còn lại](stitch-page-prompts-v3/README.md) và [các lỗi xử lý lúc code](templates/stitch-v3/implementation-notes.md) ghi phạm vi này. Các mô tả màu/phong cách bên dưới là baseline của những đợt triển khai cũ; product/API/state contract vẫn là nguồn chức năng.
+
 Tên hiển thị tạm: **Exam Platform**; không tạo một thương hiệu mới hoặc dùng logo của TOEIC/IELTS. Phong cách **phòng thi số**: nền xám sáng, bề mặt trắng, navy làm chữ/chrome, teal cho hành động, amber cho cần chú ý. Điểm nhận diện là bộ thời gian–tiến độ–trạng thái lưu và bản đồ câu hỏi giống phiếu trả lời; trang trí giữ tiết chế để người thi tập trung.
 
 Tiếng Việt mặc định, thuật ngữ tiếng Anh dùng khi thuộc nội dung câu hỏi. Workspace light theme, Candidate/Admin dùng rail navy trên desktop và menu mobile theo đợt1; phòng thi là layout riêng. Theo yêu cầu đợt2, auth có split panel và giấy/bút CSS3D; dashboard/detail có illustration nhỏ. Không đưa ambient motion vào phòng thi, không có biểu đồ hoặc số liệu giả.

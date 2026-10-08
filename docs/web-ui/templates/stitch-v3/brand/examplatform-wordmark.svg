@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80" fill="none" role="img" aria-labelledby="wordmark-title">
+  <title id="wordmark-title">ExamPlatform — logo tạm</title>
+  <g transform="translate(0 4) scale(.75)">
+    <rect x="4" y="4" width="88" height="88" rx="25" fill="#315CF4"/>
+    <path d="M31 20h24l14 14v36a6 6 0 0 1-6 6H31a6 6 0 0 1-6-6V26a6 6 0 0 1 6-6Z" fill="#FFFFFF"/>
+    <path d="M55 20v10a4 4 0 0 0 4 4h10L55 20Z" fill="#FFB36B"/>
+    <path d="M35 41h18M42 52h17M42 63h17" stroke="#315CF4" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="35" cy="52" r="2.5" fill="#315CF4"/>
+    <circle cx="35" cy="63" r="2.5" fill="#315CF4"/>
+  </g>
+  <text x="88" y="51" fill="#1B2540" font-family="Be Vietnam Pro, Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="-.8">ExamPlatform</text>
+</svg>

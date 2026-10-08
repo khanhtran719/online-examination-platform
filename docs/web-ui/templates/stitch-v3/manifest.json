@@ -1,14 +1,14 @@
 {
   "projectId": "18257628123124303955",
   "projectUrl": "https://stitch.withgoogle.com/projects/18257628123124303955",
-  "retrievedOn": "2026-10-08",
-  "scope": "Read-only visual review; no browser interaction validation",
+  "acceptedFor": "Visual direction and page design templates; implementation defects are deferred to coding",
+  "acceptedOn": "2026-10-08",
   "screens": [
     {
       "screenId": "f5caae61539a43049ab56eea2b8b0c65",
       "title": "EP-01 — Home Desktop — Visual Refinement V3",
       "deviceType": "DESKTOP",
-      "file": "../../templates/stitch-v3/home-desktop-v3.png",
+      "file": "home-desktop-v3.png",
       "width": 2560,
       "height": 7408,
       "stitchWidth": "2560",
@@ -21,7 +21,7 @@
       "screenId": "c513f61f97834bca9677e480c3d507b9",
       "title": "EP-03 — Exam Mobile 390 — V3",
       "deviceType": "MOBILE",
-      "file": "../../templates/stitch-v3/exam-mobile-v3.png",
+      "file": "exam-mobile-v3.png",
       "width": 780,
       "height": 2490,
       "stitchWidth": "780",
@@ -31,49 +31,10 @@
       "archiveStatus": "retained_as_current_template"
     },
     {
-      "screenId": "1169ba614db949ce8afa94716f34b109",
-      "title": "EP-01 — Trang chủ — Soft Bento (V2 Refined)",
-      "deviceType": "DESKTOP",
-      "width": 2560,
-      "height": 7584,
-      "stitchWidth": "2560",
-      "stitchHeight": "7584",
-      "sha256": "3f3c0dc6341ed5b86651e069bdb54d303ea35621634cddb2936ad01b7c6561ab",
-      "source": "projects/18257628123124303955/screens/1169ba614db949ce8afa94716f34b109/fileEntries/screenshot",
-      "archiveStatus": "superseded_comparison_image_removed_by_user_request_2026-10-08",
-      "removedFile": "home-desktop-v2.png"
-    },
-    {
-      "screenId": "63b587041d334a9ebbdd53678c0c069d",
-      "title": "EP-01 — Trang chủ — Mobile 390px (V2)",
-      "deviceType": "MOBILE",
-      "width": 780,
-      "height": 11322,
-      "stitchWidth": "780",
-      "stitchHeight": "11322",
-      "sha256": "e355bf2df80db6bb0248e7f517c55d3208b5fbe9e3283fbceb383a778a9a27bb",
-      "source": "projects/18257628123124303955/screens/63b587041d334a9ebbdd53678c0c069d/fileEntries/screenshot",
-      "archiveStatus": "superseded_comparison_image_removed_by_user_request_2026-10-08",
-      "removedFile": "home-mobile-v2.png"
-    },
-    {
-      "screenId": "f7d045feca984f799821bda9fd10dd47",
-      "title": "EP-03 — Phòng thi — Soft Bento (V2 Refined)",
-      "deviceType": "DESKTOP",
-      "width": 2560,
-      "height": 3960,
-      "stitchWidth": "2560",
-      "stitchHeight": "3960",
-      "sha256": "66ae267589f0065b879e742c7adc1687245a0895654ed4f561654e526b3601bb",
-      "source": "projects/18257628123124303955/screens/f7d045feca984f799821bda9fd10dd47/fileEntries/screenshot",
-      "archiveStatus": "superseded_comparison_image_removed_by_user_request_2026-10-08",
-      "removedFile": "exam-desktop-v2.png"
-    },
-    {
       "screenId": "222db89535964fb9bc183ab05a92bab6",
       "title": "EP-03 — Exam Desktop — Visual Refinement V3",
       "deviceType": "DESKTOP",
-      "file": "../../templates/stitch-v3/exam-desktop-v3.png",
+      "file": "exam-desktop-v3.png",
       "width": 2560,
       "height": 2380,
       "stitchWidth": "2560",
@@ -86,7 +47,7 @@
       "screenId": "927f2e0d87ce4f89be5d55c3cb81606b",
       "title": "EP-02 — Bảng làm việc — Soft Bento (V2 Refined)",
       "deviceType": "DESKTOP",
-      "file": "../../templates/dashboard-v2/reference-full.png",
+      "file": "../dashboard-v2/reference-full.png",
       "width": 2560,
       "height": 3556,
       "stitchWidth": "2560",
@@ -99,7 +60,7 @@
       "screenId": "4e8b878555d148259ff0df819ae125a2",
       "title": "EP-01 — Home Mobile 390 — V3",
       "deviceType": "MOBILE",
-      "file": "../../templates/stitch-v3/home-mobile-v3.png",
+      "file": "home-mobile-v3.png",
       "width": 780,
       "height": 10770,
       "stitchWidth": "780",
@@ -112,7 +73,7 @@
       "screenId": "bcbb21021bbd43e69353667502c1d359",
       "title": "EP-03 — Exam Mobile 390 — V3 (Bottom Sheet Mở)",
       "deviceType": "MOBILE",
-      "file": "../../templates/stitch-v3/exam-mobile-sheet-v3.png",
+      "file": "exam-mobile-sheet-v3.png",
       "width": 780,
       "height": 1768,
       "stitchWidth": "780",
@@ -125,7 +86,7 @@
       "screenId": "57c1dac4924d4d13b45d655c41dfc81c",
       "title": "EP-02 — Dashboard Mobile 390 — V3",
       "deviceType": "MOBILE",
-      "file": "../../templates/stitch-v3/dashboard-mobile-v3.png",
+      "file": "dashboard-mobile-v3.png",
       "width": 780,
       "height": 4238,
       "stitchWidth": "780",
@@ -135,9 +96,6 @@
       "archiveStatus": "retained_as_current_template"
     }
   ],
-  "handoff": {
-    "screenId": "14291ca3ac9c4bff8ac9ee073df7ec9c",
-    "mimeType": "text/markdown",
-    "screenshotAvailable": false
-  }
+  "tokens": "../dashboard-v2/tokens.json",
+  "implementationNotes": "implementation-notes.md"
 }

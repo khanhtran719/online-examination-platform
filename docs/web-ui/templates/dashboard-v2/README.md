@@ -10,6 +10,7 @@ Lưu ngày 2026-10-08 theo yêu cầu người dùng. Phạm vi: giữ Dashboard
 - Screen ID: `927f2e0d87ce4f89be5d55c3cb81606b`.
 - Canvas frame quan sát được: `1280 × 1778`; metadata ảnh Stitch: `2560 × 3556`.
 - [Ảnh tham chiếu](reference.png): ảnh preview gốc lấy từ Stitch MCP, `369 × 512`.
+- [Ảnh đầy đủ](reference-full.png): bản nguồn `2560 × 3556` lưu thêm trong lần chốt bộ template V3.
 - [Thông tin nguồn](source.json) và [tokens đề xuất dùng lại](tokens.json).
 
 ![Dashboard V2](reference.png)
@@ -62,3 +63,5 @@ Màu và font dựa trên brief/design system hiện có. Các khoảng kích th
 ## Lượt điều chỉnh tiếp theo
 
 Dùng [prompt Visual Refinement V3](../../stitch-visual-refinement-v3-prompt-2026-10-08.md): giữ nguyên Dashboard desktop V2; chỉnh Home desktop, phòng thi desktop, hoàn thiện Dashboard mobile, tinh chỉnh Home/phòng thi mobile và đặt handoff ở frame riêng.
+
+Quyết định mới hơn ngày 2026-10-08: người dùng chọn tiếp tục tạo các page còn lại và hoãn sửa lỗi đến lúc code. [Bộ template hiện hành](../stitch-v3/README.md) và [prompt các page tiếp theo](../../stitch-page-prompts-v3/README.md) là đầu mối cho lượt này; prompt refinement phía trên giữ làm lịch sử.

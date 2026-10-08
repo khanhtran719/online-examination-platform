@@ -1,0 +1,572 @@
+{
+  "projectId": "18257628123124303955",
+  "preparedOn": "2026-10-08",
+  "scope": "Design references and prompts only; application source is unchanged by this work",
+  "routeSource": "../../../apps/web/src/app/router.tsx",
+  "routePatternCount": 39,
+  "productPageFamilyCount": 33,
+  "retainedPageFamilyCount": 3,
+  "remainingPageFamilyCount": 30,
+  "statusMeaning": {
+    "template_retained": "Existing selected reference images are saved; implementation defects remain deferred.",
+    "prompt_prepared": "Prompt is ready locally; no claim that Stitch frames have been generated."
+  },
+  "pages": [
+    {
+      "id": "EP-01",
+      "title": "Home",
+      "paths": [
+        "/"
+      ],
+      "status": "template_retained",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "template": "../templates/stitch-v3/manifest.json",
+      "defects": "../templates/stitch-v3/implementation-notes.md"
+    },
+    {
+      "id": "EP-02",
+      "title": "Dashboard",
+      "paths": [
+        "/dashboard"
+      ],
+      "status": "template_retained",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "template": "../templates/stitch-v3/manifest.json",
+      "defects": "../templates/stitch-v3/implementation-notes.md"
+    },
+    {
+      "id": "EP-03",
+      "title": "Exam room",
+      "paths": [
+        "/attempts/:attemptId"
+      ],
+      "status": "template_retained",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "template": "../templates/stitch-v3/manifest.json",
+      "defects": "../templates/stitch-v3/implementation-notes.md"
+    },
+    {
+      "id": "EP-04",
+      "title": "Login",
+      "paths": [
+        "/login"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "01-auth.md"
+    },
+    {
+      "id": "EP-05",
+      "title": "Register",
+      "paths": [
+        "/register"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "01-auth.md"
+    },
+    {
+      "id": "EP-06",
+      "title": "Check email",
+      "paths": [
+        "/check-email"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "01-auth.md"
+    },
+    {
+      "id": "EP-07",
+      "title": "Verify email",
+      "paths": [
+        "/verify-email"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "01-auth.md"
+    },
+    {
+      "id": "EP-08",
+      "title": "Exam list",
+      "paths": [
+        "/exams"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "02-catalog-profile.md"
+    },
+    {
+      "id": "EP-09",
+      "title": "Exam detail and start confirmation",
+      "paths": [
+        "/exams/:examId"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "02-catalog-profile.md"
+    },
+    {
+      "id": "EP-10",
+      "title": "Profile",
+      "paths": [
+        "/profile"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "02-catalog-profile.md"
+    },
+    {
+      "id": "EP-11",
+      "title": "Submission status",
+      "paths": [
+        "/attempts/:attemptId/status"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "03-results-history-ranking.md"
+    },
+    {
+      "id": "EP-12",
+      "title": "Result",
+      "paths": [
+        "/attempts/:attemptId/result"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "03-results-history-ranking.md"
+    },
+    {
+      "id": "EP-13",
+      "title": "Released review",
+      "paths": [
+        "/attempts/:attemptId/review"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "03-results-history-ranking.md"
+    },
+    {
+      "id": "EP-14",
+      "title": "History",
+      "paths": [
+        "/history"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "03-results-history-ranking.md"
+    },
+    {
+      "id": "EP-15",
+      "title": "Leaderboard",
+      "paths": [
+        "/exams/:examId/versions/:versionId/leaderboard"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "03-results-history-ranking.md"
+    },
+    {
+      "id": "EP-16",
+      "title": "Public sample experience",
+      "paths": [
+        "/experience"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "04-public-experience-help.md"
+    },
+    {
+      "id": "EP-17",
+      "title": "How it works",
+      "paths": [
+        "/how-it-works"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "04-public-experience-help.md"
+    },
+    {
+      "id": "EP-18",
+      "title": "Help",
+      "paths": [
+        "/help"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "04-public-experience-help.md"
+    },
+    {
+      "id": "EP-19",
+      "title": "Admin exam list",
+      "paths": [
+        "/admin/exams"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "05-admin-exams.md"
+    },
+    {
+      "id": "EP-20",
+      "title": "Admin exam editor",
+      "paths": [
+        "/admin/exams/new",
+        "/admin/exams/:examId/edit"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "05-admin-exams.md",
+      "requiredVariants": [
+        "Create",
+        "Edit"
+      ],
+      "requiredSteps": [
+        "Information",
+        "Sections and questions",
+        "Preflight and publish"
+      ]
+    },
+    {
+      "id": "EP-21",
+      "title": "Question bank",
+      "paths": [
+        "/admin/questions"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "06-admin-questions-import.md"
+    },
+    {
+      "id": "EP-22",
+      "title": "Question editor",
+      "paths": [
+        "/admin/questions/new",
+        "/admin/questions/:questionId/edit"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "06-admin-questions-import.md",
+      "requiredVariants": [
+        "Create",
+        "Edit"
+      ],
+      "requiredQuestionTypes": [
+        "SINGLE_CHOICE",
+        "MULTIPLE_CHOICE",
+        "TRUE_FALSE"
+      ]
+    },
+    {
+      "id": "EP-23",
+      "title": "JSON import",
+      "paths": [
+        "/admin/imports/new"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "06-admin-questions-import.md",
+      "requiredSteps": [
+        "Select or paste JSON",
+        "Preview and dry-run",
+        "Confirm import"
+      ]
+    },
+    {
+      "id": "EP-24",
+      "title": "Import report",
+      "paths": [
+        "/admin/imports/:importId"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "06-admin-questions-import.md"
+    },
+    {
+      "id": "EP-25",
+      "title": "Admin overview",
+      "paths": [
+        "/admin"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "07-admin-overview-monitor-submissions.md"
+    },
+    {
+      "id": "EP-26",
+      "title": "Monitor index",
+      "paths": [
+        "/admin/monitor"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "07-admin-overview-monitor-submissions.md"
+    },
+    {
+      "id": "EP-27",
+      "title": "Exam monitor",
+      "paths": [
+        "/admin/exams/:examId/monitor"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "07-admin-overview-monitor-submissions.md"
+    },
+    {
+      "id": "EP-28",
+      "title": "Submissions",
+      "paths": [
+        "/admin/exams/:examId/submissions"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "07-admin-overview-monitor-submissions.md"
+    },
+    {
+      "id": "EP-29",
+      "title": "Admin attempt detail and replay",
+      "paths": [
+        "/admin/attempts/:attemptId"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "08-admin-attempt-statistics-metrics-audit.md"
+    },
+    {
+      "id": "EP-30",
+      "title": "Statistics",
+      "paths": [
+        "/admin/exams/:examId/versions/:versionId/statistics"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "08-admin-attempt-statistics-metrics-audit.md"
+    },
+    {
+      "id": "EP-31",
+      "title": "Metrics",
+      "paths": [
+        "/admin/metrics"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "08-admin-attempt-statistics-metrics-audit.md"
+    },
+    {
+      "id": "EP-32",
+      "title": "Audit",
+      "paths": [
+        "/admin/audit"
+      ],
+      "status": "prompt_prepared",
+      "requiredViewports": [
+        1280,
+        390
+      ],
+      "prompt": "08-admin-attempt-statistics-metrics-audit.md"
+    },
+    {
+      "id": "SY-01",
+      "title": "Not found",
+      "paths": [
+        "*"
+      ],
+      "status": "prompt_prepared",
+      "prompt": "09-shared-states-handoff.md",
+      "requiredViewports": [
+        1280,
+        390
+      ]
+    }
+  ],
+  "aliasesAndRedirects": [
+    {
+      "path": "/admin/exams/:examId",
+      "pageId": "EP-20",
+      "type": "editor_alias",
+      "canonicalPath": "/admin/exams/:examId/edit"
+    },
+    {
+      "path": "/admin/questions/:questionId",
+      "pageId": "EP-22",
+      "type": "editor_alias",
+      "canonicalPath": "/admin/questions/:questionId/edit"
+    },
+    {
+      "path": "/admin/imports",
+      "pageId": "EP-23",
+      "type": "redirect",
+      "canonicalPath": "/admin/imports/new"
+    }
+  ],
+  "excludedRoutes": [
+    {
+      "path": "/dev/ui",
+      "reason": "Internal development controls, not a product page."
+    }
+  ],
+  "sharedStates": [
+    {
+      "id": "SY-02",
+      "title": "Forbidden",
+      "paths": [],
+      "status": "prompt_prepared",
+      "prompt": "09-shared-states-handoff.md",
+      "requiredViewports": [
+        1280,
+        390
+      ]
+    },
+    {
+      "id": "SY-03",
+      "title": "Unavailable, loading, empty and error",
+      "paths": [],
+      "status": "prompt_prepared",
+      "prompt": "09-shared-states-handoff.md",
+      "requiredViewports": [
+        1280,
+        390
+      ]
+    },
+    {
+      "id": "SY-04",
+      "title": "Expired authentication",
+      "paths": [],
+      "status": "prompt_prepared",
+      "prompt": "09-shared-states-handoff.md",
+      "requiredViewports": [
+        1280,
+        390
+      ]
+    },
+    {
+      "id": "SY-05",
+      "title": "Save states and conflicts",
+      "paths": [],
+      "status": "prompt_prepared",
+      "prompt": "09-shared-states-handoff.md",
+      "requiredViewports": [
+        1280,
+        390
+      ]
+    },
+    {
+      "id": "SY-06",
+      "title": "Exam submission, exit and question sheet",
+      "paths": [],
+      "status": "prompt_prepared",
+      "prompt": "09-shared-states-handoff.md",
+      "requiredViewports": [
+        1280,
+        390
+      ]
+    },
+    {
+      "id": "SY-07",
+      "title": "Admin dialogs",
+      "paths": [],
+      "status": "prompt_prepared",
+      "prompt": "09-shared-states-handoff.md",
+      "requiredViewports": [
+        1280,
+        390
+      ]
+    }
+  ],
+  "handoff": {
+    "prompt": "09-shared-states-handoff.md",
+    "status": "prompt_prepared",
+    "placement": "Separate designer frame or document, outside product pages."
+  }
+}
