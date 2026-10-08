@@ -4,6 +4,7 @@ import {
   normalizeSelections,
   fitQuestionPage,
   manualSubmissionEvent,
+  submissionEvent,
   QUESTION_PAGE_BYTES,
   requireFreshKey,
 } from "../assessment-policy";
@@ -106,5 +107,55 @@ describe("assessment policy", () => {
     });
     expect(JSON.stringify(event)).not.toContain("selectedOptionIds");
     expect(event.payload.submissionKind).toBe("MANUAL");
+  });
+
+  it("keeps a late manual submission MANUAL when the deadline has passed", () => {
+    const event = manualSubmissionEvent({
+      eventId: "00000000-0000-4000-8000-000000000006",
+      attemptId: "00000000-0000-4000-8000-000000000004",
+      examId: "00000000-0000-4000-8000-000000000001",
+      publishedVersionId: "00000000-0000-4000-8000-000000000002",
+      submissionId: "00000000-0000-4000-8000-000000000005",
+      occurredAt: "2026-10-08T00:45:00.000Z",
+      deadline: "2026-10-08T00:45:00.000Z",
+      expired: true,
+      correlationId: "00000000-0000-4000-8000-000000000007",
+      causationId: "00000000-0000-4000-8000-000000000008",
+    });
+    expect(event.payload).toMatchObject({ submissionKind: "MANUAL", expired: true });
+    expect(event.occurredAt).toBe(event.payload.deadline);
+  });
+
+  it("accepts a deadline event only when it expired at the accepted time", () => {
+    const event = submissionEvent({
+      eventId: "00000000-0000-4000-8000-000000000016",
+      attemptId: "00000000-0000-4000-8000-000000000014",
+      examId: "00000000-0000-4000-8000-000000000001",
+      publishedVersionId: "00000000-0000-4000-8000-000000000002",
+      submissionId: "00000000-0000-4000-8000-000000000015",
+      occurredAt: "2026-10-08T00:45:00.000Z",
+      deadline: "2026-10-08T00:45:00.000Z",
+      expired: true,
+      submissionKind: "DEADLINE",
+      correlationId: "00000000-0000-4000-8000-000000000017",
+      causationId: "00000000-0000-4000-8000-000000000018",
+    });
+    expect(event.payload.submissionKind).toBe("DEADLINE");
+    expect(event.occurredAt).toBe("2026-10-08T00:45:00.000Z");
+    expect(() =>
+      submissionEvent({
+        eventId: "00000000-0000-4000-8000-000000000016",
+        attemptId: "00000000-0000-4000-8000-000000000014",
+        examId: "00000000-0000-4000-8000-000000000001",
+        publishedVersionId: "00000000-0000-4000-8000-000000000002",
+        submissionId: "00000000-0000-4000-8000-000000000015",
+        occurredAt: "2026-10-08T00:45:00.000Z",
+        deadline: "2026-10-08T00:46:00.000Z",
+        expired: false,
+        submissionKind: "DEADLINE",
+        correlationId: "00000000-0000-4000-8000-000000000017",
+        causationId: "00000000-0000-4000-8000-000000000018",
+      }),
+    ).toThrow("Invalid request");
   });
 });

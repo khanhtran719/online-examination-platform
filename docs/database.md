@@ -1,6 +1,6 @@
 # PostgreSQL implementation
 
-Scope: DB-01–11 foundation, Phase04 Identity adapters, local Catalog persistence and local Assessment attempt persistence. PostgreSQL17, parameterized pg infrastructure (ADR-001). Ten source migrations exist. 0001–0009 keep their bytes. `0009_catalog_question_points.sql` is the forward Catalog column. `0010_attempt_revision.sql` adds required `assessment.attempts.revision`. Identity real-PG/HTTP/retention tests and [local diagnostic](../experiments/identity-local/README.md) exist. Catalog draft, publication, projection and import flows have disposable-database tests. Assessment start, save and submit flows have disposable-database tests. Grading persistence and AWS saturation remain pending. [Foundation review](phase-03-review.md), [Identity review](phase-04-review.md), [migration runbook](runbooks/database-migrations.md), [decision](adr/004-postgresql-durability.md).
+Scope: DB-01–11 foundation, Phase04 Identity adapters, local Catalog persistence and local Assessment attempt persistence. PostgreSQL17, parameterized pg infrastructure (ADR-001). Eleven source migrations exist. 0001–0010 keep their bytes. `0009_catalog_question_points.sql` is the forward Catalog column. `0010_attempt_revision.sql` adds required `assessment.attempts.revision`. Identity real-PG/HTTP/retention tests and [local diagnostic](../experiments/identity-local/README.md) exist. Catalog draft, publication, projection and import flows have disposable-database tests. Assessment start, save and submit flows have disposable-database tests. Grading persistence and AWS saturation remain pending. [Foundation review](phase-03-review.md), [Identity review](phase-04-review.md), [migration runbook](runbooks/database-migrations.md), [decision](adr/004-postgresql-durability.md).
 
 ## Placement and persistence decision
 
@@ -50,7 +50,7 @@ Primary/unique constraints provide their own indexes. Additional indexes in 0002
 | Bank browse / reference protection | bank_questions_cursor; draft_questions_source |
 | Snapshot question page | frozen_questions_page(version_id,section_id,position,id); options/key membership PKs; bounded set query |
 | Active start / attempt limit | one_active_attempt partial UNIQUE(user_id,exam_id); attempts_limit |
-| Deadline sweep | attempts_deadline(deadline,id) WHERE IN_PROGRESS; bounded SKIP LOCKED batches in future adapter |
+| Deadline sweep | attempts_deadline(deadline,id) WHERE IN_PROGRESS; one row `FOR UPDATE SKIP LOCKED` per short transaction. At a few thousand due rows the unconstrained plan can still be a sequential scan; the index appears when sequential scan is disabled |
 | Candidate history / admin submissions | attempts_history(user_id,started_at DESC,id DESC); attempts_admin(version_id,started_at DESC,id DESC) |
 | Answer save / load | answers PK(attempt_id,question_id), selections PK prefix; attempt PK row lock |
 | Result / ranking | result attempt PK, completion_sequence unique; leaderboard_order(version_id,earned DESC,submitted_at,attempt_id) INCLUDE user/sequence |
@@ -87,6 +87,14 @@ Implementation references: [PostgreSQL constraints](https://www.postgresql.org/d
 2026-10-07: [ADR-008](adr/008-persistence-evaluation.md) retains pg for current Identity after a local TypeORM/Sequelize comparison. [Evidence](../experiments/persistence-comparison/README.md) separates raw/mapped paths and preserves the current SQL migrations/ports; this is not RDS capacity or cost acceptance. ORM packages are experiment-only, not runtime dependencies.
 
 PostgresDatabase.close now stops new admissions, waits for already-admitted active and queued operations to release or fail within their existing bounds, then calls pool.end. Repeated close returns the same completion promise. A real-PG regression first reproduced queued work timing out during early pool.end, then passed with the fix. Process-level shutdown deadlines/admission gates still own the external request drain; calling close from inside its own active transaction is not a supported use. Full53 database/Identity integration cases passed, including the existing SMTP flow; no schema/permission/migration changes were made.
+
+## Submission kind and expiry role — 2026-10-08
+
+`0011_submission_kind.sql` adds `assessment.attempts.submission_kind`. Accepted rows backfill to `MANUAL`. Unsubmitted rows stay null. The check requires kind null exactly when `submitted_at` is null, kind in `MANUAL`/`DEADLINE`, and `DEADLINE` only when `expired` is true. Trigger `immutable_submission_kind` raises 23514 `Accepted submission is immutable` if kind changes after acceptance. `0001`–`0010` are not edited. There is no down migration. Reviewed rollback SQL is in [expiry worker runbook](runbooks/expiry-worker.md).
+
+`examination_expiry_worker` is `NOLOGIN` in [roles.sql](../infra/database/roles.sql). `npm run db:local` creates login `examination_expiry_local` in that group. Migration 0011 grants `USAGE` on `assessment` and `platform`, `SELECT` on `assessment.attempts`, `UPDATE` of the submission columns (`status`, `submitted_at`, `submission_id`, `submission_event_id`, `expired`, `revision`, `submission_kind`), and `INSERT` on `platform.outbox`. It does not grant session secrets, answer keys, answer rows, email ciphertext or `assessment.results`. Column `UPDATE` on `status` can still set `FAILED`; the sweep application does not. Keep this login off the API.
+
+`0004` checked completion at `COMMIT` as `SECURITY INVOKER` and read `assessment.results`. That made an expiry commit fail 42501. `0011` replaces the same predicate as `SECURITY DEFINER` with `search_path = pg_catalog` and revokes `EXECUTE` from `PUBLIC`. `EXPIRED` with no result commits. `PROCESSING`, or `COMPLETED` without a matching result, still raises 23514. The long-lived development database was not migrated by this increment.
 
 ## Catalog publication and projection diagnostics — 2026-10-07
 

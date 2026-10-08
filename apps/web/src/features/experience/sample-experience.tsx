@@ -7,31 +7,35 @@ import styles from "./experience.module.css";
 
 export function SampleExperience() {
   useTitle("Trải nghiệm 3 câu mẫu");
+  return <SampleExperiencePanel />;
+}
+
+export function SampleExperiencePanel({ embedded = false }: { embedded?: boolean }) {
   const [state, dispatch] = useReducer(sampleReducer, undefined, initialSample);
   const content = useRef<HTMLDivElement>(null);
-  const firstRender = useRef(true);
   const question = SAMPLE_QUESTIONS[state.current] ?? SAMPLE_QUESTIONS[0];
   const answered = state.choices.filter((choice) => choice.length).length;
   const marked = state.marked[state.current] ?? false;
   const currentQuestion = state.current;
   const currentStage = state.stage;
+  const previous = useRef({ question: currentQuestion, stage: currentStage });
+  const Heading = embedded ? "h3" : "h1";
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
+    if (previous.current.question === currentQuestion && previous.current.stage === currentStage)
       return;
-    }
+    previous.current = { question: currentQuestion, stage: currentStage };
     content.current?.querySelector<HTMLElement>("[tabindex='-1']")?.focus({ preventScroll: true });
   }, [currentQuestion, currentStage]);
   return (
-    <div className={styles.workspace} ref={content}>
+    <div className={`${styles.workspace} ${embedded ? styles.embedded : ""}`} ref={content}>
       {state.stage !== "questions" ? (
-        <SampleSummary state={state} dispatch={dispatch} />
+        <SampleSummary state={state} dispatch={dispatch} embedded={embedded} />
       ) : (
         <>
           <div className={styles.roomTop}>
             <div>
               <p className={styles.eyebrow}>Phòng thi mẫu</p>
-              <h1>Vào nhịp với 3 câu hỏi</h1>
+              <Heading>Vào nhịp với 3 câu hỏi</Heading>
             </div>
             <span className={styles.sampleLabel}>Trải nghiệm minh họa</span>
           </div>
@@ -69,7 +73,7 @@ export function SampleExperience() {
               <p className={styles.legend}>✓ Đã trả lời · ● Đánh dấu</p>
               <div className={styles.reminder}>
                 <span aria-hidden="true">◷</span>
-                <h2>Cứ bình tĩnh.</h2>
+                <h3>Cứ bình tĩnh.</h3>
                 <p>Đây là bài mẫu, không giới hạn thời gian. Bạn có thể quay lại bất kỳ câu nào.</p>
               </div>
               <Link className={styles.backLink} to="/">

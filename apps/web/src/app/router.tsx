@@ -10,6 +10,7 @@ import {
   VerifyPage,
 } from "../features/auth/auth-pages";
 import { HomePage } from "../features/experience/home-page";
+import { SampleExperience as SampleExperiencePage } from "../features/experience/sample-experience";
 import { BrowsePage, DashboardPage, ExamDetailPage } from "../features/catalog/catalog-pages";
 import { ProfilePage } from "../features/profile/profile-page";
 import { SkeletonLines } from "../shared/ui/ui";
@@ -29,11 +30,6 @@ function load(factory: () => Promise<{ default: ComponentType }>) {
 
 const ExamRoomPage = load(() =>
   import("../features/assessment/exam-room").then((mod) => ({ default: mod.ExamRoomPage })),
-);
-const SampleExperiencePage = load(() =>
-  import("../features/experience/sample-experience").then((mod) => ({
-    default: mod.SampleExperience,
-  })),
 );
 const StatusPage = load(() =>
   import("../features/results/result-pages").then((mod) => ({ default: mod.StatusPage })),

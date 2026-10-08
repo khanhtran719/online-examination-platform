@@ -25,7 +25,33 @@ const attemptColumns = `
   END AS "submittedAt",
   expired,
   replay_pending AS "replayPending",
-  submission_id AS "submissionId"
+  submission_id AS "submissionId",
+  submission_kind AS "submissionKind"
+`;
+
+/** Discovery predicate for EXPLAIN and the claim. The predicate is adapter-owned. */
+export const claimDueSql = `
+WITH locked AS MATERIALIZED (
+  SELECT
+    ${attemptColumns}
+  FROM
+    assessment.attempts
+  WHERE
+    status = 'IN_PROGRESS'
+    AND deadline <= clock_timestamp()
+    AND NOT (id = ANY($1::uuid[]))
+  ORDER BY
+    deadline,
+    id
+  LIMIT
+    1
+  FOR UPDATE SKIP LOCKED
+)
+SELECT
+  locked.*,
+  ${stamp("clock_timestamp()", "serverNow")}
+FROM
+  locked
 `;
 
 function record(row: AttemptRecord): AttemptRecord {
@@ -82,6 +108,40 @@ export class PostgresAttemptRepository implements AttemptRepository {
       )
     ).rows[0];
     return row ? { ...record(row), serverNow: row.serverNow } : null;
+  }
+
+  async claimDue(excludeIds: readonly string[]): Promise<LockedAttempt | null> {
+    const row = (await this.db.query<LockedAttempt>("lock.acquire", claimDueSql, [[...excludeIds]]))
+      .rows[0];
+    return row ? { ...record(row), serverNow: row.serverNow } : null;
+  }
+
+  async dueBacklog(): Promise<{ due: number; oldestDueAgeMs: number | null }> {
+    const row = (
+      await this.db.query<{ due: number; oldestDueAgeMs: number | null }>(
+        "assessment.read",
+        `
+        SELECT
+          count(*)::int AS due,
+          CASE
+            WHEN min(deadline) IS NULL THEN NULL
+            ELSE (extract(epoch FROM (clock_timestamp() - min(deadline))) * 1000)::float8
+          END AS "oldestDueAgeMs"
+        FROM
+          assessment.attempts
+        WHERE
+          status = 'IN_PROGRESS'
+          AND deadline <= clock_timestamp()
+        `,
+      )
+    ).rows[0];
+    return {
+      due: Number(row?.due ?? 0),
+      oldestDueAgeMs:
+        row?.oldestDueAgeMs === null || row?.oldestDueAgeMs === undefined
+          ? null
+          : Number(row.oldestDueAgeMs),
+    };
   }
 
   async insert(input: {
@@ -267,6 +327,7 @@ export class PostgresAttemptRepository implements AttemptRepository {
     submissionId: string;
     eventId: string;
     expired: boolean;
+    submissionKind: "MANUAL" | "DEADLINE";
   }): Promise<AttemptRecord | null> {
     const row = (
       await this.db.query<AttemptRecord>(
@@ -279,6 +340,7 @@ export class PostgresAttemptRepository implements AttemptRepository {
           submission_id = $5,
           submission_event_id = $6,
           expired = $7,
+          submission_kind = $8,
           revision = revision + 1
         WHERE
           id = $1
@@ -295,6 +357,7 @@ export class PostgresAttemptRepository implements AttemptRepository {
           input.submissionId,
           input.eventId,
           input.expired,
+          input.submissionKind,
         ],
       )
     ).rows[0];

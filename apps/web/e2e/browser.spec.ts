@@ -59,7 +59,7 @@ test.describe("demo", () => {
     for (const width of widths) {
       await page.setViewportSize({ width, height: width < 768 ? 720 : 900 });
       await page.goto("/");
-      await expect(page.getByRole("status")).toContainText("Dữ liệu mẫu");
+      await expect(page.getByRole("status").filter({ hasText: "Dữ liệu mẫu" })).toBeVisible();
       await expect(page.getByRole("heading", { name: /Vào nhịp thi/ })).toBeVisible();
       await shot(page, `home-${width}`);
       if (width === 1440 || width === 320) await axe(page, `home-${width}`);

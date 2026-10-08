@@ -567,7 +567,8 @@ describe("Assessment durability on restricted PostgreSQL", () => {
         submission_id = gen_random_uuid(),
         submission_event_id = gen_random_uuid(),
         expired = false,
-        replay_pending = true
+        replay_pending = true,
+        submission_kind = 'MANUAL'
       WHERE
         id = $1
       `,

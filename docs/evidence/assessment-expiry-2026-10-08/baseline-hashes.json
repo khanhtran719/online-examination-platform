@@ -1,0 +1,348 @@
+{
+  "capturedAt": "2026-10-08",
+  "purpose": "ATT-07 baseline before scheduler implementation",
+  "sources": [
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0001_capability_schema.sql",
+      "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0002_query_indexes.sql",
+      "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0003_runtime_privileges.sql",
+      "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0004_durable_state_guards.sql",
+      "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0005_frozen_category.sql",
+      "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0006_immutable_submission.sql",
+      "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0007_identity_runtime.sql",
+      "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0008_identity_operations.sql",
+      "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0009_catalog_question_points.sql",
+      "sha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0010_attempt_revision.sql",
+      "sha256": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/dto/assessment.dto.ts",
+      "sha256": "487b74c6dba2f906bbd37191718c6cba27cf70e4461d116f634028a993752582"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/assessment-cursor.port.ts",
+      "sha256": "beb4a40c1a44ba14d7b9391e912cf2ab1382e04cd41ee5f081a80d7c8148d457"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/attempt-query.port.ts",
+      "sha256": "ef82c3fea80c6c0cbc72076884d54237ad2e7631f32706dd05263f12e292049e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/question-page-sizer.port.ts",
+      "sha256": "5b2c92e2012114bfffba28b2174a7241e302122829a9fff9cb91d2741ec38ebc"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/submission-outbox.ts",
+      "sha256": "6262d02316647cf8298c3ad01f5b85c4763169c749d5c27f1376a54e07b3ac96"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/assessment.service.ts",
+      "sha256": "146fac35822e63545ab0c1e0e40c3f8dd128ca81b01ab5edb8d9eeef879e973f"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/assessment.module.ts",
+      "sha256": "c34e51794b8f04d6b6241be7932a4adb7552ab4252a3b3524e2ab15a6abaae58"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/assessment-policy.unit.spec.ts",
+      "sha256": "84d588620685def01f6488e8080a9e7286162a830d2483385d57494b299cfd36"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/attempt.unit.spec.ts",
+      "sha256": "29a8ab8e3907d95674a957f9ed5633aaa21855007914d9fbe4e2f3fc87114cdb"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/scoring.unit.spec.ts",
+      "sha256": "4330be1d683d6f3576ce50337a442137440dfdf539c37539adfa88ddf667969e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/assessment-policy.ts",
+      "sha256": "4c60bd245b34b76b9d9a73818904690f63dbc9ea8e2c50a140adb4c5fa3e12ea"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/assessment.error.ts",
+      "sha256": "cbb9f3180bb8694247f42399a0820dc3ffca7ce0ee05773a7f7f854a948bc2b9"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/attempt.ts",
+      "sha256": "a81a4439e1a0ce95ed3bd82608dd918e3065fa5f82bb4de6ddbff29419883fb0"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/repositories/attempt.repository.ts",
+      "sha256": "978dfa478454c5781ca00152300002a5610ac9f0237c8d77618da421ba50698a"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/scoring.ts",
+      "sha256": "5784d2d6c66c038c720e7fd8e0251022646a0f0383bff91a42dc3dc5fce22634"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/cursor/assessment-cursor.ts",
+      "sha256": "1d8c193b02e4d5a491174c4d81e4a7af7e4205408bc41e2238507e23a2d82340"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/http/http-question-page-sizer.ts",
+      "sha256": "457c2bdeab08d625d96de2fc68b4b776f8f3655fa5b57e4563e0557d8e2f8482"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.query.ts",
+      "sha256": "eefd3bd212b9479994eaa7480d7be18d22bbd21c1dd43d5f4353b8ee571b8e94"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.repository.ts",
+      "sha256": "3f7998be4e27951c7884f11fa4141f094695ccd3a8d61fc58d57dc84f0a83227"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-submission-outbox.ts",
+      "sha256": "0c34ee038f076af8d7aafeb942661e9348b01a7087cf937648663849b974bca6"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/presentation/http/assessment.controller.ts",
+      "sha256": "3d6f44fdebd6f8ba9ea3f0803ec9ef433f78943cd49cfca2fdc203fa3ea82aa3"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/presentation/http/dto/assessment.dto.ts",
+      "sha256": "94b33003bddb5fe44b45e312b2898cdd81109597318ef2deaef8e8ed30a45029"
+    },
+    {
+      "path": "infra/database/roles.sql",
+      "sha256": "591eecff302fc14a076e4d9f8238547c9e8fd91144e3bb90e6b3eea7876d3a51"
+    },
+    {
+      "path": "docs/contracts/attempt-submitted.v1.schema.json",
+      "sha256": "2ed41eb88f8079fd34b7c7e09b77e08373f79a08c7482196c1dab0b2a334824d"
+    },
+    {
+      "path": "docs/implementation-roadmap.md",
+      "sha256": "2f319283fba86052bf87f15eb67d41af9a147e32d6a2cf157f1892875ec8e75e"
+    },
+    {
+      "path": "docs/project-profile.md",
+      "sha256": "9b98b7d594dca0b0c75b169093ef7d7b7341dc8821ceac0b4f00d8f483f7dcd5"
+    }
+  ],
+  "historicalEvidence": [
+    {
+      "path": "docs/evidence/assessment-2026-10-07/32982df5-10c4-4e5d-aecc-fb0e3cde5938.json",
+      "sha256": "0808cde27a1197b094b62cdc6127290f786c6df4970866dc0a4ab23b5bb44142"
+    },
+    {
+      "path": "docs/evidence/assessment-2026-10-07/README.md",
+      "sha256": "7a85aeea83a91b09d19fd8cc6344a512dfb7a00dbe0744d892638372613bbaec"
+    },
+    {
+      "path": "docs/evidence/assessment-2026-10-07/d5b1e0e9-cede-4782-b2a6-952e8da20614.json",
+      "sha256": "e3f31ea4bf84c6f4fe24fd44136e6904ef15cd36f60186161393e827bed4376b"
+    },
+    {
+      "path": "docs/evidence/assessment-2026-10-07/d5e00431-e158-4863-850a-9f47cc47c60c.json",
+      "sha256": "2cc779789e4adb9a520807154728d0338515a418d922df0a204cd9461293bf31"
+    },
+    {
+      "path": "docs/evidence/assessment-2026-10-07/summary.md",
+      "sha256": "0ca3a6a16b368a15657fd66eb2d003bd714875ad627e7b39af4558e3c2ae2bd1"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/README.md",
+      "sha256": "78aa7f6eb766c8526a44fb0e8c3f92199c98beba5aa8cf2124ded2a3677a14e0"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/added-security-test-harness-error.log",
+      "sha256": "b5dcd24083b8441644400b77dadd2ed44d8ca1679d01572cd84c8930859879a6"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/after/11e84464-706c-46ad-b0a7-827bf3c88feb.json",
+      "sha256": "a2b6701dbd6c92803335a50fdede6e12299cacbd2a53fa1d0d68f48dfc29f4b9"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/after/11e84464-706c-46ad-b0a7-827bf3c88feb.summary.md",
+      "sha256": "3a4829ccf8c32c14e069ad9d72f255715fe9ccb13a3a87f7c1cb20c0a0086576"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/after/9e712dfe-c0f4-485f-9510-fe3e262e2b28.json",
+      "sha256": "a2b8af18577ac08f23d5c488f20647f72f0287e0d868726cce4343fdb8d9b63d"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/after/9e712dfe-c0f4-485f-9510-fe3e262e2b28.summary.md",
+      "sha256": "622139a1bfa766f86748eed90f545261ff01f3401f9e31931397a12bad58aa6c"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/assessment-green.log",
+      "sha256": "e2fa3fa047a72881192570649bfeca8a6244d9e94ed1e98b5de1efae12e29188"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/baseline.json",
+      "sha256": "fda51328b864f3d5958cf924d3cd2638718c20124f83320173919c44336a1279"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/before/8b500b7f-f8ac-41f2-a536-a38f8b25442a.json",
+      "sha256": "86c90655c8bf00b5694af3d35dd9ef09123f9562c1c58e603ab281896d4f4c8d"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/before/8b500b7f-f8ac-41f2-a536-a38f8b25442a.summary.md",
+      "sha256": "e83d798230d3f7e15d90677144e5df915d3358cfe6dfa4788d3e73a19f57e05c"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/checks.json",
+      "sha256": "27e56ae38cbf044cbd2cf930ae11308e3e07ad7b3d1e2f9a8bb501398809566c"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/comparison.json",
+      "sha256": "25cd3e45f32fc432c231316bb340c56ac1ceea72531ec379c2f25bf3e4a3c309"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/diagnostic-after.log",
+      "sha256": "8ec0770377aa153a3c22cb5edcd41d637142cc3ee931aec27e803aebb81eb0c2"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/diagnostic-final.log",
+      "sha256": "2e382324ceefdeead48b2818692907aa7774e29387dbff55a3193afa6dd1a565"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/format-final.log",
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/identity-https.log",
+      "sha256": "25cc5f2b734dd32ee82b2a8dfcd90c35a29fc7935a2cb8f3706b268a0b53de28"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/integration-final.log",
+      "sha256": "387bceca037ff1c4379b91e81599d5ded1a125a2581a3ed098b884475626e034"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/integration-identity-catalog-db.log",
+      "sha256": "32baa7a62e72fbfb85409c61d2a4b7c257909b1882b57c8c8f3804a0fd603a1e"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/intermediate.log",
+      "sha256": "8eb60574835cd79cc94604cd2b7a03060fb8c88e558e0d15048413a923fda611"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/lint.log",
+      "sha256": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/manifest.json",
+      "sha256": "cf78481bc7e764bcbd6dffe0010a671d6f4f7d59f20cfa08361537a4e97bc570"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/preservation.json",
+      "sha256": "8075e08a3ed95eb0a3d4a2f88826e16a1a50c396d2daf9ba51e9a5ec89695ab7"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/quality-final.log",
+      "sha256": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/red.log",
+      "sha256": "910f838cf0cf914a4fe18c0f4463bcda1baea6fa9d3f017125228ea3bda4071e"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/typecheck-final.log",
+      "sha256": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/unit-tooling-web.log",
+      "sha256": "4ac3349aab9078c6d79d9ac16664e102c272451bf8897bb49b3bc1a67cbe3405"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/README.md",
+      "sha256": "2ff1e5afa5ddc1150ec4da7627224bb29e82bb9768b89ecb6d8d303d4bb085e0"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/baseline.json",
+      "sha256": "d7e37ea56411c000d660c1d8bb2c13a5b7ac669d733cfc72b933172e8b1d28c1"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/checks.json",
+      "sha256": "0e6ff65ed732a1e8ff51aea88becea00eade0ffda390065241449b503e9ccd97"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/identity-https-summary.json",
+      "sha256": "abc802dc6d1e3165c1257535a3d8b19af50869b1edd798ce59d9853ed840258b"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/initial-probes.json",
+      "sha256": "95ee4ea39018d860055ca48105ff166ebee3f5acf770223449e301977bd6c347"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/initial-review.log",
+      "sha256": "a2e410041e49dfd95ebce99e4731d24bf42839ba0e848c9ea91513014bcc1235"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/build.log",
+      "sha256": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/final-quality.log",
+      "sha256": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/https.log",
+      "sha256": "ee425fedafa542de0d3ab9b069877a8e640ad26ffc2998ecea3586485322627b"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/integration.log",
+      "sha256": "757545266f750185f434e4ace6e7ead3a0f757445c4fc76715f3cac1868fb32f"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/lint.log",
+      "sha256": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/typecheck.log",
+      "sha256": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/unit.log",
+      "sha256": "3c7bea994cc4c765ce05aa3c0f5a87663132fdc6ca36e7f22ada1f5d4cc13d0c"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/manifest.json",
+      "sha256": "ebebe2677b60c04deb559503e483335ba82ba0cd0eca62b80e351d63682aff3c"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/probes.json",
+      "sha256": "58eb6e316cbd2fb7f0f2eb7f224308ce98db679b233f7555a6010fc74b050067"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/review-final.log",
+      "sha256": "c93bb87632a8c33748187d4d4568025e1c560c50c925931ac72adb1b679db5da"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/review.jest.cjs",
+      "sha256": "cb6e82fe8a776a669c46233ec89e4ef50920dbd9b01e74c3825c8ff4516f95c9"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/review.spec.ts",
+      "sha256": "bcf1f4fcef0d191517d63cdb08472959b2937d7669df44a979d14d08770db445"
+    }
+  ]
+}

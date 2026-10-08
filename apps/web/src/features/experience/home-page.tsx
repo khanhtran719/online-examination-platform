@@ -4,6 +4,7 @@ import { useTitle } from "../../app/use-title";
 import { CATEGORIES } from "../../shared/api/dto";
 import { categoryLabel } from "../../shared/format";
 import { HeroScene } from "./hero-scene";
+import { SampleExperiencePanel } from "./sample-experience";
 import styles from "./public.module.css";
 
 const faqs = [
@@ -24,6 +25,35 @@ const faqs = [
   },
 ];
 
+const categories = {
+  TOEIC: "Luyện tập trắc nghiệm tiếng Anh theo mục tiêu của bạn.",
+  IELTS: "Khám phá các đề trắc nghiệm kiến thức tiếng Anh.",
+  IT_CERTIFICATION: "Củng cố nền tảng và kiến thức công nghệ thông tin.",
+  UNIVERSITY: "Ôn tập kiến thức và làm quen với nhịp thi đại học.",
+  RECRUITMENT: "Thực hành tư duy và kiến thức cho tuyển dụng.",
+  CORPORATE: "Đánh giá kiến thức trong chương trình nội bộ.",
+};
+const benefits = [
+  {
+    icon: "≡",
+    title: "Thấy rõ tiến độ",
+    copy: "Biết câu nào đã làm, câu nào còn chờ. Phiếu câu hỏi giúp bạn nhìn toàn cảnh và quay lại đúng chỗ.",
+    note: "Phiếu câu hỏi rõ ràng",
+  },
+  {
+    icon: "↔",
+    title: "Giữ mạch làm bài",
+    copy: "Chuyển câu linh hoạt, đánh dấu điều cần xem lại. Từng lựa chọn và trạng thái lưu luôn có thông báo riêng.",
+    note: "Chọn · Đánh dấu · Xem lại",
+  },
+  {
+    icon: "✓",
+    title: "Rõ ràng khi kết thúc",
+    copy: "Kiểm tra lựa chọn trước khi nộp, theo dõi xử lý và xem kết quả theo chính sách của đề thi.",
+    note: "Nộp bài và theo dõi kết quả",
+  },
+];
+
 export function HomePage() {
   useTitle("Vào nhịp thi");
   const session = useSession();
@@ -33,15 +63,12 @@ export function HomePage() {
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <p className={styles.heroEyebrow}>
-              <span aria-hidden="true" />
-              Nền tảng thi trắc nghiệm trực tuyến
+              <span aria-hidden="true" /> Nền tảng thi trắc nghiệm trực tuyến
             </p>
             <h1 id="home-title">
               Vào nhịp thi.
               <br />
-              <span>Tập trung vào</span>
-              <br />
-              từng câu trả lời.
+              <span>Tập trung vào từng câu trả lời.</span>
             </h1>
             <p className={styles.intro}>
               Một phòng thi rõ ràng, từ câu hỏi đầu tiên đến khi nộp bài. Theo dõi tiến độ, đánh dấu
@@ -51,90 +78,85 @@ export function HomePage() {
               <Link className={styles.heroPrimary} to="/experience">
                 Trải nghiệm 3 câu mẫu <span aria-hidden="true">→</span>
               </Link>
-              <p>Thử ngay, không cần tài khoản</p>
+              <Link
+                className={styles.heroSecondary}
+                to={session.status === "authenticated" ? "/exams" : "/register"}
+              >
+                {session.status === "authenticated" ? "Đi tới đề thi" : "Tạo tài khoản thí sinh"}
+              </Link>
             </div>
-            <Link
-              className={styles.readyLink}
-              to={session.status === "authenticated" ? "/exams" : "/register"}
-            >
-              {session.status === "authenticated" ? "Đi tới đề thi" : "Đã sẵn sàng? Tạo tài khoản"}
-              <span aria-hidden="true">↗</span>
-            </Link>
+            <p className={styles.heroNote}>Thử ngay, không cần tài khoản</p>
+            <div className={styles.heroFacts} aria-label="Trải nghiệm phòng thi">
+              <div>
+                <strong>Chuyển câu rõ ràng</strong>
+                <span>Đi theo nhịp của bạn</span>
+              </div>
+              <div>
+                <strong>Đánh dấu để xem lại</strong>
+                <span>Quay lại khi cần</span>
+              </div>
+              <div>
+                <strong>Biết trạng thái lưu</strong>
+                <span>Xác nhận từ máy chủ</span>
+              </div>
+            </div>
           </div>
           <HeroScene />
         </div>
-        <div className={styles.benefits} aria-label="Trải nghiệm phòng thi">
-          <div>
-            <span aria-hidden="true">✓</span>
-            <div>
-              <h2>Thấy rõ tiến độ</h2>
-              <p>Biết câu nào đã làm, câu nào còn chờ.</p>
-            </div>
-          </div>
-          <div>
-            <span aria-hidden="true">→</span>
-            <div>
-              <h2>Giữ mạch làm bài</h2>
-              <p>Chuyển câu và quay lại khi cần.</p>
-            </div>
-          </div>
-          <div>
-            <span aria-hidden="true">↗</span>
-            <div>
-              <h2>Rõ ràng khi kết thúc</h2>
-              <p>Xem lại lựa chọn trước khi nộp.</p>
-            </div>
-          </div>
-        </div>
       </section>
-      <section className={styles.how} aria-labelledby="how-title">
-        <div className={styles.howIntro}>
-          <p className={styles.eyebrow}>Bắt đầu thật nhẹ nhàng</p>
-          <h2 id="how-title">
-            Ba câu nhỏ.
-            <br />
-            Một cảm nhận rõ ràng.
-          </h2>
+      <section
+        id="trai-nghiem-mau"
+        className={styles.sampleSection}
+        aria-labelledby="home-sample-title"
+      >
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>TRẢI NGHIỆM TRƯỚC KHI BẮT ĐẦU</p>
+          <h2 id="home-sample-title">Thử ngay 3 câu mẫu.</h2>
           <p>
-            Thử chọn đáp án, đánh dấu một câu và xem kết quả mẫu. Cảm nhận cách làm bài trước khi
-            bắt đầu.
+            Chọn đáp án, đánh dấu và xem kết quả mẫu. Không tạo lượt thi, không giới hạn thời gian.
           </p>
-          <Link className={styles.textLink} to="/experience">
-            Thử phòng thi mẫu <span aria-hidden="true">→</span>
-          </Link>
         </div>
-        <ol className={styles.steps}>
-          <li>
-            <span>1</span>
-            <div>
-              <h3>Khám phá phòng thi</h3>
-              <p>Vào ngay với bộ ba câu minh họa.</p>
-            </div>
-          </li>
-          <li>
-            <span>2</span>
-            <div>
-              <h3>Làm theo nhịp của bạn</h3>
-              <p>Thử câu một đáp án, nhiều đáp án và đúng / sai.</p>
-            </div>
-          </li>
-          <li>
-            <span>3</span>
-            <div>
-              <h3>Sẵn sàng bắt đầu?</h3>
-              <p>Tạo tài khoản, xác nhận email, rồi chọn đề và làm bài.</p>
-            </div>
-          </li>
-        </ol>
+        <SampleExperiencePanel embedded />
+      </section>
+      <section className={styles.values} aria-labelledby="values-title">
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>ĐƯỢC THIẾT KẾ CHO SỰ TẬP TRUNG</p>
+          <h2 id="values-title">Một nhịp thi. Ba điều rõ ràng.</h2>
+        </div>
+        <div className={styles.benefits}>
+          {benefits.map((benefit) => (
+            <article key={benefit.title}>
+              <span className={styles.benefitIcon} aria-hidden="true">
+                {benefit.icon}
+              </span>
+              <h3>{benefit.title}</h3>
+              <p>{benefit.copy}</p>
+              <span className={styles.benefitNote}>{benefit.note}</span>
+            </article>
+          ))}
+        </div>
       </section>
       <section className={styles.categories} aria-labelledby="category-title">
-        <p className={styles.eyebrow}>Tìm đúng hướng của bạn</p>
-        <h2 id="category-title">Một lối vào cho từng mục tiêu.</h2>
+        <div className={styles.sectionHeading}>
+          <div>
+            <p className={styles.eyebrow}>TÌM ĐÚNG HƯỚNG CỦA BẠN</p>
+            <h2 id="category-title">Danh mục đề thi</h2>
+          </div>
+          <Link className={styles.textLink} to="/exams">
+            Khám phá đề thi <span aria-hidden="true">→</span>
+          </Link>
+        </div>
         <div className={styles.categoryLinks}>
-          {CATEGORIES.map((category) => (
+          {CATEGORIES.map((category, index) => (
             <Link key={category} to={`/exams?category=${category}`}>
-              {categoryLabel(category)}
-              <span aria-hidden="true">↗</span>
+              <span className={styles.categoryIcon} aria-hidden="true">
+                {["Aa", "Ab", "</>", "∑", "↗", "≡"][index]}
+              </span>
+              <h3>{categoryLabel(category)}</h3>
+              <p>{categories[category]}</p>
+              <span className={styles.categoryAction}>
+                Xem danh mục <span aria-hidden="true">→</span>
+              </span>
             </Link>
           ))}
         </div>
@@ -144,15 +166,11 @@ export function HomePage() {
         </p>
       </section>
       <section className={styles.faq} aria-labelledby="faq-title">
-        <div>
-          <p className={styles.eyebrow}>Trước khi bắt đầu</p>
-          <h2 id="faq-title">
-            Những điều bạn
-            <br />
-            có thể muốn biết.
-          </h2>
+        <div className={styles.sectionIntro}>
+          <p className={styles.eyebrow}>TRƯỚC KHI BẮT ĐẦU</p>
+          <h2 id="faq-title">Những điều bạn có thể muốn biết.</h2>
         </div>
-        <div>
+        <div className={styles.faqItems}>
           {faqs.map((faq) => (
             <details key={faq.question}>
               <summary>{faq.question}</summary>
@@ -163,8 +181,9 @@ export function HomePage() {
       </section>
       <section className={styles.finalCta} aria-labelledby="try-title">
         <div>
-          <p className={styles.heroEyebrow}>Vào nhịp của bạn</p>
-          <h2 id="try-title">Bắt đầu với câu đầu tiên.</h2>
+          <p className={styles.eyebrow}>VÀO NHỊP CỦA BẠN</p>
+          <h2 id="try-title">Sẵn sàng cho câu đầu tiên?</h2>
+          <p>Thử phòng thi mẫu, rồi chọn mục tiêu tiếp theo của bạn.</p>
         </div>
         <Link className={styles.heroPrimary} to="/experience">
           Trải nghiệm 3 câu mẫu <span aria-hidden="true">→</span>

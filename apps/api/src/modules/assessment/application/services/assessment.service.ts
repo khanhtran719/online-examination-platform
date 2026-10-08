@@ -20,7 +20,6 @@ import {
   assertSelections,
   canonical,
   fitQuestionPage,
-  manualSubmissionEvent,
   normalizeSelections,
   requireFreshKey,
 } from "../../domain/assessment-policy";
@@ -39,6 +38,7 @@ import { AssessmentCursor, AssessmentCursorClaims } from "../ports/assessment-cu
 import { AttemptQuery } from "../ports/attempt-query.port";
 import { QuestionPageSizer } from "../ports/question-page-sizer.port";
 import { SubmissionOutbox } from "../ports/submission-outbox";
+import { acceptAttemptSubmission } from "./attempt-submission";
 
 const CURSOR_TTL_MS = 900_000;
 
@@ -106,18 +106,6 @@ function view(record: AttemptRecord, serverNow: string): AttemptView {
         ? 2
         : 0,
     replayPending: record.replayPending,
-  };
-}
-
-function acceptance(record: AttemptRecord): SubmitReceipt {
-  if (!record.submissionId || !record.submittedAt)
-    throw new AssessmentError("Attempt cannot submit");
-  return {
-    attemptId: record.id,
-    submissionId: record.submissionId,
-    acceptedAt: record.submittedAt,
-    acceptanceState: record.expired ? "EXPIRED" : "SUBMITTED",
-    expired: record.expired,
   };
 }
 
@@ -409,58 +397,24 @@ export class AssessmentService {
       if (!locked) throw notFound();
       const now = locked.serverNow;
       requireFreshKey(key, millis(now));
-      if (locked.submittedAt !== null) {
-        return { replayed: false, httpStatus: 202, body: acceptance(locked) };
-      }
-      const attempt = lifecycle(locked);
-      if (!attempt.submit(millis(now))) {
-        return { replayed: false, httpStatus: 202, body: acceptance(locked) };
-      }
-      const snap = attempt.snapshot();
-      const submissionId = randomUUID();
-      const eventId = randomUUID();
-      const submittedAt = new Date(snap.submittedAt ?? millis(now)).toISOString();
-      const saved = await this.repo.submit({
-        attemptId,
-        userId: current.userId,
-        status: snap.expired ? "EXPIRED" : "SUBMITTED",
-        submittedAt,
-        submissionId,
-        eventId,
-        expired: snap.expired,
+      const accepted = await acceptAttemptSubmission(this.repo, this.outbox, {
+        locked,
+        kind: "MANUAL",
+        correlationId,
+        causationId: key,
       });
-      if (!saved) throw new AssessmentError("Attempt cannot submit");
-      await this.outbox.append(
-        manualSubmissionEvent({
-          eventId,
+      if (accepted.written) {
+        await this.saveReceipt(
+          current.userId,
+          key,
+          digest,
+          "assessment.attempt.submit",
           attemptId,
-          examId: locked.examId,
-          publishedVersionId: locked.publishedVersionId,
-          submissionId,
-          occurredAt: submittedAt,
-          deadline: locked.deadline,
-          expired: snap.expired,
-          correlationId,
-          causationId: key,
-        }),
-      );
-      const body: SubmitReceipt = {
-        attemptId,
-        submissionId,
-        acceptedAt: submittedAt,
-        acceptanceState: snap.expired ? "EXPIRED" : "SUBMITTED",
-        expired: snap.expired,
-      };
-      await this.saveReceipt(
-        current.userId,
-        key,
-        digest,
-        "assessment.attempt.submit",
-        attemptId,
-        202,
-        body,
-      );
-      return { replayed: false, httpStatus: 202, body };
+          202,
+          accepted.receipt,
+        );
+      }
+      return { replayed: false, httpStatus: 202, body: accepted.receipt };
     });
   }
 

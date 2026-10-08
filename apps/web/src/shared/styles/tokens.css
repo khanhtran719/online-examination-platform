@@ -1,10 +1,12 @@
 :root {
-  --color-canvas: #f4f7fa;
+  --color-canvas: #f8f9ff;
   --color-surface: #ffffff;
-  --color-text: #14283f;
+  --color-surface-low: #eff4ff;
+  --color-surface-high: #dce9ff;
+  --color-text: #071c33;
   --color-text-muted: #516176;
   --color-primary: #0f766e;
-  --color-primary-hover: #115e59;
+  --color-primary-hover: #005c55;
   --color-primary-subtle: #e8f5f2;
   --color-border: #d9e2ec;
   --color-focus: #2563eb;
@@ -40,6 +42,7 @@
   --radius-public-detail: 12px;
   --font-heading: "Source Sans 3", "Segoe UI", sans-serif;
   --font-body: "Noto Sans", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;

@@ -1,6 +1,7 @@
 .toolbar {
   flex: none;
-  background: var(--color-surface);
+  background: var(--color-brand-canvas);
+  color: var(--color-brand-text);
   border-bottom: 1px solid var(--color-border);
   padding: 12px 24px;
   display: grid;
@@ -25,16 +26,22 @@
   background: var(--color-brand-accent);
   color: var(--color-brand-canvas);
   font: 700 32px/32px var(--font-heading);
-  text-align: center;
-  transform: rotate(-6deg);
-  box-shadow: 2px 3px 0 var(--color-brand-edge);
+  display: grid;
+  place-items: center;
 }
 .roomIdentity > strong {
   font: 600 22px/28px var(--font-heading);
 }
 .roomIdentity > button {
   font-size: 12px;
-  color: var(--color-text-muted);
+  color: var(--color-brand-muted);
+}
+.roomIdentity > button:hover {
+  background: var(--color-brand-surface);
+  color: var(--color-brand-text);
+}
+.toolbar :focus-visible {
+  outline-color: var(--color-brand-accent);
 }
 .saveStatus {
   display: flex;
@@ -42,38 +49,40 @@
   gap: 8px;
   max-width: 320px;
   font-size: 13px;
-  color: var(--color-text-muted);
+  color: var(--color-brand-muted);
 }
 .saveStatus > span {
   flex: none;
   font-size: 18px;
 }
 .saveStatus[data-phase="saved"] {
-  color: var(--color-primary);
+  color: var(--color-brand-accent);
 }
 .saveStatus:is([data-phase="offline"], [data-phase="conflict"], [data-phase="unconfirmed"]) {
-  color: var(--color-warning-text);
+  color: #fddba0;
 }
 .timerGroup {
   display: grid;
   gap: 2px;
-  border-left: 1px solid var(--color-border);
-  padding-left: 20px;
+  border: 1px solid var(--color-brand-border);
+  border-radius: 10px;
+  background: #06161d;
+  padding: 8px 16px;
   min-width: 126px;
 }
 .timerGroup > span {
   font-size: 10px;
   line-height: 14px;
-  color: var(--color-text-muted);
+  color: var(--color-brand-muted);
   letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 .timer {
-  font: 700 32px/36px var(--font-heading);
+  font: 700 28px/34px var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 .timerGroup[data-urgent="true"] .timer {
-  color: var(--color-warning-text);
+  color: #fddba0;
 }
 .progressRow {
   display: flex;
@@ -82,7 +91,7 @@
   align-items: center;
   font-size: 12px;
   line-height: 20px;
-  color: var(--color-text-muted);
+  color: var(--color-brand-muted);
 }
 .progressRow progress {
   width: min(180px, 100%);
@@ -110,7 +119,6 @@
   min-width: 0;
   padding: 28px;
   border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-primary);
   border-radius: var(--radius-container);
   background: var(--color-surface);
   box-shadow: var(--shadow-surface);
@@ -151,8 +159,9 @@ h2.prompt {
   align-items: start;
   gap: 12px;
   padding: 16px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-control);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--color-surface-low);
   cursor: pointer;
   transition:
     border-color var(--motion-control),
@@ -178,15 +187,16 @@ h2.prompt {
   place-items: center;
   width: 30px;
   height: 30px;
-  font: 600 15px/20px var(--font-heading);
+  font: 600 15px/20px var(--font-mono);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
-  color: var(--color-text-muted);
-  background: var(--color-surface);
+  border-radius: 50%;
+  color: var(--color-text);
+  background: var(--color-surface-high);
 }
 .selected .letter {
   border-color: var(--color-primary);
-  color: var(--color-primary);
+  color: white;
+  background: var(--color-primary);
 }
 .selectedLabel {
   grid-column: 3;
@@ -245,6 +255,7 @@ h2.prompt {
   position: relative;
   padding: 6px 2px;
   font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
   font-weight: 600;
 }
 .cellMark {

@@ -295,7 +295,8 @@ describe("capability schema and runtime privileges", () => {
         status = 'SUBMITTED',
         submitted_at = clock_timestamp(),
         submission_id = $2,
-        submission_event_id = $3
+        submission_event_id = $3,
+        submission_kind = 'MANUAL'
       WHERE
         id = $1
       `,
@@ -676,7 +677,8 @@ describe("capability schema and runtime privileges", () => {
           status = 'COMPLETED',
           submitted_at = clock_timestamp(),
           submission_id = $2,
-          submission_event_id = $3
+          submission_event_id = $3,
+          submission_kind = 'MANUAL'
         WHERE
           id = $1
         `,
@@ -750,7 +752,8 @@ describe("capability schema and runtime privileges", () => {
           status = 'COMPLETED',
           submitted_at = clock_timestamp(),
           submission_id = $2,
-          submission_event_id = $3
+          submission_event_id = $3,
+          submission_kind = 'MANUAL'
         WHERE
           id = $1
         `,

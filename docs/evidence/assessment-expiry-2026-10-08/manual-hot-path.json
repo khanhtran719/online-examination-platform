@@ -1,0 +1,29 @@
+{
+  "before": {
+    "source": "AR-05 final diagnostic 11e84464-706c-46ad-b0a7-827bf3c88feb",
+    "start": 11,
+    "save": 11,
+    "submit": 10,
+    "questions": 4,
+    "answers": 4,
+    "status": 3
+  },
+  "after": {
+    "source": "assessment-expiry.spec.ts keeps the manual hot-path query ceilings",
+    "start": 11,
+    "save": 11,
+    "submit": 10,
+    "questions": 4,
+    "answers": 4,
+    "status": 3
+  },
+  "ceilings": {
+    "start": 12,
+    "save": 11,
+    "submit": 10,
+    "questions": 4,
+    "answers": 4,
+    "status": 3
+  },
+  "note": "Auth-inclusive statement counts. Same ceilings before and after the shared submission core. These are not scheduler throughput."
+}

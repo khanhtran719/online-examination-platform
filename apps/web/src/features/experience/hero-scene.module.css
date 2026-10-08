@@ -5,6 +5,23 @@
   min-width: 0;
   overflow: clip;
   perspective: 1000px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-surface);
+  box-shadow:
+    0 24px 48px -24px rgb(8 28 37 / 25%),
+    0 4px 12px rgb(8 28 37 / 4%);
+}
+.stage::after {
+  content: "";
+  position: absolute;
+  left: 26%;
+  right: 16%;
+  bottom: 55px;
+  height: 24px;
+  background: radial-gradient(ellipse, rgb(8 28 37 / 20%), transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
 }
 .halo {
   position: absolute;
@@ -154,8 +171,8 @@
   font-size: 12px;
 }
 .tagTop {
-  top: 24px;
-  right: 12px;
+  top: 66px;
+  right: 20px;
   animation-delay: -2s;
 }
 .tagTop > span {
@@ -166,7 +183,7 @@
 }
 .tagBottom {
   bottom: 64px;
-  left: 0;
+  left: 20px;
   animation-delay: -4s;
 }
 .tagBottom > span {
@@ -186,23 +203,27 @@
 }
 .caption {
   position: absolute;
-  bottom: 12px;
+  top: 0;
   left: 0;
-  font-size: 12px;
-  color: var(--color-public-muted);
+  right: 0;
+  bottom: auto;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  font: 500 11px/20px var(--font-mono);
+  color: var(--color-text-muted);
 }
 .motion {
   position: absolute;
   z-index: 2;
-  right: 0;
-  bottom: 0;
+  right: 12px;
+  bottom: 8px;
   display: flex;
   align-items: center;
   gap: var(--space-2);
   min-height: 44px;
   padding: var(--space-2);
   font-size: 12px;
-  color: var(--color-public-muted);
+  color: var(--color-text-muted);
   border: 0;
   background: transparent;
 }
@@ -259,8 +280,8 @@
     top: 148px;
   }
   .tagTop {
-    top: 12px;
-    right: 0;
+    top: 56px;
+    right: 12px;
   }
   .tagBottom {
     bottom: 56px;
@@ -300,7 +321,6 @@
     bottom: 56px;
   }
   .caption {
-    bottom: 16px;
     font-size: 10px;
   }
   .motion {

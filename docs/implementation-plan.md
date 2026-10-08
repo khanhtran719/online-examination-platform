@@ -1,5 +1,41 @@
 # Implementation plan
 
+## Active scope — ATT-07 deadline sweep, 2026-10-08
+
+Owner: Assessment. Flow: WRITE. One short transaction per attempt. Claim and effect commit together, so this increment does not add a lease or fencing table. ATT-01–06 and CAT-09–10 stay accepted. Scoring, dispatcher/SQS, result/history, retention, Web and AWS stay out.
+
+Invariants: only `IN_PROGRESS` rows whose deadline has arrived move to `EXPIRED` with `expired=true`, `submission_kind=DEADLINE` and one `attempt.submitted.v1` outbox row. Revision increases once. Committed answers stay. A sweep before the post-lock clock is a no-op. A late manual submit stays `MANUAL`. Repeat sweep, two workers and a manual race keep the winner's submission id, event id, time and kind.
+
+Lock: scheduler takes `assessment.attempts` only, `ORDER BY deadline, id LIMIT 1 FOR UPDATE SKIP LOCKED`, then reads `clock_timestamp()` after `LockRows`. It does not take the Identity user lock, so it cannot invert the HTTP order (user, receipt, attempt). Discovery is not a claim. A list of ids is not ownership. A locked oldest row is skipped; younger due rows proceed; the skipped row is retried on a later claim. Ids whose persist failed are excluded only for the rest of that tick.
+
+Transaction: one attempt, not a batch. One outbox failure rolls back only that attempt and leaves it `IN_PROGRESS`. A transient error does not set `FAILED`. Success counters move only after commit. The sweep does not write an actor-scoped HTTP receipt. Durable attempt identity protects the internal retry. Correlation and causation are server UUIDs.
+
+Provenance: `assessment.attempts.submission_kind` in forward migration `0011`, because the attempt row is the acceptance authority and `0006` does not store kind. Accepted rows backfill to `MANUAL`. Unsubmitted rows stay null. A check and a new immutable trigger protect the value after acceptance. `0001`–`0010` are not edited. The event schema already allows `MANUAL` and `DEADLINE` and is not changed. `DEADLINE` requires `expired=true`. `occurredAt` is the post-lock `acceptedAt`.
+
+Privilege: `examination_expiry_worker` may select, lock and update the submission columns on `assessment.attempts` and insert `platform.outbox`. It cannot read session secrets, answer keys, answer rows or email ciphertext. Grants are proved with that role.
+
+Runtime: `createExpiryWorker` composes private adapters. `workers/scheduler/expiry.main.ts` is lifecycle only. Config is separate and does not load JWT or email keys. Idle poll is 5 seconds plus jitter, with no overlapping loop. A full batch continues immediately. Connection failure backs off and clears `/ready`. `/live` stays the process. `SIGTERM` stops a new attempt transaction, drains the current one, then closes the pool.
+
+Checks: unit policy and core, real PostgreSQL lock/commit/race/crash/grant tests, manual hot-path query ceilings unchanged, compiled scheduler health and restart, and a separate measurement database. Baseline scheduler throughput is unmeasured. Tick ATT-07 only after that evidence. Do not commit or deploy.
+
+Closed locally on 2026-10-08. [Evidence](evidence/assessment-expiry-2026-10-08/README.md). ATT-07 is checked. ATT-10 and ATT-11 stay open with a deadline-sweep subset only. ATT-08, ATT-09, scoring, SQS, Reporting, Web and production stay open.
+
+- [x] Shared `acceptAttemptSubmission` for manual `MANUAL` and sweep `DEADLINE`, without a second copy of the acceptance rules.
+- [x] One short transaction per attempt: `FOR UPDATE SKIP LOCKED`, post-lock `clock_timestamp()`, outbox in the same commit. No lease table.
+- [x] Forward `0011_submission_kind.sql` and `examination_expiry_worker`. `0001`–`0010` bytes match the baseline hashes.
+- [x] Real PostgreSQL/HTTP cases for deadline boundaries, offline and revoked sessions, duplicate ticks, two workers, both race winners, locked oldest row, poison row, outbox rollback, connection death, lost acknowledgement, quota/frozen version, grants, query ceilings, compiled SIGTERM/restart and `/live` versus `/ready`.
+- [x] First measured scheduler runs and one repeated batch-50 run, plus batch 10. Manual statement counts stay 11/11/10 and 4/4/3. No before-scheduler throughput was invented.
+
+## Prior scope — Grok deadline auto-submit handoff COMPLETE, 2026-10-08
+
+User requests the next API implementation prompt. Deliver the [ATT-07 handoff](grok-assessment-expiry-implementation-prompt.md), grounded in the current accepted Assessment source, product/event contracts, role grants and expiry index. This increment edits documentation only; no scheduler runtime, migration, test execution against PostgreSQL, AWS or product acceptance is included. Preserve unrelated Web work and all historical evidence.
+
+- [x] Inspect submission/UoW/worker composition, event MANUAL/DEADLINE gap, existing deadline index and migration/grant constraints.
+- [x] Write a998-word prompt with11 ordered steps: shared submission core, trusted worker boundary, bounded discovery/locking, immutable acceptance, minimal privileges, process lifecycle, fail-first correctness/race/crash tests and measurements.
+- [x] Validate document links/contracts, prompt word count, unchanged69/216 product status and documentation diff; report handoff with implementation still pending. Quality/contracts/diff PASS;998 words/11 steps;46 operations/425 examples. Runtime tests were not rerun for this documentation-only handoff.
+
+The proposed implementation owns Assessment deadline submission, with scheduler-specific ATT-10/11 subsets. ATT-07 remains unchecked until implementation and evidence exist. ATT-08/09, full ATT-10/11, grading/SQS/Reporting/Web, ID-11/Phase04 and production gates remain open. Baseline scheduler throughput is unmeasured; manual-path regression comparison and first scheduler measurements are separate.
+
 ## Active scope — Assessment review fixes COMPLETE locally, 2026-10-08
 
 User authorizes AR-01–05 fixes from the independent review. Preserve unrelated Web work, applied migrations and archived evidence. No scheduler, grading, SQS, AWS, production acceptance or commit is included.

@@ -1,0 +1,96 @@
+{
+  "projectId": "11777231516922865355",
+  "note": "IDs returned by generation; route/state/visual acceptance and repository port are separate checks. No download URLs or credentials included.",
+  "screens": [
+    {
+      "id": "cc1f8ab4b3bb4b4393f77da969ba2a61",
+      "title": "CA-02 — Khám phá đề thi — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-catalog.json"
+    },
+    {
+      "id": "c15b4e9c112e4c41a6653ec421d0df09",
+      "title": "CA-03 — Chi tiết đề & bắt đầu — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-catalog.json"
+    },
+    {
+      "id": "5b09dc18b3c84a69a7f533b5b82d591f",
+      "title": "CA-10 — Hồ sơ cá nhân — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-catalog.json"
+    },
+    {
+      "id": "d40d752ea8d74b37af254446cd43b87a",
+      "title": "AU-01 — Đăng nhập — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-login.json"
+    },
+    {
+      "id": "65c94678bb56457a937d94c2c4fb2f19",
+      "title": "PU-02 — Trải nghiệm 3 câu mẫu — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-public.json"
+    },
+    {
+      "id": "033f0710f5304c1a96e8d031ca7d2a23",
+      "title": "PU-03 — Hướng dẫn bắt đầu — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-public.json"
+    },
+    {
+      "id": "d2c269f780994a46bfdfa5ee921f04e7",
+      "title": "PU-04 — Trợ giúp — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-public.json"
+    },
+    {
+      "id": "0489c25040fe48e7aa63b44f6f5fce6b",
+      "title": "AU-02 — Đăng ký — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-register.json"
+    },
+    {
+      "id": "a868cedd8a1848a7815f0261c3bb5dcc",
+      "title": "CA-05 — Trạng thái bài nộp — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-results.json"
+    },
+    {
+      "id": "4e7432f84c5145229d629e918ccbf798",
+      "title": "CA-06 — Kết quả bài trắc nghiệm — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-results.json"
+    },
+    {
+      "id": "21083edce9c6411299f20921b5abb7b6",
+      "title": "CA-07 — Xem bài đã được mở — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-results.json"
+    },
+    {
+      "id": "16b5384c133143d0bda25dd40a47f515",
+      "title": "CA-08 — Lịch sử thi — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-results.json"
+    },
+    {
+      "id": "7bc4e4194259424ca823aa0ed9411306",
+      "title": "CA-09 — Xếp hạng phiên bản — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-results.json"
+    },
+    {
+      "id": "4108b9aef82a440bb1e02b6d4cbf4528",
+      "title": "AU-04 — Hoàn tất xác thực — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-verification.json"
+    },
+    {
+      "id": "b6d3a37a7d7f4fe7a5a8cbe4519322f5",
+      "title": "AU-03 — Kiểm tra hộp thư — Desktop",
+      "deviceType": "DESKTOP",
+      "sourceResponse": "generated-verification.json"
+    }
+  ]
+}

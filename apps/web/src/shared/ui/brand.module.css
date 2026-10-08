@@ -21,12 +21,10 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-brand);
-  background: var(--color-brand-accent);
-  color: var(--color-brand-canvas);
-  box-shadow: 0 3px 0 var(--color-brand-edge);
+  background: var(--color-primary);
+  color: white;
   font-size: 36px;
   line-height: 36px;
-  transform: rotate(-6deg);
   transition: transform var(--motion-control) var(--ease-control);
 }
 @media (hover: hover) {

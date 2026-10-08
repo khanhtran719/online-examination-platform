@@ -13,6 +13,7 @@ export interface AttemptRecord {
   expired: boolean;
   replayPending: boolean;
   submissionId: string | null;
+  submissionKind: "MANUAL" | "DEADLINE" | null;
 }
 
 export interface LockedAttempt extends AttemptRecord {
@@ -61,5 +62,12 @@ export interface AttemptRepository {
     submissionId: string;
     eventId: string;
     expired: boolean;
+    submissionKind: "MANUAL" | "DEADLINE";
   }): Promise<AttemptRecord | null>;
+  /**
+   * One due in-progress row, oldest deadline first. SKIP LOCKED so a locked row
+   * does not block the rest of the backlog. The caller rechecks the post-lock clock.
+   */
+  claimDue(excludeIds: readonly string[]): Promise<LockedAttempt | null>;
+  dueBacklog(): Promise<{ due: number; oldestDueAgeMs: number | null }>;
 }

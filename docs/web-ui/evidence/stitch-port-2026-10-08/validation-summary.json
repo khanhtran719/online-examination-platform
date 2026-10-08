@@ -1,0 +1,253 @@
+{
+  "scope": "Stitch Home/dashboard/exam presentation; demo/live static previews; no backend production acceptance",
+  "stats": {
+    "startTime": "2026-10-08T03:40:19.090Z",
+    "duration": 62191.237,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "title": "admin-workflows.e2e-spec.ts > exam draft keeps editor state, prevents duplicate slots and distinguishes saved publication from local edits",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2057
+        }
+      ]
+    },
+    {
+      "title": "admin-workflows.e2e-spec.ts > question keys use the keyboard and confirm destructive type changes before saving",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1152
+        }
+      ]
+    },
+    {
+      "title": "admin-workflows.e2e-spec.ts > import validates first, invalidates a changed file and asks before committing",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1880
+        }
+      ]
+    },
+    {
+      "title": "admin-workflows.e2e-spec.ts > audit restores focus, failed replay stays pending and reviewer capabilities filter the page",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1730
+        }
+      ]
+    },
+    {
+      "title": "assessment-results.e2e-spec.ts > mobile room saves three native question types before submitting and opening released review",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 8247
+        }
+      ]
+    },
+    {
+      "title": "assessment-results.e2e-spec.ts > history and pseudonymous leaderboard remain keyboard scrollable on narrow screens",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3354
+        }
+      ]
+    },
+    {
+      "title": "browser.spec.ts > demo > public pages at five widths",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 6836
+        }
+      ]
+    },
+    {
+      "title": "browser.spec.ts > demo > exam save, conflict, frozen attempt and result",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 5192
+        }
+      ]
+    },
+    {
+      "title": "browser.spec.ts > demo > admin permission boundary and honest metrics",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 4854
+        }
+      ]
+    },
+    {
+      "title": "browser.spec.ts > live > does not fall back to demo data",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2831
+        }
+      ]
+    },
+    {
+      "title": "foundation.e2e-spec.ts > public mobile menu closes on Escape and restores trigger focus",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 322
+        }
+      ]
+    },
+    {
+      "title": "foundation.e2e-spec.ts > candidate mobile navigation closes after choosing a route and shows its active link",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 634
+        }
+      ]
+    },
+    {
+      "title": "foundation.e2e-spec.ts > admin mobile menu preserves capability filtering and logout",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2603
+        }
+      ]
+    },
+    {
+      "title": "foundation.e2e-spec.ts > shared controls support keyboard entry, table scrolling and dialog focus",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 874
+        }
+      ]
+    },
+    {
+      "title": "onboarding-catalog.e2e-spec.ts > verification recovery and explicit confirmation remain usable on mobile",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 472
+        }
+      ]
+    },
+    {
+      "title": "onboarding-catalog.e2e-spec.ts > catalog filters, browser Back and detail cancellation preserve navigation",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 787
+        }
+      ]
+    },
+    {
+      "title": "public-experience.e2e-spec.ts > public experience demo > homepage renders 3D, fits five widths and supports motion pause",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2737
+        }
+      ]
+    },
+    {
+      "title": "public-experience.e2e-spec.ts > public experience demo > public sample works without business requests and leads to registration",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1846
+        }
+      ]
+    },
+    {
+      "title": "public-experience.e2e-spec.ts > public experience demo > fallback and keyboard navigation remain useful",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 367
+        }
+      ]
+    },
+    {
+      "title": "public-experience.e2e-spec.ts > public experience demo > 3D stops when paused or offscreen and recovers after context loss",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2558
+        }
+      ]
+    },
+    {
+      "title": "public-experience.e2e-spec.ts > public experience live > homepage renders 3D, fits five widths and supports motion pause",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2767
+        }
+      ]
+    },
+    {
+      "title": "public-experience.e2e-spec.ts > public experience live > public sample works without business requests and leads to registration",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2955
+        }
+      ]
+    },
+    {
+      "title": "public-experience.e2e-spec.ts > public experience live > fallback and keyboard navigation remain useful",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 388
+        }
+      ]
+    },
+    {
+      "title": "public-experience.e2e-spec.ts > public experience live > 3D stops when paused or offscreen and recovers after context loss",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2354
+        }
+      ]
+    }
+  ]
+}

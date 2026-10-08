@@ -11,11 +11,14 @@ import styles from "./experience.module.css";
 export function SampleSummary({
   state,
   dispatch,
+  embedded = false,
 }: {
   state: SampleState;
   dispatch: (action: SampleAction) => void;
+  embedded?: boolean;
 }) {
   const result = state.stage === "result";
+  const Heading = embedded ? "h3" : "h1";
   return (
     <section className={styles.summary} aria-labelledby="sample-summary-title">
       <div className={styles.summaryIntro}>
@@ -25,7 +28,7 @@ export function SampleSummary({
         <p className={styles.eyebrow}>
           {result ? "Bạn đã trải nghiệm xong" : "Trước khi xem kết quả"}
         </p>
-        <h1 id="sample-summary-title" tabIndex={-1}>
+        <Heading id="sample-summary-title" tabIndex={-1}>
           {result ? (
             <>
               Một bước nhỏ.
@@ -35,7 +38,7 @@ export function SampleSummary({
           ) : (
             "Xem lại trước khi kết thúc"
           )}
-        </h1>
+        </Heading>
         <p>
           {result
             ? "Đây là kết quả từ ba câu hỏi minh họa bạn vừa làm."

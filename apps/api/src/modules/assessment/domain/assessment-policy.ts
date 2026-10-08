@@ -36,9 +36,11 @@ export interface SubmittedEvent {
     submissionId: string;
     deadline: string;
     expired: boolean;
-    submissionKind: "MANUAL";
+    submissionKind: SubmissionKind;
   };
 }
+
+export type SubmissionKind = "MANUAL" | "DEADLINE";
 
 export function requireFreshKey(key: string, now: number): void {
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(key)) {
@@ -109,7 +111,13 @@ export function fitQuestionPage<T>(
   return { kept: rows.slice(0, low), truncated: low < rows.length };
 }
 
-export function manualSubmissionEvent(input: {
+export function manualSubmissionEvent(
+  input: Omit<SubmissionEventInput, "submissionKind">,
+): SubmittedEvent {
+  return submissionEvent({ ...input, submissionKind: "MANUAL" });
+}
+
+export interface SubmissionEventInput {
   eventId: string;
   attemptId: string;
   examId: string;
@@ -118,9 +126,13 @@ export function manualSubmissionEvent(input: {
   occurredAt: string;
   deadline: string;
   expired: boolean;
+  submissionKind: SubmissionKind;
   correlationId: string;
   causationId: string;
-}): SubmittedEvent {
+}
+
+/** Shared MANUAL and DEADLINE intent. The JSON schema is unchanged. */
+export function submissionEvent(input: SubmissionEventInput): SubmittedEvent {
   const event: SubmittedEvent = {
     eventId: input.eventId,
     eventType: "attempt.submitted.v1",
@@ -137,7 +149,7 @@ export function manualSubmissionEvent(input: {
       submissionId: input.submissionId,
       deadline: input.deadline,
       expired: input.expired,
-      submissionKind: "MANUAL",
+      submissionKind: input.submissionKind,
     },
   };
   assertSubmittedEvent(event);
@@ -163,7 +175,8 @@ function assertSubmittedEvent(event: SubmittedEvent): void {
     event.eventType !== "attempt.submitted.v1" ||
     event.source !== "online-examination-platform.assessment" ||
     event.version !== 1 ||
-    event.payload.submissionKind !== "MANUAL" ||
+    (event.payload.submissionKind !== "MANUAL" && event.payload.submissionKind !== "DEADLINE") ||
+    (event.payload.submissionKind === "DEADLINE" && event.payload.expired !== true) ||
     event.aggregateId !== event.payload.attemptId ||
     typeof event.payload.expired !== "boolean" ||
     !instant.test(event.occurredAt) ||

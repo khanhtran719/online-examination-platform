@@ -1,0 +1,133 @@
+{
+  "projectId": "18257628123124303955",
+  "projectUrl": "https://stitch.withgoogle.com/projects/18257628123124303955",
+  "retrievedOn": "2026-10-08",
+  "scope": "Read-only visual review; no browser interaction validation",
+  "screens": [
+    {
+      "screenId": "f5caae61539a43049ab56eea2b8b0c65",
+      "title": "EP-01 — Home Desktop — Visual Refinement V3",
+      "deviceType": "DESKTOP",
+      "file": "home-desktop-v3.png",
+      "width": 2560,
+      "height": 7408,
+      "stitchWidth": "2560",
+      "stitchHeight": "7408",
+      "sha256": "a18076e1a42716fc1d4e723b28d7704abc01b0562b2e55e446b2c826065090d8",
+      "source": "projects/18257628123124303955/screens/f5caae61539a43049ab56eea2b8b0c65/fileEntries/screenshot"
+    },
+    {
+      "screenId": "c513f61f97834bca9677e480c3d507b9",
+      "title": "EP-03 — Exam Mobile 390 — V3",
+      "deviceType": "MOBILE",
+      "file": "exam-mobile-v3.png",
+      "width": 780,
+      "height": 2490,
+      "stitchWidth": "780",
+      "stitchHeight": "2490",
+      "sha256": "98a734907b46306de3a003747055da37ea8c684fde32b9516d0daeb39f0ae25a",
+      "source": "projects/18257628123124303955/screens/c513f61f97834bca9677e480c3d507b9/fileEntries/screenshot"
+    },
+    {
+      "screenId": "1169ba614db949ce8afa94716f34b109",
+      "title": "EP-01 — Trang chủ — Soft Bento (V2 Refined)",
+      "deviceType": "DESKTOP",
+      "file": "home-desktop-v2.png",
+      "width": 2560,
+      "height": 7584,
+      "stitchWidth": "2560",
+      "stitchHeight": "7584",
+      "sha256": "3f3c0dc6341ed5b86651e069bdb54d303ea35621634cddb2936ad01b7c6561ab",
+      "source": "projects/18257628123124303955/screens/1169ba614db949ce8afa94716f34b109/fileEntries/screenshot"
+    },
+    {
+      "screenId": "63b587041d334a9ebbdd53678c0c069d",
+      "title": "EP-01 — Trang chủ — Mobile 390px (V2)",
+      "deviceType": "MOBILE",
+      "file": "home-mobile-v2.png",
+      "width": 780,
+      "height": 11322,
+      "stitchWidth": "780",
+      "stitchHeight": "11322",
+      "sha256": "e355bf2df80db6bb0248e7f517c55d3208b5fbe9e3283fbceb383a778a9a27bb",
+      "source": "projects/18257628123124303955/screens/63b587041d334a9ebbdd53678c0c069d/fileEntries/screenshot"
+    },
+    {
+      "screenId": "f7d045feca984f799821bda9fd10dd47",
+      "title": "EP-03 — Phòng thi — Soft Bento (V2 Refined)",
+      "deviceType": "DESKTOP",
+      "file": "exam-desktop-v2.png",
+      "width": 2560,
+      "height": 3960,
+      "stitchWidth": "2560",
+      "stitchHeight": "3960",
+      "sha256": "66ae267589f0065b879e742c7adc1687245a0895654ed4f561654e526b3601bb",
+      "source": "projects/18257628123124303955/screens/f7d045feca984f799821bda9fd10dd47/fileEntries/screenshot"
+    },
+    {
+      "screenId": "222db89535964fb9bc183ab05a92bab6",
+      "title": "EP-03 — Exam Desktop — Visual Refinement V3",
+      "deviceType": "DESKTOP",
+      "file": "exam-desktop-v3.png",
+      "width": 2560,
+      "height": 2380,
+      "stitchWidth": "2560",
+      "stitchHeight": "2380",
+      "sha256": "a7af7988cb8b166a6c91742745bc3ec44a2c06435eb54fb09b036f5cf9037079",
+      "source": "projects/18257628123124303955/screens/222db89535964fb9bc183ab05a92bab6/fileEntries/screenshot"
+    },
+    {
+      "screenId": "927f2e0d87ce4f89be5d55c3cb81606b",
+      "title": "EP-02 — Bảng làm việc — Soft Bento (V2 Refined)",
+      "deviceType": "DESKTOP",
+      "file": "dashboard-desktop-v2.png",
+      "width": 2560,
+      "height": 3556,
+      "stitchWidth": "2560",
+      "stitchHeight": "3556",
+      "sha256": "15688145acd8f3e0f1e9cfd03b752941a28616eef4f49966781f20fa4c5f3d5e",
+      "source": "projects/18257628123124303955/screens/927f2e0d87ce4f89be5d55c3cb81606b/fileEntries/screenshot"
+    },
+    {
+      "screenId": "4e8b878555d148259ff0df819ae125a2",
+      "title": "EP-01 — Home Mobile 390 — V3",
+      "deviceType": "MOBILE",
+      "file": "home-mobile-v3.png",
+      "width": 780,
+      "height": 10770,
+      "stitchWidth": "780",
+      "stitchHeight": "10770",
+      "sha256": "6003f773b2e6360e80f1a0878399f9448d7a01da0125caecd8b92912acf0610d",
+      "source": "projects/18257628123124303955/screens/4e8b878555d148259ff0df819ae125a2/fileEntries/screenshot"
+    },
+    {
+      "screenId": "bcbb21021bbd43e69353667502c1d359",
+      "title": "EP-03 — Exam Mobile 390 — V3 (Bottom Sheet Mở)",
+      "deviceType": "MOBILE",
+      "file": "exam-mobile-sheet-v3.png",
+      "width": 780,
+      "height": 1768,
+      "stitchWidth": "780",
+      "stitchHeight": "1768",
+      "sha256": "bff273028a0b2ad1eeb03712da7c1a2c3e8576814c719775887571540490cb54",
+      "source": "projects/18257628123124303955/screens/bcbb21021bbd43e69353667502c1d359/fileEntries/screenshot"
+    },
+    {
+      "screenId": "57c1dac4924d4d13b45d655c41dfc81c",
+      "title": "EP-02 — Dashboard Mobile 390 — V3",
+      "deviceType": "MOBILE",
+      "file": "dashboard-mobile-v3.png",
+      "width": 780,
+      "height": 4238,
+      "stitchWidth": "780",
+      "stitchHeight": "4238",
+      "sha256": "b629f55c915fb8c608d3225950ec30c7f9466bbd7d80b00d7e9a8701ea5a5af0",
+      "source": "projects/18257628123124303955/screens/57c1dac4924d4d13b45d655c41dfc81c/fileEntries/screenshot"
+    }
+  ],
+  "handoff": {
+    "screenId": "14291ca3ac9c4bff8ac9ee073df7ec9c",
+    "mimeType": "text/markdown",
+    "screenshotAvailable": false
+  }
+}

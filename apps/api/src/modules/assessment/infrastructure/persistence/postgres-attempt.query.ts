@@ -34,6 +34,7 @@ export class PostgresAttemptQuery implements AttemptQuery {
           expired,
           replay_pending AS "replayPending",
           submission_id AS "submissionId",
+          submission_kind AS "submissionKind",
           ${stamp("clock_timestamp()", "serverNow")}
         FROM
           assessment.attempts

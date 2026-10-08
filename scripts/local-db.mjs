@@ -56,6 +56,15 @@ try {
         NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS
         PASSWORD 'local-mail-only-password';
     END IF;
+    IF NOT EXISTS (
+      SELECT FROM pg_roles
+      WHERE rolname = 'examination_expiry_local'
+    ) THEN
+      CREATE ROLE examination_expiry_local
+        LOGIN INHERIT
+        NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS
+        PASSWORD 'local-expiry-only-password';
+    END IF;
   END
   $$
   `);
@@ -63,6 +72,7 @@ try {
   await pool.query("GRANT examination_runtime TO examination_app_local");
   await pool.query("GRANT examination_operator TO examination_operator_local");
   await pool.query("GRANT examination_mail_worker TO examination_mail_local");
+  await pool.query("GRANT examination_expiry_worker TO examination_expiry_local");
   await pool.query(await readFile("infra/database/observability.sql", "utf8"));
   process.stdout.write(
     "Local database roles and diagnostics provisioned; run migrations with the migration login.\n",

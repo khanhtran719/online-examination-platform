@@ -1,4 +1,5 @@
 import { formatClock } from "../../shared/format";
+import { ExamGlyph } from "../../shared/ui/brand";
 import { Button } from "../../shared/ui/ui";
 import { saveStatusLabel, type AutosaveState } from "./autosave";
 import { formatRemaining } from "./clock";
@@ -39,7 +40,9 @@ export function RoomToolbar({
     <header className={styles.toolbar}>
       <div className={styles.toolbarTop}>
         <div className={styles.roomIdentity}>
-          <span aria-hidden="true">e</span>
+          <span aria-hidden="true">
+            <ExamGlyph />
+          </span>
           <strong>Phòng thi</strong>
           <Button variant="ghost" onClick={onLeave}>
             Rời phòng thi
