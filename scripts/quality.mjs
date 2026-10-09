@@ -67,6 +67,7 @@ export function inspectImports(path, code) {
     "identity/identity-worker.factory",
     "identity/identity-operator.factory",
     "assessment/assessment-worker.factory",
+    "catalog/catalog-worker.factory",
   ]);
   const forbidden =
     /^(?:@nestjs\/|@aws-sdk\/|@opentelemetry\/|@fastify\/|(?:pg|typeorm|sequelize|jose|argon2|nodemailer|redis|ioredis|kafkajs|aws-sdk|axios|express|fastify)(?:\/|$)|(?:node:)?(?:http|https|net|tls)(?:\/|$))/;

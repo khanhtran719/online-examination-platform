@@ -162,6 +162,7 @@ export const claimSubmissionSql = `
     o.payload,
     o.lease_token AS token,
     o.attempts,
+    o.grading_generation AS generation,
     (extract(epoch FROM (clock_timestamp() - coalesce(o.replay_at, o.created_at))) * 1000)::float8
       AS "ageMs"
 `;

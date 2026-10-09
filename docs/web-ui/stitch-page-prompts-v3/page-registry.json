@@ -661,7 +661,8 @@
       ],
       "prompt": "05a-admin-exams-desktop.md",
       "supplementaryPrompts": [
-        "05-admin-exams.md"
+        "05-admin-exams.md",
+        "05b-admin-preflight-dialogs-desktop.md"
       ],
       "review": "../stitch-05a-review-2026-10-08.md",
       "reviewedOn": "2026-10-08",
@@ -692,7 +693,8 @@
       ],
       "prompt": "05a-admin-exams-desktop.md",
       "supplementaryPrompts": [
-        "05-admin-exams.md"
+        "05-admin-exams.md",
+        "05b-admin-preflight-dialogs-desktop.md"
       ],
       "review": "../stitch-05a-review-2026-10-08.md",
       "reviewedOn": "2026-10-08",
@@ -977,6 +979,9 @@
       "requiredViewports": [
         1280,
         390
+      ],
+      "supplementaryPrompts": [
+        "05b-admin-preflight-dialogs-desktop.md"
       ]
     },
     {
@@ -999,6 +1004,9 @@
       "requiredViewports": [
         1280,
         390
+      ],
+      "supplementaryPrompts": [
+        "05b-admin-preflight-dialogs-desktop.md"
       ]
     }
   ],
@@ -1014,11 +1022,11 @@
     "reviewedAwaitingSelectionPageFamilyCount": "Reviewed page families not yet selected as visual templates. Desktop-only review does not accept mobile or complete state coverage."
   },
   "deliveryPriority": {
-    "updatedOn": "2026-10-08",
+    "updatedOn": "2026-10-09",
     "source": "User requested the remaining web UI first; desktop layouts now precede remaining mobile and supplementary states.",
-    "nextPrompt": null,
+    "nextPrompt": "05b-admin-preflight-dialogs-desktop.md",
     "nextBrief": "05-admin-exams.md",
-    "nextPromptStatus": "05B_not_prepared",
+    "nextPromptStatus": "05B_prepared",
     "order": [
       "Remaining desktop page layouts",
       "Mobile counterparts and supplementary states"
@@ -1028,7 +1036,7 @@
       "EP-09 mobile: 7 states and desktop: 7 states",
       "EP-10 mobile: 7 states and desktop: 7 states"
     ],
-    "nextAction": "05A actual frames are reviewed and saved as evidence, not selected as Admin templates. Recommend keeping the visual direction and recording findings for porting. After user selection, prepare a small 05B desktop prompt for preflight/publication and essential dialogs; it is not prepared yet. Do not resend 05A or paste mixed brief 05. No external generation/refinement was sent."
+    "nextAction": "05B is prepared locally in three paste blocks: 05B-1 preflight/publish/validation (3 frames), 05B-2 unpublish/archive/remove-section (3), 05B-3 leave/conflict (2). Send only 05B-1 first, verify actual frames, then continue the remaining blocks. No 05B frames are retrieved or accepted, no external generation/refinement was sent, and 05A remains reviewed rather than selected as template."
   },
   "reviewedAwaitingSelectionPageFamilyCount": 4
 }

@@ -1,4 +1,5 @@
-export type AssessmentCursorKind = "attempt.questions" | "attempt.answers";
+export type AssessmentCursorKind =
+  "attempt.questions" | "attempt.answers" | "attempt.review" | "attempt.history";
 
 export interface AssessmentCursorClaims {
   kind: AssessmentCursorKind;

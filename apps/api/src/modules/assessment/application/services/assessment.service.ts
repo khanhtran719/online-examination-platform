@@ -1,3 +1,4 @@
+import { attemptView } from "./attempt-view";
 import { createHash, randomUUID, timingSafeEqual } from "node:crypto";
 import { IdempotencyStore } from "../../../../shared/application/ports/idempotency";
 import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
@@ -82,33 +83,6 @@ function questionView(row: {
   };
 }
 
-function view(record: AttemptRecord, serverNow: string): AttemptView {
-  const nowMs = millis(serverNow);
-  const deadlineMs = millis(record.deadline);
-  return {
-    id: record.id,
-    examId: record.examId,
-    publishedVersionId: record.publishedVersionId,
-    revision: record.revision,
-    status: record.status,
-    startedAt: record.startedAt,
-    deadline: record.deadline,
-    submittedAt: record.submittedAt,
-    expired: record.expired,
-    serverNow,
-    canSave: record.status === "IN_PROGRESS" && nowMs < deadlineMs,
-    resultAvailable: record.status === "COMPLETED",
-    pollAfterSeconds:
-      record.status === "SUBMITTED" ||
-      record.status === "EXPIRED" ||
-      record.status === "PROCESSING" ||
-      (record.status === "FAILED" && record.replayPending)
-        ? 2
-        : 0,
-    replayPending: record.replayPending,
-  };
-}
-
 function lifecycle(record: AttemptRecord): Attempt {
   return Attempt.restore({
     id: record.id,
@@ -148,7 +122,7 @@ export class AssessmentService {
       if (active) {
         const now = active.serverNow;
         requireFreshKey(key, millis(now));
-        const body = view(active, now);
+        const body = attemptView(active, now);
         await this.saveReceipt(
           current.userId,
           key,
@@ -190,7 +164,7 @@ export class AssessmentService {
         attemptLimit: shared.attemptLimit,
       });
       if (!created) throw new AttemptLimitError();
-      const body = view(created, now);
+      const body = attemptView(created, now);
       await this.saveReceipt(
         current.userId,
         key,
@@ -207,7 +181,7 @@ export class AssessmentService {
   async resume(actorId: string, attemptId: string): Promise<AttemptView> {
     const row = await this.queries.read(attemptId, actorId);
     if (!row) throw notFound();
-    return view(row, row.serverNow);
+    return attemptView(row, row.serverNow);
   }
 
   async questions(

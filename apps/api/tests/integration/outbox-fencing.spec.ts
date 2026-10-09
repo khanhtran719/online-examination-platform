@@ -43,6 +43,7 @@ beforeAll(async () => {
       causation_id uuid,
       payload jsonb NOT NULL,
       attempts integer NOT NULL DEFAULT 0,
+      grading_generation integer NOT NULL DEFAULT 0,
       created_at timestamptz NOT NULL DEFAULT clock_timestamp(),
       available_at timestamptz NOT NULL DEFAULT clock_timestamp(),
       replay_at timestamptz,

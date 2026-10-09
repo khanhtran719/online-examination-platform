@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-10-09T02:51:37.476Z",
+  "node": "v24.17.0",
+  "host": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "release": "25.5.0",
+    "cpu": "Apple M1 Pro"
+  },
+  "sourceSha256": "4b9aa4c986d58a671601dac93c389abd5d64ab501feb77d4ff052c3ee3b75079",
+  "scenarios": [
+    {
+      "questions": 100,
+      "optionsPerQuestion": 10,
+      "selectedPerQuestion": 10,
+      "samples": 2000,
+      "p50Ms": 0.2439160000000129,
+      "p95Ms": 0.3219169999999849,
+      "p99Ms": 0.40762500000002433,
+      "cpuMicrosPerGrade": 257.759,
+      "observedHeapDeltaBytes": 4898456
+    },
+    {
+      "questions": 500,
+      "optionsPerQuestion": 10,
+      "selectedPerQuestion": 10,
+      "samples": 2000,
+      "p50Ms": 1.259291999999732,
+      "p95Ms": 1.4756669999999303,
+      "p99Ms": 2.089375000000018,
+      "cpuMicrosPerGrade": 1298.4945,
+      "observedHeapDeltaBytes": 1338256
+    }
+  ],
+  "scope": "Pure synchronous compute only; heap delta includes GC and samples, not allocated bytes/job. No I/O, locking, queue delay, sustainable capacity or AWS cost measured."
+}

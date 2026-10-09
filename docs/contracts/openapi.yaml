@@ -1405,6 +1405,7 @@ paths:
     get:
       operationId: getReleasedReview
       summary: Completed owned attempt and frozen explanation release gate
+      description: Cursor page bounded to 100 items and 256KiB complete decoded JSON; a payload-limited page may contain fewer than pageSize items. Follow metadata.next.
       tags:
         - Assessment
       security:
@@ -1466,6 +1467,7 @@ paths:
         - AC-19
         - AC-27
       x-paginated: true
+      x-query-budget: 3
   /v1/me/attempts:
     get:
       operationId: getHistory

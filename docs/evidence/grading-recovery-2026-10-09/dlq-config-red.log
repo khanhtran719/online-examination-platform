@@ -1,0 +1,37 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath apps/api/src/config/__tests__/grading-worker-config.unit.spec.ts
+
+(node:34438) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/src/config/__tests__/grading-worker-config.unit.spec.ts
+  ● grading worker configuration › selects an encrypted DLQ recovery mode with the original source identity
+
+    expect(received).toMatchObject(expected)
+
+    - Expected  - 3
+    + Received  + 1
+
+      Object {
+    -   "queueMode": "dead-letter",
+    -   "queueUrl": "https://sqs.ap-southeast-1.amazonaws.com/123456789012/grading-dlq",
+    -   "sourceQueueUrl": "https://sqs.ap-southeast-1.amazonaws.com/123456789012/submissions",
+    +   "queueUrl": "https://sqs.ap-southeast-1.amazonaws.com/123456789012/submissions",
+      }
+
+      17 |   });
+      18 |   it("selects an encrypted DLQ recovery mode with the original source identity", () => {
+    > 19 |     expect(gradingWorkerConfig({ ...env, GRADING_QUEUE_MODE: "dead-letter" })).toMatchObject({
+         |                                                                                ^
+      20 |       queueUrl: "https://sqs.ap-southeast-1.amazonaws.com/123456789012/grading-dlq",
+      21 |       sourceQueueUrl: env.SUBMISSION_QUEUE_URL,
+      22 |       queueMode: "dead-letter",
+
+      at Object.<anonymous> (apps/api/src/config/__tests__/grading-worker-config.unit.spec.ts:19:80)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 11 passed, 12 total
+Snapshots:   0 total
+Time:        1.832 s
+Ran all test suites within paths "apps/api/src/config/__tests__/grading-worker-config.unit.spec.ts".
+

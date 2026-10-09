@@ -1,0 +1,47 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath apps/api/src/modules/assessment/application/services/__tests__/grading-consumer.unit.spec.ts
+
+(node:32092) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/src/modules/assessment/application/services/__tests__/grading-consumer.unit.spec.ts
+  ● grading admission and atomic outcome › does not execute an old source delivery after replay authorization
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "stale"
+    Received: "completed"
+
+      149 |   it("does not execute an old source delivery after replay authorization", async () => {
+      150 |     state.status = "FAILED"; state.replayPending = true; state.gradingGeneration = 1;
+    > 151 |     expect(await consumer.consume(event, "digest", 0)).toBe("stale");
+          |                                                        ^
+      152 |     expect(state.replayPending).toBe(true); expect(durable).toBeNull();
+      153 |   });
+      154 |   it("does not accept a future generation from a transport attribute", async () => {
+
+      at Object.<anonymous> (apps/api/src/modules/assessment/application/services/__tests__/grading-consumer.unit.spec.ts:151:56)
+
+  ● grading admission and atomic outcome › does not accept a future generation from a transport attribute
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "quarantined"
+    Received: "completed"
+
+      153 |   });
+      154 |   it("does not accept a future generation from a transport attribute", async () => {
+    > 155 |     expect(await consumer.consume(event, "digest", 1)).toBe("quarantined");
+          |                                                        ^
+      156 |     expect(state.status).toBe("SUBMITTED"); expect(durable).toBeNull();
+      157 |   });
+      158 | });
+
+      at Object.<anonymous> (apps/api/src/modules/assessment/application/services/__tests__/grading-consumer.unit.spec.ts:155:56)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 9 passed, 11 total
+Snapshots:   0 total
+Time:        2.037 s
+Ran all test suites within paths "apps/api/src/modules/assessment/application/services/__tests__/grading-consumer.unit.spec.ts".
+

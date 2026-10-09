@@ -1,0 +1,502 @@
+Warning: truncated output (original token count: 4621)
+Total output lines: 513
+
+(node:21984) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-expiry-fixes.spec.ts
+  ● ATT-07 independent expiry regressions › fails a corrupt 0011 upgrade atomically, then applies 0012/0013 and reruns unchanged
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › rejects an accepted NULL provenance UPDATE with the runtime login
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › rejects an accepted NULL provenance UPDATE with the expiry login
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › rejects an accepted NULL provenance INSERT with the runtime login
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › keeps valid MANUAL/SUBMITTED provenance immutable
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › keeps valid MANUAL/EXPIRED provenance immutable
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › keeps valid DEADLINE/EXPIRED provenance immutable
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › advances a healthy row behind a full poison batch of 1 without marking failures terminal
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › advances a healthy row behind a full poison batch of 2 without marking failures terminal
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › recovers rolled-back rows after restart and commits once when two workers retry
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › rejects runtime changes to scheduler-only expiry_retry_count metadata
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Exp…121 tokens truncated…  413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › rejects runtime changes to scheduler-only expiry_retry_after metadata
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › does not defer or mutate an attempt after another submit has won
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › persists DB-clock retry bounds and capped count after 0 prior failures
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › persists DB-clock retry bounds and capped count after 4 prior failures
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › persists DB-clock retry bounds and capped count after 16 prior failures
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › includes delayed outbox persistence in calibrated COMMIT ACK lag beyond a pre-commit witness
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › does not observe a rolled-back acceptance and observes exactly once after durable retry
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › cannot retry a committed acceptance when its observation collector throws
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › reads authoritative time after an observed row-lock wait crosses the deadline
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+  ● ATT-07 independent expiry regressions › uses a natural deadline index range for an empty claim among 100000 future attempts
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "0012_required_submission_kind.sql",
+        "0013_expiry_retry_schedule.sql",
+        "0014_submission_dispatch.sql",
+    +   "0015_grading_worker.sql",
+      ]
+
+      409 |     [invalid],
+      410 |   );
+    > 411 |   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([
+          |                                                                 ^
+      412 |     "0012_required_submission_kind.sql",
+      413 |     "0013_expiry_retry_schedule.sql",
+      414 |     "0014_submission_dispatch.sql",
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:411:65)
+
+
+Test Suites: 1 failed, 12 passed, 13 total
+Tests:       21 failed, 176 passed, 197 total
+Snapshots:   0 total
+Time:        36.4 s
+Ran all test suites.
+

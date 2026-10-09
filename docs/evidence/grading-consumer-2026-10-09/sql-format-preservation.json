@@ -1,0 +1,226 @@
+{
+  "queries": 55,
+  "tokenEquality": true,
+  "entries": [
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "ba2c65a89cfb780eef2abb72d5b2f7ef3aba2b3f9032276ddb53797da62fdcc3"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "678c277eeae65552500148b62c711ac5b70585af7a24ba89854080e6079516a9"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "02a0fb65875a1033ca0407b9fa99f13a0ac5447d51dea77c0cbe94e571be17d0"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "e175fe52f68c31e55e12bdcbdd8da70bb594198402e6b2b5399f154ad4e4a6e4"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "567d468adcdefec414bbc91f555aadc0db01c38fa5f02ef6176275f9c7645db9"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "34ad67e9b299b305501120ca27ed4f0cbf2a3a3160f053a27926c7cb58cec17d"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "4d194987897c748416842d04d8e6bfb30a9ceb7fb59941c7e3b28ccce03cee3f"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "b25a76ff7eefd206a9c2176c267e93e8acc1c96e279378c5420c53fcc0e72eaa"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "972700e32915a1895482f7887353fc2888169ef9f066f31150e4ce735e46a80e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "24c8b930f647b9454957d79950f9d89c5d63a331eda9f99d58153eaf8a00016a"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "47e556d314bae63a17fd3b4c6fa10f5994756aea0d6386b70199ee373a979a2e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "eadaddf3a84f577bf0c293a7722e4bda3d5309edc5eac9f80b5e2753f82b90d0"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "61d00f539e6b3ef23c354924b24d50177b7da7a5291e61641e2385010a939e3e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "tokenSha256": "ce2b664f4bae00d2048662fff773f612b3587e71d57da103cd8eeccdf9d7c9f7"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "69edefff9abd048ec7cbe004a2c87429c1f9354de126d88dcbb1f3b6e56d1114"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "83cf977764f66184e27af9706da009a21e2ea05d7aa7380aaff51cef7829de3f"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "49e8c7c72aaf25556f688d3565affcdf7b622e3b46354efe3313edec56275ce7"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "e6003e220691df5a56563adbc9c4681b9c3e1887f33a658a00d7cd857c1ab5ba"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "8633716da7980e35668b2a1ea8cea5e8cf67e4cdb4a52ae6e71eff4d80f77c52"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "f0bb116be6edbe8e8de6c1765b784f369c7acbae47516e925e57f558f3befe41"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "c8fe80540209c2efff6e9fe9351f43a273c09d45ece0f6541c5cf2e571c10b8a"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "706343369b1585eac0dbac2689d0ab8a0c3d4851818f70d8f6374374734f6f40"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "945b041102f9a746ca792172038c97f26e77549fd7cb3230b9c4335ae1da3afd"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "95243a5f9c86180cefa405a908e84fe822837ab1e8024d22f29af85d99acfe5b"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "d3e77819e11f636a1cc5cac57bddefcaa356eb580c0ed185ac3457e6fc1c3199"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "8e6f201739cc56422c2329a03777e3c79d8965589c165a4622e9b02a9c28986e"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "b949e574bba6fe1226d93d506bdaccb744983f70657b6924cd34004beb2b98b7"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "c8cfb43e61f1c239b12d9d7a7d0f404b940dd107b93f9cbcd7463310a1508248"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "daec1d05778b5534e5633f168428398b2f3a8119775cd0fb423b55f4bb406efd"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "56271dce497c0c2590c91a7629a579ba8fc5226562240a5ae8bb91e4d8acc810"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "af7b9e3b495a066d924e870a5ad780d4b3634d7af1023382513cf3751ce2fe4a"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "ea5761ea9315308169cd1756842da8e413a937dbfd33ed707efac571b6c6b820"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "af7b9e3b495a066d924e870a5ad780d4b3634d7af1023382513cf3751ce2fe4a"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "ea5761ea9315308169cd1756842da8e413a937dbfd33ed707efac571b6c6b820"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "9252c28ec16772c2718a44f4f39b2ab7dd08eccd392a290687bfbe3f6ea98673"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "aebf774b3039c13b911b0afcff86599cc7c82099b9ee98d040761de75b0fe8b1"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "5324eec85a23908896be62cd3b553455bb2627c100682ecc450d61ea0bbae732"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "1165c64562b29776792ccb8a27c5ccacf3e9e2c8303b3ad2609537a2c6c060fc"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "c800ee0129890bca7a808ece0262acaa6adff730cdf440c164c25b0f48f5d31e"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "998672384ed7f39857e7b07a3ed037fa1b11d0ddfcabfef8ee68c60b1a69848f"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "af7b9e3b495a066d924e870a5ad780d4b3634d7af1023382513cf3751ce2fe4a"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "bd6115eb5eb302047b35cf07fb4bd17a52664c437c94698bc16b64ab44cf39c4"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "d7be4d7e4f0a30bb7a9fd05ccb339b5d1374dc2afe580163c01a100b47b8c6a0"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "809f4e5ba5d2f46839cd1e58fc49183a776b2040622b537c09a5f850e23dc635"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "bb805354b9db6a74f3c728097b8db76e3e383955e5e60145134e0ae2f6312b1c"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "de1b5ee89ce4e417dc8e9bacb8e1f114e374677ac7bd35955fc08ae5f443dcff"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "5432605b8dd18bc5abdf5b1c3fe42dba0c5701f44c176a98d82b9fb28a8eb65f"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "10299c88e0ebd9c41ba72bbea9e5ab3c4848bff54e25864a6e28bde6328c4eb2"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "217e0b7a208d58b2816cdb7dbf710ef4d266671ae37cd7237fa43c83ac4940c9"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "169c85007c13273f2badfbb331858f2722bbb692582c04fa62df8ba0a37ba0ec"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "3141a4aa17f1be73ad6dbcc37db5db419bb9eeeec4d1059d8c79b110292b05f6"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "075c376b5354aa0cec53d9ba17926744d5c73fc25dd23caf6eaf74792fd57c09"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "9588e6c6550dfefb7f400fd47077fa24b3e269e75b5308e3c10e3895decf7ee3"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "864ab81ac12a13066a518467ba71ccc5b5ab192894da200520e0395e846afd1d"
+    },
+    {
+      "path": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "tokenSha256": "56271dce497c0c2590c91a7629a579ba8fc5226562240a5ae8bb91e4d8acc810"
+    }
+  ]
+}

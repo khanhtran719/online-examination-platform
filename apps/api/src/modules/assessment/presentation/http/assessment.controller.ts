@@ -8,6 +8,7 @@ import {
   RequestGuard,
 } from "../../../identity/application/facades/identity.facade";
 import { AssessmentService } from "../../application/services/assessment.service";
+import { CandidateResultsService } from "../../application/services/candidate-results.service";
 import { Commit } from "../../application/dto/assessment.dto";
 import { idempotency, pageQuery, resourceId, saveRequest, submitBody } from "./dto/assessment.dto";
 
@@ -26,6 +27,7 @@ export class AssessmentController {
     @Inject(AssessmentService) private readonly assessment: AssessmentService,
     @Inject(IDENTITY_ACCESS) private readonly access: IdentityAccess,
     @Inject(REQUEST_GUARD) private readonly guard: RequestGuard,
+    @Inject(CandidateResultsService) private readonly results: CandidateResultsService,
   ) {}
 
   @Post("exams/:examId/attempts")
@@ -120,10 +122,50 @@ export class AssessmentController {
     return this.assessment.resume(actor.actorId, resourceId(attemptId));
   }
 
-  private async read(request: FastifyRequest) {
+  @Get("attempts/:attemptId/result")
+  async result(
+    @Req() request: FastifyRequest,
+    @Res({ passthrough: true }) reply: FastifyReply,
+    @Param("attemptId") attemptId: string,
+  ) {
+    const actor = await this.read(request, "assessment.result.read");
+    const result = await this.results.result(actor.actorId, resourceId(attemptId));
+    if (!result.ready) {
+      reply.status(202);
+      reply.header("retry-after", "2");
+    }
+    return result.body;
+  }
+
+  @Get("attempts/:attemptId/review")
+  async review(
+    @Req() request: FastifyRequest,
+    @Param("attemptId") attemptId: string,
+    @Query() query: unknown,
+  ) {
+    const actor = await this.read(request, "assessment.result.read");
+    const page = pageQuery(query);
+    const result = await this.results.review(
+      actor.actorId,
+      resourceId(attemptId),
+      page.pageSize,
+      page.cursor ?? null,
+    );
+    return { kind: "page" as const, ...result };
+  }
+
+  @Get("me/attempts")
+  async history(@Req() request: FastifyRequest, @Query() query: unknown) {
+    const actor = await this.read(request);
+    const page = pageQuery(query);
+    const result = await this.results.history(actor.actorId, page.pageSize, page.cursor ?? null);
+    return { kind: "page" as const, ...result };
+  }
+
+  private async read(request: FastifyRequest, permission = "assessment.take") {
     const raw = this.guard.access(guarded(request));
     const actor = await this.access.authenticate(raw);
-    this.access.requirePermission(actor, "assessment.take");
+    this.access.requirePermission(actor, permission);
     await this.guard.admit(guarded(request), "read", actor.userId);
     return { actorId: actor.userId };
   }

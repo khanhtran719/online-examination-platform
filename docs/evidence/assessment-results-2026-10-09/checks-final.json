@@ -1,0 +1,72 @@
+{
+  "scope": "ATT-08 Candidate result/history/review local functional acceptance only",
+  "npm_test": {
+    "exit_code": 0,
+    "api": 207,
+    "api_suites": 30,
+    "tooling": 41,
+    "web": 96,
+    "total": 344
+  },
+  "integration": {
+    "exit_code": 0,
+    "tests": 224,
+    "suites": 14,
+    "skipped": 0,
+    "environment": "isolated PostgreSQL17 port55435, restricted runtime/grader/operator roles, real HTTP/SMTP and local SDK fixtures"
+  },
+  "lint": {
+    "exit_code": 0,
+    "includes": [
+      "ESLint",
+      "local Markdown links/anchors",
+      "source boundaries/placement",
+      "contracts"
+    ]
+  },
+  "typecheck": {
+    "exit_code": 0
+  },
+  "build": {
+    "exit_code": 0
+  },
+  "contracts": {
+    "operations": 46,
+    "examples": 425,
+    "exit_code": 0
+  },
+  "git_diff_check": {
+    "exit_code": 0
+  },
+  "migrations": {
+    "new_in_increment": 0,
+    "source": 16,
+    "built": 16,
+    "byte_identical": true
+  },
+  "preservation": {
+    "applied_migrations": 16,
+    "historical_evidence": 273,
+    "changed": 0
+  },
+  "not_run": [
+    "dependency audit (runtime dependencies unchanged)",
+    "browser HTTPS",
+    "Docker image migration/rolling drill",
+    "AWS live SQS/IAM/TLS/deployment",
+    "k6 sustained/concurrent capacity",
+    "RDS saturation/pool/FinOps curve",
+    "allocation profiling"
+  ],
+  "production_accepted": false,
+  "roadmap": {
+    "total": 216,
+    "checked": 78,
+    "pending": 138
+  },
+  "final_documentation_lint": {
+    "exit_code": 0,
+    "contracts_operations": 46,
+    "contracts_examples": 425
+  }
+}

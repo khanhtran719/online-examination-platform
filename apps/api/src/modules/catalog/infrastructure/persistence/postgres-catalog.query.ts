@@ -806,6 +806,7 @@ export class PostgresCatalogQuery implements CatalogQuery {
         position: number;
         type: QuestionType;
         points: number;
+        optionIds: string[] | string;
         correctOptionIds: string[] | string;
       }>(
         "catalog.read",
@@ -816,6 +817,22 @@ export class PostgresCatalogQuery implements CatalogQuery {
           q.position,
           q.type,
           q.points,
+          coalesce(
+            (
+              SELECT
+                json_agg(
+                  o.id
+                  ORDER BY
+                    o.id
+                )
+              FROM
+                catalog.published_options o
+              WHERE
+                o.version_id = q.version_id
+                AND o.question_id = q.id
+            ),
+            '[]'::json
+          ) AS "optionIds",
           coalesce(
             (
               SELECT
@@ -851,6 +868,7 @@ export class PostgresCatalogQuery implements CatalogQuery {
       ...row,
       position: Number(row.position),
       points: Number(row.points),
+      optionIds: json(row.optionIds, []),
       correctOptionIds: json(row.correctOptionIds, []),
     }));
   }

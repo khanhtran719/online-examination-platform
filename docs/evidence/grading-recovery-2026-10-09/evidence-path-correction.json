@@ -1,0 +1,13 @@
+{
+  "cause": "First full grading regression reused prior globalSetup diagnostic paths. Captured outputs archived separately; original recorded bytes restored and verified against pre-task SHA256.",
+  "corrections": [
+    {
+      "path": "docs/evidence/grading-consumer-2026-10-09/transaction-boundary-final.json",
+      "restoredSha256": "27615add3308e811667602444f2d3a249c7f502e242a0b8fe3c730c8883d823b"
+    },
+    {
+      "path": "docs/evidence/grading-consumer-2026-10-09/maximum-boundary-final.json",
+      "restoredSha256": "c709c277fce154f81cce25cc054ec5bb18642b4e100ccf3a74dd63c4c05751c5"
+    }
+  ]
+}

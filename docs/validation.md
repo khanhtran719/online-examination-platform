@@ -1,6 +1,54 @@
 # Validation log
 
-2026-10-09 latest: [outbox dispatch](outbox-dispatch-2026-10-08.md)/
+2026-10-09 latest: [Candidate result/history/review](assessment-results-2026-10-09.md)/
+[raw evidence](evidence/assessment-results-2026-10-09/README.md):344 root
+(207 API/30 suites,41 tooling,96 Web) +224 integration/14 suites PASS,0 skipped.
+Lint/typecheck/build/contracts46/425 and diff checks PASS.10 new restricted-PG/HTTP
+cases cover frozen release, owner/current permission, FAILED/replay, exact schemas,
+escaped256KiB page/no-skip HMAC traversal, history/new starts/null scores and
+section totals.8 pure Domain and9 Application cases pass; technical unit-test
+imports were replaced with port fakes without a checker exemption.3 SQL/read
+including auth/rate; natural100k history plans and denied key nodes Actual Loops0.
+16 source/built migrations match;16 applied files +273 historical evidence preserved.
+No migration/grant/dependency/resource/event changes; no dependency-audit, browser
+HTTPS, images or live AWS rerun. Short20-sample sequential diagnostics do not prove
+capacity/SLO/cost/allocation; worst-payload concurrency and production remain open.
+Cleanup0 temporary databases/logins/other-DB connections; PG55435 and Mailpit stopped,
+volumes preserved. ATT-08 checked,roadmap78/216; ATT-09 retention and REP-04 remaining
+leaderboard/privacy/Admin read gates remain open.
+
+Prior2026-10-09: [terminal grading recovery](grading-recovery-2026-10-09.md)/
+[raw evidence](evidence/grading-recovery-2026-10-09/README.md):327 root
+(190 API/28 suites,41 tooling,96 Web) +214 integration/14 suites PASS,0 skipped.
+Lint/typecheck/build/contracts46/425 PASS. Restricted-PG terminal/audit rollback,
+revision-safe concurrent/repeated replay, stale source/DLQ generation, least
+privilege, public publisher propagation outside its claim transaction and
+root-boundary guards pass. SDK fixtures verify attribute checksum/DLQ origin;
+compiled recovery worker ACK-loss/redelivery/SIGTERM and operator CLI pass.
+16 source/built migrations match;0001–0015 +239 historical evidence preserved.
+An early diagnostic setup-path mistake was archived/corrected with original
+hashes restored; final setup uses only the new evidence directory. First full
+fixture-schema failure is retained beside final214 GREEN. Local diagnostics
+remain15 normal-grading statements/job, not sustainable capacity or AWS evidence.
+No runtime dependency/lock change or dependency-audit rerun; HTTPS/images/live
+AWS not run. Admin replay HTTP, result/history/privacy reads, retention/rollout,
+full tracing, timed recovery and all production acceptance gates remain open.
+
+Prior2026-10-09: [grading consumer](grading-consumer-2026-10-09.md)/
+[raw evidence](evidence/grading-consumer-2026-10-09/README.md):316 root
+(179 API/27 suites,41 tooling,96 Web) +200 integration/14 suites PASS,0 skipped.
+Lint/typecheck/build/contracts46/425 PASS. Independent ambient-UoW probe failed
+two assertions before the public factory guard; all3 cases now GREEN and included
+in the full suite. Restricted-role PG proves atomic results/inbox/statistics/rank,
+projection/inbox/deferred-COMMIT rollback, duplicate contention and SDK-fixture
+lost Delete ACK/redelivery. Compiled worker SIGTERM exits cleanly.
+15 source/built migrations match;0001–0014 and203 prior evidence files preserved.
+Pure100/500 compute and two short3/500-question PG diagnostics are separate from
+sustainable capacity, AWS cost and SLO acceptance. No dependency/lock change;
+the previous runtime audit is historical, not rerun in this increment. HTTPS/live
+AWS/images were not run; full tracing/FAILED/replay/results HTTP remain open.
+
+Prior2026-10-09: [outbox dispatch](outbox-dispatch-2026-10-08.md)/
 [raw evidence](evidence/outbox-dispatch-2026-10-08/README.md):280 root and173
 integration PASS; lint/typecheck/build/contracts46/425 and production-only
 dependency audit0 advisories. Independent post-lock lease RED corrected and all

@@ -1,0 +1,63 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/grading-validation-env.cjs --runTestsByPath apps/api/tests/integration/grading-boundary.spec.ts
+
+(node:25895) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/grading-boundary.spec.ts
+  ● public grading consumer transaction boundary › rejects ambient transactions without committing malformed-message quarantine
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 3
+
+      Object {
+    -   "durableQuarantines": 0,
+    -   "errorCode": "DB_TRANSACTION_FORBIDDEN",
+    -   "outcome": null,
+    +   "durableQuarantines": 1,
+    +   "errorCode": null,
+    +   "outcome": "quarantined",
+      }
+
+      109 |       );
+      110 |
+    > 111 |     expect({ ...settlement, durableQuarantines: await durableQuarantines(raw) }).toEqual({
+          |                                                                                  ^
+      112 |       outcome: null,
+      113 |       errorCode: "DB_TRANSACTION_FORBIDDEN",
+      114 |       durableQuarantines: 0,
+
+      at Object.<anonymous> (apps/api/tests/integration/grading-boundary.spec.ts:111:82)
+
+  ● public grading consumer transaction boundary › keeps a delivery unacknowledged when its caller later rolls back
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+    -   "acknowledgements": 0,
+    +   "acknowledgements": 1,
+        "durableQuarantines": 0,
+    -   "outcome": "DB_TRANSACTION_FORBIDDEN",
+    +   "outcome": "CALLER_ROLLBACK",
+      }
+
+      155 |       acknowledgements,
+      156 |       durableQuarantines: await durableQuarantines(raw),
+    > 157 |     }).toEqual({
+          |        ^
+      158 |       outcome: "DB_TRANSACTION_FORBIDDEN",
+      159 |       acknowledgements: 0,
+      160 |       durableQuarantines: 0,
+
+      at Object.<anonymous> (apps/api/tests/integration/grading-boundary.spec.ts:157:8)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 1 passed, 3 total
+Snapshots:   0 total
+Time:        3.649 s
+Ran all test suites within paths "apps/api/tests/integration/grading-boundary.spec.ts".

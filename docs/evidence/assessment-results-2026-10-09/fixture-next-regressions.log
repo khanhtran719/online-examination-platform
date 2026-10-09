@@ -1,0 +1,44 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/assessment-results-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment.spec.ts --testNamePattern Candidate (read|history)
+
+(node:46149) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment.spec.ts (5.217 s)
+  ● Candidate history and query budgets › keeps deterministic cursor history through new attempts, terminal null scores and empty owners
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      3118 |     const seedIds=Array.from({length:5},()=>randomUUID()).sort().reverse();
+      3119 |     const at="2026-10-08T00:00:00.000Z";
+    > 3120 |     for(const id of seedIds)await fixture.query(`
+           |                             ^
+      3121 |       INSERT INTO assessment.attempts (
+      3122 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      3123 |         submission_id, submission_event_id, submission_kind, expired, failure_code
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:3120:29)
+
+  ● Candidate history and query budgets › retains three auth-inclusive queries per result/review/history and records a bounded local diagnostic
+
+    error: relation "platform.rate_buckets" does not exist
+
+      3155 |       ] as const){
+      3156 |         // Each measured series fits the configured burst; reset only synthetic fixtures between series.
+    > 3157 |         await fixture.query("TRUNCATE platform.rate_buckets");
+           |         ^
+      3158 |         const samples=[];const cpu=process.cpuUsage(),rss=process.memoryUsage().rss;
+      3159 |         for(let i=0;i<20;i++){
+      3160 |           observations.length=0;const start=performance.now();
+
+      at node_modules/pg-pool/index.js:45:11
+      at apps/api/tests/integration/assessment.spec.ts:3157:9
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:349:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:3146:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 23 skipped, 6 passed, 31 total
+Snapshots:   0 total
+Time:        5.263 s
+Ran all test suites within paths "apps/api/tests/integration/assessment.spec.ts".

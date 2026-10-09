@@ -105,6 +105,7 @@ export interface ScoringItem {
   position: number;
   type: QuestionType;
   points: number;
+  optionIds: string[];
   correctOptionIds: string[];
 }
 

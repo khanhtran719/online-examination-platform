@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-09",
+  "root": {
+    "passed": 327,
+    "api": 190,
+    "suites": 28,
+    "tooling": 41,
+    "web": 96,
+    "skipped": 0,
+    "exit": 0
+  },
+  "integration": {
+    "passed": 214,
+    "suites": 14,
+    "skipped": 0,
+    "exit": 0
+  },
+  "lint": 0,
+  "typecheck": 0,
+  "build": 0,
+  "contracts": {
+    "operations": 46,
+    "examples": 425
+  },
+  "roadmap": {
+    "checked": 77,
+    "pending": 139,
+    "total": 216
+  },
+  "productionAccepted": false,
+  "notRun": [
+    "live AWS/SQS/IAM/KMS",
+    "k6/capacity/cost/Performance-Cost Curve",
+    "image/schema/rolling-deployment drill",
+    "HTTPS browser rerun",
+    "dependency audit rerun",
+    "timed failover/restore/recovery"
+  ],
+  "unchangedHistoricalFiles": 254,
+  "appliedMigrations": 15,
+  "historicalEvidence": 239,
+  "builtMigrations": 16
+}

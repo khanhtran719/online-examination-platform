@@ -1,0 +1,69 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/assessment-results-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment.spec.ts --testNamePattern Candidate read results
+
+(node:45008) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment.spec.ts
+  ● Candidate read results on restricted PostgreSQL/HTTP › returns pending and FAILED durable status without score or internal failure information
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 202
+    Received: 404
+
+      2945 |       const headers={cookie:session.cookie};
+      2946 |       let response=await http.inject({method:"GET",url:`/v1/attempts/${f.attempt}/result`,headers});
+    > 2947 |       expect(response.statusCode).toBe(202);noStore(response);assertSchema(validateAttempt,response.json());
+           |                                   ^
+      2948 |       expect(response.headers["retry-after"]).toBe("2");
+      2949 |       expect(response.json().data).toMatchObject({status:"SUBMITTED",resultAvailable:false,pollAfterSeconds:2});
+      2950 |       await createGradingRecovery(graderDb).consume(f.raw);
+
+      at apps/api/tests/integration/assessment.spec.ts:2947:35
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:341:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2943:5)
+
+  ● Candidate read results on restricted PostgreSQL/HTTP › returns immutable scores but NEVER releases review, and hides foreign ownership
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 404
+
+      2962 |       const session=await openSession(http,candidateUser.email),other=await openSession(http,foreignUser.email);
+      2963 |       const response=await http.inject({method:"GET",url:`/v1/attempts/${f.attempt.toUpperCase()}/result`,headers:{cookie:session.cookie}});
+    > 2964 |       expect(response.statusCode).toBe(200);noStore(response);
+           |                                   ^
+      2965 |       expect(response.json().data).toMatchObject({attemptId:f.attempt,earned:10,possible:15,correct:2,total:3,percentageBasisPoints:6666,review:null});
+      2966 |       expect(response.json().data.sections).toEqual([expect.objectContaining({earned:10,possible:15,correct:2,total:3})]);
+      2967 |       expect(response.body).not.toMatch(/correctOptionIds|explanation|failureCode|userId|email/);
+
+      at apps/api/tests/integration/assessment.spec.ts:2964:35
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:341:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2961:5)
+
+  ● Candidate read results on restricted PostgreSQL/HTTP › releases AFTER_COMPLETION as bounded review and exposes only the owner's history
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 404
+
+      2979 |       const session=await openSession(http,candidateUser.email);
+      2980 |       const result=await http.inject({method:"GET",url:`/v1/attempts/${f.attempt}/result`,headers:{cookie:session.cookie}});
+    > 2981 |       expect(result.statusCode).toBe(200);expect(result.json().data.review).toEqual({href:`/v1/attempts/${f.attempt}/review`});
+           |                                 ^
+      2982 |       const response=await http.inject({method:"GET",url:`/v1/attempts/${f.attempt}/review?pageSize=2`,headers:{cookie:session.cookie}});
+      2983 |       expect(response.statusCode).toBe(200);noStore(response);expect(response.json().data).toHaveLength(2);
+      2984 |       expect(response.json().data[0]).toMatchObject({correct:true,explanation:explanationToken,selectedOptionIds:[f.qs[0]!.options[0]!.id],correctOptionIds:[f.qs[0]!.options[0]!.id]});
+
+      at apps/api/tests/integration/assessment.spec.ts:2981:33
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:341:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:2978:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       3 failed, 23 skipped, 26 total
+Snapshots:   0 total
+Time:        5.046 s, estimated 9 s
+Ran all test suites within paths "apps/api/tests/integration/assessment.spec.ts".

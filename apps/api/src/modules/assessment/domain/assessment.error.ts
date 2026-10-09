@@ -29,6 +29,14 @@ export class NotFoundError extends DomainError {
 
 export const notFound = () => new NotFoundError();
 
+export class PermissionDeniedError extends DomainError {
+  readonly code = "PERMISSION_DENIED";
+  readonly category = ErrorCategory.Forbidden;
+  constructor() {
+    super("Permission denied");
+  }
+}
+
 export class RevisionConflictError extends DomainError {
   readonly code = "REVISION_CONFLICT";
   readonly category = ErrorCategory.Conflict;

@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-09T03:34:58Z",
+  "databases": 0,
+  "logins": 0,
+  "connections": 0,
+  "stopped": [
+    "examination-identity-https/postgres",
+    "examination-platform/mailpit"
+  ],
+  "volumesPreserved": true,
+  "developmentDatabase55432Untouched": true
+}

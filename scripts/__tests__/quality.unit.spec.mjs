@@ -196,3 +196,24 @@ test("prevents business dependencies hidden behind shared root barrels or unsupp
   ])
     assert.ok(inspectImports(path, `import x from '${dependency}';`).length > 0, dependency);
 });
+test("allows only the reviewed Catalog worker composition boundary", () => {
+  const worker = "apps/api/src/workers/sqs/grading.main.ts";
+  assert.deepEqual(
+    inspectImports(worker, "import x from '../../modules/catalog/catalog-worker.factory';"),
+    [],
+  );
+  assert.notDeepEqual(
+    inspectImports(
+      "apps/api/src/modules/assessment/application/services/grading.ts",
+      "import x from '../../../catalog/catalog-worker.factory';",
+    ),
+    [],
+  );
+  assert.notDeepEqual(
+    inspectImports(
+      worker,
+      "import x from '../../modules/catalog/infrastructure/persistence/postgres-catalog.query';",
+    ),
+    [],
+  );
+});

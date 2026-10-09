@@ -26,6 +26,8 @@
     "worker:local": "node --env-file=.env.worker.example dist/workers/outbox/verification.main.js",
     "expiry:local": "node --env-file=.env.expiry.example dist/workers/scheduler/expiry.main.js",
     "dispatch:local": "node --env-file=.env.dispatch.example dist/workers/outbox/submission.main.js",
+    "grading:dlq:local": "node --env-file=.env.recovery.example dist/workers/sqs/grading.main.js",
+    "grading:local": "node --env-file=.env.grading.example dist/workers/sqs/grading.main.js",
     "bench:identity:local": "npm run build && node --env-file=.env.example scripts/identity-benchmark.mjs",
     "smoke:identity:local": "npm run build && node scripts/identity-smoke.mjs",
     "web:dev": "npm --prefix apps/web run dev",

@@ -49,6 +49,13 @@ import {
 } from "../../src/modules/identity/infrastructure/security/identity-crypto";
 import { IdentityController } from "../../src/modules/identity/presentation/http/identity.controller";
 import { HTTP_SESSION } from "../../src/modules/identity/presentation/http/http-session.port";
+import { CandidateResultsService } from "../../src/modules/assessment/application/services/candidate-results.service";
+import { PostgresCandidateResultsQuery } from "../../src/modules/assessment/infrastructure/persistence/postgres-candidate-results.query";
+import {
+  createGradingConsumer,
+  createGradingRecovery,
+} from "../../src/modules/assessment/assessment-worker.factory";
+import { createScoringCatalog } from "../../src/modules/catalog/catalog-worker.factory";
 
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
 if (!adminUrl) throw new Error("Local test administrator required");
@@ -59,6 +66,7 @@ const admin = new Pool({ connectionString: adminUrl, max: 1 });
 const owner = `assessment_ddl_${suffix}`;
 const runtimeRole = `assessment_app_${suffix}`;
 const operator = `assessment_ops_${suffix}`;
+const graderRole = `assessment_grade_${suffix}`;
 const url = new URL(adminUrl);
 url.pathname = `/${name}`;
 const runtimeUrl = new URL(url);
@@ -83,6 +91,7 @@ let fixture: Pool;
 let ops: Pool;
 let db: PostgresDatabase;
 let db2: PostgresDatabase;
+let graderDb: PostgresDatabase;
 let identity: IdentityService;
 let catalog: CatalogService;
 let assessment: AssessmentService;
@@ -98,6 +107,9 @@ let validateQuestions: ValidateFunction;
 let validateAnswers: ValidateFunction;
 let validateSave: ValidateFunction;
 let validateSubmit: ValidateFunction;
+let validateResult: ValidateFunction;
+let validateReview: ValidateFunction;
+let validateHistory: ValidateFunction;
 
 interface Actor {
   id: string;
@@ -229,6 +241,8 @@ async function bankQuestion(draft: QuestionDraft): Promise<string> {
 async function publishExam(
   questions: readonly { bankQuestionId: string; points?: number }[],
   attemptLimit = 2,
+  explanationPolicy: "NEVER" | "AFTER_COMPLETION" | "AFTER_EXAM_CLOSE" = "NEVER",
+  splitSections = false,
 ): Promise<PublishedExam> {
   const draft = await catalog.createExam(
     adminUser.raw,
@@ -241,20 +255,41 @@ async function publishExam(
       closeAt: new Date(Date.now() + 3_600_000).toISOString(),
       displayTimezone: "Asia/Ho_Chi_Minh",
       attemptLimit,
-      explanationPolicy: "NEVER",
+      explanationPolicy,
       leaderboardEnabled: false,
       expectedRevision: 0,
-      sections: [
-        {
-          title: "One",
-          position: 1,
-          questions: questions.map((question, index) => ({
-            bankQuestionId: question.bankQuestionId,
-            position: index + 1,
-            points: question.points ?? 5,
-          })),
-        },
-      ],
+      sections: splitSections
+        ? [
+            {
+              title: "One",
+              position: 1,
+              questions: questions.slice(0, 2).map((question, index) => ({
+                bankQuestionId: question.bankQuestionId,
+                position: index + 1,
+                points: question.points ?? 5,
+              })),
+            },
+            {
+              title: "Two",
+              position: 2,
+              questions: questions.slice(2).map((question, index) => ({
+                bankQuestionId: question.bankQuestionId,
+                position: index + 1,
+                points: question.points ?? 5,
+              })),
+            },
+          ]
+        : [
+            {
+              title: "One",
+              position: 1,
+              questions: questions.map((question, index) => ({
+                bankQuestionId: question.bankQuestionId,
+                position: index + 1,
+                points: question.points ?? 5,
+              })),
+            },
+          ],
     },
     randomUUID(),
   );
@@ -323,6 +358,14 @@ async function withHttp(use: (http: import("fastify").FastifyInstance) => Promis
     controllers: [AssessmentController, IdentityController],
     providers: [
       { provide: AssessmentService, useValue: assessment },
+      {
+        provide: CandidateResultsService,
+        useValue: new CandidateResultsService(
+          new PostgresCandidateResultsQuery(db),
+          new HmacAssessmentCursor(csrfKey),
+          new HttpQuestionPageSizer(),
+        ),
+      },
       { provide: IdentityService, useValue: identity },
       { provide: IDENTITY_ACCESS, useExisting: IdentityService },
       { provide: HTTP_SESSION, useValue: session },
@@ -383,15 +426,20 @@ beforeAll(async () => {
   validateAnswers = ajv.compile(api.components.schemas.AnswerListEnvelope!);
   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+  validateResult = ajv.compile(api.components.schemas.ResultEnvelope!);
+  validateReview = ajv.compile(api.components.schemas.ReviewQuestionListEnvelope!);
+  validateHistory = ajv.compile(api.components.schemas.HistoryItemListEnvelope!);
   await admin.query(`CREATE DATABASE ${name}`);
   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
   await admin.query(`CREATE ROLE ${runtimeRole} LOGIN INHERIT PASSWORD '${password}'`);
   await admin.query(`CREATE ROLE ${operator} LOGIN INHERIT PASSWORD '${password}'`);
+  await admin.query(`CREATE ROLE ${graderRole} LOGIN INHERIT PASSWORD '${password}'`);
   await admin.query(`GRANT examination_owner TO ${owner}`);
   await admin.query(`GRANT examination_runtime TO ${runtimeRole}`);
   await admin.query(`GRANT examination_operator TO ${operator}`);
+  await admin.query(`GRANT examination_grading_worker TO ${graderRole}`);
   await migrate(
     databaseConfig({ NODE_ENV: "test", DATABASE_URL: ddlUrl.toString() }),
     await loadMigrations("apps/api/src/infrastructure/database/migrations"),
@@ -401,6 +449,12 @@ beforeAll(async () => {
   const runtimeConfig = databaseConfig({ NODE_ENV: "test", DATABASE_URL: runtimeUrl.toString() });
   db = new PostgresDatabase(runtimeConfig, (value) => observations.push(value));
   db2 = new PostgresDatabase(runtimeConfig);
+  const gradingUrl = new URL(url);
+  gradingUrl.username = graderRole;
+  gradingUrl.password = password;
+  graderDb = new PostgresDatabase(
+    databaseConfig({ NODE_ENV: "test", DATABASE_URL: gradingUrl.toString() }),
+  );
   const keys = generateKeyPairSync("ec", { namedCurve: "prime256v1" });
   const key = {
     kid: "local-test",
@@ -475,6 +529,7 @@ afterAll(async () => {
   await unblockOutbox().catch(() => undefined);
   await db?.close();
   await db2?.close();
+  await graderDb?.close();
   await fixture?.end();
   await ops?.end();
   for (let attempt = 0; attempt < 100; attempt += 1) {
@@ -488,7 +543,7 @@ afterAll(async () => {
     await new Promise((resolve) => setTimeout(resolve, 10));
   }
   await admin.query(`DROP DATABASE IF EXISTS ${name}`);
-  await admin.query(`DROP ROLE IF EXISTS ${owner}, ${runtimeRole}, ${operator}`);
+  await admin.query(`DROP ROLE IF EXISTS ${owner}, ${runtimeRole}, ${operator}, ${graderRole}`);
   await admin.end();
 });
 
@@ -2900,6 +2955,677 @@ describe("Assessment review regressions on restricted PostgreSQL", () => {
       expect(startCount).toBeLessThanOrEqual(12);
       expect(saveCount).toBeLessThanOrEqual(11);
       expect(submitCount).toBeLessThanOrEqual(10);
+    });
+  });
+});
+async function submittedForReview(
+  policy: "NEVER" | "AFTER_COMPLETION" | "AFTER_EXAM_CLOSE",
+  long = false,
+  actor = candidateUser,
+  splitSections = false,
+) {
+  const bankIds = [];
+  for (let i = 0; i < (long ? 5 : 3); i++) {
+    const draft = choiceDraft(
+      "SINGLE_CHOICE",
+      long ? "\u0001".repeat(8000) : `Review ${i}`,
+      long ? 10 : 2,
+      [1],
+    );
+    if (long) {
+      draft.explanation = "\u0001".repeat(8000);
+      draft.options = draft.options.map((o) => ({ ...o, text: "\u0001".repeat(2000) }));
+    }
+    bankIds.push(await bankQuestion(draft));
+  }
+  const exam = await publishExam(
+    bankIds.map((bankQuestionId) => ({ bankQuestionId })),
+    2,
+    policy,
+    splitSections,
+  );
+  const a = await assessment.start(actor.raw, uuidv7(), exam.examId);
+  const qs: import("../../src/modules/assessment/application/dto/assessment.dto").CandidateQuestionView[] =
+    [];
+  let questionCursor: string | null = null;
+  do {
+    const page = await assessment.questions(actor.id, a.body.id, 100, questionCursor);
+    qs.push(...page.items);
+    questionCursor = page.metadata.next;
+  } while (questionCursor);
+  await assessment.save(
+    actor.raw,
+    uuidv7(),
+    a.body.id,
+    qs.slice(0, 2).map((q) => ({
+      questionId: q.id,
+      selectedOptionIds: [q.options[0]!.id],
+      marked: false,
+      expectedVersion: 0,
+    })),
+  );
+  await assessment.submit(actor.raw, uuidv7(), a.body.id, randomUUID());
+  const raw = JSON.stringify(
+    (
+      await fixture.query("SELECT payload FROM platform.outbox WHERE aggregate_id = $1", [
+        a.body.id,
+      ])
+    ).rows[0].payload,
+  );
+  return { attempt: a.body.id, exam: exam.examId, qs, raw };
+}
+async function gradeReview(raw: string) {
+  expect(
+    (await createGradingConsumer(graderDb, createScoringCatalog(graderDb)).consume(raw)).outcome,
+  ).toBe("completed");
+}
+describe("Candidate read results on restricted PostgreSQL/HTTP", () => {
+  it("returns pending and FAILED durable status without score or internal failure information", async () => {
+    const f = await submittedForReview("AFTER_COMPLETION");
+    await withHttp(async (http) => {
+      const session = await openSession(http, candidateUser.email);
+      const headers = { cookie: session.cookie };
+      let response = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/result`,
+        headers,
+      });
+      expect(response.statusCode).toBe(202);
+      noStore(response);
+      assertSchema(validateAttempt, response.json());
+      expect(response.headers["retry-after"]).toBe("2");
+      expect(response.json().data).toMatchObject({
+        status: "SUBMITTED",
+        resultAvailable: false,
+        pollAfterSeconds: 2,
+      });
+      await createGradingRecovery(graderDb).consume(f.raw);
+      response = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/result`,
+        headers,
+      });
+      expect(response.statusCode).toBe(202);
+      assertSchema(validateAttempt, response.json());
+      expect(response.json().data).toMatchObject({
+        status: "FAILED",
+        replayPending: false,
+        pollAfterSeconds: 0,
+      });
+      expect(response.body).not.toMatch(
+        /RETRY_EXHAUSTED|earned|possible|SCORING_INVALID|grading_generation/,
+      );
+      await ops.query(
+        "SELECT * FROM assessment.operator_replay_grading($1, $2, 'read-fixture', 'verify durable pending status', $3)",
+        [f.attempt, response.json().data.revision, randomUUID()],
+      );
+      for (const action of ["result", "status"]) {
+        const replay = await http.inject({
+          method: "GET",
+          url: `/v1/attempts/${f.attempt}/${action}`,
+          headers,
+        });
+        expect(replay.statusCode).toBe(action === "result" ? 202 : 200);
+        assertSchema(validateAttempt, replay.json());
+        expect(replay.json().data).toMatchObject({
+          status: "FAILED",
+          replayPending: true,
+          resultAvailable: false,
+          pollAfterSeconds: 2,
+          canSave: false,
+        });
+      }
+      const denied = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/review`,
+        headers,
+      });
+      expect(denied.statusCode).toBe(403);
+      expect(denied.body).not.toContain(explanationToken);
+    });
+  });
+  it("returns immutable scores but NEVER releases review, and hides foreign ownership", async () => {
+    const f = await submittedForReview("NEVER");
+    await gradeReview(f.raw);
+    await withHttp(async (http) => {
+      const session = await openSession(http, candidateUser.email),
+        other = await openSession(http, foreignUser.email);
+      const response = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt.toUpperCase()}/result`,
+        headers: { cookie: session.cookie },
+      });
+      expect(response.statusCode).toBe(200);
+      noStore(response);
+      assertSchema(validateResult, response.json());
+      expect(response.json().data).toMatchObject({
+        attemptId: f.attempt,
+        earned: 10,
+        possible: 15,
+        correct: 2,
+        total: 3,
+        percentageBasisPoints: 6666,
+        review: null,
+      });
+      expect(response.json().data.sections).toEqual([
+        expect.objectContaining({ earned: 10, possible: 15, correct: 2, total: 3 }),
+      ]);
+      expect(response.body).not.toMatch(/correctOptionIds|explanation|failureCode|userId|email/);
+      for (const action of ["result", "review"]) {
+        const foreign = await http.inject({
+          method: "GET",
+          url: `/v1/attempts/${f.attempt}/${action}`,
+          headers: { cookie: other.cookie },
+        });
+        expect(foreign.statusCode).toBe(404);
+        noStore(foreign);
+      }
+      const review = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/review`,
+        headers: { cookie: session.cookie },
+      });
+      expect(review.statusCode).toBe(403);
+      expect(review.body).not.toContain(explanationToken);
+    });
+  });
+  it("releases AFTER_COMPLETION as bounded review and exposes only the owner's history", async () => {
+    const f = await submittedForReview("AFTER_COMPLETION");
+    await gradeReview(f.raw);
+    await withHttp(async (http) => {
+      const session = await openSession(http, candidateUser.email);
+      const result = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/result`,
+        headers: { cookie: session.cookie },
+      });
+      expect(result.statusCode).toBe(200);
+      expect(result.json().data.review).toEqual({ href: `/v1/attempts/${f.attempt}/review` });
+      const response = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/review?pageSize=2`,
+        headers: { cookie: session.cookie },
+      });
+      expect(response.statusCode).toBe(200);
+      noStore(response);
+      expect(response.json().data).toHaveLength(2);
+      assertSchema(validateReview, response.json());
+      expect(response.json().data[0]).toMatchObject({
+        correct: true,
+        explanation: explanationToken,
+        selectedOptionIds: [f.qs[0]!.options[0]!.id],
+        correctOptionIds: [f.qs[0]!.options[0]!.id],
+      });
+      expect(response.json().metadata.next).not.toBeNull();
+      const history = await http.inject({
+        method: "GET",
+        url: "/v1/me/attempts?pageSize=100",
+        headers: { cookie: session.cookie },
+      });
+      expect(history.statusCode).toBe(200);
+      noStore(history);
+      assertSchema(validateHistory, history.json());
+      expect(
+        history.json().data.find((v: { attemptId: string }) => v.attemptId === f.attempt),
+      ).toMatchObject({ status: "COMPLETED", earned: 10, possible: 15 });
+    });
+  });
+});
+
+describe("Candidate read policy/pagination regressions", () => {
+  it("uses frozen close/policy after republish and keeps completed result/history after unpublish", async () => {
+    const f = await submittedForReview("AFTER_EXAM_CLOSE");
+    await gradeReview(f.raw);
+    // A real snapshot close-time test uses a future started attempt, then wall-clock release.
+    // Version fields are immutable: only fixture administrator may remove the guard below.
+    const v = (
+      await fixture.query("SELECT version_id FROM assessment.attempts WHERE id = $1", [f.attempt])
+    ).rows[0].version_id;
+    await withHttp(async (http) => {
+      const session = await openSession(http, candidateUser.email),
+        headers = { cookie: session.cookie };
+      const before = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/review`,
+        headers,
+      });
+      expect(before.statusCode).toBe(403);
+      expect(before.body).not.toContain(explanationToken);
+      const metadata = await catalog.adminExam(f.exam);
+      const next = {
+        title: metadata.title,
+        category: metadata.category,
+        durationSeconds: metadata.durationSeconds,
+        openAt: metadata.openAt,
+        closeAt: metadata.closeAt,
+        displayTimezone: metadata.displayTimezone,
+        attemptLimit: metadata.attemptLimit,
+        explanationPolicy: "AFTER_COMPLETION" as const,
+        leaderboardEnabled: metadata.leaderboardEnabled,
+        expectedRevision: metadata.revision,
+        sections: metadata.sections,
+      };
+      await catalog.replaceExam(adminUser.raw, uuidv7(), f.exam, next, randomUUID());
+      await catalog.publish(adminUser.raw, uuidv7(), f.exam, metadata.revision + 1, randomUUID());
+      const still = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/review`,
+        headers,
+      });
+      expect(still.statusCode).toBe(403);
+      // Exercise the exact SQL release boundary without sleeping or modifying accepted source code.
+      await fixture.query("ALTER TABLE catalog.published_versions DISABLE TRIGGER USER");
+      try {
+        await fixture.query(
+          `
+          UPDATE catalog.published_versions
+          SET
+            closes_at = statement_timestamp()
+          WHERE
+            id = $1
+        `,
+          [v],
+        );
+      } finally {
+        await fixture.query("ALTER TABLE catalog.published_versions ENABLE TRIGGER USER");
+      }
+      const released = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/review`,
+        headers,
+      });
+      expect(released.statusCode).toBe(200);
+      assertSchema(validateReview, released.json());
+      const updated = await catalog.adminExam(f.exam);
+      await catalog.unpublish(adminUser.raw, uuidv7(), f.exam, updated.revision, randomUUID());
+      const result = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/result`,
+        headers,
+      });
+      expect(result.statusCode).toBe(200);
+      assertSchema(validateResult, result.json());
+      expect(result.json().data.publishedVersionId).toBe(v);
+    });
+  });
+  it("traverses escaped review without skips and rejects cross-scope/expired/tampered cursors", async () => {
+    const f = await submittedForReview("AFTER_COMPLETION", true);
+    await gradeReview(f.raw);
+    await withHttp(async (http) => {
+      const session = await openSession(http, candidateUser.email),
+        headers = { cookie: session.cookie };
+      const ids: string[] = [];
+      let cursor: string | null = null;
+      let first: string | null = null;
+      do {
+        const response = await http.inject({
+          method: "GET",
+          url: `/v1/attempts/${f.attempt}/review?pageSize=100${cursor ? "&cursor=" + encodeURIComponent(cursor) : ""}`,
+          headers,
+        });
+        expect(response.statusCode).toBe(200);
+        assertSchema(validateReview, response.json());
+        noStore(response);
+        expect(Buffer.byteLength(response.body, "utf8")).toBeLessThanOrEqual(262144);
+        expect(response.json().data.length).toBeGreaterThan(0);
+        ids.push(...response.json().data.map((r: { question: { id: string } }) => r.question.id));
+        cursor = response.json().metadata.next;
+        if (!first) first = cursor;
+        expect(ids.length).toBeLessThanOrEqual(5);
+      } while (cursor);
+      expect(ids).toEqual(f.qs.map((q) => q.id));
+      expect(new Set(ids).size).toBe(5);
+      expect(first).not.toBeNull();
+      const other = await openSession(http, foreignUser.email);
+      for (const [url, cookie] of [
+        [
+          `/v1/attempts/${f.attempt}/review?pageSize=20&cursor=${encodeURIComponent(first!)}`,
+          session.cookie,
+        ],
+        [
+          `/v1/attempts/${f.attempt}/review?pageSize=100&cursor=${encodeURIComponent(first!)}`,
+          other.cookie,
+        ],
+        [`/v1/me/attempts?pageSize=100&cursor=${encodeURIComponent(first!)}`, session.cookie],
+        [
+          `/v1/attempts/${f.attempt}/review?pageSize=100&cursor=x${encodeURIComponent(first!)}`,
+          session.cookie,
+        ],
+      ]) {
+        const denied = await http.inject({
+          method: "GET",
+          url: url!,
+          headers: { cookie: cookie! },
+        });
+        expect(denied.statusCode).toBe(400);
+        expect(denied.json().errorCode).toBe("Invalid request");
+      }
+      const expired = new HmacAssessmentCursor(csrfKey).sign(
+        { kind: "attempt.review", actorId: candidateUser.id, pageSize: 100, filter: f.attempt },
+        JSON.parse(f.raw).payload.publishedVersionId,
+        ["1", "1", f.qs[0]!.id],
+        0,
+      );
+      const denied = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/review?pageSize=100&cursor=${encodeURIComponent(expired)}`,
+        headers,
+      });
+      expect(denied.statusCode).toBe(400);
+    });
+  });
+  it("enforces current read permission/session and bounded input; denied result reads do not query keys", async () => {
+    const f = await submittedForReview("AFTER_COMPLETION");
+    await gradeReview(f.raw);
+    await withHttp(async (http) => {
+      const session = await openSession(http, candidateUser.email),
+        headers = { cookie: session.cookie };
+      for (const url of [
+        `/v1/attempts/${f.attempt}/result`,
+        `/v1/attempts/${f.attempt}/review`,
+        "/v1/me/attempts",
+      ]) {
+        const unauth = await http.inject({ method: "GET", url });
+        expect(unauth.statusCode).toBe(401);
+      }
+      await fixture.query(
+        "DELETE FROM identity.role_permissions WHERE role_id = 'CANDIDATE' AND permission_id = 'assessment.result.read'",
+      );
+      try {
+        const response = await http.inject({
+          method: "GET",
+          url: `/v1/attempts/${f.attempt}/result`,
+          headers,
+        });
+        expect(response.statusCode).toBe(403);
+        expect(response.body).not.toContain(explanationToken);
+        const history = await http.inject({ method: "GET", url: "/v1/me/attempts", headers });
+        expect(history.statusCode).toBe(200);
+      } finally {
+        await fixture.query(
+          "INSERT INTO identity.role_permissions (role_id, permission_id) VALUES ('CANDIDATE', 'assessment.result.read')",
+        );
+      }
+      for (const suffix of [
+        "pageSize=0",
+        "pageSize=101",
+        "pageSize=1.5",
+        "actorId=" + foreignUser.id,
+        "cursor=",
+      ]) {
+        const response = await http.inject({
+          method: "GET",
+          url: "/v1/me/attempts?" + suffix,
+          headers,
+        });
+        expect(response.statusCode).toBe(400);
+      }
+      await identity.logout(session.refresh);
+      const revoked = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/result`,
+        headers,
+      });
+      expect(revoked.statusCode).toBe(401);
+    });
+  });
+});
+
+describe("Candidate history and query budgets", () => {
+  it("keeps deterministic cursor history through new attempts, terminal null scores and empty owners", async () => {
+    const actor = await activated();
+    const service = new CandidateResultsService(
+      new PostgresCandidateResultsQuery(db),
+      new HmacAssessmentCursor(csrfKey),
+      new HttpQuestionPageSizer(),
+    );
+    const empty = await service.history(actor.id, 20, null);
+    expect(empty.items).toEqual([]);
+    expect(empty.metadata.next).toBeNull();
+    const f = await submittedForReview("NEVER", false, actor);
+    const version = JSON.parse(f.raw).payload.publishedVersionId;
+    const seedIds = Array.from({ length: 5 }, () => randomUUID())
+      .sort()
+      .reverse();
+    const at = "2026-10-08T00:00:00.000Z";
+    for (const id of seedIds)
+      await fixture.query(
+        `
+      INSERT INTO assessment.attempts (
+        id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+        submission_id, submission_event_id, submission_kind, expired, failure_code, revision
+      )
+      VALUES (
+        $1, $2, $3, $4, 'FAILED', $5, $5::timestamptz + interval '90 seconds',
+        $5::timestamptz + interval '30 seconds', gen_random_uuid(), gen_random_uuid(),
+        'MANUAL', false, 'SYNTHETIC_FAILURE', 1
+      )
+    `,
+        [id, actor.id, f.exam, version, at],
+      );
+    let page = await service.history(actor.id, 2, null);
+    expect(page.items[0]!.attemptId).toBe(f.attempt);
+    const first = page.metadata.next!;
+    const late = await submittedForReview("NEVER", false, actor);
+    await gradeReview(late.raw);
+    const collected = page.items.map((v) => v.attemptId);
+    while (page.metadata.next) {
+      page = await service.history(actor.id, 2, page.metadata.next);
+      collected.push(...page.items.map((v) => v.attemptId));
+    }
+    expect(collected).toEqual([f.attempt, ...seedIds]);
+    expect(new Set(collected).size).toBe(6);
+    expect(page.items.every((v) => v.earned === null && v.possible === null)).toBe(true);
+    expect((await service.history(actor.id, 2, null)).items[0]!.attemptId).toBe(late.attempt);
+    await expect(service.history(foreignUser.id, 2, first)).rejects.toThrow("Invalid request");
+    await expect(service.history(actor.id, 20, first)).rejects.toThrow("Invalid request");
+  });
+  it("retains three auth-inclusive queries per result/review/history and records a bounded local diagnostic", async () => {
+    const actor = await activated(),
+      f = await submittedForReview("AFTER_COMPLETION", false, actor);
+    const pending = await submittedForReview("NEVER", false, actor);
+    await gradeReview(f.raw);
+    await withHttp(async (http) => {
+      const session = await openSession(http, actor.email);
+      const output: Record<string, unknown> = {
+        environment:
+          "local PG17/Node24 ARM64, synthetic 3-question attempts, sequential HTTP injection",
+        scope:
+          "short correctness/query/latency diagnostic only; no sustainable RPS/SLO/AWS/cost/allocation inference",
+      };
+      for (const [name, url, status] of [
+        ["result", `/v1/attempts/${f.attempt}/result`, 200],
+        ["pending", `/v1/attempts/${pending.attempt}/result`, 202],
+        ["review", `/v1/attempts/${f.attempt}/review`, 200],
+        ["history", "/v1/me/attempts", 200],
+      ] as const) {
+        // Each measured series fits the configured burst; reset only synthetic fixtures between series.
+        await fixture.query("TRUNCATE platform.request_limits");
+        const samples = [];
+        const cpu = process.cpuUsage(),
+          rss = process.memoryUsage().rss;
+        for (let i = 0; i < 20; i++) {
+          observations.length = 0;
+          const start = performance.now();
+          const response = await http.inject({
+            method: "GET",
+            url,
+            headers: { cookie: session.cookie },
+          });
+          const elapsedMs = performance.now() - start;
+          expect(response.statusCode).toBe(status);
+          noStore(response);
+          const sample = {
+            elapsedMs,
+            queries: observations.filter((o) => o.kind === "query").length,
+            bytes: Buffer.byteLength(response.body, "utf8"),
+          };
+          expect(sample.queries).toBe(3);
+          samples.push(sample);
+        }
+        const sorted = samples.map((v) => v.elapsedMs).sort((a, b) => a - b);
+        const used = process.cpuUsage(cpu);
+        output[name] = {
+          samples,
+          p50: sorted[Math.ceil(20 * 0.5) - 1],
+          p95: sorted[Math.ceil(20 * 0.95) - 1],
+          p99: sorted[19],
+          observedRequestsPerSecond: 20000 / samples.reduce((a, s) => a + s.elapsedMs, 0),
+          cpuMicrosPerRequest: (used.user + used.system) / 20,
+          rssDeltaBytes: process.memoryUsage().rss - rss,
+          note: "CPU/RSS include test/HTTP injection overhead; RSS delta is not allocated bytes/request; read bucket reset between series, not per request",
+        };
+      }
+      if (process.env.RESULTS_EVIDENCE_FILE)
+        await writeFile(process.env.RESULTS_EVIDENCE_FILE, JSON.stringify(output, null, 2));
+    });
+  });
+});
+
+describe("Candidate projection query plans", () => {
+  it("uses the history index naturally on 100k attempts and never executes key lookup before release", async () => {
+    const actor = await activated(),
+      f = await submittedForReview("NEVER", false, actor);
+    const version = JSON.parse(f.raw).payload.publishedVersionId;
+    await fixture.query(
+      `
+      INSERT INTO assessment.attempts (
+        id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+        submission_id, submission_event_id, submission_kind, expired, failure_code, revision
+      )
+      SELECT
+        gen_random_uuid(),
+        $1::uuid,
+        $2::uuid,
+        $3::uuid,
+        'FAILED',
+        '2025-01-01'::timestamptz + g * interval '1 second',
+        '2025-01-01'::timestamptz + g * interval '1 second' + interval '90 seconds',
+        '2025-01-01'::timestamptz + g * interval '1 second' + interval '30 seconds',
+        gen_random_uuid(),
+        gen_random_uuid(),
+        'MANUAL',
+        false,
+        'DIAGNOSTIC_FIXTURE',
+        1
+      FROM
+        generate_series(1,100000) g
+    `,
+      [actor.id, f.exam, version],
+    );
+    await fixture.query("ANALYZE assessment.attempts");
+    let captured: { sql: string; parameters: unknown[] } | null = null;
+    const traced = new Proxy(db, {
+      get(target, key) {
+        if (key === "query")
+          return async (operation: DatabaseOperation, sql: string, parameters: unknown[]) => {
+            if (operation === "assessment.read") captured = { sql, parameters };
+            return target.query(operation, sql, parameters);
+          };
+        const value = Reflect.get(target, key);
+        return typeof value === "function" ? value.bind(target) : value;
+      },
+    });
+    const query = new PostgresCandidateResultsQuery(traced);
+    const explain = async () => {
+      if (!captured) throw new Error("Missing production query");
+      return (
+        await db.query(
+          "diagnostic",
+          "EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) " + captured.sql,
+          captured.parameters,
+        )
+      ).rows[0]!["QUERY PLAN"];
+    };
+    const head = await query.history({
+      userId: actor.id,
+      watermark: null,
+      at: null,
+      id: null,
+      limit: 21,
+    });
+    expect(head.rows).toHaveLength(21);
+    const firstPlan = await explain();
+    await query.history({
+      userId: actor.id,
+      watermark: head.watermark,
+      at: "2025-01-01T00:10:00.000Z",
+      id: randomUUID(),
+      limit: 21,
+    });
+    const deepPlan = await explain();
+    const nodes = (value: unknown): Record<string, unknown>[] => {
+      if (!value || typeof value !== "object") return [];
+      if (Array.isArray(value)) return value.flatMap(nodes);
+      return [value as Record<string, unknown>, ...Object.values(value).flatMap(nodes)];
+    };
+    for (const plan of [firstPlan, deepPlan]) {
+      expect(nodes(plan).some((n) => n["Index Name"] === "attempts_history")).toBe(true);
+      const access = nodes(plan).filter((n) => n["Relation Name"] === "attempts");
+      expect(access.some((n) => n["Node Type"] === "Seq Scan")).toBe(false);
+    }
+    await gradeReview(f.raw);
+    const denied = await query.review({
+      attemptId: f.attempt,
+      userId: actor.id,
+      position: null,
+      limit: 21,
+    });
+    expect(denied.allowed).toBe(false);
+    expect(denied.rows).toEqual([]);
+    const deniedPlan = await explain();
+    const keyNodes = nodes(deniedPlan).filter(
+      (n) => n["Relation Name"] === "published_answer_keys",
+    );
+    expect(keyNodes.length).toBeGreaterThan(0);
+    expect(keyNodes.every((n) => n["Actual Loops"] === 0)).toBe(true);
+    if (process.env.RESULTS_EVIDENCE_FILE)
+      await writeFile(
+        process.env.RESULTS_EVIDENCE_FILE.replace("read-local.json", "plans-local.json"),
+        JSON.stringify(
+          {
+            scope:
+              "local natural plans, synthetic 100000 FAILED history rows; immutable key gate; not DB saturation",
+            firstPlan,
+            deepPlan,
+            deniedPlan,
+          },
+          null,
+          2,
+        ),
+      );
+  }, 30000);
+});
+
+describe("Candidate section projections", () => {
+  it("returns deterministic section totals/correct counts including unanswered questions", async () => {
+    const f = await submittedForReview("AFTER_COMPLETION", false, candidateUser, true);
+    await gradeReview(f.raw);
+    await withHttp(async (http) => {
+      const session = await openSession(http, candidateUser.email);
+      const response = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/result`,
+        headers: { cookie: session.cookie },
+      });
+      expect(response.statusCode).toBe(200);
+      assertSchema(validateResult, response.json());
+      expect(response.json().data.sections).toEqual([
+        { sectionId: f.qs[0]!.sectionId, earned: 10, possible: 10, correct: 2, total: 2 },
+        { sectionId: f.qs[2]!.sectionId, earned: 0, possible: 5, correct: 0, total: 1 },
+      ]);
+      const review = await http.inject({
+        method: "GET",
+        url: `/v1/attempts/${f.attempt}/review`,
+        headers: { cookie: session.cookie },
+      });
+      expect(review.statusCode).toBe(200);
+      assertSchema(validateReview, review.json());
+      expect(review.json().data[2]).toMatchObject({
+        question: { id: f.qs[2]!.id },
+        selectedOptionIds: [],
+        correct: false,
+      });
     });
   });
 });

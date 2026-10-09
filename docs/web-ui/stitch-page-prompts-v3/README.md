@@ -5,7 +5,7 @@ Dự án hiện hành: [ExamPlatform UI Design](https://stitch.withgoogle.com/pr
 ## Cách gửi
 
 1. Mở chat của đúng dự án trên, đính kèm [logo wordmark PNG](../templates/stitch-v3/brand/examplatform-wordmark.png) và [mark PNG](../templates/stitch-v3/brand/examplatform-mark.png) ở lượt đầu nếu muốn Stitch dùng đúng tài sản tạm.
-2. Copy duy nhất khối `text` của nhóm đang làm; không paste cả tài liệu chứa nhiều nhóm. **[05A — Ba frame Admin desktop](05a-admin-exams-desktop.md) đã tạo và [đã review](../stitch-05a-review-2026-10-08.md), không gửi lại để tạo trùng.** Đề xuất nhóm kế là 05B Kiểm tra/phát hành và dialog desktop sau khi chọn hướng 05A; prompt 05B chưa chuẩn bị. [Brief 05](05-admin-exams.md) là backlog đầy đủ, không gửi nguyên khối desktop/mobile/states. Không gửi lại 03A/03B/04A.
+2. Copy duy nhất khối `text` của nhóm đang làm; không paste cả tài liệu chứa nhiều nhóm. **[05B — Kiểm tra/phát hành và dialog desktop](05b-admin-preflight-dialogs-desktop.md) đã chuẩn bị ngày 2026-10-09: gửi 05B-1 trước, sau khi kiểm tra frame thật mới gửi 05B-2/05B-3.** Tổng 8 frame, chia 3 + 3 + 2. [05A](05a-admin-exams-desktop.md) đã tạo/[review](../stitch-05a-review-2026-10-08.md), không gửi lại để tạo trùng. [Brief 05](05-admin-exams.md) là backlog đầy đủ, không paste nguyên khối. Không gửi lại 03A/03B/04A.
 3. Kiểm tra các frame thực sự được tạo sau mỗi nhóm, rồi gửi nhóm kế. Không dựa riêng vào câu “đã hoàn thành” của chat Stitch.
 4. Giữ các màn V2/V3/V4 đã chọn. Không gửi các prompt trước đây của dự án `ExamPlatform UI/UX Redesign` vào dự án này.
 
@@ -29,6 +29,7 @@ Thứ tự mới: 03A/03B, Public 04A và [05A Admin desktop](05a-admin-exams-de
 | [04A — Public desktop](04a-public-desktop.md) | Đã review/lưu template | Ba page chính: Trải nghiệm mẫu, Cách hoạt động, Trợ giúp; findings còn mở |
 | [04 — Public đầy đủ](04-public-experience-help.md) | Backlog variants/mobile/states | Các dạng câu, rà soát/kết quả mẫu và mobile của ba page |
 | [05A — Admin Exams desktop](05a-admin-exams-desktop.md) | Đã review, chưa chọn template | Danh sách đề Loaded; cùng editor Edit ở bước Thông tin và Phần & câu hỏi; đúng 3 frame 1280px, findings mở |
+| [05B — Preflight & Dialogs desktop](05b-admin-preflight-dialogs-desktop.md) | **Nhóm kế, prompt đã chuẩn bị** | 05B-1: preflight/publish/validation; 05B-2: unpublish/archive/bỏ phần; 05B-3: rời editor/conflict; chưa có frame 05B được kiểm chứng |
 | [05 — Admin Exams đầy đủ](05-admin-exams.md) | Backlog bước 3/dialogs/Create/mobile/states | Brief toàn nhóm; không gửi nguyên khối hiện tại |
 | [06 — Questions & Import](06-admin-questions-import.md) | Ngân hàng câu hỏi | Question list/editor, Import preview/dry-run, Import report |
 | [07 — Admin Operations](07-admin-overview-monitor-submissions.md) | Vận hành kỳ thi | Overview, Monitor index, Exam monitor, Submissions |

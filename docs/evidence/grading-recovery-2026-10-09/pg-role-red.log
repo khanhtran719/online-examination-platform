@@ -1,0 +1,350 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/grading-validation-env.cjs --runTestsByPath apps/api/tests/integration/grading-consumer.spec.ts --testNamePattern terminal failure and authorized replay
+
+Warning: truncated output (original token count: 5614)
+Total output lines: 383
+
+(node:33368) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/grading-consumer.spec.ts
+  ● restricted PostgreSQL grading transaction › public inbound rejects invalid JSON and oversized messages with digest-only quarantine
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › worker SDK loses Delete ACK after commit, redelivers and drains without duplicate effects
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › persists result, breakdown, statistics and inbox before COMPLETED becomes durable
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › serializes two consumers and duplicate/alternate-ID deliveries without repeated projections
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › rolls all effects back when statistics persistence fails, then redelivery succeeds
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › uses earned DESC, submitted ASC, UUID ASC regardless of completion order
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › rolls back even when deferred validation fails at COMMIT after inbox insertion
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › serializes projection contention across different attempts without lost counters
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › does not reinterpret an inbox event already belonging to another completed attempt
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › requires durable replay authorization and clears it only when a FAILED attempt completes
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › grades expired submissions and records empty/missing as unanswered
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › quarantines malformed/forged messages without mutating valid submissions or storing payload
+
+    error: role "e…614 tokens truncated…pec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › captures a bounded local transaction diagnostic without claiming capacity
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● restricted PostgreSQL grading transaction › persists the 500-question/5000-selection limit using constant query count
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › settles two concurrent DLQ deliveries once without result/inbox or key authority
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › rolls back FAILED/quarantine on audit failure, then redelivery succeeds
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › classifies permanent scoring validation after grading rollback in a separate transaction
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › authorizes one concurrent replay, fences old source/DLQ, preserves identity and completes once
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › tracks repeated replay failures without admitting an old generation or stale operator revision
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › rolls back replay/outbox/authorization when replay audit fails
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › cannot replay with worker/runtime authority or erase successful evidence
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › requires a root committed boundary for terminal settlement and operator replay
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › quarantines malformed/future/forged DLQ without failing a valid attempt
+
+    error: role "examination_grading_recovery" does not exist
+
+      76 |   await admin.query(`CREATE ROLE ${recoveryLogin} LOGIN INHERIT PASSWORD '${password}'`);
+      77 |   await admin.query(`CREATE ROLE ${operatorLogin} LOGIN INHERIT PASSWORD '${password}'`);
+    > 78 |   await admin.query(`GRANT examination_grading_recovery TO ${recoveryLogin}`);
+         |   ^
+      79 |   await admin.query(`GRANT examination_operator TO ${operatorLogin}`);
+      80 |   await admin.query(`GRANT examination_owner TO ${owner}`);
+      81 |   await admin.query(`GRANT examination_grading_worker TO ${worker}`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:78:3)
+
+Test Suites: 1 failed, 1 total
+Tests:       9 failed, 16 skipped, 25 total
+Snapshots:   0 total
+Time:        3.014 s, estimated 4 s
+Ran all test suites within paths "apps/api/tests/integration/grading-consumer.spec.ts".
+

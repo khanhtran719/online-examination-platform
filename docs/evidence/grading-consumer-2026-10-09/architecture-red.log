@@ -1,0 +1,53 @@
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (5.312209ms)
+✔ detects module-private and same-module infrastructure access from application (0.761041ms)
+✔ permits a public application capability and infrastructure driver adapter (3.265334ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.360334ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (0.515875ms)
+✔ checks TypeScript import types and import-equals dependencies (0.58075ms)
+✔ rejects Node network imports with or without node prefix (1.047625ms)
+✔ checks technical folder barrel imports without a trailing slash (0.307834ms)
+✔ keeps platform technical and presentation independent of infrastructure (4.097792ms)
+✔ keeps domain independent of application orchestration (0.402916ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (2.413708ms)
+✔ keeps all global technical roots independent from business modules (1.316084ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.272875ms)
+✔ requires module composition to use explicit public capabilities of another module (0.338ms)
+✔ rejects legacy placement after normalization closes (0.144542ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (0.240666ms)
+✖ allows only the reviewed Catalog worker composition boundary (0.750833ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 16
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 260.263709
+
+✖ failing tests:
+
+test at scripts/__tests__/quality.unit.spec.mjs:199:1
+✖ allows only the reviewed Catalog worker composition boundary (0.750833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'Private module contract is not a public entry point: ../../modules/catalog/catalog-worker.factory'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/quality.unit.spec.mjs:201:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'Private module contract is not a public entry point: ../../modules/catalog/catalog-worker.factory' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+

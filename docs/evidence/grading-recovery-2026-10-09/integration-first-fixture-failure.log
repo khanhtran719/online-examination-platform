@@ -1,0 +1,85 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/grading-recovery-validation-env.cjs
+
+(node:37791) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/outbox-fencing.spec.ts
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects delivered when an unchanged tuple lock is released after natural lease expiry
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:190:14)
+      at PostgresSubmissionDispatch.claim (apps/api/src/modules/assessment/infrastructure/persistence/postgres-submission-dispatch.ts:15:7)
+      at seedClaim (apps/api/tests/integration/outbox-fencing.spec.ts:130:19)
+      at apps/api/tests/integration/outbox-fencing.spec.ts:229:21
+
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects failed when an unchanged tuple lock is released after natural lease expiry
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:190:14)
+      at PostgresSubmissionDispatch.claim (apps/api/src/modules/assessment/infrastructure/persistence/postgres-submission-dispatch.ts:15:7)
+      at seedClaim (apps/api/tests/integration/outbox-fencing.spec.ts:130:19)
+      at apps/api/tests/integration/outbox-fencing.spec.ts:229:21
+
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects stale delivered when the competing transaction rotates the token
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:190:14)
+      at PostgresSubmissionDispatch.claim (apps/api/src/modules/assessment/infrastructure/persistence/postgres-submission-dispatch.ts:15:7)
+      at seedClaim (apps/api/tests/integration/outbox-fencing.spec.ts:130:19)
+      at apps/api/tests/integration/outbox-fencing.spec.ts:276:21
+
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects stale failed when the competing transaction rotates the token
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:190:14)
+      at PostgresSubmissionDispatch.claim (apps/api/src/modules/assessment/infrastructure/persistence/postgres-submission-dispatch.ts:15:7)
+      at seedClaim (apps/api/tests/integration/outbox-fencing.spec.ts:130:19)
+      at apps/api/tests/integration/outbox-fencing.spec.ts:276:21
+
+
+Test Suites: 1 failed, 13 passed, 14 total
+Tests:       4 failed, 210 passed, 214 total
+Snapshots:   0 total
+Time:        43.527 s
+Ran all test suites.

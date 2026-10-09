@@ -72,7 +72,7 @@ export class SubmissionPublisher {
     }
     const started = Date.now();
     try {
-      await this.queue.publish(body);
+      await this.queue.publish(body, row.generation ?? 0);
     } catch (error) {
       const permanent = error instanceof QueuePublishError && error.permanent;
       const exhausted = row.attempts >= this.policy.maxAttempts;

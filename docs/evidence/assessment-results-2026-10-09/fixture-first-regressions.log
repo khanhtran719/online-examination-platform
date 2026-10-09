@@ -1,0 +1,58 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/assessment-results-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment.spec.ts --testNamePattern Candidate read
+
+(node:46019) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment.spec.ts
+  ● Candidate read policy/pagination regressions › traverses escaped review without skips and rejects cross-scope/expired/tampered cursors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 4
+
+      Array [
+        "cd6ae4ff-fd81-45f7-be38-499fb19635d7",
+    +   "bd09f824-1568-40e7-8496-749cb6423140",
+    +   "a3d67733-17c7-4ada-a440-7e4e4893f56d",
+    +   "0ded837a-e978-4cef-9964-2d8669814615",
+    +   "a52ec5b7-63cc-4afc-8d82-cebf6f385145",
+      ]
+
+      3061 |         expect(ids.length).toBeLessThanOrEqual(5);
+      3062 |       }while(cursor);
+    > 3063 |       expect(ids).toEqual(f.qs.map(q=>q.id));expect(new Set(ids).size).toBe(5);
+           |                   ^
+      3064 |       expect(first).not.toBeNull();
+      3065 |       const other=await openSession(http,foreignUser.email);
+      3066 |       for(const [url,cookie]of[
+
+      at apps/api/tests/integration/assessment.spec.ts:3063:19
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:349:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:3051:5)
+
+  ● Candidate read policy/pagination regressions › enforces current read permission/session and bounded input; denied result reads do not query keys
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 200
+
+      3099 |       await identity.logout(session.access);
+      3100 |       const revoked=await http.inject({method:"GET",url:`/v1/attempts/${f.attempt}/result`,headers});
+    > 3101 |       expect(revoked.statusCode).toBe(401);
+           |                                  ^
+      3102 |     });
+      3103 |   });
+      3104 | });
+
+      at apps/api/tests/integration/assessment.spec.ts:3101:34
+      at withHttp (apps/api/tests/integration/assessment.spec.ts:349:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:3083:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 23 skipped, 4 passed, 29 total
+Snapshots:   0 total
+Time:        4.552 s, estimated 5 s
+Ran all test suites within paths "apps/api/tests/integration/assessment.spec.ts".

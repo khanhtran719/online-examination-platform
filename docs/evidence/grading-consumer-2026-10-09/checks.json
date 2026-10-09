@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-09",
+  "root": {
+    "command": "npm test",
+    "api": 179,
+    "tooling": 41,
+    "web": 96,
+    "total": 316,
+    "exitCode": 0
+  },
+  "integration": {
+    "command": "npm run test:integration -- --globalSetup /private/tmp/grading-validation-env.cjs",
+    "total": 200,
+    "suites": 14,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "lint": {
+    "command": "npm run lint",
+    "exitCode": 0,
+    "contracts": {
+      "operations": 46,
+      "examples": 425
+    }
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0
+  },
+  "independentBoundary": {
+    "red": {
+      "failed": 2,
+      "controlPassed": 1
+    },
+    "green": {
+      "total": 3,
+      "passed": 3,
+      "exitCode": 0
+    }
+  },
+  "notRun": [
+    "HTTPS/browser",
+    "dependency audit (lock/dependencies unchanged)",
+    "container image compatibility",
+    "live AWS",
+    "sustainable load/cost benchmark"
+  ],
+  "scope": "local delivery only"
+}

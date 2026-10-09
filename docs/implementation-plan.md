@@ -1,5 +1,137 @@
 # Implementation plan
 
+## Active increment — Candidate result/history/review, 2026-10-09 (COMPLETE locally)
+
+Scope: ATT-08 Candidate result/history/review projections and durable status
+semantics after grading/recovery. READ owner: Assessment. No Admin replay HTTP,
+leaderboard/Reporting, Web, AWS, retention maintenance or commit. Existing
+Assessment start/save/submit, worker and source/SQL contracts remain unchanged.
+
+Plan: controller authenticates current session/permission and rate admission;
+plain CandidateResultsService invokes its query/cursor/page-size ports. Private
+optimized SQL reads Assessment attempt/result/detail/answer sources and declared
+immutable Catalog version/section/question/option/key snapshots. It never invokes
+Catalog repositories or changes those sources. One statement owns each result,
+review or history projection, with current ownership, frozen release and DB time.
+No aggregate hydration, OFFSET, hidden COUNT, cache or extra resource/migration.
+
+Invariants: foreign/nonexistent attempt404; action permission403; only COMPLETED
+with durable result returns a score. Pending/FAILED returns202 status without
+fabricated score/internal failure details. NEVER denies review; AFTER_COMPLETION
+requires completed result; AFTER_EXAM_CLOSE additionally uses frozen close and DB
+time. Review gate precedes content/key projection; no keys in result/history or
+denied output. History is actor-scoped keyset DESC(startedAt,id), first-page
+watermark,15min actor/kind/pageSize/filter-bound HMAC cursor; review binds frozen
+attempt/version and section/question order. Review pages are20 default/100 max
+and256KiB complete encoded response, with no continuation skips. No-store on all.
+
+- [x] CR-01: Preserve16 applied migrations/history; fail-first release/pending/
+  cursor/payload tests plus real PG/HTTP contract/security regressions.
+- [x] CR-02: Plain read use case/DTO/query port and optimized owned projections;
+  frozen policies, null scores and bounded deterministic pagination.
+- [x] CR-03: HTTP/module wiring, exact schemas/permission/no-store/safe failures;
+  pending Retry-After without changing mutation contracts.
+- [x] CR-04: Query ceilings3/request including auth/rate; natural history index
+  plan, bounded no-N+1 review, local percentile/CPU/payload/query diagnostic with
+  explicit capacity/AWS limitations.
+- [x] CR-05: Full relevant checks/self-review/preservation/cleanup and evidence,
+  update ATT-08 only after local acceptance; production gates remain open.
+
+Closure: [report](assessment-results-2026-10-09.md)/
+[evidence](evidence/assessment-results-2026-10-09/README.md)/
+[ADR-010](adr/010-candidate-frozen-read-projections.md)/
+[runbook](runbooks/candidate-results.md).344 root(207 API/30 suites,41 tooling,
+96 Web),224 integration/14 suites/0 skipped; lint/typecheck/build/contracts46/425
+PASS.289 protected files unchanged,16 source/built migrations match; no new SQL,
+grant, runtime dependency, event or AWS resource. Unit-test technical imports were
+replaced with port fakes without weakening architecture guards. Cleanup observed0
+temporary DBs/logins/other-DB connections and stopped only PG55435/Mailpit, keeping
+volumes. ATT-08 checked; roadmap78/216,138 pending. ATT-09 retention and REP-04
+leaderboard/privacy remain separate increments; AWS/production gates stay open.
+
+## Active increment — terminal grading recovery, 2026-10-09 (COMPLETE locally)
+
+Scope: ASYNC-10 local terminal FAILED/quarantine/audit and operator-authorized
+replay; generation fencing subsets of ASYNC-11. No Admin replay HTTP, Web,
+Terraform, live AWS, capacity/cost benchmark or commit. Assessment owns this WRITE
+workflow. Plain Application coordinates attempt locks, lifecycle and repository/
+UoW ports. Global SQS adapters transport metadata; worker/operator roots invoke
+public Assessment factories only.
+
+Invariant: a failed grading transaction rolls back first. A separate root UoW
+persists FAILED + generation-specific quarantine + unsampled audit, without a
+successful inbox or partial result. Schema/identity poison never fails a foreign
+attempt. Transient errors retry through bounded source redrive; a verified DLQ
+delivery settles exhausted work. Permanent scoring validation may settle early.
+COMPLETED remains terminal. Replay commits audit + replayPending + a fresh outbox
+delivery generation with unchanged event/submission/answers/version. Old source/
+DLQ generations cannot clear or execute new replay; duplicate settlement/replay
+cannot repeat effects. Broker calls remain outside transactions.
+
+- [x] GR-01: Preserve applied migrations/evidence; write fail-first lifecycle,
+  generation, restricted-PG atomicity/authority and SDK metadata regressions.
+- [x] GR-02: Implement terminal recovery use case/private adapter; forward0016,
+  least-privilege recovery group, generation-specific evidence and audit.
+- [x] GR-03: Implement audited operator-only replay + CLI; preserve original
+  envelope/event identity, guard revision/concurrent replay, never delete success.
+- [x] GR-04: Carry generation outside immutable event body; verified DLQ source,
+  bounded recovery worker mode, heartbeat/commit-before-ACK/shutdown.
+- [x] GR-05: Full relevant checks, self-review, immutable history/cleanup and
+  runbooks/status evidence. AWS effective IAM/DLQ/saturation gates remain open.
+
+Outcome:327 root +214 full integration/14 suites PASS,0 skipped;
+lint/typecheck/build/contracts46/425 PASS. Real restricted-PG dispatch confirms
+replay generation propagation outside the claim transaction.15 applied migration
+and239 historical evidence hashes unchanged;16 source/built migration assets match.
+Self-review/documentation checks PASS; disposable DBs/logins/connections0,
+owned PostgreSQL/Mailpit stopped with volumes preserved. ASYNC-10 closed locally:
+77/216 checked,139 pending. No stage/commit/deploy or unrelated Web edit. See
+[report](grading-recovery-2026-10-09.md)/
+[evidence](evidence/grading-recovery-2026-10-09/README.md).
+
+## Active increment — grading consumer, 2026-10-09 (COMPLETE locally)
+
+Scope: ASYNC-05–07, local transport/rollback subsets of ASYNC-09/11 and a
+bounded scoring diagnostic for ASYNC-08. Assessment owns grading/results and
+projection writes. Catalog exposes a trusted frozen scoring capability through
+public composition. Plain Application takes repository, Catalog facade and UoW
+ports; private SQL adapters share the ambient transaction. No new HTTP routes,
+Web work, AWS deployment or production capacity claim.
+
+Invariant: compare submission identity with the locked authoritative attempt;
+only SUBMITTED/EXPIRED or explicitly authorized FAILED replay may grade. A unique
+result per attempt and inbox per event prevent duplicate effects. Exact-match
+integer scoring, section totals, question/option counters and best-attempt
+ranking commit together with COMPLETED before DeleteMessage. Rank by earned
+points DESC, submitted time ASC, attempt UUID ASC. Persist all completed attempts
+in statistics; privacy/visibility is enforced by future public read projections.
+Malformed/forged messages enter digest-only durable quarantine without changing
+an attempt. Transient failures roll everything back and remain unacknowledged;
+SQS bounded redrive/DLQ and authorized terminal failure/replay remain ASYNC-10.
+
+Plan/checks:
+
+- [x] GC-01: Preserve all applied migrations and historical evidence; fail-first
+  domain/use-case, architecture and restricted-PG regressions.
+- [x] GC-02: Frozen option snapshot, deterministic breakdown and atomic inbox,
+  result, statistics, ranking SQL with a dedicated least-privilege grading role.
+- [x] GC-03: Validated bounded SQS consumer transport and inbound composition;
+  ACK loss/redelivery, poison quarantine, shutdown and transport failure checks.
+- [x] GC-04: Scoped local scoring/transaction diagnostic; record limits without
+  closing AWS capacity, pool tuning or jobs/USD acceptance.
+- [x] GC-05: Full relevant checks, self-review, preservation/cleanup evidence,
+  runbook and checklist updates. Full lifecycle/FAILED/replay/AWS gates stay open.
+
+Outcome: [closure](grading-consumer-2026-10-09.md)/
+[evidence](evidence/grading-consumer-2026-10-09/README.md),316 root +200 full
+integration PASS,0 skipped; lint/typecheck/build/contracts46/425 PASS. Independent
+ambient-UoW RED reproduced premature ACK; factory guard yields3 GREEN regressions.
+15 source/built migrations match and217 prior files remain immutable. Disposable
+fixtures/services cleaned with volumes preserved. ASYNC-05–07 accepted locally:
+76/216. ASYNC-08/09/11 retain named subsets; terminal FAILED/DLQ replay, results
+HTTP/Reporting, full tracing and AWS/capacity/cost/production gates remain open.
+No stage/commit/deploy or unrelated Web edit.
+
 ## Active increment — Assessment outbox dispatch, 2026-10-08
 
 Scope: ASYNC-02–04 and publisher crash/lease subset of ASYNC-11. No scoring, inbox,

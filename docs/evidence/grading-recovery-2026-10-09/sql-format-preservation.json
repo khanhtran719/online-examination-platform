@@ -1,0 +1,29 @@
+{
+  "method": "Offline TS literal extraction + lexical SQL comparison including quoted literals; whitespace-only replacements; binding code unchanged.",
+  "files": [
+    {
+      "file": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.ts",
+      "statements": 4,
+      "tokenSha256": "d750f7e9fcc10e3b5bdad09eab18e97cdfd5ee3cb62252dae1018b6066867b5c",
+      "unchanged": true
+    },
+    {
+      "file": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "statements": 16,
+      "tokenSha256": "539cb356543ce297ee727ed0a112749b916fa8572bec0c44c508d7cf14361b23",
+      "unchanged": true
+    },
+    {
+      "file": "apps/api/tests/integration/grading-consumer.spec.ts",
+      "statements": 50,
+      "tokenSha256": "3c6f9432b05104e590496a4edad8e62f94fd2d887377e4a0b257cf54c653842b",
+      "unchanged": true
+    },
+    {
+      "file": "apps/api/src/infrastructure/database/migrations/0016_grading_recovery.sql",
+      "statements": 1,
+      "tokenSha256": "62358bb41ec8939fcea577477eb7160d5ab5b2c5f11e3d8d1bcddc2b9cb20986",
+      "unchanged": true
+    }
+  ]
+}

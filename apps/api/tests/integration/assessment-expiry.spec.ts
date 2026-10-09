@@ -28,6 +28,8 @@ import { PostgresAttemptQuery } from "../../src/modules/assessment/infrastructur
 import { PostgresAttemptRepository } from "../../src/modules/assessment/infrastructure/persistence/postgres-attempt.repository";
 import { PostgresSubmissionOutbox } from "../../src/modules/assessment/infrastructure/persistence/postgres-submission-outbox";
 import { AssessmentController } from "../../src/modules/assessment/presentation/http/assessment.controller";
+import { CandidateResultsService } from "../../src/modules/assessment/application/services/candidate-results.service";
+import { PostgresCandidateResultsQuery } from "../../src/modules/assessment/infrastructure/persistence/postgres-candidate-results.query";
 import { CatalogService } from "../../src/modules/catalog/application/services/catalog.service";
 import {
   type QuestionDraft,
@@ -375,6 +377,14 @@ async function withHttp(use: (http: import("fastify").FastifyInstance) => Promis
     controllers: [AssessmentController, IdentityController],
     providers: [
       { provide: AssessmentService, useValue: assessment },
+      {
+        provide: CandidateResultsService,
+        useValue: new CandidateResultsService(
+          new PostgresCandidateResultsQuery(db),
+          new HmacAssessmentCursor(csrfKey),
+          new HttpQuestionPageSizer(),
+        ),
+      },
       { provide: IdentityService, useValue: identity },
       { provide: IDENTITY_ACCESS, useExisting: IdentityService },
       { provide: HTTP_SESSION, useValue: session },

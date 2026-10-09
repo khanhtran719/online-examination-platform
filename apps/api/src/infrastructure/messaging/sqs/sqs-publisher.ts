@@ -1,3 +1,4 @@
+import { generationDigest } from "./grading-generation-metadata";
 import { createHash } from "node:crypto";
 import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
 import {
@@ -25,7 +26,9 @@ export class SqsPublisher implements QueuePublisher {
     });
   }
 
-  async publish(body: string): Promise<void> {
+  async publish(body: string, generation = 0): Promise<void> {
+    if (!Number.isInteger(generation) || generation < 0 || generation > 1000)
+      throw new QueuePublishError(true);
     const controller = new AbortController();
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
@@ -42,13 +45,24 @@ export class SqsPublisher implements QueuePublisher {
           new SendMessageCommand({
             QueueUrl: this.settings.queueUrl,
             MessageBody: body,
+            ...(generation > 0
+              ? {
+                  MessageAttributes: {
+                    gradingGeneration: {
+                      DataType: "Number",
+                      StringValue: String(generation),
+                    },
+                  },
+                }
+              : {}),
           }),
           { abortSignal: controller.signal },
         ),
       ]);
       if (
         !result.MessageId ||
-        result.MD5OfMessageBody !== createHash("md5").update(body).digest("hex")
+        result.MD5OfMessageBody !== createHash("md5").update(body).digest("hex") ||
+        (generation > 0 && result.MD5OfMessageAttributes !== generationDigest(String(generation)))
       ) {
         throw new QueuePublishError(false);
       }

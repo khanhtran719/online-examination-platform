@@ -7,6 +7,7 @@ export interface SubmissionClaim {
   token: string;
   attempts: number;
   ageMs: number;
+  generation?: number;
 }
 
 export interface DispatchBacklog {

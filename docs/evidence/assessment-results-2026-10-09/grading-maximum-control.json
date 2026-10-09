@@ -1,0 +1,9 @@
+{
+  "questions": 500,
+  "selections": 5000,
+  "elapsedMs": 157.31183299999975,
+  "queryCount": 15,
+  "transactionMs": 156.85591700000077,
+  "lockMs": 2.0301669999971637,
+  "scope": "single local correctness/latency observation, not a latency percentile or sustainable capacity"
+}

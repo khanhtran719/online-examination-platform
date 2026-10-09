@@ -101,7 +101,7 @@ Nếu hỗ trợ prototype, nối Danh sách → Edit Information → Edit Secti
 
 ## Phần bổ sung ở lượt kế tiếp
 
-- **05B chưa chuẩn bị:** bước Kiểm tra & phát hành desktop, xác nhận phát hành/gỡ phát hành/lưu trữ, bỏ phần có câu, rời editor chưa lưu và đối chiếu khi conflict. Chia nhóm nhỏ theo số frame thực tế, không gửi nguyên [brief 05](05-admin-exams.md).
+- **[05B đã chuẩn bị ngày 2026-10-09](05b-admin-preflight-dialogs-desktop.md):** bước Kiểm tra & phát hành desktop, xác nhận phát hành/gỡ phát hành/lưu trữ, bỏ phần có câu, rời editor chưa lưu và đối chiếu khi conflict. Chia 3 + 3 + 2 frame; gửi 05B-1 trước, không paste toàn file hoặc nguyên [brief 05](05-admin-exams.md).
 - Biến thể Create, mobile, loading/empty/error/pending/saved/validation và permission states tiếp tục backlog; ba frame 05A không hoàn tất EP-19/EP-20.
 - Các đề xuất UX như input phút, tìm/lọc cục bộ, panel picker trong trang, bỏ/sắp xếp phần, dirty indicator và đặt publication ở bước 3 là yêu cầu thiết kế để đối chiếu khi port. Không khẳng định frontend hiện tại đã có các tương tác này; phải kiểm tra quyền, focus, confirmation và payload save khi triển khai.
 - `expectedRevision` và thời gian UTC vẫn theo contract, không nhập bằng tay. Mẫu Edit dùng bản sửa tải từ server; Create sẽ dùng revision 0. Tổng fixture đã đối chiếu: 3 phần × 2 câu, 20 + 30 + 50 = 100 điểm; không bịa semantic version từ `publishedVersionId`.

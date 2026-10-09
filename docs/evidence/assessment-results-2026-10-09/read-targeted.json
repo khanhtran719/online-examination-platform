@@ -1,0 +1,448 @@
+{
+  "environment": "local PG17/Node24 ARM64, synthetic 3-question attempts, sequential HTTP injection",
+  "scope": "short correctness/query/latency diagnostic only; no sustainable RPS/SLO/AWS/cost/allocation inference",
+  "result": {
+    "samples": [
+      {
+        "elapsedMs": 4.381542000000081,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.8291250000002037,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.7042499999997744,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.58600000000024,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.661790999999539,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.399583999999777,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.6176249999998618,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.9858329999997295,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.2735419999999067,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.573667000000569,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.419750000000022,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.2377499999993233,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.177249999999731,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.0978329999998095,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.234707999999955,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.6494159999992917,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.469375000000582,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 4.185750000000553,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.239166999999725,
+        "queries": 3,
+        "bytes": 579
+      },
+      {
+        "elapsedMs": 3.1131670000004306,
+        "queries": 3,
+        "bytes": 579
+      }
+    ],
+    "p50": 3.469375000000582,
+    "p95": 4.185750000000553,
+    "p99": 4.381542000000081,
+    "observedRequestsPerSecond": 282.33782779863316,
+    "cpuMicrosPerRequest": 1252.55,
+    "rssDeltaBytes": 65536,
+    "note": "CPU/RSS include test/HTTP injection overhead; RSS delta is not allocated bytes/request; read bucket reset between series, not per request"
+  },
+  "pending": {
+    "samples": [
+      {
+        "elapsedMs": 3.552500000000691,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.163166999999703,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.053208000000268,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.531582999999955,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 4.009999999999309,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.72912499999984,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.503665999999612,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.1900839999998425,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.266375000000153,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.092999999999847,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.0435829999996713,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.0287499999994907,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.046417000000474,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.030749999999898,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.506000000000313,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.905291999999463,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.6493749999999636,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.3252910000001066,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.2369999999991705,
+        "queries": 3,
+        "bytes": 498
+      },
+      {
+        "elapsedMs": 3.106999999999971,
+        "queries": 3,
+        "bytes": 498
+      }
+    ],
+    "p50": 3.2369999999991705,
+    "p95": 3.905291999999463,
+    "p99": 4.009999999999309,
+    "observedRequestsPerSecond": 298.6315240274695,
+    "cpuMicrosPerRequest": 1092.75,
+    "rssDeltaBytes": 196608,
+    "note": "CPU/RSS include test/HTTP injection overhead; RSS delta is not allocated bytes/request; read bucket reset between series, not per request"
+  },
+  "review": {
+    "samples": [
+      {
+        "elapsedMs": 4.081333000000086,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.5473330000004353,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.9863750000004075,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.8070419999994556,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 4.928375000000415,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.6049169999996593,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.9048750000001746,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.6051670000006197,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.8969170000000304,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 4.1784999999999854,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 4.5349999999998545,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 4.261082999999417,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 5.028041999999914,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.813000000000102,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.716667000000598,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 3.9849169999997684,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 4.166249999999309,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 4.380042000000685,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 5.134207999999489,
+        "queries": 3,
+        "bytes": 1600
+      },
+      {
+        "elapsedMs": 4.5309580000002825,
+        "queries": 3,
+        "bytes": 1600
+      }
+    ],
+    "p50": 3.9863750000004075,
+    "p95": 5.028041999999914,
+    "p99": 5.134207999999489,
+    "observedRequestsPerSecond": 240.69995257368285,
+    "cpuMicrosPerRequest": 1324.45,
+    "rssDeltaBytes": 311296,
+    "note": "CPU/RSS include test/HTTP injection overhead; RSS delta is not allocated bytes/request; read bucket reset between series, not per request"
+  },
+  "history": {
+    "samples": [
+      {
+        "elapsedMs": 3.70116599999983,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 3.0816249999998035,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 3.0497080000004644,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.710584000000381,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.677042000000256,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 3.2672499999998763,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.762624999999389,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.802208000000064,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 3.16204099999959,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 3.1410419999992882,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.6292080000002898,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.4707079999998314,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.597125000000233,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.5839160000004995,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.8624159999999392,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.6190830000005008,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 2.54674999999952,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 3.1215000000001965,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 3.243540999999823,
+        "queries": 3,
+        "bytes": 625
+      },
+      {
+        "elapsedMs": 4.964874999999665,
+        "queries": 3,
+        "bytes": 625
+      }
+    ],
+    "p50": 2.802208000000064,
+    "p95": 3.70116599999983,
+    "p99": 4.964874999999665,
+    "observedRequestsPerSecond": 333.3643751127324,
+    "cpuMicrosPerRequest": 1078.65,
+    "rssDeltaBytes": 245760,
+    "note": "CPU/RSS include test/HTTP injection overhead; RSS delta is not allocated bytes/request; read bucket reset between series, not per request"
+  }
+}

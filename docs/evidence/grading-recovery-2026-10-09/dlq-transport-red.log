@@ -1,0 +1,102 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/sqs-consumer.spec.ts apps/api/tests/integration/sqs-publisher.spec.ts
+
+(node:34517) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/sqs-publisher.spec.ts
+  ● publishes a replay generation as metadata with the exact original envelope body
+
+    expect(received).toMatchObject(expected)
+
+    - Expected  - 6
+    + Received  + 0
+
+      Object {
+    -   "MessageAttributes": Object {
+    -     "gradingGeneration": Object {
+    -       "DataType": "Number",
+    -       "StringValue": "1",
+    -     },
+    -   },
+        "MessageBody": "{\"eventId\":\"stable-event\"}",
+      }
+
+      110 |   const body = JSON.stringify({ eventId: "stable-event" });
+      111 |   await adapter.publish(body, 1);
+    > 112 |   expect(requests[0]).toMatchObject({ MessageBody: body,
+          |                       ^
+      113 |     MessageAttributes: { gradingGeneration: { DataType: "Number", StringValue: "1" } } });
+      114 | });
+      115 |
+
+      at Object.<anonymous> (apps/api/tests/integration/sqs-publisher.spec.ts:112:23)
+
+FAIL apps/api/tests/integration/sqs-consumer.spec.ts
+  ● replay generation and DLQ transport identity › receives the replay generation without mutating the event body
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 0
+
+      Array [
+        Object {
+          "body": "{}",
+    -     "generation": 1,
+          "receipt": "latest-handle",
+        },
+      ]
+
+      156 |   it("receives the replay generation without mutating the event body", async () => {
+      157 |     mode = "generation";
+    > 158 |     expect(await adapter.receive(1)).toEqual([{ body: "{}", receipt: "latest-handle", generation: 1 }]);
+          |                                      ^
+      159 |     expect(requests[0]!.input.MessageAttributeNames).toEqual(["gradingGeneration"]);
+      160 |   });
+      161 |   it.each(["dlq", "foreign-source"] as const)("verifies DLQ and treats %s source safely", async (value) => {
+
+      at Object.<anonymous> (apps/api/tests/integration/sqs-consumer.spec.ts:158:38)
+
+  ● replay generation and DLQ transport identity › verifies DLQ and treats dlq source safely
+
+    expect(received).toHaveLength(expected)
+
+    Expected length: 2
+    Received length: 1
+    Received array:  [{"input": {"AttributeNames": ["QueueArn", "RedrivePolicy", "SqsManagedSseEnabled", "KmsMasterKeyId"], "QueueUrl": "http://127.0.0.1:56353/123456789012/grading-dlq"}, "target": "AmazonSQS.GetQueueAttributes"}]
+
+      166 |       visibilitySeconds: 60, waitSeconds: 0, deadLetterArn: dlq, maxReceiveCount: 5 });
+      167 |     await adapter.verify();
+    > 168 |     expect(requests.filter(r => r.target.endsWith("GetQueueAttributes"))).toHaveLength(2);
+          |                                                                           ^
+      169 |     expect(await adapter.receive(1)).toEqual([{ body: "{}", receipt: "latest-handle",
+      170 |       ...(value === "foreign-source" ? { generation: null } : {}) }]);
+      171 |   });
+
+      at apps/api/tests/integration/sqs-consumer.spec.ts:168:75
+
+  ● replay generation and DLQ transport identity › verifies DLQ and treats foreign-source source safely
+
+    expect(received).toHaveLength(expected)
+
+    Expected length: 2
+    Received length: 1
+    Received array:  [{"input": {"AttributeNames": ["QueueArn", "RedrivePolicy", "SqsManagedSseEnabled", "KmsMasterKeyId"], "QueueUrl": "http://127.0.0.1:56353/123456789012/grading-dlq"}, "target": "AmazonSQS.GetQueueAttributes"}]
+
+      166 |       visibilitySeconds: 60, waitSeconds: 0, deadLetterArn: dlq, maxReceiveCount: 5 });
+      167 |     await adapter.verify();
+    > 168 |     expect(requests.filter(r => r.target.endsWith("GetQueueAttributes"))).toHaveLength(2);
+          |                                                                           ^
+      169 |     expect(await adapter.receive(1)).toEqual([{ body: "{}", receipt: "latest-handle",
+      170 |       ...(value === "foreign-source" ? { generation: null } : {}) }]);
+      171 |   });
+
+      at apps/api/tests/integration/sqs-consumer.spec.ts:168:75
+
+Test Suites: 2 failed, 2 total
+Tests:       4 failed, 14 passed, 18 total
+Snapshots:   0 total
+Time:        2.637 s
+Ran all test suites within paths "apps/api/tests/integration/sqs-consumer.spec.ts", "apps/api/tests/integration/sqs-publisher.spec.ts".
+

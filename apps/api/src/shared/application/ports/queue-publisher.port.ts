@@ -1,6 +1,6 @@
 /** Stable event identity lives in the body; the transport never substitutes it. */
 export interface QueuePublisher {
-  publish(body: string): Promise<void>;
+  publish(body: string, generation?: number): Promise<void>;
 }
 
 /** Safe classification only: SDK errors/payloads must never cross this port. */

@@ -82,3 +82,25 @@ BEGIN
 END
 $$;
 REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT FROM pg_roles
+    WHERE rolname = 'examination_grading_worker'
+  ) THEN
+    CREATE ROLE examination_grading_worker
+      NOLOGIN
+      NOSUPERUSER
+      NOCREATEDB
+      NOCREATEROLE NOREPLICATION NOBYPASSRLS;
+  END IF;
+END
+$$;
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'examination_grading_recovery') THEN
+    CREATE ROLE examination_grading_recovery
+      NOLOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS;
+  END IF;
+END
+$$;

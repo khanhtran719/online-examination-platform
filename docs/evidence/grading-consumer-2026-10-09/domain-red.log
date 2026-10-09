@@ -1,0 +1,55 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath apps/api/src/modules/assessment/domain/__tests__/grading.unit.spec.ts
+
+(node:12571) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/src/modules/assessment/domain/__tests__/grading.unit.spec.ts
+  ● exact-match grading breakdown › scores sets independently of order and preserves section/question outcomes
+
+    Not implemented
+
+       9 |
+      10 | export function grade(_questions: readonly GradingQuestion[], _answers: readonly ScoringAnswer[]): Grade {
+    > 11 |   throw new Error("Not implemented");
+         |         ^
+      12 | }
+      13 |
+
+      at grade (apps/api/src/modules/assessment/domain/grading.ts:11:9)
+      at Object.<anonymous> (apps/api/src/modules/assessment/domain/__tests__/grading.unit.spec.ts:10:20)
+
+  ● exact-match grading breakdown › treats missing and explicitly empty selections as unanswered
+
+    Not implemented
+
+       9 |
+      10 | export function grade(_questions: readonly GradingQuestion[], _answers: readonly ScoringAnswer[]): Grade {
+    > 11 |   throw new Error("Not implemented");
+         |         ^
+      12 | }
+      13 |
+
+      at grade (apps/api/src/modules/assessment/domain/grading.ts:11:9)
+      at Object.<anonymous> (apps/api/src/modules/assessment/domain/__tests__/grading.unit.spec.ts:20:20)
+
+  ● exact-match grading breakdown › has no partial credit for multiple choice
+
+    Not implemented
+
+       9 |
+      10 | export function grade(_questions: readonly GradingQuestion[], _answers: readonly ScoringAnswer[]): Grade {
+    > 11 |   throw new Error("Not implemented");
+         |         ^
+      12 | }
+      13 |
+
+      at grade (apps/api/src/modules/assessment/domain/grading.ts:11:9)
+      at Object.<anonymous> (apps/api/src/modules/assessment/domain/__tests__/grading.unit.spec.ts:36:12)
+
+Test Suites: 1 failed, 1 total
+Tests:       3 failed, 6 passed, 9 total
+Snapshots:   0 total
+Time:        1.746 s
+Ran all test suites within paths "apps/api/src/modules/assessment/domain/__tests__/grading.unit.spec.ts".
+

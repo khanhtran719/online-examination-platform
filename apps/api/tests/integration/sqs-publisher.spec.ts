@@ -31,6 +31,9 @@ beforeAll(async () => {
           ? { __type: "InvalidMessageContents", message: "fixture-sensitive-do-not-log" }
           : {
               MessageId: mode === "missing-ack" ? undefined : "fixture-message-id",
+              ...(parsed.MessageAttributes
+                ? { MD5OfMessageAttributes: "3f6be9ab00fd68af0d4f400ad9a88274" }
+                : {}),
               MD5OfMessageBody:
                 mode === "bad-md5"
                   ? "00000000000000000000000000000000"
@@ -103,4 +106,13 @@ describe("SQS publisher SDK local HTTP contract (not live AWS)", () => {
       expect(requests).toHaveLength(1);
     },
   );
+});
+
+it("publishes a replay generation as metadata with the exact original envelope body", async () => {
+  const body = JSON.stringify({ eventId: "stable-event" });
+  await adapter.publish(body, 1);
+  expect(requests[0]).toMatchObject({
+    MessageBody: body,
+    MessageAttributes: { gradingGeneration: { DataType: "Number", StringValue: "1" } },
+  });
 });

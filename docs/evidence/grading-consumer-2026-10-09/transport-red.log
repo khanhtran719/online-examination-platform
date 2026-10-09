@@ -1,0 +1,131 @@
+Warning: truncated output (original token count: 2311)
+Total output lines: 162
+
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/sqs-consumer.spec.ts
+
+(node:16120) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/sqs-consumer.spec.ts
+  ● SQS consumer SDK local HTTP contract › verifies encrypted queue, exact DLQ and bounded receive count before consuming
+
+    Not implemented
+
+       7 | export class SqsConsumer implements QueueConsumer {
+       8 |   constructor(_settings: SqsConsumerSettings) {}
+    >  9 |   async verify(): Promise<void> { throw new Error("Not implemented"); }
+         |                                         ^
+      10 |   async receive(_max: number): Promise<QueueDelivery[]> { throw new Error("Not implemented"); }
+      11 |   async acknowledge(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+      12 |   async extend(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+
+      at SqsConsumer.verify (apps/api/src/infrastructure/messaging/sqs/sqs-consumer.ts:9:41)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-consumer.spec.ts:42:116)
+
+  ● SQS consumer SDK local HTTP contract › rejects unsafe no-redrive queue configuration
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "QUEUE_CONFIGURATION_INVALID"
+    Received message:   "Not implemented"
+
+           7 | export class SqsConsumer implements QueueConsumer {
+           8 |   constructor(_settings: SqsConsumerSettings) {}
+        >  9 |   async verify(): Promise<void> { throw new Error("Not implemented"); }
+             |                                         ^
+          10 |   async receive(_max: number): Promise<QueueDelivery[]> { throw new Error("Not implemented"); }
+          11 |   async acknowledge(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+          12 |   async extend(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+
+      at SqsConsumer.verify (apps/api/src/infrastructure/messaging/sqs/sqs-consumer.ts:9:41)
+      at apps/api/tests/integration/sqs-consumer.spec.ts:44:42
+      at Object.toThrow (node_modules/expect/build/index.js:2155:20)
+      at apps/api/tests/integration/sqs-consumer.spec.ts:44:60
+
+  ● SQS consumer SDK local HTTP contract › rejects unsafe wrong-dlq queue configuration
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "QUEUE_CONFIGURATION_INVALID"
+    Received message:   "Not implemented"
+
+           7 | export class SqsConsumer implements QueueConsumer {
+           8 |   constructor(_settings: SqsConsumerSettings) {}
+        >  9 |   async verify(): Promise<void> { throw new Error("Not implemented"); }
+             |                                         ^
+          10 |   async receive(_max: number): Promise<QueueDelivery[]> { throw new Error("Not implemented"); }
+          11 |   async acknowledge(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+          12 |   async extend(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+
+      at SqsConsumer.verify (apps/api/src/infrastructure/messaging/sqs/sqs-consumer.ts:9:41)
+      at apps/api/tests/integration/sqs-consumer.spec.ts:44:42
+      at Object.toThrow (node_modules/expect/build/index.js:2155:20)
+      at apps/api/tests/integration/sqs-consumer.spec.ts:44:60
+
+ …511 tokens truncated… ● SQS consumer SDK local HTTP contract › does not admit a corrupted body transport
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "QUEUE_RESPONSE_INVALID"
+    Received message:   "Not implemented"
+
+           8 |   constructor(_settings: SqsConsumerSettings) {}
+           9 |   async verify(): Promise<void> { throw new Error("Not implemented"); }
+        > 10 |   async receive(_max: number): Promise<QueueDelivery[]> { throw new Error("Not implemented"); }
+             |                                                                 ^
+          11 |   async acknowledge(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+          12 |   async extend(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+          13 |   close(): void {}
+
+      at SqsConsumer.receive (apps/api/src/infrastructure/messaging/sqs/sqs-consumer.ts:10:65)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-consumer.spec.ts:55:104)
+      at Object.toThrow (node_modules/expect/build/index.js:2155:20)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-consumer.spec.ts:55:124)
+
+  ● SQS consumer SDK local HTTP contract › bounds the complete pending call and does not retry
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "QUEUE_UNAVAILABLE"
+    Received message:   "Not implemented"
+
+           8 |   constructor(_settings: SqsConsumerSettings) {}
+           9 |   async verify(): Promise<void> { throw new Error("Not implemented"); }
+        > 10 |   async receive(_max: number): Promise<QueueDelivery[]> { throw new Error("Not implemented"); }
+             |                                                                 ^
+          11 |   async acknowledge(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+          12 |   async extend(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+          13 |   close(): void {}
+
+      at SqsConsumer.receive (apps/api/src/infrastructure/messaging/sqs/sqs-consumer.ts:10:65)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-consumer.spec.ts:57:74)
+      at Object.toThrow (node_modules/expect/build/index.js:2155:20)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-consumer.spec.ts:57:94)
+
+  ● SQS consumer SDK local HTTP contract › redacts broker errors and uses one attempt
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "QUEUE_UNAVAILABLE"
+    Received message:   "Not implemented"
+
+           9 |   async verify(): Promise<void> { throw new Error("Not implemented"); }
+          10 |   async receive(_max: number): Promise<QueueDelivery[]> { throw new Error("Not implemented"); }
+        > 11 |   async acknowledge(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+             |                                                              ^
+          12 |   async extend(_receipt: string): Promise<void> { throw new Error("Not implemented"); }
+          13 |   close(): void {}
+          14 | }
+
+      at SqsConsumer.acknowledge (apps/api/src/infrastructure/messaging/sqs/sqs-consumer.ts:11:62)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-consumer.spec.ts:61:43)
+      at Object.toThrow (node_modules/expect/build/index.js:2155:20)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-consumer.spec.ts:61:74)
+
+Test Suites: 1 failed, 1 total
+Tests:       8 failed, 8 total
+Snapshots:   0 total
+Time:        1.961 s
+Ran all test suites within paths "apps/api/tests/integration/sqs-consumer.spec.ts".
+

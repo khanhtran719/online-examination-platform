@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-09",
+  "scope": "ASYNC-10 local terminal grading recovery; ASYNC-11 generation/transport subsets",
+  "reviewer": "Implementing agent self-review; no new independent agent review",
+  "checks": [
+    {
+      "item": "Ownership and placement",
+      "result": "PASS",
+      "evidence": "Assessment Domain/Application own identity/lifecycle/UoW policy; private PG adapters implement ports; public factories are inbound worker/operator composition; no new global business adapter."
+    },
+    {
+      "item": "Transactions and ACK",
+      "result": "PASS locally",
+      "evidence": "Terminal rollback first, root recovery COMMIT before ACK; factory rejects ambient UoW; real PG audit rollback and DeleteMessage loss/redelivery verified."
+    },
+    {
+      "item": "Idempotency and generation races",
+      "result": "PASS locally",
+      "evidence": "Attempt lock, current generation/evidence admission; concurrent terminal/replay and repeated generations; COMPLETED result/inbox/projection evidence retained; stale source/DLQ do not clear pending."
+    },
+    {
+      "item": "Operator authority",
+      "result": "PASS locally",
+      "evidence": "Dedicated login inherits operator-only SECURITY DEFINER capability, qualified tables/search_path, PUBLIC execute revoked; expectedRevision/reason/audit atomicity; worker/recovery execution/delete denied."
+    },
+    {
+      "item": "Recovery authority",
+      "result": "PASS locally",
+      "evidence": "Restricted metadata/status/audit/quarantine grants; no Catalog keys/answers/Identity/outbox/replay. Startup checks group/Identity absence/generation-column SELECT."
+    },
+    {
+      "item": "Transport and resilience",
+      "result": "PASS contract fixtures",
+      "evidence": "Bounded calls/SDK attempt1/admission/pool/visibility/heartbeat; source/DLQ attribute checks and exact original source ARN; Number attribute checksum independently fixed fixture; managed SQS behavior not proven."
+    },
+    {
+      "item": "Sensitive logs and evidence",
+      "result": "PASS inspected",
+      "evidence": "Validated safe envelope only for identified failure; poison digest only; redacted CLI/error logs, unsampled DB audit; diagnostic sampling5%, no metric ID labels."
+    },
+    {
+      "item": "Public contracts",
+      "result": "PASS",
+      "evidence": "No new HTTP operations or event-body fields; contracts46/425. Operator CLI does not implement Admin replay HTTP."
+    },
+    {
+      "item": "Abstraction and dependencies",
+      "result": "PASS",
+      "evidence": "Recovery failure port/private adapter and one generation metadata helper serve durable failure/old-delivery correctness; no runtime dependencies or new AWS resource."
+    },
+    {
+      "item": "Historical preservation",
+      "result": "PASS",
+      "evidence": "254 protected hashes unchanged,15 applied migrations +239 historical evidence;16 built assets match. Setup path mistake explicitly corrected/archived."
+    },
+    {
+      "item": "SQL readability",
+      "result": "PASS scoped",
+      "evidence": "Current owned recovery/grading queries and new0016 are multiline; offline formatting-token/literal comparison recorded; new publisher integration fixture SELECT formatted without changed tokens/params."
+    }
+  ],
+  "openGates": [
+    "All publisher/consumer tasks must be generation-aware and old versions drained before first replay; downgrade after replay cannot use a generation-unaware version.",
+    "DB-12 image/schema and rolling-deployment compatibility are not proven by local schema/additive checks.",
+    "Effective IAM/KMS/resource policies, original DLQ source attributes/redrive in managed SQS, TLS/network/encryption and retention remain AWS gates.",
+    "Human attribution of session_user plus operator label requires operational IAM/bastion/secret access evidence.",
+    "Unresolved quarantine/evidence are preserved; bounded retention maintenance remains unimplemented.",
+    "Admin replay HTTP, Candidate result/history/review, public ranking privacy, full tracing/alerts and Reporting remain open.",
+    "Sustainable capacity, pool/task budget, recovery time, task/failover/restore/deployment drills, jobs/USD and AWS Performance-Cost Curve remain unmeasured."
+  ],
+  "validation": {
+    "root": {
+      "passed": 327,
+      "api": 190,
+      "tooling": 41,
+      "web": 96,
+      "skipped": 0
+    },
+    "integration": {
+      "passed": 214,
+      "suites": 14,
+      "skipped": 0
+    },
+    "contracts": {
+      "operations": 46,
+      "examples": 425
+    },
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS"
+  }
+}

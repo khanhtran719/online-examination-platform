@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-09",
+  "disposableDatabasePort": 55435,
+  "inspection": {
+    "databases": 0,
+    "logins": 0,
+    "connections": 0
+  },
+  "postgresStop": "Container examination-identity-https-postgres-1 Stopping \n Container examination-identity-https-postgres-1 Stopped",
+  "mailpitStop": "Container examination-platform-mailpit-1 Stopping \n Container examination-platform-mailpit-1 Stopped",
+  "postgresExit": 0,
+  "mailpitExit": 0,
+  "volumes": "preserved; no compose down -v",
+  "developmentDatabase55432": "not used/migrated",
+  "unrelatedServices": "not stopped"
+}

@@ -1,0 +1,74 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/grading-validation-env.cjs --runTestsByPath apps/api/tests/integration/grading-boundary.spec.ts
+
+(node:25776) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/grading-boundary.spec.ts
+  ● public grading consumer transaction boundary › rejects ambient transactions without committing malformed-message quarantine
+
+    error: tuple concurrently updated
+
+      53 | beforeAll(async () => {
+      54 |   await admin.query(`CREATE DATABASE ${name}`);
+    > 55 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+         |   ^
+      56 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      57 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+      58 |   await admin.query(`CREATE ROLE ${worker} LOGIN INHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-boundary.spec.ts:55:3)
+
+  ● public grading consumer transaction boundary › durably quarantines malformed JSON when invoked outside a transaction
+
+    error: tuple concurrently updated
+
+      53 | beforeAll(async () => {
+      54 |   await admin.query(`CREATE DATABASE ${name}`);
+    > 55 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+         |   ^
+      56 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      57 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+      58 |   await admin.query(`CREATE ROLE ${worker} LOGIN INHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-boundary.spec.ts:55:3)
+
+  ● public grading consumer transaction boundary › keeps a delivery unacknowledged when its caller later rolls back
+
+    error: tuple concurrently updated
+
+      53 | beforeAll(async () => {
+      54 |   await admin.query(`CREATE DATABASE ${name}`);
+    > 55 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+         |   ^
+      56 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      57 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+      58 |   await admin.query(`CREATE ROLE ${worker} LOGIN INHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-boundary.spec.ts:55:3)
+
+
+  ● Test suite failed to run
+
+    error: role "grading_boundary_ddl_1ed8cd8dce81" does not exist
+
+      90 |     expect(remaining).toBe(0);
+      91 |     await admin.query(`DROP DATABASE ${name}`);
+    > 92 |     await admin.query(`DROP ROLE ${owner}, ${worker}`);
+         |     ^
+      93 |   } finally {
+      94 |     await admin.end();
+      95 |   }
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/grading-boundary.spec.ts:92:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       3 failed, 3 total
+Snapshots:   0 total
+Time:        4.248 s
+Ran all test suites within paths "apps/api/tests/integration/grading-boundary.spec.ts".
+

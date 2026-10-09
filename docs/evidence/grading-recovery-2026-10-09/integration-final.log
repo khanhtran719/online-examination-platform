@@ -1,0 +1,12 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/grading-recovery-validation-env.cjs
+
+(node:39645) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Test Suites: 14 passed, 14 total
+Tests:       214 passed, 214 total
+Snapshots:   0 total
+Time:        41.455 s, estimated 44 s
+Ran all test suites.

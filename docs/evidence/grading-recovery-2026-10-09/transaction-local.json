@@ -1,0 +1,19 @@
+{
+  "environment": "local PG17 ARM64, synthetic 3-question attempts, sequential 10 jobs",
+  "elapsedMs": 91.72458299999926,
+  "observedJobsPerSecond": 109.02202738823115,
+  "transactions": [
+    7.929208999998082,
+    8.121792000001733,
+    8.306499999998778,
+    8.308042000000569,
+    8.56420799999978,
+    8.891415999998571,
+    8.931458000002749,
+    9.020333000000392,
+    10.964707999999519,
+    11.754166999999143
+  ],
+  "queriesPerJob": 15,
+  "scope": "diagnostic only, not sustainable throughput or AWS evidence"
+}

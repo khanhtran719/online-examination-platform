@@ -1,0 +1,164 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/grading-validation-env.cjs --runTestsByPath apps/api/tests/integration/grading-consumer.spec.ts --testNamePattern terminal failure and authorized replay
+
+(node:34118) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/grading-consumer.spec.ts
+  ● terminal failure and authorized replay on restricted PostgreSQL › settles two concurrent DLQ deliveries once without result/inbox or key authority
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:180:16)
+      at PostgresGradingFailureRepository.recordFailure (apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.ts:18:21)
+      at apps/api/src/modules/assessment/application/services/grading-recovery.ts:27:7
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:233:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:232:14)
+      at Object.consume (apps/api/src/modules/assessment/assessment-worker.factory.ts:30:21)
+          at async Promise.all (index 0)
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:1298:22)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › rolls back FAILED/quarantine on audit failure, then redelivery succeeds
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:180:16)
+      at PostgresGradingFailureRepository.recordFailure (apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.ts:18:21)
+      at apps/api/src/modules/assessment/application/services/grading-recovery.ts:27:7
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:233:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:232:14)
+      at Object.consume (apps/api/src/modules/assessment/assessment-worker.factory.ts:30:21)
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:1329:13)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › authorizes one concurrent replay, fences old source/DLQ, preserves identity and completes once
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:180:16)
+      at PostgresGradingFailureRepository.recordFailure (apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.ts:18:21)
+      at apps/api/src/modules/assessment/application/services/grading-recovery.ts:27:7
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:233:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:232:14)
+      at Object.consume (apps/api/src/modules/assessment/assessment-worker.factory.ts:30:21)
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:1342:5)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › tracks repeated replay failures without admitting an old generation or stale operator revision
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:180:16)
+      at PostgresGradingFailureRepository.recordFailure (apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.ts:18:21)
+      at apps/api/src/modules/assessment/application/services/grading-recovery.ts:27:7
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:233:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:232:14)
+      at Object.consume (apps/api/src/modules/assessment/assessment-worker.factory.ts:30:21)
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:1368:5)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › rolls back replay/outbox/authorization when replay audit fails
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:180:16)
+      at PostgresGradingFailureRepository.recordFailure (apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.ts:18:21)
+      at apps/api/src/modules/assessment/application/services/grading-recovery.ts:27:7
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:233:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:232:14)
+      at Object.consume (apps/api/src/modules/assessment/assessment-worker.factory.ts:30:21)
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:1380:5)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › cannot replay with worker/runtime authority or erase successful evidence
+
+    DatabaseError: Database operation failed
+
+      162 |       if (operation === "lock.acquire")
+      163 |         this.emit("lock", performance.now() - started, operation, code);
+    > 164 |       throw new DatabaseError(code);
+          |             ^
+      165 |     }
+      166 |   }
+      167 |
+
+      at PostgresDatabase.execute (apps/api/src/infrastructure/database/transaction/postgres-database.ts:164:13)
+      at PostgresDatabase.query (apps/api/src/infrastructure/database/transaction/postgres-database.ts:180:16)
+      at PostgresGradingFailureRepository.recordFailure (apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.ts:18:21)
+      at apps/api/src/modules/assessment/application/services/grading-recovery.ts:27:7
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:233:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:232:14)
+      at Object.consume (apps/api/src/modules/assessment/assessment-worker.factory.ts:30:21)
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:1399:33)
+
+  ● terminal failure and authorized replay on restricted PostgreSQL › requires a root committed boundary for terminal settlement and operator replay
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "Independent database operation required"
+    Received message:   "Database operation failed"
+
+           98 |   /** A committed relay claim cannot join a caller's still-open write transaction. */
+           99 |   assertOutsideTransaction(): void {
+        > 100 |     if (this.context.getStore()) throw new DatabaseError("DB_TRANSACTION_FORBIDDEN");
+              |                                        ^
+          101 |   }
+          102 |
+          103 |   private emit(
+
+      at PostgresDatabase.assertOutsideTransaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:100:40)
+      at Object.consume (apps/api/src/modules/assessment/assessment-worker.factory.ts:22:8)
+      at apps/api/tests/integration/grading-consumer.spec.ts:1409:81
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:233:30
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:232:33)
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:1409:5)
+      at Object.toThrow (node_modules/expect/build/index.js:2155:20)
+      at Object.<anonymous> (apps/api/tests/integration/grading-consumer.spec.ts:1410:16)
+
+Test Suites: 1 failed, 1 total
+Tests:       7 failed, 16 skipped, 2 passed, 25 total
+Snapshots:   0 total
+Time:        2.381 s, estimated 3 s
+Ran all test suites within paths "apps/api/tests/integration/grading-consumer.spec.ts".
+

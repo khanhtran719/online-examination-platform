@@ -1,0 +1,1092 @@
+{
+  "checked": 217,
+  "unchanged": 217,
+  "changed": [],
+  "files": [
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0001_capability_schema.sql",
+      "expected": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+      "actual": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0002_query_indexes.sql",
+      "expected": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+      "actual": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0003_runtime_privileges.sql",
+      "expected": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+      "actual": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0004_durable_state_guards.sql",
+      "expected": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+      "actual": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0005_frozen_category.sql",
+      "expected": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+      "actual": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0006_immutable_submission.sql",
+      "expected": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+      "actual": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0007_identity_runtime.sql",
+      "expected": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+      "actual": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0008_identity_operations.sql",
+      "expected": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+      "actual": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0009_catalog_question_points.sql",
+      "expected": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1",
+      "actual": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0010_attempt_revision.sql",
+      "expected": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26",
+      "actual": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0011_submission_kind.sql",
+      "expected": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2",
+      "actual": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0012_required_submission_kind.sql",
+      "expected": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49",
+      "actual": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0013_expiry_retry_schedule.sql",
+      "expected": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf",
+      "actual": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0014_submission_dispatch.sql",
+      "expected": "9286579d23c3f5df0b59fb53461ca4c20f6481deb9421551eafcd905a39e130d",
+      "actual": "9286579d23c3f5df0b59fb53461ca4c20f6481deb9421551eafcd905a39e130d"
+    },
+    {
+      "path": "docs/evidence/assessment-2026-10-07/32982df5-10c4-4e5d-aecc-fb0e3cde5938.json",
+      "expected": "0808cde27a1197b094b62cdc6127290f786c6df4970866dc0a4ab23b5bb44142",
+      "actual": "0808cde27a1197b094b62cdc6127290f786c6df4970866dc0a4ab23b5bb44142"
+    },
+    {
+      "path": "docs/evidence/assessment-2026-10-07/README.md",
+      "expected": "7a85aeea83a91b09d19fd8cc6344a512dfb7a00dbe0744d892638372613bbaec",
+      "actual": "7a85aeea83a91b09d19fd8cc6344a512dfb7a00dbe0744d892638372613bbaec"
+    },
+    {
+      "path": "docs/evidence/assessment-2026-10-07/d5b1e0e9-cede-4782-b2a6-952e8da20614.json",
+      "expected": "e3f31ea4bf84c6f4fe24fd44136e6904ef15cd36f60186161393e827bed4376b",
+      "actual": "e3f31ea4bf84c6f4fe24fd44136e6904ef15cd36f60186161393e827bed4376b"
+    },
+    {
+      "path": "docs/evidence/assessment-2026-10-07/d5e00431-e158-4863-850a-9f47cc47c60c.json",
+      "expected": "2cc779789e4adb9a520807154728d0338515a418d922df0a204cd9461293bf31",
+      "actual": "2cc779789e4adb9a520807154728d0338515a418d922df0a204cd9461293bf31"
+    },
+    {
+      "path": "docs/evidence/assessment-2026-10-07/summary.md",
+      "expected": "0ca3a6a16b368a15657fd66eb2d003bd714875ad627e7b39af4558e3c2ae2bd1",
+      "actual": "0ca3a6a16b368a15657fd66eb2d003bd714875ad627e7b39af4558e3c2ae2bd1"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/README.md",
+      "expected": "5628fe2e9737e001b33b37d47f8e9e144bb0949b7e698a5464a34c737fb18d0e",
+      "actual": "5628fe2e9737e001b33b37d47f8e9e144bb0949b7e698a5464a34c737fb18d0e"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/baseline-hashes.json",
+      "expected": "c23ded68b09a74653e61fb993a2e9cd3408953448b9cb29dbdcd2bc09c175f01",
+      "actual": "c23ded68b09a74653e61fb993a2e9cd3408953448b9cb29dbdcd2bc09c175f01"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/manual-hot-path.json",
+      "expected": "14cd6a9364331a65451f3bf62f0ce3b539b4c858b32f874a435c4ada730ec6ac",
+      "actual": "14cd6a9364331a65451f3bf62f0ce3b539b4c858b32f874a435c4ada730ec6ac"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/measurement-summary.md",
+      "expected": "fe94581656a5ce7ffd1c3205dedb55351ec2fafa9d9ee902e924652e2f205a1f",
+      "actual": "fe94581656a5ce7ffd1c3205dedb55351ec2fafa9d9ee902e924652e2f205a1f"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-burst2000-batch10-pool2.json",
+      "expected": "b1265f2172dcbceeb44cdf81aa2a6af177d36a5dc1dde9ce987969109c6b749b",
+      "actual": "b1265f2172dcbceeb44cdf81aa2a6af177d36a5dc1dde9ce987969109c6b749b"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-burst2000-batch50-pool2-run1.json",
+      "expected": "2027971050983bb8e068fdf658513802d860b8d039a2488d608d4b0a24fd3f91",
+      "actual": "2027971050983bb8e068fdf658513802d860b8d039a2488d608d4b0a24fd3f91"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-burst2000-batch50-pool2-run2.json",
+      "expected": "6a498c40c49b887667b841d4351e5fa0b395ebd70316eb48e0fed7b591611d91",
+      "actual": "6a498c40c49b887667b841d4351e5fa0b395ebd70316eb48e0fed7b591611d91"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-mixed-batch50-pool2.json",
+      "expected": "7639ffb35fbfb4a1366810529a305129f8acdcdbb839c711f0f9ee98935939f0",
+      "actual": "7639ffb35fbfb4a1366810529a305129f8acdcdbb839c711f0f9ee98935939f0"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-worker-burst2000-batch50-pool2.json",
+      "expected": "f55790d87f8330c78ab6c4ba9dee04a0c20d70256abf50594b1d927ed79edebe",
+      "actual": "f55790d87f8330c78ab6c4ba9dee04a0c20d70256abf50594b1d927ed79edebe"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T041226527Z-worker-burst2000-batch50-pool2.json",
+      "expected": "f4e6dd8a73f0528ad760317866667f14c862684099e9847957c946a2707a4939",
+      "actual": "f4e6dd8a73f0528ad760317866667f14c862684099e9847957c946a2707a4939"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/README.md",
+      "expected": "0ae9feaaad86a33707610ef602f804f62d09cbd6184589e2fdeebd9daba44d2f",
+      "actual": "0ae9feaaad86a33707610ef602f804f62d09cbd6184589e2fdeebd9daba44d2f"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/accepted/measurement-summary-2026-10-08T144904538Z.md",
+      "expected": "8866f786b09d5cf30096f1bbd6bb27f68e7d2abdcc3598b9aa96de7f7d96a7cf",
+      "actual": "8866f786b09d5cf30096f1bbd6bb27f68e7d2abdcc3598b9aa96de7f7d96a7cf"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/accepted/raw/2026-10-08T144810748Z-index-range.json",
+      "expected": "583d89ce6e512d57d4009e4fc52441e62eda23ab62402a58afb6303bcae87302",
+      "actual": "583d89ce6e512d57d4009e4fc52441e62eda23ab62402a58afb6303bcae87302"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/accepted/raw/2026-10-08T144904538Z-burst2000-batch10-pool2.json",
+      "expected": "074ffec2b292e5fd474cbd35d6448fd45935d6563ec2cacc35a70821bbc382e5",
+      "actual": "074ffec2b292e5fd474cbd35d6448fd45935d6563ec2cacc35a70821bbc382e5"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/accepted/raw/2026-10-08T144904538Z-burst2000-batch50-pool2-run1.json",
+      "expected": "c220df42132fc7afc5346db12388c24096c9098471b8afd96ea217c30aed0ca6",
+      "actual": "c220df42132fc7afc5346db12388c24096c9098471b8afd96ea217c30aed0ca6"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/accepted/raw/2026-10-08T144904538Z-burst2000-batch50-pool2-run2.json",
+      "expected": "db5d9488cff27e74f0a1d75bbc06701c602ca15e74b2fd428cfab3b1656aca1f",
+      "actual": "db5d9488cff27e74f0a1d75bbc06701c602ca15e74b2fd428cfab3b1656aca1f"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/accepted/raw/2026-10-08T144904538Z-mixed-batch50-pool2.json",
+      "expected": "96d4856c677456860a3e0a82c966f83b99d03094bb4acb2d1466fe6f530d6429",
+      "actual": "96d4856c677456860a3e0a82c966f83b99d03094bb4acb2d1466fe6f530d6429"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/accepted/raw/2026-10-08T144904538Z-worker-burst2000-batch50-pool2.json",
+      "expected": "bda3b722703b30d8f4346429e96503d92d18fe8075e608336ddec6d547c3288f",
+      "actual": "bda3b722703b30d8f4346429e96503d92d18fe8075e608336ddec6d547c3288f"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/accepted-index.log",
+      "expected": "ad9aca037480adc04d745652c43a99d9ed6aea45b5a5f08eb914766df8ed3395",
+      "actual": "ad9aca037480adc04d745652c43a99d9ed6aea45b5a5f08eb914766df8ed3395"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/accepted-measure.log",
+      "expected": "afef4a13a7020c6a9aaedbd218c3a702315797332e09fae0d2c9b33e7c2b79ca",
+      "actual": "afef4a13a7020c6a9aaedbd218c3a702315797332e09fae0d2c9b33e7c2b79ca"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after/measurement-summary-2026-10-08T141431246Z.md",
+      "expected": "f65a6f74003653a44850d0bd2376af4092755affcdc5bd7e2729133fbeadb9b5",
+      "actual": "f65a6f74003653a44850d0bd2376af4092755affcdc5bd7e2729133fbeadb9b5"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after/raw/2026-10-08T141431246Z-burst2000-batch10-pool2.json",
+      "expected": "efe3b6239236dfdf8fc8bb41c386628eb24e6bd1390fda5f69bf6697373c1587",
+      "actual": "efe3b6239236dfdf8fc8bb41c386628eb24e6bd1390fda5f69bf6697373c1587"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after/raw/2026-10-08T141431246Z-burst2000-batch50-pool2-run1.json",
+      "expected": "b2e31550570acd7b7b0a48846a0cde96e7d02294d37da742a4be7df9104b1c7e",
+      "actual": "b2e31550570acd7b7b0a48846a0cde96e7d02294d37da742a4be7df9104b1c7e"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after/raw/2026-10-08T141431246Z-burst2000-batch50-pool2-run2.json",
+      "expected": "8a0347c2feb8e423febce36b22210d211cc1d97901099917c219ddb865ffa7d1",
+      "actual": "8a0347c2feb8e423febce36b22210d211cc1d97901099917c219ddb865ffa7d1"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after/raw/2026-10-08T141431246Z-mixed-batch50-pool2.json",
+      "expected": "0155d49263afdecb134b9c334035592bc5cc7e8306720bfe89870d747cd4f32d",
+      "actual": "0155d49263afdecb134b9c334035592bc5cc7e8306720bfe89870d747cd4f32d"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after-final/measurement-summary-2026-10-08T144025538Z.md",
+      "expected": "d407e056bf5622db809965a1dbc23fab1476d35c5d741930b94e0245f09dd334",
+      "actual": "d407e056bf5622db809965a1dbc23fab1476d35c5d741930b94e0245f09dd334"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after-final/raw/2026-10-08T144025538Z-burst2000-batch10-pool2.json",
+      "expected": "0c985ff0597cd576245f838ab04b64e4336b7de6c08d281073f9107d15321860",
+      "actual": "0c985ff0597cd576245f838ab04b64e4336b7de6c08d281073f9107d15321860"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after-final/raw/2026-10-08T144025538Z-burst2000-batch50-pool2-run1.json",
+      "expected": "578ae8a5f2f76f8ad80cc261672d7a050f6d8f4f77e3a8e1e10df455d9e5278f",
+      "actual": "578ae8a5f2f76f8ad80cc261672d7a050f6d8f4f77e3a8e1e10df455d9e5278f"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after-final/raw/2026-10-08T144025538Z-burst2000-batch50-pool2-run2.json",
+      "expected": "4d757e9406c5a7a0133c10344a1271514f080b07eebedc47a1b3f67e89844aa8",
+      "actual": "4d757e9406c5a7a0133c10344a1271514f080b07eebedc47a1b3f67e89844aa8"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after-final/raw/2026-10-08T144025538Z-mixed-batch50-pool2.json",
+      "expected": "da41120e30a6db09367862ef933c6b1d50658feffae1598299f7f794d64a87dd",
+      "actual": "da41120e30a6db09367862ef933c6b1d50658feffae1598299f7f794d64a87dd"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after-final/raw/2026-10-08T144025538Z-worker-burst2000-batch50-pool2.json",
+      "expected": "65ea66794cc0d6cb7c8139ca3021a95182608bbcc6cce7c38fce0fb1e8f0c0be",
+      "actual": "65ea66794cc0d6cb7c8139ca3021a95182608bbcc6cce7c38fce0fb1e8f0c0be"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after-final-measure.log",
+      "expected": "afef4a13a7020c6a9aaedbd218c3a702315797332e09fae0d2c9b33e7c2b79ca",
+      "actual": "afef4a13a7020c6a9aaedbd218c3a702315797332e09fae0d2c9b33e7c2b79ca"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/after-measure.log",
+      "expected": "8901c9e29682b5d1e4c242490eddfd732a796a20dc9eaa705d7cc1db30884860",
+      "actual": "8901c9e29682b5d1e4c242490eddfd732a796a20dc9eaa705d7cc1db30884860"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/agent-green-1791468751807.log",
+      "expected": "560e48ed6442bbf25ab5ef4ade61004c32f1ceb7f217ab55487e91b59415b27a",
+      "actual": "560e48ed6442bbf25ab5ef4ade61004c32f1ceb7f217ab55487e91b59415b27a"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/baseline-build.log",
+      "expected": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386",
+      "actual": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/baseline-hashes.json",
+      "expected": "2261ea7f2c25af9ec3495421a23c620a6efe142b372c1acb0894fe93ea47a903",
+      "actual": "2261ea7f2c25af9ec3495421a23c620a6efe142b372c1acb0894fe93ea47a903"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/before/measurement-summary.md",
+      "expected": "c682ae547774b65e1a3c3c1f6816a7e39b1f021e737dc9faf61b36b60eca40a7",
+      "actual": "c682ae547774b65e1a3c3c1f6816a7e39b1f021e737dc9faf61b36b60eca40a7"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/before/raw/2026-10-08T140704876Z-burst2000-batch10-pool2.json",
+      "expected": "4e0aad7224085c647c863fbee121498ad10e59aab811cbc70d951d2b9ae5ddd1",
+      "actual": "4e0aad7224085c647c863fbee121498ad10e59aab811cbc70d951d2b9ae5ddd1"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/before/raw/2026-10-08T140704876Z-burst2000-batch50-pool2-run1.json",
+      "expected": "a0505708f55a4c4d3f328056802d146ccc0b307116759389ae7661c8801b3bd7",
+      "actual": "a0505708f55a4c4d3f328056802d146ccc0b307116759389ae7661c8801b3bd7"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/before/raw/2026-10-08T140704876Z-burst2000-batch50-pool2-run2.json",
+      "expected": "c7fbb5e0007e01544f1ca10d5c2dbb5a6b9914a8c8e353472ee6f8d7d0aceeb5",
+      "actual": "c7fbb5e0007e01544f1ca10d5c2dbb5a6b9914a8c8e353472ee6f8d7d0aceeb5"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/before/raw/2026-10-08T140704876Z-mixed-batch50-pool2.json",
+      "expected": "5776c02a47a6471c125c3c779ad5ac315ce8cdea06f9e9a2786a85a8ee764aee",
+      "actual": "5776c02a47a6471c125c3c779ad5ac315ce8cdea06f9e9a2786a85a8ee764aee"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/before-measure.log",
+      "expected": "8901c9e29682b5d1e4c242490eddfd732a796a20dc9eaa705d7cc1db30884860",
+      "actual": "8901c9e29682b5d1e4c242490eddfd732a796a20dc9eaa705d7cc1db30884860"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/checks.json",
+      "expected": "f042bfbd7535a49498129a6f1d6a1adf8999f2a8acebafe58ceea69fd5ca1700",
+      "actual": "f042bfbd7535a49498129a6f1d6a1adf8999f2a8acebafe58ceea69fd5ca1700"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/cleanup-services.log",
+      "expected": "9b5a7eaf0a8ec83c727484d4b39c61d1f11fd2b6bc40897b1142548ea5bf89bd",
+      "actual": "9b5a7eaf0a8ec83c727484d4b39c61d1f11fd2b6bc40897b1142548ea5bf89bd"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/cleanup.json",
+      "expected": "9c4b5c49ebd61d342bcd422fb2462c9be7e7bf8647541a8f29a9137bef5e21ee",
+      "actual": "9c4b5c49ebd61d342bcd422fb2462c9be7e7bf8647541a8f29a9137bef5e21ee"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/closure/measurement-summary-2026-10-08T144357246Z.md",
+      "expected": "c7182506249c189bfdb78a4221007c2187c09bd406cd687abee16b702ed919fb",
+      "actual": "c7182506249c189bfdb78a4221007c2187c09bd406cd687abee16b702ed919fb"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/closure/raw/2026-10-08T144357246Z-burst2000-batch10-pool2.json",
+      "expected": "f93c0b1812c25ea5730406126a099e2705c7c02a01931b3ec9b4cb68f6513eb6",
+      "actual": "f93c0b1812c25ea5730406126a099e2705c7c02a01931b3ec9b4cb68f6513eb6"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/closure/raw/2026-10-08T144357246Z-burst2000-batch50-pool2-run1.json",
+      "expected": "964051d07e22fbfc5c4cad94936243321543a7c596d5a59f9ab9f7acde5047f7",
+      "actual": "964051d07e22fbfc5c4cad94936243321543a7c596d5a59f9ab9f7acde5047f7"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/closure/raw/2026-10-08T144357246Z-burst2000-batch50-pool2-run2.json",
+      "expected": "1e5015d5b9871aecfe95e61fa82ce707d043d60e5362043966194524522e8910",
+      "actual": "1e5015d5b9871aecfe95e61fa82ce707d043d60e5362043966194524522e8910"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/closure/raw/2026-10-08T144357246Z-mixed-batch50-pool2.json",
+      "expected": "813a4d36a29fc68849e409eb54724724cf421c453de52654d2faffd8ecee2ebd",
+      "actual": "813a4d36a29fc68849e409eb54724724cf421c453de52654d2faffd8ecee2ebd"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/closure/raw/2026-10-08T144357246Z-worker-burst2000-batch50-pool2.json",
+      "expected": "8f428c2fa7073226b85b428404584daf68e8bbb44d58c63d540db2fca29a8d4f",
+      "actual": "8f428c2fa7073226b85b428404584daf68e8bbb44d58c63d540db2fca29a8d4f"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/closure-measure.log",
+      "expected": "afef4a13a7020c6a9aaedbd218c3a702315797332e09fae0d2c9b33e7c2b79ca",
+      "actual": "afef4a13a7020c6a9aaedbd218c3a702315797332e09fae0d2c9b33e7c2b79ca"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/comparison.json",
+      "expected": "7665ef83a6148bf6c3d12e0b16c76f762e87746b374a2d674b4535a8891da296",
+      "actual": "7665ef83a6148bf6c3d12e0b16c76f762e87746b374a2d674b4535a8891da296"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/delivery-quality.log",
+      "expected": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98",
+      "actual": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/final-build.log",
+      "expected": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386",
+      "actual": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/final-integration.log",
+      "expected": "da7c632a4d26311351beffda769948956a2d0cac68001a22d7288c75163b29c0",
+      "actual": "da7c632a4d26311351beffda769948956a2d0cac68001a22d7288c75163b29c0"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/final-lint-with-regressions.log",
+      "expected": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b",
+      "actual": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/final-lint.log",
+      "expected": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b",
+      "actual": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/final-measurement-lint.log",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/final-root-tests.log",
+      "expected": "f8715bc0d323265321e071e66266c3da579f1a8fd6c8218f96c642bbfdf4b986",
+      "actual": "f8715bc0d323265321e071e66266c3da579f1a8fd6c8218f96c642bbfdf4b986"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/final-source-hashes.json",
+      "expected": "7a0d49f70ecfa20b0fe532398655f573774cdcb4f4d29b3f188d8a04d6f69b55",
+      "actual": "7a0d49f70ecfa20b0fe532398655f573774cdcb4f4d29b3f188d8a04d6f69b55"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/final-typecheck-with-regressions.log",
+      "expected": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52",
+      "actual": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/final-typecheck.log",
+      "expected": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52",
+      "actual": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/green-lag-unit.log",
+      "expected": "b03329389cbed03a2e85063fc7a8431811dc51cf8b73f45f5223a968c11ad519",
+      "actual": "b03329389cbed03a2e85063fc7a8431811dc51cf8b73f45f5223a968c11ad519"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/green-retry-unit.log",
+      "expected": "18fc42921e8fba69a54fd3385a39f1c5537c9531fcf4cf899fec05ae2e110ae4",
+      "actual": "18fc42921e8fba69a54fd3385a39f1c5537c9531fcf4cf899fec05ae2e110ae4"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/index/raw/2026-10-08T143931043Z-index-range.json",
+      "expected": "49976cdc551bbe05ed94a7c5d698d4c34cae5257d5b742a9d5917ae7a0f81b74",
+      "actual": "49976cdc551bbe05ed94a7c5d698d4c34cae5257d5b742a9d5917ae7a0f81b74"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/index-measure.log",
+      "expected": "ad9aca037480adc04d745652c43a99d9ed6aea45b5a5f08eb914766df8ed3395",
+      "actual": "ad9aca037480adc04d745652c43a99d9ed6aea45b5a5f08eb914766df8ed3395"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/intermediate-build.log",
+      "expected": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386",
+      "actual": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/intermediate-integration.log",
+      "expected": "3526c3cde766c0cd213a509d2866e30ebd2117515fdce42599ab894f7b9cb88d",
+      "actual": "3526c3cde766c0cd213a509d2866e30ebd2117515fdce42599ab894f7b9cb88d"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/intermediate-lint.log",
+      "expected": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b",
+      "actual": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/intermediate-retry-unit.log",
+      "expected": "14cd46f69675bc898a3cf08bae718c91dc5235f306ef4b59c4c5b177dd7e9460",
+      "actual": "14cd46f69675bc898a3cf08bae718c91dc5235f306ef4b59c4c5b177dd7e9460"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/intermediate-typecheck.log",
+      "expected": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52",
+      "actual": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/manual-query-budget.json",
+      "expected": "034cbf35ad913889b858c8af15137dd29ed9b5ba9c3aa216159d57367d57c4eb",
+      "actual": "034cbf35ad913889b858c8af15137dd29ed9b5ba9c3aa216159d57367d57c4eb"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/preservation.json",
+      "expected": "088c0265f2ec0649242d7c4bc1a6f410233a5522025f6863231e4f0688da2c20",
+      "actual": "088c0265f2ec0649242d7c4bc1a6f410233a5522025f6863231e4f0688da2c20"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/red-integration-corrected.log",
+      "expected": "69ead3cdb0daff10cfd79acf47f03d0120e67f4acf6f1bcb3e9c5c1f7fa54d50",
+      "actual": "69ead3cdb0daff10cfd79acf47f03d0120e67f4acf6f1bcb3e9c5c1f7fa54d50"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/red-integration.log",
+      "expected": "32e506398da946304b08471b82c79a442e35f04b194c6550e909bdce40bf2e14",
+      "actual": "32e506398da946304b08471b82c79a442e35f04b194c6550e909bdce40bf2e14"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/red-lag-unit.log",
+      "expected": "d15a9585f2cacf8c9f38c320561a319e3315eb8a5d9bae2ffcff5025a1b843c3",
+      "actual": "d15a9585f2cacf8c9f38c320561a319e3315eb8a5d9bae2ffcff5025a1b843c3"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-fixes-2026-10-08/red-retry-unit.log",
+      "expected": "9c44992d1f7a4920ec01d3342d14080bc00bae67824fc5cc5f404676b2485b6c",
+      "actual": "9c44992d1f7a4920ec01d3342d14080bc00bae67824fc5cc5f404676b2485b6c"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/README.md",
+      "expected": "e0d04c3b798653a9c2a646df430e8e08febbc2f0fe3c164862cfd8b26a84bb60",
+      "actual": "e0d04c3b798653a9c2a646df430e8e08febbc2f0fe3c164862cfd8b26a84bb60"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/build.log",
+      "expected": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386",
+      "actual": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/checks.json",
+      "expected": "f8a376793af991f3ad2064c8bd1ecc43436e5e07c216aca2c5eef0a1ab653ece",
+      "actual": "f8a376793af991f3ad2064c8bd1ecc43436e5e07c216aca2c5eef0a1ab653ece"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/delivery-quality.log",
+      "expected": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98",
+      "actual": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/final-quality.log",
+      "expected": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98",
+      "actual": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/integration-allowed.log",
+      "expected": "8fbad1cb82c78850ba30c04f69535f071137b544634db1c543cba2d4ce7d7245",
+      "actual": "8fbad1cb82c78850ba30c04f69535f071137b544634db1c543cba2d4ce7d7245"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/integration.log",
+      "expected": "944ad690f368f0d090affb41fe1b0fd03d6c170c89adcf4133feca4de828a841",
+      "actual": "944ad690f368f0d090affb41fe1b0fd03d6c170c89adcf4133feca4de828a841"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/lint.log",
+      "expected": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b",
+      "actual": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/preservation-after.json",
+      "expected": "605e3da7e14c482bc677d2de547388cbe4c8596034d9a32b0cba4938939f0f6a",
+      "actual": "605e3da7e14c482bc677d2de547388cbe4c8596034d9a32b0cba4938939f0f6a"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/preservation-before.json",
+      "expected": "9835d4ba79fd3f99a04e41ccd8f3b8a4393b7b9e66523b9f33ddaee6b6f7083b",
+      "actual": "9835d4ba79fd3f99a04e41ccd8f3b8a4393b7b9e66523b9f33ddaee6b6f7083b"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/probes.log",
+      "expected": "499bf05c41851f7febf341cd6cfebcc01fc7910c945843c7fd76d1d82786256a",
+      "actual": "499bf05c41851f7febf341cd6cfebcc01fc7910c945843c7fd76d1d82786256a"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/query-plans.json",
+      "expected": "6324541d78291900948d6108dc6ae625e320be0b529a5eaca4d6f6f526c92f78",
+      "actual": "6324541d78291900948d6108dc6ae625e320be0b529a5eaca4d6f6f526c92f78"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/review-probes.mjs",
+      "expected": "81568757c16d3ce50dbbff33ed3b87cc3de520ea125eeef948c514a578d72cbb",
+      "actual": "81568757c16d3ce50dbbff33ed3b87cc3de520ea125eeef948c514a578d72cbb"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/review-results.json",
+      "expected": "770bb7e133009c5a5a5b79aa412fbbdc570e7f39dcf667431cd42d9d82fca495",
+      "actual": "770bb7e133009c5a5a5b79aa412fbbdc570e7f39dcf667431cd42d9d82fca495"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/root-tests.log",
+      "expected": "2fed74fb791f9301917d1fb08d8fb2a5988e4e084131eed8998e02831bd11316",
+      "actual": "2fed74fb791f9301917d1fb08d8fb2a5988e4e084131eed8998e02831bd11316"
+    },
+    {
+      "path": "docs/evidence/assessment-expiry-review-2026-10-08/typecheck.log",
+      "expected": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52",
+      "actual": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/README.md",
+      "expected": "78aa7f6eb766c8526a44fb0e8c3f92199c98beba5aa8cf2124ded2a3677a14e0",
+      "actual": "78aa7f6eb766c8526a44fb0e8c3f92199c98beba5aa8cf2124ded2a3677a14e0"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/added-security-test-harness-error.log",
+      "expected": "b5dcd24083b8441644400b77dadd2ed44d8ca1679d01572cd84c8930859879a6",
+      "actual": "b5dcd24083b8441644400b77dadd2ed44d8ca1679d01572cd84c8930859879a6"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/after/11e84464-706c-46ad-b0a7-827bf3c88feb.json",
+      "expected": "a2b6701dbd6c92803335a50fdede6e12299cacbd2a53fa1d0d68f48dfc29f4b9",
+      "actual": "a2b6701dbd6c92803335a50fdede6e12299cacbd2a53fa1d0d68f48dfc29f4b9"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/after/11e84464-706c-46ad-b0a7-827bf3c88feb.summary.md",
+      "expected": "3a4829ccf8c32c14e069ad9d72f255715fe9ccb13a3a87f7c1cb20c0a0086576",
+      "actual": "3a4829ccf8c32c14e069ad9d72f255715fe9ccb13a3a87f7c1cb20c0a0086576"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/after/9e712dfe-c0f4-485f-9510-fe3e262e2b28.json",
+      "expected": "a2b8af18577ac08f23d5c488f20647f72f0287e0d868726cce4343fdb8d9b63d",
+      "actual": "a2b8af18577ac08f23d5c488f20647f72f0287e0d868726cce4343fdb8d9b63d"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/after/9e712dfe-c0f4-485f-9510-fe3e262e2b28.summary.md",
+      "expected": "622139a1bfa766f86748eed90f545261ff01f3401f9e31931397a12bad58aa6c",
+      "actual": "622139a1bfa766f86748eed90f545261ff01f3401f9e31931397a12bad58aa6c"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/assessment-green.log",
+      "expected": "e2fa3fa047a72881192570649bfeca8a6244d9e94ed1e98b5de1efae12e29188",
+      "actual": "e2fa3fa047a72881192570649bfeca8a6244d9e94ed1e98b5de1efae12e29188"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/baseline.json",
+      "expected": "fda51328b864f3d5958cf924d3cd2638718c20124f83320173919c44336a1279",
+      "actual": "fda51328b864f3d5958cf924d3cd2638718c20124f83320173919c44336a1279"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/before/8b500b7f-f8ac-41f2-a536-a38f8b25442a.json",
+      "expected": "86c90655c8bf00b5694af3d35dd9ef09123f9562c1c58e603ab281896d4f4c8d",
+      "actual": "86c90655c8bf00b5694af3d35dd9ef09123f9562c1c58e603ab281896d4f4c8d"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/before/8b500b7f-f8ac-41f2-a536-a38f8b25442a.summary.md",
+      "expected": "e83d798230d3f7e15d90677144e5df915d3358cfe6dfa4788d3e73a19f57e05c",
+      "actual": "e83d798230d3f7e15d90677144e5df915d3358cfe6dfa4788d3e73a19f57e05c"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/checks.json",
+      "expected": "27e56ae38cbf044cbd2cf930ae11308e3e07ad7b3d1e2f9a8bb501398809566c",
+      "actual": "27e56ae38cbf044cbd2cf930ae11308e3e07ad7b3d1e2f9a8bb501398809566c"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/comparison.json",
+      "expected": "25cd3e45f32fc432c231316bb340c56ac1ceea72531ec379c2f25bf3e4a3c309",
+      "actual": "25cd3e45f32fc432c231316bb340c56ac1ceea72531ec379c2f25bf3e4a3c309"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/diagnostic-after.log",
+      "expected": "8ec0770377aa153a3c22cb5edcd41d637142cc3ee931aec27e803aebb81eb0c2",
+      "actual": "8ec0770377aa153a3c22cb5edcd41d637142cc3ee931aec27e803aebb81eb0c2"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/diagnostic-final.log",
+      "expected": "2e382324ceefdeead48b2818692907aa7774e29387dbff55a3193afa6dd1a565",
+      "actual": "2e382324ceefdeead48b2818692907aa7774e29387dbff55a3193afa6dd1a565"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/format-final.log",
+      "expected": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+      "actual": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/identity-https.log",
+      "expected": "25cc5f2b734dd32ee82b2a8dfcd90c35a29fc7935a2cb8f3706b268a0b53de28",
+      "actual": "25cc5f2b734dd32ee82b2a8dfcd90c35a29fc7935a2cb8f3706b268a0b53de28"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/integration-final.log",
+      "expected": "387bceca037ff1c4379b91e81599d5ded1a125a2581a3ed098b884475626e034",
+      "actual": "387bceca037ff1c4379b91e81599d5ded1a125a2581a3ed098b884475626e034"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/integration-identity-catalog-db.log",
+      "expected": "32baa7a62e72fbfb85409c61d2a4b7c257909b1882b57c8c8f3804a0fd603a1e",
+      "actual": "32baa7a62e72fbfb85409c61d2a4b7c257909b1882b57c8c8f3804a0fd603a1e"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/intermediate.log",
+      "expected": "8eb60574835cd79cc94604cd2b7a03060fb8c88e558e0d15048413a923fda611",
+      "actual": "8eb60574835cd79cc94604cd2b7a03060fb8c88e558e0d15048413a923fda611"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/lint.log",
+      "expected": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b",
+      "actual": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/manifest.json",
+      "expected": "cf78481bc7e764bcbd6dffe0010a671d6f4f7d59f20cfa08361537a4e97bc570",
+      "actual": "cf78481bc7e764bcbd6dffe0010a671d6f4f7d59f20cfa08361537a4e97bc570"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/preservation.json",
+      "expected": "8075e08a3ed95eb0a3d4a2f88826e16a1a50c396d2daf9ba51e9a5ec89695ab7",
+      "actual": "8075e08a3ed95eb0a3d4a2f88826e16a1a50c396d2daf9ba51e9a5ec89695ab7"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/quality-final.log",
+      "expected": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98",
+      "actual": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/red.log",
+      "expected": "910f838cf0cf914a4fe18c0f4463bcda1baea6fa9d3f017125228ea3bda4071e",
+      "actual": "910f838cf0cf914a4fe18c0f4463bcda1baea6fa9d3f017125228ea3bda4071e"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/typecheck-final.log",
+      "expected": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52",
+      "actual": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52"
+    },
+    {
+      "path": "docs/evidence/assessment-fixes-2026-10-08/unit-tooling-web.log",
+      "expected": "4ac3349aab9078c6d79d9ac16664e102c272451bf8897bb49b3bc1a67cbe3405",
+      "actual": "4ac3349aab9078c6d79d9ac16664e102c272451bf8897bb49b3bc1a67cbe3405"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/README.md",
+      "expected": "2ff1e5afa5ddc1150ec4da7627224bb29e82bb9768b89ecb6d8d303d4bb085e0",
+      "actual": "2ff1e5afa5ddc1150ec4da7627224bb29e82bb9768b89ecb6d8d303d4bb085e0"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/baseline.json",
+      "expected": "d7e37ea56411c000d660c1d8bb2c13a5b7ac669d733cfc72b933172e8b1d28c1",
+      "actual": "d7e37ea56411c000d660c1d8bb2c13a5b7ac669d733cfc72b933172e8b1d28c1"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/checks.json",
+      "expected": "0e6ff65ed732a1e8ff51aea88becea00eade0ffda390065241449b503e9ccd97",
+      "actual": "0e6ff65ed732a1e8ff51aea88becea00eade0ffda390065241449b503e9ccd97"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/identity-https-summary.json",
+      "expected": "abc802dc6d1e3165c1257535a3d8b19af50869b1edd798ce59d9853ed840258b",
+      "actual": "abc802dc6d1e3165c1257535a3d8b19af50869b1edd798ce59d9853ed840258b"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/initial-probes.json",
+      "expected": "95ee4ea39018d860055ca48105ff166ebee3f5acf770223449e301977bd6c347",
+      "actual": "95ee4ea39018d860055ca48105ff166ebee3f5acf770223449e301977bd6c347"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/initial-review.log",
+      "expected": "a2e410041e49dfd95ebce99e4731d24bf42839ba0e848c9ea91513014bcc1235",
+      "actual": "a2e410041e49dfd95ebce99e4731d24bf42839ba0e848c9ea91513014bcc1235"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/build.log",
+      "expected": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386",
+      "actual": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/final-quality.log",
+      "expected": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98",
+      "actual": "906b2ddfaca6b8351f511313b0674231a10d7f311c8dfad1f835c8b4327ead98"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/https.log",
+      "expected": "ee425fedafa542de0d3ab9b069877a8e640ad26ffc2998ecea3586485322627b",
+      "actual": "ee425fedafa542de0d3ab9b069877a8e640ad26ffc2998ecea3586485322627b"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/integration.log",
+      "expected": "757545266f750185f434e4ace6e7ead3a0f757445c4fc76715f3cac1868fb32f",
+      "actual": "757545266f750185f434e4ace6e7ead3a0f757445c4fc76715f3cac1868fb32f"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/lint.log",
+      "expected": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b",
+      "actual": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/typecheck.log",
+      "expected": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52",
+      "actual": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/logs/unit.log",
+      "expected": "3c7bea994cc4c765ce05aa3c0f5a87663132fdc6ca36e7f22ada1f5d4cc13d0c",
+      "actual": "3c7bea994cc4c765ce05aa3c0f5a87663132fdc6ca36e7f22ada1f5d4cc13d0c"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/manifest.json",
+      "expected": "ebebe2677b60c04deb559503e483335ba82ba0cd0eca62b80e351d63682aff3c",
+      "actual": "ebebe2677b60c04deb559503e483335ba82ba0cd0eca62b80e351d63682aff3c"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/probes.json",
+      "expected": "58eb6e316cbd2fb7f0f2eb7f224308ce98db679b233f7555a6010fc74b050067",
+      "actual": "58eb6e316cbd2fb7f0f2eb7f224308ce98db679b233f7555a6010fc74b050067"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/review-final.log",
+      "expected": "c93bb87632a8c33748187d4d4568025e1c560c50c925931ac72adb1b679db5da",
+      "actual": "c93bb87632a8c33748187d4d4568025e1c560c50c925931ac72adb1b679db5da"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/review.jest.cjs",
+      "expected": "cb6e82fe8a776a669c46233ec89e4ef50920dbd9b01e74c3825c8ff4516f95c9",
+      "actual": "cb6e82fe8a776a669c46233ec89e4ef50920dbd9b01e74c3825c8ff4516f95c9"
+    },
+    {
+      "path": "docs/evidence/assessment-review-2026-10-07/review.spec.ts",
+      "expected": "bcf1f4fcef0d191517d63cdb08472959b2937d7669df44a979d14d08770db445",
+      "actual": "bcf1f4fcef0d191517d63cdb08472959b2937d7669df44a979d14d08770db445"
+    },
+    {
+      "path": "docs/evidence/catalog-2026-10-07/README.md",
+      "expected": "e40c0260fcf86cefed56511abaf53da4eeb62f1860df0bb896f8722e711553ef",
+      "actual": "e40c0260fcf86cefed56511abaf53da4eeb62f1860df0bb896f8722e711553ef"
+    },
+    {
+      "path": "docs/evidence/catalog-2026-10-07/diagnostic.json",
+      "expected": "270ca2ca6d8ab747d112f235645441209c4be56c06a7481392198d6f88cac50f",
+      "actual": "270ca2ca6d8ab747d112f235645441209c4be56c06a7481392198d6f88cac50f"
+    },
+    {
+      "path": "docs/evidence/catalog-fixes-2026-10-07/README.md",
+      "expected": "318bb758c1824f49fac2f1b769b7cab7d08fdb3cae212020f432671a6aa3eaec",
+      "actual": "318bb758c1824f49fac2f1b769b7cab7d08fdb3cae212020f432671a6aa3eaec"
+    },
+    {
+      "path": "docs/evidence/catalog-fixes-2026-10-07/checks.json",
+      "expected": "3ee24e3ec3f2153386137bde0df7f28c4c751e5f555843d06d70969b8f4a6119",
+      "actual": "3ee24e3ec3f2153386137bde0df7f28c4c751e5f555843d06d70969b8f4a6119"
+    },
+    {
+      "path": "docs/evidence/catalog-fixes-2026-10-07/diagnostic/README.md",
+      "expected": "db317b32a147d29483aaccc167c9698a75d9aecbfec782277b229701351f31ee",
+      "actual": "db317b32a147d29483aaccc167c9698a75d9aecbfec782277b229701351f31ee"
+    },
+    {
+      "path": "docs/evidence/catalog-fixes-2026-10-07/diagnostic/diagnostic.json",
+      "expected": "be522dd3af86486b3ea85f1c7189c7e3371f0f97b43485a23859ddefb9741489",
+      "actual": "be522dd3af86486b3ea85f1c7189c7e3371f0f97b43485a23859ddefb9741489"
+    },
+    {
+      "path": "docs/evidence/catalog-fixes-2026-10-07/identity-https-summary.json",
+      "expected": "ae22830a90326b7e8879bf6ae0b6a880d61a7b709bc9b226cb60e702f82cf917",
+      "actual": "ae22830a90326b7e8879bf6ae0b6a880d61a7b709bc9b226cb60e702f82cf917"
+    },
+    {
+      "path": "docs/evidence/catalog-fixes-2026-10-07/manifest.json",
+      "expected": "9b97e74431a84f8047222e27e22835f8f274009e52cd56255c77fb2fa9c989b2",
+      "actual": "9b97e74431a84f8047222e27e22835f8f274009e52cd56255c77fb2fa9c989b2"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/README.md",
+      "expected": "64ae8d04e7f64dd7336b0eb8ebb209d7191fa22041958d1e8e402db5e210c908",
+      "actual": "64ae8d04e7f64dd7336b0eb8ebb209d7191fa22041958d1e8e402db5e210c908"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/checks.json",
+      "expected": "12f0920219874a627dacab683517ad9d8b761056b53e9ef7ac2fd64ddada8f5d",
+      "actual": "12f0920219874a627dacab683517ad9d8b761056b53e9ef7ac2fd64ddada8f5d"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/identity-https-summary.json",
+      "expected": "8d92ed19e38c8a241c85035645becc639c518d3907e08b4197a1de4cbf9b4dbf",
+      "actual": "8d92ed19e38c8a241c85035645becc639c518d3907e08b4197a1de4cbf9b4dbf"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/manifest.json",
+      "expected": "aac3a857c83cf14ea3e2211a59a11da6bc84477e7e1ea50acf800f036cac459d",
+      "actual": "aac3a857c83cf14ea3e2211a59a11da6bc84477e7e1ea50acf800f036cac459d"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/probes.json",
+      "expected": "d9110ad5f8c057ebaf98c2e56818cb8eb986a654f8ed21224a0be15b05fb56b1",
+      "actual": "d9110ad5f8c057ebaf98c2e56818cb8eb986a654f8ed21224a0be15b05fb56b1"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/review.jest.cjs",
+      "expected": "874287349ceeb0026a2faf09cae82230eb444daa2ca7aa170437a5671ce0edf5",
+      "actual": "874287349ceeb0026a2faf09cae82230eb444daa2ca7aa170437a5671ce0edf5"
+    },
+    {
+      "path": "docs/evidence/catalog-review-2026-10-07/review.spec.ts",
+      "expected": "256e855ceb36082652afdc51ac2778ebae3b525bdb2b4776f0c38959cedc7483",
+      "actual": "256e855ceb36082652afdc51ac2778ebae3b525bdb2b4776f0c38959cedc7483"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/README.md",
+      "expected": "424253e57d46970d76ecb574c05a6812c119ba3b2659e242db34e845d8f8101d",
+      "actual": "424253e57d46970d76ecb574c05a6812c119ba3b2659e242db34e845d8f8101d"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/green-boundaries.json",
+      "expected": "5d888ca29f486415515f4cae209c50232e9887d5307cfb9a64e64cc94f29495a",
+      "actual": "5d888ca29f486415515f4cae209c50232e9887d5307cfb9a64e64cc94f29495a"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/green-environment.json",
+      "expected": "508115fa77413443d2fd4389d4ee5412c6a0d1bfd9355ea7c164bcb758fad16b",
+      "actual": "508115fa77413443d2fd4389d4ee5412c6a0d1bfd9355ea7c164bcb758fad16b"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/green-summary.json",
+      "expected": "bfc9e2ae082b11d5a01767ddf7da058cc40be337517cafe9825b4e6a75998e91",
+      "actual": "bfc9e2ae082b11d5a01767ddf7da058cc40be337517cafe9825b4e6a75998e91"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/harness-diagnostic.json",
+      "expected": "b36b92f526346cf9717f97bda8c87eb85e3a3ab8d6ec9f23fd9cf21693b9bf23",
+      "actual": "b36b92f526346cf9717f97bda8c87eb85e3a3ab8d6ec9f23fd9cf21693b9bf23"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/manifest.json",
+      "expected": "8bb03d966bf1ca48b382e537b459e710622099f06d78dfa2c17a22a9756ce640",
+      "actual": "8bb03d966bf1ca48b382e537b459e710622099f06d78dfa2c17a22a9756ce640"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-anonymous-verification.json",
+      "expected": "c6035cf1fbbeb03472fed58214ef0d4c8765c3f0af2f318c87a374e73e6a57bb",
+      "actual": "c6035cf1fbbeb03472fed58214ef0d4c8765c3f0af2f318c87a374e73e6a57bb"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-boundaries.json",
+      "expected": "06ca1857cbf03f3d52fa9847d0ba0dac85facca50028812f31125a8715ce8a67",
+      "actual": "06ca1857cbf03f3d52fa9847d0ba0dac85facca50028812f31125a8715ce8a67"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-environment.json",
+      "expected": "a03e7107c5847ab22073cbe3723039d1bd3fce12a658ba7bd9f5f0db25379f11",
+      "actual": "a03e7107c5847ab22073cbe3723039d1bd3fce12a658ba7bd9f5f0db25379f11"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-profile-reauth.json",
+      "expected": "2d08765ec62447b9f72e37bc76d68b55d2b3576fabf46fb13c507f1d1eda2ca1",
+      "actual": "2d08765ec62447b9f72e37bc76d68b55d2b3576fabf46fb13c507f1d1eda2ca1"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/red-summary.json",
+      "expected": "672fb380eef11a62ebb7836600181271d538bb7d89207682c2cce429e0e87e63",
+      "actual": "672fb380eef11a62ebb7836600181271d538bb7d89207682c2cce429e0e87e63"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/verification-desktop.png",
+      "expected": "582a77d2756c78bd0ac939b27fb156ca1384c1b62c7adf253cea35c6af13f6c1",
+      "actual": "582a77d2756c78bd0ac939b27fb156ca1384c1b62c7adf253cea35c6af13f6c1"
+    },
+    {
+      "path": "docs/evidence/identity-https-2026-10-07/verification-mobile.png",
+      "expected": "6580a216c9bdbe22e67da16648a99aa41977c898a6a691256a7710499cfe0207",
+      "actual": "6580a216c9bdbe22e67da16648a99aa41977c898a6a691256a7710499cfe0207"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/README.md",
+      "expected": "89aec036f32ace2eacc83fd981508ec2a10d951e963ac1f4bb7acbfe63c1f6a5",
+      "actual": "89aec036f32ace2eacc83fd981508ec2a10d951e963ac1f4bb7acbfe63c1f6a5"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/ambient-red.log",
+      "expected": "b9b95d5915f8f98aef15d06eb99de84f6ed37b8f129f3d75c52312245b67d635",
+      "actual": "b9b95d5915f8f98aef15d06eb99de84f6ed37b8f129f3d75c52312245b67d635"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/api-tests.log",
+      "expected": "a06c2905e1a3c916686d3679aded951bfe34ec2693b01513753e4cb300269655",
+      "actual": "a06c2905e1a3c916686d3679aded951bfe34ec2693b01513753e4cb300269655"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/build.log",
+      "expected": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386",
+      "actual": "1dd4c00d7f0436634d184c4449847b29b09ea76e84a80617cf56fc9549d2b386"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/cleanup.json",
+      "expected": "b5aa048289a85bf8d1b971b100f2a897f7fbea98185b5cb1f0d0980a6d8ea98c",
+      "actual": "b5aa048289a85bf8d1b971b100f2a897f7fbea98185b5cb1f0d0980a6d8ea98c"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/dependency-audit.json",
+      "expected": "ea18a281e9ba19ace542a6ad1d6fcbc41d91924629b7ececb0dfca24b9a5f5e2",
+      "actual": "ea18a281e9ba19ace542a6ad1d6fcbc41d91924629b7ececb0dfca24b9a5f5e2"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/diagnostic-attempt-1.json",
+      "expected": "341560a1f4670e37c4550d31c714f71db4fada529f07ba489447d1b57c99c85b",
+      "actual": "341560a1f4670e37c4550d31c714f71db4fada529f07ba489447d1b57c99c85b"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/diagnostic-final.json",
+      "expected": "ed9917cd06e8982c299ef1dcc6caa2742e6986f88ac13035e8f7971d3fc95dd1",
+      "actual": "ed9917cd06e8982c299ef1dcc6caa2742e6986f88ac13035e8f7971d3fc95dd1"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/diagnostic-summary.json",
+      "expected": "02f4fb5e965b19d6e18923857fe5c1f8b4978b9c2bd8894ab05062a24dc0cef4",
+      "actual": "02f4fb5e965b19d6e18923857fe5c1f8b4978b9c2bd8894ab05062a24dc0cef4"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/diagnostic.json",
+      "expected": "53042948c81058031777d0526ca4491ca70371aba1eb0ce8cfd9c67fe2e9ef72",
+      "actual": "53042948c81058031777d0526ca4491ca70371aba1eb0ce8cfd9c67fe2e9ef72"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/dispatch-docker-offline.log",
+      "expected": "31396b5e2948b80cdd4106b436c5876033cb2d261d109cd492bff22e09620e8f",
+      "actual": "31396b5e2948b80cdd4106b436c5876033cb2d261d109cd492bff22e09620e8f"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/dispatch-final.log",
+      "expected": "6ef79ee7cb07b1d3981532cfef784e95c8d140ba010ec17f51d75ae27857d69c",
+      "actual": "6ef79ee7cb07b1d3981532cfef784e95c8d140ba010ec17f51d75ae27857d69c"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/dispatch-green.log",
+      "expected": "1fd24812242057d2e818fd2429c24ccec83689b81d6dd6e7bd337056038f2ef5",
+      "actual": "1fd24812242057d2e818fd2429c24ccec83689b81d6dd6e7bd337056038f2ef5"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/fence-red.log",
+      "expected": "b4ed4a32acc665011b45627cd77aee2e84f23bcfeceedcaeb20bf7dfc96c37dd",
+      "actual": "b4ed4a32acc665011b45627cd77aee2e84f23bcfeceedcaeb20bf7dfc96c37dd"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/final-source-hashes.json",
+      "expected": "f946ced7fb56cda50b06423a0ab1b4645503629325ffabe1e13ae543ab4e9bf9",
+      "actual": "f946ced7fb56cda50b06423a0ab1b4645503629325ffabe1e13ae543ab4e9bf9"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/independent-fence-red.log",
+      "expected": "306ec2babc5c8eedeca5bc8d13d1d76e7118128e65feae32e47c6c21d0f54f6f",
+      "actual": "306ec2babc5c8eedeca5bc8d13d1d76e7118128e65feae32e47c6c21d0f54f6f"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/integration-attempt-1.log",
+      "expected": "6f70c70f1705311edb0906a293c31bb5bce5a0a9d6245fab0bd9ba2b644b46b6",
+      "actual": "6f70c70f1705311edb0906a293c31bb5bce5a0a9d6245fab0bd9ba2b644b46b6"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/integration-final.log",
+      "expected": "457f32c8ddd6accb5fe2985e118c0e68f55c43b6ca94a703249519ef7c4ddc12",
+      "actual": "457f32c8ddd6accb5fe2985e118c0e68f55c43b6ca94a703249519ef7c4ddc12"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/lifecycle-red.log",
+      "expected": "05bdf402b8a6cc469a573ff8e88df10f6d2142e84cc421daff36593c91d7289c",
+      "actual": "05bdf402b8a6cc469a573ff8e88df10f6d2142e84cc421daff36593c91d7289c"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/lint-final.log",
+      "expected": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b",
+      "actual": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/lint.log",
+      "expected": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b",
+      "actual": "d01db4d3ff09f5b8e77e9c1140ecae070b0be05692ff02a8edaa7ce88526512b"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/postgres-check.log",
+      "expected": "a7637e96401e08173c0ac27cc6b5c1cb0c8d024bc802f70a7142b426c35dd70d",
+      "actual": "a7637e96401e08173c0ac27cc6b5c1cb0c8d024bc802f70a7142b426c35dd70d"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/postgres-green.log",
+      "expected": "c53ba3e3a1f21664b75a421eb42151a0051c49eda42e04031fe8564da82c5bde",
+      "actual": "c53ba3e3a1f21664b75a421eb42151a0051c49eda42e04031fe8564da82c5bde"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/postgres-red.log",
+      "expected": "84e8c441520210aae3cec646e2ad73c372227d03c5f62b89af585c2604d38f20",
+      "actual": "84e8c441520210aae3cec646e2ad73c372227d03c5f62b89af585c2604d38f20"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/preservation-before.json",
+      "expected": "be378d82f629e9d686af9f409e911ee1da9e6203c9d037971a213b853bac3a2f",
+      "actual": "be378d82f629e9d686af9f409e911ee1da9e6203c9d037971a213b853bac3a2f"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/preservation.json",
+      "expected": "3a8f241e8b714408c67f2986c37df920a9cfc9f8d9f9c124050b232602b3f677",
+      "actual": "3a8f241e8b714408c67f2986c37df920a9cfc9f8d9f9c124050b232602b3f677"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/root-final.log",
+      "expected": "3f2cb527b72b02bdb2212f12cb865c363beab6a42945c008ed1dd4f7f4f78564",
+      "actual": "3f2cb527b72b02bdb2212f12cb865c363beab6a42945c008ed1dd4f7f4f78564"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/services.log",
+      "expected": "bf1b546b9be119853203f66484558639790977482b82cf678a18177c9a9126bb",
+      "actual": "bf1b546b9be119853203f66484558639790977482b82cf678a18177c9a9126bb"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/sqs-red.log",
+      "expected": "c4cd605abaf81d7bb4f2f7a0ff7cb6e9ea903ad7458a925525007a2ad78beb39",
+      "actual": "c4cd605abaf81d7bb4f2f7a0ff7cb6e9ea903ad7458a925525007a2ad78beb39"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/supervisor-config-red.log",
+      "expected": "7ae59c1e4a24eb6b89c6e9144e3c958b1bd42c9101ff295c9bfda7dab87fd12b",
+      "actual": "7ae59c1e4a24eb6b89c6e9144e3c958b1bd42c9101ff295c9bfda7dab87fd12b"
+    },
+    {
+      "path": "docs/evidence/outbox-dispatch-2026-10-08/typecheck-final.log",
+      "expected": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52",
+      "actual": "059ecefb0ae26e3c776eaaebc741242d63f194d5023abe6c72242fa41bd22b52"
+    },
+    {
+      "path": "docs/evidence/sql-format-2026-10-07.json",
+      "expected": "2cf3f209068f026a417856a6f29d8373f8749c7d50704d53b4765c8a350472be",
+      "actual": "2cf3f209068f026a417856a6f29d8373f8749c7d50704d53b4765c8a350472be"
+    }
+  ]
+}

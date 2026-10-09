@@ -1,0 +1,26 @@
+{
+  "owner": "Assessment",
+  "path": "READ",
+  "domain_rule": "pure canReleaseReview owns frozen policy/completion/time; SQL pre-gate mirrors enforcement, Application checks authoritative release facts",
+  "dependencies": "Application uses query/cursor/size ports; private PG adapter declares immutable Catalog snapshot read dependencies, no Catalog private repository or write access",
+  "transactions": "one statement per projection; no read lock/UoW or external IO",
+  "http_security": "fresh Identity session/permissions plus rate admission, owner404, release403, no-store, safe envelopes; exact AJV schemas tested",
+  "scores": "COMPLETED only; durable result required; FAILED/pending score-free and replayPending controls polling",
+  "pagination": "actor/kind/size/filter HMAC, DB clock expiry, frozen version or history watermark, unique keysets, no OFFSET/COUNT or skipped clipped rows",
+  "performance": "3 auth-inclusive calls per successful read, natural100k index plans, denied key nodes Actual Loops0; correlated bounded DB subqueries do not imply zero per-question work",
+  "compatibility": "no new migration/grant/dependency/event/resource; existing writes/status use extracted unchanged attemptView",
+  "review_correction": "Application unit tests no longer import technical cursor/HTTP encoding adapters; ports faked and guards unchanged",
+  "limits": [
+    "short sequential20-sample diagnostics are not SLO/capacity/FinOps",
+    "review SQL may construct101 large rows before256KiB HTTP clipping; concurrent allocation/GC unmeasured",
+    "history watermark excludes later starts but status/results can advance; normal writes use millisecond timestamp precision",
+    "exact close equality covered by Domain; PG release uses fixture-only trigger-controlled past close",
+    "HTTPS/browser/live AWS/image rollout not exercised"
+  ],
+  "checklists_reviewed": [
+    "rules R-58/R-59",
+    "workflow47/48",
+    "read/ownership/security/SQL conventions"
+  ],
+  "unresolved_actionable_defect_in_active_scope": false
+}

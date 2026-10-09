@@ -7,6 +7,8 @@ import { PostgresIdempotency } from "../../infrastructure/idempotency/postgres-i
 import { IdentityAccess, IDENTITY_ACCESS } from "../identity/application/facades/identity.facade";
 import { CatalogAccess, CATALOG_ACCESS } from "../catalog/application/facades/catalog.facade";
 import { AssessmentService } from "./application/services/assessment.service";
+import { CandidateResultsService } from "./application/services/candidate-results.service";
+import { PostgresCandidateResultsQuery } from "./infrastructure/persistence/postgres-candidate-results.query";
 import { HmacAssessmentCursor } from "./infrastructure/cursor/assessment-cursor";
 import { PostgresAttemptQuery } from "./infrastructure/persistence/postgres-attempt.query";
 import { PostgresAttemptRepository } from "./infrastructure/persistence/postgres-attempt.repository";
@@ -21,6 +23,16 @@ export class AssessmentModule {
       imports: [DatabaseModule],
       controllers: [AssessmentController],
       providers: [
+        {
+          provide: CandidateResultsService,
+          inject: [PostgresDatabase],
+          useFactory: (database: PostgresDatabase) =>
+            new CandidateResultsService(
+              new PostgresCandidateResultsQuery(database),
+              new HmacAssessmentCursor(config.csrfKey),
+              new HttpQuestionPageSizer(),
+            ),
+        },
         {
           provide: AssessmentService,
           inject: [IDENTITY_ACCESS, CATALOG_ACCESS, PostgresDatabase],
