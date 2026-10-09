@@ -1,0 +1,96 @@
+{
+  "projectId": "18257628123124303955",
+  "retrievedOn": "2026-10-08",
+  "scope": "Read-only review of seven EP-08 Mobile V4 states against prompt 02B; subsequently selected as visual templates with deferred findings. References point to the original PNG bytes moved into templates/catalog-profile-v4/states.",
+  "screens": [
+    {
+      "screenId": "d7012a2deb2544a5ac95ff3703775d93",
+      "title": "EP-08 — Danh sách đề — V4 — Mobile — Empty category",
+      "state": "Empty category",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/states/exam-list-empty-category-mobile-v4.png",
+      "width": 780,
+      "height": 1768,
+      "sha256": "c5dada67edc249664f37d6fa2a40a42397c8672ede2b41274e48f016b5ce183f",
+      "sourceFile": "projects/18257628123124303955/screens/d7012a2deb2544a5ac95ff3703775d93/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "6c1a7c576fa5422d96d31646567eb8b2",
+      "title": "EP-08 — Danh sách đề — V4 — Mobile — Error",
+      "state": "Error",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/states/exam-list-error-mobile-v4.png",
+      "width": 780,
+      "height": 1768,
+      "sha256": "209f2f1d71f1743dbe787dc02d921f47140b31a3568585b390ac4ca296a4f2df",
+      "sourceFile": "projects/18257628123124303955/screens/6c1a7c576fa5422d96d31646567eb8b2/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "8234d78b01bd456c843aa8890f117ca2",
+      "title": "EP-08 — Danh sách đề — V4 — Mobile — Filter sheet",
+      "state": "Filter sheet",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/states/exam-list-filter-sheet-mobile-v4.png",
+      "width": 780,
+      "height": 5314,
+      "sha256": "339326384a189697622d6eaa337fdcd75a0760f7534c23a5f45ec9da7704d98d",
+      "sourceFile": "projects/18257628123124303955/screens/8234d78b01bd456c843aa8890f117ca2/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "8def7bf52098434bbfbb0faa339323fe",
+      "title": "EP-08 — Danh sách đề — V4 — Mobile — Load more error",
+      "state": "Load more error",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/states/exam-list-load-more-error-mobile-v4.png",
+      "width": 780,
+      "height": 5534,
+      "sha256": "f559831f0b492cbadd0c4faaa54da56252d3c5e25120086cf33f0f6ba4e2af4a",
+      "sourceFile": "projects/18257628123124303955/screens/8def7bf52098434bbfbb0faa339323fe/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "0c9a086ba6524959ad3579e27739e6c2",
+      "title": "EP-08 — Danh sách đề — V4 — Mobile — Load more pending",
+      "state": "Load more pending",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/states/exam-list-load-more-pending-mobile-v4.png",
+      "width": 780,
+      "height": 5314,
+      "sha256": "3f5b54345195156c60e2ccf1bcfa5f8d3c98360d09792b60a9513639c95807de",
+      "sourceFile": "projects/18257628123124303955/screens/0c9a086ba6524959ad3579e27739e6c2/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "6e975d9e733b47f89afb289d6cfe3e43",
+      "title": "EP-08 — Danh sách đề — V4 — Mobile — Loading",
+      "state": "Loading",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/states/exam-list-loading-mobile-v4.png",
+      "width": 780,
+      "height": 2856,
+      "sha256": "324ba6f922af1d9d440030a581f204f5b14a894fb860781e45f37cc359125c65",
+      "sourceFile": "projects/18257628123124303955/screens/6e975d9e733b47f89afb289d6cfe3e43/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "be78ab4fda0b458284e934594bf6bea7",
+      "title": "EP-08 — Danh sách đề — V4 — Mobile — Search no match",
+      "state": "Search no match",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/states/exam-list-search-no-match-mobile-v4.png",
+      "width": 780,
+      "height": 1768,
+      "sha256": "7a16214734aa5619346c122c61455154d276551bafebd05163f66ecaaaaef7fa",
+      "sourceFile": "projects/18257628123124303955/screens/be78ab4fda0b458284e934594bf6bea7/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    }
+  ],
+  "limitations": [
+    "Static screenshots only; interactions, responsive behavior and motion are not verified."
+  ],
+  "acceptedOn": "2026-10-08",
+  "acceptedFor": "Visual references only; findings 02B-01–05 remain open. No implementation or interaction acceptance."
+}

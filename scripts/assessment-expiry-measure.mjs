@@ -4,6 +4,7 @@ import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { performance } from "node:perf_hooks";
 import pg from "pg";
+import { calibrateClock, createExpiryLagRecorder } from "./expiry-lag.mjs";
 
 const require = createRequire(import.meta.url);
 const { databaseConfig } = require("../dist/config/database.config.js");
@@ -24,7 +25,7 @@ const {
 
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
 if (!adminUrl) throw new Error("TEST_DATABASE_ADMIN_URL required");
-const evidenceDir = process.env.EXPIRY_EVIDENCE_DIR ?? "docs/evidence/assessment-expiry-2026-10-08";
+const evidenceDir = process.env.EXPIRY_EVIDENCE_DIR ?? ".local/assessment-expiry-diagnostics";
 const rawDir = `${evidenceDir}/raw`;
 const stamp = new Date().toISOString().replaceAll(":", "").replaceAll(".", "");
 const sourceFiles = [
@@ -36,6 +37,12 @@ const sourceFiles = [
   "apps/api/src/workers/scheduler/expiry.main.ts",
   "apps/api/src/config/expiry-worker.config.ts",
   "apps/api/src/infrastructure/database/migrations/0011_submission_kind.sql",
+  "apps/api/src/infrastructure/database/migrations/0012_required_submission_kind.sql",
+  "apps/api/src/infrastructure/database/migrations/0013_expiry_retry_schedule.sql",
+  "apps/api/src/modules/assessment/application/ports/expiry-retry.port.ts",
+  "apps/api/src/modules/assessment/application/ports/submission-commit-observer.port.ts",
+  "scripts/assessment-expiry-measure.mjs",
+  "scripts/expiry-lag.mjs",
   "docs/contracts/attempt-submitted.v1.schema.json",
 ];
 
@@ -124,51 +131,123 @@ async function publishOne(fixture) {
     const optionA = randomUUID();
     const optionB = randomUUID();
     await client.query(
-      `INSERT INTO identity.users (id, email, password_hash, display_name)
-       VALUES ($1, $2, 'fixture-not-a-real-password-hash', 'Publisher')`,
+      `
+      INSERT INTO identity.users (id, email, password_hash, display_name)
+      VALUES ($1, $2, 'fixture-not-a-real-password-hash', 'Publisher')
+      `,
       [userId, `${userId}@example.test`],
     );
     await client.query(
-      `INSERT INTO catalog.exams (
-         id, title, category, duration_seconds, attempt_limit, opens_at, closes_at, display_timezone
-       ) VALUES (
-         $1, 'Expiry measure', 'IT_CERTIFICATION', 90, 10,
-         clock_timestamp() - interval '1 day', clock_timestamp() + interval '1 day', 'Asia/Ho_Chi_Minh'
-       )`,
+      `
+      INSERT INTO catalog.exams (
+        id,
+        title,
+        category,
+        duration_seconds,
+        attempt_limit,
+        opens_at,
+        closes_at,
+        display_timezone
+      )
+      VALUES (
+        $1,
+        'Expiry measure',
+        'IT_CERTIFICATION',
+        90,
+        10,
+        clock_timestamp() - interval '1 day',
+        clock_timestamp() + interval '1 day',
+        'Asia/Ho_Chi_Minh'
+      )
+      `,
       [examId],
     );
     await client.query(
-      `INSERT INTO catalog.published_versions (
-         id, exam_id, version, title, description, duration_seconds, attempt_limit,
-         opens_at, closes_at, display_timezone, explanation_policy, category, published_by
-       ) VALUES (
-         $1, $2, 1, 'Expiry measure', '', 90, 10,
-         clock_timestamp() - interval '1 day', clock_timestamp() + interval '1 day',
-         'Asia/Ho_Chi_Minh', 'NEVER', 'IT_CERTIFICATION', $3
-       )`,
+      `
+      INSERT INTO catalog.published_versions (
+        id,
+        exam_id,
+        version,
+        title,
+        description,
+        duration_seconds,
+        attempt_limit,
+        opens_at,
+        closes_at,
+        display_timezone,
+        explanation_policy,
+        category,
+        published_by
+      )
+      VALUES (
+        $1,
+        $2,
+        1,
+        'Expiry measure',
+        '',
+        90,
+        10,
+        clock_timestamp() - interval '1 day',
+        clock_timestamp() + interval '1 day',
+        'Asia/Ho_Chi_Minh',
+        'NEVER',
+        'IT_CERTIFICATION',
+        $3
+      )
+      `,
       [versionId, examId, userId],
     );
     await client.query(
-      `INSERT INTO catalog.published_sections (version_id, id, title, position) VALUES ($1, $2, 'One', 1)`,
+      `
+      INSERT INTO catalog.published_sections (version_id, id, title, position)
+      VALUES ($1, $2, 'One', 1)
+      `,
       [versionId, sectionId],
     );
     await client.query(
-      `INSERT INTO catalog.published_questions (
-         version_id, id, section_id, source_question_id, source_revision, type, prompt, explanation, points, position
-       ) VALUES ($1, $2, $3, $4, 1, 'SINGLE_CHOICE', 'Prompt', 'hidden', 5, 1)`,
+      `
+      INSERT INTO catalog.published_questions (
+        version_id,
+        id,
+        section_id,
+        source_question_id,
+        source_revision,
+        type,
+        prompt,
+        explanation,
+        points,
+        position
+      )
+      VALUES ($1, $2, $3, $4, 1, 'SINGLE_CHOICE', 'Prompt', 'hidden', 5, 1)
+      `,
       [versionId, questionId, sectionId, randomUUID()],
     );
     await client.query(
-      `INSERT INTO catalog.published_options (version_id, question_id, id, position, text)
-       VALUES ($1, $2, $3, 1, 'A'), ($1, $2, $4, 2, 'B')`,
+      `
+      INSERT INTO catalog.published_options (version_id, question_id, id, position, text)
+      VALUES
+        ($1, $2, $3, 1, 'A'),
+        ($1, $2, $4, 2, 'B')
+      `,
       [versionId, questionId, optionA, optionB],
     );
     await client.query(
-      `INSERT INTO catalog.published_answer_keys (version_id, question_id, option_id) VALUES ($1, $2, $3)`,
+      `
+      INSERT INTO catalog.published_answer_keys (version_id, question_id, option_id)
+      VALUES ($1, $2, $3)
+      `,
       [versionId, questionId, optionA],
     );
     await client.query(
-      `UPDATE catalog.exams SET published = true, current_version_id = $2, revision = 2 WHERE id = $1`,
+      `
+      UPDATE catalog.exams
+      SET
+        published = true,
+        current_version_id = $2,
+        revision = 2
+      WHERE
+        id = $1
+      `,
       [examId, versionId],
     );
     await client.query("COMMIT");
@@ -183,7 +262,15 @@ async function publishOne(fixture) {
 
 async function seed(fixture, spec) {
   const version = (
-    await fixture.query("SELECT id, exam_id FROM catalog.published_versions LIMIT 1")
+    await fixture.query(`
+      SELECT
+        id,
+        exam_id
+      FROM
+        catalog.published_versions
+      LIMIT
+        1
+    `)
   ).rows[0];
   if (!version) throw new Error("Publication missing");
   await insertAttempts(fixture, version, spec.due, "due");
@@ -198,59 +285,118 @@ async function insertAttempts(fixture, version, count, kind) {
   if (count < 1) return;
   if (kind === "due" || kind === "future") {
     await fixture.query(
-      `WITH people AS (
-         INSERT INTO identity.users (id, email, password_hash, display_name)
-         SELECT gen_random_uuid(), replace(gen_random_uuid()::text, '-', '') || '@example.test',
-                'fixture-not-a-real-password-hash', 'Measure'
-         FROM generate_series(1, $3)
-         RETURNING id
-       ), numbered AS (
-         SELECT id, row_number() OVER () AS n FROM people
-       )
-       INSERT INTO assessment.attempts (
-         id, user_id, exam_id, version_id, status, started_at, deadline, revision
-       )
-       SELECT gen_random_uuid(), id, $1, $2, 'IN_PROGRESS',
-              clock_timestamp() - interval '2 hours',
-              CASE
-                WHEN $4 = 'future' THEN clock_timestamp() + interval '1 hour'
-                ELSE clock_timestamp() - (((n % 60) + 1) * interval '1 second')
-              END,
-              1
-       FROM numbered`,
+      `
+      WITH people AS (
+        INSERT INTO identity.users (id, email, password_hash, display_name)
+        SELECT
+          gen_random_uuid(),
+          replace(gen_random_uuid()::text, '-', '') || '@example.test',
+          'fixture-not-a-real-password-hash',
+          'Measure'
+        FROM
+          generate_series(1, $3)
+        RETURNING
+          id
+      ), numbered AS (
+        SELECT
+          id,
+          row_number() OVER () AS n
+        FROM
+          people
+      )
+      INSERT INTO assessment.attempts (
+        id,
+        user_id,
+        exam_id,
+        version_id,
+        status,
+        started_at,
+        deadline,
+        revision
+      )
+      SELECT
+        gen_random_uuid(),
+        id,
+        $1,
+        $2,
+        'IN_PROGRESS',
+        clock_timestamp() - interval '2 hours',
+        CASE
+          WHEN $4 = 'future' THEN clock_timestamp() + interval '1 hour'
+          ELSE clock_timestamp() - (((n % 60) + 1) * interval '1 second')
+        END,
+        1
+      FROM
+        numbered
+      `,
       [version.exam_id, version.id, count, kind],
     );
     return;
   }
   await fixture.query(
-    `WITH people AS (
-       INSERT INTO identity.users (id, email, password_hash, display_name)
-       SELECT gen_random_uuid(), replace(gen_random_uuid()::text, '-', '') || '@example.test',
-              'fixture-not-a-real-password-hash', 'Measure'
-       FROM generate_series(1, $3)
-       RETURNING id
-     )
-     INSERT INTO assessment.attempts (
-       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
-       submission_id, submission_event_id, expired, failure_code, revision, submission_kind
-     )
-     SELECT gen_random_uuid(), id, $1, $2,
-            CASE $4
-              WHEN 'submitted' THEN 'SUBMITTED'
-              WHEN 'expired' THEN 'EXPIRED'
-              ELSE 'FAILED'
-            END,
-            clock_timestamp() - interval '2 days',
-            CASE WHEN $4 = 'expired' THEN clock_timestamp() - interval '1 day'
-                 ELSE clock_timestamp() + interval '1 hour' END,
-            CASE WHEN $4 = 'expired' THEN clock_timestamp() - interval '1 day'
-                 ELSE clock_timestamp() - interval '30 minutes' END,
-            gen_random_uuid(), gen_random_uuid(),
-            $4 = 'expired',
-            CASE WHEN $4 = 'failed' THEN 'SCORE_UNAVAILABLE' ELSE NULL END,
-            2,
-            CASE WHEN $4 = 'expired' THEN 'DEADLINE' ELSE 'MANUAL' END
-     FROM people`,
+    `
+    WITH people AS (
+      INSERT INTO identity.users (id, email, password_hash, display_name)
+      SELECT
+        gen_random_uuid(),
+        replace(gen_random_uuid()::text, '-', '') || '@example.test',
+        'fixture-not-a-real-password-hash',
+        'Measure'
+      FROM
+        generate_series(1, $3)
+      RETURNING
+        id
+    )
+    INSERT INTO assessment.attempts (
+      id,
+      user_id,
+      exam_id,
+      version_id,
+      status,
+      started_at,
+      deadline,
+      submitted_at,
+      submission_id,
+      submission_event_id,
+      expired,
+      failure_code,
+      revision,
+      submission_kind
+    )
+    SELECT
+      gen_random_uuid(),
+      id,
+      $1,
+      $2,
+      CASE $4
+        WHEN 'submitted' THEN 'SUBMITTED'
+        WHEN 'expired' THEN 'EXPIRED'
+        ELSE 'FAILED'
+      END,
+      clock_timestamp() - interval '2 days',
+      CASE
+        WHEN $4 = 'expired' THEN clock_timestamp() - interval '1 day'
+        ELSE clock_timestamp() + interval '1 hour'
+      END,
+      CASE
+        WHEN $4 = 'expired' THEN clock_timestamp() - interval '1 day'
+        ELSE clock_timestamp() - interval '30 minutes'
+      END,
+      gen_random_uuid(),
+      gen_random_uuid(),
+      $4 = 'expired',
+      CASE
+        WHEN $4 = 'failed' THEN 'SCORE_UNAVAILABLE'
+        ELSE NULL
+      END,
+      2,
+      CASE
+        WHEN $4 = 'expired' THEN 'DEADLINE'
+        ELSE 'MANUAL'
+      END
+    FROM
+      people
+    `,
     [version.exam_id, version.id, count, kind],
   );
 }
@@ -310,17 +456,21 @@ async function explainClaim(fixture, expiryUrl) {
 async function backlog(fixture) {
   const row = (
     await fixture.query(`
-      SELECT count(*) FILTER (
-               WHERE status = 'IN_PROGRESS' AND deadline <= clock_timestamp()
-             )::int AS due,
-             (
-               extract(epoch FROM (
-                 clock_timestamp() - min(deadline) FILTER (
-                   WHERE status = 'IN_PROGRESS' AND deadline <= clock_timestamp()
-                 )
-               )) * 1000
-             )::float8 AS oldest_ms
-      FROM assessment.attempts
+      SELECT
+        count(*) FILTER (
+          WHERE status = 'IN_PROGRESS'
+            AND deadline <= clock_timestamp()
+        )::int AS due,
+        (
+          extract(epoch FROM (
+            clock_timestamp() - min(deadline) FILTER (
+              WHERE status = 'IN_PROGRESS'
+                AND deadline <= clock_timestamp()
+            )
+          )) * 1000
+        )::float8 AS oldest_ms
+      FROM
+        assessment.attempts
     `)
   ).rows[0];
   return {
@@ -329,12 +479,15 @@ async function backlog(fixture) {
   };
 }
 
-async function lags(fixture) {
+async function acceptanceLags(fixture) {
   const rows = (
     await fixture.query(`
-      SELECT (extract(epoch FROM (submitted_at - deadline)) * 1000)::float8 AS lag_ms
-      FROM assessment.attempts
-      WHERE status = 'EXPIRED'
+      SELECT
+        (extract(epoch FROM (submitted_at - deadline)) * 1000)::float8 AS lag_ms
+      FROM
+        assessment.attempts
+      WHERE
+        status = 'EXPIRED'
         AND submission_kind = 'DEADLINE'
         AND submitted_at >= clock_timestamp() - interval '15 minutes'
     `)
@@ -353,15 +506,31 @@ async function skipLockedProbe(fixture, sweep) {
   const pending = await backlog(fixture);
   if (pending.due !== 0) return { measured: false, reason: "backlog remained before the probe" };
   const version = (
-    await fixture.query("SELECT id, exam_id FROM catalog.published_versions LIMIT 1")
+    await fixture.query(`
+      SELECT
+        id,
+        exam_id
+      FROM
+        catalog.published_versions
+      LIMIT
+        1
+    `)
   ).rows[0];
   await insertAttempts(fixture, version, 2, "due");
   const pair = (
     await fixture.query(`
-      SELECT id FROM assessment.attempts
-      WHERE status = 'IN_PROGRESS' AND deadline <= clock_timestamp()
-      ORDER BY deadline, id
-      LIMIT 2
+      SELECT
+        id
+      FROM
+        assessment.attempts
+      WHERE
+        status = 'IN_PROGRESS'
+        AND deadline <= clock_timestamp()
+      ORDER BY
+        deadline,
+        id
+      LIMIT
+        2
     `)
   ).rows;
   const oldest = pair[0]?.id;
@@ -369,21 +538,47 @@ async function skipLockedProbe(fixture, sweep) {
   if (!oldest || !younger) return { measured: false, reason: "probe pair missing" };
   const holder = await fixture.connect();
   await holder.query("BEGIN");
-  await holder.query("SELECT id FROM assessment.attempts WHERE id = $1 FOR UPDATE", [oldest]);
+  await holder.query(
+    `
+    SELECT
+      id
+    FROM
+      assessment.attempts
+    WHERE
+      id = $1
+    FOR UPDATE
+    `,
+    [oldest],
+  );
   const running = sweep.runOnce(randomUUID());
   let waiting = null;
   let youngerExpired = false;
   for (let attempt = 0; attempt < 50; attempt += 1) {
     const locks = (
       await fixture.query(
-        `SELECT count(*) FILTER (WHERE NOT granted)::int AS waiting
-         FROM pg_locks l
-         JOIN pg_stat_activity a ON a.pid = l.pid
-         WHERE a.datname = current_database()`,
+        `
+        SELECT
+          count(*) FILTER (WHERE NOT granted)::int AS waiting
+        FROM
+          pg_locks l
+          JOIN pg_stat_activity a ON a.pid = l.pid
+        WHERE
+          a.datname = current_database()
+        `,
       )
     ).rows[0];
     const youngerStatus = (
-      await fixture.query("SELECT status FROM assessment.attempts WHERE id = $1", [younger])
+      await fixture.query(
+        `
+        SELECT
+          status
+        FROM
+          assessment.attempts
+        WHERE
+          id = $1
+        `,
+        [younger],
+      )
     ).rows[0].status;
     waiting = Number(locks.waiting);
     if (youngerStatus === "EXPIRED") {
@@ -394,7 +589,17 @@ async function skipLockedProbe(fixture, sweep) {
   }
   await running;
   const oldestStatus = (
-    await fixture.query("SELECT status FROM assessment.attempts WHERE id = $1", [oldest])
+    await fixture.query(
+      `
+      SELECT
+        status
+      FROM
+        assessment.attempts
+      WHERE
+        id = $1
+      `,
+      [oldest],
+    )
   ).rows[0].status;
   await holder.query("ROLLBACK");
   holder.release();
@@ -415,11 +620,21 @@ async function measureSweep(admin, spec, hashes, serverVersion) {
   try {
     const plans = await explainClaim(resources.fixture, resources.expiryUrl);
     const before = await backlog(resources.fixture);
+    const readServerNow = async () =>
+      (
+        await resources.fixture.query(`
+      SELECT
+        to_char(clock_timestamp() AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS now
+    `)
+      ).rows[0].now;
+    const calibrationBefore = await calibrateClock(readServerNow);
+    const recorder = createExpiryLagRecorder({ calibration: calibrationBefore });
     const sweep = new DeadlineSweep(
       new PostgresAttemptRepository(db),
       new PostgresSubmissionOutbox(db),
       db,
       spec.batchSize,
+      recorder,
     );
     observations.length = 0;
     const cpuStart = process.cpuUsage();
@@ -443,13 +658,16 @@ async function measureSweep(admin, spec, hashes, serverVersion) {
     const wallMs = performance.now() - started;
     const cpu = process.cpuUsage(cpuStart);
     const rssEnd = process.memoryUsage().rss;
+    const timedObservations = observations.slice();
+    const pool = db.stats();
     const processed = ticks.reduce((sum, tick) => sum + tick.processed, 0);
     const skipped = ticks.reduce((sum, tick) => sum + tick.skipped, 0);
     const failed = ticks.reduce((sum, tick) => sum + tick.failed, 0);
-    const lag = await lags(resources.fixture);
+    const lag = await acceptanceLags(resources.fixture);
+    const observed = recorder.summary();
+    const calibrationAfter = await calibrateClock(readServerNow);
     const after = await backlog(resources.fixture);
     const probe = await skipLockedProbe(resources.fixture, sweep);
-    const pool = db.stats();
     return {
       capturedAt: new Date().toISOString(),
       scenario: spec.name,
@@ -459,7 +677,7 @@ async function measureSweep(admin, spec, hashes, serverVersion) {
       differentConfig: spec.differentConfig,
       schedulerBaselineThroughput: null,
       baselineReason:
-        "No scheduler existed before ATT-07. A before throughput number is not invented.",
+        "This raw file has no embedded baseline. Compare separately captured runs with the same dataset/configuration; ATT-07 originally introduced the scheduler.",
       dataset: {
         due: spec.due,
         future: spec.future,
@@ -486,15 +704,36 @@ async function measureSweep(admin, spec, hashes, serverVersion) {
       failed,
       wallMs,
       processedPerSecond: wallMs > 0 ? (processed * 1000) / wallMs : null,
-      deadlineToCommitLagMs: lag,
-      lagMatchesProcessed: lag.sampleCount === processed,
+      schemaVersion: 2,
+      deadlineToAcceptanceLagMs: lag,
+      deadlineToCommitAckObservedLagMs: observed.deadlineToCommitAckObservedLagMs,
+      clockCalibration: {
+        before: calibrationBefore,
+        after: calibrationAfter,
+        offsetDriftMs: calibrationAfter.offsetMs - calibrationBefore.offsetMs,
+      },
+      commitObservationPoint: observed.observationPoint,
+      commitObservationPopulation:
+        "Successful acceptance transactions whose COMMIT acknowledgement was observed; failures/retries are reported separately.",
+      lagMatchesProcessed:
+        lag.sampleCount === processed &&
+        observed.deadlineToCommitAckObservedLagMs.sampleCount === processed,
+      observationPopulation:
+        "Timed sweep only, including empty claim transactions/backlog reads; setup, calibration, EXPLAIN and the subsequent SKIP LOCKED probe are excluded.",
       observations: {
-        query: summarizeDurations(observations, "query"),
-        lock: summarizeDurations(observations, "lock"),
-        acquire: summarizeDurations(observations, "acquire"),
-        transaction: summarizeDurations(observations, "transaction"),
-        poolError: observations.filter((item) => item.kind === "pool.error").length,
-        maxWaiting: observations.reduce((max, item) => Math.max(max, item.waiting), 0),
+        query: summarizeDurations(timedObservations, "query"),
+        lock: summarizeDurations(timedObservations, "lock"),
+        acquire: summarizeDurations(timedObservations, "acquire"),
+        transaction: summarizeDurations(timedObservations, "transaction"),
+        poolError: timedObservations.filter((item) => item.kind === "pool.error").length,
+        maxWaiting: timedObservations.reduce((max, item) => Math.max(max, item.waiting), 0),
+      },
+      postRunProbeObservationCounts: {
+        query: observations.slice(timedObservations.length).filter((item) => item.kind === "query")
+          .length,
+        transaction: observations
+          .slice(timedObservations.length)
+          .filter((item) => item.kind === "transaction").length,
       },
       pool,
       process: {
@@ -521,7 +760,8 @@ async function measureSweep(admin, spec, hashes, serverVersion) {
         "blockedLockWaitDuringUncontendedBurst",
       ],
       notes: [
-        "deadlineToCommitLagMs is database commit lag, not queue dispatch or result latency.",
+        "deadlineToAcceptanceLagMs ends at post-lock acceptance, before persistence. Commit acknowledgement is measured separately with calibrated UTC and clock uncertainty.",
+        "Commit observation includes client/network/observer delay; it is not a physical WAL commit timestamp, SQS dispatch or result availability.",
         "CPU and RSS include this measurement process, not a separate host.",
         "Lock observations are successful FOR UPDATE timings. The skip-locked probe records whether a waiter appeared.",
       ],
@@ -692,7 +932,7 @@ async function measureWorker(admin, spec, hashes, serverVersion) {
       differentConfig: false,
       schedulerBaselineThroughput: null,
       baselineReason:
-        "No scheduler existed before ATT-07. A before throughput number is not invented.",
+        "This raw file has no embedded baseline. Compare separately captured runs with the same dataset/configuration; ATT-07 originally introduced the scheduler.",
       dataset: {
         due: spec.due,
         future: spec.future,
@@ -731,6 +971,7 @@ async function measureWorker(admin, spec, hashes, serverVersion) {
       maxRssKb: samples.reduce((max, sample) => Math.max(max, sample.rssKb), 0) || null,
       sweepEvents: first.events().filter((event) => event.event === "expiry.sweep").length,
       unmeasured: [
+        "deadlineToCommitAckObservedLagMs",
         "sqsDispatchLatency",
         "resultAvailabilityLatency",
         "awsCost",
@@ -753,7 +994,15 @@ async function measureWorker(admin, spec, hashes, serverVersion) {
 async function destroy(admin, resources) {
   await resources.fixture.end().catch(() => undefined);
   await admin.query(
-    `SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = $1 AND pid <> pg_backend_pid()`,
+    `
+    SELECT
+      pg_terminate_backend(pid)
+    FROM
+      pg_stat_activity
+    WHERE
+      datname = $1
+      AND pid <> pg_backend_pid()
+    `,
     [resources.database],
   );
   await admin.query(`DROP DATABASE IF EXISTS ${resources.database}`);
@@ -761,33 +1010,113 @@ async function destroy(admin, resources) {
   await admin.query(`DROP ROLE IF EXISTS ${resources.expiryLogin}`);
 }
 
+async function measureIndexRange(admin, hashes, serverVersion) {
+  const spec = { due: 0, future: 100000, submitted: 0, expired: 0, failed: 0 };
+  const resources = await provision(admin, spec);
+  const worker = new pg.Pool({ connectionString: resources.expiryUrl, max: 1 });
+  try {
+    await resources.fixture.query("ANALYZE assessment.attempts");
+    const source = await readFile(
+      "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.repository.ts",
+      "utf8",
+    );
+    const backlogSql = source
+      .slice(source.indexOf("async dueBacklog"), source.indexOf("async insert"))
+      .match(/`([\s\S]*?)`/)[1];
+    // Counterfactual only: restore the old discovery predicate on the SAME schema
+    // and population. The authoritative outer post-lock clock is never changed.
+    const statements = [
+      ["claim-current", claimDueSql, [[]]],
+      [
+        "claim-volatile-counterfactual",
+        claimDueSql.replace("deadline <= statement_timestamp()", "deadline <= clock_timestamp()"),
+        [[]],
+      ],
+      ["backlog-current", backlogSql, []],
+      [
+        "backlog-volatile-counterfactual",
+        backlogSql.replace("deadline <= statement_timestamp()", "deadline <= clock_timestamp()"),
+        [],
+      ],
+    ];
+    const plans = [];
+    for (let repeat = 0; repeat < 3; repeat += 1) {
+      for (const [name, sql, params] of statements) {
+        const client = await worker.connect();
+        try {
+          await client.query("BEGIN");
+          const result = await client.query(
+            `EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) ${sql}`,
+            params,
+          );
+          await client.query("ROLLBACK");
+          plans.push({ name, repeat, plan: stripQueryText(result.rows[0]["QUERY PLAN"]) });
+        } finally {
+          client.release();
+        }
+      }
+    }
+    return {
+      capturedAt: new Date().toISOString(),
+      schemaVersion: 2,
+      harness: "restricted-role natural EXPLAIN ANALYZE BUFFERS",
+      dataset: spec,
+      postgresVersion: serverVersion,
+      node: process.version,
+      hashes,
+      plans,
+      notes: [
+        "Zero due rows; 100,000 future IN_PROGRESS rows. ANALYZE precedes all observations.",
+        "No forced planner setting. All statements run as the restricted expiry role and roll back.",
+        "Current vs volatile discovery counterfactual on the same schema/data; outer clock_timestamp remains authoritative.",
+        "Three warm local observations per statement, not AWS saturation, sustainable capacity or a production SLO.",
+      ],
+    };
+  } finally {
+    await worker.end();
+    await destroy(admin, resources);
+  }
+}
+
 function markdown(results) {
   const lines = [
     "# ATT-07 local measurement",
     "",
-    "Generated from append-only raw JSON. Scheduler throughput has no before value.",
-    "Deadline-to-commit lag includes the seeded overdue age, up to 60 seconds before the sweep starts. It is not SQS dispatch or result latency.",
+    "Generated from append-only raw JSON. A baseline is only a separately captured run with matching dataset/configuration; the raw file does not invent one.",
+    "Acceptance lag ends at post-lock acceptance. Commit-ack-observed lag ends after successful COMMIT acknowledgement, calibrated to DB UTC with uncertainty/drift recorded in raw files. Both include seeded overdue age; neither measures SQS dispatch or results.",
     "These runs do not establish capacity, an SLO, or AWS savings.",
     "",
-    "| Captured | Scenario | Harness | Due | Processed | Failed | Wall ms | Processed/s | Lag p50/p95/p99 ms |",
-    "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |",
+    "| Captured | Scenario | Harness | Due | Processed | Failed | Wall ms | Processed/s | Acceptance p50/p95/p99 ms | Commit ACK observed p50/p95/p99 ms |",
+    "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |",
   ];
   for (const result of results) {
     const captured = result.capturedAt ?? "";
-    if (result.harness.startsWith("compiled")) {
+    if (result.harness === "restricted-role natural EXPLAIN ANALYZE BUFFERS") {
       lines.push(
-        `| ${captured} | ${result.scenario} | compiled worker | ${result.dataset.due} | ${result.durable.expired} |  | ${result.restart.wallMs.toFixed(1)} |  | drained ${result.restart.drained}; duplicates ${result.durable.duplicateEvents}; SIGTERM ${result.sigterm.code} |`,
+        `| ${captured} | deadline index range | natural EXPLAIN | ${result.dataset.due} |  |  |  |  | ${result.plans.length} plans / ${result.dataset.future} future rows | unmeasured |`,
       );
       continue;
     }
-    const lag = result.deadlineToCommitLagMs;
+    if (result.harness.startsWith("compiled")) {
+      lines.push(
+        `| ${captured} | ${result.scenario} | compiled worker | ${result.dataset.due} | ${result.durable.expired} |  | ${result.restart.wallMs.toFixed(1)} |  | drained ${result.restart.drained}; duplicates ${result.durable.duplicateEvents}; SIGTERM ${result.sigterm.code} | unmeasured |`,
+      );
+      continue;
+    }
+    // v1 raw files are immutable. Their old "commit" field actually measured acceptance.
+    const lag = result.deadlineToAcceptanceLagMs ?? result.deadlineToCommitLagMs;
+    const commit = result.deadlineToCommitAckObservedLagMs;
+    const observed = commit
+      ? `${commit.p50Ms?.toFixed(1) ?? "null"} / ${commit.p95Ms?.toFixed(1) ?? "null"} / ${commit.p99Ms?.toFixed(1) ?? "null"}`
+      : "unmeasured (legacy acceptance-only)";
     lines.push(
-      `| ${captured} | ${result.scenario} | in-process | ${result.dataset.due} | ${result.processed} | ${result.failed} | ${result.wallMs.toFixed(1)} | ${result.processedPerSecond?.toFixed(2) ?? ""} | ${lag.p50Ms?.toFixed(1) ?? "null"} / ${lag.p95Ms?.toFixed(1) ?? "null"} / ${lag.p99Ms?.toFixed(1) ?? "null"} |`,
+      `| ${captured} | ${result.scenario} | in-process | ${result.dataset.due} | ${result.processed} | ${result.failed} | ${result.wallMs.toFixed(1)} | ${result.processedPerSecond?.toFixed(2) ?? ""} | ${lag.p50Ms?.toFixed(1) ?? "null"} / ${lag.p95Ms?.toFixed(1) ?? "null"} / ${lag.p99Ms?.toFixed(1) ?? "null"} | ${observed} |`,
     );
   }
   lines.push(
     "",
-    "The unconstrained claim plan at this sample size is a sequential scan. `attempts_deadline` appears when sequential scan is disabled. Manual HTTP query counts are statement counts, not scheduler throughput.",
+    "Natural and forced claim plans are retained separately in each raw file; use natural EXPLAIN ANALYZE and its Index Cond/rows/blocks to assess access. Manual HTTP counts are statement counts, not scheduler throughput.",
+    "Historical v1 deadlineToCommitLagMs was acceptance lag; its raw bytes remain unchanged and cannot establish durable commit latency.",
     "",
   );
   return lines.join("\n");
@@ -797,7 +1126,9 @@ async function writeSummary() {
   const names = (await readdir(rawDir)).filter((name) => name.endsWith(".json")).sort();
   const results = [];
   for (const name of names) results.push(JSON.parse(await readFile(`${rawDir}/${name}`, "utf8")));
-  await writeFile(`${evidenceDir}/measurement-summary.md`, markdown(results));
+  await writeFile(`${evidenceDir}/measurement-summary-${stamp}.md`, markdown(results), {
+    flag: "wx",
+  });
 }
 
 const scenarios = [
@@ -856,10 +1187,26 @@ const scenarios = [
 ];
 
 const only = process.env.EXPIRY_MEASURE_ONLY;
+if (only && !["sweep", "worker", "index"].includes(only))
+  throw new Error("Unknown expiry measurement mode");
 const admin = new pg.Pool({ connectionString: adminUrl, max: 1 });
 const hashes = await fileHashes();
 const serverVersion = (await admin.query("SHOW server_version")).rows[0].server_version;
 await mkdir(rawDir, { recursive: true });
+if (only === "index") {
+  try {
+    const result = await measureIndexRange(admin, hashes, serverVersion);
+    await writeFile(`${rawDir}/${stamp}-index-range.json`, `${JSON.stringify(result, null, 2)}\n`, {
+      flag: "wx",
+    });
+    process.stdout.write(
+      `${JSON.stringify({ event: "expiry.index.saved", plans: result.plans.length, future: result.dataset.future })}\n`,
+    );
+  } finally {
+    await admin.end();
+  }
+  process.exit(0);
+}
 const written = [];
 if (only !== "worker") {
   for (const scenario of scenarios) {

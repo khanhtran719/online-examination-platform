@@ -24,4 +24,6 @@ Ngày 2026-10-08. Người dùng đồng ý tiếp tục thiết kế page mới
 
 ## Điều kiện đóng khi triển khai
 
+Nhóm [Auth V3](../auth-v3/README.md) đã được người dùng chọn làm template thị giác. [Checklist AUTH-01–09](../auth-v3/implementation-notes.md) vẫn mở: tách showcase và các state; chuẩn hóa header; đặt feedback đúng ngữ cảnh; bổ sung form states; chuẩn hóa tokens; phản ánh strength/email; đối chiếu nội dung và kiểm chứng tương tác khi code. Chốt template không đóng nghiệm thu implementation.
+
 Kiểm tra đúng những vùng được sửa tại 390px và desktop, tên dài, bàn phím, focus, modal/sheet, sticky controls và reduced motion. Dùng các checks đã có phù hợp phạm vi. Chỉ đánh dấu xong với bằng chứng triển khai mới; các mục chưa được sửa trong giai đoạn lưu template này.

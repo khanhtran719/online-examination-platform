@@ -1,0 +1,42 @@
+{
+  "projectId": "18257628123124303955",
+  "retrievedOn": "2026-10-08",
+  "scope": "Read-only review of two 03B desktop Loaded pages. Not yet selected as templates.",
+  "screens": [
+    {
+      "screenId": "34514bb3f3e5425c9eb4252958064aa9",
+      "pageId": "EP-14",
+      "title": "EP-14 — Lịch sử thi — V4 — Desktop — Loaded",
+      "state": "Loaded",
+      "deviceType": "DESKTOP",
+      "file": "history-desktop-v4-34514bb3.png",
+      "width": 2560,
+      "height": 3432,
+      "sha256": "3874d734bcd940e104b0e186e20687cd006e7875e7941837f0e63dddfd86e129",
+      "sourceFile": "projects/18257628123124303955/screens/34514bb3f3e5425c9eb4252958064aa9/fileEntries/screenshot",
+      "archiveStatus": "review_reference_pending_acceptance"
+    },
+    {
+      "screenId": "b91abc139e804b7b859bf9a071518b1e",
+      "pageId": "EP-15",
+      "title": "EP-15 — Bảng xếp hạng — V4 — Desktop — Loaded",
+      "state": "Loaded",
+      "deviceType": "DESKTOP",
+      "file": "leaderboard-desktop-v4-b91abc13.png",
+      "width": 2560,
+      "height": 2358,
+      "sha256": "7da8cf8ea872613cfdcf95efd327f24c86d69ba06d00023cc0725393a2fa3294",
+      "sourceFile": "projects/18257628123124303955/screens/b91abc139e804b7b859bf9a071518b1e/fileEntries/screenshot",
+      "archiveStatus": "review_reference_pending_acceptance"
+    }
+  ],
+  "inventoryDelta": {
+    "previousCount": 51,
+    "currentCount": 53,
+    "newCount": 2,
+    "existingMetadataUnchanged": true
+  },
+  "limitations": [
+    "Static screenshots only; interactions, responsive behavior, motion and prototype destinations are not verified."
+  ]
+}

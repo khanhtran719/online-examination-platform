@@ -1,5 +1,7 @@
 # Prompt 03 — Status, Result, Review, History, Leaderboard
 
+**Backlog đầy đủ, không gửi nguyên khối ở lượt hiện tại.** Theo yêu cầu mới ngày 2026-10-08, ưu tiên các trang web desktop trước. Gửi [03A — Status/Result/Review desktop](03a-results-desktop.md), review rồi đến [03B — History/Leaderboard desktop](03b-history-ranking-desktop.md). Mobile và critical variants bên dưới giữ để bổ sung sau; việc chuẩn bị prompt không xác nhận đã có frames.
+
 ```text
 Trong project “ExamPlatform UI Design”, ID 18257628123124303955, tạo 5 page sau khi thi. Giữ nguyên mẫu đã chọn; không sửa lại các trang cũ hoặc tạo dự án mới.
 

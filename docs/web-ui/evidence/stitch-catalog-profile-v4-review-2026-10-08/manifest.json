@@ -1,0 +1,77 @@
+{
+  "projectId": "18257628123124303955",
+  "retrievedOn": "2026-10-08",
+  "scope": "Read-only V4 review evidence; original screenshots subsequently retained as selected visual templates on 2026-10-08",
+  "screens": [
+    {
+      "screenId": "a8f1d91a47684aae84dee5d66222eef3",
+      "title": "EP-08 — Danh sách đề — V4 — Mobile — Normal",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/exam-list-mobile-v4.png",
+      "width": 780,
+      "height": 5314,
+      "sha256": "6df211dca2fc7e37c3f86d8cec829806db0ab187ca15be904d1bed59be780347",
+      "sourceFile": "projects/18257628123124303955/screens/a8f1d91a47684aae84dee5d66222eef3/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "e01b2d07979b4378aeebb98c1d7005d2",
+      "title": "EP-09 — Chi tiết đề — V4 — Mobile — Normal",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/exam-detail-mobile-v4.png",
+      "width": 780,
+      "height": 3084,
+      "sha256": "a16128d07503ad3f9ef57c4d5d4059e137ee493d06efe5f15ddc1cf9ef5d0bd4",
+      "sourceFile": "projects/18257628123124303955/screens/e01b2d07979b4378aeebb98c1d7005d2/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "d709369eada140eca5083cb1e8b40865",
+      "title": "EP-09 — Chi tiết đề — V4 — Desktop — Normal",
+      "deviceType": "DESKTOP",
+      "file": "../../templates/catalog-profile-v4/exam-detail-desktop-v4.png",
+      "width": 2560,
+      "height": 3958,
+      "sha256": "8e3fc3ca8fa4a9d0472ffd6d109c2b4060e50d203b102713a7792959c2917136",
+      "sourceFile": "projects/18257628123124303955/screens/d709369eada140eca5083cb1e8b40865/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "801fc02aa8bd4586b0b1ee821d5fd009",
+      "title": "EP-08 — Danh sách đề — V4 — Desktop — Normal",
+      "deviceType": "DESKTOP",
+      "file": "../../templates/catalog-profile-v4/exam-list-desktop-v4.png",
+      "width": 2560,
+      "height": 3338,
+      "sha256": "424a6d682fe9456bb244f5881e8d88a4b6b0cf68ef9774e3589e877208b5000a",
+      "sourceFile": "projects/18257628123124303955/screens/801fc02aa8bd4586b0b1ee821d5fd009/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "81b4051100354c12b2b15363cb77b0d6",
+      "title": "EP-10 — Hồ sơ — V4 — Mobile — Normal",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/profile-mobile-v4.png",
+      "width": 780,
+      "height": 2226,
+      "sha256": "15536af55a81528bd27f7f86e0ace50df40c126aa785714713ab23183f3fd103",
+      "sourceFile": "projects/18257628123124303955/screens/81b4051100354c12b2b15363cb77b0d6/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "4d096315e9994045b67307d0530f5ea4",
+      "title": "EP-10 — Hồ sơ — V4 — Desktop — Normal",
+      "deviceType": "DESKTOP",
+      "file": "../../templates/catalog-profile-v4/profile-desktop-v4.png",
+      "width": 2560,
+      "height": 2048,
+      "sha256": "caa2f0b66a1dca8f04f2cbab230fd6cda7ef1cf0a184e18bd18084f8d7337c91",
+      "sourceFile": "projects/18257628123124303955/screens/4d096315e9994045b67307d0530f5ea4/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    }
+  ],
+  "limitations": [
+    "Static screenshots only; interactions, responsiveness, keyboard focus and motion are not verified."
+  ],
+  "selectedTemplate": "../../templates/catalog-profile-v4/manifest.json"
+}

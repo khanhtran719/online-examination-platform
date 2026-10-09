@@ -25,6 +25,7 @@
     "start:local": "node --env-file=.env.example dist/main.js",
     "worker:local": "node --env-file=.env.worker.example dist/workers/outbox/verification.main.js",
     "expiry:local": "node --env-file=.env.expiry.example dist/workers/scheduler/expiry.main.js",
+    "dispatch:local": "node --env-file=.env.dispatch.example dist/workers/outbox/submission.main.js",
     "bench:identity:local": "npm run build && node --env-file=.env.example scripts/identity-benchmark.mjs",
     "smoke:identity:local": "npm run build && node scripts/identity-smoke.mjs",
     "web:dev": "npm --prefix apps/web run dev",
@@ -53,6 +54,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
+    "@aws-sdk/client-sqs": "^3.1147.0",
     "@fastify/cookie": "^11.1.2",
     "@nestjs/common": "^12.1.2",
     "@nestjs/core": "^12.1.2",

@@ -20,6 +20,10 @@ Chốt hướng thiết kế ngày 2026-10-08 theo yêu cầu người dùng: ti
 
 ## Cách dùng
 
+- Nhóm [Auth V3](../auth-v3/README.md) đã được người dùng chọn làm template thị giác, gồm 8 ảnh desktop/mobile cho EP-04–07. Các [lỗi Auth](../auth-v3/implementation-notes.md) vẫn mở để xử lý lúc code.
+- Nhóm [Catalog/Profile V4](../catalog-profile-v4/README.md) đã được chọn, gồm 6 Normal, 4 dialog và 7 states Danh sách đề mobile, tổng 17 ảnh. [Findings V4/DLG/02B](../catalog-profile-v4/implementation-notes.md) và các states còn thiếu vẫn mở; shell Candidate được thống nhất theo Dashboard khi code. Ưu tiên hiện tại là hoàn thiện các page desktop còn thiếu trước mobile/states bổ sung.
+- Nhóm [Results V4](../results-v4/README.md) đã được chọn theo đồng ý sau review 03A, gồm ba desktop states Trạng thái/Kết quả/Xem lại. [Findings 03A](../results-v4/implementation-notes.md) vẫn mở. [03B — Lịch sử/Xếp hạng](../../stitch-03b-review-2026-10-08.md) đã review, chưa chọn template.
+- Nhóm [Public V4](../public-v4/README.md) đã review và lưu theo yêu cầu, gồm ba desktop states Trải nghiệm mẫu/Cách hoạt động/Trợ giúp. [Findings PUB-V4-01–08](../public-v4/implementation-notes.md) vẫn mở; sample variants và mobile chưa đủ. 04A không cần gửi lại; nhóm desktop kế là Admin quản lý đề.
 - Bám style, hierarchy, typography, card geometry và màu của các mẫu. Dùng layout riêng phù hợp nhiệm vụ từng trang.
 - Không regenerate các màn đã được chọn chỉ để mở rộng bộ UI.
 - Các lỗi phải sửa khi triển khai nằm trong [implementation notes](implementation-notes.md).

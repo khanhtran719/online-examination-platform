@@ -2,6 +2,8 @@ import { randomUUID } from "node:crypto";
 import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
 import { AttemptRepository } from "../../domain/repositories/attempt.repository";
 import { SubmissionOutbox } from "../ports/submission-outbox";
+import { ExpiryRetry } from "../ports/expiry-retry.port";
+import { SubmissionCommitObserver } from "../ports/submission-commit-observer.port";
 import { acceptAttemptSubmission } from "./attempt-submission";
 
 export interface SweepTickResult {
@@ -16,15 +18,18 @@ export interface SweepTickResult {
 
 /**
  * Trusted internal sweep. One short transaction per attempt.
- * A failure excludes that id for the rest of the tick only and does not mark the attempt FAILED.
+ * A failed acceptance rolls back, then a separate bounded transaction schedules
+ * durable cooldown. It does not mark the attempt FAILED or publish an intent.
  * Counters increase only after the transaction resolves.
  */
 export class DeadlineSweep {
   constructor(
-    private readonly repo: Pick<AttemptRepository, "claimDue" | "submit" | "dueBacklog">,
+    private readonly repo: Pick<AttemptRepository, "claimDue" | "submit" | "dueBacklog"> &
+      ExpiryRetry,
     private readonly outbox: SubmissionOutbox,
     private readonly uow: UnitOfWork,
     private readonly batchSize: number,
+    private readonly observer?: SubmissionCommitObserver,
   ) {}
 
   async runOnce(tickId: string, stopping: () => boolean = () => false): Promise<SweepTickResult> {
@@ -48,19 +53,29 @@ export class DeadlineSweep {
             correlationId: randomUUID(),
             causationId: tickId,
           });
-          return accepted.written ? ("accepted" as const) : ("already" as const);
+          return accepted.written
+            ? { deadline: locked.deadline, acceptedAt: accepted.receipt.acceptedAt }
+            : ("already" as const);
         });
         if (outcome === "empty") {
           empty = true;
           break;
         }
-        if (outcome === "accepted") processed += 1;
-        else {
+        if (typeof outcome === "object") {
+          processed += 1;
+          try {
+            this.observer?.committed(outcome);
+          } catch {
+            /* telemetry after commit cannot retry a durable acceptance */
+          }
+        } else {
           skipped += 1;
           if (claimedId) exclude.push(claimedId);
         }
       } catch (error) {
         if (!claimedId) throw error;
+        const failedId = claimedId;
+        await this.uow.transaction(() => this.repo.deferExpiry(failedId));
         failed += 1;
         exclude.push(claimedId);
       }

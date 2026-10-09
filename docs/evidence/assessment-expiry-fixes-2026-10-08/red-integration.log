@@ -1,0 +1,177 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/assessment-expiry-fixes.spec.ts --testTimeout=180000
+
+(node:77445) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-expiry-fixes.spec.ts
+  ● ATT-07 independent expiry regressions › rejects an accepted NULL provenance UPDATE with the runtime login
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › rejects an accepted NULL provenance UPDATE with the expiry login
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › rejects an accepted NULL provenance INSERT with the runtime login
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › keeps valid MANUAL/SUBMITTED provenance immutable
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › keeps valid MANUAL/EXPIRED provenance immutable
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › keeps valid DEADLINE/EXPIRED provenance immutable
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › advances a healthy row behind a full poison batch of 1 without marking failures terminal
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › advances a healthy row behind a full poison batch of 2 without marking failures terminal
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › recovers rolled-back rows after restart and commits once when two workers retry
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › reads authoritative time after an observed row-lock wait crosses the deadline
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+  ● ATT-07 independent expiry regressions › uses a natural deadline index range for an empty claim among 100000 future attempts
+
+    error: Invalid publication
+
+      221 |     [published.examId],
+      222 |   );
+    > 223 |   await fixture.query(
+          |   ^
+      224 |     `
+      225 |     INSERT INTO catalog.published_versions (
+      226 |       id, exam_id, version, title, description, duration_seconds, attempt_limit,
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:223:3)
+
+Test Suites: 1 failed, 1 total
+Tests:       11 failed, 11 total
+Snapshots:   0 total
+Time:        3.084 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-expiry-fixes.spec.ts".

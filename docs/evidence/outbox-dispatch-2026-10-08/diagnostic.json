@@ -1,0 +1,20 @@
+{
+  "kind": "local-postgres-no-network-queue-diagnostic",
+  "jobs": 32,
+  "concurrency": 4,
+  "pool": 2,
+  "elapsedMs": 41.49695799999972,
+  "cycleDurationMs": [
+    13.476999999999862,
+    4.8022079999996095,
+    4.06899999999996,
+    2.5311249999999745,
+    2.766791999999896,
+    3.4659999999998945,
+    3.0882500000002437,
+    6.709875000000011
+  ],
+  "awsMeasured": false,
+  "sustainableCapacity": null,
+  "cost": null
+}

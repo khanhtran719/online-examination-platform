@@ -1,0 +1,65 @@
+{
+  "projectId": "18257628123124303955",
+  "retrievedOn": "2026-10-08",
+  "scope": "Three 03A Desktop references retrieved for review; subsequently selected and moved byte-for-byte into templates/results-v4. One duplicate EP-11 entry lacks a screenshot and remains unreviewed.",
+  "screens": [
+    {
+      "screenId": "e6bf4c9f5a5b4abcaa6973835a3721cd",
+      "pageId": "EP-11",
+      "title": "EP-11 — Trạng thái bài nộp — V4 — Desktop — Processing",
+      "state": "Processing",
+      "deviceType": "DESKTOP",
+      "file": "../../templates/results-v4/submission-status-desktop-v4.png",
+      "width": 2560,
+      "height": 2048,
+      "sha256": "1980ad5687a46cc594d83086554d57198363d5ab829659f5310dd06aeb7e18c9",
+      "sourceFile": "projects/18257628123124303955/screens/e6bf4c9f5a5b4abcaa6973835a3721cd/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_results_template"
+    },
+    {
+      "screenId": "ada6f9265a0e4e41ba2c139fbdc927a1",
+      "pageId": "EP-12",
+      "title": "EP-12 — Kết quả — V4 — Desktop — Completed",
+      "state": "Completed",
+      "deviceType": "DESKTOP",
+      "file": "../../templates/results-v4/result-desktop-v4.png",
+      "width": 2560,
+      "height": 2782,
+      "sha256": "b38523cf1629847c1a61bc345d53d5230d99f65e1766d86e94f3283f24e778b4",
+      "sourceFile": "projects/18257628123124303955/screens/ada6f9265a0e4e41ba2c139fbdc927a1/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_results_template"
+    },
+    {
+      "screenId": "f8be22a0bbe840bb83fb3332770ab04e",
+      "pageId": "EP-13",
+      "title": "EP-13 — Xem lại bài — V4 — Desktop — Released review",
+      "state": "Released review",
+      "deviceType": "DESKTOP",
+      "file": "../../templates/results-v4/released-review-desktop-v4.png",
+      "width": 2560,
+      "height": 4600,
+      "sha256": "144278a1e34492c1170bb8af98bd63a70ab430748ef643156fb2723dd407c98a",
+      "sourceFile": "projects/18257628123124303955/screens/f8be22a0bbe840bb83fb3332770ab04e/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_results_template"
+    }
+  ],
+  "unavailableScreens": [
+    {
+      "screenId": "5afee71803b8443cba85abd5cc77b667",
+      "title": "EP-11 — Trạng thái bài nộp — V4 — Desktop — Processing",
+      "deviceType": "DESKTOP",
+      "width": 1280,
+      "height": 1024,
+      "reason": "Inventory has no screenshot download URL; this alternative has not been visually reviewed."
+    }
+  ],
+  "limitations": [
+    "Static screenshots only; interactions, responsive behavior and motion are not verified.",
+    "EP-11 alternative 5afee71803b8443cba85abd5cc77b667 has no screenshot URL in the captured inventory and has not been visually reviewed."
+  ],
+  "selection": {
+    "acceptedOn": "2026-10-08",
+    "source": "User agreed to keep the reviewed 03A direction and continue the next part.",
+    "acceptedFor": "Visual style/layout only; 03A findings and missing mobile/states remain open."
+  }
+}

@@ -65,4 +65,20 @@ BEGIN
   END IF;
 END
 $$;
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT FROM pg_roles
+    WHERE rolname = 'examination_dispatch_worker'
+  ) THEN
+    CREATE ROLE examination_dispatch_worker
+      NOLOGIN
+      NOSUPERUSER
+      NOCREATEDB
+      NOCREATEROLE
+      NOREPLICATION
+      NOBYPASSRLS;
+  END IF;
+END
+$$;
 REVOKE CREATE ON SCHEMA public FROM PUBLIC;

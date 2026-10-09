@@ -1,5 +1,7 @@
 # Production acceptance ledger
 
+Local update2026-10-09: [ASYNC-02–04 publisher](outbox-dispatch-2026-10-08.md) has restricted-PG/SDK-fixture/health/drain evidence. Consumer inbox/grading, AWS SQS/IAM/VPC/DLQ, sustainable jobs/sec, jobs/USD and end-to-end scoring acceptance remain open. **Production status stays NOT ACCEPTED.**
+
 Updated 2026-10-07. **Production status: NOT ACCEPTED.** No AWS deployment/capacity/cost/recovery evidence. [Identity runtime](phase-04-review.md) has local crypto/PG/HTTP/SMTP/lease/operator tests, actual entry-point smoke and [raw local diagnostic](../experiments/identity-local/README.md). Local [Chromium HTTPS proof](evidence/identity-https-2026-10-07/README.md) now exists; live SES/public PKI/AWS remain open. Contracts and [DB foundation](phase-03-review.md) remain locally validated; exam runtime/full production gates are not satisfied by these checks.
 
 | Hard gate | Proposed target / requirement | Status | Evidence needed |

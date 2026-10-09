@@ -1,0 +1,58 @@
+{
+  "scope": "ATT-07 review fixes, local acceptance only",
+  "findingsClosed": [
+    "ER-01",
+    "ER-02",
+    "ER-03",
+    "ER-04"
+  ],
+  "root": {
+    "api": 118,
+    "tooling": 40,
+    "web": 96,
+    "total": 254,
+    "pass": true
+  },
+  "integration": {
+    "suites": 8,
+    "passed": 144,
+    "total": 144,
+    "skipped": 0,
+    "newFixCases": 21,
+    "pass": true
+  },
+  "lint": true,
+  "typecheck": true,
+  "build": true,
+  "contractOperations": 46,
+  "contractExamples": 425,
+  "baselineRawRuns": 4,
+  "acceptedRawRuns": 6,
+  "acceptedRawSourceHashesMatch": true,
+  "migrations": 13,
+  "preservedAppliedMigrations": 11,
+  "historicalEvidenceFilesUnchanged": 75,
+  "fixtureCleanup": {
+    "fixtureDatabases": 0,
+    "fixtureLogins": 0,
+    "fixtureConnections": 0
+  },
+  "roadmap": {
+    "checked": 70,
+    "pending": 146,
+    "total": 216
+  },
+  "identityChromiumHttpsRerun": false,
+  "productionAcceptance": false,
+  "awsBenchmark": false,
+  "costMeasured": false,
+  "commitOrDeploy": false,
+  "deliveryQuality": {
+    "quality": true,
+    "contracts": true,
+    "gitDiffCheck": true,
+    "servicesStopped": true,
+    "newLogsCredentialUrlsOrProtocolKeys": 0,
+    "eventAndOpenapiUnchanged": true
+  }
+}

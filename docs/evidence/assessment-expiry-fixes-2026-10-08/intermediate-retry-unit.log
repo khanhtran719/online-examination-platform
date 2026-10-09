@@ -1,0 +1,29 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep-retry.unit.spec.ts apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep.unit.spec.ts
+
+(node:79044) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep.unit.spec.ts
+  ● DeadlineSweep › expires due rows, skips a future recheck, and does not count a rolled-back failure
+
+    TypeError: this.repo.deferExpiry is not a function
+
+      75 |         if (!claimedId) throw error;
+      76 |         const failedId = claimedId;
+    > 77 |         await this.uow.transaction(() => this.repo.deferExpiry(failedId));
+         |                                                    ^
+      78 |         failed += 1;
+      79 |         exclude.push(claimedId);
+      80 |       }
+
+      at apps/api/src/modules/assessment/application/services/deadline-sweep.ts:77:52
+      at Object.transaction (apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep.unit.spec.ts:78:32)
+      at DeadlineSweep.runOnce (apps/api/src/modules/assessment/application/services/deadline-sweep.ts:77:24)
+      at Object.<anonymous> (apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep.unit.spec.ts:85:19)
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       1 failed, 2 passed, 3 total
+Snapshots:   0 total
+Time:        1.936 s, estimated 2 s
+Ran all test suites within paths "apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep-retry.unit.spec.ts", "apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep.unit.spec.ts".

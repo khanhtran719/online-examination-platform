@@ -1,0 +1,142 @@
+{
+  "projectId": "18257628123124303955",
+  "retrievedOn": "2026-10-08",
+  "scope": "Review evidence for Auth V3. User selected these images as visual templates on 2026-10-08; implementation defects remain open.",
+  "screens": [
+    {
+      "screenId": "3e01a78d320e4dd39ccfdba238d6d8de",
+      "title": "EP-05 — Đăng ký — V3 — Desktop",
+      "deviceType": "DESKTOP",
+      "stitchWidth": "2560",
+      "stitchHeight": "2652",
+      "screenshot": {
+        "file": "../../templates/auth-v3/register-desktop-v3.png",
+        "bytes": 640729,
+        "sha256": "ed5bde60ccf0cd4a289a9d7b87e4887137282827de13342756c6339ce44321dd",
+        "sourceFile": "projects/18257628123124303955/screens/3e01a78d320e4dd39ccfdba238d6d8de/fileEntries/screenshot"
+      },
+      "width": 2560,
+      "height": 2652,
+      "archiveStatus": "retained_as_current_auth_template"
+    },
+    {
+      "screenId": "91c046fa6d0643b68b6fabd835e3f407",
+      "title": "EP-06 — Kiểm tra email — V3 — Mobile",
+      "deviceType": "MOBILE",
+      "stitchWidth": "780",
+      "stitchHeight": "1768",
+      "screenshot": {
+        "file": "../../templates/auth-v3/check-email-mobile-v3.png",
+        "bytes": 142763,
+        "sha256": "152637152f4a02124fc197054b200322ff8fc8aac739281618ae8163ca65cca4",
+        "sourceFile": "projects/18257628123124303955/screens/91c046fa6d0643b68b6fabd835e3f407/fileEntries/screenshot"
+      },
+      "width": 780,
+      "height": 1768,
+      "archiveStatus": "retained_as_current_auth_template"
+    },
+    {
+      "screenId": "cebb8e9467bd40caa990b47e7ec4fb2d",
+      "title": "EP-07 — Xác thực email — V3 — Mobile",
+      "deviceType": "MOBILE",
+      "stitchWidth": "780",
+      "stitchHeight": "2150",
+      "screenshot": {
+        "file": "../../templates/auth-v3/verify-email-mobile-v3.png",
+        "bytes": 187497,
+        "sha256": "dbf3b32464caa669ce21be2154dad085ac7e778e2f5d3c94be3478afc2ca0e3c",
+        "sourceFile": "projects/18257628123124303955/screens/cebb8e9467bd40caa990b47e7ec4fb2d/fileEntries/screenshot"
+      },
+      "width": 780,
+      "height": 2150,
+      "archiveStatus": "retained_as_current_auth_template"
+    },
+    {
+      "screenId": "33f43e61c9e948939906a003d9d1bf7b",
+      "title": "EP-04 — Đăng nhập — V3 — Desktop",
+      "deviceType": "DESKTOP",
+      "stitchWidth": "2560",
+      "stitchHeight": "2574",
+      "screenshot": {
+        "file": "../../templates/auth-v3/login-desktop-v3.png",
+        "bytes": 552224,
+        "sha256": "5d5528bb7807ebdd9bfdd04246b77e6e3125b03e6e3c36e133756970871ee095",
+        "sourceFile": "projects/18257628123124303955/screens/33f43e61c9e948939906a003d9d1bf7b/fileEntries/screenshot"
+      },
+      "width": 2560,
+      "height": 2574,
+      "archiveStatus": "retained_as_current_auth_template"
+    },
+    {
+      "screenId": "ccce98ff690e407288e72c7a05e807cf",
+      "title": "EP-04 — Đăng nhập — V3 — Mobile",
+      "deviceType": "MOBILE",
+      "stitchWidth": "780",
+      "stitchHeight": "2054",
+      "screenshot": {
+        "file": "../../templates/auth-v3/login-mobile-v3.png",
+        "bytes": 198368,
+        "sha256": "4970ea057a4b5cfd6d2be6d04eeab80b588f9a13ca4a40cbb6eaa9946f41a22d",
+        "sourceFile": "projects/18257628123124303955/screens/ccce98ff690e407288e72c7a05e807cf/fileEntries/screenshot"
+      },
+      "width": 780,
+      "height": 2054,
+      "archiveStatus": "retained_as_current_auth_template"
+    },
+    {
+      "screenId": "42a847ef5d8f419b8232da7dcf74882b",
+      "title": "EP-05 — Đăng ký — V3 — Mobile",
+      "deviceType": "MOBILE",
+      "stitchWidth": "780",
+      "stitchHeight": "2364",
+      "screenshot": {
+        "file": "../../templates/auth-v3/register-mobile-v3.png",
+        "bytes": 197005,
+        "sha256": "bf57214ff648ea10ecf2cf2268937781858f39a92d1cbc0efadcbf979ebf26ef",
+        "sourceFile": "projects/18257628123124303955/screens/42a847ef5d8f419b8232da7dcf74882b/fileEntries/screenshot"
+      },
+      "width": 780,
+      "height": 2364,
+      "archiveStatus": "retained_as_current_auth_template"
+    },
+    {
+      "screenId": "dc14c2907d9e426ba6649d63fe35bc6c",
+      "title": "EP-07 — Xác thực email — V3 — Desktop",
+      "deviceType": "DESKTOP",
+      "stitchWidth": "2560",
+      "stitchHeight": "4114",
+      "screenshot": {
+        "file": "../../templates/auth-v3/verify-email-desktop-v3.png",
+        "bytes": 529362,
+        "sha256": "9f3d08c627220d1f1ab20ffe165fde56836fbe6530f0f380e2bac4a642cf96e4",
+        "sourceFile": "projects/18257628123124303955/screens/dc14c2907d9e426ba6649d63fe35bc6c/fileEntries/screenshot"
+      },
+      "width": 2560,
+      "height": 4114,
+      "archiveStatus": "retained_as_current_auth_template"
+    },
+    {
+      "screenId": "b1d959d82bc94671b0bc410334dde71b",
+      "title": "EP-06 — Kiểm tra email — V3 — Desktop",
+      "deviceType": "DESKTOP",
+      "stitchWidth": "2560",
+      "stitchHeight": "2566",
+      "screenshot": {
+        "file": "../../templates/auth-v3/check-email-desktop-v3.png",
+        "bytes": 348141,
+        "sha256": "b354e5cf06c3603b8c2a51c1d2cf21577c61e9f15a7ba388a936e33a5a9c6e57",
+        "sourceFile": "projects/18257628123124303955/screens/b1d959d82bc94671b0bc410334dde71b/fileEntries/screenshot"
+      },
+      "width": 2560,
+      "height": 2566,
+      "archiveStatus": "retained_as_current_auth_template"
+    }
+  ],
+  "limitations": [
+    "HTML download URLs redirected to Google sign-in; those responses were discarded.",
+    "Review uses eight original screenshot images. Interaction, keyboard focus, actual responsiveness and animation were not tested."
+  ],
+  "acceptedFor": "Visual style and layout reference only",
+  "acceptedOn": "2026-10-08",
+  "template": "../../templates/auth-v3/manifest.json"
+}

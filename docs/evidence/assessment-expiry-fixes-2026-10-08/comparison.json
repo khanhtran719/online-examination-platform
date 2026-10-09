@@ -1,0 +1,574 @@
+{
+  "capturedAt": "2026-10-08T14:50:05.343Z",
+  "baselineGitRevision": "d2a34a52cfd03d55485da1282253a779a0a9e44c",
+  "scope": "Local expiry acceptance diagnostics; no scoring/SQS/AWS capacity, SLO or cost acceptance.",
+  "sweepComparison": [
+    {
+      "scenario": "burst2000-batch10-pool2",
+      "beforeRaw": "before/raw/2026-10-08T140704876Z-burst2000-batch10-pool2.json",
+      "afterRaw": "accepted/raw/2026-10-08T144904538Z-burst2000-batch10-pool2.json",
+      "sameDatasetAndConfiguration": true,
+      "configuration": {
+        "batchSize": 10,
+        "poolMax": 2,
+        "statementTimeoutMs": 2000,
+        "lockTimeoutMs": 500,
+        "concurrency": 1,
+        "transaction": "one attempt"
+      },
+      "dataset": {
+        "due": 2000,
+        "future": 100,
+        "submitted": 25,
+        "alreadyExpired": 25,
+        "failed": 0
+      },
+      "before": {
+        "processed": 2000,
+        "failed": 0,
+        "wallMs": 15748.318208999997,
+        "processedPerSecond": 126.99768784561523,
+        "deadlineToAcceptanceLagMs": {
+          "sampleCount": 2000,
+          "p50Ms": 39847,
+          "p95Ms": 58602,
+          "p99Ms": 60299,
+          "minMs": 16749,
+          "maxMs": 60503
+        }
+      },
+      "after": {
+        "processed": 2000,
+        "failed": 0,
+        "wallMs": 13837.581875000003,
+        "processedPerSecond": 144.53392348943188,
+        "deadlineToAcceptanceLagMs": {
+          "sampleCount": 2000,
+          "p50Ms": 38455,
+          "p95Ms": 58278,
+          "p99Ms": 60262,
+          "minMs": 14858,
+          "maxMs": 60432
+        },
+        "deadlineToCommitAckObservedLagMs": {
+          "sampleCount": 2000,
+          "p50Ms": 38458,
+          "p95Ms": 58281,
+          "p99Ms": 60264,
+          "minMs": 14861,
+          "maxMs": 60434
+        },
+        "clockCalibration": {
+          "before": {
+            "offsetMs": -1,
+            "uncertaintyMs": 1,
+            "roundTripMs": 0
+          },
+          "after": {
+            "offsetMs": -0.5,
+            "uncertaintyMs": 1.5,
+            "roundTripMs": 1
+          },
+          "offsetDriftMs": 0.5
+        },
+        "observations": {
+          "query": {
+            "count": 10204,
+            "totalMs": 13378.252283999922,
+            "p50Ms": 0.6741669999973965,
+            "p95Ms": 4.895125000002736,
+            "p99Ms": 6.4316669999971054
+          },
+          "lock": {
+            "count": 2001,
+            "totalMs": 7140.16038700004,
+            "p50Ms": 3.5103329999983544,
+            "p95Ms": 6.342750000003434,
+            "p99Ms": 8.482250000000931
+          },
+          "acquire": {
+            "count": 2202,
+            "totalMs": 66.08493299982365,
+            "p50Ms": 0.019124999998894054,
+            "p95Ms": 0.034416000002238434,
+            "p99Ms": 0.15645799999765586
+          },
+          "transaction": {
+            "count": 2001,
+            "totalMs": 13623.979826000246,
+            "p50Ms": 6.577625000005355,
+            "p95Ms": 11.194000000003143,
+            "p99Ms": 13.83845800000563
+          },
+          "poolError": 0,
+          "maxWaiting": 0
+        },
+        "observationPopulation": "Timed sweep only, including empty claim transactions/backlog reads; setup, calibration, EXPLAIN and the subsequent SKIP LOCKED probe are excluded.",
+        "postRunProbeObservationCounts": {
+          "query": 9,
+          "transaction": 2
+        },
+        "process": {
+          "cpuUserMicros": 1189574,
+          "cpuSystemMicros": 644872,
+          "rssStartBytes": 131334144,
+          "rssEndBytes": 132677632
+        }
+      },
+      "observedThroughputDeltaPercent": 13.808310955341629,
+      "notes": [
+        "Before v1 misnamed commit lag is acceptance-only; commit ACK before is unmeasured.",
+        "Before query observations included the post-run SKIP LOCKED probe; current timed observations exclude it. Do not compare those counts as the same population.",
+        "Whole fix bundle and new observation harness; local variation is not an isolated index effect, sustainable capacity, cost savings or a chosen optimal pool."
+      ]
+    },
+    {
+      "scenario": "burst2000-batch50-pool2-run1",
+      "beforeRaw": "before/raw/2026-10-08T140704876Z-burst2000-batch50-pool2-run1.json",
+      "afterRaw": "accepted/raw/2026-10-08T144904538Z-burst2000-batch50-pool2-run1.json",
+      "sameDatasetAndConfiguration": true,
+      "configuration": {
+        "batchSize": 50,
+        "poolMax": 2,
+        "statementTimeoutMs": 2000,
+        "lockTimeoutMs": 500,
+        "concurrency": 1,
+        "transaction": "one attempt"
+      },
+      "dataset": {
+        "due": 2000,
+        "future": 100,
+        "submitted": 25,
+        "alreadyExpired": 25,
+        "failed": 0
+      },
+      "before": {
+        "processed": 2000,
+        "failed": 0,
+        "wallMs": 17684.494334,
+        "processedPerSecond": 113.09342309860813,
+        "deadlineToAcceptanceLagMs": {
+          "sampleCount": 2000,
+          "p50Ms": 39979,
+          "p95Ms": 58471,
+          "p99Ms": 60331,
+          "minMs": 18774,
+          "maxMs": 60499
+        }
+      },
+      "after": {
+        "processed": 2000,
+        "failed": 0,
+        "wallMs": 13950.323957999999,
+        "processedPerSecond": 143.36584627148198,
+        "deadlineToAcceptanceLagMs": {
+          "sampleCount": 2000,
+          "p50Ms": 38688,
+          "p95Ms": 58317,
+          "p99Ms": 60272,
+          "minMs": 14973,
+          "maxMs": 60418
+        },
+        "deadlineToCommitAckObservedLagMs": {
+          "sampleCount": 2000,
+          "p50Ms": 38691.5,
+          "p95Ms": 58320.5,
+          "p99Ms": 60274.5,
+          "minMs": 14975.5,
+          "maxMs": 60421.5
+        },
+        "clockCalibration": {
+          "before": {
+            "offsetMs": -1.5,
+            "uncertaintyMs": 1.5,
+            "roundTripMs": 1
+          },
+          "after": {
+            "offsetMs": -1.5,
+            "uncertaintyMs": 1.5,
+            "roundTripMs": 1
+          },
+          "offsetDriftMs": 0
+        },
+        "observations": {
+          "query": {
+            "count": 10044,
+            "totalMs": 13512.436918000021,
+            "p50Ms": 0.7638329999990674,
+            "p95Ms": 4.768583999999464,
+            "p99Ms": 6.204791000000114
+          },
+          "lock": {
+            "count": 2001,
+            "totalMs": 7053.5943209999705,
+            "p50Ms": 3.3459170000005543,
+            "p95Ms": 6.036667000000307,
+            "p99Ms": 8.206375000000662
+          },
+          "acquire": {
+            "count": 2042,
+            "totalMs": 75.80485900005033,
+            "p50Ms": 0.02087500000016007,
+            "p95Ms": 0.0565839999999298,
+            "p99Ms": 0.301791999998386
+          },
+          "transaction": {
+            "count": 2001,
+            "totalMs": 13883.585593000022,
+            "p50Ms": 6.580959000000803,
+            "p95Ms": 11.006375000000844,
+            "p99Ms": 15.417666000000281
+          },
+          "poolError": 0,
+          "maxWaiting": 0
+        },
+        "observationPopulation": "Timed sweep only, including empty claim transactions/backlog reads; setup, calibration, EXPLAIN and the subsequent SKIP LOCKED probe are excluded.",
+        "postRunProbeObservationCounts": {
+          "query": 9,
+          "transaction": 2
+        },
+        "process": {
+          "cpuUserMicros": 1487423,
+          "cpuSystemMicros": 640191,
+          "rssStartBytes": 74874880,
+          "rssEndBytes": 123535360
+        }
+      },
+      "observedThroughputDeltaPercent": 26.767624803856904,
+      "notes": [
+        "Before v1 misnamed commit lag is acceptance-only; commit ACK before is unmeasured.",
+        "Before query observations included the post-run SKIP LOCKED probe; current timed observations exclude it. Do not compare those counts as the same population.",
+        "Whole fix bundle and new observation harness; local variation is not an isolated index effect, sustainable capacity, cost savings or a chosen optimal pool."
+      ]
+    },
+    {
+      "scenario": "burst2000-batch50-pool2-run2",
+      "beforeRaw": "before/raw/2026-10-08T140704876Z-burst2000-batch50-pool2-run2.json",
+      "afterRaw": "accepted/raw/2026-10-08T144904538Z-burst2000-batch50-pool2-run2.json",
+      "sameDatasetAndConfiguration": true,
+      "configuration": {
+        "batchSize": 50,
+        "poolMax": 2,
+        "statementTimeoutMs": 2000,
+        "lockTimeoutMs": 500,
+        "concurrency": 1,
+        "transaction": "one attempt"
+      },
+      "dataset": {
+        "due": 2000,
+        "future": 100,
+        "submitted": 25,
+        "alreadyExpired": 25,
+        "failed": 0
+      },
+      "before": {
+        "processed": 2000,
+        "failed": 0,
+        "wallMs": 15821.600542000004,
+        "processedPerSecond": 126.40946121037516,
+        "deadlineToAcceptanceLagMs": {
+          "sampleCount": 2000,
+          "p50Ms": 39730,
+          "p95Ms": 58453,
+          "p99Ms": 60286,
+          "minMs": 16805,
+          "maxMs": 60444
+        }
+      },
+      "after": {
+        "processed": 2000,
+        "failed": 0,
+        "wallMs": 15537.288041,
+        "processedPerSecond": 128.72259268943034,
+        "deadlineToAcceptanceLagMs": {
+          "sampleCount": 2000,
+          "p50Ms": 39946,
+          "p95Ms": 58181,
+          "p99Ms": 60244,
+          "minMs": 16552,
+          "maxMs": 60382
+        },
+        "deadlineToCommitAckObservedLagMs": {
+          "sampleCount": 2000,
+          "p50Ms": 39948.5,
+          "p95Ms": 58183.5,
+          "p99Ms": 60245.5,
+          "minMs": 16552.5,
+          "maxMs": 60384.5
+        },
+        "clockCalibration": {
+          "before": {
+            "offsetMs": -2.5,
+            "uncertaintyMs": 1.5,
+            "roundTripMs": 1
+          },
+          "after": {
+            "offsetMs": -0.5,
+            "uncertaintyMs": 1.5,
+            "roundTripMs": 1
+          },
+          "offsetDriftMs": 2
+        },
+        "observations": {
+          "query": {
+            "count": 10044,
+            "totalMs": 15108.247801000132,
+            "p50Ms": 0.7724170000001322,
+            "p95Ms": 5.195416999998997,
+            "p99Ms": 7.821375000003172
+          },
+          "lock": {
+            "count": 2001,
+            "totalMs": 7743.4159629998685,
+            "p50Ms": 3.842499999998836,
+            "p95Ms": 7.108707999999751,
+            "p99Ms": 11.320958000000246
+          },
+          "acquire": {
+            "count": 2042,
+            "totalMs": 63.11680699997669,
+            "p50Ms": 0.020416999999724794,
+            "p95Ms": 0.04695899999933317,
+            "p99Ms": 0.21233399999982794
+          },
+          "transaction": {
+            "count": 2001,
+            "totalMs": 15457.266252000034,
+            "p50Ms": 7.177041000002646,
+            "p95Ms": 13.342834000002767,
+            "p99Ms": 20.926832999997714
+          },
+          "poolError": 0,
+          "maxWaiting": 0
+        },
+        "observationPopulation": "Timed sweep only, including empty claim transactions/backlog reads; setup, calibration, EXPLAIN and the subsequent SKIP LOCKED probe are excluded.",
+        "postRunProbeObservationCounts": {
+          "query": 9,
+          "transaction": 2
+        },
+        "process": {
+          "cpuUserMicros": 1220802,
+          "cpuSystemMicros": 603133,
+          "rssStartBytes": 137101312,
+          "rssEndBytes": 123371520
+        }
+      },
+      "observedThroughputDeltaPercent": 1.8298721131368323,
+      "notes": [
+        "Before v1 misnamed commit lag is acceptance-only; commit ACK before is unmeasured.",
+        "Before query observations included the post-run SKIP LOCKED probe; current timed observations exclude it. Do not compare those counts as the same population.",
+        "Whole fix bundle and new observation harness; local variation is not an isolated index effect, sustainable capacity, cost savings or a chosen optimal pool."
+      ]
+    },
+    {
+      "scenario": "mixed-batch50-pool2",
+      "beforeRaw": "before/raw/2026-10-08T140704876Z-mixed-batch50-pool2.json",
+      "afterRaw": "accepted/raw/2026-10-08T144904538Z-mixed-batch50-pool2.json",
+      "sameDatasetAndConfiguration": true,
+      "configuration": {
+        "batchSize": 50,
+        "poolMax": 2,
+        "statementTimeoutMs": 2000,
+        "lockTimeoutMs": 500,
+        "concurrency": 1,
+        "transaction": "one attempt"
+      },
+      "dataset": {
+        "due": 200,
+        "future": 100,
+        "submitted": 40,
+        "alreadyExpired": 40,
+        "failed": 20
+      },
+      "before": {
+        "processed": 200,
+        "failed": 0,
+        "wallMs": 2097.269875,
+        "processedPerSecond": 95.36207160749878,
+        "deadlineToAcceptanceLagMs": {
+          "sampleCount": 200,
+          "p50Ms": 28169,
+          "p95Ms": 57126,
+          "p99Ms": 60068,
+          "minMs": 3142,
+          "maxMs": 60080
+        }
+      },
+      "after": {
+        "processed": 200,
+        "failed": 0,
+        "wallMs": 943.5461250000001,
+        "processedPerSecond": 211.9663201414769,
+        "deadlineToAcceptanceLagMs": {
+          "sampleCount": 200,
+          "p50Ms": 27497,
+          "p95Ms": 57113,
+          "p99Ms": 60070,
+          "minMs": 1988,
+          "maxMs": 60081
+        },
+        "deadlineToCommitAckObservedLagMs": {
+          "sampleCount": 200,
+          "p50Ms": 27500,
+          "p95Ms": 57115,
+          "p99Ms": 60076,
+          "minMs": 1991,
+          "maxMs": 60083
+        },
+        "clockCalibration": {
+          "before": {
+            "offsetMs": -2,
+            "uncertaintyMs": 1,
+            "roundTripMs": 0
+          },
+          "after": {
+            "offsetMs": -2,
+            "uncertaintyMs": 1,
+            "roundTripMs": 0
+          },
+          "offsetDriftMs": 0
+        },
+        "observations": {
+          "query": {
+            "count": 1008,
+            "totalMs": 911.9018330000029,
+            "p50Ms": 0.8073749999999791,
+            "p95Ms": 1.5924580000000788,
+            "p99Ms": 3.1159580000000915
+          },
+          "lock": {
+            "count": 201,
+            "totalMs": 248.20100399999922,
+            "p50Ms": 1.1224580000000515,
+            "p95Ms": 2.021916999999803,
+            "p99Ms": 3.117915999999923
+          },
+          "acquire": {
+            "count": 206,
+            "totalMs": 10.726541999999654,
+            "p50Ms": 0.013832999999976892,
+            "p95Ms": 0.029125000000021828,
+            "p99Ms": 0.08466700000008132
+          },
+          "transaction": {
+            "count": 201,
+            "totalMs": 936.7803340000033,
+            "p50Ms": 3.984375,
+            "p95Ms": 7.836708999999928,
+            "p99Ms": 18.372292000000016
+          },
+          "poolError": 0,
+          "maxWaiting": 0
+        },
+        "observationPopulation": "Timed sweep only, including empty claim transactions/backlog reads; setup, calibration, EXPLAIN and the subsequent SKIP LOCKED probe are excluded.",
+        "postRunProbeObservationCounts": {
+          "query": 9,
+          "transaction": 2
+        },
+        "process": {
+          "cpuUserMicros": 126758,
+          "cpuSystemMicros": 35957,
+          "rssStartBytes": 65486848,
+          "rssEndBytes": 72744960
+        }
+      },
+      "observedThroughputDeltaPercent": 122.27528887366259,
+      "notes": [
+        "Before v1 misnamed commit lag is acceptance-only; commit ACK before is unmeasured.",
+        "Before query observations included the post-run SKIP LOCKED probe; current timed observations exclude it. Do not compare those counts as the same population.",
+        "Whole fix bundle and new observation harness; local variation is not an isolated index effect, sustainable capacity, cost savings or a chosen optimal pool."
+      ]
+    }
+  ],
+  "indexRange": {
+    "raw": "accepted/raw/2026-10-08T144810748Z-index-range.json",
+    "dataset": {
+      "due": 0,
+      "future": 100000,
+      "submitted": 0,
+      "expired": 0,
+      "failed": 0
+    },
+    "sameSchemaDataCounterfactual": true,
+    "summaries": [
+      {
+        "name": "claim-current",
+        "samples": 3,
+        "executionMedianMs": 0.1,
+        "sharedHitBlocks": [
+          9,
+          3,
+          3
+        ],
+        "deadlineIndexRange": true
+      },
+      {
+        "name": "claim-volatile-counterfactual",
+        "samples": 3,
+        "executionMedianMs": 13.634,
+        "sharedHitBlocks": [
+          1819,
+          1819,
+          1819
+        ],
+        "deadlineIndexRange": false
+      },
+      {
+        "name": "backlog-current",
+        "samples": 3,
+        "executionMedianMs": 0.043,
+        "sharedHitBlocks": [
+          3,
+          3,
+          3
+        ],
+        "deadlineIndexRange": true
+      },
+      {
+        "name": "backlog-volatile-counterfactual",
+        "samples": 3,
+        "executionMedianMs": 10.178,
+        "sharedHitBlocks": [
+          1819,
+          1819,
+          1819
+        ],
+        "deadlineIndexRange": false
+      }
+    ]
+  },
+  "compiledWorker": {
+    "raw": "accepted/raw/2026-10-08T144904538Z-worker-burst2000-batch50-pool2.json",
+    "sigterm": {
+      "code": 0,
+      "drainMs": 8.291416000000027
+    },
+    "restart": {
+      "drained": true,
+      "wallMs": 13805.258417000005,
+      "exitCode": 0
+    },
+    "durable": {
+      "expired": 2000,
+      "outbox": 2000,
+      "distinctAggregates": 2000,
+      "duplicateEvents": false
+    },
+    "health": {
+      "signals": true,
+      "liveStatus": 200,
+      "readyStatus": 200,
+      "liveBody": {
+        "status": "ok"
+      },
+      "readyBody": {
+        "status": "ok"
+      }
+    },
+    "maxRssKb": 64704
+  },
+  "finalRawCount": 6,
+  "finalRawSourceHashesMatch": true,
+  "costPerHour": null,
+  "sustainableRps": null
+}

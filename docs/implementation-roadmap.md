@@ -1,10 +1,10 @@
 # Roadmap triển khai có đánh dấu
 
-Cập nhật: 2026-10-08. [Fix closure Assessment](assessment-fixes-2026-10-08.md) đóng AR-01–05 locally và nghiệm thu lại CAT-09/10, ATT-01–04. [Deadline sweep](evidence/assessment-expiry-2026-10-08/README.md) đóng ATT-07 locally. **70/216 mục hoàn thành,146 mục chưa hoàn thành.** Fresh root 249 (116 API/37 tooling/96 Web) và restricted PG/HTTP/SMTP trên 7 suite; HTTPS 10 của Identity giữ evidence cũ, không chạy lại vì increment này không đổi composition Identity hay HTTP dùng chung. ID-07/WEB-02 có [evidence](evidence/identity-https-2026-10-07/README.md) Chromium local; ID-11/live SES và DB-12/image compatibility còn PARTIAL; magic link/GitHub LATER. Public PKI/AWS chưa triển khai/đo. Phase04 không đóng. Diagnostic local không phải capacity, SLO hay AWS savings.
+Cập nhật: 2026-10-09. [Outbox dispatch](outbox-dispatch-2026-10-08.md): ASYNC-02–04 accepted locally;280 root/173 integration PASS. AWS/consumer remain pending. [Closure ATT-07](assessment-expiry-fixes-2026-10-08.md)/[evidence](evidence/assessment-expiry-fixes-2026-10-08/README.md) đóng ER-01–04 locally và khôi phục ATT-07. **73/216 mục hoàn thành,143 mục chưa hoàn thành.** Historical ATT-07 root254 (118 API/40 tooling/96 Web), restricted PG/HTTP/SMTP144 PASS/8 suites/0 skipped;21 independent fix cases. Lint/typecheck/build/contracts PASS;13 migration source/build khớp,0001–0011 và evidence cũ giữ nguyên. CAT-09/10, ATT-01–06 giữ nghiệm thu trước. HTTPS10 của Identity giữ evidence cũ, không rerun vì increment này không đổi composition Identity hay HTTP dùng chung. ID-11/live SES, DB-12/image compatibility và Phase04 còn mở/PARTIAL; magic link/GitHub LATER. Local diagnostic không phải capacity, SLO hay AWS savings.
 
 [Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. Persistence evaluation đã hoàn thành4/4 local theo [ADR-008](adr/008-persistence-evaluation.md), tách khỏi refactor; [raw comparison](../experiments/persistence-comparison/README.md) giữ pg hiện tại, chưa chọn AWS/TCO winner. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–06 local; RV-07 và production acceptance còn pending. [Review Catalog độc lập](catalog-review-2026-10-07.md) đã mở lại sáu items; [fix closure](catalog-fixes-2026-10-07.md) nghiệm thu lại BOOT-01 và CAT-01/03/04/06/08. [Diagnostic mới](evidence/catalog-fixes-2026-10-07/diagnostic/README.md) ghi exact SQL/publish/provenance, giữ nguyên evidence cũ. Review đã mở lại CAT-09/10 vì snapshot JOIN cũ; [closure mới](assessment-fixes-2026-10-08.md) chứng minh fresh post-lock publication và hai observed HTTP races PASS. Evidence GR-01–06 bên dưới giữ nguyên như lịch sử. Increment Assessment không đóng Phase04.
 
-Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product70/216 không đồng nghĩa production acceptance.
+Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product73/216 không đồng nghĩa production acceptance.
 
 Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. Git và origin remote hiện đã có, BOOT-09 branch/PR workflow chưa kiểm chứng; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
 
@@ -16,7 +16,7 @@ Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, kh
 | 03: Database | DB-01–11 hoàn tất nền persistence; DB-12 chưa drill | Business adapters/races và old/new images cần evidence riêng |
 | 04: Identity | Lõi + browser HTTPS local hoàn tất; ID-11 PARTIAL, ID-12/13 LATER | Live SES operations trước đóng phase; AWS TLS vẫn gate riêng |
 | 05: Catalog | CAT-01–10 local; publication/start races và owned capabilities đã fix | ID-11 vẫn chặn Phase04; AWS/capacity chưa đo |
-| 06–13: Assessment/operations/AWS | ATT-01–07 và ASYNC-01 transaction local; ATT-08–11 và các phase sau còn mở | Correctness và security trước capacity tuning |
+| 06–13: Assessment/operations/AWS | ATT-01–07 và ASYNC-01–04 local; ATT-08–11 và các phase sau còn mở | Correctness và security trước capacity tuning |
 | 14–19: Dataset/load/failure/FinOps | Chưa đo | Có môi trường kiểm thử và raw evidence |
 | 20: Production acceptance | Chưa đạt | Toàn bộ hard gates và câu hỏi định lượng có evidence |
 
@@ -134,7 +134,7 @@ Fix gate GR-01–06 CLOSED local theo [report mới](catalog-fixes-2026-10-07.md
 
 Phụ thuộc: 03–05. Pure domain helper hiện có chỉ là phần nhỏ của phase này.
 
-[Grok handoff — Assessment core](grok-assessment-core-implementation-prompt.md) là prompt của increment này. Evidence của Grok tại [summary](evidence/assessment-2026-10-07/summary.md) giữ nguyên lịch sử. [Review độc lập](assessment-review-2026-10-07.md) đã mở lại ATT-01–04 và CAT-09/10; [fix closure](assessment-fixes-2026-10-08.md) nghiệm thu lại với evidence mới; ATT-05/06, backend-fault subsets và ASYNC-01 transaction vẫn có evidence local. Deadline sweep ATT-07 đã đóng local. Retention, result/review, grading/SQS, Reporting, Web và AWS vẫn là increment sau. ID-11/Phase04 không đóng: Assessment local không gửi mail và không phụ thuộc SES.
+[Grok handoff — Assessment core](grok-assessment-core-implementation-prompt.md) là prompt của increment này. Evidence của Grok tại [summary](evidence/assessment-2026-10-07/summary.md) giữ nguyên lịch sử. [Review độc lập](assessment-review-2026-10-07.md) đã mở lại ATT-01–04 và CAT-09/10; [fix closure](assessment-fixes-2026-10-08.md) nghiệm thu lại với evidence mới; ATT-05/06, backend-fault subsets và ASYNC-01 transaction vẫn có evidence local. [Review expiry](assessment-expiry-review-2026-10-08.md) đã mở lại ATT-07; [fix closure](assessment-expiry-fixes-2026-10-08.md) khôi phục acceptance local với evidence mới. Retention, result/review, grading/SQS, Reporting, Web và AWS vẫn là increment sau. ID-11/Phase04 không đóng: Assessment local không gửi mail và không phụ thuộc SES.
 
 - [x] **ATT-01** Start atomic, quota/active attempt/deadline và durable receipt; publication snapshot sau lock đúng. Auth-inclusive start11≤12 queries. [Closure](assessment-fixes-2026-10-08.md).
 - [x] **ATT-02** Owner/frozen read/cursor đúng; toàn bộ HTTP page gồm envelope/cursor ≤262144 bytes trên boundary và escaped UTF-8 fixtures, không skip/repeat. Questions/answers4 queries; foreign404.
@@ -142,7 +142,7 @@ Phụ thuộc: 03–05. Pure domain helper hiện có chỉ là phần nhỏ c�
 - [x] **ATT-04** Canonical validated option sets/UUID, immutable receipt replay và pruned-key rejection; retry đảo option order replay200, changed payload409, không ghi đè answer mới. Retention job vẫn ở ATT-09.
 - [x] **ATT-05** Mark question và answer-empty semantics; validate cùng ownership/deadline. Mark không ghi score.
 - [x] **ATT-06** Manual submit: state + stable outbox event + receipt trong một transaction; response 202 không chờ scoring. Trước deadline SUBMITTED; tại/sau deadline EXPIRED.
-- [x] **ATT-07** Auto-submit/deadline sweep: một transaction mỗi attempt, `SKIP LOCKED`, cùng acceptance path với manual submit, kind `DEADLINE` bền. [Evidence](evidence/assessment-expiry-2026-10-08/README.md). Không gồm scoring hay SQS.
+- [x] **ATT-07** Auto-submit DEADLINE đã nghiệm thu lại theo [closure](assessment-expiry-fixes-2026-10-08.md): durable cooldown tiến triển qua full poison batch, accepted provenance fail-closed, stable indexable discovery/post-lock clock, calibrated COMMIT ACK observation.21 new regressions/144 full integration PASS; before/after/index/compiled-worker evidence. Scoring/SQS và production chưa bao gồm.
 - [ ] **ATT-08 — SUBSET** Status đọc trạng thái bền SUBMITTED/EXPIRED, serverNow, canSave, replayPending; không bịa PROCESSING/COMPLETED hay score. History/result và semantics FAILED end-to-end còn phụ thuộc ASYNC-06/07. Không đóng đầu mục.
 - [ ] **ATT-09** Receipt/answer pruning lifecycle và retention không phá retry/durability contracts. Fixture key đã prune chỉ chứng minh từ chối, không triển khai purge.
 - [ ] **ATT-10 — SUBSET** Đã có duplicate start/limit, publish/unpublish/start lock, republish freeze, stale tab, save rồi submit, và deadline đổi sau lock. Sweep bổ sung locked-oldest skip, hai worker, manual/sweep race và SIGTERM/restart không nhân đôi event. Review độc lập bổ sung hai save trên hai UnitOfWork và4 race save/submit quan sát lock, PASS. Publication/start đã fix AR-03. Chưa đủ toàn bộ timeout matrix. Không đóng đầu mục.
@@ -154,17 +154,17 @@ Gate: mọi save/submit được acknowledgement phải có durable outcome đú
 
 Phụ thuộc: 03/06.
 
-- [x] **ASYNC-01** Outbox port của Assessment ghi `attempt.submitted.v1` trong cùng transaction submit. Event không chứa answers, keys hay token. Insert lỗi thì rollback submission. Chưa có publisher/consumer; intent đã ACK chờ dispatcher.
-- [ ] **ASYNC-02** Publisher atomic claim/lease/token fencing và bounded SKIP LOCKED batches.
-- [ ] **ASYNC-03** SQS adapter: timeout, bounded retry+jitter, publish ngoài DB transaction, mark sau ACK.
-- [ ] **ASYNC-04** Lease recovery, poison parking, oldest unpublished age và replay audit/runbook.
+- [x] **ASYNC-01** Outbox port của Assessment ghi `attempt.submitted.v1` trong cùng transaction submit. Event không chứa answers, keys hay token. Insert lỗi thì rollback submission. Publisher local có evidence tại ASYNC-02–04; consumer vẫn pending.
+- [x] **ASYNC-02** Atomic bounded SKIP LOCKED claim, lease/token fencing, post-lock DB-time ACK và ambient-UoW guard. Real competing/restarted worker probes PASS; [closure](outbox-dispatch-2026-10-08.md).
+- [x] **ASYNC-03** Actual AWS SDK adapter + local HTTP contract: whole-call timeout, one SDK attempt, durable bounded retry/jitter, send outside transaction, valid broker ACK before fenced delivery mark. Live SQS/IAM/VPC/latency unmeasured.
+- [x] **ASYNC-04** Lease/final-crash recovery, poison/aged parking, original oldest pending age, atomic operator-only replay/audit and [runbook](runbooks/submission-publisher.md). Replay preserves identity/body/time; real audit-failure rollback and grants PASS.
 - [ ] **ASYNC-05** Consumer schema validation, trace/correlation và use-case invocation; malformed message quarantine/DLQ.
 - [ ] **ASYNC-06** Atomic inbox + deterministic grading + unique result + completion trước DeleteMessage.
 - [ ] **ASYNC-07** Persist question stats/leaderboard projection đúng một lần; tie-breaker/freshness theo SPEC.
 - [ ] **ASYNC-08** Đo scoring computation/lock time; chọn transaction-local hay leased compute + fenced completion bằng evidence.
-- [ ] **ASYNC-09** Worker bounded concurrency/pool budget, visibility timeout/heartbeat và graceful drain.
+- [ ] **ASYNC-09 — SUBSET** Publisher concurrency/pool/lease budget, health, graceful drain and compiled SIGTERM pass locally. Consumer visibility timeout/heartbeat, max task-count budget and full grading worker remain pending.
 - [ ] **ASYNC-10** FAILED/retry/DLQ replay policy, operator permissions và bảo toàn event identity.
-- [ ] **ASYNC-11** Integration: publisher crash sau SQS ACK, expired lease, duplicate workers, rollback rồi redelivery, commit mất ACK.
+- [ ] **ASYNC-11 — SUBSET** Publisher ACK-crash duplicate/recomposition, expired lease, competing workers, post-lock expiry fencing, audit rollback and SDK timeout PASS locally. Actual live SQS crash, inbox/effect rollback redelivery and grading commit lost ACK remain pending.
 - [ ] **ASYNC-12** Benchmark jobs/sec/task/jobs/USD và queue-age SLO trước scaling.
 
 Gate: crash/duplicate delivery không mất submission, không nhân đôi result/statistic/leaderboard.

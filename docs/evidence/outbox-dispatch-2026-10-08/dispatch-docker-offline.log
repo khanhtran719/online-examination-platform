@@ -1,0 +1,391 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/outbox-validation-env.cjs --runTestsByPath apps/api/tests/integration/outbox-dispatch.spec.ts apps/api/tests/integration/sqs-publisher.spec.ts apps/api/tests/integration/outbox-fencing.spec.ts
+
+(node:5710) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/outbox-dispatch.spec.ts
+  ● Assessment durable dispatch › atomically partitions a bounded batch between two workers and skips row locks
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › recovers after crash with a new token and fences every stale mutation
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › rejects an ACK after lease expiry even before another worker claims
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › rejects a claim inside an ambient UoW before any broker send can occur
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › rechecks lease after a delivered row-lock wait
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › rechecks lease after a failed row-lock wait
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › publishes with no open DB transaction and recovers duplicate publication after ACK crash
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › persists retry eligibility in DB across recomposition and parks the final crashed attempt
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › replays only parked records atomically with audit and unchanged event/body/time
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › rolls replay state back if audit persistence fails
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › denies worker access to identity.sessions
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › denies worker access to identity.users
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › denies worker access to catalog.published_answer_keys
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › denies worker access to assessment.answers
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › denies runtime dispatch/replay, worker identity mutation and direct operator update
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › measures pending/parked independently from ready eligibility
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › records a bounded local publication diagnostic, without an AWS capacity/cost claim
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › serves health and drains an admitted SDK send before closing DB on repeated stop
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+  ● Assessment durable dispatch › boots the compiled publisher and exits cleanly on SIGTERM
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      49 |
+      50 | beforeAll(async () => {
+    > 51 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      52 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      53 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      54 |   for (const login of [owner, worker, operator, runtime]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:51:3)
+
+
+  ● Test suite failed to run
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      169 |       count = Number(
+      170 |         (
+    > 171 |           await admin.query(
+          |           ^
+      172 |             `
+      173 |         SELECT
+      174 |           count(*)::integer AS n
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:171:11)
+
+FAIL apps/api/tests/integration/outbox-fencing.spec.ts
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects delivered when an unchanged tuple lock is released after natural lease expiry
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      27 |
+      28 | beforeAll(async () => {
+    > 29 |   await admin.query(`CREATE DATABASE ${databaseName}`);
+         |   ^
+      30 |   await admin.query(`CREATE ROLE ${workerRole} LOGIN PASSWORD '${password}'`);
+      31 |   fixture = new Pool({ connectionString: fixtureUrl.toString(), max: 2 });
+      32 |   fixture.on("error", (error: Error & { code?: string }) => {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-fencing.spec.ts:29:3)
+
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects failed when an unchanged tuple lock is released after natural lease expiry
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      27 |
+      28 | beforeAll(async () => {
+    > 29 |   await admin.query(`CREATE DATABASE ${databaseName}`);
+         |   ^
+      30 |   await admin.query(`CREATE ROLE ${workerRole} LOGIN PASSWORD '${password}'`);
+      31 |   fixture = new Pool({ connectionString: fixtureUrl.toString(), max: 2 });
+      32 |   fixture.on("error", (error: Error & { code?: string }) => {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-fencing.spec.ts:29:3)
+
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects stale delivered when the competing transaction rotates the token
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      27 |
+      28 | beforeAll(async () => {
+    > 29 |   await admin.query(`CREATE DATABASE ${databaseName}`);
+         |   ^
+      30 |   await admin.query(`CREATE ROLE ${workerRole} LOGIN PASSWORD '${password}'`);
+      31 |   fixture = new Pool({ connectionString: fixtureUrl.toString(), max: 2 });
+      32 |   fixture.on("error", (error: Error & { code?: string }) => {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-fencing.spec.ts:29:3)
+
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects stale failed when the competing transaction rotates the token
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      27 |
+      28 | beforeAll(async () => {
+    > 29 |   await admin.query(`CREATE DATABASE ${databaseName}`);
+         |   ^
+      30 |   await admin.query(`CREATE ROLE ${workerRole} LOGIN PASSWORD '${password}'`);
+      31 |   fixture = new Pool({ connectionString: fixtureUrl.toString(), max: 2 });
+      32 |   fixture.on("error", (error: Error & { code?: string }) => {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-fencing.spec.ts:29:3)
+
+
+  ● Test suite failed to run
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      90 |       connections = Number(
+      91 |         (
+    > 92 |           await admin.query(
+         |           ^
+      93 |             `
+      94 |             SELECT
+      95 |               count(*)::integer AS n
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/outbox-fencing.spec.ts:92:11)
+
+
+Test Suites: 2 failed, 1 passed, 3 total
+Tests:       23 failed, 6 passed, 29 total
+Snapshots:   0 total
+Time:        2.602 s
+Ran all test suites within paths "apps/api/tests/integration/outbox-dispatch.spec.ts", "apps/api/tests/integration/sqs-publisher.spec.ts", "apps/api/tests/integration/outbox-fencing.spec.ts".

@@ -1,0 +1,173 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/outbox-dispatch.spec.ts apps/api/tests/integration/sqs-publisher.spec.ts
+
+(node:378) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/outbox-dispatch.spec.ts
+  ● Assessment durable dispatch › atomically partitions a bounded batch between two workers and skips row locks
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:167:5)
+
+  ● Assessment durable dispatch › recovers after crash with a new token and fences every stale mutation
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:186:18)
+
+  ● Assessment durable dispatch › rejects an ACK after lease expiry even before another worker claims
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:196:18)
+
+  ● Assessment durable dispatch › publishes with no open DB transaction and recovers duplicate publication after ACK crash
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:202:18)
+
+  ● Assessment durable dispatch › persists retry eligibility in DB across recomposition and parks the final crashed attempt
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:220:18)
+
+  ● Assessment durable dispatch › replays only parked records atomically with audit and unchanged event/body/time
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:235:18)
+
+  ● Assessment durable dispatch › rolls replay state back if audit persistence fails
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:261:18)
+
+  ● Assessment durable dispatch › denies runtime dispatch/replay, worker identity mutation and direct operator update
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:291:18)
+
+  ● Assessment durable dispatch › measures pending/parked independently from ready eligibility
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:309:20)
+
+  ● Assessment durable dispatch › records a bounded local publication diagnostic, without an AWS capacity/cost claim
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      130 |       submissionId, occurredAt: "2026-10-08T00:00:00.000Z", deadline: "2026-10-08T01:00:00.000Z",
+      131 |       expired: false, submissionKind: "MANUAL", correlationId: randomUUID(), causationId: randomUUID()});
+    > 132 |     await fixture.query(`
+          |     ^
+      133 |       INSERT INTO assessment.attempts (
+      134 |         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+      135 |         submission_id, submission_event_id, submission_kind
+
+      at node_modules/pg-pool/index.js:45:11
+      at seed (apps/api/tests/integration/outbox-dispatch.spec.ts:132:5)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:316:22)
+
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       10 failed, 10 passed, 20 total
+Snapshots:   0 total
+Time:        3.855 s, estimated 5 s
+Ran all test suites within paths "apps/api/tests/integration/outbox-dispatch.spec.ts", "apps/api/tests/integration/sqs-publisher.spec.ts".

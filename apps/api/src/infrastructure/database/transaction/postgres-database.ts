@@ -18,6 +18,9 @@ export type DatabaseOperation =
   | "idempotency.read"
   | "idempotency.write"
   | "email.claim"
+  | "outbox.claim"
+  | "outbox.ack"
+  | "outbox.read"
   | "lock.acquire"
   | "transaction.begin"
   | "transaction.commit"
@@ -90,6 +93,11 @@ export class PostgresDatabase implements UnitOfWork {
       idle: this.pool.idleCount,
       waiting: this.pool.waitingCount,
     };
+  }
+
+  /** A committed relay claim cannot join a caller's still-open write transaction. */
+  assertOutsideTransaction(): void {
+    if (this.context.getStore()) throw new DatabaseError("DB_TRANSACTION_FORBIDDEN");
   }
 
   private emit(

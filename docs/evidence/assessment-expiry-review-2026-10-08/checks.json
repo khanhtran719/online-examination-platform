@@ -1,0 +1,62 @@
+{
+  "capturedAt": "2026-10-08",
+  "postgresVersion": "17.11",
+  "nodeMajor": 24,
+  "checks": {
+    "root": {
+      "exitCode": 0,
+      "api": 116,
+      "tooling": 37,
+      "web": 96,
+      "total": 249
+    },
+    "lint": {
+      "exitCode": 0,
+      "includes": [
+        "eslint",
+        "quality",
+        "contracts"
+      ]
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "build": {
+      "exitCode": 0
+    },
+    "integration": {
+      "exitCode": 0,
+      "passed": 122,
+      "deselected": 1,
+      "suites": 7,
+      "expiryCases": 17
+    },
+    "independentProbes": {
+      "exitCode": 1,
+      "redAssertions": 4,
+      "passControls": 3
+    },
+    "finalQualityAndContracts": {
+      "exitCode": 0,
+      "operations": 46,
+      "examples": 425
+    },
+    "diffCheck": {
+      "exitCode": 0
+    }
+  },
+  "cleanup": {
+    "fixtureDatabasesRemaining": 0,
+    "fixtureLoginsRemaining": 0,
+    "reviewOwnedPostgresAndMailpitStopped": true,
+    "volumesRetained": true
+  },
+  "notRun": [
+    "Chromium HTTPS rerun",
+    "live database outage recovery experiment",
+    "SIGKILL process during transaction experiment",
+    "k6",
+    "AWS deployment/cost/SLO"
+  ],
+  "probesSha256": "81568757c16d3ce50dbbff33ed3b87cc3de520ea125eeef948c514a578d72cbb"
+}

@@ -1,5 +1,6 @@
 import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
 import { AttemptStatus } from "../../domain/attempt";
+import { ExpiryRetry } from "../../application/ports/expiry-retry.port";
 import {
   AnswerWrite,
   AttemptRecord,
@@ -38,7 +39,8 @@ WITH locked AS MATERIALIZED (
     assessment.attempts
   WHERE
     status = 'IN_PROGRESS'
-    AND deadline <= clock_timestamp()
+    AND deadline <= statement_timestamp()
+    AND (expiry_retry_after IS NULL OR expiry_retry_after <= statement_timestamp())
     AND NOT (id = ANY($1::uuid[]))
   ORDER BY
     deadline,
@@ -58,7 +60,7 @@ function record(row: AttemptRecord): AttemptRecord {
   return { ...row, revision: Number(row.revision), status: row.status as AttemptStatus };
 }
 
-export class PostgresAttemptRepository implements AttemptRepository {
+export class PostgresAttemptRepository implements AttemptRepository, ExpiryRetry {
   constructor(private readonly db: PostgresDatabase) {}
 
   async lockActive(userId: string, examId: string): Promise<LockedAttempt | null> {
@@ -116,6 +118,47 @@ export class PostgresAttemptRepository implements AttemptRepository {
     return row ? { ...record(row), serverNow: row.serverNow } : null;
   }
 
+  async deferExpiry(attemptId: string): Promise<void> {
+    // Eligibility is operational metadata, not a second submission claim. A
+    // concurrent manual/sweep winner must never have its business row changed.
+    // Bounded jitter gives an initial delay of 0.8–1.2s and a cap of 30s.
+    const jitter = 0.8 + Math.random() * 0.4;
+    await this.db.query(
+      "lock.acquire",
+      `
+      WITH locked AS MATERIALIZED (
+        SELECT
+          id,
+          expiry_retry_count
+        FROM
+          assessment.attempts
+        WHERE
+          id = $1
+          AND status = 'IN_PROGRESS'
+        FOR UPDATE SKIP LOCKED
+      ), timed AS MATERIALIZED (
+        SELECT
+          locked.*,
+          clock_timestamp() AS server_now
+        FROM
+          locked
+      )
+      UPDATE assessment.attempts AS attempt
+      SET
+        expiry_retry_count = LEAST(16, timed.expiry_retry_count + 1),
+        expiry_retry_after = timed.server_now + (
+          LEAST(30000::float8, 1000 * power(2, timed.expiry_retry_count) * $2::float8)
+          * interval '1 millisecond'
+        )
+      FROM
+        timed
+      WHERE
+        attempt.id = timed.id
+      `,
+      [attemptId, jitter],
+    );
+  }
+
   async dueBacklog(): Promise<{ due: number; oldestDueAgeMs: number | null }> {
     const row = (
       await this.db.query<{ due: number; oldestDueAgeMs: number | null }>(
@@ -131,7 +174,7 @@ export class PostgresAttemptRepository implements AttemptRepository {
           assessment.attempts
         WHERE
           status = 'IN_PROGRESS'
-          AND deadline <= clock_timestamp()
+          AND deadline <= statement_timestamp()
         `,
       )
     ).rows[0];

@@ -64,6 +64,9 @@ describe("DeadlineSweep", () => {
         const open = available.filter((item) => item.status === "IN_PROGRESS");
         return { due: open.length, oldestDueAgeMs: open.length ? 1 : null };
       },
+      async deferExpiry() {
+        /* PostgreSQL integration tests own durable cooldown behavior. */
+      },
     };
     const outbox = {
       async append(event: SubmittedEvent) {
@@ -92,7 +95,7 @@ describe("DeadlineSweep", () => {
     expect(events[0]?.causationId).toBe("00000000-0000-4000-8000-000000000099");
     expect(poison.status).toBe("IN_PROGRESS");
     expect(due.status).toBe("EXPIRED");
-    expect(commits).toBe(3);
+    expect(commits).toBe(4); // Includes the separate retry-scheduling commit.
     const second = await sweep.runOnce("00000000-0000-4000-8000-000000000098");
     expect(second.processed).toBe(0);
     expect(events).toHaveLength(1);
@@ -110,6 +113,9 @@ describe("DeadlineSweep", () => {
         },
         async dueBacklog() {
           return { due: 1, oldestDueAgeMs: 5 };
+        },
+        async deferExpiry() {
+          throw new Error("No row was claimed");
         },
       },
       {

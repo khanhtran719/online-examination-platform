@@ -1,5 +1,12 @@
 # Test inventory
 
+Latest2026-10-09: [outbox delivery evidence](evidence/outbox-dispatch-2026-10-08/README.md)
+records280 root (144 API/40 tooling/96 Web) and173 integration/11 suites/0 skips.
+New publisher13, config11, supervisor2 unit cases; outbox full-schema19,
+SDK/local HTTP6 and independent fencing4 integration cases. SQL fixture layout
+follow-ups preserve tokens; current PG regressions cover those executable queries.
+Consumer/inbox/grading and live AWS remain pending.
+
 Baseline cases are not permanently skipped/disabled. Historical review-only probes retain the original RED evidence; current Catalog regressions pass after the fixes below.
 
 | Suite | Cases | Purpose | Runtime |
@@ -33,6 +40,9 @@ Baseline cases are not permanently skipped/disabled. Historical review-only prob
 | [Expiry supervisor unit](../apps/api/src/modules/assessment/application/services/__tests__/expiry-supervisor.unit.spec.ts) | 4 | immediate full batch, idle jitter, capped backoff, ready only after success, no resubmit when logging throws | Jest / pure TypeScript |
 | [Expiry worker config unit](../apps/api/src/config/__tests__/expiry-worker-config.unit.spec.ts) | 2 | five-second default without identity secrets; rejects a tight poll and a backoff ceiling below its start | Jest / pure validation |
 | [Assessment expiry integration](../apps/api/tests/integration/assessment-expiry.spec.ts) | 17 | deadline boundaries, offline/revoked session, both race winners, real lock wait, SKIP LOCKED, poison row, outbox rollback, kill inside the transaction, lost ack, two workers, quota/frozen version, grants, query ceilings, compiled SIGTERM/restart, live versus ready | PostgreSQL 17 / expiry role, local HTTP |
+| [Expiry retry/observer unit](../apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep-retry.unit.spec.ts) | 2 | progress past a full failed batch after recomposition; observation after UoW completion cannot retry a durable acceptance | Jest / pure TypeScript |
+| [Expiry lag tooling unit](../scripts/__tests__/expiry-lag.unit.spec.mjs) | 3 | DB/local clock offset and uncertainty, acceptance versus delayed COMMIT acknowledgement, absent observations stay null | Node test |
+| [Independent expiry fix regressions](../apps/api/tests/integration/assessment-expiry-fixes.spec.ts) | 21 | corrupt0011 upgrade fails atomically, NULL provenance rejection/immutability, batch1/2 poison fairness, persisted cooldown/recomposition/two workers, runtime denial, winner no-op, retry cap/DB time, delayed pre-commit witness/observer rollback/collector failure, observed post-lock time and natural100k-future deadline range | PostgreSQL17 / actual migration runner and restricted roles |
 
 Historical normalization:66 Jest/12 suites +34 Node =100 unit/tooling;30 foundation +22 Identity =52 integration; **152 PASS, none skipped**. Current database suite adds one queued-work drain regression after the persistence evaluation, so the table now lists31 foundation cases. The Catalog increment adds5 policy cases and11 PostgreSQL cases. Focused RED commands temporarily select individual regressions, no permanently skipped baseline. Actual entry-point smoke/operator CLI/diagnostic benchmark are additional script checks, not counted as cases. [Review closure](api-architecture-review.md#7-closure-sau-source-normalization) and [normalization experiment](../experiments/architecture-normalization/README.md) record earlier evidence; [Phase04 review](phase-04-review.md) retains historical142-test evidence. Exam start/save/submit now have the Assessment integration row below. Inbox/SQS and AWS/restore/SLO/cost remain pending; local browser HTTPS was subsequently checked below; local fixtures do not replace those gates.
 
@@ -128,3 +138,9 @@ Browser20 includes4 existing regression +8 public experience +4 foundation +2 on
 ## Deadline sweep — 2026-10-08
 
 [Expiry integration](../apps/api/tests/integration/assessment-expiry.spec.ts) adds 17 real PostgreSQL/HTTP cases. Unit additions are submission core 2, deadline sweep 2, expiry supervisor 4, expiry config 2, and 2 policy cases (late MANUAL, DEADLINE only when expired). Policy is now 8. Assessment integration stays 23. Root `npm test` is 249: API 116, tooling 37, Web 96. The Web increase from 93 is pre-existing worktree UI work, not this increment. Restricted PostgreSQL/HTTP/SMTP is 7 suites, 123 passed, including the Catalog diagnostic writer the 105-case run left out. [Evidence](evidence/assessment-expiry-2026-10-08/README.md). Identity HTTPS was not rerun. These checks close ATT-07 locally and a deadline subset of ATT-10/11. They do not close ATT-08, ATT-09, scoring, SQS or AWS acceptance.
+
+## Independent deadline review fixes — 2026-10-08
+
+[Closure](assessment-expiry-fixes-2026-10-08.md)/[evidence](evidence/assessment-expiry-fixes-2026-10-08/README.md) restores ATT-07 after4 review findings.21 new restricted-PG cases plus the123 existing cases pass **144/144,8 suites,0 skipped**, with actual migration upgrade rollback/rerun, fairness/cooldown/grants, lock time, natural range and delayed COMMIT ACK/collector controls. The original17 expiry tests now make failed rows eligible explicitly through their isolated fixture when testing recovery; they do not assume immediate retry during cooldown. Fixture shutdown waits for zero sessions and captures safe error codes before unforced DROP.
+
+New unit retry/observer2 and lag tooling3 bring root to **254 PASS =118 API/20 suites +40 tooling +96 Web**. These are not extra cases on top of254. Independent RED before runtime fixes was6 FAIL/5 PASS on the earlier11-case fix suite; ER-03 also has the original review pre-commit witness proof. Initial invalid publication fixture/EPERM/intermediate cleanup+SMTP failures are separate evidence, not current baseline success. Full HTTP/SMTP and compiled-worker checks passed; Chromium HTTPS, AWS and broader fault/SLO/cost matrices were not rerun/accepted.

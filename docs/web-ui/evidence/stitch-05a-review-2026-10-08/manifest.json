@@ -1,0 +1,59 @@
+{
+  "projectId": "18257628123124303955",
+  "projectUrl": "https://stitch.withgoogle.com/projects/18257628123124303955",
+  "retrievedOn": "2026-10-08",
+  "scope": "Read-only 05A screenshot review. Evidence saved; no template acceptance, app changes or external generation/refinement.",
+  "screens": [
+    {
+      "screenId": "1642281b82914f34bba01f4569e7f41c",
+      "pageId": "EP-19",
+      "title": "EP-19 — Đề thi quản trị — V4 — Desktop — Loaded",
+      "state": "Loaded",
+      "deviceType": "DESKTOP",
+      "file": "exam-list-desktop-v4.png",
+      "width": 2560,
+      "height": 2476,
+      "logicalViewportWidth": 1280,
+      "sha256": "ecc5f1b23f16a8dc523e98b0548d177f2288bc433075b660150c34351fe53eba",
+      "sourceFile": "projects/18257628123124303955/screens/1642281b82914f34bba01f4569e7f41c/fileEntries/screenshot",
+      "archiveStatus": "review_evidence_not_selected_as_template"
+    },
+    {
+      "screenId": "59c8a6e4b05d4cbf8d54505d3f3303b8",
+      "pageId": "EP-20",
+      "title": "EP-20 — Soạn đề — V4 — Desktop — Edit Information",
+      "state": "Edit Information",
+      "deviceType": "DESKTOP",
+      "file": "exam-information-desktop-v4.png",
+      "width": 2560,
+      "height": 4068,
+      "logicalViewportWidth": 1280,
+      "sha256": "aafc78e869db8ba133e8820ca45a5b6238ab435b6600fe28475c6561f36e10ad",
+      "sourceFile": "projects/18257628123124303955/screens/59c8a6e4b05d4cbf8d54505d3f3303b8/fileEntries/screenshot",
+      "archiveStatus": "review_evidence_not_selected_as_template"
+    },
+    {
+      "screenId": "70f9bc116ec544f29510f7cf38ce8ff1",
+      "pageId": "EP-20",
+      "title": "EP-20 — Soạn đề — V4 — Desktop — Edit Sections and questions",
+      "state": "Edit Sections and questions",
+      "deviceType": "DESKTOP",
+      "file": "exam-structure-desktop-v4.png",
+      "width": 2560,
+      "height": 2736,
+      "logicalViewportWidth": 1280,
+      "sha256": "b285a957b047c16029a5849cb2c1e022ea28a50900a120b61a9ade08cc64bed1",
+      "sourceFile": "projects/18257628123124303955/screens/70f9bc116ec544f29510f7cf38ce8ff1/fileEntries/screenshot",
+      "archiveStatus": "review_evidence_not_selected_as_template"
+    }
+  ],
+  "inventoryDelta": {
+    "previousCount": 56,
+    "currentCount": 59,
+    "newCount": 3,
+    "existingMetadataUnchanged": true
+  },
+  "limitations": [
+    "Static screenshots only; interactive behavior, keyboard, accessibility, responsive layouts, motion and live API are unverified."
+  ]
+}

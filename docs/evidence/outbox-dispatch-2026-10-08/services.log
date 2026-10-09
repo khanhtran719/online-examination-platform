@@ -1,0 +1,8 @@
+Container examination-identity-https-postgres-1 Stopping 
+ Container examination-identity-https-postgres-1 Stopped 
+
+PostgreSQL stop exit_code=0
+ Container examination-platform-mailpit-1 Stopping 
+ Container examination-platform-mailpit-1 Stopped 
+
+Mailpit stop exit_code=0

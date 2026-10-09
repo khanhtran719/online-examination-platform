@@ -1,6 +1,67 @@
 # Implementation plan
 
-## Active scope — ATT-07 deadline sweep, 2026-10-08
+## Active increment — Assessment outbox dispatch, 2026-10-08
+
+Scope: ASYNC-02–04 and publisher crash/lease subset of ASYNC-11. No scoring, inbox,
+Reporting, AWS provisioning or production acceptance. Assessment owns submission
+publication; its plain Application service takes a dispatch repository and shared
+queue delivery port. Module-private PostgreSQL adapter owns claim/fencing SQL;
+global SQS adapter owns SDK/serialization transport. Worker calls a public
+Assessment factory, without private module imports. This specializes existing
+architecture §79/ADR-001 and adds no new business module or broker.
+
+Invariant: preserve original event identity/body, publish outside any DB
+transaction, mark only after successful broker acknowledgement and a live matching
+lease. At-least-once publication requires the later grading inbox. Claim at most
+the configured concurrency slots; all sends start immediately, with bounded
+request deadlines shorter than lease. PostgreSQL time owns eligibility, lease,
+retry and age. Crash on the last try must recover into parking. Separate replay
+window permits audited retries of aged records without rewriting created_at/body.
+
+Plan/checks:
+
+- [x] Fail-first use-case tests: send/ACK ordering, retry bounds, poison/aged/final
+  claims, telemetry isolation, shutdown admission.
+- [x] Real restricted-PG tests: competing workers, SKIP LOCKED, stale token/expired
+  ACK, restart/crash after ACK, retry eligibility, rollback and least privilege.
+- [x] SQS SDK local HTTP contract tests: exact body, timeout, transient/permanent
+  rejection, missing/invalid ACK, no hidden SDK retry. Live SQS remains unmeasured.
+- [x] Forward migration 0014, dedicated worker role, operator-only audited replay
+  with unchanged event identity and atomic audit rollback.
+- [x] Isolated typed config, public composition, health/backoff/drain entry point,
+  bounded logs/backlog metrics and deployment/replay runbook.
+- [x] Full repository checks, preserved prior migrations/evidence, clean disposable
+  fixtures and checklist update with new evidence. No performance/cost win claimed.
+
+Outcome2026-10-09: [closure](outbox-dispatch-2026-10-08.md)/[evidence](evidence/outbox-dispatch-2026-10-08/README.md),280 root +173 integration PASS; ASYNC-02–04 accepted locally,73/216 checked. Independent lock-wait RED led to post-lock ACK/failure recheck. Consumer/AWS gates remain open.
+
+## Active scope — ATT-07 review fixes COMPLETE locally, 2026-10-08
+
+User authorizes finishing the review check and fixing ER-01–04. The review is complete; its4 RED probes and checks are recorded. Owner: Assessment; WRITE scheduler workflow plus diagnostic measurement. Preserve all11 applied migration bytes and historical evidence; no scoring/SQS/Web/AWS/deploy/commit.
+
+Design: persist bounded per-attempt expiry retry count/time in PostgreSQL after a failed acceptance rollback; claim ignores cooling rows and always rechecks post-lock time. Retry metadata is workflow data behind an Application port, not business FAILED or local authoritative memory. One short UoW for acceptance+outbox; a separate bounded row-locked retry scheduling transaction must recheck IN_PROGRESS so a concurrent winner is never overwritten. No lease is needed for atomic claim+effect. Forward migrations enforce accepted kind non-null without inventing provenance, and add only the retry fields/grants needed. Stable statement-time discovery enables deadline index ranges; authoritative acceptance remains clock_timestamp after lock. Measurement separates deadline-to-acceptance from calibrated client commit-ack observation; telemetry cannot affect commit semantics. Original raw files stay immutable.
+
+- [x] EF-01: Confirm review complete; capture source/migration/evidence baseline and agree concrete fix scope.
+- [x] EF-02: Independent restricted-PG regression suite plus measurement/unit cases RED; capture comparable scheduler baseline separately.
+- [x] EF-03: Implement durable bounded retry fairness, forward provenance guard and indexable discovery/backlog; preserve HTTP query ceilings.
+- [x] EF-04: Correct measurement labels; add commit-ack observer and clock calibration, fresh diagnostics and historical correction.
+- [x] EF-05: Run affected/new unit/real-PG/HTTP/process checks, root/lint/typecheck/build/contracts; self-review and verify immutable history.
+- [x] EF-06: Publish evidence and closure report, clean fixtures, restore ATT-07 only after all four findings close locally.
+
+Outcome: [Closure](assessment-expiry-fixes-2026-10-08.md)/[evidence](evidence/assessment-expiry-fixes-2026-10-08/README.md): ER-01–04 CLOSED locally;254 root/144 full integration PASS,0 skipped, contracts46/425.21 new PG regressions include corrupt0011 migration rollback and delayed pre-commit witness. Final source/config hashes,13 built migrations,75 unchanged historical files and cleanup verified; ATT-07 restored70/216. Broader ATT-10/11, scoring/SQS/retention/Reporting/ID-11/Phase04/AWS remain open. No stage/commit/deploy or unrelated Web edit.
+
+## Prior scope — independent ATT-07 review COMPLETE, 2026-10-08
+
+User requested review of Grok's finished deadline sweep. [Report](assessment-expiry-review-2026-10-08.md)/[evidence](evidence/assessment-expiry-review-2026-10-08/README.md):4 findings,4 RED assertions/3 PASS controls. Runtime remains unchanged. ATT-07 is `[ ] — IN PROGRESS`;69/216 checked,147 pending. Prior CAT-09/10 and ATT-01–06 acceptance remains. No fixes, scoring/SQS/AWS/Web work, stage/commit or deploy included.
+
+- [x] Inspect owner/boundaries/transactions/locks/provenance/grants/config/lifecycle and original evidence.
+- [x] Fresh root249 and restricted PG/HTTP/SMTP122 PASS/1 diagnostic deselected; lint/quality/contracts/typecheck/build PASS. Existing compiled worker lifecycle checks pass; HTTPS not rerun.
+- [x] Independently reproduce failed-prefix starvation, NULL accepted provenance, volatile unindexed discovery and mislabeled commit lag; verify two-worker idempotency and rollback recovery controls.
+- [x] Record separate raw evidence, preserve protected source/migrations/history, clean fixtures, reopen affected delivery status.
+
+Next authorized implementation would fix ER-02/01/04/03 and rerun RED→GREEN checks before restoring ATT-07 acceptance. This review does not itself implement those fixes. Full ATT-10/11 and production gates remain open.
+
+## Prior implementation — ATT-07 deadline sweep (reopened), 2026-10-08
 
 Owner: Assessment. Flow: WRITE. One short transaction per attempt. Claim and effect commit together, so this increment does not add a lease or fencing table. ATT-01–06 and CAT-09–10 stay accepted. Scoring, dispatcher/SQS, result/history, retention, Web and AWS stay out.
 
@@ -18,13 +79,13 @@ Runtime: `createExpiryWorker` composes private adapters. `workers/scheduler/expi
 
 Checks: unit policy and core, real PostgreSQL lock/commit/race/crash/grant tests, manual hot-path query ceilings unchanged, compiled scheduler health and restart, and a separate measurement database. Baseline scheduler throughput is unmeasured. Tick ATT-07 only after that evidence. Do not commit or deploy.
 
-Closed locally on 2026-10-08. [Evidence](evidence/assessment-expiry-2026-10-08/README.md). ATT-07 is checked. ATT-10 and ATT-11 stay open with a deadline-sweep subset only. ATT-08, ATT-09, scoring, SQS, Reporting, Web and production stay open.
+Originally closed locally on 2026-10-08. [Evidence](evidence/assessment-expiry-2026-10-08/README.md) is historical. Independent review reopened ATT-07; current status follows [review](assessment-expiry-review-2026-10-08.md). ATT-10 and ATT-11 stay open with a deadline-sweep subset only. ATT-08, ATT-09, scoring, SQS, Reporting, Web and production stay open.
 
 - [x] Shared `acceptAttemptSubmission` for manual `MANUAL` and sweep `DEADLINE`, without a second copy of the acceptance rules.
 - [x] One short transaction per attempt: `FOR UPDATE SKIP LOCKED`, post-lock `clock_timestamp()`, outbox in the same commit. No lease table.
-- [x] Forward `0011_submission_kind.sql` and `examination_expiry_worker`. `0001`–`0010` bytes match the baseline hashes.
-- [x] Real PostgreSQL/HTTP cases for deadline boundaries, offline and revoked sessions, duplicate ticks, two workers, both race winners, locked oldest row, poison row, outbox rollback, connection death, lost acknowledgement, quota/frozen version, grants, query ceilings, compiled SIGTERM/restart and `/live` versus `/ready`.
-- [x] First measured scheduler runs and one repeated batch-50 run, plus batch 10. Manual statement counts stay 11/11/10 and 4/4/3. No before-scheduler throughput was invented.
+- [ ] **IN PROGRESS — ER-01** Forward `0011_submission_kind.sql` and `examination_expiry_worker` exist, but the CHECK permits accepted NULL provenance. `0001`–`0010` bytes match the baseline hashes.
+- [ ] **IN PROGRESS — ER-02/04** Existing PostgreSQL/HTTP cases pass, but full failed-batch fairness and natural deadline range plans fail independent probes. Existing cases cover deadline boundaries, offline and revoked sessions, duplicate ticks, two workers, both race winners, locked oldest row, poison row, outbox rollback, connection death, lost acknowledgement, quota/frozen version, grants, query ceilings, compiled SIGTERM/restart and `/live` versus `/ready`.
+- [ ] **IN PROGRESS — ER-03** First measured scheduler runs exist, but acceptance lag was labeled commit lag. Need correction/new measurement; one repeated batch-50 run, plus batch 10. Manual statement counts stay 11/11/10 and 4/4/3. No before-scheduler throughput was invented.
 
 ## Prior scope — Grok deadline auto-submit handoff COMPLETE, 2026-10-08
 

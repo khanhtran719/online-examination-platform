@@ -303,6 +303,21 @@ async function past(attemptId: string): Promise<void> {
   );
 }
 
+/** Test recovery without a wall-clock sleep: make persisted cooldown eligible by DB time. */
+async function allowRetryNow(attemptId: string): Promise<void> {
+  await fixture.query(
+    `
+    UPDATE assessment.attempts
+    SET
+      expiry_retry_after = clock_timestamp() - interval '1 second'
+    WHERE
+      id = $1
+      AND status = 'IN_PROGRESS'
+    `,
+    [attemptId],
+  );
+}
+
 async function outboxCount(attemptId?: string): Promise<number> {
   if (!attemptId) return scalar("SELECT count(*)::int AS n FROM platform.outbox");
   return scalar("SELECT count(*)::int AS n FROM platform.outbox WHERE aggregate_id = $1", [
@@ -925,6 +940,7 @@ describe("deadline sweep on restricted PostgreSQL", () => {
       await fixture.query("DROP TRIGGER IF EXISTS expiry_poison ON platform.outbox");
       await fixture.query("DROP FUNCTION IF EXISTS public.expiry_poison()");
     }
+    await allowRetryNow(ids[2]!);
     await limited.runOnce(tick());
     expect((await attemptRow(ids[2]!)).status).toBe("EXPIRED");
     expect(await outboxCount(ids[2]!)).toBe(1);
@@ -958,6 +974,7 @@ describe("deadline sweep on restricted PostgreSQL", () => {
       await fixture.query("DROP TRIGGER IF EXISTS expiry_block ON platform.outbox");
       await fixture.query("DROP FUNCTION IF EXISTS public.expiry_block()");
     }
+    await allowRetryNow(id);
     await sweep.runOnce(tick());
     expect((await attemptRow(id)).status).toBe("EXPIRED");
     expect(await outboxCount(id)).toBe(1);

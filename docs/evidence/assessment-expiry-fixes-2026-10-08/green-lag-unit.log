@@ -1,0 +1,11 @@
+✔ calibrates database UTC to local wall clock with a round-trip uncertainty bound (1.489292ms)
+✔ commit acknowledgement includes persistence delay separately from acceptance lag (0.202625ms)
+✔ does not turn absent observations into zero latency (0.090334ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55.046917

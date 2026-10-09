@@ -1,0 +1,7 @@
+{"name":"ER-01 accepted NULL provenance is rejected","pass":false}
+{"name":"control accepted provenance cannot later change","pass":true}
+{"name":"ER-02 younger row progresses past two repeatedly failing rows","pass":false}
+{"name":"control clearing poison recovers rolled-back attempts","pass":true}
+{"name":"control concurrent workers commit exactly once","pass":true}
+{"name":"ER-03 labeled commit lag includes mandatory pre-commit work","pass":false}
+{"name":"ER-04 current empty claim has a deadline index range","pass":false}

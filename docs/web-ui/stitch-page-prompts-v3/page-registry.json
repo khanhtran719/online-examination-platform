@@ -5,11 +5,12 @@
   "routeSource": "../../../apps/web/src/app/router.tsx",
   "routePatternCount": 39,
   "productPageFamilyCount": 33,
-  "retainedPageFamilyCount": 3,
-  "remainingPageFamilyCount": 30,
+  "retainedPageFamilyCount": 16,
+  "remainingPageFamilyCount": 13,
   "statusMeaning": {
     "template_retained": "Existing selected reference images are saved; implementation defects remain deferred.",
-    "prompt_prepared": "Prompt is ready locally; no claim that Stitch frames have been generated."
+    "prompt_prepared": "Prompt is ready locally; retrieved and verified frame coverage has not yet been recorded.",
+    "design_reviewed_with_open_findings": "The referenced screenshots and their actual viewport coverage are retrieved and reviewed; open issues are recorded. This is not acceptance of implementation or interactive behavior."
   },
   "pages": [
     {
@@ -60,12 +61,27 @@
       "paths": [
         "/login"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "01-auth.md"
+      "prompt": "01-auth.md",
+      "review": "../stitch-auth-review-2026-10-08.md",
+      "references": [
+        {
+          "screenId": "33f43e61c9e948939906a003d9d1bf7b",
+          "file": "../templates/auth-v3/login-desktop-v3.png"
+        },
+        {
+          "screenId": "ccce98ff690e407288e72c7a05e807cf",
+          "file": "../templates/auth-v3/login-mobile-v3.png"
+        }
+      ],
+      "template": "../templates/auth-v3/manifest.json",
+      "defects": "../templates/auth-v3/implementation-notes.md",
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Visual reference with deferred implementation defects"
     },
     {
       "id": "EP-05",
@@ -73,12 +89,27 @@
       "paths": [
         "/register"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "01-auth.md"
+      "prompt": "01-auth.md",
+      "review": "../stitch-auth-review-2026-10-08.md",
+      "references": [
+        {
+          "screenId": "3e01a78d320e4dd39ccfdba238d6d8de",
+          "file": "../templates/auth-v3/register-desktop-v3.png"
+        },
+        {
+          "screenId": "42a847ef5d8f419b8232da7dcf74882b",
+          "file": "../templates/auth-v3/register-mobile-v3.png"
+        }
+      ],
+      "template": "../templates/auth-v3/manifest.json",
+      "defects": "../templates/auth-v3/implementation-notes.md",
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Visual reference with deferred implementation defects"
     },
     {
       "id": "EP-06",
@@ -86,12 +117,27 @@
       "paths": [
         "/check-email"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "01-auth.md"
+      "prompt": "01-auth.md",
+      "review": "../stitch-auth-review-2026-10-08.md",
+      "references": [
+        {
+          "screenId": "91c046fa6d0643b68b6fabd835e3f407",
+          "file": "../templates/auth-v3/check-email-mobile-v3.png"
+        },
+        {
+          "screenId": "b1d959d82bc94671b0bc410334dde71b",
+          "file": "../templates/auth-v3/check-email-desktop-v3.png"
+        }
+      ],
+      "template": "../templates/auth-v3/manifest.json",
+      "defects": "../templates/auth-v3/implementation-notes.md",
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Visual reference with deferred implementation defects"
     },
     {
       "id": "EP-07",
@@ -99,12 +145,27 @@
       "paths": [
         "/verify-email"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "01-auth.md"
+      "prompt": "01-auth.md",
+      "review": "../stitch-auth-review-2026-10-08.md",
+      "references": [
+        {
+          "screenId": "cebb8e9467bd40caa990b47e7ec4fb2d",
+          "file": "../templates/auth-v3/verify-email-mobile-v3.png"
+        },
+        {
+          "screenId": "dc14c2907d9e426ba6649d63fe35bc6c",
+          "file": "../templates/auth-v3/verify-email-desktop-v3.png"
+        }
+      ],
+      "template": "../templates/auth-v3/manifest.json",
+      "defects": "../templates/auth-v3/implementation-notes.md",
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Visual reference with deferred implementation defects"
     },
     {
       "id": "EP-08",
@@ -112,12 +173,87 @@
       "paths": [
         "/exams"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "02-catalog-profile.md"
+      "prompt": "02-catalog-profile.md",
+      "review": "../stitch-catalog-profile-v4-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "references": [
+        {
+          "screenId": "a8f1d91a47684aae84dee5d66222eef3",
+          "file": "../templates/catalog-profile-v4/exam-list-mobile-v4.png"
+        },
+        {
+          "screenId": "801fc02aa8bd4586b0b1ee821d5fd009",
+          "file": "../templates/catalog-profile-v4/exam-list-desktop-v4.png"
+        }
+      ],
+      "previousReviews": [
+        "../stitch-catalog-profile-review-2026-10-08.md"
+      ],
+      "template": "../templates/catalog-profile-v4/manifest.json",
+      "defects": "../templates/catalog-profile-v4/implementation-notes.md",
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Normal visual reference with deferred defects; complete dialogs/states and interactions are not accepted",
+      "stateCoverage": "Normal desktop/mobile and seven Mobile V4 states retained; findings 02B-01–05 remain open. Seven desktop state counterparts uncreated/deferred while remaining desktop pages take priority.",
+      "supplementaryPrompts": [
+        "02b-catalog-profile-states.md"
+      ],
+      "statesReview": {
+        "status": "template_retained",
+        "reviewedOn": "2026-10-08",
+        "report": "../stitch-02b-review-2026-10-08.md",
+        "prompt": "02b-catalog-profile-states.md",
+        "acceptedAsTemplate": true,
+        "coverage": {
+          "mobileCreated": 7,
+          "mobileRequired": 7,
+          "desktopCreated": 0,
+          "desktopRequired": 7
+        },
+        "references": [
+          {
+            "screenId": "d7012a2deb2544a5ac95ff3703775d93",
+            "state": "Empty category",
+            "file": "../templates/catalog-profile-v4/states/exam-list-empty-category-mobile-v4.png"
+          },
+          {
+            "screenId": "6c1a7c576fa5422d96d31646567eb8b2",
+            "state": "Error",
+            "file": "../templates/catalog-profile-v4/states/exam-list-error-mobile-v4.png"
+          },
+          {
+            "screenId": "8234d78b01bd456c843aa8890f117ca2",
+            "state": "Filter sheet",
+            "file": "../templates/catalog-profile-v4/states/exam-list-filter-sheet-mobile-v4.png"
+          },
+          {
+            "screenId": "8def7bf52098434bbfbb0faa339323fe",
+            "state": "Load more error",
+            "file": "../templates/catalog-profile-v4/states/exam-list-load-more-error-mobile-v4.png"
+          },
+          {
+            "screenId": "0c9a086ba6524959ad3579e27739e6c2",
+            "state": "Load more pending",
+            "file": "../templates/catalog-profile-v4/states/exam-list-load-more-pending-mobile-v4.png"
+          },
+          {
+            "screenId": "6e975d9e733b47f89afb289d6cfe3e43",
+            "state": "Loading",
+            "file": "../templates/catalog-profile-v4/states/exam-list-loading-mobile-v4.png"
+          },
+          {
+            "screenId": "be78ab4fda0b458284e934594bf6bea7",
+            "state": "Search no match",
+            "file": "../templates/catalog-profile-v4/states/exam-list-search-no-match-mobile-v4.png"
+          }
+        ],
+        "acceptedOn": "2026-10-08",
+        "acceptedFor": "Visual reference with deferred 02B findings; interactive behavior remains unverified"
+      }
     },
     {
       "id": "EP-09",
@@ -125,12 +261,55 @@
       "paths": [
         "/exams/:examId"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "02-catalog-profile.md"
+      "prompt": "02-catalog-profile.md",
+      "review": "../stitch-catalog-profile-v4-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "references": [
+        {
+          "screenId": "e01b2d07979b4378aeebb98c1d7005d2",
+          "file": "../templates/catalog-profile-v4/exam-detail-mobile-v4.png"
+        },
+        {
+          "screenId": "d709369eada140eca5083cb1e8b40865",
+          "file": "../templates/catalog-profile-v4/exam-detail-desktop-v4.png"
+        }
+      ],
+      "previousReviews": [
+        "../stitch-catalog-profile-review-2026-10-08.md"
+      ],
+      "template": "../templates/catalog-profile-v4/manifest.json",
+      "defects": "../templates/catalog-profile-v4/implementation-notes.md",
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Normal visual reference with deferred defects; complete dialogs/states and interactions are not accepted",
+      "stateCoverage": "Normal and ready/conflict dialogs retained; remaining 02B states uncreated/deferred while remaining desktop page layouts take priority.",
+      "supplementaryPrompts": [
+        "02a-catalog-profile-dialogs.md",
+        "02b-catalog-profile-states.md"
+      ],
+      "dialogReview": {
+        "status": "template_retained",
+        "reviewedOn": "2026-10-08",
+        "report": "../stitch-dialog-review-2026-10-08.md",
+        "prompt": "02a-catalog-profile-dialogs.md",
+        "acceptedAsTemplate": true,
+        "references": [
+          {
+            "screenId": "294c18aa1dc1432bbdb8cc882de54bdb",
+            "file": "../templates/catalog-profile-v4/dialogs/start-confirmation-mobile-v4.png"
+          },
+          {
+            "screenId": "18c214c1cc6d40f987cd3b71e2b04cb3",
+            "file": "../templates/catalog-profile-v4/dialogs/start-confirmation-desktop-v4.png"
+          }
+        ],
+        "acceptedOn": "2026-10-08",
+        "acceptedFor": "Visual reference with deferred DLG findings; interactive behavior remains unverified"
+      }
     },
     {
       "id": "EP-10",
@@ -138,12 +317,55 @@
       "paths": [
         "/profile"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "02-catalog-profile.md"
+      "prompt": "02-catalog-profile.md",
+      "review": "../stitch-catalog-profile-v4-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "references": [
+        {
+          "screenId": "81b4051100354c12b2b15363cb77b0d6",
+          "file": "../templates/catalog-profile-v4/profile-mobile-v4.png"
+        },
+        {
+          "screenId": "4d096315e9994045b67307d0530f5ea4",
+          "file": "../templates/catalog-profile-v4/profile-desktop-v4.png"
+        }
+      ],
+      "previousReviews": [
+        "../stitch-catalog-profile-review-2026-10-08.md"
+      ],
+      "template": "../templates/catalog-profile-v4/manifest.json",
+      "defects": "../templates/catalog-profile-v4/implementation-notes.md",
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Normal visual reference with deferred defects; complete dialogs/states and interactions are not accepted",
+      "stateCoverage": "Normal and ready/conflict dialogs retained; remaining 02B states uncreated/deferred while remaining desktop page layouts take priority.",
+      "supplementaryPrompts": [
+        "02a-catalog-profile-dialogs.md",
+        "02b-catalog-profile-states.md"
+      ],
+      "dialogReview": {
+        "status": "template_retained",
+        "reviewedOn": "2026-10-08",
+        "report": "../stitch-dialog-review-2026-10-08.md",
+        "prompt": "02a-catalog-profile-dialogs.md",
+        "acceptedAsTemplate": true,
+        "references": [
+          {
+            "screenId": "0c2c28b743a1452f9a9f1dacc769c9d6",
+            "file": "../templates/catalog-profile-v4/dialogs/profile-conflict-mobile-v4.png"
+          },
+          {
+            "screenId": "03de693b67424fddb8e902207dc0315c",
+            "file": "../templates/catalog-profile-v4/dialogs/profile-conflict-desktop-v4.png"
+          }
+        ],
+        "acceptedOn": "2026-10-08",
+        "acceptedFor": "Visual reference with deferred DLG findings; interactive behavior remains unverified"
+      }
     },
     {
       "id": "EP-11",
@@ -151,12 +373,43 @@
       "paths": [
         "/attempts/:attemptId/status"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "03-results-history-ranking.md"
+      "prompt": "03a-results-desktop.md",
+      "supplementaryPrompts": [
+        "03-results-history-ranking.md"
+      ],
+      "review": "../stitch-03a-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "viewportsReviewed": [
+        1280
+      ],
+      "acceptedAsTemplate": true,
+      "references": [
+        {
+          "screenId": "e6bf4c9f5a5b4abcaa6973835a3721cd",
+          "state": "Processing",
+          "file": "../templates/results-v4/submission-status-desktop-v4.png"
+        }
+      ],
+      "stateCoverage": "One desktop state retained with open findings; mobile and supplementary states deferred under the desktop-first priority.",
+      "alternativesNotReviewed": [
+        {
+          "screenId": "5afee71803b8443cba85abd5cc77b667",
+          "title": "EP-11 — Trạng thái bài nộp — V4 — Desktop — Processing",
+          "deviceType": "DESKTOP",
+          "width": 1280,
+          "height": 1024,
+          "reason": "Inventory has no screenshot download URL; this alternative has not been visually reviewed."
+        }
+      ],
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Visual style/layout only; 03A findings and missing mobile/states remain open.",
+      "template": "../templates/results-v4/manifest.json",
+      "defects": "../templates/results-v4/implementation-notes.md"
     },
     {
       "id": "EP-12",
@@ -164,12 +417,33 @@
       "paths": [
         "/attempts/:attemptId/result"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "03-results-history-ranking.md"
+      "prompt": "03a-results-desktop.md",
+      "supplementaryPrompts": [
+        "03-results-history-ranking.md"
+      ],
+      "review": "../stitch-03a-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "viewportsReviewed": [
+        1280
+      ],
+      "acceptedAsTemplate": true,
+      "references": [
+        {
+          "screenId": "ada6f9265a0e4e41ba2c139fbdc927a1",
+          "state": "Completed",
+          "file": "../templates/results-v4/result-desktop-v4.png"
+        }
+      ],
+      "stateCoverage": "One desktop state retained with open findings; mobile and supplementary states deferred under the desktop-first priority.",
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Visual style/layout only; 03A findings and missing mobile/states remain open.",
+      "template": "../templates/results-v4/manifest.json",
+      "defects": "../templates/results-v4/implementation-notes.md"
     },
     {
       "id": "EP-13",
@@ -177,12 +451,33 @@
       "paths": [
         "/attempts/:attemptId/review"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "03-results-history-ranking.md"
+      "prompt": "03a-results-desktop.md",
+      "supplementaryPrompts": [
+        "03-results-history-ranking.md"
+      ],
+      "review": "../stitch-03a-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "viewportsReviewed": [
+        1280
+      ],
+      "acceptedAsTemplate": true,
+      "references": [
+        {
+          "screenId": "f8be22a0bbe840bb83fb3332770ab04e",
+          "state": "Released review",
+          "file": "../templates/results-v4/released-review-desktop-v4.png"
+        }
+      ],
+      "stateCoverage": "One desktop state retained with open findings; mobile and supplementary states deferred under the desktop-first priority.",
+      "acceptedOn": "2026-10-08",
+      "acceptedFor": "Visual style/layout only; 03A findings and missing mobile/states remain open.",
+      "template": "../templates/results-v4/manifest.json",
+      "defects": "../templates/results-v4/implementation-notes.md"
     },
     {
       "id": "EP-14",
@@ -190,12 +485,29 @@
       "paths": [
         "/history"
       ],
-      "status": "prompt_prepared",
+      "status": "design_reviewed_with_open_findings",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "03-results-history-ranking.md"
+      "prompt": "03b-history-ranking-desktop.md",
+      "supplementaryPrompts": [
+        "03-results-history-ranking.md"
+      ],
+      "review": "../stitch-03b-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "viewportsReviewed": [
+        1280
+      ],
+      "acceptedAsTemplate": false,
+      "references": [
+        {
+          "screenId": "34514bb3f3e5425c9eb4252958064aa9",
+          "state": "Loaded",
+          "file": "../evidence/stitch-03b-review-2026-10-08/history-desktop-v4-34514bb3.png"
+        }
+      ],
+      "stateCoverage": "Desktop Loaded reviewed with open findings; mobile and supplementary states remain deferred."
     },
     {
       "id": "EP-15",
@@ -203,12 +515,29 @@
       "paths": [
         "/exams/:examId/versions/:versionId/leaderboard"
       ],
-      "status": "prompt_prepared",
+      "status": "design_reviewed_with_open_findings",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "03-results-history-ranking.md"
+      "prompt": "03b-history-ranking-desktop.md",
+      "supplementaryPrompts": [
+        "03-results-history-ranking.md"
+      ],
+      "review": "../stitch-03b-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "viewportsReviewed": [
+        1280
+      ],
+      "acceptedAsTemplate": false,
+      "references": [
+        {
+          "screenId": "b91abc139e804b7b859bf9a071518b1e",
+          "state": "Loaded",
+          "file": "../evidence/stitch-03b-review-2026-10-08/leaderboard-desktop-v4-b91abc13.png"
+        }
+      ],
+      "stateCoverage": "Desktop Loaded reviewed with open findings; mobile and supplementary states remain deferred."
     },
     {
       "id": "EP-16",
@@ -216,12 +545,40 @@
       "paths": [
         "/experience"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "04-public-experience-help.md"
+      "prompt": "04a-public-desktop.md",
+      "supplementaryPrompts": [
+        "04-public-experience-help.md"
+      ],
+      "template": "../templates/public-v4/manifest.json",
+      "defects": "../templates/public-v4/implementation-notes.md",
+      "review": "../stitch-04a-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "acceptedOn": "2026-10-08",
+      "acceptedAsTemplate": true,
+      "acceptedFor": "User requested review, template retention and notes for 04A. Visual references only; defects and missing variants/mobile remain open.",
+      "viewportsReviewed": [
+        1280
+      ],
+      "references": [
+        {
+          "screenId": "11dd35a211ff436e94264be47c987e0c",
+          "state": "Single choice selected",
+          "file": "../templates/public-v4/sample-experience-desktop-v4.png"
+        }
+      ],
+      "stateCoverage": "Only Single choice selected desktop retained; Multiple choice, True/false, review before result, sample result, mobile and supplementary states remain backlog.",
+      "requiredVariants": [
+        "Single choice",
+        "Multiple choice",
+        "True/false",
+        "Review before result",
+        "Sample result"
+      ]
     },
     {
       "id": "EP-17",
@@ -229,12 +586,33 @@
       "paths": [
         "/how-it-works"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "04-public-experience-help.md"
+      "prompt": "04a-public-desktop.md",
+      "supplementaryPrompts": [
+        "04-public-experience-help.md"
+      ],
+      "template": "../templates/public-v4/manifest.json",
+      "defects": "../templates/public-v4/implementation-notes.md",
+      "review": "../stitch-04a-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "acceptedOn": "2026-10-08",
+      "acceptedAsTemplate": true,
+      "acceptedFor": "User requested review, template retention and notes for 04A. Visual references only; defects and missing variants/mobile remain open.",
+      "viewportsReviewed": [
+        1280
+      ],
+      "references": [
+        {
+          "screenId": "03d2737fbac3498e938eac8518b0ee3a",
+          "state": "Guide",
+          "file": "../templates/public-v4/how-it-works-desktop-v4.png"
+        }
+      ],
+      "stateCoverage": "One main desktop state retained with PUB-V4 findings open; mobile and supplementary variants/states remain backlog."
     },
     {
       "id": "EP-18",
@@ -242,12 +620,33 @@
       "paths": [
         "/help"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "04-public-experience-help.md"
+      "prompt": "04a-public-desktop.md",
+      "supplementaryPrompts": [
+        "04-public-experience-help.md"
+      ],
+      "template": "../templates/public-v4/manifest.json",
+      "defects": "../templates/public-v4/implementation-notes.md",
+      "review": "../stitch-04a-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "acceptedOn": "2026-10-08",
+      "acceptedAsTemplate": true,
+      "acceptedFor": "User requested review, template retention and notes for 04A. Visual references only; defects and missing variants/mobile remain open.",
+      "viewportsReviewed": [
+        1280
+      ],
+      "references": [
+        {
+          "screenId": "0a1597a8db7d4d3eb5626ccfdd740140",
+          "state": "FAQ expanded",
+          "file": "../templates/public-v4/help-desktop-v4.png"
+        }
+      ],
+      "stateCoverage": "One main desktop state retained with PUB-V4 findings open; mobile and supplementary variants/states remain backlog."
     },
     {
       "id": "EP-19",
@@ -255,12 +654,29 @@
       "paths": [
         "/admin/exams"
       ],
-      "status": "prompt_prepared",
+      "status": "design_reviewed_with_open_findings",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "05-admin-exams.md"
+      "prompt": "05a-admin-exams-desktop.md",
+      "supplementaryPrompts": [
+        "05-admin-exams.md"
+      ],
+      "review": "../stitch-05a-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "viewportsReviewed": [
+        1280
+      ],
+      "acceptedAsTemplate": false,
+      "references": [
+        {
+          "screenId": "1642281b82914f34bba01f4569e7f41c",
+          "state": "Loaded",
+          "file": "../evidence/stitch-05a-review-2026-10-08/exam-list-desktop-v4.png"
+        }
+      ],
+      "stateCoverage": "05A desktop Loaded reviewed with open findings; not selected as template. Mobile, menus/dialogs and supplementary states remain backlog."
     },
     {
       "id": "EP-20",
@@ -269,12 +685,34 @@
         "/admin/exams/new",
         "/admin/exams/:examId/edit"
       ],
-      "status": "prompt_prepared",
+      "status": "design_reviewed_with_open_findings",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "05-admin-exams.md",
+      "prompt": "05a-admin-exams-desktop.md",
+      "supplementaryPrompts": [
+        "05-admin-exams.md"
+      ],
+      "review": "../stitch-05a-review-2026-10-08.md",
+      "reviewedOn": "2026-10-08",
+      "viewportsReviewed": [
+        1280
+      ],
+      "acceptedAsTemplate": false,
+      "references": [
+        {
+          "screenId": "59c8a6e4b05d4cbf8d54505d3f3303b8",
+          "state": "Edit Information",
+          "file": "../evidence/stitch-05a-review-2026-10-08/exam-information-desktop-v4.png"
+        },
+        {
+          "screenId": "70f9bc116ec544f29510f7cf38ce8ff1",
+          "state": "Edit Sections and questions",
+          "file": "../evidence/stitch-05a-review-2026-10-08/exam-structure-desktop-v4.png"
+        }
+      ],
+      "stateCoverage": "05A desktop Edit Information/Sections and questions reviewed with open findings; not selected as template. Preflight/publish, Create, mobile and dialogs/states remain backlog.",
       "requiredVariants": [
         "Create",
         "Edit"
@@ -568,5 +1006,29 @@
     "prompt": "09-shared-states-handoff.md",
     "status": "prompt_prepared",
     "placement": "Separate designer frame or document, outside product pages."
-  }
+  },
+  "reviewedPageFamilyCount": 17,
+  "countDefinitions": {
+    "reviewedPageFamilyCount": "Pages with a recorded review, including pages subsequently retained as templates. This count can overlap retainedPageFamilyCount.",
+    "remainingPageFamilyCount": "Page families still at prompt_prepared: verified frame coverage is not recorded yet, even if a newer external preview may exist. Selected/reviewed pages can still lack mobile and supplementary states.",
+    "reviewedAwaitingSelectionPageFamilyCount": "Reviewed page families not yet selected as visual templates. Desktop-only review does not accept mobile or complete state coverage."
+  },
+  "deliveryPriority": {
+    "updatedOn": "2026-10-08",
+    "source": "User requested the remaining web UI first; desktop layouts now precede remaining mobile and supplementary states.",
+    "nextPrompt": null,
+    "nextBrief": "05-admin-exams.md",
+    "nextPromptStatus": "05B_not_prepared",
+    "order": [
+      "Remaining desktop page layouts",
+      "Mobile counterparts and supplementary states"
+    ],
+    "deferred02B": [
+      "EP-08 desktop: 7 states",
+      "EP-09 mobile: 7 states and desktop: 7 states",
+      "EP-10 mobile: 7 states and desktop: 7 states"
+    ],
+    "nextAction": "05A actual frames are reviewed and saved as evidence, not selected as Admin templates. Recommend keeping the visual direction and recording findings for porting. After user selection, prepare a small 05B desktop prompt for preflight/publication and essential dialogs; it is not prepared yet. Do not resend 05A or paste mixed brief 05. No external generation/refinement was sent."
+  },
+  "reviewedAwaitingSelectionPageFamilyCount": 4
 }

@@ -1,0 +1,116 @@
+{
+  "capturedAt": "2026-10-08T14:50:05.343Z",
+  "scenario": "worker-burst2000-batch50-pool2",
+  "harness": "compiled dist/workers/scheduler/expiry.main.js",
+  "firstMeasured": false,
+  "repeat": false,
+  "differentConfig": false,
+  "schedulerBaselineThroughput": null,
+  "baselineReason": "This raw file has no embedded baseline. Compare separately captured runs with the same dataset/configuration; ATT-07 originally introduced the scheduler.",
+  "dataset": {
+    "due": 2000,
+    "future": 50,
+    "submitted": 0,
+    "alreadyExpired": 0,
+    "failed": 0
+  },
+  "config": {
+    "batchSize": 50,
+    "poolMax": 2,
+    "pollIntervalMs": 5000,
+    "jitterPercent": 0,
+    "healthPort": 0
+  },
+  "postgresVersion": "17.11",
+  "node": "v24.17.0",
+  "hashes": {
+    "apps/api/src/modules/assessment/application/services/attempt-submission.ts": "545540bb89cc2a2cb1a55778842a245df11e3761f057b6a17f94850b848d3fe9",
+    "apps/api/src/modules/assessment/application/services/deadline-sweep.ts": "13314856c2e20e0d24f173dd440b9ed543598467c680d3479fea0e9549acc44f",
+    "apps/api/src/modules/assessment/application/services/expiry-supervisor.ts": "b48f6d2b8b957694a798a98ed27882941d0d21dcde179c62c3edb188669e023f",
+    "apps/api/src/modules/assessment/assessment-worker.factory.ts": "4ce033cfdb2a1c55e23c4b3bcbe91fbb6c8d8cf7e05173b2655839b38ce1221f",
+    "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.repository.ts": "af63596ab93ad04f56d1c6d27b9c23e69c9e64baadcce05c22dd3309ce2fcd54",
+    "apps/api/src/workers/scheduler/expiry.main.ts": "e3dbff65470cc03341296275e07c8d1f9c549584cf809248b48f79155a0f03af",
+    "apps/api/src/config/expiry-worker.config.ts": "c595909a9be02bdbeb76e6384d4480199ee0db015176811e00b8f96643905c7b",
+    "apps/api/src/infrastructure/database/migrations/0011_submission_kind.sql": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2",
+    "apps/api/src/infrastructure/database/migrations/0012_required_submission_kind.sql": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49",
+    "apps/api/src/infrastructure/database/migrations/0013_expiry_retry_schedule.sql": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf",
+    "apps/api/src/modules/assessment/application/ports/expiry-retry.port.ts": "87f0d986d98d507ceedf36d09d2321527b216f72eace94788379dcf6cfbaab94",
+    "apps/api/src/modules/assessment/application/ports/submission-commit-observer.port.ts": "0b499d4b2fe33100292f2dd595b7fe3eda36a2cc35ade74c828a993e190c1c4e",
+    "scripts/assessment-expiry-measure.mjs": "290e88d7823f50d910118ffb36379691c87efddadc580e50a3043172df70c77e",
+    "scripts/expiry-lag.mjs": "437df6049026650d4ab47b253536f30e73f7978b8938fbbf4c3953d88f35fcc5",
+    "docs/contracts/attempt-submitted.v1.schema.json": "2ed41eb88f8079fd34b7c7e09b77e08373f79a08c7482196c1dab0b2a334824d"
+  },
+  "before": {
+    "due": 2000,
+    "oldestDueAgeMs": 60121.299
+  },
+  "afterSignal": {
+    "due": 1949,
+    "oldestDueAgeMs": 59664.371
+  },
+  "health": {
+    "signals": true,
+    "liveStatus": 200,
+    "readyStatus": 200,
+    "liveBody": {
+      "status": "ok"
+    },
+    "readyBody": {
+      "status": "ok"
+    }
+  },
+  "sigterm": {
+    "code": 0,
+    "drainMs": 8.291416000000027
+  },
+  "restart": {
+    "drained": true,
+    "wallMs": 13805.258417000005,
+    "exitCode": 0
+  },
+  "durable": {
+    "expired": 2000,
+    "outbox": 2000,
+    "distinctAggregates": 2000,
+    "duplicateEvents": false
+  },
+  "processSamples": [
+    {
+      "rssKb": 63392,
+      "cpuPercent": 24.8,
+      "cpuTime": "0:00.10"
+    },
+    {
+      "rssKb": 64272,
+      "cpuPercent": 20.4,
+      "cpuTime": "0:00.11"
+    },
+    {
+      "rssKb": 64528,
+      "cpuPercent": 17,
+      "cpuTime": "0:00.12"
+    },
+    {
+      "rssKb": 64704,
+      "cpuPercent": 15.1,
+      "cpuTime": "0:00.14"
+    }
+  ],
+  "maxRssKb": 64704,
+  "sweepEvents": 2,
+  "unmeasured": [
+    "deadlineToCommitAckObservedLagMs",
+    "sqsDispatchLatency",
+    "resultAvailabilityLatency",
+    "awsCost",
+    "sustainableCapacity",
+    "productionSlo",
+    "inProcessQueryCounts",
+    "poolCheckoutWait"
+  ],
+  "notes": [
+    "Process RSS/CPU samples come from ps during the first process only.",
+    "SIGTERM is sent after the first non-empty sweep log. Restart drains the remaining due rows.",
+    "Database commit completion is not SQS dispatch or result latency."
+  ]
+}

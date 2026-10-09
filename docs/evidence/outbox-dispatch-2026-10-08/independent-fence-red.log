@@ -1,0 +1,56 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/outbox-fencing.spec.ts
+
+(node:3769) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/outbox-fencing.spec.ts (5.323 s)
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects delivered when an unchanged tuple lock is released after natural lease expiry
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+    -   "value": false,
+    +   "value": true,
+      }
+
+      234 |         blocker.release();
+      235 |       }
+    > 236 |       expect(await result).toEqual({ value: false });
+          |                            ^
+      237 |       expect(await state(claim.eventId)).toEqual(before);
+      238 |     },
+      239 |   );
+
+      at apps/api/tests/integration/outbox-fencing.spec.ts:236:28
+
+  ● Outbox lease fencing after PostgreSQL row-lock waits › rejects failed when an unchanged tuple lock is released after natural lease expiry
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+    -   "value": false,
+    +   "value": true,
+      }
+
+      234 |         blocker.release();
+      235 |       }
+    > 236 |       expect(await result).toEqual({ value: false });
+          |                            ^
+      237 |       expect(await state(claim.eventId)).toEqual(before);
+      238 |     },
+      239 |   );
+
+      at apps/api/tests/integration/outbox-fencing.spec.ts:236:28
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 2 passed, 4 total
+Snapshots:   0 total
+Time:        5.838 s
+Ran all test suites within paths "apps/api/tests/integration/outbox-fencing.spec.ts".

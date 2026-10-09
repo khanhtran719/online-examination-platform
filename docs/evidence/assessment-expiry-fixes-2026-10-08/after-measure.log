@@ -1,0 +1,4 @@
+{"event":"expiry.measure.saved","scenario":"mixed-batch50-pool2","processed":200,"failed":0}
+{"event":"expiry.measure.saved","scenario":"burst2000-batch50-pool2-run1","processed":2000,"failed":0}
+{"event":"expiry.measure.saved","scenario":"burst2000-batch50-pool2-run2","processed":2000,"failed":0}
+{"event":"expiry.measure.saved","scenario":"burst2000-batch10-pool2","processed":2000,"failed":0}

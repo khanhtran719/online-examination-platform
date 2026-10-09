@@ -1,0 +1,283 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/assessment-expiry-fixes.spec.ts
+
+(node:79084) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-expiry-fixes.spec.ts
+  ● ATT-07 independent expiry regressions › rejects an accepted NULL provenance UPDATE with the runtime login
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › rejects an accepted NULL provenance UPDATE with the expiry login
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › rejects an accepted NULL provenance INSERT with the runtime login
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › keeps valid MANUAL/SUBMITTED provenance immutable
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › keeps valid MANUAL/EXPIRED provenance immutable
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › keeps valid DEADLINE/EXPIRED provenance immutable
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › advances a healthy row behind a full poison batch of 1 without marking failures terminal
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › advances a healthy row behind a full poison batch of 2 without marking failures terminal
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › recovers rolled-back rows after restart and commits once when two workers retry
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › rejects runtime changes to scheduler-only expiry_retry_count metadata
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › rejects runtime changes to scheduler-only expiry_retry_after metadata
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › does not defer or mutate an attempt after another submit has won
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › persists DB-clock retry bounds and capped count after 0 prior failures
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › persists DB-clock retry bounds and capped count after 4 prior failures
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › persists DB-clock retry bounds and capped count after 16 prior failures
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › reads authoritative time after an observed row-lock wait crosses the deadline
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+  ● ATT-07 independent expiry regressions › uses a natural deadline index range for an empty claim among 100000 future attempts
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      192 |
+      193 | beforeAll(async () => {
+    > 194 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      195 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      196 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      197 |   for (const login of [owner, runtimeLogin, workerLogin]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:194:3)
+
+
+  ● Test suite failed to run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      301 |   await Promise.all([runtimeDb?.close(), workerDb?.close(), secondWorkerDb?.close()]);
+      302 |   await fixture?.end();
+    > 303 |   await admin.query(`DROP DATABASE IF EXISTS ${name} WITH (FORCE)`);
+          |   ^
+      304 |   await admin.query(`DROP ROLE IF EXISTS ${owner}, ${runtimeLogin}, ${workerLogin}`);
+      305 |   await admin.end();
+      306 | });
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry-fixes.spec.ts:303:3)
+
+Test Suites: 1 failed, 1 total
+Tests:       17 failed, 17 total
+Snapshots:   0 total
+Time:        1.598 s, estimated 12 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-expiry-fixes.spec.ts".

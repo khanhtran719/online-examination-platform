@@ -1,0 +1,30 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/outbox-dispatch.spec.ts -t ambient UoW
+
+(node:3228) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/outbox-dispatch.spec.ts
+  ● Assessment durable dispatch › rejects a claim inside an ambient UoW before any broker send can occur
+
+    expect(received).rejects.toMatchObject()
+
+    Received promise resolved instead of rejected
+    Resolved to value: [{"ageMs": 11.465, "aggregateId": "f6e7503b-b4ea-417d-acf7-13ac368ccb5a", "attempts": 1, "causationId": "65c8e1f3-18d0-4657-a6b2-8da087a41e43", "correlationId": "05651953-59cc-44ea-82c3-cef461cdb622", "eventId": "61301335-c9e2-4f69-a05a-e409fd8515dc", "payload": {"aggregateId": "f6e7503b-b4ea-417d-acf7-13ac368ccb5a", "causationId": "65c8e1f3-18d0-4657-a6b2-8da087a41e43", "correlationId": "05651953-59cc-44ea-82c3-cef461cdb622", "eventId": "61301335-c9e2-4f69-a05a-e409fd8515dc", "eventType": "attempt.submitted.v1", "occurredAt": "2026-10-08T00:00:00.000Z", "payload": {"attemptId": "f6e7503b-b4ea-417d-acf7-13ac368ccb5a", "deadline": "2026-10-08T01:00:00.000Z", "examId": "efd9a015-eb59-49c7-b1bc-124212785491", "expired": false, "publishedVersionId": "f48283b0-dff8-4a18-89d5-24a3553ba884", "submissionId": "8ae0fee1-071d-4302-aff6-88d4ab41e082", "submissionKind": "MANUAL"}, "source": "online-examination-platform.assessment", "version": 1}, "token": "0da8e384-dedd-446f-8aed-5d9716078f74"}]
+
+      294 |   it("rejects a claim inside an ambient UoW before any broker send can occur", async () => {
+      295 |     const [id] = await seed();
+    > 296 |     await expect(db.transaction(() => repo.claim(1, 15000))).rejects.toMatchObject({code: "DB_TRANSACTION_FORBIDDEN"});
+          |           ^
+      297 |     expect(await state(id!)).toMatchObject({attempts: 0, lease_token: null});
+      298 |   });
+      299 |   it.each(["delivered", "failed"] as const)(
+
+      at expect (node_modules/expect/build/index.js:2116:15)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:296:11)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 17 skipped, 18 total
+Snapshots:   0 total
+Time:        2.518 s, estimated 3 s
+Ran all test suites within paths "apps/api/tests/integration/outbox-dispatch.spec.ts".

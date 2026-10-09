@@ -1,5 +1,7 @@
 # Review API và persistence trước chuẩn hóa kiến trúc
 
+Latest2026-10-09: [submission publisher review](outbox-dispatch-2026-10-08.md) accepts plain Assessment Application → ports, module-private pg relay, global SQS adapter and public worker factory. No new business module or ORM/broker abstraction. Post-lock lease fencing/ambient-UoW guard and narrow replay/worker grants have real PG evidence; consumer/AWS remain open.
+
 Ngày 2026-10-06. Baseline source commit `cac9416`; working tree sạch trước increment tài liệu. Sections1–6 giữ review trước normalization; links đã cập nhật theo file moves. **Kết luận sau triển khai: placement đã chuẩn hóa, RV-01–05 CLOSED với152 tests và actual entry-point checks; RV-06 đã CLOSED locally sau [browser HTTPS](evidence/identity-https-2026-10-07/README.md), RV-07 còn pending** tại [closure](#7-closure-sau-source-normalization). Phạm vi: Identity HTTP/application/persistence/crypto/email worker, shared technical code, configuration/composition và quality checker. Đây không phải production security/performance certification.
 
 ## 1. Phần đang đạt
@@ -148,10 +150,22 @@ Snapshot/pointer/audit/receipt are atomic, replay and permission revalidation re
 
 Final query counts start11/save11/submit10 within ceilings12/11/10; reads4/4/3.234 root,105 integration (1 historical Catalog diagnostic deselected),10 actual HTTPS PASS. Two observed publication/start races, independent-UoW saves, both save/submit orders and CSRF/credential/permission/shared-throttle controls pass. CAT-09/10 and ATT-01–04 accepted locally again;69/216. Local p95/p99 are observations, not sustainable AWS capacity or cost/SLO acceptance. ATT-07–11 broader coverage, ID-11/Phase04 and production remain open. Historical review/evidence stays immutable.
 
-## 16. Deadline sweep — 2026-10-08
+## 16. Deadline sweep — historical implementation review, 2026-10-08
 
 [Evidence](evidence/assessment-expiry-2026-10-08/README.md) accepts ATT-07 locally and moves the roadmap to 70/216. Assessment Application owns `acceptAttemptSubmission` for both HTTP `MANUAL` and the internal `DEADLINE` sweep. Presentation still authorizes the candidate write. The scheduler entry only starts the loop, health server and shutdown. It does not add a public route that skips authorization. Domain and Application still do not import Nest, pg, SQL or an SDK. The public worker factory is the composition root for private adapters. pg stays the persistence adapter under ADR-008.
 
 Claim is one `IN_PROGRESS` row, `ORDER BY deadline, id LIMIT 1 FOR UPDATE SKIP LOCKED`, then `clock_timestamp()` after the lock. A batch does not hold many row locks. One outbox failure rolls back only that attempt. `0011` adds `submission_kind` and replaces `validate_completion()` as `SECURITY DEFINER` with the same predicate, so the expiry role can commit `EXPIRED` without `SELECT` on scores. `0001`–`0010` bytes are unchanged. The event schema already allowed `MANUAL` and `DEADLINE` and was not edited.
 
 Fresh root 249 and restricted integration 123/123 on 7 suites. Manual query ceilings are unchanged at 11/11/10 and 4/4/3. Identity HTTPS was not rerun. Local deadline-to-commit lag includes seeded queue age and is not SQS or result latency. ATT-08/09 and the rest of ATT-10/11, scoring/SQS, Reporting and production remain open. Historical evidence directories were not overwritten.
+
+## 17. Independent deadline review — 2026-10-08
+
+[Report](assessment-expiry-review-2026-10-08.md) supersedes section16's acceptance. ATT-07 reopened; roadmap69/216. Boundary/composition/shared core and atomic attempt/outbox controls pass. Four defects remain: full failed-batch starvation; accepted NULL provenance passing CHECK; volatile discovery/backlog predicates missing an index range; acceptance time mislabeled commit lag. Fresh root249/PG122 PASS (one historical diagnostic deselected), lint/typecheck/build/contracts PASS; independent probes4 RED/3 controls PASS. Existing ATT-07 raw hashes match source, but their lag field must not be interpreted as measured durability time. Do not rewrite archived evidence or applied migrations. No new architecture or persistence technology is required by this review.
+
+## 18. ATT-07 review-fix closure — 2026-10-08
+
+[Closure](assessment-expiry-fixes-2026-10-08.md)/[evidence](evidence/assessment-expiry-fixes-2026-10-08/README.md) supersedes section17's open outcome: ER-01–04 closed locally; ATT-07 restored70/216. PostgreSQL retry metadata behind an Assessment Application port survives worker replacement; a separate post-rollback short UoW rechecks IN_PROGRESS under a row lock and leaves a concurrent winner alone. No lease/new resource/business FAILED is needed for an atomic claim+effect. Existing public worker factory, shared acceptance core, API contracts and dependency boundaries remain.
+
+Forward0012 rejects accepted NULL explicitly and fails closed on existing corrupt provenance;0013 adds two bounded workflow fields with expiry-only UPDATE.0001–0011 remain byte-identical. Discovery/backlog use statement_timestamp for the existing index range and retain the authoritative post-lock clock. An optional synchronous Application observer measures successful root-UoW COMMIT acknowledgement; DB clock calibration is a diagnostic concern in the MJS harness. No TypeORM/SQL/framework/collector I/O enters business layers. Raw v1 commit labels are corrected by a new report, not rewritten.
+
+Final254 root/144 full PG+HTTP+SMTP PASS,0 skipped;21 independent migration/fairness/permission/clock/observer/index regressions. Start11/save11/submit10, reads4/4/3 keep ceilings. Four before/after healthy sweeps plus restricted natural100k-future counterfactual plans and compiled SIGTERM/restart have final source hashes. Local range improvement is measured; AWS sustainable throughput, cost, pool optimum and wider recovery/SLO acceptance remain unmeasured. Broader ATT-10/11, grading/SQS/retention/Reporting and ID-11/Phase04 stay open.

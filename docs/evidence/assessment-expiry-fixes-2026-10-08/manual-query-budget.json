@@ -1,0 +1,816 @@
+{
+  "schemaVersion": 2,
+  "runId": "dbf8359a-5fbd-4ed9-af3d-f95d76b41a95",
+  "recordedAt": "2026-10-08T14:37:40.529Z",
+  "notCapacityEvidence": true,
+  "sampleCount": 25,
+  "offeredConcurrency": 1,
+  "achievedConcurrency": 1,
+  "poolMax": 10,
+  "queries": {
+    "start": {
+      "queryCount": 11,
+      "errorCount": 0,
+      "byOperation": {
+        "security.rate": 1,
+        "transaction.begin": 1,
+        "lock.acquire": 3,
+        "identity.read": 1,
+        "idempotency.read": 1,
+        "catalog.read": 1,
+        "assessment.write": 1,
+        "idempotency.write": 1,
+        "transaction.commit": 1
+      }
+    },
+    "questions": {
+      "queryCount": 4,
+      "errorCount": 0,
+      "byOperation": {
+        "identity.read": 1,
+        "security.rate": 1,
+        "assessment.read": 1,
+        "catalog.read": 1
+      }
+    },
+    "save": {
+      "queryCount": 11,
+      "errorCount": 0,
+      "byOperation": {
+        "security.rate": 1,
+        "transaction.begin": 1,
+        "lock.acquire": 2,
+        "identity.read": 1,
+        "idempotency.read": 1,
+        "assessment.read": 1,
+        "catalog.read": 1,
+        "assessment.write": 1,
+        "idempotency.write": 1,
+        "transaction.commit": 1
+      }
+    },
+    "answers": {
+      "queryCount": 4,
+      "errorCount": 0,
+      "byOperation": {
+        "identity.read": 1,
+        "security.rate": 1,
+        "assessment.read": 2
+      }
+    },
+    "submit": {
+      "queryCount": 10,
+      "errorCount": 0,
+      "byOperation": {
+        "security.rate": 1,
+        "transaction.begin": 1,
+        "lock.acquire": 2,
+        "identity.read": 1,
+        "idempotency.read": 1,
+        "assessment.write": 2,
+        "idempotency.write": 1,
+        "transaction.commit": 1
+      }
+    },
+    "status": {
+      "queryCount": 3,
+      "errorCount": 0,
+      "byOperation": {
+        "identity.read": 1,
+        "security.rate": 1,
+        "assessment.read": 1
+      }
+    }
+  },
+  "queryCounts": {
+    "start": {
+      "n": 25,
+      "min": 11,
+      "p50": 11,
+      "p95": 11,
+      "p99": 11,
+      "max": 11
+    },
+    "questions": {
+      "n": 25,
+      "min": 4,
+      "p50": 4,
+      "p95": 4,
+      "p99": 4,
+      "max": 4
+    },
+    "save": {
+      "n": 25,
+      "min": 11,
+      "p50": 11,
+      "p95": 11,
+      "p99": 11,
+      "max": 11
+    },
+    "answers": {
+      "n": 25,
+      "min": 4,
+      "p50": 4,
+      "p95": 4,
+      "p99": 4,
+      "max": 4
+    },
+    "submit": {
+      "n": 25,
+      "min": 10,
+      "p50": 10,
+      "p95": 10,
+      "p99": 10,
+      "max": 10
+    },
+    "status": {
+      "n": 25,
+      "min": 3,
+      "p50": 3,
+      "p95": 3,
+      "p99": 3,
+      "max": 3
+    }
+  },
+  "budget": [
+    {
+      "operation": "start",
+      "ceiling": 12,
+      "actual": 11,
+      "exceeded": false
+    },
+    {
+      "operation": "questions",
+      "ceiling": 4,
+      "actual": 4,
+      "exceeded": false
+    },
+    {
+      "operation": "answers",
+      "ceiling": 4,
+      "actual": 4,
+      "exceeded": false
+    },
+    {
+      "operation": "save",
+      "ceiling": 11,
+      "actual": 11,
+      "exceeded": false
+    },
+    {
+      "operation": "submit",
+      "ceiling": 10,
+      "actual": 10,
+      "exceeded": false
+    },
+    {
+      "operation": "status",
+      "ceiling": 3,
+      "actual": 3,
+      "exceeded": false
+    }
+  ],
+  "source": [
+    {
+      "path": "apps/api/src/app.module.ts",
+      "sha256": "aca34857eb6cdffc93ab4979cb61ade5b6d7ab9b6e8c0451920b7dc2704d8828"
+    },
+    {
+      "path": "apps/api/src/config/__tests__/app-config.unit.spec.ts",
+      "sha256": "262d5f2cd90711235ae1200ca3c67b1e300777079bfebe9e5832c9f01f7493da"
+    },
+    {
+      "path": "apps/api/src/config/__tests__/database-config.unit.spec.ts",
+      "sha256": "91e3974f2506fb11dbadea7bcde0e202e5c2c7ce52517e8cc1c1f0f850b2e127"
+    },
+    {
+      "path": "apps/api/src/config/__tests__/expiry-worker-config.unit.spec.ts",
+      "sha256": "d0f278c5f1e08345501a16bce7713ad7fa563aee243c396fb93dccd127479788"
+    },
+    {
+      "path": "apps/api/src/config/app.config.ts",
+      "sha256": "d0fd7412bc6d683d2fa3cc78745f99992c4b75b0372b102d9aa82d0d96891034"
+    },
+    {
+      "path": "apps/api/src/config/config.validation.ts",
+      "sha256": "20e8fbccd51ca8281de7b3d78a1fc58bfce792d1aa891c10729e2f2aeb294b87"
+    },
+    {
+      "path": "apps/api/src/config/database.config.ts",
+      "sha256": "e4e07f84ab1f055d92b87ec8da982562874517714b6a1007d208d431a528de97"
+    },
+    {
+      "path": "apps/api/src/config/expiry-worker.config.ts",
+      "sha256": "c595909a9be02bdbeb76e6384d4480199ee0db015176811e00b8f96643905c7b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/__tests__/migration-runner.unit.spec.ts",
+      "sha256": "632f2ae89e956d3438e9ebd7c20f372362ddf45ab053d2efb50bae3aa6831940"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/connection-budget.ts",
+      "sha256": "476606488dcf67fcb8398f7ee8e5997a6337816915ec2b01017bc06ffed1fa88"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/database.module.ts",
+      "sha256": "b94af40827fd2399d7d862b3266f37cfc59116a63b7b8232cdf0fa2829c29ceb"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/load-database-config.ts",
+      "sha256": "1eea26de2986bfbda99fdba94e4fba8d395d6f10a3c270894c93b5fb31913065"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrate.ts",
+      "sha256": "072cae2d11c93e91a8cdf5cd4f8b0ed478e73540593d0d6a6e9544f0bae89e2c"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migration-runner.ts",
+      "sha256": "30fa86c7a9cccee84c04bcc79ed3495686a150143ed2c7348eafb094a6436a1f"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0001_capability_schema.sql",
+      "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0002_query_indexes.sql",
+      "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0003_runtime_privileges.sql",
+      "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0004_durable_state_guards.sql",
+      "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0005_frozen_category.sql",
+      "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0006_immutable_submission.sql",
+      "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0007_identity_runtime.sql",
+      "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0008_identity_operations.sql",
+      "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0009_catalog_question_points.sql",
+      "sha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0010_attempt_revision.sql",
+      "sha256": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0011_submission_kind.sql",
+      "sha256": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0012_required_submission_kind.sql",
+      "sha256": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/migrations/0013_expiry_retry_schedule.sql",
+      "sha256": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf"
+    },
+    {
+      "path": "apps/api/src/infrastructure/database/transaction/postgres-database.ts",
+      "sha256": "c255e3b93dee300a55c614c34ed94fae815ede56d6cb80afadd7fedb66979645"
+    },
+    {
+      "path": "apps/api/src/infrastructure/health/health.module.ts",
+      "sha256": "9112d0d8981a414e395a2849c5990f3b2521bb1b331ef1112fbd42b6759a74ee"
+    },
+    {
+      "path": "apps/api/src/infrastructure/health/http/live.controller.ts",
+      "sha256": "a9ac446889978695ff481fd4a5f079927af3bb06f0103e6199acd9e53b1df219"
+    },
+    {
+      "path": "apps/api/src/infrastructure/health/http/ready.controller.ts",
+      "sha256": "bbd7e46b4084cdcf14a354c599ef77c76c855c72b0479fdf6ade2132e9f0128b"
+    },
+    {
+      "path": "apps/api/src/infrastructure/health/postgres-readiness.ts",
+      "sha256": "3e5d970d88310b97a75b02188e12dd2f471a3ea076b5ce173185848d8991762a"
+    },
+    {
+      "path": "apps/api/src/infrastructure/http/configure-http-application.ts",
+      "sha256": "8c3c4302f791a31a575d0a27e6e4c44890abb916089f08482bc745662ed0c230"
+    },
+    {
+      "path": "apps/api/src/infrastructure/idempotency/postgres-idempotency.ts",
+      "sha256": "8f7a203c91e14e0f4ede0119f3346c483b4ef3569790f6ac7af4fdca8afae384"
+    },
+    {
+      "path": "apps/api/src/infrastructure/resilience/shutdown/shutdown-gate.ts",
+      "sha256": "02ce81ce6b1fce06cae25feaddba201f612820f653e9deeb839c008c3bb3d5b2"
+    },
+    {
+      "path": "apps/api/src/infrastructure/security/authentication/__tests__/secret-loader.unit.spec.ts",
+      "sha256": "1a6282ec42500389efdcadc374094fd730ad31fa0545a0ddc0934b3a8903b8a9"
+    },
+    {
+      "path": "apps/api/src/infrastructure/security/authentication/secret-loader.ts",
+      "sha256": "f510b62bc7f728be444b080afd0a895e293b1d172b24f5be05e7d596d2eb1635"
+    },
+    {
+      "path": "apps/api/src/infrastructure/security/authorization/postgres-security.ts",
+      "sha256": "7969957467116930e860b165a1e064f0008cc450c0b29741accb4ad6879a6a58"
+    },
+    {
+      "path": "apps/api/src/main.ts",
+      "sha256": "6e3f235aa32a037bcdd34cea8774648f4a5799a71f3864c985df432cebedcd62"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/dto/assessment.dto.ts",
+      "sha256": "487b74c6dba2f906bbd37191718c6cba27cf70e4461d116f634028a993752582"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/assessment-cursor.port.ts",
+      "sha256": "beb4a40c1a44ba14d7b9391e912cf2ab1382e04cd41ee5f081a80d7c8148d457"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/attempt-query.port.ts",
+      "sha256": "ef82c3fea80c6c0cbc72076884d54237ad2e7631f32706dd05263f12e292049e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/expiry-retry.port.ts",
+      "sha256": "87f0d986d98d507ceedf36d09d2321527b216f72eace94788379dcf6cfbaab94"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/question-page-sizer.port.ts",
+      "sha256": "5b2c92e2012114bfffba28b2174a7241e302122829a9fff9cb91d2741ec38ebc"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/submission-commit-observer.port.ts",
+      "sha256": "0b499d4b2fe33100292f2dd595b7fe3eda36a2cc35ade74c828a993e190c1c4e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/ports/submission-outbox.ts",
+      "sha256": "6262d02316647cf8298c3ad01f5b85c4763169c749d5c27f1376a54e07b3ac96"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/__tests__/attempt-submission.unit.spec.ts",
+      "sha256": "df7b30b0b1fe0229018e729b15d7585b19bd57282e27462a2f329c33cc4685df"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep-retry.unit.spec.ts",
+      "sha256": "c401efa6b24cab46e28b8a364cd0ec9377cdb371b92047254238c3bfb13663bf"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep.unit.spec.ts",
+      "sha256": "218911e89a79caaf91bfc3b018414ea3f4085a8418dd246c23b7c998dee3ba38"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/__tests__/expiry-supervisor.unit.spec.ts",
+      "sha256": "765712b96258648b0a74c0abe2989319d3dc4ea578852d40f34826b684fed826"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/assessment.service.ts",
+      "sha256": "bd33f40f1056fbb10763bf12ce2b254447a8237164770bb1f4b3168a0976ca39"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/attempt-submission.ts",
+      "sha256": "545540bb89cc2a2cb1a55778842a245df11e3761f057b6a17f94850b848d3fe9"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/deadline-sweep.ts",
+      "sha256": "13314856c2e20e0d24f173dd440b9ed543598467c680d3479fea0e9549acc44f"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/application/services/expiry-supervisor.ts",
+      "sha256": "b48f6d2b8b957694a798a98ed27882941d0d21dcde179c62c3edb188669e023f"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/assessment-worker.factory.ts",
+      "sha256": "4ce033cfdb2a1c55e23c4b3bcbe91fbb6c8d8cf7e05173b2655839b38ce1221f"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/assessment.module.ts",
+      "sha256": "c34e51794b8f04d6b6241be7932a4adb7552ab4252a3b3524e2ab15a6abaae58"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/assessment-policy.unit.spec.ts",
+      "sha256": "7e61fc7c387e08196312ec72ab28182949e85d88e6381a22f7775b53b9d5405d"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/attempt.unit.spec.ts",
+      "sha256": "29a8ab8e3907d95674a957f9ed5633aaa21855007914d9fbe4e2f3fc87114cdb"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/__tests__/scoring.unit.spec.ts",
+      "sha256": "4330be1d683d6f3576ce50337a442137440dfdf539c37539adfa88ddf667969e"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/assessment-policy.ts",
+      "sha256": "2c64fa306bb1f41174d3049eb7e5aa6cb855d020004b28f87f4a8dfb31efc314"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/assessment.error.ts",
+      "sha256": "cbb9f3180bb8694247f42399a0820dc3ffca7ce0ee05773a7f7f854a948bc2b9"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/attempt.ts",
+      "sha256": "a81a4439e1a0ce95ed3bd82608dd918e3065fa5f82bb4de6ddbff29419883fb0"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/repositories/attempt.repository.ts",
+      "sha256": "3a9e1ac80e56562f2d186c225bb39745df1c77cfd48143f54a4ff923dfc00579"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/domain/scoring.ts",
+      "sha256": "5784d2d6c66c038c720e7fd8e0251022646a0f0383bff91a42dc3dc5fce22634"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/cursor/assessment-cursor.ts",
+      "sha256": "1d8c193b02e4d5a491174c4d81e4a7af7e4205408bc41e2238507e23a2d82340"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/http/http-question-page-sizer.ts",
+      "sha256": "457c2bdeab08d625d96de2fc68b4b776f8f3655fa5b57e4563e0557d8e2f8482"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.query.ts",
+      "sha256": "72d18d431001310f77aed4399be29e6e9c8bcee8bbb2243e32386562217178db"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.repository.ts",
+      "sha256": "af63596ab93ad04f56d1c6d27b9c23e69c9e64baadcce05c22dd3309ce2fcd54"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/infrastructure/persistence/postgres-submission-outbox.ts",
+      "sha256": "0c34ee038f076af8d7aafeb942661e9348b01a7087cf937648663849b974bca6"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/presentation/http/assessment.controller.ts",
+      "sha256": "3d6f44fdebd6f8ba9ea3f0803ec9ef433f78943cd49cfca2fdc203fa3ea82aa3"
+    },
+    {
+      "path": "apps/api/src/modules/assessment/presentation/http/dto/assessment.dto.ts",
+      "sha256": "94b33003bddb5fe44b45e312b2898cdd81109597318ef2deaef8e8ed30a45029"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/dto/catalog.dto.ts",
+      "sha256": "149dbe5929bdf0f0bb3497773feabc06be93f1c2c6c66379da36ebb907b78cdb"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/facades/catalog.facade.ts",
+      "sha256": "806279e10b1da631bd54420aeb3f27d046e81cf8ea828d2c16b4c5e37c7da409"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/ports/catalog-cursor.port.ts",
+      "sha256": "0b2e637043c847cf9007eb78bed01b252b2b48dcca73c139c3265efa67cdd9ed"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/ports/catalog-query.port.ts",
+      "sha256": "3bf97f854530023104cde2285910edac839fc95dcf4d132d7c1e2fc8b75a4bf1"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/application/services/catalog.service.ts",
+      "sha256": "a3e7e44eba158e4b0c32ea314bc2ebfcb9549123902bdb7a08bacec251899b48"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/catalog.module.ts",
+      "sha256": "f6d7dcbddc8450d467f258f6907c467984aaa411006d77cf7ef5ccbec2aa6f78"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/__tests__/catalog-policy.unit.spec.ts",
+      "sha256": "2430d2c676db0d367bccb49eeab5cd3863634e57a9dad9419f13eb094c196f6b"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/catalog-error.ts",
+      "sha256": "6078ba7805f414c59803665b956ea42cef2932f87eae01c21c84f057b879f5ea"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/catalog-policy.ts",
+      "sha256": "d457a6ade50c0dadb6bcbd48ec89f82140b6d472a994c5e1ccd1b60927e30d25"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/domain/repositories/catalog.repository.ts",
+      "sha256": "a0877c55d3e3ef54be1681f7a07adf2f9a26a6d59fab34b0ae83b0fc0336490b"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/infrastructure/cursor/catalog-cursor.ts",
+      "sha256": "a37861714dae638dda20cce11b3844366713fde906829c2c2cb8bc7536906945"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/infrastructure/persistence/postgres-catalog.query.ts",
+      "sha256": "cd880694d8d0f071f9c0b9ee590d46675931c3615d9186e023459ab741c0a3df"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/infrastructure/persistence/postgres-catalog.repository.ts",
+      "sha256": "ba335f4806ad0fb7fd2fd198f110b1c71227f83cb52caed3c6859967ba987719"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/presentation/http/catalog.controller.ts",
+      "sha256": "a8f64a0197f341f5c196b5a7c77ccf45e48250d9404d283c0fefb6868cc81506"
+    },
+    {
+      "path": "apps/api/src/modules/catalog/presentation/http/dto/catalog.dto.ts",
+      "sha256": "03cb76fefcc3c3a9d51f7bf41723d6a685b09cdc1cd9f612d835c932e4bfe5d6"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/__tests__/admission.unit.spec.ts",
+      "sha256": "d3652d5749151e2505469321c27a5171a0179dc224ac958dbd4ea23bebd8a8af"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/dto/identity.dto.ts",
+      "sha256": "fdf61b22061daf0c5f11ce9ccf3f4b040673357add7b63f0e620bf74ba1192a6"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/errors/admission-saturated.error.ts",
+      "sha256": "cc2ac420e2eb72a107879a0d8b05bb2a54bc71c717f10fefa67ef65eff37f070"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/facades/identity.facade.ts",
+      "sha256": "f1f240b349d78ffbe96c1ed18939cd14063d25daa409cabe9572cda58634886e"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/ports/authenticated-write-admission.port.ts",
+      "sha256": "72526ec17b0f6d5b54f9b8cc793acf58d0a07386afe95f8cbfaf43859e44faf2"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/ports/identity-crypto.ports.ts",
+      "sha256": "86c4908ed605138f05d4cafc596d8627852790613c91429c235431122f8324a1"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/ports/identity-query.port.ts",
+      "sha256": "dddc7f2c65192ac35c28c237f17e8a9b056204b952558fac85e0bdbf17b76290"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/ports/operator-admin.port.ts",
+      "sha256": "0832d610cc6952ec2ba0472866e589f0227785b87487f4c1cff087dc946837f6"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/ports/verification-delivery.port.ts",
+      "sha256": "41affdfd8665b5c5bbff4c7da07feb24c9261bd3ad138642d168082064cdbf4f"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/services/__tests__/identity-write-admission.unit.spec.ts",
+      "sha256": "b2dd85000aebb1d8ec6ffeea86360cfad55daaefb3d1a4277a4407f8e6b208b6"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/services/identity.service.ts",
+      "sha256": "ddb8a4dc95935539e951efb93fb00339eac1ab3f55c48b41abcb135737ce9b36"
+    },
+    {
+      "path": "apps/api/src/modules/identity/application/services/verification-worker.ts",
+      "sha256": "96f2e79ef09c4d138dc48afddbcaf8938a917a64b47ea86cf64621cc0af90da2"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/__tests__/identity-policy.unit.spec.ts",
+      "sha256": "f959aaad0c5ad84c5b7f687a95764f4abcc182237891fdd983bdc44381b000b5"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/entities/identity-state.ts",
+      "sha256": "a4015b9d9071d72791bc958cf874bced3845d402328faeec6fca5486f8bdc678"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/idempotency-conflict.error.ts",
+      "sha256": "daf75fab25d5e9a4c9fd933898b542a5f03f7e333b934f2ab5ad903a333cfb16"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/idempotency-key-expired.error.ts",
+      "sha256": "4aedec3aeaddce6654694ef0b7a4f02ba9a1eb3198be7cdb61b8552bb22e1d59"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/index.ts",
+      "sha256": "f2e47acf284aa99bf2a1ac0998cee40cc410d1b442c46c3c9dfac3028997f73e"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/invalid-request.error.ts",
+      "sha256": "1a926b7ec151171cff1238c8a99d7899886dd6de2cd0c5e28809159b783d7ae6"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/permission-denied.error.ts",
+      "sha256": "caf94501645060a35ece00abe324d0017b05e1a7a08d34c49f05889006835307"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/rate-limited.error.ts",
+      "sha256": "89c6bf0743c718a34c0a30eab0a7cff6f5a24361100c78a31e6a1c193f37c19e"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/revision-conflict.error.ts",
+      "sha256": "4be1261a9200ed311f47ed3858d9dbcebbe5a0f68e5ae1955b1eb4e35689832b"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/errors/unauthenticated.error.ts",
+      "sha256": "01cca0424acaf1592cf6f0b1425f8b2a2cdb3be58c0d33ec3199a59897214e5c"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/identity-policy.ts",
+      "sha256": "7cf99753d901db8d3929827d9dad99deed962ebc2c6450ddb6b6692770727560"
+    },
+    {
+      "path": "apps/api/src/modules/identity/domain/repositories/identity.repository.ts",
+      "sha256": "825e0765286fdff4e20b5d03c8a0b0c891808217ab83d24700d3f9716a3009e0"
+    },
+    {
+      "path": "apps/api/src/modules/identity/identity-operator.factory.ts",
+      "sha256": "e236b480747a15d72f5f0c8ae66484541db7e00ab510cff6eb25fc8924e01106"
+    },
+    {
+      "path": "apps/api/src/modules/identity/identity-worker.factory.ts",
+      "sha256": "84ac5faa9c431f3ce625e1daab84dae452fbc60006ccd74306c30194d2ca7729"
+    },
+    {
+      "path": "apps/api/src/modules/identity/identity.module.ts",
+      "sha256": "cc8cb491fb2c935a77274a139850a7092e8df4d77eb276ba8daf140fa64cce88"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/http/http-session.ts",
+      "sha256": "2415575a96619ca474444502bf4062e424977f757f09c4657c4eb16428811ca5"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/mail/__tests__/verification-mail.unit.spec.ts",
+      "sha256": "b6b2eebc3c39766f022acacfa39393449a834ec0d9024cd8fbc362166ca1e54a"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/mail/verification-mail.ts",
+      "sha256": "33755876b6dd111796aa55969ee7bfbac63a4096329cf9190bbbbba0ff167f45"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission.ts",
+      "sha256": "a3b59b30f147a26e67abe0bc0b724fbdb4725bf30b2dba08e6dd6c05a8960bd3"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.ts",
+      "sha256": "5a9d70e71d5de75346fcb3b27a2ea1a00c7a785dc397013f1b4f0bac28a37608"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/queries/live-principal.sql.ts",
+      "sha256": "33d24580b2c277614b80b46c7ec12e591bc0e3559dc0a671fa50c0943cfadbbb"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.ts",
+      "sha256": "79941f86c99645a10ad88007608dc6b5bc26421097302e7b4ed2b1c45f58734a"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.ts",
+      "sha256": "aa3673fb757d9da778d4523c58d0ff4bcb1a265e7fb6eeb0cbb84f33bf255100"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-operator-admin.ts",
+      "sha256": "8bc8341c5f88072d3cac4d17b2402c7e6fe66e8f322e1d46f3b671818f743f50"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/security/__tests__/identity-crypto.unit.spec.ts",
+      "sha256": "15eb91559d9714f4f49d9bde94da05726292bcc17bcfa5279f2954dc9152d9f7"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/security/identity-crypto.ts",
+      "sha256": "ee8cdb617e35111c613fa2f6f601f98757ecd0559a46899c54ea362093745edf"
+    },
+    {
+      "path": "apps/api/src/modules/identity/infrastructure/security/identity-runtime.ts",
+      "sha256": "345561a6e18dee7083642234bdab081c986b1eb65d34f8d8c5374d85c5767843"
+    },
+    {
+      "path": "apps/api/src/modules/identity/presentation/http/dto/identity.dto.ts",
+      "sha256": "67be7783a4f6fdebd091d8a2cdfc8efc50da243e7ee6d7cbd1c36f076bdc5da9"
+    },
+    {
+      "path": "apps/api/src/modules/identity/presentation/http/http-session.port.ts",
+      "sha256": "2b475650c4287aaf6f58610ced8719da2293cc560a88a4dee85b5238e7811b7e"
+    },
+    {
+      "path": "apps/api/src/modules/identity/presentation/http/identity.controller.ts",
+      "sha256": "cebce6e528eb6cef2eb36a94fddb1a81f0b73e7338d9a1d93c4429e7cf8abb4a"
+    },
+    {
+      "path": "apps/api/src/shared/application/errors/unavailable.error.ts",
+      "sha256": "1ec18f79cc4ef07bedd86e83b478c992a7c448d05f2174503a0533f0dc762e35"
+    },
+    {
+      "path": "apps/api/src/shared/application/ports/idempotency.ts",
+      "sha256": "186716e77b785a98595b33b7b00836843b4854ec26fee03b60e4c6bee3b3919b"
+    },
+    {
+      "path": "apps/api/src/shared/application/ports/readiness.ts",
+      "sha256": "f4ebf8d15477c507cd370d7f6d9e9b11ac7bdf737197dd0ee13464a1e74c7125"
+    },
+    {
+      "path": "apps/api/src/shared/application/ports/security.ts",
+      "sha256": "721ba78415ee88700443ea37ab363986e4e7ac93cb52728772154adb0c38bc80"
+    },
+    {
+      "path": "apps/api/src/shared/application/unit-of-work/unit-of-work.port.ts",
+      "sha256": "a756910fbe639d91b6cba68e117e8e070ba2983fa2018003988d7bf6bfd30c11"
+    },
+    {
+      "path": "apps/api/src/shared/common/filters/__tests__/domain-exception.filter.unit.spec.ts",
+      "sha256": "2f3c954485b78d4712a741dfad0a843ce6ee2248708b2e75fecb50333fb01a70"
+    },
+    {
+      "path": "apps/api/src/shared/common/filters/domain-exception.filter.ts",
+      "sha256": "619ee276547fca94702b9fd5906c7040071619fdfdf35e0a19c63bd329504ebd"
+    },
+    {
+      "path": "apps/api/src/shared/common/interceptors/__tests__/api-response.interceptor.unit.spec.ts",
+      "sha256": "2edf109d3df098edf75b7976e05bf6bb55cd3e9a89d4a5e19bda674e1797dcd3"
+    },
+    {
+      "path": "apps/api/src/shared/common/interceptors/api-response.interceptor.ts",
+      "sha256": "f8f980bbf1b9a1c6f7e8fd08adccbebd97823852cea4079b71b4a437436d9d49"
+    },
+    {
+      "path": "apps/api/src/shared/domain/exceptions/domain-error.ts",
+      "sha256": "bdb9634e09738f4c9498cd774c5c4d0fec069fd598fced9f8b4449513db6677d"
+    },
+    {
+      "path": "apps/api/src/shared/domain/exceptions/error-category.ts",
+      "sha256": "eb8dd815acfd96f55396379b72884865c9528676d34077968dc87126d0a41409"
+    },
+    {
+      "path": "apps/api/src/workers/operator/operator-admin.main.ts",
+      "sha256": "d9762c105a518e86a283898a7a2146fe0ade067678a4f1394fee7bb79e42d0db"
+    },
+    {
+      "path": "apps/api/src/workers/outbox/verification.main.ts",
+      "sha256": "fa9ac385f819db884d03efae76886fbcc50c914f1db6f49ccc8a2429b8f44db5"
+    },
+    {
+      "path": "apps/api/src/workers/scheduler/expiry.main.ts",
+      "sha256": "e3dbff65470cc03341296275e07c8d1f9c549584cf809248b48f79155a0f03af"
+    }
+  ],
+  "migrations": [
+    {
+      "file": "0001_capability_schema.sql",
+      "bytes": 19421,
+      "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95"
+    },
+    {
+      "file": "0002_query_indexes.sql",
+      "bytes": 2289,
+      "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158"
+    },
+    {
+      "file": "0003_runtime_privileges.sql",
+      "bytes": 1877,
+      "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9"
+    },
+    {
+      "file": "0004_durable_state_guards.sql",
+      "bytes": 1780,
+      "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8"
+    },
+    {
+      "file": "0005_frozen_category.sql",
+      "bytes": 920,
+      "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b"
+    },
+    {
+      "file": "0006_immutable_submission.sql",
+      "bytes": 720,
+      "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043"
+    },
+    {
+      "file": "0007_identity_runtime.sql",
+      "bytes": 7038,
+      "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6"
+    },
+    {
+      "file": "0008_identity_operations.sql",
+      "bytes": 6872,
+      "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67"
+    },
+    {
+      "file": "0009_catalog_question_points.sql",
+      "bytes": 474,
+      "sha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1"
+    },
+    {
+      "file": "0010_attempt_revision.sql",
+      "bytes": 750,
+      "sha256": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26"
+    },
+    {
+      "file": "0011_submission_kind.sql",
+      "bytes": 3328,
+      "sha256": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2"
+    },
+    {
+      "file": "0012_required_submission_kind.sql",
+      "bytes": 706,
+      "sha256": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49"
+    },
+    {
+      "file": "0013_expiry_retry_schedule.sql",
+      "bytes": 686,
+      "sha256": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf"
+    }
+  ],
+  "testSourceSha256": "ef630c8da33d5b0a891c58ef5dc2698b99ec4d09f53e306800a91bc29b0b9a73",
+  "derivedFrom": {
+    "path": ".local/assessment-diagnostics/dbf8359a-5fbd-4ed9-af3d-f95d76b41a95.json",
+    "sha256": "7840afe535764496ca59a3a7495e7f5d04aa55e6273af8eb137998a01779b206",
+    "projection": "budget/source/observation-count evidence only; full timing/SQL plans remain in ignored local diagnostic"
+  }
+}

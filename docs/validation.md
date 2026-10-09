@@ -1,5 +1,13 @@
 # Validation log
 
+2026-10-09 latest: [outbox dispatch](outbox-dispatch-2026-10-08.md)/
+[raw evidence](evidence/outbox-dispatch-2026-10-08/README.md):280 root and173
+integration PASS; lint/typecheck/build/contracts46/425 and production-only
+dependency audit0 advisories. Independent post-lock lease RED corrected and all
+four cases GREEN in final integration. Actual SDK uses a local HTTP fixture;
+compiled worker SIGTERM/drain, restricted PG replay/audit/role checks pass.
+0001–0013 and prior expiry evidence preserved; no AWS/SLO/cost acceptance.
+
 Updated 2026-10-06. Latest scope: Web UI documentation/task/prompt handoff for Grok before ORM evaluation; no frontend implementation. Source normalization12/12 and152 tests are prior runtime evidence. ID-07/browser and ID-11/live SES remain PARTIAL. Historical sections remain below; fresh documentation checks are in the final Web UI section. No AWS capacity/cost/production claim.
 
 | Check / command | Result | Detail |
@@ -426,3 +434,23 @@ Root `npm test`, rerun after the unused-import removal: 249 passed (116 API / 37
 Manual statement counts before and after the shared core are start 11, save 11, submit 10, questions 4, answers 4, status 3. Ceilings stay 12/11/10 and 4/4/3. Scheduler throughput has no before value. First measured in-process burst of 2000 due attempts, batch 50, pool max 2, concurrency 1: 2000 processed, 0 failed, wall 14809.3 ms, 135.05/s, deadline-to-commit lag p50/p95/p99 39301/58596/60326 ms. The lag includes seeded overdue age up to about 60 seconds. Repeat batch 50: wall 14174.5 ms, 141.10/s. Batch 10: wall 13239.0 ms, 151.07/s. Mixed 200 due: wall 1648.7 ms, 121.30/s. Compiled worker, 60 second window: SIGTERM exit 0, drain 16.16 ms, restart drained 2000/2000/2000 with no duplicate outbox aggregate, max RSS 63872 KiB. An earlier 10 second window stopped at 1440 committed rows and also had no duplicate; that file stays as append-only evidence. Unconstrained `EXPLAIN` of the claim is a sequential scan at this sample. `attempts_deadline` appears when sequential scan is disabled. No planner hint or second index was added.
 
 Roadmap recount after the checkbox edit: 70 checked, 146 open, 216 total. ATT-08 and ATT-09 stay open. ATT-10 and ATT-11 stay open with a deadline-sweep subset only. Scoring, SQS, Reporting, ID-11, Phase04 and production acceptance stay open. Nothing was staged, committed or deployed.
+
+## Independent deadline sweep review — 2026-10-08
+
+[Report](assessment-expiry-review-2026-10-08.md)/[evidence](evidence/assessment-expiry-review-2026-10-08/README.md) supersedes the preceding local acceptance. ATT-07 reopened `[ ] — IN PROGRESS`;69 checked/147 pending/216 total. Four independently reproduced findings: failed prefix filling a batch starves younger rows; accepted submission kind NULL passes the0011 CHECK and is frozen; volatile discovery/backlog clocks force full scan of100.000 future rows; historical “deadline-to-commit” lag measures acceptance time before persistence.
+
+Fresh root249 PASS (116 API/37 tooling/96 Web); lint/quality/contracts (46 operations/425 examples), typecheck/build PASS. Isolated PostgreSQL17 at55435 with SMTP Mailpit:7 suites/122 PASS/1 historical Catalog diagnostic deliberately deselected. Initial sandbox attempt failed EPERM connection; granted rerun exit0. Probes:4 RED assertions/3 PASS controls, separately retained. Two workers keep4 attempts/4 events/revision2; clearing poison permits recovery; accepted provenance stays immutable. Natural plan comparison has three repetitions with only discovery cutoff changed; post-lock clock remains volatile and authoritative. Pre-commit witness omits at least203.988ms from the mislabeled lag under a200ms outbox delay.
+
+Source hashes in all6 original ATT-07 raw files match current source. Protected API source,11 migrations/contracts and archived Assessment evidence were not edited; compiled migration bundle matches source. Fixture database/logins removed; only review-owned PostgreSQL/Mailpit stopped. HTTPS not rerun because Identity composition/shared HTTP adapter are unchanged. Tests do not establish live DB outage recovery or process SIGKILL-in-transaction; full ATT-10/11, scoring/SQS, ID-11/Phase04 and production gates remain open. This review adds documentation and isolated evidence only; no runtime fix, development DB migration, unrelated Web edit, stage/commit or deploy.
+
+## ATT-07 review fixes — 2026-10-08
+
+[Closure](assessment-expiry-fixes-2026-10-08.md)/[evidence](evidence/assessment-expiry-fixes-2026-10-08/README.md): ER-01–04 CLOSED locally; ATT-07 restored70 checked/146 pending/216 total. Historical review/implementation assertions above describe their own source snapshot; they are not current acceptance.
+
+Independent supported PG regressions first produced6 valid RED failures/5 controls. Final21-case suite covers NULL UPDATE/INSERT, valid immutable provenance, batch1/2 failed prefix fairness, durable cooldown/recomposition/two workers, runtime denial/winner no-op/retry bounds, observed lock clock and natural100k-future range. The real migration runner rejected0012 over corrupt0011 data without changing receipts/old CHECK; after synthetic-only deletion it applied0012/0013 and reran0 migrations. The delay200ms pre-commit witness is included in calibrated ACK lag; rollback produces0 samples and collector throw cannot retry a commit.
+
+Final root254 =118 API/20 suites +40 tooling +96 existing Web PASS. Full restricted PG/HTTP/SMTP144/144 PASS on8 suites,0 skipped, including Catalog diagnostic writer and compiled expiry startup/health/SIGTERM/restart. Lint/quality/contracts46 operations/425 examples, typecheck/build PASS; lint/typecheck rerun after new regressions and measurement-script lint after final population/formatter changes. No runtime dependency change. Chromium HTTPS not rerun because Identity composition/shared HTTP adapter did not change.
+
+Four actual before/after local healthy-sweep pairs preserve dataset/configuration. Final raw separates acceptance/COMMIT ACK observation with calibration uncertainty/drift and timed query/CPU/RSS/pool windows; post-run probe is separate. Natural100k-future comparison uses the same schema/data and no planner forcing: volatile/current median claim13.634/0.100ms, backlog10.178/0.043ms; current deadline Index Cond. These are local server observations, not a production SLO or AWS saving. Compiled worker2.000 accepts/events/distinct aggregates,0 duplicates; SIGTERM0/drain8.29ms, orderly restart remaining-backlog drain13.805s/exit0. Manual query budgets still11/4/4/11/10/3 with25 samples/route.
+
+Baseline228 files: only4 intended existing source changes,75 archived evidence files unchanged; source migrations0001–0011 unchanged and13 compiled assets byte-identical. All6 canonical accepted raw files match final source hashes. Cleanup0 fixture databases/logins/connections; owned PG/Mailpit stopped, volumes retained. New logs redact protocol keys. Intermediate fixture/EPERM/SMTP failures remain labeled and retained, not counted as successful checks. Long-lived development DB not migrated; no stage/commit/deploy or unrelated Web edits. Full ATT-10/11, scoring/SQS/Reporting/retention, ID-11/Phase04 and production gates remain open.

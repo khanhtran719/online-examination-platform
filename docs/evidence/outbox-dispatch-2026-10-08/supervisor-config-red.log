@@ -1,0 +1,65 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath apps/api/src/config/__tests__/dispatch-worker-config.unit.spec.ts apps/api/src/modules/assessment/application/services/__tests__/publisher-supervisor.unit.spec.ts
+
+(node:940) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/src/modules/assessment/application/services/__tests__/publisher-supervisor.unit.spec.ts
+  ● publisher supervision › backs off DB failures, drains a full batch and waits on idle without observer-driven retry
+
+    Not implemented
+
+      13 |   observe: (result: PublishResult | null) => void;
+      14 |   random?: () => number;
+    > 15 | }): Promise<void> {throw new Error("Not implemented");}
+         |                          ^
+      16 |
+
+      at runPublisherSupervisor (apps/api/src/modules/assessment/application/services/publisher-supervisor.ts:15:26)
+      at Object.<anonymous> (apps/api/src/modules/assessment/application/services/__tests__/publisher-supervisor.unit.spec.ts:10:11)
+
+  ● publisher supervision › does not spin on all failing sends and stops admitting on shutdown
+
+    Not implemented
+
+      13 |   observe: (result: PublishResult | null) => void;
+      14 |   random?: () => number;
+    > 15 | }): Promise<void> {throw new Error("Not implemented");}
+         |                          ^
+      16 |
+
+      at runPublisherSupervisor (apps/api/src/modules/assessment/application/services/publisher-supervisor.ts:15:26)
+      at Object.<anonymous> (apps/api/src/modules/assessment/application/services/__tests__/publisher-supervisor.unit.spec.ts:24:11)
+
+FAIL apps/api/src/config/__tests__/dispatch-worker-config.unit.spec.ts
+  ● isolated dispatch worker configuration › accepts production settings without Identity/JWT/mail secrets
+
+    Not implemented
+
+      5 |   region: string; queueUrl: string; timeoutMs: number; endpoint?: string;
+      6 |   pollIntervalMs: number; healthPort: number;
+    > 7 | } {throw new Error("Not implemented");}
+        |          ^
+      8 |
+
+      at dispatchWorkerConfig (apps/api/src/config/dispatch-worker.config.ts:7:10)
+      at Object.<anonymous> (apps/api/src/config/__tests__/dispatch-worker-config.unit.spec.ts:8:12)
+
+  ● isolated dispatch worker configuration › permits an explicitly selected local transport fixture only outside production
+
+    Not implemented
+
+      5 |   region: string; queueUrl: string; timeoutMs: number; endpoint?: string;
+      6 |   pollIntervalMs: number; healthPort: number;
+    > 7 | } {throw new Error("Not implemented");}
+        |          ^
+      8 |
+
+      at dispatchWorkerConfig (apps/api/src/config/dispatch-worker.config.ts:7:10)
+      at Object.<anonymous> (apps/api/src/config/__tests__/dispatch-worker-config.unit.spec.ts:23:12)
+
+Test Suites: 2 failed, 2 total
+Tests:       4 failed, 9 passed, 13 total
+Snapshots:   0 total
+Time:        2.291 s
+Ran all test suites within paths "apps/api/src/config/__tests__/dispatch-worker-config.unit.spec.ts", "apps/api/src/modules/assessment/application/services/__tests__/publisher-supervisor.unit.spec.ts".

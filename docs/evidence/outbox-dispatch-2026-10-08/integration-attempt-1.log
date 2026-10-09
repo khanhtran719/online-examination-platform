@@ -1,0 +1,31 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand
+
+(node:4671) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/outbox-dispatch.spec.ts
+  ● Assessment durable dispatch › serves health and drains an admitted SDK send before closing DB on repeated stop
+
+    Cannot write headers after they are sent to the client
+
+      685 |       const body = JSON.parse(raw).MessageBody;
+      686 |       release = () => {
+    > 687 |         response.writeHead(200, { "content-type": "application/x-amz-json-1.0" });
+          |                  ^
+      688 |         response.end(
+      689 |           JSON.stringify({
+      690 |             MessageId: "local",
+
+      at release (apps/api/tests/integration/outbox-dispatch.spec.ts:687:18)
+      at Object.<anonymous> (apps/api/tests/integration/outbox-dispatch.spec.ts:732:16)
+
+
+Test Suites: 1 failed, 10 passed, 11 total
+Tests:       1 failed, 172 passed, 173 total
+Snapshots:   0 total
+Time:        45.987 s
+Ran all test suites.
+Jest did not exit one second after the test run has completed.
+
+'This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.

@@ -1,0 +1,478 @@
+{
+  "capturedAt": "2026-10-08T14:15:21.472Z",
+  "scenario": "burst2000-batch10-pool2",
+  "harness": "in-process DeadlineSweep",
+  "firstMeasured": false,
+  "repeat": false,
+  "differentConfig": true,
+  "schedulerBaselineThroughput": null,
+  "baselineReason": "No scheduler existed before ATT-07. A before throughput number is not invented.",
+  "dataset": {
+    "due": 2000,
+    "future": 100,
+    "submitted": 25,
+    "alreadyExpired": 25,
+    "failed": 0
+  },
+  "config": {
+    "batchSize": 10,
+    "poolMax": 2,
+    "statementTimeoutMs": 2000,
+    "lockTimeoutMs": 500,
+    "concurrency": 1,
+    "transaction": "one attempt"
+  },
+  "postgresVersion": "17.11",
+  "node": "v24.17.0",
+  "hashes": {
+    "apps/api/src/modules/assessment/application/services/attempt-submission.ts": "545540bb89cc2a2cb1a55778842a245df11e3761f057b6a17f94850b848d3fe9",
+    "apps/api/src/modules/assessment/application/services/deadline-sweep.ts": "7c6504084230d7bd0c02a6728181859d16223563396473371a9fb25b8bf326c3",
+    "apps/api/src/modules/assessment/application/services/expiry-supervisor.ts": "b48f6d2b8b957694a798a98ed27882941d0d21dcde179c62c3edb188669e023f",
+    "apps/api/src/modules/assessment/assessment-worker.factory.ts": "4ce033cfdb2a1c55e23c4b3bcbe91fbb6c8d8cf7e05173b2655839b38ce1221f",
+    "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.repository.ts": "af63596ab93ad04f56d1c6d27b9c23e69c9e64baadcce05c22dd3309ce2fcd54",
+    "apps/api/src/workers/scheduler/expiry.main.ts": "e3dbff65470cc03341296275e07c8d1f9c549584cf809248b48f79155a0f03af",
+    "apps/api/src/config/expiry-worker.config.ts": "c595909a9be02bdbeb76e6384d4480199ee0db015176811e00b8f96643905c7b",
+    "apps/api/src/infrastructure/database/migrations/0011_submission_kind.sql": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2",
+    "apps/api/src/infrastructure/database/migrations/0012_required_submission_kind.sql": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49",
+    "apps/api/src/infrastructure/database/migrations/0013_expiry_retry_schedule.sql": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf",
+    "apps/api/src/modules/assessment/application/ports/expiry-retry.port.ts": "87f0d986d98d507ceedf36d09d2321527b216f72eace94788379dcf6cfbaab94",
+    "apps/api/src/modules/assessment/application/ports/submission-commit-observer.port.ts": "0b499d4b2fe33100292f2dd595b7fe3eda36a2cc35ade74c828a993e190c1c4e",
+    "scripts/assessment-expiry-measure.mjs": "e11ced8a6c3821bf0c6914fee1264c1250d83c399886e9f63b86da3453dca813",
+    "scripts/expiry-lag.mjs": "aa1057fd1a12fffc70ddf565ff97d4f6b5ee32803c88939375523405d0eb468e",
+    "docs/contracts/attempt-submitted.v1.schema.json": "2ed41eb88f8079fd34b7c7e09b77e08373f79a08c7482196c1dab0b2a334824d"
+  },
+  "before": {
+    "due": 2000,
+    "oldestDueAgeMs": 60155.444
+  },
+  "after": {
+    "due": 0,
+    "oldestDueAgeMs": null
+  },
+  "ticks": 201,
+  "processed": 2000,
+  "skipped": 0,
+  "failed": 0,
+  "wallMs": 16613.750167,
+  "processedPerSecond": 120.3822123178795,
+  "schemaVersion": 2,
+  "deadlineToAcceptanceLagMs": {
+    "sampleCount": 2000,
+    "p50Ms": 39789,
+    "p95Ms": 58350,
+    "p99Ms": 60294,
+    "minMs": 17605,
+    "maxMs": 60478
+  },
+  "deadlineToCommitAckObservedLagMs": {
+    "sampleCount": 2000,
+    "p50Ms": 39793.5,
+    "p95Ms": 58352.5,
+    "p99Ms": 60298.5,
+    "minMs": 17608.5,
+    "maxMs": 60480.5
+  },
+  "clockCalibration": {
+    "before": {
+      "offsetMs": -0.5,
+      "uncertaintyMs": 1.5,
+      "roundTripMs": 1
+    },
+    "after": {
+      "offsetMs": -0.5,
+      "uncertaintyMs": 1.5,
+      "roundTripMs": 1
+    },
+    "offsetDriftMs": 0
+  },
+  "commitObservationPoint": "Successful UnitOfWork COMMIT acknowledgement observed by caller; calibrated UTC estimate, not a physical WAL commit timestamp.",
+  "commitObservationPopulation": "Successful acceptance transactions whose COMMIT acknowledgement was observed; failures/retries are reported separately.",
+  "lagMatchesProcessed": true,
+  "observations": {
+    "query": {
+      "count": 10213,
+      "totalMs": 16157.78207700012,
+      "p50Ms": 0.8640419999937876,
+      "p95Ms": 5.272250000001804,
+      "p99Ms": 7.753834000002826
+    },
+    "lock": {
+      "count": 2003,
+      "totalMs": 8037.114293000028,
+      "p50Ms": 3.830375000005006,
+      "p95Ms": 6.965875000001688,
+      "p99Ms": 11.575000000004366
+    },
+    "acquire": {
+      "count": 2205,
+      "totalMs": 76.55409800002963,
+      "p50Ms": 0.01729200000409037,
+      "p95Ms": 0.052583999997295905,
+      "p99Ms": 0.2275840000002063
+    },
+    "transaction": {
+      "count": 2003,
+      "totalMs": 16337.942460999897,
+      "p50Ms": 7.385874999999942,
+      "p95Ms": 14.103458000005048,
+      "p99Ms": 25.50858299999527
+    },
+    "poolError": 0,
+    "maxWaiting": 0
+  },
+  "pool": {
+    "total": 1,
+    "idle": 1,
+    "waiting": 0
+  },
+  "process": {
+    "cpuUserMicros": 1208761,
+    "cpuSystemMicros": 586607,
+    "rssStartBytes": 125534208,
+    "rssEndBytes": 125829120
+  },
+  "skipLockedProbe": {
+    "measured": true,
+    "youngerExpiredWhileOldestHeld": true,
+    "lockWaitsObserved": 0,
+    "oldestStatusWhileHeld": "IN_PROGRESS"
+  },
+  "plans": {
+    "naturalIndexes": [],
+    "forcedIndexes": [
+      "attempts_deadline"
+    ],
+    "analyzedIndexes": [],
+    "natural": [
+      {
+        "Plan": {
+          "Node Type": "CTE Scan",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "CTE Name": "locked",
+          "Alias": "locked",
+          "Startup Cost": 127.95,
+          "Total Cost": 127.98,
+          "Plan Rows": 1,
+          "Plan Width": 278,
+          "Plans": [
+            {
+              "Node Type": "Limit",
+              "Parent Relationship": "InitPlan",
+              "Subplan Name": "CTE locked",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 127.94,
+              "Total Cost": 127.95,
+              "Plan Rows": 1,
+              "Plan Width": 207,
+              "Plans": [
+                {
+                  "Node Type": "LockRows",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 127.94,
+                  "Total Cost": 152.66,
+                  "Plan Rows": 1978,
+                  "Plan Width": 207,
+                  "Plans": [
+                    {
+                      "Node Type": "Sort",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 127.94,
+                      "Total Cost": 132.88,
+                      "Plan Rows": 1978,
+                      "Plan Width": 207,
+                      "Sort Key": [
+                        "(to_char((attempts.deadline AT TIME ZONE 'UTC'::text), 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"Z\"'::text))",
+                        "attempts.id"
+                      ],
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "attempts",
+                          "Alias": "attempts",
+                          "Startup Cost": 0,
+                          "Total Cost": 118.05,
+                          "Plan Rows": 1978,
+                          "Plan Width": 207,
+                          "Filter": "((id <> ALL ('{}'::uuid[])) AND (status = 'IN_PROGRESS'::text) AND (deadline <= statement_timestamp()) AND ((expiry_retry_after IS NULL) OR (expiry_retry_after <= statement_timestamp())))"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "indexed": [
+      {
+        "Plan": {
+          "Node Type": "CTE Scan",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "CTE Name": "locked",
+          "Alias": "locked",
+          "Startup Cost": 207.69,
+          "Total Cost": 207.72,
+          "Plan Rows": 1,
+          "Plan Width": 278,
+          "Plans": [
+            {
+              "Node Type": "Limit",
+              "Parent Relationship": "InitPlan",
+              "Subplan Name": "CTE locked",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 207.68,
+              "Total Cost": 207.69,
+              "Plan Rows": 1,
+              "Plan Width": 207,
+              "Plans": [
+                {
+                  "Node Type": "LockRows",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 207.68,
+                  "Total Cost": 232.4,
+                  "Plan Rows": 1978,
+                  "Plan Width": 207,
+                  "Plans": [
+                    {
+                      "Node Type": "Sort",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 207.68,
+                      "Total Cost": 212.62,
+                      "Plan Rows": 1978,
+                      "Plan Width": 207,
+                      "Sort Key": [
+                        "(to_char((attempts.deadline AT TIME ZONE 'UTC'::text), 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"Z\"'::text))",
+                        "attempts.id"
+                      ],
+                      "Plans": [
+                        {
+                          "Node Type": "Bitmap Heap Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "attempts",
+                          "Alias": "attempts",
+                          "Startup Cost": 83.61,
+                          "Total Cost": 197.79,
+                          "Plan Rows": 1978,
+                          "Plan Width": 207,
+                          "Recheck Cond": "((deadline <= statement_timestamp()) AND (status = 'IN_PROGRESS'::text))",
+                          "Filter": "((expiry_retry_after IS NULL) OR (expiry_retry_after <= statement_timestamp()))",
+                          "Plans": [
+                            {
+                              "Node Type": "Bitmap Index Scan",
+                              "Parent Relationship": "Outer",
+                              "Parallel Aware": false,
+                              "Async Capable": false,
+                              "Index Name": "attempts_deadline",
+                              "Startup Cost": 0,
+                              "Total Cost": 83.12,
+                              "Plan Rows": 1978,
+                              "Plan Width": 0,
+                              "Index Cond": "(deadline <= statement_timestamp())"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "analyzed": [
+      {
+        "Plan": {
+          "Node Type": "CTE Scan",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "CTE Name": "locked",
+          "Alias": "locked",
+          "Startup Cost": 127.95,
+          "Total Cost": 127.98,
+          "Plan Rows": 1,
+          "Plan Width": 278,
+          "Actual Startup Time": 5.076,
+          "Actual Total Time": 5.077,
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 47,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Limit",
+              "Parent Relationship": "InitPlan",
+              "Subplan Name": "CTE locked",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 127.94,
+              "Total Cost": 127.95,
+              "Plan Rows": 1,
+              "Plan Width": 207,
+              "Actual Startup Time": 5.069,
+              "Actual Total Time": 5.07,
+              "Actual Rows": 1,
+              "Actual Loops": 1,
+              "Shared Hit Blocks": 47,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "LockRows",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 127.94,
+                  "Total Cost": 152.66,
+                  "Plan Rows": 1978,
+                  "Plan Width": 207,
+                  "Actual Startup Time": 5.068,
+                  "Actual Total Time": 5.068,
+                  "Actual Rows": 1,
+                  "Actual Loops": 1,
+                  "Shared Hit Blocks": 47,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0,
+                  "Plans": [
+                    {
+                      "Node Type": "Sort",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Startup Cost": 127.94,
+                      "Total Cost": 132.88,
+                      "Plan Rows": 1978,
+                      "Plan Width": 207,
+                      "Actual Startup Time": 5.049,
+                      "Actual Total Time": 5.049,
+                      "Actual Rows": 1,
+                      "Actual Loops": 1,
+                      "Sort Key": [
+                        "(to_char((attempts.deadline AT TIME ZONE 'UTC'::text), 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"Z\"'::text))",
+                        "attempts.id"
+                      ],
+                      "Sort Method": "quicksort",
+                      "Sort Space Used": 377,
+                      "Sort Space Type": "Memory",
+                      "Shared Hit Blocks": 46,
+                      "Shared Read Blocks": 0,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 0,
+                      "Temp Written Blocks": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Relation Name": "attempts",
+                          "Alias": "attempts",
+                          "Startup Cost": 0,
+                          "Total Cost": 118.05,
+                          "Plan Rows": 1978,
+                          "Plan Width": 207,
+                          "Actual Startup Time": 0.036,
+                          "Actual Total Time": 2.884,
+                          "Actual Rows": 2000,
+                          "Actual Loops": 1,
+                          "Filter": "((id <> ALL ('{}'::uuid[])) AND (status = 'IN_PROGRESS'::text) AND (deadline <= statement_timestamp()) AND ((expiry_retry_after IS NULL) OR (expiry_retry_after <= statement_timestamp())))",
+                          "Rows Removed by Filter": 150,
+                          "Shared Hit Blocks": 40,
+                          "Shared Read Blocks": 0,
+                          "Shared Dirtied Blocks": 0,
+                          "Shared Written Blocks": 0,
+                          "Local Hit Blocks": 0,
+                          "Local Read Blocks": 0,
+                          "Local Dirtied Blocks": 0,
+                          "Local Written Blocks": 0,
+                          "Temp Read Blocks": 0,
+                          "Temp Written Blocks": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 289,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.78,
+        "Triggers": [],
+        "Execution Time": 5.167
+      }
+    ]
+  },
+  "unmeasured": [
+    "sqsDispatchLatency",
+    "resultAvailabilityLatency",
+    "awsCost",
+    "sustainableCapacity",
+    "productionSlo",
+    "blockedLockWaitDuringUncontendedBurst"
+  ],
+  "notes": [
+    "deadlineToAcceptanceLagMs ends at post-lock acceptance, before persistence. Commit acknowledgement is measured separately with calibrated UTC and clock uncertainty.",
+    "Commit observation includes client/network/observer delay; it is not a physical WAL commit timestamp, SQS dispatch or result availability.",
+    "CPU and RSS include this measurement process, not a separate host.",
+    "Lock observations are successful FOR UPDATE timings. The skip-locked probe records whether a waiter appeared."
+  ]
+}

@@ -1,0 +1,29 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep-retry.unit.spec.ts
+
+(node:78329) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep-retry.unit.spec.ts
+  ● keeps a healthy attempt progressing after recomposition past a full failed batch
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+      33 |   await new DeadlineSweep(repo,outbox,uow,2).runOnce("00000000-0000-4000-8000-000000000099");
+      34 |   const next = await new DeadlineSweep(repo,outbox,uow,2).runOnce("00000000-0000-4000-8000-000000000098");
+    > 35 |   expect(next.processed).toBe(1);
+         |                          ^
+      36 |   expect(rows[2]).toMatchObject({status:"EXPIRED",revision:2});
+      37 |   expect(rows.slice(0,2).map(item=>item.status)).toEqual(["IN_PROGRESS","IN_PROGRESS"]);
+      38 | });
+
+      at Object.<anonymous> (apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep-retry.unit.spec.ts:35:26)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        1.807 s
+Ran all test suites within paths "apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep-retry.unit.spec.ts".

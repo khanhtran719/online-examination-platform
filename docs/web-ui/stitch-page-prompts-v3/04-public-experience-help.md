@@ -1,5 +1,7 @@
 # Prompt 04 — Public experience, How it works, Help
 
+[04A — Ba page Public desktop](04a-public-desktop.md) đã review và lưu thành [Public V4](../templates/public-v4/README.md), findings còn mở. Brief dưới đây giữ yêu cầu đầy đủ của sample variants, mobile và states để bổ sung sau; không gửi nguyên khối tạo lại ba desktop chính. Các tên V3 trong brief cũ là ngữ cảnh nguồn, 04A đặt tên frame mới V4 và giữ cùng style Home V3.
+
 ```text
 Trong “ExamPlatform UI Design”, ID 18257628123124303955, bổ sung 3 page public theo Home desktop V3 ID f5caae61539a43049ab56eea2b8b0c65 và mobile V3 ID 4e8b878555d148259ff0df819ae125a2. Không sửa Home/Dashboard/Exam hiện có. Giữ palette Cobalt–Apricot, public capsule header, typography và card geometry đã chọn.
 

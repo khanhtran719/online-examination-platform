@@ -1,0 +1,56 @@
+{
+  "projectId": "18257628123124303955",
+  "retrievedOn": "2026-10-08",
+  "scope": "Read-only review evidence for four V4 dialogs; original screenshots subsequently retained as selected visual templates on 2026-10-08",
+  "screens": [
+    {
+      "screenId": "0c2c28b743a1452f9a9f1dacc769c9d6",
+      "title": "EP-10 — Hồ sơ — V4 — Mobile — Profile conflict",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/dialogs/profile-conflict-mobile-v4.png",
+      "width": 780,
+      "height": 1768,
+      "sha256": "50583c85441c4f78f1075db7cfb6fa2dd9cc653f392bc59349999c9a75d92b19",
+      "sourceFile": "projects/18257628123124303955/screens/0c2c28b743a1452f9a9f1dacc769c9d6/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "03de693b67424fddb8e902207dc0315c",
+      "title": "EP-10 — Hồ sơ — V4 — Desktop — Profile conflict",
+      "deviceType": "DESKTOP",
+      "file": "../../templates/catalog-profile-v4/dialogs/profile-conflict-desktop-v4.png",
+      "width": 2560,
+      "height": 2048,
+      "sha256": "85d9a4732b2c79a6067e04c044f60316d626d2c2a3a4cb02d822406f70874c6f",
+      "sourceFile": "projects/18257628123124303955/screens/03de693b67424fddb8e902207dc0315c/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "294c18aa1dc1432bbdb8cc882de54bdb",
+      "title": "EP-09 — Chi tiết đề — V4 — Mobile — Start confirmation",
+      "deviceType": "MOBILE",
+      "file": "../../templates/catalog-profile-v4/dialogs/start-confirmation-mobile-v4.png",
+      "width": 780,
+      "height": 1768,
+      "sha256": "17293f2060d0e6bf8354fdddafc89e564ac803790faf0d83074150be439bf8dc",
+      "sourceFile": "projects/18257628123124303955/screens/294c18aa1dc1432bbdb8cc882de54bdb/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    },
+    {
+      "screenId": "18c214c1cc6d40f987cd3b71e2b04cb3",
+      "title": "EP-09 — Chi tiết đề — V4 — Desktop — Start confirmation",
+      "deviceType": "DESKTOP",
+      "file": "../../templates/catalog-profile-v4/dialogs/start-confirmation-desktop-v4.png",
+      "width": 2560,
+      "height": 2048,
+      "sha256": "415593f608abd3bca3c86911687b422ad74b98dfdab1118759b7b876eb1f6a39",
+      "sourceFile": "projects/18257628123124303955/screens/18c214c1cc6d40f987cd3b71e2b04cb3/fileEntries/screenshot",
+      "archiveStatus": "retained_as_current_catalog_profile_template"
+    }
+  ],
+  "limitations": [
+    "Static screenshots only; click behavior, keyboard focus, responsive overflow and motion are not verified."
+  ],
+  "acceptedOn": "2026-10-08",
+  "selectedTemplate": "../../templates/catalog-profile-v4/manifest.json"
+}

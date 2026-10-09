@@ -1,5 +1,7 @@
 # Prompt 05 — Admin exam list và editor tạo/sửa đề
 
+**Brief đầy đủ để đối chiếu, không gửi nguyên khối hiện tại.** [05A — Ba frame desktop](05a-admin-exams-desktop.md) đã tạo và [đã review](../stitch-05a-review-2026-10-08.md): Danh sách đề, Edit Thông tin và Edit Phần & câu hỏi. Bước Kiểm tra & phát hành, dialogs, Create và mobile/states bên dưới tiếp tục backlog; đề xuất chuẩn bị 05B desktop sau khi chọn hướng 05A. Chưa gửi lệnh tạo/chỉnh Stitch hoặc sửa ứng dụng trong phạm vi review.
+
 ```text
 Trong “ExamPlatform UI Design”, project 18257628123124303955, tạo Admin quản lý đề theo Dashboard desktop V2 ID 927f2e0d87ce4f89be5d55c3cb81606b và Dashboard mobile V3 ID 57c1dac4924d4d13b45d655c41dfc81c. Giữ nguyên các mẫu đầu; không chạy refinement cũ.
 

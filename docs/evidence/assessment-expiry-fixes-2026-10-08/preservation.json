@@ -1,0 +1,188 @@
+{
+  "capturedAt": "2026-10-08T16:01:36.316570+00:00",
+  "baselineCount": 228,
+  "unchangedBaselineFiles": 224,
+  "expectedChangedExistingSources": [
+    "apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep.unit.spec.ts",
+    "apps/api/src/modules/assessment/application/services/deadline-sweep.ts",
+    "apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.repository.ts",
+    "scripts/assessment-expiry-measure.mjs"
+  ],
+  "historicalFilesChecked": 75,
+  "historicalFilesUnchanged": true,
+  "historicalPaths": [
+    "docs/evidence/assessment-2026-10-07/32982df5-10c4-4e5d-aecc-fb0e3cde5938.json",
+    "docs/evidence/assessment-2026-10-07/README.md",
+    "docs/evidence/assessment-2026-10-07/d5b1e0e9-cede-4782-b2a6-952e8da20614.json",
+    "docs/evidence/assessment-2026-10-07/d5e00431-e158-4863-850a-9f47cc47c60c.json",
+    "docs/evidence/assessment-2026-10-07/summary.md",
+    "docs/evidence/assessment-expiry-2026-10-08/README.md",
+    "docs/evidence/assessment-expiry-2026-10-08/baseline-hashes.json",
+    "docs/evidence/assessment-expiry-2026-10-08/manual-hot-path.json",
+    "docs/evidence/assessment-expiry-2026-10-08/measurement-summary.md",
+    "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-burst2000-batch10-pool2.json",
+    "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-burst2000-batch50-pool2-run1.json",
+    "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-burst2000-batch50-pool2-run2.json",
+    "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-mixed-batch50-pool2.json",
+    "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T040956189Z-worker-burst2000-batch50-pool2.json",
+    "docs/evidence/assessment-expiry-2026-10-08/raw/2026-10-08T041226527Z-worker-burst2000-batch50-pool2.json",
+    "docs/evidence/assessment-expiry-review-2026-10-08/README.md",
+    "docs/evidence/assessment-expiry-review-2026-10-08/build.log",
+    "docs/evidence/assessment-expiry-review-2026-10-08/checks.json",
+    "docs/evidence/assessment-expiry-review-2026-10-08/delivery-quality.log",
+    "docs/evidence/assessment-expiry-review-2026-10-08/final-quality.log",
+    "docs/evidence/assessment-expiry-review-2026-10-08/integration-allowed.log",
+    "docs/evidence/assessment-expiry-review-2026-10-08/integration.log",
+    "docs/evidence/assessment-expiry-review-2026-10-08/lint.log",
+    "docs/evidence/assessment-expiry-review-2026-10-08/preservation-after.json",
+    "docs/evidence/assessment-expiry-review-2026-10-08/preservation-before.json",
+    "docs/evidence/assessment-expiry-review-2026-10-08/probes.log",
+    "docs/evidence/assessment-expiry-review-2026-10-08/query-plans.json",
+    "docs/evidence/assessment-expiry-review-2026-10-08/review-probes.mjs",
+    "docs/evidence/assessment-expiry-review-2026-10-08/review-results.json",
+    "docs/evidence/assessment-expiry-review-2026-10-08/root-tests.log",
+    "docs/evidence/assessment-expiry-review-2026-10-08/typecheck.log",
+    "docs/evidence/assessment-fixes-2026-10-08/README.md",
+    "docs/evidence/assessment-fixes-2026-10-08/added-security-test-harness-error.log",
+    "docs/evidence/assessment-fixes-2026-10-08/after/11e84464-706c-46ad-b0a7-827bf3c88feb.json",
+    "docs/evidence/assessment-fixes-2026-10-08/after/11e84464-706c-46ad-b0a7-827bf3c88feb.summary.md",
+    "docs/evidence/assessment-fixes-2026-10-08/after/9e712dfe-c0f4-485f-9510-fe3e262e2b28.json",
+    "docs/evidence/assessment-fixes-2026-10-08/after/9e712dfe-c0f4-485f-9510-fe3e262e2b28.summary.md",
+    "docs/evidence/assessment-fixes-2026-10-08/assessment-green.log",
+    "docs/evidence/assessment-fixes-2026-10-08/baseline.json",
+    "docs/evidence/assessment-fixes-2026-10-08/before/8b500b7f-f8ac-41f2-a536-a38f8b25442a.json",
+    "docs/evidence/assessment-fixes-2026-10-08/before/8b500b7f-f8ac-41f2-a536-a38f8b25442a.summary.md",
+    "docs/evidence/assessment-fixes-2026-10-08/checks.json",
+    "docs/evidence/assessment-fixes-2026-10-08/comparison.json",
+    "docs/evidence/assessment-fixes-2026-10-08/diagnostic-after.log",
+    "docs/evidence/assessment-fixes-2026-10-08/diagnostic-final.log",
+    "docs/evidence/assessment-fixes-2026-10-08/format-final.log",
+    "docs/evidence/assessment-fixes-2026-10-08/identity-https.log",
+    "docs/evidence/assessment-fixes-2026-10-08/integration-final.log",
+    "docs/evidence/assessment-fixes-2026-10-08/integration-identity-catalog-db.log",
+    "docs/evidence/assessment-fixes-2026-10-08/intermediate.log",
+    "docs/evidence/assessment-fixes-2026-10-08/lint.log",
+    "docs/evidence/assessment-fixes-2026-10-08/manifest.json",
+    "docs/evidence/assessment-fixes-2026-10-08/preservation.json",
+    "docs/evidence/assessment-fixes-2026-10-08/quality-final.log",
+    "docs/evidence/assessment-fixes-2026-10-08/red.log",
+    "docs/evidence/assessment-fixes-2026-10-08/typecheck-final.log",
+    "docs/evidence/assessment-fixes-2026-10-08/unit-tooling-web.log",
+    "docs/evidence/assessment-review-2026-10-07/README.md",
+    "docs/evidence/assessment-review-2026-10-07/baseline.json",
+    "docs/evidence/assessment-review-2026-10-07/checks.json",
+    "docs/evidence/assessment-review-2026-10-07/identity-https-summary.json",
+    "docs/evidence/assessment-review-2026-10-07/initial-probes.json",
+    "docs/evidence/assessment-review-2026-10-07/initial-review.log",
+    "docs/evidence/assessment-review-2026-10-07/logs/build.log",
+    "docs/evidence/assessment-review-2026-10-07/logs/final-quality.log",
+    "docs/evidence/assessment-review-2026-10-07/logs/https.log",
+    "docs/evidence/assessment-review-2026-10-07/logs/integration.log",
+    "docs/evidence/assessment-review-2026-10-07/logs/lint.log",
+    "docs/evidence/assessment-review-2026-10-07/logs/typecheck.log",
+    "docs/evidence/assessment-review-2026-10-07/logs/unit.log",
+    "docs/evidence/assessment-review-2026-10-07/manifest.json",
+    "docs/evidence/assessment-review-2026-10-07/probes.json",
+    "docs/evidence/assessment-review-2026-10-07/review-final.log",
+    "docs/evidence/assessment-review-2026-10-07/review.jest.cjs",
+    "docs/evidence/assessment-review-2026-10-07/review.spec.ts"
+  ],
+  "appliedMigrations0001Through0011Unchanged": true,
+  "sourceAndBuiltMigrations": [
+    {
+      "name": "0001_capability_schema.sql",
+      "sourceSha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+      "builtSha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0002_query_indexes.sql",
+      "sourceSha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+      "builtSha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0003_runtime_privileges.sql",
+      "sourceSha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+      "builtSha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0004_durable_state_guards.sql",
+      "sourceSha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+      "builtSha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0005_frozen_category.sql",
+      "sourceSha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+      "builtSha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0006_immutable_submission.sql",
+      "sourceSha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+      "builtSha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0007_identity_runtime.sql",
+      "sourceSha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+      "builtSha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0008_identity_operations.sql",
+      "sourceSha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+      "builtSha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0009_catalog_question_points.sql",
+      "sourceSha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1",
+      "builtSha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0010_attempt_revision.sql",
+      "sourceSha256": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26",
+      "builtSha256": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0011_submission_kind.sql",
+      "sourceSha256": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2",
+      "builtSha256": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2",
+      "preservedAppliedHistory": true
+    },
+    {
+      "name": "0012_required_submission_kind.sql",
+      "sourceSha256": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49",
+      "builtSha256": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49",
+      "preservedAppliedHistory": false
+    },
+    {
+      "name": "0013_expiry_retry_schedule.sql",
+      "sourceSha256": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf",
+      "builtSha256": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf",
+      "preservedAppliedHistory": false
+    }
+  ],
+  "finalSourceFilesCaptured": 168,
+  "acceptedRawCount": 6,
+  "acceptedRawSourceHashesMatch": true,
+  "roadmap": {
+    "checked": 70,
+    "pending": 146,
+    "total": 216
+  },
+  "cleanup": {
+    "fixtureDatabases": 0,
+    "fixtureLogins": 0,
+    "fixtureConnections": 0
+  },
+  "eventAndOpenapiChanged": false,
+  "longLivedDevelopmentDatabaseMigrated": false,
+  "awsResourcesCreated": false,
+  "stagedCommittedDeployed": false
+}

@@ -156,7 +156,12 @@ export function submissionEvent(input: SubmissionEventInput): SubmittedEvent {
   return event;
 }
 
-function assertSubmittedEvent(event: SubmittedEvent): void {
+export function assertSubmittedEvent(value: unknown): asserts value is SubmittedEvent {
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw invalidRequest();
+  const event = value as SubmittedEvent;
+  if (!event.payload || typeof event.payload !== "object" || Array.isArray(event.payload)) {
+    throw invalidRequest();
+  }
   const keys = Object.keys(event).sort();
   if (
     keys.join() !==
@@ -179,8 +184,8 @@ function assertSubmittedEvent(event: SubmittedEvent): void {
     (event.payload.submissionKind === "DEADLINE" && event.payload.expired !== true) ||
     event.aggregateId !== event.payload.attemptId ||
     typeof event.payload.expired !== "boolean" ||
-    !instant.test(event.occurredAt) ||
-    !instant.test(event.payload.deadline) ||
+    !validInstant(event.occurredAt) ||
+    !validInstant(event.payload.deadline) ||
     [
       event.eventId,
       event.aggregateId,
@@ -189,8 +194,14 @@ function assertSubmittedEvent(event: SubmittedEvent): void {
       event.payload.examId,
       event.payload.publishedVersionId,
       event.payload.submissionId,
-    ].some((value) => !uuid.test(value))
+    ].some((value) => typeof value !== "string" || !uuid.test(value))
   ) {
     throw invalidRequest();
   }
+}
+
+function validInstant(value: unknown): boolean {
+  if (typeof value !== "string" || !instant.test(value)) return false;
+  const time = Date.parse(value);
+  return Number.isFinite(time) && new Date(time).toISOString() === value;
 }

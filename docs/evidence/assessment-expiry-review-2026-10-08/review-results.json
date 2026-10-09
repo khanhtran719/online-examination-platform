@@ -1,0 +1,91 @@
+{
+  "capturedAt": "2026-10-08T10:00:20.105Z",
+  "results": [
+    {
+      "name": "ER-01 accepted NULL provenance is rejected",
+      "pass": false,
+      "expected": "23514",
+      "actual": null,
+      "note": "Actual UPDATE runs as a dedicated login inheriting examination_expiry_worker, including deferred commit guards."
+    },
+    {
+      "name": "control accepted provenance cannot later change",
+      "pass": true,
+      "expected": "23514",
+      "actual": "23514"
+    },
+    {
+      "name": "ER-02 younger row progresses past two repeatedly failing rows",
+      "pass": false,
+      "expected": "EXPIRED",
+      "actual": "IN_PROGRESS",
+      "note": {
+        "batchSize": 2,
+        "ticks": [
+          {
+            "processed": 0,
+            "skipped": 0,
+            "failed": 2,
+            "empty": false,
+            "due": 3,
+            "oldestDueAgeMs": 4017.256
+          },
+          {
+            "processed": 0,
+            "skipped": 0,
+            "failed": 2,
+            "empty": false,
+            "due": 3,
+            "oldestDueAgeMs": 4028.029
+          },
+          {
+            "processed": 0,
+            "skipped": 0,
+            "failed": 2,
+            "empty": false,
+            "due": 3,
+            "oldestDueAgeMs": 4038.867
+          }
+        ]
+      }
+    },
+    {
+      "name": "control clearing poison recovers rolled-back attempts",
+      "pass": true,
+      "expected": 3,
+      "actual": 3
+    },
+    {
+      "name": "control concurrent workers commit exactly once",
+      "pass": true,
+      "expected": {
+        "attempts": 4,
+        "valid": true,
+        "events": 4
+      },
+      "actual": {
+        "attempts": 4,
+        "valid": true,
+        "events": 4
+      }
+    },
+    {
+      "name": "ER-03 labeled commit lag includes mandatory pre-commit work",
+      "pass": false,
+      "expected": true,
+      "actual": false,
+      "note": {
+        "reported_lag_ms": "2004.000000",
+        "commit_lag_lower_bound_ms": "2207.988000",
+        "omitted_ms": "203.988000"
+      }
+    },
+    {
+      "name": "ER-04 current empty claim has a deadline index range",
+      "pass": false,
+      "expected": true,
+      "actual": false,
+      "note": "100,000 future IN_PROGRESS rows, ANALYZE, zero due rows. Comparison changes discovery only; outer post-lock clock remains clock_timestamp()."
+    }
+  ]
+}

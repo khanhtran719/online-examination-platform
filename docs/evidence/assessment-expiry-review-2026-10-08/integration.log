@@ -1,0 +1,2159 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --testTimeout=180000 --testNamePattern=^(?!.*records exact projection).*
+
+(node:63497) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment.spec.ts
+  ● Assessment durability on restricted PostgreSQL › starts once across concurrent keys and counts every terminal attempt
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment durability on restricted PostgreSQL › observes publication locks and keeps an active attempt after unpublish
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment durability on restricted PostgreSQL › freezes the started version across bank edits, republish and archive
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment durability on restricted PostgreSQL › saves a batch atomically, replays the receipt, and rejects stale or invalid selections
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment durability on restricted PostgreSQL › submits once, keeps the acceptance for every later key, and rolls back a failed outbox insert
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment durability on restricted PostgreSQL › reads the clock after an observed attempt lock when the deadline moves
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment durability on restricted PostgreSQL › rejects a revoked family after the request is observed waiting on the account lock
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment durability on restricted PostgreSQL › cuts a question page on the byte cap without skipping the next item
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment durability on restricted PostgreSQL › matches the declared HTTP envelopes and redacts a failed submission
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment durability on restricted PostgreSQL › records auth-inclusive adapter diagnostics without calling them capacity
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-01 replays semantically identical selected-option sets
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-02 bounds the whole decoded HTTP question page
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-03 starts with the version committed by an observed first-publication lock
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-03 starts with the version committed by an observed republish lock
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-04 accepts the UUID spelling allowed by the HTTP validator
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-04 rejects duplicate semantic UUIDs before storing a batch
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-04 canonicalizes UUID paths for start replay, question cursors and submit replay
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-02 measures escaped and UTF-8 text on every page including the final page
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › control serializes two save writers on separate UnitOfWork instances
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › control keeps duplicate submit identity without requiring a second receipt
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › control preserves every acknowledged save in an observed save/submit race
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › keeps CSRF family fallback, credential checks, permissions and the shared actor throttle
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+  ● Assessment review regressions on restricted PostgreSQL › AR-05 respects the existing auth-inclusive write query ceilings
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      384 |   validateSave = ajv.compile(api.components.schemas.SaveReceiptEnvelope!);
+      385 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 386 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      387 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      388 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      389 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:386:3)
+
+
+  ● Test suite failed to run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      480 |   for (let attempt = 0; attempt < 100; attempt += 1) {
+      481 |     const running = (
+    > 482 |       await admin.query<{ n: number }>(
+          |       ^
+      483 |         "SELECT count(*)::int AS n FROM pg_stat_activity WHERE datname = $1",
+      484 |         [name],
+      485 |       )
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment.spec.ts:482:7)
+
+FAIL apps/api/tests/integration/identity.spec.ts
+  ● Identity on real restricted PostgreSQL › creates one pending account and one durable intent under duplicate registration
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › activates once with the email owner's password, erases ciphertext and never auto logs in
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › coalesces resend during cooldown and rejects expired/cancelled challenges
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › commits reuse revocation and invalidates the replacement across two instances
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › reserves failure capacity atomically before concurrent password evaluations
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › shares login failure limits across instances without counting successful logins
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › retains each failure reservation for at least fifteen minutes
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › serializes concurrent refresh and fails closed after a replay
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › rejects DB-expired access and absolute families even while the JWT signature is valid
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › rolls back the profile and receipt when its mandatory audit cannot commit
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › makes logout idempotent and reflects current disable and permission changes
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › forbids runtime self-granting admin or editing the permission matrix
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › persists profile receipts before checking revision, with atomic audit and no lost update
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › enforces cookie/Origin/CSRF boundaries over Nest HTTP and returns no JWT in JSON
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › delivers a captured SMTP verification link and never sends an already consumed job
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › fences expired delivery leases and parks bounded retry failures
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › grants first admin once through the operator role and audits every grant/revoke
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › parks a worker that crashed on its last allowed attempt and bounds retry backoff
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › does not hold email intents while awaiting challenge cleanup
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › isolates mail worker privileges and purges terminal verification material by policy
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › revokes all sessions signed by a compromised key through the audited operator boundary
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+  ● Identity on real restricted PostgreSQL › replays only a parked live email intent without changing its challenge or deadline
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      59 |   finalPassword = "email owner final password";
+      60 | beforeAll(async () => {
+    > 61 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      62 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      63 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      64 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:61:3)
+
+
+  ● Test suite failed to run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      123 |     if (
+      124 |       (
+    > 125 |         await admin.query(
+          |         ^
+      126 |           `
+      127 |       SELECT
+      128 |         count(*)::int n
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:125:9)
+
+FAIL apps/api/tests/integration/catalog.spec.ts
+  ● Catalog on real restricted PostgreSQL › creates and replays questions without losing an acknowledgement or overwriting a conflict
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › rolls back the question when the audit write fails
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › archives questions without removing references and rejects a later draft attachment
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › publishes an immutable version and keeps it across bank edits, unpublish and republish
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › rejects an incomplete or closed publication and hides an uncommitted version from another connection
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › serializes publish and draft replacement without losing either revision
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › stores safe import reports and commits a valid batch once
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › rechecks a revoked admin inside the write transaction
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › pages published metadata without question text and keeps the cursor bound
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › enforces HTTP permission, CSRF, envelope and the import body limit
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+  ● Catalog on real restricted PostgreSQL › records exact projection and publication diagnostics without overwriting archived evidence
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      203 |
+      204 | beforeAll(async () => {
+    > 205 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      206 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      207 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      208 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:205:3)
+
+
+  ● Test suite failed to run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      276 |   for (let attempt = 0; attempt < 100; attempt += 1) {
+      277 |     const running = (
+    > 278 |       await admin.query("SELECT count(*)::int n FROM pg_stat_activity WHERE datname = $1", [name])
+          |       ^
+      279 |     ).rows[0] as { n: number };
+      280 |     if (Number(running.n) === 0) break;
+      281 |     await new Promise((resolve) => setTimeout(resolve, 10));
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog.spec.ts:278:7)
+
+FAIL apps/api/tests/integration/catalog-publication.spec.ts
+  ● Catalog publication deadlines on restricted PostgreSQL › rejects initial publish when the exam lock wait crosses close without committing any effect
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      84 |
+      85 | beforeAll(async () => {
+    > 86 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      87 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      88 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      89 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-publication.spec.ts:86:3)
+
+  ● Catalog publication deadlines on restricted PostgreSQL › rejects initial publish when the question lock wait crosses close without committing any effect
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      84 |
+      85 | beforeAll(async () => {
+    > 86 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      87 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      88 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      89 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-publication.spec.ts:86:3)
+
+  ● Catalog publication deadlines on restricted PostgreSQL › rejects republish when the exam lock wait crosses close without committing any effect
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      84 |
+      85 | beforeAll(async () => {
+    > 86 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      87 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      88 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      89 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-publication.spec.ts:86:3)
+
+  ● Catalog publication deadlines on restricted PostgreSQL › rejects republish when the question lock wait crosses close without committing any effect
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      84 |
+      85 | beforeAll(async () => {
+    > 86 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      87 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      88 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      89 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-publication.spec.ts:86:3)
+
+  ● Catalog publication deadlines on restricted PostgreSQL › rolls back publication on a exam lock timeout and permits the same key to retry after contention clears
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      84 |
+      85 | beforeAll(async () => {
+    > 86 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      87 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      88 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      89 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-publication.spec.ts:86:3)
+
+  ● Catalog publication deadlines on restricted PostgreSQL › rolls back publication on a question lock timeout and permits the same key to retry after contention clears
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      84 |
+      85 | beforeAll(async () => {
+    > 86 |   await admin.query(`CREATE DATABASE ${name}`);
+         |   ^
+      87 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      88 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      89 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-publication.spec.ts:86:3)
+
+
+  ● Test suite failed to run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      172 |       Number(
+      173 |         (
+    > 174 |           await admin.query(
+          |           ^
+      175 |             `
+      176 |             SELECT
+      177 |               count(*)::integer AS running
+
+      at node_modules/pg-pool/index.js:45:11
+      at apps/api/tests/integration/catalog-publication.spec.ts:174:11
+      at eventually (apps/api/tests/integration/catalog-publication.spec.ts:287:9)
+      at Object.<anonymous> (apps/api/tests/integration/catalog-publication.spec.ts:170:3)
+
+FAIL apps/api/tests/integration/assessment-expiry.spec.ts
+  ● deadline sweep on restricted PostgreSQL › leaves a future attempt untouched and expires one whose deadline is already past
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › accepts DEADLINE at the exact stored deadline through the shared core
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › keeps an acknowledged save and rejects a save after the deadline
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › sweeps an offline attempt and an attempt whose session family was revoked
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › lets a manual submit and the sweep keep one winner
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › returns the sweep receipt unchanged over HTTP
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › skips a locked oldest row without waiting and still expires a younger one
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › observes a real lock wait when manual submit needs the held attempt
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › limits a tick and does not starve a younger row behind a poison oldest row
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › rolls back the attempt when the outbox insert fails
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › rolls back when the worker connection dies inside the transaction and does not duplicate after commit
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › lets two workers expire a backlog once each
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › frees the active slot, keeps the quota, and preserves the frozen version across republish
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › uses the deadline index and grants only the expiry role what the sweep needs
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › keeps the manual hot-path query ceilings
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › starts the compiled scheduler, stops on SIGTERM, and restarts without a duplicate event
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+  ● deadline sweep on restricted PostgreSQL › reports ready only while the database sweep can run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      501 |   addFormats(ajv);
+      502 |   validateSubmit = ajv.compile(api.components.schemas.SubmitReceiptEnvelope!);
+    > 503 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      504 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      505 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      506 |   for (const role of [owner, runtimeRole, operator, expiryRole]) {
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:503:3)
+
+
+  ● Test suite failed to run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      604 |   for (let attempt = 0; attempt < 100; attempt += 1) {
+      605 |     const running = (
+    > 606 |       await admin.query<{ n: number }>(
+          |       ^
+      607 |         "SELECT count(*)::int AS n FROM pg_stat_activity WHERE datname = $1",
+      608 |         [name],
+      609 |       )
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:606:7)
+
+FAIL apps/api/tests/integration/catalog-http.spec.ts
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › creates and replaces maximum-length 漢 question text in UTF-8 and escaped JSON
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › creates and replaces maximum-length 漢 question text in UTF-8 and escaped JSON
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › creates and replaces maximum-length 😀 question text in UTF-8 and escaped JSON
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › creates and replaces maximum-length 😀 question text in UTF-8 and escaped JSON
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › creates and replaces all 500 memberships across 20 sections with full 漢 titles
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › creates and replaces all 500 memberships across 20 sections with full 漢 titles
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › creates and replaces all 500 memberships across 20 sections with full 😀 titles
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › creates and replaces all 500 memberships across 20 sections with full 😀 titles
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects POST /v1/admin/questions above its bounded byte limit
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects POST /v1/admin/questions above its bounded byte limit
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects PUT /v1/admin/questions/303a917b-eb5a-4f01-b997-6f3bb9c8305f above its bounded byte limit
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects PUT /v1/admin/questions/303a917b-eb5a-4f01-b997-6f3bb9c8305f above its bounded byte limit
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects POST /v1/admin/exams above its bounded byte limit
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects POST /v1/admin/exams above its bounded byte limit
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects PUT /v1/admin/exams/f7e63a4a-7c1e-46fd-b35d-8a8d334dba1e above its bounded byte limit
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects PUT /v1/admin/exams/f7e63a4a-7c1e-46fd-b35d-8a8d334dba1e above its bounded byte limit
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects POST /v1/admin/question-imports above its bounded byte limit
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects POST /v1/admin/question-imports above its bounded byte limit
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects POST /v1/auth/register above its bounded byte limit
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects POST /v1/auth/register above its bounded byte limit
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › returns browse and detail envelopes accepted by the exact OpenAPI schemas
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › returns browse and detail envelopes accepted by the exact OpenAPI schemas
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects impossible calendar dates on create and replace without changing the stored draft
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › rejects impossible calendar dates on create and replace without changing the stored draft
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › keeps authentication, permissions and CSRF mandatory for enlarged bodies
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      187 |
+      188 | beforeAll(async () => {
+    > 189 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      190 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      191 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      192 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:189:3)
+
+  ● Catalog HTTP declared boundaries on restricted PostgreSQL › keeps authentication, permissions and CSRF mandatory for enlarged bodies
+
+    TypeError: Cannot read properties of undefined (reading 'importQuestions')
+
+      324 |   validateBrowse = ajv.compile(api.components.schemas.ExamListEnvelope!);
+      325 |   for (let batch = 0; batch < 5; batch += 1) {
+    > 326 |     const imported = await catalog.importQuestions(
+          |                                    ^
+      327 |       adminUser.raw,
+      328 |       uuidv7(),
+      329 |       {
+
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:326:36)
+
+
+  ● Test suite failed to run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      254 |   for (let attempt = 0; attempt < 100; attempt += 1) {
+      255 |     const running = (
+    > 256 |       await admin.query(
+          |       ^
+      257 |         `
+      258 |       SELECT
+      259 |         count(*)::int n
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/catalog-http.spec.ts:256:7)
+
+FAIL apps/api/tests/integration/database.spec.ts
+  ● capability schema and runtime privileges › preserves the first accepted submission identity and timestamp
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › keeps the public category frozen when the exam draft category changes
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › rejects normalized duplicate users and invalid duration/time constraints
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › prevents an incomplete publication from committing
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › seals publications against later append and denies snapshot UPDATE/DELETE
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › enforces one active attempt across versions of one logical exam
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › rejects foreign frozen question and option membership and duplicate selections
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › rejects incoherent submission and negative answer version
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › keeps receipt and result identities unique and actor/version result ownership consistent
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › rejects completion without result, result before completion and durable PROCESSING without a lease
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › denies runtime reassigning attempts/answers and changing an outbox identity
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › prevents runtime DDL, migration history writes, audit changes and SET ROLE owner
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● capability schema and runtime privileges › commits audit and outbox intent atomically with rollback of the owning write
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● transaction correctness on PostgreSQL › commits joined calls on one backend resolved at call time
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● transaction correctness on PostgreSQL › rolls back all writes when a joined business failure is caught
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● transaction correctness on PostgreSQL › forbids a successful result after a caught SQL failure
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● transaction correctness on PostgreSQL › isolates overlapping async contexts and rolls back only the failed one
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● transaction correctness on PostgreSQL › rejects detached work after its transaction has ended
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● transaction correctness on PostgreSQL › rolls back pending unawaited database work instead of committing it
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● transaction correctness on PostgreSQL › bounds a real row-lock wait and permits pool reuse after rollback
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● transaction correctness on PostgreSQL › uses clock_timestamp after lock acquisition rather than transaction start time
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● pool protection and safe observations › does not change commit semantics when the telemetry collector fails
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● pool protection and safe observations › records bounded lock-acquisition timing without row identifiers
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● pool protection and safe observations › collects pg_stat_statements without SQL text and keeps diagnostics restricted
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● pool protection and safe observations › rejects excess admission, times out bounded waiters and recovers
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● pool protection and safe observations › drains active and queued admitted work before ending the pool
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● pool protection and safe observations › cancels long statements at the server and does not emit SQL, parameters or error detail
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● pool protection and safe observations › terminates idle transactions without crashing the process and replaces the connection
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● immutable ordered migrations › is repeatable and serializes two migration runners
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● immutable ordered migrations › rejects changed or missing applied migrations
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+  ● immutable ordered migrations › rolls back failed DDL and its migration receipt, then succeeds on repaired new migration
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      62 |
+      63 | beforeAll(async () => {
+    > 64 |   await admin.query(`CREATE DATABASE ${dbName}`);
+         |   ^
+      65 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      66 |   await admin.query(`GRANT CREATE ON DATABASE ${dbName} TO examination_owner`);
+      67 |   await admin.query(`CREATE ROLE ${migratorRole} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:64:3)
+
+
+  ● Test suite failed to run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      93 |   for (let i = 0; i < 100 && connections; i += 1) {
+      94 |     connections = (
+    > 95 |       await admin.query(
+         |       ^
+      96 |         `
+      97 |       SELECT
+      98 |         count(*)::int AS n
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/database.spec.ts:95:7)
+
+Test Suites: 7 failed, 7 total
+Tests:       122 failed, 1 skipped, 123 total
+Snapshots:   0 total
+Time:        2.625 s, estimated 31 s
+Ran all test suites with tests matching "^(?!.*records exact projection).*".

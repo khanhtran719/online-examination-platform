@@ -1,0 +1,354 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --testTimeout=180000 --testNamePattern=^(?!.*records exact projection).*
+
+(node:79711) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-expiry-fixes.spec.ts (12.404 s)
+  ● ATT-07 independent expiry regressions › recovers rolled-back rows after restart and commits once when two workers retry
+
+    Unhandled error. (error: terminating connection due to administrator command
+
+      at parseErrorMessage (node_modules/pg-protocol/src/parser.ts:395:9)
+      at Parser.handlePacket (node_modules/pg-protocol/src/parser.ts:212:19)
+      at Parser.parse (node_modules/pg-protocol/src/parser.ts:105:30)
+      at Socket.<anonymous> (node_modules/pg-protocol/src/index.ts:7:48)
+      at TCP.onStreamRead (node:internal/stream_base_commons:189:23) {
+        length: 116,
+        severity: 'FATAL',
+        code: '57P01',
+        detail: undefined,
+        hint: undefined,
+        position: undefined,
+        internalPosition: undefined,
+        internalQuery: undefined,
+        where: undefined,
+        schema: undefined,
+        table: undefined,
+        column: undefined,
+        dataType: undefined,
+        constraint: undefined,
+        file: 'postgres.c',
+        line: '3316',
+        routine: 'ProcessInterrupts',
+        client: Client {
+          _events: [Object: null prototype] { error: [Function (anonymous)] },
+          _eventsCount: 1,
+          _maxListeners: undefined,
+          connectionParameters: ConnectionParameters {
+            user: 'examination_https',
+            database: 'expiry_fixes_6befb41e7bc3',
+            port: 55435,
+            host: '127.0.0.1',
+            binary: false,
+            options: undefined,
+            ssl: false,
+            sslnegotiation: undefined,
+            client_encoding: '',
+            replication: undefined,
+            isDomainSocket: false,
+            application_name: undefined,
+            fallback_application_name: undefined,
+            statement_timeout: false,
+            lock_timeout: false,
+            idle_in_transaction_session_timeout: false,
+            query_timeout: false,
+            connect_timeout: 0
+          },
+          user: 'examination_https',
+          database: 'expiry_fixes_6befb41e7bc3',
+          port: 55435,
+          host: '127.0.0.1',
+          replication: undefined,
+          _Promise: [Function: Promise],
+          _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
+          _ending: true,
+          _ended: false,
+          _connecting: false,
+          _connected: true,
+          _connectionError: false,
+          _queryable: false,
+          _activeQuery: null,
+          _txStatus: 'I',
+          enableChannelBinding: false,
+          scramMaxIterations: 100000,
+          connection: Connection {
+            _events: [Object: null prototype],
+            _eventsCount: 23,
+            _maxListeners: undefined,
+            stream: [Socket],
+            _keepAlive: false,
+            _keepAliveInitialDelayMillis: 0,
+            parsedStatements: {},
+            submittedNamedStatements: {},
+            ssl: false,
+            sslNegotiation: 'postgres',
+            _ending: true,
+            _emitMessage: false,
+            _connecting: true,
+            Symbol(shapeMode): false,
+            Symbol(kCapture): false
+          },
+          _queryQueue: [],
+          _sentQueryQueue: [],
+          pipeline: false,
+          binary: false,
+          processID: 1738,
+          secretKey: -1318225828,
+          ssl: false,
+          sslNegotiation: 'postgres',
+          _connectionTimeoutMillis: 0,
+          _connectionCallback: null,
+          saslSession: null,
+          release: [Function (anonymous)],
+          readyForQuery: true,
+          hasExecuted: true,
+          _poolUseCount: 64,
+          Symbol(shapeMode): false,
+          Symbol(kCapture): false
+        }
+      })
+      at Client.idleListener (node_modules/pg-pool/index.js:62:10)
+      at Client._handleErrorEvent (node_modules/pg/lib/client.js:422:10)
+      at Client._handleErrorMessage (node_modules/pg/lib/client.js:433:12)
+      at node_modules/pg/lib/connection.js:143:12
+      at Parser.parse (node_modules/pg-protocol/src/parser.ts:106:9)
+      at Socket.<anonymous> (node_modules/pg-protocol/src/index.ts:7:48)
+
+
+  ● Test suite failed to run
+
+    Unhandled error. (error: terminating connection due to administrator command
+        at parseErrorMessage (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/node_modules/pg-protocol/src/parser.ts:395:9)
+        at Parser.handlePacket (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/node_modules/pg-protocol/src/parser.ts:212:19)
+        at Parser.parse (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/node_modules/pg-protocol/src/parser.ts:105:30)
+        at Socket.<anonymous> (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/node_modules/pg-protocol/src/index.ts:7:48)
+        at Socket.emit (node:events:509:28)
+        at addChunk (node:internal/streams/readable:563:12)
+        at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+        at Socket.Readable.push (node:internal/streams/readable:394:5)
+        at TCP.onStreamRead (node:internal/stream_base_commons:189:23) {
+      length: 116,
+      severity: 'FATAL',
+      code: '57P01',
+      detail: undefined,
+      hint: undefined,
+      position: undefined,
+      internalPosition: undefined,
+      internalQuery: undefined,
+      where: undefined,
+      schema: undefined,
+      table: undefined,
+      column: undefined,
+      dataType: undefined,
+      constraint: undefined,
+      file: 'postgres.c',
+      line: '3316',
+      routine: 'ProcessInterrupts',
+      client: Client {
+        _events: [Object: null prototype] { error: [Function (anonymous)] },
+        _eventsCount: 1,
+        _maxListeners: undefined,
+        connectionParameters: ConnectionParameters {
+          user: 'examination_https',
+          database: 'expiry_fixes_6befb41e7bc3',
+          port: 55435,
+          host: '127.0.0.1',
+          binary: false,
+          options: undefined,
+          ssl: false,
+          sslnegotiation: undefined,
+          client_encoding: '',
+          replication: undefined,
+          isDomainSocket: false,
+          application_name: undefined,
+          fallback_application_name: undefined,
+          statement_timeout: false,
+          lock_timeout: false,
+          idle_in_transaction_session_timeout: false,
+          query_timeout: false,
+          connect_timeout: 0
+        },
+        user: 'examination_https',
+        database: 'expiry_fixes_6befb41e7bc3',
+        port: 55435,
+        host: '127.0.0.1',
+        replication: undefined,
+        _Promise: [Function: Promise],
+        _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
+        _ending: true,
+        _ended: false,
+        _connecting: false,
+        _connected: true,
+        _connectionError: false,
+        _queryable: false,
+        _activeQuery: null,
+        _txStatus: 'I',
+        enableChannelBinding: false,
+        scramMaxIterations: 100000,
+        connection: Connection {
+          _events: [Object: null prototype],
+          _eventsCount: 23,
+          _maxListeners: undefined,
+          stream: [Socket],
+          _keepAlive: false,
+          _keepAliveInitialDelayMillis: 0,
+          parsedStatements: {},
+          submittedNamedStatements: {},
+          ssl: false,
+          sslNegotiation: 'postgres',
+          _ending: true,
+          _emitMessage: false,
+          _connecting: true,
+          Symbol(shapeMode): false,
+          Symbol(kCapture): false
+        },
+        _queryQueue: [],
+        _sentQueryQueue: [],
+        pipeline: false,
+        binary: false,
+        processID: 1735,
+        secretKey: [REDACTED ephemeral protocol key],
+        ssl: false,
+        sslNegotiation: 'postgres',
+        _connectionTimeoutMillis: 0,
+        _connectionCallback: null,
+        saslSession: null,
+        release: [Function (anonymous)],
+        readyForQuery: true,
+        hasExecuted: true,
+        _poolUseCount: 87,
+        Symbol(shapeMode): false,
+        Symbol(kCapture): false
+      }
+    })
+
+      at parseErrorMessage (node_modules/pg-protocol/src/parser.ts:395:9)
+      at Parser.handlePacket (node_modules/pg-protocol/src/parser.ts:212:19)
+      at Parser.parse (node_modules/pg-protocol/src/parser.ts:105:30)
+      at Socket.<anonymous> (node_modules/pg-protocol/src/index.ts:7:48)
+      at TCP.onStreamRead (node:internal/stream_base_commons:189:23) {
+        length: 116,
+        severity: 'FATAL',
+        code: '57P01',
+        detail: undefined,
+        hint: undefined,
+        position: undefined,
+        internalPosition: undefined,
+        internalQuery: undefined,
+        where: undefined,
+        schema: undefined,
+        table: undefined,
+        column: undefined,
+        dataType: undefined,
+        constraint: undefined,
+        file: 'postgres.c',
+        line: '3316',
+        routine: 'ProcessInterrupts',
+        client: Client {
+          _events: [Object: null prototype] { error: [Function (anonymous)] },
+          _eventsCount: 1,
+          _maxListeners: undefined,
+          connectionParameters: ConnectionParameters {
+            user: 'examination_https',
+            database: 'expiry_fixes_6befb41e7bc3',
+            port: 55435,
+            host: '127.0.0.1',
+            binary: false,
+            options: undefined,
+            ssl: false,
+            sslnegotiation: undefined,
+            client_encoding: '',
+            replication: undefined,
+            isDomainSocket: false,
+            application_name: undefined,
+            fallback_application_name: undefined,
+            statement_timeout: false,
+            lock_timeout: false,
+            idle_in_transaction_session_timeout: false,
+            query_timeout: false,
+            connect_timeout: 0
+          },
+          user: 'examination_https',
+          database: 'expiry_fixes_6befb41e7bc3',
+          port: 55435,
+          host: '127.0.0.1',
+          replication: undefined,
+          _Promise: [Function: Promise],
+          _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
+          _ending: true,
+          _ended: false,
+          _connecting: false,
+          _connected: true,
+          _connectionError: false,
+          _queryable: false,
+          _activeQuery: null,
+          _txStatus: 'I',
+          enableChannelBinding: false,
+          scramMaxIterations: 100000,
+          connection: Connection {
+            _events: [Object: null prototype],
+            _eventsCount: 23,
+            _maxListeners: undefined,
+            stream: [Socket],
+            _keepAlive: false,
+            _keepAliveInitialDelayMillis: 0,
+            parsedStatements: {},
+            submittedNamedStatements: {},
+            ssl: false,
+            sslNegotiation: 'postgres',
+            _ending: true,
+            _emitMessage: false,
+            _connecting: true,
+            Symbol(shapeMode): false,
+            Symbol(kCapture): false
+          },
+          _queryQueue: [],
+          _sentQueryQueue: [],
+          pipeline: false,
+          binary: false,
+          processID: 1735,
+          secretKey: [REDACTED ephemeral protocol key],
+          ssl: false,
+          sslNegotiation: 'postgres',
+          _connectionTimeoutMillis: 0,
+          _connectionCallback: null,
+          saslSession: null,
+          release: [Function (anonymous)],
+          readyForQuery: true,
+          hasExecuted: true,
+          _poolUseCount: 87,
+          Symbol(shapeMode): false,
+          Symbol(kCapture): false
+        }
+      })
+      at Client.idleListener (node_modules/pg-pool/index.js:62:10)
+      at Client._handleErrorEvent (node_modules/pg/lib/client.js:422:10)
+      at Client._handleErrorMessage (node_modules/pg/lib/client.js:433:12)
+      at node_modules/pg/lib/connection.js:143:12
+      at Parser.parse (node_modules/pg-protocol/src/parser.ts:106:9)
+      at Socket.<anonymous> (node_modules/pg-protocol/src/index.ts:7:48)
+
+FAIL apps/api/tests/integration/identity.spec.ts
+  ● Identity on real restricted PostgreSQL › delivers a captured SMTP verification link and never sends an already consumed job
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+      905 |     };
+      906 |     const item = messages.messages.find((m) => m.To.some((t) => t.Address === a.email));
+    > 907 |     expect(item).toBeDefined();
+          |                  ^
+      908 |     const mail = (await (
+      909 |       await fetch(`http://127.0.0.1:18025/api/v1/message/${item!.ID}`)
+      910 |     ).json()) as { Text: string };
+
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:907:18)
+
+
+Test Suites: 2 failed, 6 passed, 8 total
+Tests:       2 failed, 1 skipped, 137 passed, 140 total
+Snapshots:   0 total
+Time:        40.895 s
+Ran all test suites with tests matching "^(?!.*records exact projection).*".

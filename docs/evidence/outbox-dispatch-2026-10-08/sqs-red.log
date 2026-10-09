@@ -1,0 +1,147 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/sqs-publisher.spec.ts
+
+(node:99653) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/sqs-publisher.spec.ts
+  ● SQS publisher SDK local HTTP contract (not live AWS) › sends the exact body and waits for valid broker ACK, without FIFO parameters
+
+    Not implemented
+
+      10 | export class SqsPublisher implements QueuePublisher {
+      11 |   constructor(_settings: SqsPublisherSettings) {}
+    > 12 |   async publish(_body: string): Promise<void> {throw new Error("Not implemented");}
+         |                                                      ^
+      13 |   close(): void {}
+      14 | }
+      15 |
+
+      at SqsPublisher.publish (apps/api/src/infrastructure/messaging/sqs/sqs-publisher.ts:12:54)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-publisher.spec.ts:54:19)
+
+  ● SQS publisher SDK local HTTP contract (not live AWS) › times out a pending send without waiting for the server
+
+    expect(received).rejects.toMatchObject(expected)
+
+    - Expected  - 4
+    + Received  + 1
+
+    - Object {
+    -   "message": "QUEUE_UNAVAILABLE",
+    -   "permanent": false,
+    - }
+    + [Error: Not implemented]
+
+      57 |   it("times out a pending send without waiting for the server", async () => {
+      58 |     mode = "slow"; const started = performance.now();
+    > 59 |     await expect(adapter.publish("{}" )).rejects.toMatchObject({permanent: false, message: "QUEUE_UNAVAILABLE"});
+         |                                                  ^
+      60 |     expect(performance.now() - started).toBeLessThan(400);
+      61 |     expect(requests).toHaveLength(1);
+      62 |   });
+
+      at Object.toMatchObject (node_modules/expect/build/index.js:2155:20)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-publisher.spec.ts:59:50)
+
+  ● SQS publisher SDK local HTTP contract (not live AWS) › classifies transient safely and makes exactly one SDK attempt
+
+    expect(received).rejects.toMatchObject(expected)
+
+    - Expected  - 4
+    + Received  + 1
+
+    - Object {
+    -   "message": "QUEUE_UNAVAILABLE",
+    -   "permanent": false,
+    - }
+    + [Error: Not implemented]
+
+      64 |     "classifies %s safely and makes exactly one SDK attempt", async failure => {
+      65 |       mode = failure;
+    > 66 |       await expect(adapter.publish("{}" )).rejects.toMatchObject({permanent: failure === "permanent",
+         |                                                    ^
+      67 |         message: failure === "permanent" ? "QUEUE_REJECTED" : "QUEUE_UNAVAILABLE"});
+      68 |       expect(requests).toHaveLength(1);
+      69 |     });
+
+      at Object.toMatchObject (node_modules/expect/build/index.js:2155:20)
+      at apps/api/tests/integration/sqs-publisher.spec.ts:66:52
+
+  ● SQS publisher SDK local HTTP contract (not live AWS) › classifies permanent safely and makes exactly one SDK attempt
+
+    expect(received).rejects.toMatchObject(expected)
+
+    - Expected  - 4
+    + Received  + 1
+
+    - Object {
+    -   "message": "QUEUE_REJECTED",
+    -   "permanent": true,
+    - }
+    + [Error: Not implemented]
+
+      64 |     "classifies %s safely and makes exactly one SDK attempt", async failure => {
+      65 |       mode = failure;
+    > 66 |       await expect(adapter.publish("{}" )).rejects.toMatchObject({permanent: failure === "permanent",
+         |                                                    ^
+      67 |         message: failure === "permanent" ? "QUEUE_REJECTED" : "QUEUE_UNAVAILABLE"});
+      68 |       expect(requests).toHaveLength(1);
+      69 |     });
+
+      at Object.toMatchObject (node_modules/expect/build/index.js:2155:20)
+      at apps/api/tests/integration/sqs-publisher.spec.ts:66:52
+
+  ● SQS publisher SDK local HTTP contract (not live AWS) › classifies missing-ack safely and makes exactly one SDK attempt
+
+    expect(received).rejects.toMatchObject(expected)
+
+    - Expected  - 4
+    + Received  + 1
+
+    - Object {
+    -   "message": "QUEUE_UNAVAILABLE",
+    -   "permanent": false,
+    - }
+    + [Error: Not implemented]
+
+      64 |     "classifies %s safely and makes exactly one SDK attempt", async failure => {
+      65 |       mode = failure;
+    > 66 |       await expect(adapter.publish("{}" )).rejects.toMatchObject({permanent: failure === "permanent",
+         |                                                    ^
+      67 |         message: failure === "permanent" ? "QUEUE_REJECTED" : "QUEUE_UNAVAILABLE"});
+      68 |       expect(requests).toHaveLength(1);
+      69 |     });
+
+      at Object.toMatchObject (node_modules/expect/build/index.js:2155:20)
+      at apps/api/tests/integration/sqs-publisher.spec.ts:66:52
+
+  ● SQS publisher SDK local HTTP contract (not live AWS) › classifies bad-md5 safely and makes exactly one SDK attempt
+
+    expect(received).rejects.toMatchObject(expected)
+
+    - Expected  - 4
+    + Received  + 1
+
+    - Object {
+    -   "message": "QUEUE_UNAVAILABLE",
+    -   "permanent": false,
+    - }
+    + [Error: Not implemented]
+
+      64 |     "classifies %s safely and makes exactly one SDK attempt", async failure => {
+      65 |       mode = failure;
+    > 66 |       await expect(adapter.publish("{}" )).rejects.toMatchObject({permanent: failure === "permanent",
+         |                                                    ^
+      67 |         message: failure === "permanent" ? "QUEUE_REJECTED" : "QUEUE_UNAVAILABLE"});
+      68 |       expect(requests).toHaveLength(1);
+      69 |     });
+
+      at Object.toMatchObject (node_modules/expect/build/index.js:2155:20)
+      at apps/api/tests/integration/sqs-publisher.spec.ts:66:52
+
+Test Suites: 1 failed, 1 total
+Tests:       6 failed, 6 total
+Snapshots:   0 total
+Time:        2.29 s
+Ran all test suites within paths "apps/api/tests/integration/sqs-publisher.spec.ts".

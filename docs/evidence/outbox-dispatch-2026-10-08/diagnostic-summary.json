@@ -1,0 +1,34 @@
+{
+  "kind": "local-postgres-no-network-queue-diagnostic",
+  "jobs": 32,
+  "elapsedMs": 81.35637499999984,
+  "cycleDuration": {
+    "p50Ms": 8.97241699999995,
+    "p95Ms": 12.047499999999673,
+    "p99Ms": 12.047499999999673
+  },
+  "transactionDuration": {
+    "p50Ms": 5.045250000000124,
+    "p95Ms": 9.753791000000092,
+    "p99Ms": 9.860041999999794
+  },
+  "poolWait": {
+    "p50Ms": 0.0627079999999296,
+    "p95Ms": 5.23700000000008,
+    "p99Ms": 6.442125000000033
+  },
+  "queryCount": 137,
+  "queriesByOperation": {
+    "outbox.claim": 8,
+    "transaction.begin": 32,
+    "lock.acquire": 32,
+    "outbox.ack": 32,
+    "transaction.commit": 32,
+    "outbox.read": 1
+  },
+  "observedFiniteRunJobsPerSecond": 393.33119254637467,
+  "awsMeasured": false,
+  "sustainableJobsPerSecond": null,
+  "jobsUSD": null,
+  "cost": null
+}

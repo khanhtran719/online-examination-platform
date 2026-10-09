@@ -1,0 +1,46 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/outbox-dispatch.spec.ts -t rechecks lease
+
+(node:1310) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/outbox-dispatch.spec.ts
+  ● Assessment durable dispatch › rechecks lease after a delivered row-lock wait
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      216 |     await new Promise(done => setTimeout(done, 200));
+      217 |     await c.query("COMMIT"); c.release();
+    > 218 |     expect(await result).toBe(false);
+          |                          ^
+      219 |     expect(await state(id!)).toMatchObject({delivered_at: null, failure_code: null});
+      220 |   });
+      221 |   it("publishes with no open DB transaction and recovers duplicate publication after ACK crash", async () => {
+
+      at apps/api/tests/integration/outbox-dispatch.spec.ts:218:26
+
+  ● Assessment durable dispatch › rechecks lease after a failed row-lock wait
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      216 |     await new Promise(done => setTimeout(done, 200));
+      217 |     await c.query("COMMIT"); c.release();
+    > 218 |     expect(await result).toBe(false);
+          |                          ^
+      219 |     expect(await state(id!)).toMatchObject({delivered_at: null, failure_code: null});
+      220 |   });
+      221 |   it("publishes with no open DB transaction and recovers duplicate publication after ACK crash", async () => {
+
+      at apps/api/tests/integration/outbox-dispatch.spec.ts:218:26
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 14 skipped, 16 total
+Snapshots:   0 total
+Time:        3.454 s
+Ran all test suites within paths "apps/api/tests/integration/outbox-dispatch.spec.ts".
