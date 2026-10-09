@@ -1,0 +1,211 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/retention-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment-retention.spec.ts
+
+(node:56969) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-retention.spec.ts
+  ● Assessment maintenance authority and receipt lifetime › prunes only old completed Assessment receipts in finite batches and rejects the pruned UUIDv7 retry
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:350:13)
+
+  ● Completed payload withdrawal › withdraws answers/results, recomputes surviving rank/statistics and hides every Candidate projection
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:406:13)
+
+  ● Completed payload withdrawal › protects young completion, recent receipt, unresolved failure and pending delivery before picking another due row
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:494:17)
+
+  ● Completed payload withdrawal › never age-purges submitted/FAILED/replay work or its receipts
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:514:17)
+
+  ● Completed payload withdrawal › serializes competing workers and preserves duplicate/source/DLQ fences after purge
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:533:11)
+
+  ● Completed payload withdrawal › skips a locked oldest row and drains it on a later tick
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:554:13)
+
+  ● Completed payload withdrawal › rolls back payload/projections/marker when audit fails and rejects unmarked result deletion
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:573:11)
+
+  ● Completed payload withdrawal › rolls back receipt pruning if its audit cannot persist
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:616:11)
+
+  ● Completed payload withdrawal › survives a lost COMMIT acknowledgement without another effect on restart
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:637:11)
+
+  ● Completed payload withdrawal › purges the maximum500-question/5000-selection payload in one bounded attempt transaction
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:659:11)
+
+  ● Compiled one-shot retention › is disabled without database access and exits cleanly when explicitly enabled
+
+    InvalidRequestError: Invalid request
+
+      18 | }
+      19 |
+    > 20 | export const invalidRequest = () => new InvalidRequestError();
+         |                                     ^
+      21 |
+      22 | export class NotFoundError extends DomainError {
+      23 |   readonly code = "NOT_FOUND";
+
+      at invalidRequest (apps/api/src/modules/assessment/domain/assessment.error.ts:20:37)
+      at assertSubmittedEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:199:11)
+      at submissionEvent (apps/api/src/modules/assessment/domain/assessment-policy.ts:155:3)
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:236:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:705:11)
+
+Test Suites: 1 failed, 1 total
+Tests:       11 failed, 2 passed, 13 total
+Snapshots:   0 total
+Time:        3.439 s, estimated 4 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-retention.spec.ts".
+

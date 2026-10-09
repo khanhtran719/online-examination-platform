@@ -1,0 +1,10 @@
+{
+  "postgres55435": {
+    "state": "exited",
+    "exitCode": 0
+  },
+  "mailpit": {
+    "state": "exited",
+    "exitCode": 0
+  }
+}

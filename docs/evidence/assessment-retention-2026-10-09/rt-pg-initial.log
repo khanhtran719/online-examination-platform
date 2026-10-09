@@ -1,0 +1,189 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/retention-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment-retention.spec.ts
+
+(node:56845) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-retention.spec.ts
+  ● Assessment maintenance authority and receipt lifetime › prunes only old completed Assessment receipts in finite batches and rejects the pruned UUIDv7 retry
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:350:13)
+
+  ● Completed payload withdrawal › withdraws answers/results, recomputes surviving rank/statistics and hides every Candidate projection
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:406:13)
+
+  ● Completed payload withdrawal › protects young completion, recent receipt, unresolved failure and pending delivery before picking another due row
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:494:17)
+
+  ● Completed payload withdrawal › never age-purges submitted/FAILED/replay work or its receipts
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:514:17)
+
+  ● Completed payload withdrawal › serializes competing workers and preserves duplicate/source/DLQ fences after purge
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:533:11)
+
+  ● Completed payload withdrawal › skips a locked oldest row and drains it on a later tick
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:554:13)
+
+  ● Completed payload withdrawal › rolls back payload/projections/marker when audit fails and rejects unmarked result deletion
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:573:11)
+
+  ● Completed payload withdrawal › rolls back receipt pruning if its audit cannot persist
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:616:11)
+
+  ● Completed payload withdrawal › survives a lost COMMIT acknowledgement without another effect on restart
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:637:11)
+
+  ● Completed payload withdrawal › purges the maximum500-question/5000-selection payload in one bounded attempt transaction
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:659:11)
+
+  ● Compiled one-shot retention › is disabled without database access and exits cleanly when explicitly enabled
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      203 |   const startedAt = new Date(Date.parse(submittedAt) - 60000).toISOString();
+      204 |   const deadline = new Date(Date.parse(submittedAt) + 3600000).toISOString();
+    > 205 |   await fixture.query(
+          |   ^
+      206 |     `
+      207 |     INSERT INTO assessment.attempts (
+      208 |       id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
+
+      at node_modules/pg-pool/index.js:45:11
+      at attempt (apps/api/tests/integration/assessment-retention.spec.ts:205:3)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:705:11)
+
+Test Suites: 1 failed, 1 total
+Tests:       11 failed, 2 passed, 13 total
+Snapshots:   0 total
+Time:        3.45 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-retention.spec.ts".
+

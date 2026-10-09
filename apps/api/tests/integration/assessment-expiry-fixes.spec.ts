@@ -413,7 +413,8 @@ beforeAll(async () => {
     "0013_expiry_retry_schedule.sql",
     "0014_submission_dispatch.sql",
     "0015_grading_worker.sql",
-        "0016_grading_recovery.sql",
+    "0016_grading_recovery.sql",
+    "0017_assessment_retention.sql",
   ]);
   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([]);
   migrationUpgradeVerified = true;

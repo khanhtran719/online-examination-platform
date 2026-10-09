@@ -71,6 +71,12 @@ beforeEach(() => {
   });
 });
 describe("terminal grading recovery", () => {
+  it("acknowledges delayed DLQ after completed payload retention", async () => {
+    state.status = "COMPLETED";
+    state.purged = true;
+    expect(await service.consume(event, "digest", 0, "RETRY_EXHAUSTED")).toBe("duplicate");
+    expect(failures).toEqual([]);
+  });
   it("settles exhausted work once and clears pending replay only for that generation", async () => {
     expect(await service.consume(event, "digest", 0, "RETRY_EXHAUSTED")).toBe("terminal");
     expect(state.status).toBe("FAILED");

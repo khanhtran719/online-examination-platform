@@ -361,11 +361,22 @@ async function closeSoon(connection: Pool | PoolClient, examId: string, delayMs:
   ).rows[0].closes_at as Date;
 }
 
-async function observeClosed(closeAt: Date) {
+async function observeClosed(holder: PoolClient, examId: string) {
   await eventually(
     async () =>
-      (await fixture.query("SELECT clock_timestamp() >= $1::timestamptz AS closed", [closeAt]))
-        .rows[0].closed as boolean,
+      (
+        await holder.query(
+          `
+          SELECT
+            clock_timestamp() >= closes_at + interval '5 milliseconds' AS closed
+          FROM
+            catalog.exams
+          WHERE
+            id = $1
+          `,
+          [examId],
+        )
+      ).rows[0].closed as boolean,
     "the authoritative database close time",
     400,
   );
@@ -388,8 +399,7 @@ describe("Catalog publication deadlines on restricted PostgreSQL", () => {
       try {
         await holdRow(holder, lock, lock === "exam" ? prepared.examId : prepared.questionId);
         // For the question wait, the API has already locked its exam. Set a near deadline first.
-        let closesAt =
-          lock === "question" ? await closeSoon(fixture, prepared.examId, 250) : undefined;
+        if (lock === "question") await closeSoon(fixture, prepared.examId, 250);
         result = catalog
           .publish(actor.raw, key, prepared.examId, prepared.revision, randomUUID())
           .then(
@@ -397,12 +407,24 @@ describe("Catalog publication deadlines on restricted PostgreSQL", () => {
             (error: unknown) => ({ error, accepted: false }),
           );
         await observeBlocked(holder);
-        if (lock === "exam") closesAt = await closeSoon(holder, prepared.examId, 50);
+        if (lock === "exam") await closeSoon(holder, prepared.examId, 50);
         expect(
-          (await fixture.query("SELECT clock_timestamp() < $1::timestamptz AS open", [closesAt]))
-            .rows[0].open,
+          (
+            await holder.query(
+              `
+              SELECT
+                clock_timestamp() < closes_at AS open
+              FROM
+                catalog.exams
+              WHERE
+                id = $1
+              `,
+              [prepared.examId],
+            )
+          ).rows[0].open,
         ).toBe(true);
-        await observeClosed(closesAt!);
+        // Observe the actual stored boundary in the holder connection, including its uncommitted update.
+        await observeClosed(holder, prepared.examId);
         await holder.query("COMMIT");
         const outcome = await result;
         expect(outcome.accepted).toBe(false);

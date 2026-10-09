@@ -1,0 +1,79 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/retention-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment-retention.spec.ts -t Completed payload withdrawal|Natural retention discovery
+
+(node:57748) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-retention.spec.ts (63.405 s)
+  ● Natural retention discovery plan › uses the due partial index with100k excluded FAILED rows without forcing the planner
+
+    thrown: "Exceeded timeout of 30000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      at _getError (node_modules/jest-circus/build/jestAdapterInit.js:1985:12)
+          at Array.map (<anonymous>)
+
+    Cause:
+        thrown: "Exceeded timeout of 30000 ms for a test.
+        Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+          823 |
+          824 | describe("Natural retention discovery plan", () => {
+        > 825 |   it("uses the due partial index with100k excluded FAILED rows without forcing the planner", async () => {
+              |   ^
+          826 |     const f = await universe(),
+          827 |       s = await attempt(f);
+          828 |     await complete(s);
+
+          at apps/api/tests/integration/assessment-retention.spec.ts:825:3
+          at apps/api/tests/integration/assessment-retention.spec.ts:824:1
+
+
+  ● Test suite failed to run
+
+    thrown: "Exceeded timeout of 30000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      at _getError (node_modules/jest-circus/build/jestAdapterInit.js:1985:12)
+          at Array.map (<anonymous>)
+
+    Cause:
+     
+
+          94 |   apiDb = new PostgresDatabase(config(logins.api));
+          95 | });
+        > 96 | afterAll(async () => {
+             | ^
+          97 |   for (const db of [maintenance, second, gradeDb, recoveryDb, apiDb]) await db?.close();
+          98 |   await fixture?.end();
+          99 |   await admin.query(`DROP DATABASE ${name}`);
+
+          at apps/api/tests/integration/assessment-retention.spec.ts:96:1
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 5 skipped, 10 passed, 16 total
+Snapshots:   0 total
+Time:        63.444 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-retention.spec.ts".
+Jest did not exit one second after the test run has completed.
+
+'This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.
+
+ReferenceError: You are trying to `require` a file after the Jest environment has been torn down. From apps/api/tests/integration/assessment-retention.spec.ts.
+
+       97 |   for (const db of [maintenance, second, gradeDb, recoveryDb, apiDb]) await db?.close();
+       98 |   await fixture?.end();
+    >  99 |   await admin.query(`DROP DATABASE ${name}`);
+          |               ^
+      100 |   for (const login of Object.values(logins)) await admin.query(`DROP ROLE ${login}`);
+      101 |   await admin.end();
+      102 | });
+
+      at getStream (node_modules/pg/lib/stream.js:22:17)
+      at new Connection (node_modules/pg/lib/connection.js:19:36)
+      at new Client (node_modules/pg/lib/client.js:91:7)
+      at BoundPool.newClient (node_modules/pg-pool/index.js:241:20)
+      at BoundPool.connect (node_modules/pg-pool/index.js:235:10)
+      at BoundPool.query (node_modules/pg-pool/index.js:449:10)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:99:15)
+

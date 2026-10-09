@@ -1,0 +1,31 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/retention-validation-env.cjs
+
+(node:59159) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/catalog-publication.spec.ts
+  ● Catalog publication deadlines on restricted PostgreSQL › rejects republish when the question lock wait crosses close without committing any effect
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      406 |         await holder.query("COMMIT");
+      407 |         const outcome = await result;
+    > 408 |         expect(outcome.accepted).toBe(false);
+          |                                  ^
+      409 |         expect(outcome.error).toBeInstanceOf(Error);
+      410 |         expect((outcome.error as Error).message).toBe("Exam is closed");
+      411 |         expect(await publicationState(prepared.examId)).toEqual(before);
+
+      at apps/api/tests/integration/catalog-publication.spec.ts:408:34
+
+
+Test Suites: 1 failed, 14 passed, 15 total
+Tests:       1 failed, 239 passed, 240 total
+Snapshots:   0 total
+Time:        69.114 s
+Ran all test suites.
+

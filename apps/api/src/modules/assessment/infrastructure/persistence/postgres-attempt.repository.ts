@@ -79,6 +79,7 @@ export class PostgresAttemptRepository implements AttemptRepository, ExpiryRetry
       `
           id = $1
           AND user_id = $2
+          AND purged_at IS NULL
         `,
       [attemptId, userId],
     );

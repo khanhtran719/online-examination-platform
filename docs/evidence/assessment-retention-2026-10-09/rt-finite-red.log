@@ -1,0 +1,30 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/retention-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment-retention.spec.ts -t nonfinite completion
+
+(node:65662) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-retention.spec.ts
+  ● Completed payload withdrawal › rejects nonfinite completion metadata even through a direct maintenance RPC
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      900 |       [s.id],
+      901 |     );
+    > 902 |     expect((await purge(s.id)).purged).toBe(false);
+          |                                        ^
+      903 |     expect((await job().runOnce(randomUUID())).attempts).toBe(0);
+      904 |     expect(await snapshot(s.id)).toMatchObject({
+      905 |       purged: false,
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:902:40)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 16 skipped, 17 total
+Snapshots:   0 total
+Time:        2.681 s, estimated 8 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-retention.spec.ts".
+

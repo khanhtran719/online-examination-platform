@@ -19,3 +19,15 @@ All 409/422 outcomes require refetch/reconcile before creating a new key. After 
 Permanent receipts for periodic saves grow with every batch and add storage/vacuum/backup cost. Pruning opaque keys without a bound can accidentally replay old mutations. Time-bearing keys plus seven-day responses preserve an explicit retry window while bounding storage. A UUIDv7 generator in browser/test clients is required; untrusted timestamps never authorize late answers. Monitor rejected clock-skew keys and receipt growth. Benchmark/prune/pool/transaction/crash tests remain required before deployment; seven days is a product retention decision, not proven optimal cost.
 
 Alternative: keep opaque UUIDv4 receipts/tombstones for the full data lifetime; simpler client generation but larger retained state. Revisit via ADR if measured storage or client compatibility warrants changing the versioned header contract. Existing clients must not silently change key format.
+
+## Scoped implementation —2026-10-09
+
+[ATT-09](../assessment-retention-2026-10-09.md)/
+[ADR-011](011-assessment-retention-compaction.md) implement bounded Assessment
+start/save/submit receipt pruning after minimum7days, for completed attempts with
+settled delivery/failure gates. Active/pending/FAILED/replay work and other
+capabilities' receipts remain protected. A real restricted-PG test invokes submit
+with an actually pruned old UUIDv7 key and observes expiration without another
+effect. This does not close every capability's pruning, full HTTP lost-ACK matrix
+or production storage/pool/backup cost. After payload retention, GET can itself
+return404; compact quota/submission identity still prevents another effect.

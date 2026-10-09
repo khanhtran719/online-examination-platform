@@ -41,6 +41,7 @@ export class PostgresAttemptQuery implements AttemptQuery {
         WHERE
           id = $1
           AND user_id = $2
+          AND purged_at IS NULL
         `,
         [attemptId, userId],
       )
@@ -71,6 +72,7 @@ export class PostgresAttemptQuery implements AttemptQuery {
             WHERE
               id = $1
               AND user_id = $2
+              AND purged_at IS NULL
           ),
           clock AS (
             SELECT

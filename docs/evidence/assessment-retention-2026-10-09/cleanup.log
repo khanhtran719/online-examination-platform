@@ -1,0 +1,5 @@
+{"postgresVersion" : "PostgreSQL 17.11 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit", "temporaryDatabases" : 0, "temporaryLogins" : 0, "otherDatabaseConnections" : 0}
+ Container examination-identity-https-postgres-1 Stopping 
+ Container examination-identity-https-postgres-1 Stopped 
+ Container examination-platform-mailpit-1 Stopping 
+ Container examination-platform-mailpit-1 Stopped

@@ -10,6 +10,8 @@ export interface GradingAttempt extends AttemptState {
   submissionKind: SubmissionKind | null;
   replayPending: boolean;
   resultPresent: boolean;
+  /** Compact COMPLETED identity after audited retention; no scoring payload remains. */
+  purged?: boolean;
   gradingGeneration: number;
   failurePresent?: boolean;
 }

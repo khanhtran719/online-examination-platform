@@ -26,6 +26,7 @@ export class GradingRecovery {
         return "quarantined" as const;
       }
       if (generation < attempt.gradingGeneration) return "stale" as const;
+      if (attempt.status === "COMPLETED" && attempt.purged) return "duplicate" as const;
       if (attempt.status === "COMPLETED" && attempt.resultPresent) return "duplicate" as const;
       if (attempt.status === "FAILED" && !attempt.replayPending) {
         if (!attempt.failurePresent) throw new Error("GRADING_STATE_UNAVAILABLE");

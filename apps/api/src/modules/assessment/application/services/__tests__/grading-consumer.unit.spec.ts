@@ -107,6 +107,13 @@ beforeEach(() => {
   );
 });
 describe("grading admission and atomic outcome", () => {
+  it("acknowledges a purged completed identity without recreating results", async () => {
+    state.status = "COMPLETED";
+    state.purged = true;
+    expect(await consumer.consume(event, "digest")).toBe("duplicate");
+    expect(durable).toBeNull();
+    expect(inbox).toEqual([]);
+  });
   it("completes the accepted attempt and returns duplicate on redelivery", async () => {
     expect(await consumer.consume(event, "digest")).toBe("completed");
     expect(durable).toMatchObject({ earned: 5, possible: 5 });

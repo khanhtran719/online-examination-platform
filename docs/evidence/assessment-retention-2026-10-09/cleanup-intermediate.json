@@ -1,0 +1,11 @@
+{
+  "postgresVersion": "PostgreSQL 17.11 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "temporaryDatabases": 0,
+  "temporaryLogins": 0,
+  "otherDatabaseConnections": 0,
+  "postgresStopped": true,
+  "mailpitStopped": true,
+  "volumesPreserved": true,
+  "development55432Migrated": false,
+  "dropForceUsed": false
+}

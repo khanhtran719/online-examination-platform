@@ -24,6 +24,7 @@
     "identity:keys:local": "node scripts/local-identity-keys.mjs",
     "start:local": "node --env-file=.env.example dist/main.js",
     "worker:local": "node --env-file=.env.worker.example dist/workers/outbox/verification.main.js",
+    "retention:local": "node --env-file=.env.retention.example dist/workers/scheduler/assessment-retention.main.js",
     "expiry:local": "node --env-file=.env.expiry.example dist/workers/scheduler/expiry.main.js",
     "dispatch:local": "node --env-file=.env.dispatch.example dist/workers/outbox/submission.main.js",
     "grading:dlq:local": "node --env-file=.env.recovery.example dist/workers/sqs/grading.main.js",

@@ -1,0 +1,6 @@
+apps/api/tests/integration/catalog-publication.spec.ts 76ms (unchanged)
+
+> online-examination-platform@0.1.0 build
+> node scripts/build.mjs
+
+

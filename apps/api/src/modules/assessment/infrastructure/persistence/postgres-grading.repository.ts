@@ -24,7 +24,8 @@ export class PostgresGradingRepository implements GradingRepository {
           submission_kind AS "submissionKind",
           expired,
           replay_pending AS "replayPending",
-          grading_generation AS "gradingGeneration"
+          grading_generation AS "gradingGeneration",
+          purged_at IS NOT NULL AS purged
         FROM
           assessment.attempts
         WHERE

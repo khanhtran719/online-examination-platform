@@ -36,6 +36,7 @@ export class GradingConsumer {
           return "quarantined";
         }
         if (generation < attempt.gradingGeneration) return "stale";
+        if (attempt.status === "COMPLETED" && attempt.purged) return "duplicate";
         if (attempt.status === "COMPLETED" && attempt.resultPresent) {
           await this.repository.inbox(body.eventId, attempt.id);
           return "duplicate";

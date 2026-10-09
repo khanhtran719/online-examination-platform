@@ -122,6 +122,7 @@ export class PostgresCandidateResultsQuery implements CandidateResultsQuery {
       WHERE
         a.id = $1
         AND a.user_id = $2
+        AND a.purged_at IS NULL
     `,
         [attemptId, userId],
       )
@@ -158,6 +159,7 @@ export class PostgresCandidateResultsQuery implements CandidateResultsQuery {
             LEFT JOIN assessment.results r ON r.attempt_id = a.id
           WHERE
             a.user_id = $1
+            AND a.purged_at IS NULL
             AND a.started_at <= clock.watermark
             AND (
               $3::timestamptz IS NULL
@@ -230,6 +232,7 @@ export class PostgresCandidateResultsQuery implements CandidateResultsQuery {
           WHERE
             a.id = $1
             AND a.user_id = $2
+            AND a.purged_at IS NULL
         ),
         gated AS MATERIALIZED (
           SELECT

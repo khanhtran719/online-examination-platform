@@ -1,0 +1,104 @@
+{
+  "scope": "local maximum payload purge; wrapper queries include BEGIN/COMMIT, internal function statements are separate; not sustainable throughput/cost",
+  "elapsedMs": 63.438458999999966,
+  "result": {
+    "receipts": 0,
+    "attempts": 1,
+    "answers": 500,
+    "selections": 5000
+  },
+  "observations": [
+    {
+      "kind": "acquire",
+      "durationMs": 0.04150000000026921,
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "query",
+      "durationMs": 1.359667000000627,
+      "operation": "transaction.begin",
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "query",
+      "durationMs": 2.7864589999999225,
+      "operation": "assessment.write",
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "query",
+      "durationMs": 0.5350829999997586,
+      "operation": "transaction.commit",
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "transaction",
+      "durationMs": 4.836583999999675,
+      "total": 1,
+      "idle": 1,
+      "waiting": 0
+    },
+    {
+      "kind": "acquire",
+      "durationMs": 0.12166600000000471,
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "query",
+      "durationMs": 0.9258749999999054,
+      "operation": "transaction.begin",
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "query",
+      "durationMs": 4.153000000000247,
+      "operation": "lock.acquire",
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "lock",
+      "durationMs": 4.161000000000058,
+      "operation": "lock.acquire",
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "query",
+      "durationMs": 48.67591700000048,
+      "operation": "assessment.write",
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "query",
+      "durationMs": 4.164124999999331,
+      "operation": "transaction.commit",
+      "total": 1,
+      "idle": 0,
+      "waiting": 0
+    },
+    {
+      "kind": "transaction",
+      "durationMs": 58.226541,
+      "total": 1,
+      "idle": 1,
+      "waiting": 0
+    }
+  ]
+}

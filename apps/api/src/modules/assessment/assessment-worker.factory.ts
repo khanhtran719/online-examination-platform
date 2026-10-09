@@ -14,6 +14,19 @@ import { PostgresGradingRepository } from "./infrastructure/persistence/postgres
 import { assertSubmittedEvent } from "./domain/assessment-policy";
 import { GradingRecovery } from "./application/services/grading-recovery";
 import { PostgresGradingFailureRepository } from "./infrastructure/persistence/postgres-grading-failure.repository";
+import { AssessmentRetention, RetentionBatch } from "./application/services/assessment-retention";
+import { PostgresAssessmentRetentionRepository } from "./infrastructure/persistence/postgres-assessment-retention.repository";
+
+/** One-shot scheduled maintenance; each UoW must reach its own durable COMMIT. */
+export function createAssessmentRetention(db: PostgresDatabase, batch: RetentionBatch) {
+  const service = new AssessmentRetention(new PostgresAssessmentRetentionRepository(db), db, batch);
+  return {
+    runOnce: (correlation: string, stopping?: () => boolean) => {
+      db.assertOutsideTransaction();
+      return service.runOnce(correlation, stopping);
+    },
+  };
+}
 
 /** Inbound settlement owns the root COMMIT boundary, including poison writes. */
 function gradingInbound(

@@ -1,0 +1,33 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/retention-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment-retention.spec.ts -t caller changes timezone
+
+(node:67000) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-retention.spec.ts
+  ● Completed payload withdrawal › preserves a full168hour receipt window when the caller changes timezone across DST
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 0
+    Received: 1
+
+      912 |         )
+      913 |       ).rows[0]!.count;
+    > 914 |       expect(count).toBe(0);
+          |                     ^
+      915 |     });
+      916 |     expect(
+      917 |       (
+
+      at apps/api/tests/integration/assessment-retention.spec.ts:914:21
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:233:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:232:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-retention.spec.ts:905:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 17 skipped, 18 total
+Snapshots:   0 total
+Time:        2.764 s, estimated 11 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-retention.spec.ts".
+

@@ -1,5 +1,23 @@
 # Validation log
 
+2026-10-09 latest: [Assessment retention](assessment-retention-2026-10-09.md)/
+[raw evidence](evidence/assessment-retention-2026-10-09/README.md):375 root
+(238 API/33 suites,41 tooling,96 Web) +242 integration/15 suites PASS,0 skipped.
+18 new restricted-PG cases cover actual bounded pruning, pruned-key rejection,
+least privilege, payload/projection/quota/read fencing, source/DLQ duplicates,
+observed grading/purge and maintainer contention, audit/deferred-COMMIT rollback,
+synthetic lost ACK, compiled SIGTERM/default-off and natural100k excluded-FAILED
+plan. Two direct-RPC self-review REDs (nonfinite completion and DST shortening
+168hour receipt age) were fixed; full final suite passes. First Catalog timing
+failure and isolated PASS retained; fixture now observes stored deadline on its
+holder connection. Root/typecheck/build/lint/contracts46/425 and diff checks PASS.
+17 source/built migrations match;16 prior SQL +306 evidence files byte-identical.
+No dependency-audit/browser/image/live-AWS rerun; no resources/dependencies added.
+One maximum-payload job and discovery plan remain local diagnostics, not capacity/
+SLO/FinOps acceptance. Cleanup0 temp DB/login/other-DB connections, PG55435/Mailpit
+stopped, volumes preserved, development55432 untouched. ATT-09 checked;roadmap79/216.
+Full HTTP fault matrix, Reporting/privacy/metadata/restore/AWS production remain open.
+
 2026-10-09 latest: [Candidate result/history/review](assessment-results-2026-10-09.md)/
 [raw evidence](evidence/assessment-results-2026-10-09/README.md):344 root
 (207 API/30 suites,41 tooling,96 Web) +224 integration/14 suites PASS,0 skipped.

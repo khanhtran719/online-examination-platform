@@ -1,5 +1,51 @@
 # Implementation plan
 
+## Active increment — Assessment retention,2026-10-09 (COMPLETE locally)
+
+Scope: ATT-09 receipt/answer lifecycle, including withdrawal of expired completed
+answer/result payloads and their Assessment projections. Assessment owns WRITE
+use case/retention policy/maintenance port. No Identity/Catalog privacy purge,
+FAILED incident resolution, public leaderboard/Admin HTTP, AWS or commit.
+
+Receipt pruning is Assessment-operation-only, bounded and at least7days after
+acceptance; active/pending/FAILED records remain protected. Expired completed
+payloads require365days from submit plus a7day completion/receipt grace, durable
+successful inbox, no pending/leased/parked delivery or unresolved failure. Keep
+compact attempt/submission/inbox identity for quota and duplicate fencing; hide
+purged attempts from Candidate content/result/history. Withdraw result/answers,
+decrement retained-result statistics and recalculate best surviving leaderboard
+entry atomically with audit. No anonymous zero-score/result reconstruction.
+
+Plan: pure Domain eligibility; plain Application UoW per attempt; private pg
+adapter plus bounded, fixed-policy SECURITY DEFINER maintenance functions. New
+NOLOGIN maintenance authority has EXECUTE only, no direct table purge/key/Identity
+access. SQL uses secure search_path, owned row locks, post-lock DB facts and
+consistent statistic→option→leaderboard order. New forward0017 adds purge marker,
+query-driven indexes and completion guard; applied0001–0016/evidence immutable.
+An opt-in one-shot scheduler entry point handles stop/drain and bounded work,
+avoiding a permanently provisioned maintenance service. Readers and source/DLQ
+consumers must understand compact purged COMPLETED identity before enabling jobs;
+rollback must retain that ability after the first purge.
+
+- [x] RT-01: Preserve history; fail-first Domain/Application/restricted-PG tests
+  for grace/gates/pruned UUIDv7 retries, races, rollback and projection consistency.
+- [x] RT-02: Implement maintenance policy/use case/ports/private adapter, forward
+  migration/least privilege, atomic payload withdrawal and duplicate fencing.
+- [x] RT-03: Normalize read/grading/recovery paths for purged identity; preserve
+  existing query ceilings/contracts, current permissions and attempt quota.
+- [x] RT-04: Opt-in compiled one-shot worker, bounded config/stop/drain, safe
+  counts/logs; natural index plans/local bounded timing and SQL observations.
+- [x] RT-05: Full checks/self-review/preservation/cleanup, ADR/runbook/evidence;
+  close ATT-09 only with local evidence; all broader production gates stay open.
+
+Closure: [ATT-09 report](assessment-retention-2026-10-09.md)/
+[evidence](evidence/assessment-retention-2026-10-09/README.md),375 root/242 integration
+PASS,0 skipped; lint/typecheck/build/contracts46/425 PASS.18 new real-PG cases
+include observed contention, rollback, SIGTERM, finite-time/DST direct-RPC probes.
+17 migration bundles match;322 prior files unchanged; cleanup0 DB/login/connections,
+PG55435/Mailpit stopped with volumes preserved. Roadmap79/216,137 pending.
+Only ATT-09 closes; ATT-10/11 and REP-04 broader scopes remain open. No commit/deploy.
+
 ## Active increment — Candidate result/history/review, 2026-10-09 (COMPLETE locally)
 
 Scope: ATT-08 Candidate result/history/review projections and durable status

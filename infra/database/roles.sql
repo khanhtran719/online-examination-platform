@@ -86,6 +86,22 @@ DO $$
 BEGIN
   IF NOT EXISTS (
     SELECT FROM pg_roles
+    WHERE rolname = 'examination_assessment_maintenance'
+  ) THEN
+    CREATE ROLE examination_assessment_maintenance
+      NOLOGIN
+      NOSUPERUSER
+      NOCREATEDB
+      NOCREATEROLE
+      NOREPLICATION
+      NOBYPASSRLS;
+  END IF;
+END
+$$;
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT FROM pg_roles
     WHERE rolname = 'examination_grading_worker'
   ) THEN
     CREATE ROLE examination_grading_worker
