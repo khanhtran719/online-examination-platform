@@ -1,5 +1,42 @@
 # Implementation plan
 
+## Active increment — Assessment HTTP faults, 2026-10-09 (COMPLETE locally)
+
+Scope: close the missing local ATT-10/11 start/save/submit HTTP timeout,
+lost-acknowledgement and compiled API crash/restart matrix. Assessment owns the
+write invariants; genuine Identity session/permission/CSRF admission remains in
+every request. Existing row/version/receipt/outbox transactions stay authoritative.
+No AWS, new resource/dependency, migration, Web, Reporting or commit.
+
+Plan: a disposable fully migrated database and restricted API login; compiled
+`dist/main.js` processes with ephemeral signing secrets; loopback socket faults
+outside runtime code. A fixture-only receipt trigger blocks the transaction after
+business writes but before COMMIT. Observe the actual blocked PostgreSQL backend,
+then kill the API or terminate that backend; assert complete rollback. Test lock
+and statement timeout separately. Drop a successful upstream response before the
+client receives any bytes, restart the API and require exact durable replay.
+Exercise duplicate keys/stale tabs across two independent API processes and
+SIGTERM with admitted writes. Record counts/timing without tokens, bodies or SQL
+parameters; preserve all applied migrations and historical evidence.
+
+- [x] HF-01: Inspect coverage/contracts, preservation and explicit fault matrix.
+- [x] HF-02: Real HTTP lost ACK/restart and pre-COMMIT crash for all three writes.
+- [x] HF-03: Bounded lock/statement/acquire timeout/backend-loss recovery,
+  maxWaiting back-pressure, two-task duplicate/stale-tab controls and SIGTERM drain.
+- [x] HF-04:26 focused/268 full integration PASS,375 root PASS, lint/typecheck/
+  build/contracts46/425. Self-review found incorrect fixture expectations,
+  corrected without any runtime change; original failed logs preserved.
+- [x] HF-05: [Report](assessment-http-faults-2026-10-09.md)/
+  [evidence](evidence/assessment-http-faults-2026-10-09/README.md)/
+  [runbook](runbooks/assessment-http-recovery.md);364 prior files unchanged,
+  17 migration bundles match,0 temporary DBs/logins/connections/processes/keys.
+
+ATT-10/11 close locally with this matrix and existing observed publication,
+deadline/version/quota/save-submit/scheduler regressions. Roadmap81/216,135 pending.
+Prior ATT-01–09/ASYNC-01–07/10 acceptance remains; production/network/AWS recovery
+and capacity gates remain open. No commit/deploy. Next scope: REP-04 public
+leaderboard/privacy reads, with Reporting/Admin projections kept separately scoped.
+
 ## Active increment — Assessment retention,2026-10-09 (COMPLETE locally)
 
 Scope: ATT-09 receipt/answer lifecycle, including withdrawal of expired completed

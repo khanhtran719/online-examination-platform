@@ -1,5 +1,20 @@
 # Validation log
 
+2026-10-09 latest: [Assessment HTTP faults](assessment-http-faults-2026-10-09.md)/
+[evidence](evidence/assessment-http-faults-2026-10-09/README.md):375 root
+(238 API/33 suites,41 tooling,96 Web) +268 integration/16 suites PASS,0 skipped.
+26 new cases run actual compiled API/socket faults/current session/CSRF/restricted
+PG, including every start/save/submit timeout/crash/restart/ACK and pool control.
+Two-task duplicate/stale-tab and SIGTERM drain PASS. Sandbox EPERM and incorrect
+fixture expectations retained; no runtime defect/optimization claim. Final
+log-redaction/partial-setup cleanup refinements included in the full run.
+Lint/typecheck/build/contracts46/425 PASS;17 source/build migration bundles match,
+364 protected files (17 applied SQL +347 old evidence) unchanged. External cleanup
+0 temporary DBs/logins/other-DB connections, suite0 processes/holders, filesystem0
+key directories. No migration/runtime/dependency/resource change, browser/image/
+live AWS/dependency-audit rerun. ATT-10/11 locally checked;roadmap81/216. Production
+and performance/cost gates stay open; REP-04 public leaderboard/privacy is next.
+
 2026-10-09 latest: [Assessment retention](assessment-retention-2026-10-09.md)/
 [raw evidence](evidence/assessment-retention-2026-10-09/README.md):375 root
 (238 API/33 suites,41 tooling,96 Web) +242 integration/15 suites PASS,0 skipped.

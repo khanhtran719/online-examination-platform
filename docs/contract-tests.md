@@ -15,7 +15,7 @@ Phase 02 case IDs below are public-contract traceability, not assertions of exec
 | AC-07 | Two tabs, stale expected versions | One accepted mutation, 409/refetch/reconcile; no silent lost update | ATT-04/10 + browser |
 | AC-08 | Receipt pruning/UUIDv7 clock/key conflict | Retry in window same durable outcome; old pruned key cannot become fresh mutation | [ATT-09](assessment-retention-2026-10-09.md) actual bounded Assessment prune/retry + shared receipt PostgreSQL fixtures; full other-capability/HTTP fault matrix remains open |
 | AC-09 | Submit/autosave/manual/expiry races | Save committed before submit included or rejected; one stable submission/outbox | ATT-06/07/10, PostgreSQL |
-| AC-10 | Commit then HTTP timeout/API restart | Same acknowledgement and durable answers; no memory-only accepted write | ATT-10/11 + task crash |
+| AC-10 | Commit then HTTP timeout/API restart | Same acknowledgement and durable answers; no memory-only accepted write | ATT-10/11 local26-case compiled HTTP socket/timeout/crash matrix accepted: [evidence](evidence/assessment-http-faults-2026-10-09/README.md); managed AWS/load task crash remains open |
 | AC-11 | Deadline sweep/duplicate submit | Overdue attempts safely submitted/scored; expired provenance retained, one outbox | ATT-07/10 + ASYNC |
 | AC-12 | Outbox broker ACK then publisher crash | Recoverable claim; same event redelivered safely | ASYNC publisher, PostgreSQL + SQS |
 | AC-13 | Publisher stale lease owner/fencing | Stale owner cannot mark another claim complete; bounded retries/parked records visible | ASYNC publisher + fault injection |

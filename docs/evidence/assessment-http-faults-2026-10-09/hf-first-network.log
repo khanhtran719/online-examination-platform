@@ -1,0 +1,190 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/assessment-http-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment-http-faults.spec.ts
+
+(node:72219) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-http-faults.spec.ts (28.164 s)
+  ● Compiled Assessment start HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 403
+
+      788 |         [context.actor.userId],
+      789 |       );
+    > 790 |       expect((await send(context)).status).toBe(401);
+          |                                            ^
+      791 |       expect(await state(context)).toEqual(durable);
+      792 |       records.push({
+      793 |         operation,
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:790:44)
+
+  ● Compiled Assessment save HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 403
+
+      788 |         [context.actor.userId],
+      789 |       );
+    > 790 |       expect((await send(context)).status).toBe(401);
+          |                                            ^
+      791 |       expect(await state(context)).toEqual(durable);
+      792 |       records.push({
+      793 |         operation,
+
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:790:44)
+
+  ● Compiled Assessment submit HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "e35aa308-4b7b-4038-a0e9-4fed0372f81f"
+    Received: "27efe2a8-1d02-46d8-b2b5-94e3388c3f8e"
+
+      496 |   expect(current.events).toHaveLength(operation === "submit" ? 1 : 0);
+      497 |   if (operation === "submit") {
+    > 498 |     expect(current.events[0]!.event_id).toBe(current.attempts[0]!.submission_id);
+          |                                         ^
+      499 |     expect(current.events[0]!.causation_id).toBe(context.key);
+      500 |   }
+      501 |   expect(await receipt(context)).toBeDefined();
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:498:41)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:770:7)
+
+  ● Compiled Assessment submit HTTP faults › rolls back business writes when the API is killed before COMMIT, then retries once
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "31cda3a7-a2ba-4584-a2bd-9a2aac5caf3a"
+    Received: "baae4472-9fe4-4c3c-a4a4-a6c73a47a7ee"
+
+      496 |   expect(current.events).toHaveLength(operation === "submit" ? 1 : 0);
+      497 |   if (operation === "submit") {
+    > 498 |     expect(current.events[0]!.event_id).toBe(current.attempts[0]!.submission_id);
+          |                                         ^
+      499 |     expect(current.events[0]!.causation_id).toBe(context.key);
+      500 |   }
+      501 |   expect(await receipt(context)).toBeDefined();
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:498:41)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:819:7)
+
+  ● Compiled Assessment submit HTTP faults › returns a safe error and recovers after the transaction backend is terminated
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "fb2a427a-4d85-41fa-9371-755bf5adf83e"
+    Received: "d7d8458c-a901-4125-b785-437c0029ffcb"
+
+      496 |   expect(current.events).toHaveLength(operation === "submit" ? 1 : 0);
+      497 |   if (operation === "submit") {
+    > 498 |     expect(current.events[0]!.event_id).toBe(current.attempts[0]!.submission_id);
+          |                                         ^
+      499 |     expect(current.events[0]!.causation_id).toBe(context.key);
+      500 |   }
+      501 |   expect(await receipt(context)).toBeDefined();
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:498:41)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:850:7)
+
+  ● Compiled Assessment submit HTTP faults › rolls back a lock timeout and accepts the same retry key
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "bd84338e-f8c2-4762-a7d8-0f6a04af41bc"
+    Received: "01dac1d7-6465-480d-bec2-fa7ac73f1238"
+
+      496 |   expect(current.events).toHaveLength(operation === "submit" ? 1 : 0);
+      497 |   if (operation === "submit") {
+    > 498 |     expect(current.events[0]!.event_id).toBe(current.attempts[0]!.submission_id);
+          |                                         ^
+      499 |     expect(current.events[0]!.causation_id).toBe(context.key);
+      500 |   }
+      501 |   expect(await receipt(context)).toBeDefined();
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:498:41)
+      at apps/api/tests/integration/assessment-http-faults.spec.ts:875:9
+
+  ● Compiled Assessment submit HTTP faults › rolls back a sleep timeout and accepts the same retry key
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "30623a2f-8a20-4d79-a06f-3d71e3457e34"
+    Received: "d2f99101-39e8-4b94-9807-3f00975af651"
+
+      496 |   expect(current.events).toHaveLength(operation === "submit" ? 1 : 0);
+      497 |   if (operation === "submit") {
+    > 498 |     expect(current.events[0]!.event_id).toBe(current.attempts[0]!.submission_id);
+          |                                         ^
+      499 |     expect(current.events[0]!.causation_id).toBe(context.key);
+      500 |   }
+      501 |   expect(await receipt(context)).toBeDefined();
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:498:41)
+      at apps/api/tests/integration/assessment-http-faults.spec.ts:875:9
+
+  ● Compiled Assessment submit HTTP faults › resolves a client timeout by durable replay after the disconnected write commits
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "6a0992f5-fd18-4ca4-8f57-b76a35298db4"
+    Received: "63337292-149e-4782-9b7a-f1176a27a5c1"
+
+      496 |   expect(current.events).toHaveLength(operation === "submit" ? 1 : 0);
+      497 |   if (operation === "submit") {
+    > 498 |     expect(current.events[0]!.event_id).toBe(current.attempts[0]!.submission_id);
+          |                                         ^
+      499 |     expect(current.events[0]!.causation_id).toBe(context.key);
+      500 |   }
+      501 |   expect(await receipt(context)).toBeDefined();
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:498:41)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:906:7)
+
+  ● Assessment writes across independent compiled API tasks › commits submit only once across two tasks with the same key
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "ac9d84dc-02e2-4143-92da-6154788d3276"
+    Received: "42b988ec-c908-44d3-b620-c39496840841"
+
+      496 |   expect(current.events).toHaveLength(operation === "submit" ? 1 : 0);
+      497 |   if (operation === "submit") {
+    > 498 |     expect(current.events[0]!.event_id).toBe(current.attempts[0]!.submission_id);
+          |                                         ^
+      499 |     expect(current.events[0]!.causation_id).toBe(context.key);
+      500 |   }
+      501 |   expect(await receipt(context)).toBeDefined();
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:498:41)
+      at apps/api/tests/integration/assessment-http-faults.spec.ts:925:7
+
+  ● Assessment writes across independent compiled API tasks › drains an admitted submit on SIGTERM and replays it after restart
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "fa23a11a-055d-4dde-8f26-584b574c4fa1"
+    Received: "f9f77d22-a782-46b1-bec7-3675cea3ebfa"
+
+      496 |   expect(current.events).toHaveLength(operation === "submit" ? 1 : 0);
+      497 |   if (operation === "submit") {
+    > 498 |     expect(current.events[0]!.event_id).toBe(current.attempts[0]!.submission_id);
+          |                                         ^
+      499 |     expect(current.events[0]!.causation_id).toBe(context.key);
+      500 |   }
+      501 |   expect(await receipt(context)).toBeDefined();
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:498:41)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:1010:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       10 failed, 13 passed, 23 total
+Snapshots:   0 total
+Time:        28.22 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-http-faults.spec.ts".

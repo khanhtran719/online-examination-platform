@@ -1,0 +1,720 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/assessment-http-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment-http-faults.spec.ts
+
+(node:71152) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-http-faults.spec.ts
+  ● Compiled Assessment start HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment start HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment start HTTP faults › rolls back business writes when the API is killed before COMMIT, then retries once
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment start HTTP faults › rolls back business writes when the API is killed before COMMIT, then retries once
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment start HTTP faults › returns a safe error and recovers after the transaction backend is terminated
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment start HTTP faults › returns a safe error and recovers after the transaction backend is terminated
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment start HTTP faults › rolls back a lock timeout and accepts the same retry key
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment start HTTP faults › rolls back a lock timeout and accepts the same retry key
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment start HTTP faults › rolls back a sleep timeout and accepts the same retry key
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment start HTTP faults › rolls back a sleep timeout and accepts the same retry key
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment start HTTP faults › resolves a client timeout by durable replay after the disconnected write commits
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment start HTTP faults › resolves a client timeout by durable replay after the disconnected write commits
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment save HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment save HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment save HTTP faults › rolls back business writes when the API is killed before COMMIT, then retries once
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment save HTTP faults › rolls back business writes when the API is killed before COMMIT, then retries once
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment save HTTP faults › returns a safe error and recovers after the transaction backend is terminated
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment save HTTP faults › returns a safe error and recovers after the transaction backend is terminated
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment save HTTP faults › rolls back a lock timeout and accepts the same retry key
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment save HTTP faults › rolls back a lock timeout and accepts the same retry key
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment save HTTP faults › rolls back a sleep timeout and accepts the same retry key
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment save HTTP faults › rolls back a sleep timeout and accepts the same retry key
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment save HTTP faults › resolves a client timeout by durable replay after the disconnected write commits
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment save HTTP faults › resolves a client timeout by durable replay after the disconnected write commits
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment submit HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment submit HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment submit HTTP faults › rolls back business writes when the API is killed before COMMIT, then retries once
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment submit HTTP faults › rolls back business writes when the API is killed before COMMIT, then retries once
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment submit HTTP faults › returns a safe error and recovers after the transaction backend is terminated
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment submit HTTP faults › returns a safe error and recovers after the transaction backend is terminated
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment submit HTTP faults › rolls back a lock timeout and accepts the same retry key
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment submit HTTP faults › rolls back a lock timeout and accepts the same retry key
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment submit HTTP faults › rolls back a sleep timeout and accepts the same retry key
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment submit HTTP faults › rolls back a sleep timeout and accepts the same retry key
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Compiled Assessment submit HTTP faults › resolves a client timeout by durable replay after the disconnected write commits
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Compiled Assessment submit HTTP faults › resolves a client timeout by durable replay after the disconnected write commits
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Assessment writes across independent compiled API tasks › commits start only once across two tasks with the same key
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Assessment writes across independent compiled API tasks › commits start only once across two tasks with the same key
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Assessment writes across independent compiled API tasks › commits save only once across two tasks with the same key
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Assessment writes across independent compiled API tasks › commits save only once across two tasks with the same key
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Assessment writes across independent compiled API tasks › commits submit only once across two tasks with the same key
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Assessment writes across independent compiled API tasks › commits submit only once across two tasks with the same key
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Assessment writes across independent compiled API tasks › rejects a stale tab and keeps newer answers when an older save receipt is replayed
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Assessment writes across independent compiled API tasks › rejects a stale tab and keeps newer answers when an older save receipt is replayed
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+  ● Assessment writes across independent compiled API tasks › drains an admitted submit on SIGTERM and replays it after restart
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      617 |
+      618 | beforeAll(async () => {
+    > 619 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      620 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      621 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      622 |   await admin.query(`CREATE ROLE ${owner} LOGIN NOINHERIT PASSWORD '${password}'`);
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:619:3)
+
+  ● Assessment writes across independent compiled API tasks › drains an admitted submit on SIGTERM and replays it after restart
+
+    TypeError: Cannot read properties of undefined (reading 'query')
+
+      558 |
+      559 | async function ungate(): Promise<void> {
+    > 560 |   await fixture.query("DROP TRIGGER IF EXISTS http_receipt_gate ON platform.idempotency_receipts");
+          |                 ^
+      561 | }
+      562 |
+      563 | async function lostAcknowledgement(
+
+      at ungate (apps/api/tests/integration/assessment-http-faults.spec.ts:560:17)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:699:9)
+
+
+  ● Test suite failed to run
+
+    connect EPERM 127.0.0.1:55435 - Local (0.0.0.0:0)
+
+      704 |   await waitFor(async () => {
+      705 |     const row = (
+    > 706 |       await admin.query<{ n: number }>(
+          |       ^
+      707 |         `
+      708 |       SELECT
+      709 |         count(*)::int AS n
+
+      at node_modules/pg-pool/index.js:45:11
+      at apps/api/tests/integration/assessment-http-faults.spec.ts:706:7
+      at waitFor (apps/api/tests/integration/assessment-http-faults.spec.ts:160:20)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:704:3)
+
+Test Suites: 1 failed, 1 total
+Tests:       23 failed, 23 total
+Snapshots:   0 total
+Time:        1.859 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-http-faults.spec.ts".

@@ -1,0 +1,117 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/assessment-http-validation-env.cjs --runTestsByPath apps/api/tests/integration/assessment-http-faults.spec.ts
+
+(node:72621) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/assessment-http-faults.spec.ts (27.185 s)
+  ● Compiled Assessment start HTTP faults › replays the original durable ACK after socket reset and API restart
+
+    TypeError: Cannot read properties of undefined (reading 'version')
+
+      517 |   expect(answers.status).toBe(200);
+      518 |   const saved = envelope<{ version: number; selectedOptionIds: string[] }[]>(answers).data[0]!;
+    > 519 |   expect(saved.version).toBe(operation === "start" ? 0 : 1);
+          |                ^
+      520 |   expect(saved.selectedOptionIds).toEqual(operation === "start" ? [] : [context.optionId]);
+      521 | }
+      522 |
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:519:16)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:782:7)
+
+  ● Compiled Assessment start HTTP faults › rolls back business writes when the API is killed before COMMIT, then retries once
+
+    TypeError: Cannot read properties of undefined (reading 'version')
+
+      517 |   expect(answers.status).toBe(200);
+      518 |   const saved = envelope<{ version: number; selectedOptionIds: string[] }[]>(answers).data[0]!;
+    > 519 |   expect(saved.version).toBe(operation === "start" ? 0 : 1);
+          |                ^
+      520 |   expect(saved.selectedOptionIds).toEqual(operation === "start" ? [] : [context.optionId]);
+      521 | }
+      522 |
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:519:16)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:859:7)
+
+  ● Compiled Assessment start HTTP faults › returns a safe error and recovers after the transaction backend is terminated
+
+    TypeError: Cannot read properties of undefined (reading 'version')
+
+      517 |   expect(answers.status).toBe(200);
+      518 |   const saved = envelope<{ version: number; selectedOptionIds: string[] }[]>(answers).data[0]!;
+    > 519 |   expect(saved.version).toBe(operation === "start" ? 0 : 1);
+          |                ^
+      520 |   expect(saved.selectedOptionIds).toEqual(operation === "start" ? [] : [context.optionId]);
+      521 | }
+      522 |
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:519:16)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:890:7)
+
+  ● Compiled Assessment start HTTP faults › rolls back a lock timeout and accepts the same retry key
+
+    TypeError: Cannot read properties of undefined (reading 'version')
+
+      517 |   expect(answers.status).toBe(200);
+      518 |   const saved = envelope<{ version: number; selectedOptionIds: string[] }[]>(answers).data[0]!;
+    > 519 |   expect(saved.version).toBe(operation === "start" ? 0 : 1);
+          |                ^
+      520 |   expect(saved.selectedOptionIds).toEqual(operation === "start" ? [] : [context.optionId]);
+      521 | }
+      522 |
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:519:16)
+      at apps/api/tests/integration/assessment-http-faults.spec.ts:915:9
+
+  ● Compiled Assessment start HTTP faults › rolls back a sleep timeout and accepts the same retry key
+
+    TypeError: Cannot read properties of undefined (reading 'version')
+
+      517 |   expect(answers.status).toBe(200);
+      518 |   const saved = envelope<{ version: number; selectedOptionIds: string[] }[]>(answers).data[0]!;
+    > 519 |   expect(saved.version).toBe(operation === "start" ? 0 : 1);
+          |                ^
+      520 |   expect(saved.selectedOptionIds).toEqual(operation === "start" ? [] : [context.optionId]);
+      521 | }
+      522 |
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:519:16)
+      at apps/api/tests/integration/assessment-http-faults.spec.ts:915:9
+
+  ● Compiled Assessment start HTTP faults › resolves a client timeout by durable replay after the disconnected write commits
+
+    TypeError: Cannot read properties of undefined (reading 'version')
+
+      517 |   expect(answers.status).toBe(200);
+      518 |   const saved = envelope<{ version: number; selectedOptionIds: string[] }[]>(answers).data[0]!;
+    > 519 |   expect(saved.version).toBe(operation === "start" ? 0 : 1);
+          |                ^
+      520 |   expect(saved.selectedOptionIds).toEqual(operation === "start" ? [] : [context.optionId]);
+      521 | }
+      522 |
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:519:16)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-http-faults.spec.ts:946:7)
+
+  ● Assessment writes across independent compiled API tasks › commits start only once across two tasks with the same key
+
+    TypeError: Cannot read properties of undefined (reading 'version')
+
+      517 |   expect(answers.status).toBe(200);
+      518 |   const saved = envelope<{ version: number; selectedOptionIds: string[] }[]>(answers).data[0]!;
+    > 519 |   expect(saved.version).toBe(operation === "start" ? 0 : 1);
+          |                ^
+      520 |   expect(saved.selectedOptionIds).toEqual(operation === "start" ? [] : [context.optionId]);
+      521 | }
+      522 |
+
+      at assertAccepted (apps/api/tests/integration/assessment-http-faults.spec.ts:519:16)
+      at apps/api/tests/integration/assessment-http-faults.spec.ts:965:7
+
+Test Suites: 1 failed, 1 total
+Tests:       7 failed, 16 passed, 23 total
+Snapshots:   0 total
+Time:        27.219 s, estimated 29 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-http-faults.spec.ts".

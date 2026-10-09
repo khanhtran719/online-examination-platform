@@ -1,0 +1,25 @@
+{
+  "protectedFiles": 364,
+  "changed": [],
+  "sourceBuiltMigrationCount": 17,
+  "migrationMismatches": [],
+  "matrixCases": 26,
+  "temporaryKeyDirectories": 0,
+  "rootTestsPassed": 375,
+  "integrationTestsPassed": 268,
+  "integrationSuitesPassed": 16,
+  "skipped": 0,
+  "roadmapChecked": 81,
+  "roadmapPending": 135,
+  "externalCleanup": {
+    "temporaryDatabases": 0,
+    "temporaryLogins": 0,
+    "otherDatabaseConnections": 0
+  },
+  "containersStopped": [
+    "postgres55435",
+    "rootMailpit"
+  ],
+  "productionAccepted": false,
+  "runtimeChanged": false
+}

@@ -1,5 +1,17 @@
 # Roadmap triển khai có đánh dấu
 
+Cập nhật2026-10-09: [Assessment HTTP faults](assessment-http-faults-2026-10-09.md)/
+[evidence](evidence/assessment-http-faults-2026-10-09/README.md): **ATT-10/11 accepted
+locally;81/216 mục hoàn thành,135 mục chưa hoàn thành.**26/26 ca mới dùng API
+compiled/HTTP socket/PG thật,375 root và268 integration/16 suites PASS,0 skipped;
+lint/typecheck/build/contracts46/425 PASS. Mất ACK/client timeout/API kill/restart,
+backend termination, lock/statement/acquire timeout và back-pressure cho đủ
+start/save/submit; duplicate/stale tab qua2 API task và SIGTERM drain đã kiểm chứng.
+Không đổi runtime/schema/dependency/resource.17 migration bundles khớp;364 prior
+files giữ nguyên; cleanup0 DB/login/connections/processes/keys. SLO/capacity/AWS
+cost/managed failure/restore/rollout còn mở. Tiếp theo: REP-04 public leaderboard/
+privacy reads, tách khỏi Reporting/Admin và privacy restore/deletion-ledger gates.
+
 Cập nhật2026-10-09: [Assessment retention](assessment-retention-2026-10-09.md)/
 [evidence](evidence/assessment-retention-2026-10-09/README.md): **ATT-09 accepted
 locally;79/216 mục hoàn thành,137 mục chưa hoàn thành.**375 root/242 integration/
@@ -15,7 +27,7 @@ Prior ATT-08 update2026-10-09. [Candidate results](assessment-results-2026-10-09
 
 [Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. Persistence evaluation đã hoàn thành4/4 local theo [ADR-008](adr/008-persistence-evaluation.md), tách khỏi refactor; [raw comparison](../experiments/persistence-comparison/README.md) giữ pg hiện tại, chưa chọn AWS/TCO winner. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–06 local; RV-07 và production acceptance còn pending. [Review Catalog độc lập](catalog-review-2026-10-07.md) đã mở lại sáu items; [fix closure](catalog-fixes-2026-10-07.md) nghiệm thu lại BOOT-01 và CAT-01/03/04/06/08. [Diagnostic mới](evidence/catalog-fixes-2026-10-07/diagnostic/README.md) ghi exact SQL/publish/provenance, giữ nguyên evidence cũ. Review đã mở lại CAT-09/10 vì snapshot JOIN cũ; [closure mới](assessment-fixes-2026-10-08.md) chứng minh fresh post-lock publication và hai observed HTTP races PASS. Evidence GR-01–06 bên dưới giữ nguyên như lịch sử. Increment Assessment không đóng Phase04.
 
-Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product79/216 không đồng nghĩa production acceptance.
+Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product81/216 không đồng nghĩa production acceptance.
 
 Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. Git và origin remote hiện đã có, BOOT-09 branch/PR workflow chưa kiểm chứng; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
 
@@ -27,7 +39,7 @@ Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, kh
 | 03: Database | DB-01–11 hoàn tất nền persistence; DB-12 chưa drill | Business adapters/races và old/new images cần evidence riêng |
 | 04: Identity | Lõi + browser HTTPS local hoàn tất; ID-11 PARTIAL, ID-12/13 LATER | Live SES operations trước đóng phase; AWS TLS vẫn gate riêng |
 | 05: Catalog | CAT-01–10 local; publication/start races và owned capabilities đã fix | ID-11 vẫn chặn Phase04; AWS/capacity chưa đo |
-| 06–13: Assessment/operations/AWS | ATT-01–09, ASYNC-01–07/10 local; ATT-10/11, ASYNC-08/09/11/12 và các phase sau còn mở | Correctness và security trước capacity tuning |
+| 06–13: Assessment/operations/AWS | ATT-01–11, ASYNC-01–07/10 local; REP-04, ASYNC-08/09/11/12 và các phase sau còn mở | Correctness và security trước capacity tuning |
 | 14–19: Dataset/load/failure/FinOps | Chưa đo | Có môi trường kiểm thử và raw evidence |
 | 20: Production acceptance | Chưa đạt | Toàn bộ hard gates và câu hỏi định lượng có evidence |
 
@@ -156,8 +168,8 @@ Phụ thuộc: 03–05. Pure domain helper hiện có chỉ là phần nhỏ c�
 - [x] **ATT-07** Auto-submit DEADLINE đã nghiệm thu lại theo [closure](assessment-expiry-fixes-2026-10-08.md): durable cooldown tiến triển qua full poison batch, accepted provenance fail-closed, stable indexable discovery/post-lock clock, calibrated COMMIT ACK observation.21 new regressions/144 full integration PASS; before/after/index/compiled-worker evidence. Scoring/SQS và production chưa bao gồm.
 - [x] **ATT-08** Candidate status/result/history/review HTTP có current permission/owner, frozen release/DB time, summary/section/null-score và FAILED/replay semantics. Cursor watermark/tie/actor/kind/pageSize/expiry, complete256KiB escaped response/no-skip,3 auth-inclusive queries và natural100k history/key-gate plans PASS. [Closure](assessment-results-2026-10-09.md)/[ADR-010](adr/010-candidate-frozen-read-projections.md). Local344 root/224 integration PASS; SLO/capacity/AWS chưa nghiệm thu.
 - [x] **ATT-09** Bounded Assessment receipt7days/completed payload365days+7day grace; UTC/finite-time/direct-RPC gates, compact quota/submission/inbox, atomic answer/result/statistics/leaderboard/audit, purged-aware readers/source/DLQ và opt-in one-shot stop/drain.18 new restricted-PG cases/242 full integration PASS. [Closure](assessment-retention-2026-10-09.md)/[ADR-011](adr/011-assessment-retention-compaction.md). Full privacy/metadata/restore/AWS lifecycle vẫn mở.
-- [ ] **ATT-10 — SUBSET** Đã có duplicate start/limit, publish/unpublish/start lock, republish freeze, stale tab, save rồi submit, và deadline đổi sau lock. Sweep bổ sung locked-oldest skip, hai worker, manual/sweep race và SIGTERM/restart không nhân đôi event. Review độc lập bổ sung hai save trên hai UnitOfWork và4 race save/submit quan sát lock, PASS. Publication/start đã fix AR-03. Chưa đủ toàn bộ timeout matrix. Không đóng đầu mục.
-- [ ] **ATT-11 — SUBSET** Đã có replay receipt, resume qua connection thứ hai, revoke session, foreign 404, redaction explanation và rollback khi outbox insert lỗi. Sweep bổ sung mất kết nối trong transaction và mất acknowledgement sau commit: restart không ghi submission lần hai. Chưa đủ lost-ACK của mọi HTTP write. Không đóng đầu mục.
+- [x] **ATT-10** Local concurrency/timeout matrix hoàn tất: các observed publication/deadline/quota/save-submit/sweep races trước đó + lock/statement/acquire timeout/back-pressure, late pre-COMMIT API/backend kill cho đủ start/save/submit, duplicate/stale tab qua2 compiled API task và SIGTERM drain. [Closure](assessment-http-faults-2026-10-09.md):26 new/268 full integration PASS. Managed RDS/ALB/task failure dưới tải production thuộc các gate sau.
+- [x] **ATT-11** Local durable HTTP fault/restart matrix hoàn tất: lost ACK qua socket reset sau commit và client timeout trước commit rồi durable commit/restart/replay cho đủ start/save/submit. Receipt/body/status/deadline/version/event giữ nguyên; current auth/permission/CSRF/key scope được kiểm tra; không quota burn/answer rollback/double event. [Evidence](evidence/assessment-http-faults-2026-10-09/README.md),268 integration PASS/0 skipped; không suy ra AWS recovery/capacity/SLO.
 
 Gate: mọi save/submit được acknowledgement phải có durable outcome đúng; không lost update, không double submit.
 
