@@ -1,5 +1,78 @@
 # Roadmap triển khai có đánh dấu
 
+REP-05 update2026-10-10: [Business metrics](admin-business-metrics-2026-10-10.md)
+BM-01–06 COMPLETE locally; **85/216 checked,131 pending**. Additive Reporting
+start-time cohort/current durable counts plus global pending/replay backlog,
+primary asOf, paired max7day UTC window, current permission and safe access audit.
+Combined HTTP/SQS metrics and Web parser unchanged/specification-only.38 new units/
+18 PG cases;559 root/379 integration22 suites/0 skipped,18 post-format PG PASS;
+lint/typecheck/build/quality/contracts48 operations/445 examples. SQL format
+preserves435 tokens/bindings;18 source/build migrations match,521 prior files
+unchanged,65 source hashes. SQS happy-path fixture timing separated from its100ms
+deadline test; original first-full failure cause unconfirmed, runtime unchanged.
+Cleanup0, test containers stopped/volumes retained. Natural100k/1M sequential
+scan baselines,8 SQL/507–511bytes;1M HTTP p95≈571–646ms across independent runs
+excludes TCP/TLS/ALB and proves no sustainable capacity/SLO/AWS savings. No new
+schema/resource or browser HTTPS rerun. REP-04 privacy ledger/deletion/restore
+stays SUBSET/unchecked. Next proposed REP-06 audit lifecycle; Web, technical
+providers and AWS gates remain open, production NOT ACCEPTED. No commit/deploy;
+prior workspace preserved on local codex/rep05-business-metrics branch.
+[Evidence](evidence/admin-business-metrics-2026-10-10/README.md). Previous paragraphs
+below retain their historical source/test states.
+
+Latest REP-04 Admin subset update2026-10-10: [Best/latest candidate report](admin-candidate-results-2026-10-10.md)
+BL-01–06 COMPLETE locally; roadmap84/216 checked,132 pending. Reporting-owned
+exact frozen-version pairs select retained best COMPLETED by score/submit/UUID
+and latest submitted including pending/FAILED with null scores. Current permission,
+exact-version audit, stable candidate keyset and grading/replay/purge verified.
+521 root/361 integration21 suites/0 skipped PASS; lint/typecheck/build/quality/
+contracts47 operations/435 examples.35 new units/18 PG cases; deterministic SMTP
+retry regression fixes the local test harness only, with no Identity runtime change.
+18 source/build migrations match,493 prior files unchanged,56 source hashes;
+cleanup0 and test containers stopped with volumes retained. Natural100k-attempt
+fixture,8 SQL/page,44,604bytes; paced local inject p95/p99≈46.380/50.591ms excludes
+TCP/TLS/ALB and proves no sustainable capacity/AWS savings/SLO. No new schema or
+resource; no browser HTTPS rerun. REP-04 remains SUBSET and unchecked: independent
+privacy ledger/deletion/restore still open. Web, audit lifecycle and AWS gates remain
+open; production NOT ACCEPTED. Next proposed: REP-05 business metrics.
+[Evidence](evidence/admin-candidate-results-2026-10-10/README.md).
+
+REP-03 update2026-10-10: [Question statistics](admin-question-statistics-2026-10-10.md)
+QS-01–06 COMPLETE locally; **84/216 checked,132 pending**.486 root/342 integration
+20 suites/0 skipped PASS; lint/typecheck/build/quality/contracts46/425.18 source/
+build migrations match and481 prior files unchanged, cleanup0. Exact frozen
+version, retained-completed denominator, replay/purge/current permission/audit and
+bounded paging verified. Natural10k-question/100k-option diagnostics accept no new
+schema/resource; no AWS capacity/SLO/cost claim. Next proposed: **REP-04 Admin
+best/latest reporting subset**; privacy ledger/deletion/restore remain separate.
+REP-04 stays SUBSET; production NOT ACCEPTED.
+
+REP-02 update2026-10-10: [Submissions/scores](admin-submissions-2026-10-10.md)
+AS-01–06 COMPLETE locally; **83/216 checked,133 pending**.452 root/320 integration
+19 suites PASS; lint/typecheck/build/contracts46/425,18 bundles and472 prior files
+verified. Local diagnostic only; no new schema/resource/AWS capacity/cost claim.
+Next: **REP-03 question statistics**. REP-04 remains SUBSET; production NOT ACCEPTED.
+
+Cập nhật REP-01 ngày2026-10-10: [Admin active monitor](admin-monitor-2026-10-10.md)/
+[evidence](evidence/admin-monitor-2026-10-10/README.md): **AM-01–06 hoàn tất local;
+82/216 checked,134 pending.** Reporting primary projection, current permission,
+fresh DB deadline/asOf, minimal DTO, opaque60s keyset và fail-closed transactional
+audit đã kiểm chứng.419 root/299 integration18 suites/10 HTTPS PASS;18 migrations
+khớp,451 prior files giữ nguyên, cleanup0. A/B/A100k/2000-active chưa chứng minh
+lợi ích để thêm index; không thêm schema/resource. REP-04 vẫn SUBSET; Web Admin/
+AWS capacity/SLO/cost và production vẫn mở. Tiếp theo: **REP-02 submissions/scores**.
+
+Cập nhật2026-10-10: [Public leaderboard](public-leaderboard-2026-10-09.md)/
+[evidence](evidence/leaderboard-2026-10-09/README.md): **LB-01–05 hoàn tất local;
+REP-04 vẫn SUBSET,81/216 checked,135 pending.** Reporting public facade/private SQL,
+Assessment auth/HTTP, current opt-out, per-version pseudonyms/opaque cursor và0018
+epoch chống lặp sau retention đã kiểm chứng.396 root/281 integration17 suites/
+10 HTTPS PASS,0 full-run skipped; lint/typecheck/build/contracts46/425 PASS.
+Query3 statements/read; matched100k first/deep p95≈300→248/355→271ms chỉ là local
+diagnostic.386 protected files giữ nguyên;18 migration bundles khớp; cleanup0.
+Admin Reporting/privacy ledger/restore/Web ranking/AWS SLO/cost còn mở.
+Tiếp theo: REP-01 Admin active-candidate monitor với scope/freshness rõ ràng.
+
 Cập nhật2026-10-09: [Assessment HTTP faults](assessment-http-faults-2026-10-09.md)/
 [evidence](evidence/assessment-http-faults-2026-10-09/README.md): **ATT-10/11 accepted
 locally;81/216 mục hoàn thành,135 mục chưa hoàn thành.**26/26 ca mới dùng API
@@ -27,7 +100,7 @@ Prior ATT-08 update2026-10-09. [Candidate results](assessment-results-2026-10-09
 
 [Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. Persistence evaluation đã hoàn thành4/4 local theo [ADR-008](adr/008-persistence-evaluation.md), tách khỏi refactor; [raw comparison](../experiments/persistence-comparison/README.md) giữ pg hiện tại, chưa chọn AWS/TCO winner. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–06 local; RV-07 và production acceptance còn pending. [Review Catalog độc lập](catalog-review-2026-10-07.md) đã mở lại sáu items; [fix closure](catalog-fixes-2026-10-07.md) nghiệm thu lại BOOT-01 và CAT-01/03/04/06/08. [Diagnostic mới](evidence/catalog-fixes-2026-10-07/diagnostic/README.md) ghi exact SQL/publish/provenance, giữ nguyên evidence cũ. Review đã mở lại CAT-09/10 vì snapshot JOIN cũ; [closure mới](assessment-fixes-2026-10-08.md) chứng minh fresh post-lock publication và hai observed HTTP races PASS. Evidence GR-01–06 bên dưới giữ nguyên như lịch sử. Increment Assessment không đóng Phase04.
 
-Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product81/216 không đồng nghĩa production acceptance.
+Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product85/216 không đồng nghĩa production acceptance.
 
 Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. Git và origin remote hiện đã có, BOOT-09 branch/PR workflow chưa kiểm chứng; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
 
@@ -196,11 +269,11 @@ Gate: crash/duplicate delivery không mất submission, không nhân đôi resul
 
 Phụ thuộc: 04–07.
 
-- [ ] **REP-01** Read-only admin monitor active candidates với scope/freshness rõ ràng.
-- [ ] **REP-02** Browse/filter submissions/scores và cursor pagination có stable ordering.
-- [ ] **REP-03** Question statistics: answered/correct/incorrect/unanswered denominators, published-version scope.
-- [ ] **REP-04 — SUBSET** Candidate history/result/review đã nghiệm thu local tại ATT-08; public leaderboard/privacy, best/latest semantics và admin reporting chưa triển khai. Không đóng đầu mục.
-- [ ] **REP-05** Business metrics: starts/submissions/completions/expired/failed và processing backlog.
+- [x] **REP-01** Admin exam-scoped active attempt monitor, fresh primary DB deadline/asOf, opaque60s keyset, current permission và mandatory access audit;8 SQL/read, local PG/HTTP/compiled/plan regression PASS. [AM-01–06 closure](admin-monitor-2026-10-10.md). Presence/count/Web/AWS capacity không được suy ra.
+- [x] **REP-02** Exam/version-filtered attempt ledger and aggregate/section scores, opaque15min stable keyset, current permission and mandatory access audit;8 SQL/read, real PG/HTTP/compiled checks PASS. [AS-01–06 closure](admin-submissions-2026-10-10.md). Local acceptance; Web/Admin keys/AWS remain open.
+- [x] **REP-03** Exact frozen-version question/option statistics: retained-completed denominator, answered/correct/incorrect/unanswered, duplicate/replay/purge atomicity, current permission and exact-version audit, opaque keyset. [QS-01–06 closure](admin-question-statistics-2026-10-10.md)/[evidence](evidence/admin-question-statistics-2026-10-10/README.md):34 units/22 PG cases, full486 root/342 integration PASS; natural10k/100k plans,8 SQL/128KiB bound. No AWS/capacity or privacy-ledger acceptance.
+- [ ] **REP-04 — SUBSET** Candidate history/result/review tại ATT-08 và public leaderboard/privacy reads/best-rank semantics tại [LB-01–05](public-leaderboard-2026-10-09.md) đã nghiệm thu local. Admin best/latest exact-version/current-permission/audit/paging tại [BL-01–06](admin-candidate-results-2026-10-10.md)/[evidence](evidence/admin-candidate-results-2026-10-10/README.md) đã nghiệm thu local. Independent privacy ledger/deletion/restore và production còn mở. Giữ unchecked, không đóng đầu mục.
+- [x] **REP-05** Business metrics: start-time cohort/current starts/submissions/completions/expired/failed/active và global durable pending/replay backlog. [BM-01–06](admin-business-metrics-2026-10-10.md)/[evidence](evidence/admin-business-metrics-2026-10-10/README.md) nghiệm thu local với current permission/audit,18 PG cases và100k/1M baseline. Combined telemetry/Web/AWS/capacity vẫn mở; không suy ra queue depth hoặc performance/cost winner.
 - [ ] **REP-06** Append-only audit trong admin transaction; action/actor/target/time/minimal metadata, retention/access control.
 - [ ] **REP-07** Export/report limits, safe PII exposure và query dependency contracts với migration.
 - [ ] **REP-08** Test data scope, projection freshness, query/index plans và audit rollback.

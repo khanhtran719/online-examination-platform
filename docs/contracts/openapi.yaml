@@ -194,13 +194,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AcceptedEnvelope"
-              example:
-                {
-                  data: { accepted: true },
-                  errorCode: null,
-                  message: null,
-                  status: true,
-                }
+              example: { data: { accepted: true }, errorCode: null, message: null, status: true }
         "400":
           $ref: "#/components/responses/Http400"
         "403":
@@ -252,13 +246,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/VerifiedEnvelope"
-              example:
-                {
-                  data: { verified: true },
-                  errorCode: null,
-                  message: null,
-                  status: true,
-                }
+              example: { data: { verified: true }, errorCode: null, message: null, status: true }
         "400":
           $ref: "#/components/responses/Http400"
         "403":
@@ -1531,6 +1519,12 @@ paths:
     get:
       operationId: getLeaderboard
       summary: getLeaderboard
+      description: >-
+        Authenticated pseudonym-only ranking for the exact frozen enabled version.
+        Cursor binds actor/version/pageSize and the first completion watermark;
+        expires after15 minutes from the original first page. Retention removal/downgrade
+        invalidates continuations with400; restart traversal. Fresh opt-out filters
+        may remove entries/change ranks. No total or historical snapshot.
       tags:
         - Assessment
       security:
@@ -2616,7 +2610,20 @@ paths:
   /v1/admin/exams/{examId}/active-candidates:
     get:
       operationId: listActiveCandidates
-      summary: listActiveCandidates
+      summary: Monitor current in-progress attempts for an exam
+      description: |
+        Requires current reporting.read permission; v1 Admin scope covers all
+        frozen versions of the requested exam, including unpublished/archived
+        exams. Returns only retained IN_PROGRESS attempts whose startedAt <=
+        metadata.asOf and deadline > metadata.asOf. This is attempt lifecycle
+        monitoring, not browser presence; disabled candidates remain visible.
+        Primary PostgreSQL statement snapshot, fresh on every page. Submitted or
+        expired attempts disappear on subsequent reads. Mandatory access audit
+        commits before response; audit failure returns no report.
+        Order is startedAt DESC, attemptId DESC. The opaque cursor binds actor,
+        exam and page size, excludes later starts using the initial watermark and
+        expires 60 seconds after the first page. Pagination is a live bounded view,
+        not a frozen snapshot or write/authorization authority. No total count.
       tags:
         - Reporting
       security:
@@ -2629,7 +2636,13 @@ paths:
             type: string
             format: uuid
         - $ref: "#/components/parameters/PageSize"
-        - $ref: "#/components/parameters/Cursor"
+        - name: cursor
+          in: query
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 2048
+          description: Opaque authenticated keyset cursor bound to actor/exam/page size; expires 60s from first page.
       responses:
         "200":
           description: Authorized projection
@@ -2676,13 +2689,24 @@ paths:
       x-cases:
         - AC-18
         - AC-22
+        - AC-24
         - AC-27
         - AC-31
       x-paginated: true
   /v1/admin/exams/{examId}/submissions:
     get:
       operationId: listSubmissions
-      summary: listSubmissions
+      summary: Browse exam attempts and submitted scores
+      description: >-
+        Primary attempt ledger includes unsubmitted attempts with null submittedAt/scores.
+        Optional publishedVersionId must belong to this exam or404. Includes frozen
+        archived/unpublished versions and ranking opt-out candidates; excludes purged
+        payloads. Only durable COMPLETED attempts have scores. No PII, answers or keys.
+        Ordering is immutable startedAt DESC/attemptId DESC. Opaque15min cursor binds
+        current actor/exam/version/pageSize/order and initial DB watermark/expiry.
+        State/scores are fresh per page, not a multi-page snapshot. Later starts are
+        excluded; purge may remove rows. Current reporting.read and mandatory access
+        audit share one transaction; audit failure returns no data.
       tags:
         - Reporting
       security:
@@ -2743,13 +2767,21 @@ paths:
       x-cases:
         - AC-18
         - AC-22
+        - AC-24
         - AC-27
         - AC-31
       x-paginated: true
   /v1/admin/attempts/{attemptId}/result:
     get:
       operationId: getAdminResult
-      summary: getAdminResult
+      summary: Read completed aggregate and section scores
+      description: >-
+        Current reporting.read with transactional fail-closed access audit. Missing
+        or purged attempts return404; unfinished/FAILED attempts return409 Result not
+        ready. Durable COMPLETED returns frozen aggregate and ordered section scores.
+        No query parameters. review is always null; answers/keys/explanations require
+        the separate assessment.review.admin operation. Primary read remains available
+        for archived/unpublished versions and ranking opt-out candidates.
       tags:
         - Reporting
       security:
@@ -3001,7 +3033,21 @@ paths:
   /v1/admin/exams/{examId}/versions/{versionId}/question-statistics:
     get:
       operationId: getQuestionStatistics
-      summary: getQuestionStatistics
+      summary: Read frozen version question and option counts
+      description: >-
+        All frozen questions/options appear, including zero counts before scoring.
+        Exact exam/version required; missing/mismatched version404. Current
+        reporting.read and mandatory access audit share one short transaction.
+        completedAttempts counts all retained COMPLETED attempts, including repeated,
+        expired-completed and leaderboard opt-out; pending/FAILED excluded.
+        answered=correct+incorrect; completedAttempts=answered+unanswered. Missing/
+        empty selections are unanswered. Option selectedCount can sum above answered
+        for multiple choice. Duplicate/replay adds no second contribution; purge
+        subtracts atomically. No PII, prompts, answers, keys or explanations.
+        Frozen section position/question position/question UUID ascending order.
+        Opaque15min cursor binds actor/exam/version/pageSize/order and fixed initial
+        expiry. Counts are fresh per primary statement, not a cross-page snapshot.
+        Overflow/inconsistent counters fail closed; no clamp or rounding.
       tags:
         - Reporting
       security:
@@ -3062,13 +3108,186 @@ paths:
       x-flow: read
       x-permissions:
         - reporting.read
-      x-transaction: none
+      x-transaction: audit-read
       x-idempotency: false
       x-cases:
         - AC-17
         - AC-22
+        - AC-24
         - AC-27
       x-paginated: true
+  /v1/admin/exams/{examId}/versions/{versionId}/candidate-results:
+    get:
+      operationId: getAdminCandidateResults
+      summary: Read retained best and latest submission per candidate
+      description: >-
+        Exact frozen exam/version report, one pair per candidate with a retained
+        submitted attempt. best is the COMPLETED attempt ordered earned DESC,
+        submittedAt ASC, attemptId ASC; null when none. latest is the submitted
+        attempt ordered submittedAt DESC, attemptId DESC, including pending/FAILED.
+        Only COMPLETED exposes scores; real zero remains zero. Worker completion
+        time and replay do not determine latest. Unsubmitted and purged excluded.
+        No public ranking opt-in/enabled-policy filter, PII, keys, answers or review.
+        Current reporting.read, locked revalidation and mandatory exact-version
+        audit commit before response. Candidate UUID ASC keyset, page1–100/default20.
+        Opaque15min cursor binds actor/exam/version/pageSize/order and fixed expiry.
+        First-page database time bounds attempt start times; selections remain
+        fresh per primary statement, not a cross-page snapshot or complete export.
+        Missing/corrupt completed-result state fails closed with503.
+      tags:
+        - Reporting
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: examId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: versionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/PageSize"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CandidateResultPairListEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Reporting
+      x-flow: read
+      x-permissions:
+        - reporting.read
+      x-transaction: audit-read
+      x-idempotency: false
+      x-cases:
+        - AC-17
+        - AC-22
+        - AC-24
+        - AC-27
+        - AC-36
+      x-paginated: true
+  /v1/admin/business-metrics:
+    get:
+      operationId: getAdminBusinessMetrics
+      summary: Read current attempt cohort counts and global processing backlog
+      description: >-
+        reporting.read snapshot from primary Assessment attempt identities. Both
+        from/to must be supplied together as canonical UTC milliseconds (years0001–9999), with
+        0 < to-from <= 7 days and to <= database asOf. Default previous 24 hours.
+        Counts are current state of the started_at cohort [from,to), excluding
+        CREATED; they are attempts, not unique users or events occurring in window.
+        Completed compact purged identities remain counted. Global backlog ignores
+        cohort: SUBMITTED/EXPIRED/PROCESSING plus FAILED with replayPending, with
+        oldest original submission and age. Empty oldest/age are null. This is not
+        SQS depth, worker activity, HTTP telemetry or a time series. No PII/keys/
+        answers/score fields. Current locked permission and mandatory global access
+        audit commit before response. Full identity scan can grow with data;
+        statement/admission/pool bounds remain. No production capacity claim.
+      tags:
+        - Reporting
+      security:
+        - AccessCookie: []
+      parameters:
+        - name: from
+          in: query
+          description: Cohort inclusive start; required together with to.
+          schema:
+            type: string
+            format: date-time
+            pattern: '^(?!0000)\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$'
+        - name: to
+          in: query
+          description: Cohort exclusive end; required together with from, <= database asOf.
+          schema:
+            type: string
+            format: date-time
+            pattern: '^(?!0000)\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$'
+      responses:
+        "200":
+          description: Authorized projection
+          headers:
+            X-Correlation-Id:
+              description: Server-generated/validated UUID correlation ID.
+              schema:
+                type: string
+                format: uuid
+            Cache-Control:
+              description: no-store for authenticated/sensitive payloads.
+              schema:
+                type: string
+                enum:
+                  - no-store
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BusinessMetricsEnvelope"
+        "400":
+          $ref: "#/components/responses/Http400"
+        "401":
+          $ref: "#/components/responses/Http401"
+        "403":
+          $ref: "#/components/responses/Http403"
+        "404":
+          $ref: "#/components/responses/Http404"
+        "409":
+          $ref: "#/components/responses/Http409"
+        "422":
+          $ref: "#/components/responses/Http422"
+        "429":
+          $ref: "#/components/responses/Http429"
+        "500":
+          $ref: "#/components/responses/Http500"
+        "503":
+          $ref: "#/components/responses/Http503"
+      x-owner: Reporting
+      x-flow: read
+      x-permissions:
+        - reporting.read
+      x-transaction: audit-read
+      x-idempotency: false
+      x-cases:
+        - AC-17
+        - AC-22
+        - AC-24
+        - AC-27
+        - AC-37
   /v1/admin/metrics:
     get:
       operationId: getSystemBusinessMetrics
@@ -4932,13 +5151,7 @@ components:
         status:
           type: string
           enum:
-            - CREATED
             - IN_PROGRESS
-            - SUBMITTED
-            - PROCESSING
-            - COMPLETED
-            - EXPIRED
-            - FAILED
         startedAt:
           type: string
           format: date-time
@@ -5016,6 +5229,7 @@ components:
       required:
         - questionId
         - completedAttempts
+        - answered
         - correct
         - incorrect
         - unanswered
@@ -5028,6 +5242,11 @@ components:
           type: integer
           minimum: 0
           maximum: 2147483647
+        answered:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+          description: correct + incorrect; excludes missing/empty selections.
         correct:
           type: integer
           minimum: 0
@@ -5503,6 +5722,124 @@ components:
           type: boolean
           enum:
             - true
+    BusinessMetrics:
+      type: object
+      additionalProperties: false
+      required: [asOf, window, counts, backlog]
+      example:
+        asOf: "2026-10-10T00:00:00.000Z"
+        window:
+          from: "2026-10-09T00:00:00.000Z"
+          to: "2026-10-10T00:00:00.000Z"
+          basis: ATTEMPT_STARTED_AT
+        counts:
+          startedAttempts: 2
+          activeAttempts: 1
+          submittedAttempts: 1
+          completedAttempts: 0
+          failedAttempts: 0
+          expiredSubmissions: 0
+          expiredCompletedAttempts: 0
+        backlog:
+          pendingAttempts: 2
+          replayPendingAttempts: 1
+          oldestSubmittedAt: "2026-10-08T00:00:00.000Z"
+          oldestAgeSeconds: 172800
+      properties:
+        asOf:
+          type: string
+          format: date-time
+          pattern: Z$
+        window:
+          type: object
+          additionalProperties: false
+          required: [from, to, basis]
+          properties:
+            from:
+              type: string
+              format: date-time
+              pattern: Z$
+            to:
+              type: string
+              format: date-time
+              pattern: Z$
+            basis:
+              type: string
+              enum: [ATTEMPT_STARTED_AT]
+        counts:
+          type: object
+          additionalProperties: false
+          required: [startedAttempts, activeAttempts, submittedAttempts, completedAttempts, failedAttempts, expiredSubmissions, expiredCompletedAttempts]
+          properties:
+            startedAttempts:
+              type: integer
+              minimum: 0
+              maximum: 2147483647
+            activeAttempts:
+              type: integer
+              minimum: 0
+              maximum: 2147483647
+            submittedAttempts:
+              type: integer
+              minimum: 0
+              maximum: 2147483647
+            completedAttempts:
+              type: integer
+              minimum: 0
+              maximum: 2147483647
+            failedAttempts:
+              type: integer
+              minimum: 0
+              maximum: 2147483647
+            expiredSubmissions:
+              type: integer
+              minimum: 0
+              maximum: 2147483647
+            expiredCompletedAttempts:
+              type: integer
+              minimum: 0
+              maximum: 2147483647
+        backlog:
+          type: object
+          additionalProperties: false
+          required: [pendingAttempts, replayPendingAttempts, oldestSubmittedAt, oldestAgeSeconds]
+          properties:
+            pendingAttempts:
+              type: integer
+              minimum: 0
+              maximum: 2147483647
+            replayPendingAttempts:
+              type: integer
+              minimum: 0
+              maximum: 2147483647
+            oldestSubmittedAt:
+              type: string
+              format: date-time
+              pattern: Z$
+              nullable: true
+            oldestAgeSeconds:
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+              nullable: true
+    BusinessMetricsEnvelope:
+      type: object
+      additionalProperties: false
+      required: [data, errorCode, message, status]
+      properties:
+        data:
+          $ref: "#/components/schemas/BusinessMetrics"
+        errorCode:
+          type: string
+          nullable: true
+          enum: [null]
+        message:
+          type: string
+          nullable: true
+          enum: [null]
+        status:
+          type: boolean
+          enum: [true]
     MetricsEnvelope:
       type: object
       additionalProperties: false
@@ -5765,7 +6102,26 @@ components:
           enum:
             - true
         metadata:
-          $ref: "#/components/schemas/Metadata"
+          $ref: "#/components/schemas/ActiveCandidateMetadata"
+    ActiveCandidateMetadata:
+      type: object
+      additionalProperties: false
+      required: [next, pageSize, asOf]
+      properties:
+        next:
+          type: string
+          minLength: 1
+          maxLength: 2048
+          nullable: true
+        pageSize:
+          type: integer
+          minimum: 1
+          maximum: 100
+        asOf:
+          type: string
+          format: date-time
+          pattern: Z$
+          description: Primary database statement timestamp for this page; not a last-seen heartbeat.
     AdminSubmissionListEnvelope:
       type: object
       additionalProperties: false
@@ -5780,6 +6136,144 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/AdminSubmission"
+          minItems: 0
+          maxItems: 100
+        errorCode:
+          type: string
+          nullable: true
+          enum: [null]
+        message:
+          type: string
+          nullable: true
+          enum: [null]
+        status:
+          type: boolean
+          enum:
+            - true
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+    SubmittedAttemptSummary:
+      type: object
+      additionalProperties: false
+      required: [attemptId, submittedAt, status, expired, earned, possible]
+      oneOf:
+        - properties:
+            status:
+              enum: [COMPLETED]
+            earned:
+              type: integer
+              minimum: 0
+              maximum: 500000
+            possible:
+              type: integer
+              minimum: 1
+              maximum: 500000
+        - properties:
+            status:
+              enum: [SUBMITTED, PROCESSING, EXPIRED, FAILED]
+            earned:
+              type: integer
+              nullable: true
+              enum: [null]
+            possible:
+              type: integer
+              nullable: true
+              enum: [null]
+      properties:
+        attemptId:
+          type: string
+          format: uuid
+        submittedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        status:
+          type: string
+          enum: [SUBMITTED, PROCESSING, COMPLETED, EXPIRED, FAILED]
+        expired:
+          type: boolean
+        earned:
+          type: integer
+          minimum: 0
+          maximum: 500000
+          nullable: true
+        possible:
+          type: integer
+          minimum: 1
+          maximum: 500000
+          nullable: true
+    BestAttemptSummary:
+      type: object
+      nullable: true
+      additionalProperties: false
+      required: [attemptId, submittedAt, status, expired, earned, possible]
+      properties:
+        attemptId:
+          type: string
+          format: uuid
+        submittedAt:
+          type: string
+          format: date-time
+          pattern: Z$
+        status:
+          type: string
+          enum: [COMPLETED]
+        expired:
+          type: boolean
+        earned:
+          type: integer
+          minimum: 0
+          maximum: 500000
+        possible:
+          type: integer
+          minimum: 1
+          maximum: 500000
+    CandidateResultPair:
+      type: object
+      additionalProperties: false
+      required: [candidateId, publishedVersionId, best, latest]
+      example:
+        candidateId: 00000000-0000-4000-8000-000000000001
+        publishedVersionId: 00000000-0000-4000-8000-000000000002
+        best:
+          attemptId: 00000000-0000-4000-8000-000000000003
+          submittedAt: "2026-10-10T00:00:00.000Z"
+          status: COMPLETED
+          expired: false
+          earned: 3
+          possible: 3
+        latest:
+          attemptId: 00000000-0000-4000-8000-000000000004
+          submittedAt: "2026-10-10T00:01:00.000Z"
+          status: FAILED
+          expired: false
+          earned: null
+          possible: null
+      properties:
+        candidateId:
+          type: string
+          format: uuid
+        publishedVersionId:
+          type: string
+          format: uuid
+        best:
+          $ref: "#/components/schemas/BestAttemptSummary"
+        latest:
+          $ref: "#/components/schemas/SubmittedAttemptSummary"
+    CandidateResultPairListEnvelope:
+      type: object
+      additionalProperties: false
+      required:
+        - data
+        - errorCode
+        - message
+        - status
+        - metadata
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/CandidateResultPair"
           minItems: 0
           maxItems: 100
         errorCode:

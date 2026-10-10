@@ -1,0 +1,26 @@
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (4.47525ms)
+✔ detects module-private and same-module infrastructure access from application (0.724084ms)
+✔ permits a public application capability and infrastructure driver adapter (2.377792ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.597459ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (2.380708ms)
+✔ checks TypeScript import types and import-equals dependencies (0.772291ms)
+✔ rejects Node network imports with or without node prefix (0.193667ms)
+✔ checks technical folder barrel imports without a trailing slash (0.183833ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.39275ms)
+✔ keeps domain independent of application orchestration (0.242375ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.385458ms)
+✔ keeps all global technical roots independent from business modules (0.252042ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.236792ms)
+✔ requires module composition to use explicit public capabilities of another module (0.23575ms)
+✔ permits only reviewed Reporting ranking entry points and preserves private boundaries (0.3115ms)
+✔ rejects legacy placement after normalization closes (0.126791ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (0.627917ms)
+✔ allows only the reviewed Catalog worker composition boundary (0.183625ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 237.903708

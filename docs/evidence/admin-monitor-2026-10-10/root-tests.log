@@ -1,0 +1,91 @@
+
+> online-examination-platform@0.1.0 test
+> npm run test:api && npm run test:tooling && npm run web:test
+
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand
+
+(node:1136) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Test Suites: 37 passed, 37 total
+Tests:       281 passed, 281 total
+Snapshots:   0 total
+Time:        3.076 s, estimated 5 s
+Ran all test suites.
+
+> online-examination-platform@0.1.0 test:tooling
+> node --test scripts/__tests__/*.unit.spec.mjs
+
+✔ generates latency summary from its own raw run rather than a previous run (0.708541ms)
+✔ absent transaction samples remain not measured and zero-valued evidence is rejected (0.745917ms)
+✔ freezing an existing evidence directory cannot replace its raw sample or summary (7.731416ms)
+✔ validates the complete OpenAPI contract and its payload examples (179.28775ms)
+✔ verification is an explicit public POST with a bounded one-use token and final password (1.431916ms)
+✔ signed token contract keeps access and refresh separate and PostgreSQL authoritative (3.326209ms)
+✔ contract checks reject a refresh audience reused for access (1.173542ms)
+✔ email login rejects alternate usernames and Session rejects raw credential fields (0.312541ms)
+✔ email schemas reject non-ASCII identifiers consistently with the PostgreSQL identity policy (0.273083ms)
+✔ accepts a submitted event and rejects answer data anywhere in it (0.440041ms)
+✔ rejects an event for another aggregate, schema version or invalid timestamp (0.127875ms)
+✔ candidate question schema rejects keys and explanation leaks (0.130125ms)
+✔ rejects non-finite timestamps rather than treating them as a manual submission (0.098833ms)
+✔ save contract accepts clearing and rejects duplicate options and oversized batches (0.117958ms)
+✔ rejects an admin operation made public even when the document remains valid OpenAPI (1.517917ms)
+✔ does not allow an admin route to inherit a public operation name (1.066125ms)
+✔ rejects a critical mutation without an idempotency header (0.963834ms)
+✔ rejects unsafe browser operations without Origin or CSRF contract (0.958709ms)
+✔ rejects undocumented owners, acceptance cases and unbounded list pagination (0.937334ms)
+✔ calibrates database UTC to local wall clock with a round-trip uncertainty bound (1.491958ms)
+✔ commit acknowledgement includes persistence delay separately from acceptance lag (0.412041ms)
+✔ does not turn absent observations into zero latency (0.098584ms)
+✔ packages immutable SQL bytes and ordered filenames independently of process cwd (8.38525ms)
+✔ fails build rather than silently packaging missing or symlinked migrations (3.25625ms)
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (4.476208ms)
+✔ detects module-private and same-module infrastructure access from application (0.693792ms)
+✔ permits a public application capability and infrastructure driver adapter (0.63825ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.364084ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (0.522708ms)
+✔ checks TypeScript import types and import-equals dependencies (0.597625ms)
+✔ rejects Node network imports with or without node prefix (0.198833ms)
+✔ checks technical folder barrel imports without a trailing slash (0.18375ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.371875ms)
+✔ keeps domain independent of application orchestration (0.23025ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.356333ms)
+✔ keeps all global technical roots independent from business modules (0.280125ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.2205ms)
+✔ requires module composition to use explicit public capabilities of another module (0.244542ms)
+✔ permits only reviewed Reporting ranking entry points and preserves private boundaries (0.325333ms)
+✔ rejects legacy placement after normalization closes (0.116667ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (0.201625ms)
+✔ allows only the reviewed Catalog worker composition boundary (0.170208ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 310.799
+
+> online-examination-platform@0.1.0 web:test
+> npm --prefix apps/web test
+
+
+> @exam/web@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+
+ Test Files  24 passed (24)
+      Tests  96 passed (96)
+   Start at  12:07:04
+   Duration  3.67s (environment 59%, tests 21%, import 10%, transform 9%)
+
+Environment  jsdom was created 24 times · 13.05s total, 59% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

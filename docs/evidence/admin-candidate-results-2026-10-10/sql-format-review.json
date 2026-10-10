@@ -1,0 +1,6 @@
+{
+  "queryLiterals": 51,
+  "sqlTokensAndLiteralsUnchanged": true,
+  "bindingsAndStatementOrder": "Reviewed unchanged; formatting only",
+  "postFormatPgRegression": "pending"
+}

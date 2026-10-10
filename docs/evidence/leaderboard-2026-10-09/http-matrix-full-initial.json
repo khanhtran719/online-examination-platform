@@ -1,0 +1,145 @@
+{
+  "localOnly": true,
+  "realHttp": true,
+  "compiledApi": true,
+  "restrictedDatabase": true,
+  "records": [
+    {
+      "operation": "start",
+      "fault": "lost-ack-restart-current-auth",
+      "durationMs": 558.9414160000015
+    },
+    {
+      "operation": "start",
+      "fault": "api-kill-before-commit",
+      "durationMs": 541.2775830000028
+    },
+    {
+      "operation": "start",
+      "fault": "backend-terminated",
+      "durationMs": null
+    },
+    {
+      "operation": "start",
+      "fault": "lock-timeout",
+      "durationMs": 325.19462499999645
+    },
+    {
+      "operation": "start",
+      "fault": "statement-timeout",
+      "durationMs": 923.2662080000009
+    },
+    {
+      "operation": "start",
+      "fault": "client-timeout-commit-restart",
+      "durationMs": null
+    },
+    {
+      "operation": "start",
+      "fault": "pool-exhaustion-backpressure",
+      "durationMs": 253.45758399999613
+    },
+    {
+      "operation": "save",
+      "fault": "lost-ack-restart-current-auth",
+      "durationMs": 553.6123339999976
+    },
+    {
+      "operation": "save",
+      "fault": "api-kill-before-commit",
+      "durationMs": 560.5601250000036
+    },
+    {
+      "operation": "save",
+      "fault": "backend-terminated",
+      "durationMs": null
+    },
+    {
+      "operation": "save",
+      "fault": "lock-timeout",
+      "durationMs": 317.61712499999703
+    },
+    {
+      "operation": "save",
+      "fault": "statement-timeout",
+      "durationMs": 923.4668330000059
+    },
+    {
+      "operation": "save",
+      "fault": "client-timeout-commit-restart",
+      "durationMs": null
+    },
+    {
+      "operation": "save",
+      "fault": "pool-exhaustion-backpressure",
+      "durationMs": 254.0770840000041
+    },
+    {
+      "operation": "submit",
+      "fault": "lost-ack-restart-current-auth",
+      "durationMs": 564.1312500000058
+    },
+    {
+      "operation": "submit",
+      "fault": "api-kill-before-commit",
+      "durationMs": 556.6324170000007
+    },
+    {
+      "operation": "submit",
+      "fault": "backend-terminated",
+      "durationMs": null
+    },
+    {
+      "operation": "submit",
+      "fault": "lock-timeout",
+      "durationMs": 317.67899999999645
+    },
+    {
+      "operation": "submit",
+      "fault": "statement-timeout",
+      "durationMs": 923.3684159999975
+    },
+    {
+      "operation": "submit",
+      "fault": "client-timeout-commit-restart",
+      "durationMs": null
+    },
+    {
+      "operation": "submit",
+      "fault": "pool-exhaustion-backpressure",
+      "durationMs": 253.75666600000113
+    },
+    {
+      "operation": "start",
+      "fault": "two-api-same-key",
+      "durationMs": null
+    },
+    {
+      "operation": "save",
+      "fault": "two-api-same-key",
+      "durationMs": null
+    },
+    {
+      "operation": "submit",
+      "fault": "two-api-same-key",
+      "durationMs": null
+    },
+    {
+      "operation": "save",
+      "fault": "two-api-stale-tab-old-receipt",
+      "durationMs": null
+    },
+    {
+      "operation": "submit",
+      "fault": "sigterm-drain-restart",
+      "durationMs": null
+    }
+  ],
+  "cleanup": {
+    "processes": 0,
+    "holders": 0,
+    "databaseDropped": true,
+    "loginsDropped": true,
+    "secretsRemoved": true
+  }
+}

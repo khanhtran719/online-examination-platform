@@ -1,0 +1,7 @@
+{
+  "queryLiterals": 51,
+  "sqlTokensAndLiteralsUnchanged": true,
+  "parametersAndOrderReviewedUnchanged": true,
+  "postFormatPgCases": 18,
+  "finalSpacingAffectedPgCases": 1
+}

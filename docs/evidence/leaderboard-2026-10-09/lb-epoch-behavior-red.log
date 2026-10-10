@@ -1,0 +1,28 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/leaderboard-baseline-env.cjs --runTestsByPath apps/api/tests/integration/leaderboard.spec.ts --testNamePattern invalidates a continuation
+
+(node:81213) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/leaderboard.spec.ts
+  ● Public leaderboard on restricted PostgreSQL/HTTP › invalidates a continuation when retention replaces a seen best with a worse surviving attempt
+
+    error: null value in column "revision" of relation "attempts" violates not-null constraint
+
+      190 |   try {
+      191 |     await c.query("BEGIN");
+    > 192 |     await c.query(
+          |     ^
+      193 |       `
+      194 |       INSERT INTO
+      195 |         assessment.attempts (
+
+      at node_modules/pg/lib/client.js:694:17
+      at completed (apps/api/tests/integration/leaderboard.spec.ts:192:5)
+      at Object.<anonymous> (apps/api/tests/integration/leaderboard.spec.ts:536:23)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 9 skipped, 10 total
+Snapshots:   0 total
+Time:        2.919 s
+Ran all test suites within paths "apps/api/tests/integration/leaderboard.spec.ts".

@@ -1,0 +1,35 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/leaderboard-test-env.cjs --runTestsByPath apps/api/tests/integration/leaderboard.spec.ts
+
+(node:82936) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/leaderboard.spec.ts (96.961 s)
+  ● Public leaderboard on restricted PostgreSQL/HTTP › records natural large-version plans and rate-paced HTTP diagnostics without capacity claims
+
+    thrown: "Exceeded timeout of 90000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      at _getError (node_modules/jest-circus/build/jestAdapterInit.js:1985:12)
+          at Array.map (<anonymous>)
+
+    Cause:
+        thrown: "Exceeded timeout of 90000 ms for a test.
+        Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+          678 |     );
+          679 |   });
+        > 680 |   it("records natural large-version plans and rate-paced HTTP diagnostics without capacity claims", async () => {
+              |   ^
+          681 |     const v = await version(),
+          682 |       client = await fixture.connect();
+          683 |     try {
+
+          at apps/api/tests/integration/leaderboard.spec.ts:680:3
+          at apps/api/tests/integration/leaderboard.spec.ts:394:1
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 9 passed, 10 total
+Snapshots:   0 total
+Time:        96.986 s
+Ran all test suites within paths "apps/api/tests/integration/leaderboard.spec.ts".

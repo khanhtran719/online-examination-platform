@@ -1,5 +1,26 @@
 # Product specification v1
 
+REP-04 Admin subset adds an exact-version candidate-results report. Best is the
+retained COMPLETED attempt by earned DESC, submittedAt ASC, attempt UUID ASC;
+latest is the retained submitted attempt by submittedAt DESC, UUID DESC, including
+pending/FAILED. Best may be null and unfinished latest has null scores. Candidate
+UUID paging is stable when selected attempts change, with fresh primary selection
+and a first-page start bound rather than a cross-page snapshot. No PII/keys, public
+ranking visibility filter or review. [ADR-013](adr/013-admin-best-latest-report.md)
+and [subset plan](admin-candidate-results-2026-10-10.md) define current access,
+exact-version audit and outstanding privacy-ledger/restore acceptance.
+
+REP-03 local scope: exact frozen-version question/option statistics count every
+retained COMPLETED attempt, including repeat candidates and expired completions.
+Answered equals correct plus incorrect; missing/empty selections are unanswered.
+Zero-count frozen questions remain visible. Multiple-choice option totals can
+exceed answered. Grading/replay/purge maintain counters atomically; pages read
+fresh primary counts without a cross-page snapshot. Current permission, exact
+version audit and bounded opaque paging apply. No keys or PII are returned.
+See [REP-03](admin-question-statistics-2026-10-10.md).
+
+REP-02 local scope: Reporting Admin attempt ledger includes all unpurged attempts, optional frozen version filter and immutable start/ID keyset; only COMPLETED has scores. Detail exposes frozen aggregate/section scores with review:null, unfinished409 and purged404. Current permission and mandatory transactional access audit apply. See [REP-02](admin-submissions-2026-10-10.md).
+
 Status: adopted implementation baseline, 2026-10-06; runtime not implemented. Covers SPEC-01–08. Requirements follow [architecture](../.ai/architecture.md) §§77–79; transport is in [OpenAPI](contracts/openapi.yaml), authorization in [permissions](security-and-permissions.md), measurement in [SLO/workload](slo-and-workload.md). Changes require a versioned decision and matching tests, not silent reinterpretation.
 
 ## 1. Scope, ownership and decisions
@@ -99,14 +120,54 @@ Review contains candidate choices, correctness, keys and explanation only after 
 
 Publication sets leaderboardEnabled (default false) and each candidate sets global leaderboardOptIn (default false); current opt-out/disabled account suppresses their entry in reads beginning after its commit, independent of historical score. Anonymous requests cannot read ranking. Candidate ranking exposes per-version pseudonym (server HMAC-derived, no email/userId/displayName), earned/possible, rank and completedAt. HMAC secret rotation policy must preserve or deliberately reset aliases; aliases are not authorization credentials.
 
-Assessment's authorized leaderboard read uses Reporting's public ranking projection; Reporting performs the declared read-only join, not a cross-module repository call. Public read-model sources are Identity candidate visibility (opaque userId, enabled, leaderboardOptIn), Catalog version policy (versionId, examId, leaderboardEnabled) and Assessment completed ranking entries (candidateId, attemptId, score, submittedAt/completedAt, completionSequence, pseudonym). No email/password/token/key/answer columns are in that contract. Physical views/SQL/indexes are designed in DB/Reporting phases; projection consistency cannot rely on stale copied opt-in state.
+Assessment's authorized leaderboard read uses Reporting's public ranking projection; Reporting performs the declared read-only join, not a cross-module repository call. Sources are Identity candidate visibility (opaque userId, enabled, verified, leaderboardOptIn, deletion-request flag), Catalog frozen version policy and Assessment retained best entries/results/attempts plus destructive-change cursor epoch. Output has pseudonyms only; no email/password/token/key/answer columns cross that facade. [ADR-012](adr/012-public-ranking-projection.md) declares physical read dependencies and tested source consistency. Projection visibility cannot rely on stale copied opt-in state.
 
 Among COMPLETED attempts in a version, choose greatest earned, then earliest submittedAt, then attemptId ASC for a candidate's best attempt. Global order `(earned DESC, submittedAt ASC, attemptId ASC)`; sequential ranks are unique, tied score is resolved by accepted submit time, not worker completion time. Expired attempts participate with persisted answers. Privacy changes are filters, not permission derived from cached rows.
 
 Pagination cursor contains signed opaque ordering tuple, filter/version identity, first-page maximum completion sequence and expires in 15min. New completions beyond watermark are omitted until refresh; entries improved beyond watermark/opted-out may disappear during traversal. No duplicate candidates, no guaranteed historical snapshot/total. Client refreshes to see live ranking. History/browse cursor likewise binds filters/order/pageSize and does not expose plain SQL. Baseline result/statistics/ranking projections update in scoring transaction; no Redis or separate freshness SLA yet.
 
+Public leaderboard cursors additionally conceal actor/order identity with AEAD,
+bind pageSize and retain the original15min expiry. Retention best-entry removal or
+downgrade changes an atomic per-version epoch; old continuations return400 and
+restart, preventing a previously seen candidate from moving below the old cursor.
+Normal improving grading does not bump epochs. Fresh visibility recomputes live
+sequential rank; an opt-out can change rank numbers during traversal. A dedicated
+stable leaderboard key preserves aliases across JWT/CSRF rotation; deliberate
+rotation resets aliases and invalidates cursors. See [runbook](runbooks/public-leaderboard.md).
+
+Admin active monitoring is an exam-scoped, restricted ID-only list, not browser
+presence or an exact concurrent-user counter. v1 `reporting.read` covers all frozen
+versions, including unpublished/archived exams. Active is retained IN_PROGRESS
+with startedAt <= current database statement time and deadline > that time;
+CREATED, overdue/pending/completed/failed attempts are excluded. Disabled candidates
+can still have an active attempt. Return candidateId, attemptId, status, startedAt,
+deadline only. Do not join email/name/answers/keys or use public ranking opt-in as
+Admin operational visibility. Primary query freshness is `metadata.asOf` on each
+page; submit/deadline can remove entries between pages. Mandatory access audit
+commits before response; failures return no report. Descending startedAt/attemptId
+keyset, max100 rows, opaque actor/exam/page-size cursor, initial start watermark,
+60-second expiry. Refresh the whole list when cursor expires; no hidden COUNT or
+frozen snapshot across requests. [REP-01 implementation](admin-monitor-2026-10-10.md)
+tracks local evidence separately from AWS acceptance.
+
 Question statistics are per frozen question/version, denominator = all COMPLETED attempts (not only leaderboard opt-in/best). Count correct/incorrect/unanswered; unanswered includes missing/empty selections; option counts count valid selected options and can sum above attempts for multiple-choice. FAILED/pending attempts excluded. Replay/duplicate adds no second contribution. Admin reports distinguish started, submitted, completed, failed and expired-completed; do not collapse failure into score zero.
+
+Business metrics are a separate restricted snapshot at GET /v1/admin/business-
+metrics with reporting.read. [ADR-014](adr/014-business-metrics-snapshot.md) defines
+current-state counts of an attempt-start cohort [from,to), default preceding24h,
+paired canonical UTC millisecond bounds<=7days and ending<=primary asOf. Counts
+are per attempt, not distinct candidates or event rates: started, active (future
+deadline IN_PROGRESS), submitted, completed, failed, expired submitted and expired
+completed. CREATED/future identities are excluded. Compact purged completion
+identities remain counted; consent/archive does not filter authorized aggregates.
+Global backlog independently includes SUBMITTED/EXPIRED/PROCESSING and FAILED
+with replay_pending, oldest original submission and age. Empty timestamp/age are
+null. Replay can move current counts; duplicate delivery adds no second attempt.
+No SQS depth/worker activity/HTTP telemetry, identifiers, score or time series.
+Existing combined /v1/admin/metrics stays specified until real providers exist.
+Mandatory current permission/access audit; report data is never write authority.
+[BM-01–06](admin-business-metrics-2026-10-10.md) records local checks/limits.
 
 ## 10. Acceptance traceability
 
-[Contract-test matrix](contract-tests.md) AC-01–AC-30 specifies behavior/failure evidence; OpenAPI operations reference relevant IDs. Existing Attempt/scoring tests cover only pure helpers. Application DB/SQS/browser tests remain pending; no policy choice is accepted as performance evidence.
+[Contract-test matrix](contract-tests.md) AC-01–AC-37 specifies behavior/failure requirements; OpenAPI operations reference relevant IDs. Executed local behavior/API/PostgreSQL/worker/browser subsets are recorded in the roadmap and owning closure reports. Managed AWS/restore/load gates remain open; no policy choice or short local diagnostic is accepted as production performance evidence.

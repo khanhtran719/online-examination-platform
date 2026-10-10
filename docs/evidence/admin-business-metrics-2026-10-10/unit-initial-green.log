@@ -1,0 +1,12 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath apps/api/src/modules/reporting/domain/__tests__/business-metrics.unit.spec.ts apps/api/src/modules/reporting/application/services/__tests__/business-metrics.service.unit.spec.ts
+
+(node:21284) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Test Suites: 2 passed, 2 total
+Tests:       36 passed, 36 total
+Snapshots:   0 total
+Time:        1.763 s
+Ran all test suites within paths "apps/api/src/modules/reporting/domain/__tests__/business-metrics.unit.spec.ts", "apps/api/src/modules/reporting/application/services/__tests__/business-metrics.service.unit.spec.ts".

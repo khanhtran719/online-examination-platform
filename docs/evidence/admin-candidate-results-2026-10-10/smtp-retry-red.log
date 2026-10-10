@@ -1,0 +1,26 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/.local/rep04/setup.cjs --runTestsByPath apps/api/tests/integration/identity.spec.ts --testNamePattern bounded delivery retry
+
+(node:17890) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/identity.spec.ts
+  ● Identity on real restricted PostgreSQL › waits for bounded delivery retry before asserting local SMTP capture
+
+    {"mailCaptureMissing":true,"outcomes":[{"outcome":"retry","durationMs":3}],"state":[{"attempts":1,"delivered":false,"parked":false,"awaiting_retry":true,"failure_code":"PROVIDER_UNAVAILABLE"}]}
+
+      1420 |       challenge_id = $1
+      1421 |   `,[challenge])).rows;
+    > 1422 |   throw new Error(JSON.stringify({mailCaptureMissing:true,outcomes,state}));
+           |         ^
+      1423 | }
+      1424 |
+
+      at capturedMail (apps/api/tests/integration/identity.spec.ts:1422:9)
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:936:22)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 22 skipped, 23 total
+Snapshots:   0 total
+Time:        2.377 s, estimated 5 s
+Ran all test suites within paths "apps/api/tests/integration/identity.spec.ts".

@@ -1,0 +1,2001 @@
+{
+  "node": "v24.17.0",
+  "browser": "153.0.8010.12",
+  "arch": "arm64",
+  "platform": "darwin",
+  "publicPki": false,
+  "trust": "ephemeral leaf SPKI scoped to Chromium; Node CA/SAN validation",
+  "ignoreHTTPSErrors": false,
+  "backend": "real AppModule",
+  "frontend": "live static build",
+  "persistence": "restricted-role PostgreSQL with the complete built migration bundle",
+  "migrationCount": 18,
+  "mail": "actual worker SMTP to Mailpit",
+  "buildProvenance": {
+    "recordedAt": "2026-10-10T07:12:31.263Z",
+    "webFiles": [
+      {
+        "path": "apps/web/dist/assets/admin-exams-D9RFFY2M.js",
+        "sha256": "b7b6781a4d64a81463441dc4ace62202321c09c9c83e6a8ea7bf71e3a9494828",
+        "bytes": 21324
+      },
+      {
+        "path": "apps/web/dist/assets/admin-import-BnrAoaAc.js",
+        "sha256": "92286df8ed0a7d749c35d4e9a7995df50fa42d7c6bbea0bed14d03988e5dc282",
+        "bytes": 7111
+      },
+      {
+        "path": "apps/web/dist/assets/admin-insights-Bt4yy7yg.js",
+        "sha256": "53ec82a8994d86426f2b5557733562456a667ed60fb486b4b12781d8a09e4445",
+        "bytes": 8015
+      },
+      {
+        "path": "apps/web/dist/assets/admin-layout-DxWpJztZ.js",
+        "sha256": "a96d13a3f0d8552e183461317a4bd420cce891a01ba3677f016b09d09fe08580",
+        "bytes": 4253
+      },
+      {
+        "path": "apps/web/dist/assets/admin-monitor-Ppwz3Mlv.js",
+        "sha256": "47c0e1ecf4bd695a59f8a3ee33a85636c64546c0b824a011c5b0ce860599921a",
+        "bytes": 13689
+      },
+      {
+        "path": "apps/web/dist/assets/admin-questions-BMCWPctq.js",
+        "sha256": "7ee92b6ede8e975725581732561d7c74a1a849daef56aa18677deec36fd9bd02",
+        "bytes": 11852
+      },
+      {
+        "path": "apps/web/dist/assets/admin-ui-BKwjt7Ct.js",
+        "sha256": "a2ce78a10edac59487f5af3c811975e2822a0040965837db7d0f3c18b8980817",
+        "bytes": 2383
+      },
+      {
+        "path": "apps/web/dist/assets/admin-ui-BmXzeSbx.css",
+        "sha256": "7072111f4c72a8fc79e031ca35208f8fc949eed7e711fb4002d0f62c1d2ac7c0",
+        "bytes": 9272
+      },
+      {
+        "path": "apps/web/dist/assets/exam-room-CnxvA7o0.js",
+        "sha256": "dfae5ec4eea010afea3bbdedc89d42e20afd3e39141c7c48a55efa3a731638ca",
+        "bytes": 32309
+      },
+      {
+        "path": "apps/web/dist/assets/exam-room-tduVSi4b.css",
+        "sha256": "edc82cb98aae2b01e114025c23569e2cc9793bbb457954bbd395542e7f4abf9e",
+        "bytes": 6247
+      },
+      {
+        "path": "apps/web/dist/assets/format-Zf_2REkc.js",
+        "sha256": "d5274535373c4c7656f8307f9cddeb677c35bad1c890c7ccec29c198a51b4aa6",
+        "bytes": 23907
+      },
+      {
+        "path": "apps/web/dist/assets/gate-d9II2MMX.js",
+        "sha256": "f864ca4c8cfc26b2e1a0baeb0c17e5a3bfaea64c2c65a70356569fad4ab4f1c4",
+        "bytes": 814
+      },
+      {
+        "path": "apps/web/dist/assets/index-Bhq4T6CI.js",
+        "sha256": "83f58956296fa0f43f05ef36c67716a0a49dc17e7e870691295c13cc21231c51",
+        "bytes": 2750
+      },
+      {
+        "path": "apps/web/dist/assets/index-D2bkJ1WT.css",
+        "sha256": "7d7284e91d1517531273e4b42efe6dbdb36395a796220b2c781d3c82db5a20d4",
+        "bytes": 18549
+      },
+      {
+        "path": "apps/web/dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff",
+        "sha256": "658b9ee07b0249cf910a8d6f3d812d46c962bae81d7379a0355b1db35c61586f",
+        "bytes": 27496
+      },
+      {
+        "path": "apps/web/dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2",
+        "sha256": "14425ba9c695763c1547f48a206b7aa60350a33ae23de09f0407877f3fcd89eb",
+        "bytes": 21168
+      },
+      {
+        "path": "apps/web/dist/assets/jetbrains-mono-latin-700-normal-BYuf6tUa.woff2",
+        "sha256": "d0d4e818808f2a0ba39b2b09d1989366f63494e295f003c7ef436697378507e8",
+        "bytes": 21908
+      },
+      {
+        "path": "apps/web/dist/assets/jetbrains-mono-latin-700-normal-D3wTyLJW.woff",
+        "sha256": "5e7319f25a5ef89d2c01c323029ef0bedefad204108e601455ff6f8ae12ca3ff",
+        "bytes": 28208
+      },
+      {
+        "path": "apps/web/dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff",
+        "sha256": "1dfe0f740fa86409034058e49474b01126ae9ea8c1ecda905917b90d57f03b00",
+        "bytes": 5372
+      },
+      {
+        "path": "apps/web/dist/assets/jetbrains-mono-vietnamese-700-normal-BDLVIk2r.woff",
+        "sha256": "5b505fd67cee30417279006a323f95f306ddf05cf9ccd6e3bba466aa99c40669",
+        "bytes": 5452
+      },
+      {
+        "path": "apps/web/dist/assets/memory-BgSLLubf.css",
+        "sha256": "9caacb6eda1809dae80a027f2929f861cf5b6d4dd2939bcc8a9c12859d3c4356",
+        "bytes": 4313
+      },
+      {
+        "path": "apps/web/dist/assets/memory-CURVTHfb.js",
+        "sha256": "d1728ea84b87bea76c00fa9dc658aef02e309b404661cc3d88add9cd9d4755e6",
+        "bytes": 1559
+      },
+      {
+        "path": "apps/web/dist/assets/mount-BFBnt_Ce.js",
+        "sha256": "5002f91c8ae17079248f527f5da4ce42073cd4864e6304b89c5401de49dd1b55",
+        "bytes": 316409
+      },
+      {
+        "path": "apps/web/dist/assets/mount-CUMOmE_6.css",
+        "sha256": "e67569f7fa3d420ceb70c34e05d379bd728f300456cfa969b1a51215058e3aa5",
+        "bytes": 49324
+      },
+      {
+        "path": "apps/web/dist/assets/mount-scene-DL16NffI.js",
+        "sha256": "7f26a55c8ff9c8da19db1a0bda5e330d349137770eef65f8b1bb0341e13283d9",
+        "bytes": 520187
+      },
+      {
+        "path": "apps/web/dist/assets/mutation-intent-DIWikAAn.js",
+        "sha256": "f7af9cc0608db1ba09202483624567cb6e4e915ff3281f7a6a80fefa1590bc78",
+        "bytes": 695
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-latin-400-normal-BTkUljjl.woff2",
+        "sha256": "09aee8065d25508f23a4c3d92cd777ac869c52d93fd868a88f025d888a7937d6",
+        "bytes": 13120
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-latin-500-normal-DCA2Z9Cj.woff2",
+        "sha256": "1d35aaecc5c7a375d87c12787e1e4c5d6a695315b757e1e18a479d1a2f84e973",
+        "bytes": 13496
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-latin-600-normal-Dkgu5AE5.woff2",
+        "sha256": "79e274470d1c5a0118eb325e2ea6f2eb2a449336d7fde1a4f20a2f32fe1119ed",
+        "bytes": 13496
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-vietnamese-400-normal-D2wP-Vm-.woff2",
+        "sha256": "0f0c8a4858f1f5b2701331cf0a471ee00824ed92d33ecb21c9248ded975e297f",
+        "bytes": 5316
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-vietnamese-500-normal-B_DgfjT4.woff2",
+        "sha256": "091e15d43fad7642155cc12765a790b60b19ed793547279479df53ec7955fbb7",
+        "bytes": 5720
+      },
+      {
+        "path": "apps/web/dist/assets/noto-sans-vietnamese-600-normal-mhyQDSzg.woff2",
+        "sha256": "810c4f33639e2e7df436de2154aa921845dd56f5bccc301215bcd6791804b44a",
+        "bytes": 5832
+      },
+      {
+        "path": "apps/web/dist/assets/polling-DFBeh31A.js",
+        "sha256": "f317471472332b4b6b5e4065a7ab065a5722695c649cb2c24d8f92fa38239680",
+        "bytes": 500
+      },
+      {
+        "path": "apps/web/dist/assets/progress-CrhD1lsq.js",
+        "sha256": "0ec7def48d9049ec0bb07dddd9b8df3e449c89a736276eb8a3972f6ed76be566",
+        "bytes": 374
+      },
+      {
+        "path": "apps/web/dist/assets/protected-access-Dvvr0QR3.js",
+        "sha256": "81e51b8e13dd7f938184dca6f5b9d43dcbf3622d71009a5f01f937b33d1da259",
+        "bytes": 313
+      },
+      {
+        "path": "apps/web/dist/assets/result-pages-CdOrRpsl.js",
+        "sha256": "d85d6f870f01a401a83316961a8fdbc1ccc601def8074d2e0abd77c432528784",
+        "bytes": 20006
+      },
+      {
+        "path": "apps/web/dist/assets/result-pages-lcSmu8t1.css",
+        "sha256": "6be31e44d4d4c662a75c0b688849dcbde780411d9150fb902c42671e06c059b2",
+        "bytes": 8127
+      },
+      {
+        "path": "apps/web/dist/assets/session-Cej8WrD4.js",
+        "sha256": "91a1496e37cc607502d4ae60488696983c59f7b5dea7775b94e96879a3211d06",
+        "bytes": 4652
+      },
+      {
+        "path": "apps/web/dist/assets/session-DoDVISWT.css",
+        "sha256": "e97a4e7ae59c1da6485f0191d00e992971a75047077414815465b7ceab479d80",
+        "bytes": 721
+      },
+      {
+        "path": "apps/web/dist/assets/source-sans-3-latin-600-normal-DeckBYAU.woff2",
+        "sha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38",
+        "bytes": 15668
+      },
+      {
+        "path": "apps/web/dist/assets/source-sans-3-latin-700-normal-CkzU-mV9.woff2",
+        "sha256": "ae35266f2ab0d5314ff9a04127931eb26c793e4f1269bb240046d4d2db4b7bb1",
+        "bytes": 15596
+      },
+      {
+        "path": "apps/web/dist/assets/source-sans-3-vietnamese-600-normal-B2sTNYey.woff2",
+        "sha256": "59f90792ec62ab0d73cad8fa82908755befe8db313ec4c1bb375464bdf5ea18b",
+        "bytes": 6220
+      },
+      {
+        "path": "apps/web/dist/assets/source-sans-3-vietnamese-700-normal-Bgamivog.woff2",
+        "sha256": "16b08bc821a9a93bc3c7379c41801edb0a35806e1eac54630467a7439ca8ca6c",
+        "bytes": 6136
+      },
+      {
+        "path": "apps/web/dist/assets/use-title-DHxfIuBN.css",
+        "sha256": "ad6c09988793ecc59c39afa490148872faccd46499666f81970784367e6db3ef",
+        "bytes": 5218
+      },
+      {
+        "path": "apps/web/dist/assets/use-title-DxRiclCY.js",
+        "sha256": "1be868628520cfe7fa144142cc759c52f3785e8e16e1c2a81a53f1a7edbd88c4",
+        "bytes": 108334
+      },
+      {
+        "path": "apps/web/dist/index.html",
+        "sha256": "797c27d5c8c951564cdc1c8e56595df9ab5f82c18ddaf13504f6356964c4746c",
+        "bytes": 888
+      },
+      {
+        "path": "apps/web/dist/licenses/noto-sans-OFL.txt",
+        "sha256": "54ec7b5a35310ad66f9f3091426f7028484cbf9ae1ab5da30122ee412a3009e1",
+        "bytes": 4518
+      },
+      {
+        "path": "apps/web/dist/licenses/source-sans-3-OFL.txt",
+        "sha256": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3",
+        "bytes": 4314
+      }
+    ],
+    "apiFiles": [
+      {
+        "path": "dist/app.module.js",
+        "sha256": "f3c59197fbba33f7de1d63476432b0c75d048e59f1eb5a42dbafad7be121ccc7",
+        "bytes": 1767
+      },
+      {
+        "path": "dist/app.module.js.map",
+        "sha256": "3396da497e1f90dc63b716ccbf9ceecd06b3ed565452bea52780274780895cda",
+        "bytes": 561
+      },
+      {
+        "path": "dist/config/app.config.js",
+        "sha256": "d2efd32500c855ab5dfb2b0aa9e2748a0d4ebcecfb38fa167bcd4230a9f4895a",
+        "bytes": 115
+      },
+      {
+        "path": "dist/config/app.config.js.map",
+        "sha256": "d45d46c70a90f3f508789ea1223082507c3a6dca349fc08b95389792a230baed",
+        "bytes": 131
+      },
+      {
+        "path": "dist/config/assessment-retention.config.js",
+        "sha256": "7722b26edbb2d1e1591639ac5768755b3218f4471f53e05f53fcdab90662aa80",
+        "bytes": 881
+      },
+      {
+        "path": "dist/config/assessment-retention.config.js.map",
+        "sha256": "51cd414838e4d12642a411eed11d51dd5a5113f3cbd70f5c45755cd1ecd8df76",
+        "bytes": 876
+      },
+      {
+        "path": "dist/config/config.validation.js",
+        "sha256": "a86a076f4b0ca3539bb57d043a34d8d7377e7ef24f937ece28a13f4dd9f3de35",
+        "bytes": 3192
+      },
+      {
+        "path": "dist/config/config.validation.js.map",
+        "sha256": "64da5bef8f34e2ceb69ae6b765410f545fdb70f8df405a3ca5f6ade614fe1c82",
+        "bytes": 3192
+      },
+      {
+        "path": "dist/config/database.config.js",
+        "sha256": "f140b30dcd91d3038e972c5dfa3c2c31fcf1c97af5e23dad61f8fc2f30111b17",
+        "bytes": 2738
+      },
+      {
+        "path": "dist/config/database.config.js.map",
+        "sha256": "8f3a7657a6af6fb4fa2c4648c192ec40b2d4681042f5c7ce7695881433b2ac61",
+        "bytes": 2784
+      },
+      {
+        "path": "dist/config/dispatch-worker.config.js",
+        "sha256": "43b5e45f41412f2cec7fa263c2568724bae63b14fe3395223e70c7d56e695780",
+        "bytes": 1687
+      },
+      {
+        "path": "dist/config/dispatch-worker.config.js.map",
+        "sha256": "27853f6b67e2c89bb4ba4c52c84eb4a68f00865860510a561103f7cdcf32fd5e",
+        "bytes": 1585
+      },
+      {
+        "path": "dist/config/expiry-worker.config.js",
+        "sha256": "f9994b8b8813f4da239900d8d1059de2bbde1af1183e1462f3720ef08ddcbd3f",
+        "bytes": 1183
+      },
+      {
+        "path": "dist/config/expiry-worker.config.js.map",
+        "sha256": "a7855ac52ee848dfe1a5e38c6ba8c46bb65cecf5780a29294e3bbd417136aa91",
+        "bytes": 1215
+      },
+      {
+        "path": "dist/config/grading-worker.config.js",
+        "sha256": "827b2622d823d929b20491f4b7239b50eceb3fb1a2c9f1be84e049b8872f26d2",
+        "bytes": 2328
+      },
+      {
+        "path": "dist/config/grading-worker.config.js.map",
+        "sha256": "966ede00e18138bc1cb1c11c56dd3a8c757c0eb26526f593fd41751ea636481a",
+        "bytes": 2381
+      },
+      {
+        "path": "dist/config/submission-queue.config.js",
+        "sha256": "9d3e87fc7fd48cfb60578112848266ec3cbfb728de4159b59be8cbd8a8af141d",
+        "bytes": 1734
+      },
+      {
+        "path": "dist/config/submission-queue.config.js.map",
+        "sha256": "c1dc98fa8ccf18f2d339076f7731257f582a956625e493a8b9b145141986b9c1",
+        "bytes": 1569
+      },
+      {
+        "path": "dist/infrastructure/database/connection-budget.js",
+        "sha256": "e7186bb453d888fc960de97955ef5294fc684a676e3df002106acc039d1d6bf1",
+        "bytes": 677
+      },
+      {
+        "path": "dist/infrastructure/database/connection-budget.js.map",
+        "sha256": "e8c066ae3e1d45fcd4e7e568998a9cab9f26235cc80162b631a5fc81e21f2f72",
+        "bytes": 685
+      },
+      {
+        "path": "dist/infrastructure/database/database.module.js",
+        "sha256": "553c80884f7413fd2fcf4850d38b856422b43eab74faad3a60c9fab80ac04f3d",
+        "bytes": 1422
+      },
+      {
+        "path": "dist/infrastructure/database/database.module.js.map",
+        "sha256": "8b7ec16d4fd76a90704f045752a686078677956f9d183e365035a474782ad177",
+        "bytes": 496
+      },
+      {
+        "path": "dist/infrastructure/database/load-database-config.js",
+        "sha256": "4ee49d47081292a2e37f91c913e72942dcb923ad43a780f3c149f1b2f60944bf",
+        "bytes": 478
+      },
+      {
+        "path": "dist/infrastructure/database/load-database-config.js.map",
+        "sha256": "c2f16de13920f01271cd046ca9586b312fcdacb09f32306504fbc8f09f5fc99d",
+        "bytes": 423
+      },
+      {
+        "path": "dist/infrastructure/database/migrate.js",
+        "sha256": "9bea5c84698b4d01e28fb4f0724ccad14dd5a398bc91a07993c706c0a1476ea4",
+        "bytes": 938
+      },
+      {
+        "path": "dist/infrastructure/database/migrate.js.map",
+        "sha256": "adaa8385e82c475874d4743fe6bdb293d768bb51f87a6cee0ad5d4274e8ac130",
+        "bytes": 827
+      },
+      {
+        "path": "dist/infrastructure/database/migration-runner.js",
+        "sha256": "671a4a53849de4f9d105b016587f23f37437ff8b18ba9bd59bd01573cf1632b0",
+        "bytes": 5410
+      },
+      {
+        "path": "dist/infrastructure/database/migration-runner.js.map",
+        "sha256": "5e3b170a050b694a12204696fbda62376ccde26d6989b6c3c198578e0edd3d8a",
+        "bytes": 4425
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0001_capability_schema.sql",
+        "sha256": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+        "bytes": 19421
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0002_query_indexes.sql",
+        "sha256": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+        "bytes": 2289
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0003_runtime_privileges.sql",
+        "sha256": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+        "bytes": 1877
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0004_durable_state_guards.sql",
+        "sha256": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+        "bytes": 1780
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0005_frozen_category.sql",
+        "sha256": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+        "bytes": 920
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0006_immutable_submission.sql",
+        "sha256": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+        "bytes": 720
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0007_identity_runtime.sql",
+        "sha256": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+        "bytes": 7038
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0008_identity_operations.sql",
+        "sha256": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+        "bytes": 6872
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0009_catalog_question_points.sql",
+        "sha256": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1",
+        "bytes": 474
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0010_attempt_revision.sql",
+        "sha256": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26",
+        "bytes": 750
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0011_submission_kind.sql",
+        "sha256": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2",
+        "bytes": 3328
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0012_required_submission_kind.sql",
+        "sha256": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49",
+        "bytes": 706
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0013_expiry_retry_schedule.sql",
+        "sha256": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf",
+        "bytes": 686
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0014_submission_dispatch.sql",
+        "sha256": "9286579d23c3f5df0b59fb53461ca4c20f6481deb9421551eafcd905a39e130d",
+        "bytes": 2654
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0015_grading_worker.sql",
+        "sha256": "9970d8c8eeb2ad3ca1f53833e2defdebed1745bf7e76754f72ba827b826a825f",
+        "bytes": 1819
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0016_grading_recovery.sql",
+        "sha256": "3900b9982805a03f06e6ec9f7bd8dd16d2d33019883dd918dfd1b68d87f3f69d",
+        "bytes": 7227
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0017_assessment_retention.sql",
+        "sha256": "108e4064af2f4dbabdceb52efe706976cad60fe43fe3c6c3aae143d9c3ef67ac",
+        "bytes": 14074
+      },
+      {
+        "path": "dist/infrastructure/database/migrations/0018_leaderboard_cursor_epochs.sql",
+        "sha256": "2791a23a25e57b342aee747d1e34f08b6d34d9e5ca31cfcb27e094b89a1ccf7d",
+        "bytes": 1764
+      },
+      {
+        "path": "dist/infrastructure/database/transaction/postgres-database.js",
+        "sha256": "73b9b0c9e2a1720282ff205b3463762babb667e1544162fd2120b9d7d5e21c79",
+        "bytes": 8803
+      },
+      {
+        "path": "dist/infrastructure/database/transaction/postgres-database.js.map",
+        "sha256": "16665f1200006a6155a632de1f88eae20ab0174233e5ef943976e8985e868450",
+        "bytes": 7732
+      },
+      {
+        "path": "dist/infrastructure/health/health.module.js",
+        "sha256": "4314ba7753244e868f3b2ce7dbc6c187ed9ee33200e6247000ee54cdf69a5fcd",
+        "bytes": 1934
+      },
+      {
+        "path": "dist/infrastructure/health/health.module.js.map",
+        "sha256": "e2bc6df45f3bd0e6c5604178e188195e02ca21e5f80a2dd4225b2d79d6130587",
+        "bytes": 651
+      },
+      {
+        "path": "dist/infrastructure/health/http/live.controller.js",
+        "sha256": "03d8ee3c25cff27517a335d4e2e6352ce5723d41979de23d70b79c9d9ab6e34e",
+        "bytes": 1406
+      },
+      {
+        "path": "dist/infrastructure/health/http/live.controller.js.map",
+        "sha256": "9774fdf5cd89dfab50e831363f1674638d76cc6eaeefe65aaacfde765696f10a",
+        "bytes": 399
+      },
+      {
+        "path": "dist/infrastructure/health/http/ready.controller.js",
+        "sha256": "8dbeb69c0fd9214260a3e10bceefc9052f74ea2d1679eca0958f79b7ee8d40da",
+        "bytes": 2307
+      },
+      {
+        "path": "dist/infrastructure/health/http/ready.controller.js.map",
+        "sha256": "dd70219fdba3afa4f8d6541666dd56f17471e9760186be6f6f123f786fafee79",
+        "bytes": 930
+      },
+      {
+        "path": "dist/infrastructure/health/postgres-readiness.js",
+        "sha256": "7e00e643e2045f1d288b94d222f9841c1571255aba5727559af56088e8141e69",
+        "bytes": 403
+      },
+      {
+        "path": "dist/infrastructure/health/postgres-readiness.js.map",
+        "sha256": "ae41a7145257da4ec25050dc45ef2fc139a0cc15c31c2b363fc9256f4738ffee",
+        "bytes": 357
+      },
+      {
+        "path": "dist/infrastructure/http/configure-http-application.js",
+        "sha256": "8d7558b636ac0063438290cace674e2ccc43abf7b5931c2713923f6740610ddb",
+        "bytes": 3378
+      },
+      {
+        "path": "dist/infrastructure/http/configure-http-application.js.map",
+        "sha256": "39f4ca61f44894ce03dd91a71c4fa28f119e4c4094a8c38f20f125b7b7a2a59f",
+        "bytes": 2521
+      },
+      {
+        "path": "dist/infrastructure/idempotency/postgres-idempotency.js",
+        "sha256": "c287ad397aee8b6b7137a82d97e0104dbf8fafb0f169c1592e96a95d3723a8e4",
+        "bytes": 1270
+      },
+      {
+        "path": "dist/infrastructure/idempotency/postgres-idempotency.js.map",
+        "sha256": "f4c4ecf8d397fa735320b013b12c931fbefcd59cfb2e4e7e3d4467333b4a5eb0",
+        "bytes": 837
+      },
+      {
+        "path": "dist/infrastructure/messaging/sqs/grading-generation-metadata.js",
+        "sha256": "fc98a0ca5536a48e7d1d62e2dfdf19c855510865002c19e17ceab850e328a9a6",
+        "bytes": 840
+      },
+      {
+        "path": "dist/infrastructure/messaging/sqs/grading-generation-metadata.js.map",
+        "sha256": "bfc16150254b4a509432ae1bd1a835c70fc69633f598faa4bcc79e5c42ec37ff",
+        "bytes": 964
+      },
+      {
+        "path": "dist/infrastructure/messaging/sqs/sqs-consumer.js",
+        "sha256": "84ef8ced7c8f05d15a748bf6315672dd232d77d0e641bb2b02dba7abf2d9b9fc",
+        "bytes": 6763
+      },
+      {
+        "path": "dist/infrastructure/messaging/sqs/sqs-consumer.js.map",
+        "sha256": "0d42502948e75dbb0e7fbc36c0cbd4fa4f6771880971de0c909d4336c8f25439",
+        "bytes": 6012
+      },
+      {
+        "path": "dist/infrastructure/messaging/sqs/sqs-publisher.js",
+        "sha256": "266d38b1e635a3bd29a885fbc09e17c2827675b8a61772612adda28415aa89c6",
+        "bytes": 3522
+      },
+      {
+        "path": "dist/infrastructure/messaging/sqs/sqs-publisher.js.map",
+        "sha256": "81467dfc07613cc75a8435508c3a7520c75a0dcbcfe048ec1bf7c3ffd5653e52",
+        "bytes": 2448
+      },
+      {
+        "path": "dist/infrastructure/resilience/shutdown/shutdown-gate.js",
+        "sha256": "fae7b5d0ae48e70c4481bdc8d9bd8f3009b6f6d209ab744bb47bb92337a56e7f",
+        "bytes": 336
+      },
+      {
+        "path": "dist/infrastructure/resilience/shutdown/shutdown-gate.js.map",
+        "sha256": "bdb9ae63750e2873c23eca8bec11c06aca6fe1bed8ff22937ae6f45f7e4bca6a",
+        "bytes": 337
+      },
+      {
+        "path": "dist/infrastructure/security/authentication/secret-loader.js",
+        "sha256": "fb108bf226bdc8640f3b2a7de732a78943cfb79da6e9f02ad8349fec2fd5ac9e",
+        "bytes": 3272
+      },
+      {
+        "path": "dist/infrastructure/security/authentication/secret-loader.js.map",
+        "sha256": "7a33c1393fce57736d5438b3355f4b183c950e1b595d38334438a3e865505fdd",
+        "bytes": 3194
+      },
+      {
+        "path": "dist/infrastructure/security/authorization/postgres-security.js",
+        "sha256": "472226f2f1bcc347188e2687e98d0de06008b67f5a72b7b0562a046359095ffa",
+        "bytes": 5749
+      },
+      {
+        "path": "dist/infrastructure/security/authorization/postgres-security.js.map",
+        "sha256": "f23be4147993073aeb0aafaa90d347d929d9d4473622ee9d3182ede6433dffb5",
+        "bytes": 2754
+      },
+      {
+        "path": "dist/main.js",
+        "sha256": "19efc5200a1ce208ad44903d35fc87bb6b5905e5d160bc79e908853782cb51c4",
+        "bytes": 1758
+      },
+      {
+        "path": "dist/main.js.map",
+        "sha256": "f7f17d5699cd360d32463ec4ed208d47d42cf561c61d39d9e8ff289ca407c758",
+        "bytes": 1640
+      },
+      {
+        "path": "dist/modules/assessment/application/dto/assessment.dto.js",
+        "sha256": "8e9acd89ec39ad02e00f40ec4b04024c732791b722b13b11e4d4f37331f453ed",
+        "bytes": 119
+      },
+      {
+        "path": "dist/modules/assessment/application/dto/assessment.dto.js.map",
+        "sha256": "e6a4a2410a6e02011cdf9f7eee934b54a3c2214c323a3e80ba3e8d6394b5db5a",
+        "bytes": 176
+      },
+      {
+        "path": "dist/modules/assessment/application/dto/candidate-results.dto.js",
+        "sha256": "a9bb3a02afbae4eed73356d69ba743954b804576d7799db5bed6d17d9a6f4331",
+        "bytes": 126
+      },
+      {
+        "path": "dist/modules/assessment/application/dto/candidate-results.dto.js.map",
+        "sha256": "dc282b0f44d194b7697cf584d36f849938b622ad74c68dae3bf92503b535473c",
+        "bytes": 190
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/assessment-cursor.port.js",
+        "sha256": "a6ace6c0e7f32882b442ff0fc22443e7ec6fec1d7cf2f5b686ff7c49971151c1",
+        "bytes": 127
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/assessment-cursor.port.js.map",
+        "sha256": "1dcedc4f45eddca81660e6e204c772e136d87d9e04090b62de5a9db82caef50f",
+        "bytes": 194
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/assessment-retention.repository.js",
+        "sha256": "89d632d318a250251d815404b81d4dffff3d5755ad7edeb48d49ee5e211aafde",
+        "bytes": 136
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/assessment-retention.repository.js.map",
+        "sha256": "2bca292a096cb8319127d90b5a2a14b5b97e4d8c8485d2cd92467a458404f78a",
+        "bytes": 212
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/attempt-query.port.js",
+        "sha256": "691ce0659914a979a3026f74aafc0d3352815f36109747547dfc04d645f1d083",
+        "bytes": 123
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/attempt-query.port.js.map",
+        "sha256": "4312a8d06dc35876d17f85a9cb78034aa90a2c63bcb0f1ed36c2d5bf37454611",
+        "bytes": 186
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/candidate-results.query.js",
+        "sha256": "7bafc38255381544be0dae3eefc402dc5cb17e4e781160b3b33e542a36d2c463",
+        "bytes": 128
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/candidate-results.query.js.map",
+        "sha256": "313e862e76f496358f318cfd5bc4907fd1c0e4877b44545036c6feaaf0c160a8",
+        "bytes": 196
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/expiry-retry.port.js",
+        "sha256": "25b1983628cc074de003a9c43c271ea1a315269694005a605f099bab1914a41d",
+        "bytes": 122
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/expiry-retry.port.js.map",
+        "sha256": "43b6b0c3921e52352961acec8ff3a4e28807d61b3d8f2681eb4a9d6c9c3955df",
+        "bytes": 184
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/grading-failure-repository.port.js",
+        "sha256": "594562be560c0a4acefcc348fb946ef6d14a137a012685d53d3dbc7411405b5e",
+        "bytes": 136
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/grading-failure-repository.port.js.map",
+        "sha256": "3aac4382b8fdb32fa5995c87e8062c412f4b66dc89d46059fd49dbbf984805f9",
+        "bytes": 212
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/grading-repository.port.js",
+        "sha256": "bd0a841dc2c1ad36ad3e70b1161d8f5f0834b772098ac64151cec208073e0f16",
+        "bytes": 128
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/grading-repository.port.js.map",
+        "sha256": "c7d605ed24844bec60a49cd896a43f1778ed74db6a312fdbdb85987ac98c581d",
+        "bytes": 196
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/question-page-sizer.port.js",
+        "sha256": "8bb4851af4094f3429636cd9d8038eae9c268a3c95d499aea9d725824d6e28d4",
+        "bytes": 129
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/question-page-sizer.port.js.map",
+        "sha256": "7955e7a31228657c8eedf0e313c88f7c6fa1d5beb676f62c180660c3aa373d78",
+        "bytes": 198
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/submission-commit-observer.port.js",
+        "sha256": "8fb8dab655887226de2899362c64a432bc200393bc918c5e86834619f49ab338",
+        "bytes": 136
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/submission-commit-observer.port.js.map",
+        "sha256": "6ce88cdfbb6e3ba57fa92834356c972f5cb4c460a27d03dcaca5c3110d5d4a7c",
+        "bytes": 212
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/submission-dispatch.port.js",
+        "sha256": "b3a2a0226c166d2f9443d439e40c5407ed57d6478748db967ad16eb6609c36ac",
+        "bytes": 129
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/submission-dispatch.port.js.map",
+        "sha256": "2aeb2e828a1bd369744a5714d6e3d26a960eaa2c2147c0693753c835b2d716b5",
+        "bytes": 198
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/submission-outbox.js",
+        "sha256": "48975cbf34b597a99efc5c78bf9d05bb73cc3e41a24d328c0bc2dbbe084d0d85",
+        "bytes": 122
+      },
+      {
+        "path": "dist/modules/assessment/application/ports/submission-outbox.js.map",
+        "sha256": "3e0d6b5af90e682afeb7da0dfeeac5881be891203f16786a59057b903a78b40a",
+        "bytes": 184
+      },
+      {
+        "path": "dist/modules/assessment/application/services/assessment-retention.js",
+        "sha256": "a912c7283aa739f741da645d4f25d1034a027008b5de31c0416f0e928cdd615f",
+        "bytes": 1879
+      },
+      {
+        "path": "dist/modules/assessment/application/services/assessment-retention.js.map",
+        "sha256": "70518fbb63db79fb7f22bb4d575d5c87c35f1cb4395152a660ce8867619ae19f",
+        "bytes": 1754
+      },
+      {
+        "path": "dist/modules/assessment/application/services/assessment.service.js",
+        "sha256": "488df3a02ce611e6429e39ea4cbf7fc5029573435c35a5cc5ba25ffb8786c90f",
+        "bytes": 14448
+      },
+      {
+        "path": "dist/modules/assessment/application/services/assessment.service.js.map",
+        "sha256": "af7e4185ea588a490606e170d403cb48d957e59b892d7b26ec2756f75168ceda",
+        "bytes": 13498
+      },
+      {
+        "path": "dist/modules/assessment/application/services/attempt-submission.js",
+        "sha256": "922dcb7b3989ce249295528f0bb7ee4d20acb26cbf4d2f3c8dc232b0107c9022",
+        "bytes": 3255
+      },
+      {
+        "path": "dist/modules/assessment/application/services/attempt-submission.js.map",
+        "sha256": "9caba35bb991dc0d6946986067ec45503c8048e90791380912b4a239843c2335",
+        "bytes": 2838
+      },
+      {
+        "path": "dist/modules/assessment/application/services/attempt-view.js",
+        "sha256": "939339ab99c50e399775bc90b39c4ad170cb18d417d91688e6d2c0b3f18856f6",
+        "bytes": 1110
+      },
+      {
+        "path": "dist/modules/assessment/application/services/attempt-view.js.map",
+        "sha256": "16ca6b8d5238da5c7ddb94bfb921f0bce977e668c2e524bde17978eecb9cac18",
+        "bytes": 1115
+      },
+      {
+        "path": "dist/modules/assessment/application/services/candidate-results.service.js",
+        "sha256": "0e914dc2af1759875abdc405f261dd2e0f32fb592d6a7589f62978f2417529cf",
+        "bytes": 6488
+      },
+      {
+        "path": "dist/modules/assessment/application/services/candidate-results.service.js.map",
+        "sha256": "f0c3a0cb124b5becc2f4bb1996d80877de3ea3e6a0dc7c6d82c4a4346b9a8ad6",
+        "bytes": 6108
+      },
+      {
+        "path": "dist/modules/assessment/application/services/deadline-sweep.js",
+        "sha256": "20abb4f314e79eb7f16dc0aee9597cb839c722dd0ea2348b146e9357c3d99820",
+        "bytes": 3494
+      },
+      {
+        "path": "dist/modules/assessment/application/services/deadline-sweep.js.map",
+        "sha256": "f8cfc2b32c916814cf44b828820900cb9f48a6c4729ff71550678324ac6b176b",
+        "bytes": 2644
+      },
+      {
+        "path": "dist/modules/assessment/application/services/expiry-supervisor.js",
+        "sha256": "812bb5b410a82b170888466f4b6f419cba74962149c0eac051825102dcc41ffd",
+        "bytes": 2530
+      },
+      {
+        "path": "dist/modules/assessment/application/services/expiry-supervisor.js.map",
+        "sha256": "e527a4a4355ec125c2e8201b35bb7cc32eae1ef6d4046ed8e13f95d133aa33cb",
+        "bytes": 2567
+      },
+      {
+        "path": "dist/modules/assessment/application/services/grading-consumer.js",
+        "sha256": "0d6a232617c6be35c9376ac832f1094ffba996886ea1204f7124016c4bcafb24",
+        "bytes": 3525
+      },
+      {
+        "path": "dist/modules/assessment/application/services/grading-consumer.js.map",
+        "sha256": "32aa84c7171a117a4e2c8c487918f58a1fd9c9b18da8d0644a3d2bd6aa89dc53",
+        "bytes": 2816
+      },
+      {
+        "path": "dist/modules/assessment/application/services/grading-recovery.js",
+        "sha256": "f22077c4aeb0b40b3143761df95feb336e6c278e7f2e5a25c7cf0dca78e11c56",
+        "bytes": 2172
+      },
+      {
+        "path": "dist/modules/assessment/application/services/grading-recovery.js.map",
+        "sha256": "50ba9813d607125bb2f15e37ebf7a45d2161421723c79efb9abaf38362ba7bcd",
+        "bytes": 1763
+      },
+      {
+        "path": "dist/modules/assessment/application/services/publisher-supervisor.js",
+        "sha256": "3ed0b49cb5267ddddd0b3e997db83d88aa2c49b7372d9cade1a93e82440907c6",
+        "bytes": 1241
+      },
+      {
+        "path": "dist/modules/assessment/application/services/publisher-supervisor.js.map",
+        "sha256": "684846acdcf388d1530932cc460eaba2c7896d1c4e6360aed6580139cdce3016",
+        "bytes": 1476
+      },
+      {
+        "path": "dist/modules/assessment/application/services/submission-publisher.js",
+        "sha256": "90f4385f8c1154488130eaf9cca4d6d1cbd5342ecda245a2d151c880c1aba6b8",
+        "bytes": 4333
+      },
+      {
+        "path": "dist/modules/assessment/application/services/submission-publisher.js.map",
+        "sha256": "e9c866a2d773a16c0c5d5e378e5fe12b73627f753a44b6efd1eec86938fc4a64",
+        "bytes": 4058
+      },
+      {
+        "path": "dist/modules/assessment/assessment-worker.factory.js",
+        "sha256": "d9ae14eef7aea684d82bf54a6261fb69ce67f373def92dbafb141c0524d0ba6f",
+        "bytes": 6477
+      },
+      {
+        "path": "dist/modules/assessment/assessment-worker.factory.js.map",
+        "sha256": "3c4760f075f5391bcc97ded5fd2b528d7a2263c285e251311b6a17b0863814a9",
+        "bytes": 4121
+      },
+      {
+        "path": "dist/modules/assessment/assessment.module.js",
+        "sha256": "505219d7d1eb421991ef57d1b59ec3d4508b29eeab36fe2d96ccfc4db3011db2",
+        "bytes": 4134
+      },
+      {
+        "path": "dist/modules/assessment/assessment.module.js.map",
+        "sha256": "35e73dcb2c161cd699fda36f32e1fb8bdcadba6e4165b9b04a4095b2e36a4367",
+        "bytes": 1367
+      },
+      {
+        "path": "dist/modules/assessment/domain/assessment-policy.js",
+        "sha256": "f5a42f62e283d337e8a18518c5007af518558aabdf3918295ee946bae7e5da54",
+        "bytes": 6743
+      },
+      {
+        "path": "dist/modules/assessment/domain/assessment-policy.js.map",
+        "sha256": "2293d3ee90eb7774edf9b32d155cdc58137f267c0d4512f00916985520309e89",
+        "bytes": 6155
+      },
+      {
+        "path": "dist/modules/assessment/domain/assessment.error.js",
+        "sha256": "d312c20d1b9d307540f39a0f4d2f51e2890817034054adeec01f105b8a4b2d9a",
+        "bytes": 4057
+      },
+      {
+        "path": "dist/modules/assessment/domain/assessment.error.js.map",
+        "sha256": "b9ef4fa812546c5417b5620510624d4a083d0de0166b2d213fdd497a8d754c9b",
+        "bytes": 2244
+      },
+      {
+        "path": "dist/modules/assessment/domain/attempt.js",
+        "sha256": "5c98c46c07a1619b9d28f6b4803062e00697f4953e0102d3ded43c65e0788e0c",
+        "bytes": 3493
+      },
+      {
+        "path": "dist/modules/assessment/domain/attempt.js.map",
+        "sha256": "b665e1e606c29f5259b9a4bcada9c8f779bcc237c8082ea8d21773b6065cfd04",
+        "bytes": 3121
+      },
+      {
+        "path": "dist/modules/assessment/domain/grading-submission.js",
+        "sha256": "8fcd998e457ce3bf97559fd89438aa96323ef5b2f2529e9bc5020158c42dea13",
+        "bytes": 830
+      },
+      {
+        "path": "dist/modules/assessment/domain/grading-submission.js.map",
+        "sha256": "90999f1ed89f52a680f5509748b471dc3cccab4769db538fca4858fb37aa16e5",
+        "bytes": 830
+      },
+      {
+        "path": "dist/modules/assessment/domain/grading.js",
+        "sha256": "4947ad826ff1ad16ef1a373e6b52af7bca3a681dd7346d432784c0ac37cc504e",
+        "bytes": 1603
+      },
+      {
+        "path": "dist/modules/assessment/domain/grading.js.map",
+        "sha256": "08bab559c274ee35f652064b37526edf22780b08588056c89bd172583d7dc56f",
+        "bytes": 1789
+      },
+      {
+        "path": "dist/modules/assessment/domain/repositories/attempt.repository.js",
+        "sha256": "d34330d2d704d7483b66aec5b2b3bb8f780a048bfca4e8d5dd94c6cbf47f0991",
+        "bytes": 123
+      },
+      {
+        "path": "dist/modules/assessment/domain/repositories/attempt.repository.js.map",
+        "sha256": "1cda57ee315ba89eb967ac34886dcf0ad53f9caf63ded9a76253ff5f09c33274",
+        "bytes": 188
+      },
+      {
+        "path": "dist/modules/assessment/domain/retention.js",
+        "sha256": "ea79c650192dd607775ca5e460dca7f760260ce25090524ebb2b4061c34416d5",
+        "bytes": 1014
+      },
+      {
+        "path": "dist/modules/assessment/domain/retention.js.map",
+        "sha256": "32ea68f113dde593e45eb37f429cd6481de2e0bb04ffbce0607227bebf56bd84",
+        "bytes": 840
+      },
+      {
+        "path": "dist/modules/assessment/domain/review-release.js",
+        "sha256": "4ecc4e73e2ebada6caf438e24a77f6b8927609284c975e1b9a410552392959fd",
+        "bytes": 541
+      },
+      {
+        "path": "dist/modules/assessment/domain/review-release.js.map",
+        "sha256": "a193e21a847da7db8e1e4d22aa5c027c42b0414ca1a0c682d117bf9e5301560c",
+        "bytes": 487
+      },
+      {
+        "path": "dist/modules/assessment/domain/scoring.js",
+        "sha256": "9681db905370f5be4590ce39b7ed7e5995824ad24bb43884f2f8ef5ae6383e5e",
+        "bytes": 2423
+      },
+      {
+        "path": "dist/modules/assessment/domain/scoring.js.map",
+        "sha256": "e778ae7459aab0c370da3fbef78c6483b3e644a1fb4c994ad0590a2168e4a09a",
+        "bytes": 2384
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/cursor/assessment-cursor.js",
+        "sha256": "decb08d0aa923a1f98042c1c0b5526f412e16a4fbcf4b0a17ecd0f66abf2c1ad",
+        "bytes": 2440
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/cursor/assessment-cursor.js.map",
+        "sha256": "7b57ece22ea93c78b3b895b843cf9decad8ac5cfddc61092626d30a5cf81e43b",
+        "bytes": 2316
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/http/http-question-page-sizer.js",
+        "sha256": "d7a5fe92c2b31dd8ec0c37006265ef363d7c4c551ee5356cd83b5b553f8e8b74",
+        "bytes": 527
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/http/http-question-page-sizer.js.map",
+        "sha256": "63454dbd9d6a93847aa985ac78354dfcb3cc1f2694e8f8e7ba2ce3a907b7fe85",
+        "bytes": 419
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-assessment-retention.repository.js",
+        "sha256": "29a9bcaf69a59032c5d1e122fae02353d9929ce46993fce440cad7ae05d366ef",
+        "bytes": 1053
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-assessment-retention.repository.js.map",
+        "sha256": "d9214977a97fc1d5eae56c5f82a99e246bf3146ab2aa84012e9dbbace5c35cc7",
+        "bytes": 924
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-attempt.query.js",
+        "sha256": "8bbc7c1df3675ef9546b82caab2e78f3ac79a455efbc169e071e2c6e1a4bd54c",
+        "bytes": 4954
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-attempt.query.js.map",
+        "sha256": "81fb5cc57e0a289f3ac484aaa786db3750d83b93cfdc85761dbaa4f4aada4435",
+        "bytes": 2170
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-attempt.repository.js",
+        "sha256": "c2241e901fdf9c7b0c2fa693776b249fa4ecd547a96172997c5244d94d0fb998",
+        "bytes": 9570
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-attempt.repository.js.map",
+        "sha256": "f8db87f336695127f3f7c3de7a93c88a51c584fb91c92eb049380a428c2c868a",
+        "bytes": 4281
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-candidate-results.query.js",
+        "sha256": "35c5512e4096f4d3140697591304a93d612083ac3491ba1862067dd45213e03e",
+        "bytes": 11560
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-candidate-results.query.js.map",
+        "sha256": "684827be40bf1c3a5dde6ce12c2cc68c28e9b53f3ce7e812d00247303dc3d35e",
+        "bytes": 3067
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.js",
+        "sha256": "80b8fb50f90796a6efe72f268e91fee6af96849adb09217d0f3f0c109aa81d03",
+        "bytes": 2868
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.js.map",
+        "sha256": "3f9a1d7460aab1563077e322daf9a1f27202e984fc2cf9b5bf370e641bf47408",
+        "bytes": 1662
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-grading.repository.js",
+        "sha256": "2b7e0478151248cfed078cfe65f0df83db186f2cca5b8b8be0fb2434a9a2bb02",
+        "bytes": 10993
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-grading.repository.js.map",
+        "sha256": "a91d732fe606ce7e1f32c28e76a5d5c89c63b3be8dbd1e50ee408d7af8e0193e",
+        "bytes": 4158
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-submission-dispatch.js",
+        "sha256": "52780065e8491490df575a81bef4d5048631081b93472369d80a8ef264580df1",
+        "bytes": 4187
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-submission-dispatch.js.map",
+        "sha256": "5ee26f58b83097ab0b2ede86722ad36573782431a88557d57110c0918b18c7e4",
+        "bytes": 2031
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-submission-outbox.js",
+        "sha256": "ff30402c2750249719b87c364515b5e941f40f3bb7ca00c070ed6755b0f33c9e",
+        "bytes": 876
+      },
+      {
+        "path": "dist/modules/assessment/infrastructure/persistence/postgres-submission-outbox.js.map",
+        "sha256": "f53a4aa7d1598777e35cbac9fc46d3e7492bbee83acb595d59331cc5749a2fa3",
+        "bytes": 586
+      },
+      {
+        "path": "dist/modules/assessment/presentation/http/assessment.controller.js",
+        "sha256": "bd7ad56d2ea8e9f787c002e45628dd7a25f2944095832c0dfeb5ecd73242991a",
+        "bytes": 10574
+      },
+      {
+        "path": "dist/modules/assessment/presentation/http/assessment.controller.js.map",
+        "sha256": "bf33b6092b82c2030d1558c2b0b36f8d6fad03290802953ee81c918a6559a335",
+        "bytes": 7148
+      },
+      {
+        "path": "dist/modules/assessment/presentation/http/dto/assessment.dto.js",
+        "sha256": "7a6741533128fc12aaaa1b0bc9bc644ab19ad003c0f883d49d7422f911254555",
+        "bytes": 3781
+      },
+      {
+        "path": "dist/modules/assessment/presentation/http/dto/assessment.dto.js.map",
+        "sha256": "16c4a8f04086615a8c564cd65c958fb3c50631fc6c08143e1a74d8bb094091f9",
+        "bytes": 3804
+      },
+      {
+        "path": "dist/modules/assessment/presentation/http/leaderboard.controller.js",
+        "sha256": "fde2ce77d01ee3a44de8fbe65bf458c4c035b7aa9b15d50fcecdd6cded7da63b",
+        "bytes": 3228
+      },
+      {
+        "path": "dist/modules/assessment/presentation/http/leaderboard.controller.js.map",
+        "sha256": "ce1b94d86ce4f5787d243b3a380a82b6434ca941a651557cb18d0204396a44d1",
+        "bytes": 1534
+      },
+      {
+        "path": "dist/modules/catalog/application/dto/catalog.dto.js",
+        "sha256": "d4337753d785b00148211366fa095d4db736e33d3e6b0870b90fb90b8337414e",
+        "bytes": 116
+      },
+      {
+        "path": "dist/modules/catalog/application/dto/catalog.dto.js.map",
+        "sha256": "e118d88fc497ef537dcb3fa3b0169d7d95b406a17b90ae9c289ee7fa8aed29fd",
+        "bytes": 167
+      },
+      {
+        "path": "dist/modules/catalog/application/facades/catalog.facade.js",
+        "sha256": "a25ce26aa1636ddc200ca80280098aa0bdd6ba8b1a94b838eda66d44891192ce",
+        "bytes": 203
+      },
+      {
+        "path": "dist/modules/catalog/application/facades/catalog.facade.js.map",
+        "sha256": "2d96f527cd75d4a4f161a5969d4d44241d304818cd390979c2245b8681053d37",
+        "bytes": 226
+      },
+      {
+        "path": "dist/modules/catalog/application/ports/catalog-cursor.port.js",
+        "sha256": "ab913a1a6a26907b248aceaafcd62c910610a3faa5972a0b06974de7ed4caa11",
+        "bytes": 124
+      },
+      {
+        "path": "dist/modules/catalog/application/ports/catalog-cursor.port.js.map",
+        "sha256": "fdb4d7c4f8404d84aaa37ddae6e0074db29c3cb702c1d987d69b92daebd85f64",
+        "bytes": 185
+      },
+      {
+        "path": "dist/modules/catalog/application/ports/catalog-query.port.js",
+        "sha256": "46469d73ff0e28fc32f36a8d5bcae13fd6118853fd0f409ee1e1e123e50ad6a5",
+        "bytes": 123
+      },
+      {
+        "path": "dist/modules/catalog/application/ports/catalog-query.port.js.map",
+        "sha256": "cd2c7d02f1026d4f4136b8108d204a2bca0793d51291de292ec4d93e59c89a05",
+        "bytes": 183
+      },
+      {
+        "path": "dist/modules/catalog/application/services/catalog.service.js",
+        "sha256": "50ebd8df9fbf685d2c6ab935d9397f57f9d1a8c694cfa1fac0931ce287de8f84",
+        "bytes": 24378
+      },
+      {
+        "path": "dist/modules/catalog/application/services/catalog.service.js.map",
+        "sha256": "5ae5dea4f7db84bded309eb93f412b11f49885d37a4c2b99ebb6cb36453a7bed",
+        "bytes": 22165
+      },
+      {
+        "path": "dist/modules/catalog/catalog-worker.factory.js",
+        "sha256": "a72c52ed53806ff30fbc87600ae0357c2c2347fca301af66b1db1227d987a326",
+        "bytes": 726
+      },
+      {
+        "path": "dist/modules/catalog/catalog-worker.factory.js.map",
+        "sha256": "b1233782747e2e07f0377b253e75885de3caa14a09e3ac6c76d8bcb88ceec188",
+        "bytes": 518
+      },
+      {
+        "path": "dist/modules/catalog/catalog.module.js",
+        "sha256": "145dd6f84db8483a0b41136f80a68727543e60bc2182b68111cd38448a04311d",
+        "bytes": 3071
+      },
+      {
+        "path": "dist/modules/catalog/catalog.module.js.map",
+        "sha256": "49764018fc2a5d1b1672bdb3088475891c7659c6057d92971e9b20eb1bfc72d6",
+        "bytes": 1070
+      },
+      {
+        "path": "dist/modules/catalog/domain/catalog-error.js",
+        "sha256": "1b79baf0eaacec5f6d3bd4866b70aa36b1f922d7d5ee27a911bf3d4eb373721d",
+        "bytes": 3546
+      },
+      {
+        "path": "dist/modules/catalog/domain/catalog-error.js.map",
+        "sha256": "c9789d658fba06aca535f4f2854e498a1c3e45b7856a63a8dfee2b2673ed37ef",
+        "bytes": 1915
+      },
+      {
+        "path": "dist/modules/catalog/domain/catalog-policy.js",
+        "sha256": "6a9b0df39a73d02ea987430ac11359d95d6fccf9573624516e0c7a1af8c8fec9",
+        "bytes": 13283
+      },
+      {
+        "path": "dist/modules/catalog/domain/catalog-policy.js.map",
+        "sha256": "66aae6e930679f9f488a44a4d85fb4820fbcafe9edaf63623ce3ce54511ddc51",
+        "bytes": 13341
+      },
+      {
+        "path": "dist/modules/catalog/domain/repositories/catalog.repository.js",
+        "sha256": "b1b9f3b6602e238fe9d5383a94668202e6ab4e11e4ceeafa7eaf971b43ab2754",
+        "bytes": 123
+      },
+      {
+        "path": "dist/modules/catalog/domain/repositories/catalog.repository.js.map",
+        "sha256": "3d0b0b127f593d58db5df65a436574f7f3f14d89c8919bf66d46108ce904d27c",
+        "bytes": 185
+      },
+      {
+        "path": "dist/modules/catalog/infrastructure/cursor/catalog-cursor.js",
+        "sha256": "ef801f0f588a77721d12a5d2cdb04e0158d982c392862a61eb6d6de52490979f",
+        "bytes": 2293
+      },
+      {
+        "path": "dist/modules/catalog/infrastructure/cursor/catalog-cursor.js.map",
+        "sha256": "dfcb982bf3fdbc6728960f23ab6ef3a73606c5b22d56bc34733aefa113b19d33",
+        "bytes": 2217
+      },
+      {
+        "path": "dist/modules/catalog/infrastructure/persistence/postgres-catalog.query.js",
+        "sha256": "62037f229e069213d722be3de39ce2c052d627392d8c745b613a0344cd01dd2d",
+        "bytes": 23837
+      },
+      {
+        "path": "dist/modules/catalog/infrastructure/persistence/postgres-catalog.query.js.map",
+        "sha256": "edff004b8523149c215bfa4c16e5a611772355a635e44e37064ac6a7adf2925c",
+        "bytes": 8773
+      },
+      {
+        "path": "dist/modules/catalog/infrastructure/persistence/postgres-catalog.repository.js",
+        "sha256": "35de32077adde876624250c5404cda1c1866b52ebd33068ef0199037bf3101f8",
+        "bytes": 19080
+      },
+      {
+        "path": "dist/modules/catalog/infrastructure/persistence/postgres-catalog.repository.js.map",
+        "sha256": "60f0386a273779f48736499d3f4486e5c5d9dd1275dc8d52f227ba06a092d1d6",
+        "bytes": 8496
+      },
+      {
+        "path": "dist/modules/catalog/presentation/http/catalog.controller.js",
+        "sha256": "35a2bfd9b7585c26a4296befb2fe76cf8560cbab1cb5655e3367cd2788745637",
+        "bytes": 14749
+      },
+      {
+        "path": "dist/modules/catalog/presentation/http/catalog.controller.js.map",
+        "sha256": "4809eb85c17cdcfe3361f93d7d94b7d11a35c476556446f27347d222a56824f4",
+        "bytes": 10408
+      },
+      {
+        "path": "dist/modules/catalog/presentation/http/dto/catalog.dto.js",
+        "sha256": "c0f27126609b7a03317eecc4fb639f95db61d5b098f2c70bbf75f95efbbede85",
+        "bytes": 6868
+      },
+      {
+        "path": "dist/modules/catalog/presentation/http/dto/catalog.dto.js.map",
+        "sha256": "2a059786470bb81b37e17a8d46284cd197e9fcd8de043439b3c01d4dceb857c4",
+        "bytes": 6818
+      },
+      {
+        "path": "dist/modules/identity/application/dto/identity.dto.js",
+        "sha256": "46cb2c34f9b5f45460ed576f4c9de5f98834f61705c63fc4b45fbb992c561c77",
+        "bytes": 117
+      },
+      {
+        "path": "dist/modules/identity/application/dto/identity.dto.js.map",
+        "sha256": "ec8b5846ee21f9c94322e7753ce5772fe51b487d826e0b345a94ecc26fb25422",
+        "bytes": 170
+      },
+      {
+        "path": "dist/modules/identity/application/errors/admission-saturated.error.js",
+        "sha256": "5818206cd90780390de3ef4d978cbfa9b53e5cf59f5e86a34fab57ba757f851c",
+        "bytes": 463
+      },
+      {
+        "path": "dist/modules/identity/application/errors/admission-saturated.error.js.map",
+        "sha256": "6474d859fa2c62db60e454748c25eb75e12f83a9134edda8ec3be09264376083",
+        "bytes": 306
+      },
+      {
+        "path": "dist/modules/identity/application/facades/identity.facade.js",
+        "sha256": "dadbbca581656c992aab1f7a4ce0dbfc14b24603b1d5c9215284b4ba990cca42",
+        "bytes": 280
+      },
+      {
+        "path": "dist/modules/identity/application/facades/identity.facade.js.map",
+        "sha256": "b882009c47e245b98d23fee7e90b62136d9bc259a8bdc8787e56122b28e3fccf",
+        "bytes": 275
+      },
+      {
+        "path": "dist/modules/identity/application/ports/authenticated-write-admission.port.js",
+        "sha256": "f79aa4a4e8390d565e7a384d07ec3575ad4bfc8be41fa46e1d68ce7b1d6caf46",
+        "bytes": 296
+      },
+      {
+        "path": "dist/modules/identity/application/ports/authenticated-write-admission.port.js.map",
+        "sha256": "bc6a69c7d23d3dc9f63636310f7e97ccf057ee8edef98289461f7bee29a7bc6d",
+        "bytes": 283
+      },
+      {
+        "path": "dist/modules/identity/application/ports/identity-crypto.ports.js",
+        "sha256": "dfc66a1e7f74fc380c5b53a9d949f6f13d8e34d7a0a97b816be9c29c001ab59a",
+        "bytes": 126
+      },
+      {
+        "path": "dist/modules/identity/application/ports/identity-crypto.ports.js.map",
+        "sha256": "dc5cb96b215eeb08fabd16291c5a9bf78d646b8e6ae9123f513d300892f5630a",
+        "bytes": 190
+      },
+      {
+        "path": "dist/modules/identity/application/ports/identity-query.port.js",
+        "sha256": "ef235f2a7a533410a64c5d924d62366a6e102eff09570a88985f29ae33e1da6b",
+        "bytes": 124
+      },
+      {
+        "path": "dist/modules/identity/application/ports/identity-query.port.js.map",
+        "sha256": "c7d4634fc169d881cfd3a1e5e6fc9b8c915ab364148755e111fb65f2a22fb055",
+        "bytes": 186
+      },
+      {
+        "path": "dist/modules/identity/application/ports/operator-admin.port.js",
+        "sha256": "b09b83981203032df768fa84e7250988f9b5cceaa14951e7b46880409256e1f9",
+        "bytes": 124
+      },
+      {
+        "path": "dist/modules/identity/application/ports/operator-admin.port.js.map",
+        "sha256": "2e9cfa366334bfcb144b5e2e15b2a34dd0c213a38869b536463333beb22a6a25",
+        "bytes": 186
+      },
+      {
+        "path": "dist/modules/identity/application/ports/verification-delivery.port.js",
+        "sha256": "744054dbd950faedd304b17c8f2fab5de462f2c7d2364997c478b8fb026b5fdc",
+        "bytes": 381
+      },
+      {
+        "path": "dist/modules/identity/application/ports/verification-delivery.port.js.map",
+        "sha256": "21a1374b2cfbd0e51f8365818ec780ee33cb87027b3e64ad89e86c16085fb749",
+        "bytes": 339
+      },
+      {
+        "path": "dist/modules/identity/application/services/identity.service.js",
+        "sha256": "dc7889270e3347bce84d1c660551af89529a971c73608bbb0336fc370d05b19d",
+        "bytes": 14263
+      },
+      {
+        "path": "dist/modules/identity/application/services/identity.service.js.map",
+        "sha256": "f232c84ad89fc10098720e9101e5021ce73afb9062fcb637c4db7d3dbeb7b77c",
+        "bytes": 12621
+      },
+      {
+        "path": "dist/modules/identity/application/services/verification-worker.js",
+        "sha256": "a9b0a12282c31c3feab4a67ecbc69fbe66561c2e1f5be4691c17a30bd1b6063d",
+        "bytes": 2029
+      },
+      {
+        "path": "dist/modules/identity/application/services/verification-worker.js.map",
+        "sha256": "8aa80b655d01b92cef8de2647b7be60249703fd81bf94dbaad6365efbc2cc7ff",
+        "bytes": 1867
+      },
+      {
+        "path": "dist/modules/identity/domain/entities/identity-state.js",
+        "sha256": "b3fb6e22bfe16f3d2bc3b6b3f1dc2b0738a2fdc4b4b49e88c9499e40a346a93e",
+        "bytes": 119
+      },
+      {
+        "path": "dist/modules/identity/domain/entities/identity-state.js.map",
+        "sha256": "92db3aaec519ee1c5d7f2ec2390f9bcf0d8cce4037684fec6dc8de4a1947c250",
+        "bytes": 174
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/idempotency-conflict.error.js",
+        "sha256": "91297dc172b997861aa98bb44a193c4483303fdc89e2608a4eecf60a0e62c0b7",
+        "bytes": 639
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/idempotency-conflict.error.js.map",
+        "sha256": "90205d03c246163295c94ed06c242e27ac7d392818aa54f5eb1b7d7a6fb1a035",
+        "bytes": 382
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/idempotency-key-expired.error.js",
+        "sha256": "4b007d1a5d27df136f76e78eb1f24596eb50c1854b5b7ab2a9a9c3c551d57ad6",
+        "bytes": 652
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/idempotency-key-expired.error.js.map",
+        "sha256": "12d5cbd39128656632f2543e2709190323d3392288d8ba4b2d8be215b23443d6",
+        "bytes": 388
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/index.js",
+        "sha256": "c28abbb6b1990cb3d6101eb30155847cebdc89fae0d683da6167fbf32d004a8e",
+        "bytes": 1850
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/index.js.map",
+        "sha256": "fead16783c594054a23ec87d6e8d6203b6e7c0784e0142f4b9ba6d3a460be2ec",
+        "bytes": 406
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/invalid-request.error.js",
+        "sha256": "ddea84c48eed864b5f650b81c24381b6b9c2b07f11e15f861db6e885cec2de53",
+        "bytes": 722
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/invalid-request.error.js.map",
+        "sha256": "ae4544eeb9bdf16389a5b737ceb1809e57347bd1131f77a780b6704b12809e2a",
+        "bytes": 452
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/permission-denied.error.js",
+        "sha256": "e4827d93d29ca400125a8115473d0a9b30e121edcbc62eb919f0269280f75093",
+        "bytes": 719
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/permission-denied.error.js.map",
+        "sha256": "14b28ba18f48bcba7b00770ec54ef0e1a2f04643366f19f85cd0b7f8dc1803cb",
+        "bytes": 455
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/rate-limited.error.js",
+        "sha256": "9185ba936825d911ba260feb5563a9fe8dd3f82877e568b830acdd558554366d",
+        "bytes": 694
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/rate-limited.error.js.map",
+        "sha256": "3bf4599c0c8d06e9ea39936a8a35d693ece219b518b02eaa102e24ab1de00987",
+        "bytes": 443
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/revision-conflict.error.js",
+        "sha256": "f641fbdb148a4bdb780471fc931ddb540119b48c2c5a6ec91482b50e72e3f4b1",
+        "bytes": 614
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/revision-conflict.error.js.map",
+        "sha256": "250be51cad72cb1d577187087b7baf9e1d7d8e945c3837e8a4a4627b73b723ea",
+        "bytes": 376
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/unauthenticated.error.js",
+        "sha256": "460f6525a06c3913f5877c7a1ad95ca9fdedaf7e2959dcef56993fc8267bb726",
+        "bytes": 735
+      },
+      {
+        "path": "dist/modules/identity/domain/errors/unauthenticated.error.js.map",
+        "sha256": "d185452207ab05e9909b374dace1835c0b4904fcfbf0191157f1ee0cd9531b66",
+        "bytes": 452
+      },
+      {
+        "path": "dist/modules/identity/domain/identity-policy.js",
+        "sha256": "f252b95b0e092e21473a78ec6cab2853a4b6814968104f70e27fc909edda950a",
+        "bytes": 1541
+      },
+      {
+        "path": "dist/modules/identity/domain/identity-policy.js.map",
+        "sha256": "e68209433146ecc04c63cdeecb285d4a41fd3ca20ee5c6d33bad36fe9e999e61",
+        "bytes": 1370
+      },
+      {
+        "path": "dist/modules/identity/domain/repositories/identity.repository.js",
+        "sha256": "06438038b86682bf0e9df448c48b76c48245d2762c935898729bfc5e45def7b1",
+        "bytes": 124
+      },
+      {
+        "path": "dist/modules/identity/domain/repositories/identity.repository.js.map",
+        "sha256": "6de728a147e12fda7643ee756dcfc919e4302a243d0a753eef56c9b88da306cc",
+        "bytes": 188
+      },
+      {
+        "path": "dist/modules/identity/identity-operator.factory.js",
+        "sha256": "6e6239cd2610cb16ef0825119b1723cc736cc1c48b4c4b6351cab07a00277690",
+        "bytes": 496
+      },
+      {
+        "path": "dist/modules/identity/identity-operator.factory.js.map",
+        "sha256": "4fe9cef59ed751f50cbc47660ba2f2044ded8a60e1c1f5f02695616dbb6c5dcd",
+        "bytes": 295
+      },
+      {
+        "path": "dist/modules/identity/identity-worker.factory.js",
+        "sha256": "ad8e1c3cba9f57ecc8cf8c1c0bce4df88ef80df1e9dd5328329fd06575c45e4f",
+        "bytes": 1685
+      },
+      {
+        "path": "dist/modules/identity/identity-worker.factory.js.map",
+        "sha256": "4000cf5833dc6d6891e162a7f4feaa9f8d603603e051f415fb6804a4cc827fb1",
+        "bytes": 1173
+      },
+      {
+        "path": "dist/modules/identity/identity.module.js",
+        "sha256": "bae2f72f192a21520928f8fb69b61d1d3960627c8bbb117562375d8d59697e51",
+        "bytes": 5731
+      },
+      {
+        "path": "dist/modules/identity/identity.module.js.map",
+        "sha256": "0b353f05bce0b798b2be923e9d879d93eb1ea369d2b18a4c83545f66b4fc076d",
+        "bytes": 2465
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/http/http-session.js",
+        "sha256": "d7d4b5df7cf5585c7f9a2fd352a5b7eb64f853ec1cd266e72a1eb719d37abe92",
+        "bytes": 6888
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/http/http-session.js.map",
+        "sha256": "7a2098589215c1ced41c98cf2695e143f5dcf30dc0aef5ebc555cb60af7318d4",
+        "bytes": 6500
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/mail/verification-mail.js",
+        "sha256": "12eee31cb19d64219eedcc8bd7edd9dcba2523c21a398deef727de2e961f6bb8",
+        "bytes": 3458
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/mail/verification-mail.js.map",
+        "sha256": "b24e4d426920ebeeac1f3d77e4479b0c8c1f79a8e5268a3c023018f05ed74a79",
+        "bytes": 2467
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission.js",
+        "sha256": "8edd6deb093a7b003d96e226551e8bd3f2e12c081ffdffeac1b4af749336648f",
+        "bytes": 3490
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission.js.map",
+        "sha256": "8eb99a4efb39d82fdc5a62f2ab1d4e829ff4b0198e8f50c774babaaef7865772",
+        "bytes": 1341
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.js",
+        "sha256": "23cd55709842d489e8fca84ab6ee7c794ec2d4c57693375d0c9bb372bce335d1",
+        "bytes": 7320
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.js.map",
+        "sha256": "e7ae0fd37af556bc6bf9587145068ea34edb88b46ed908b85e447f1dd94633e3",
+        "bytes": 2020
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/queries/live-principal.sql.js",
+        "sha256": "ee154dae30fcef238201dc7d777cc264ba0d32515ba777e0718a54ef11e00e7c",
+        "bytes": 1568
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/queries/live-principal.sql.js.map",
+        "sha256": "2e3e2fdc9ee0cff53d89fa909efbc251f910fb2e429a2265717c9364aacd42f0",
+        "bytes": 306
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.js",
+        "sha256": "55163d7bb3cc8b9dcfe000032d07a81b3da7248a61cdc139bc73e2923869610b",
+        "bytes": 1566
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.js.map",
+        "sha256": "fcf0409ac4402a1888714009da1b11906b8239001d41cab9cf130eb832b5d579",
+        "bytes": 1089
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.js",
+        "sha256": "6a9b7db7231412ab0b9ad31ed52c3ba9db43f5215b6b85f3dae107e6f1abade0",
+        "bytes": 9192
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.js.map",
+        "sha256": "2f86364d1acbea010f289510f3a88087308aae458a8cb682864f9b3ff304fe56",
+        "bytes": 4946
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/repositories/postgres-operator-admin.js",
+        "sha256": "c23cbc1fd5bee097aea8e11884f315452549795f85fe36e43fb04e12d4fa14c9",
+        "bytes": 556
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/persistence/postgres/repositories/postgres-operator-admin.js.map",
+        "sha256": "3f81d070db021149819570acaf08f5ba7202a75491611e72d62bc10413c93de8",
+        "bytes": 566
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/security/identity-crypto.js",
+        "sha256": "030aec86797dc0c0a91a6d0744bfab1dd8e0156942b32cabbb7abe0f4743174d",
+        "bytes": 11295
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/security/identity-crypto.js.map",
+        "sha256": "b1ce4369773264be9a069d424b555dcd8e9c0b6c418eaf24352603dd45c3ed38",
+        "bytes": 9407
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/security/identity-runtime.js",
+        "sha256": "2f4db73ca44162dedb99bb2e9c3984bef5c92bb41b02d0f9e1716942dcdbc5c6",
+        "bytes": 862
+      },
+      {
+        "path": "dist/modules/identity/infrastructure/security/identity-runtime.js.map",
+        "sha256": "36aa93d12130c76229ddf5574b0f7bd4eff7259fc131a5c3c55de1b8178b09d7",
+        "bytes": 722
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/dto/identity.dto.js",
+        "sha256": "bc3600608546ffcd0cee600e141873f43d73cdfea3ac020c009efb97e7ac11b6",
+        "bytes": 1855
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/dto/identity.dto.js.map",
+        "sha256": "9509f234af9ce1e39ab2f720c949efae9dc44483e63578e127ced6651e72403a",
+        "bytes": 1955
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/http-session.port.js",
+        "sha256": "c0b9b1c5f588ae4ab83ba3c65248f49b3837c0a4ae882323893068e8e06117fd",
+        "bytes": 200
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/http-session.port.js.map",
+        "sha256": "e1ed03493e2de9831706f03914f5bed88db1b0ba577cd2e29327d97edfca453c",
+        "bytes": 229
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/identity.controller.js",
+        "sha256": "4e8743bf37a050a3cc53f4ff0bf44d2059a15f429e1e8289c5c77603b3e880af",
+        "bytes": 8196
+      },
+      {
+        "path": "dist/modules/identity/presentation/http/identity.controller.js.map",
+        "sha256": "28113fe8d3aedf1ca0980e22f82ba53d0f24c3fab88380f957e2dc7ca5dbdbf8",
+        "bytes": 5692
+      },
+      {
+        "path": "dist/modules/reporting/application/dto/active-candidates.dto.js",
+        "sha256": "c9bbc9af951ac6b7896ac4babc259bcd94248f2d7f123a17a4c797fa225c9aa3",
+        "bytes": 126
+      },
+      {
+        "path": "dist/modules/reporting/application/dto/active-candidates.dto.js.map",
+        "sha256": "1c2b93ec52c80b3da1b901d51d951449b1ceee9b371a51f1fd6f763f0718fc77",
+        "bytes": 189
+      },
+      {
+        "path": "dist/modules/reporting/application/facades/ranking.facade.js",
+        "sha256": "0634cfe3ef179c54340a406caa236d8608f952745bebeceed9523822689fb1e3",
+        "bytes": 215
+      },
+      {
+        "path": "dist/modules/reporting/application/facades/ranking.facade.js.map",
+        "sha256": "3dd16ac3f34b11c142d056458f8e6cdf92ce5234007a5a8b1f758d9056a83bef",
+        "bytes": 230
+      },
+      {
+        "path": "dist/modules/reporting/application/ports/active-candidates-cursor.port.js",
+        "sha256": "b5265f759d48f74040673c929945aa4b147c656a8dfa41688bbb0ff4f22a4ffd",
+        "bytes": 134
+      },
+      {
+        "path": "dist/modules/reporting/application/ports/active-candidates-cursor.port.js.map",
+        "sha256": "15298156d2d595527aa893af5d55660477eca934e44965e2e7a579f4cf565e26",
+        "bytes": 207
+      },
+      {
+        "path": "dist/modules/reporting/application/ports/active-candidates.query.js",
+        "sha256": "cbe7bd9f1f60d8b7399997ecd2b2ff8e77ac46f91fcd89558b831ea9884aae18",
+        "bytes": 128
+      },
+      {
+        "path": "dist/modules/reporting/application/ports/active-candidates.query.js.map",
+        "sha256": "ab130c42fd61b29105120c0d212ccd1cbf406fc3771f774cf91917db1271cfc2",
+        "bytes": 195
+      },
+      {
+        "path": "dist/modules/reporting/application/ports/ranking-cursor.port.js",
+        "sha256": "80b9dffb3f7fe39f0dc3de67e0eba19fd111de922fd914a0b4634d288982f6da",
+        "bytes": 124
+      },
+      {
+        "path": "dist/modules/reporting/application/ports/ranking-cursor.port.js.map",
+        "sha256": "8540e2788f8f1035190cafad40033eaa2195abf14eefb188e820689d11fa75f4",
+        "bytes": 187
+      },
+      {
+        "path": "dist/modules/reporting/application/ports/ranking.query.js",
+        "sha256": "66215dc61df40550c7a31644f0be5e45d9326224943d18cbaf7f7c6130a1e9bb",
+        "bytes": 118
+      },
+      {
+        "path": "dist/modules/reporting/application/ports/ranking.query.js.map",
+        "sha256": "23836a236c9baca6e2139713f54728c36720db4e3c2517422e1458cda7d4a403",
+        "bytes": 175
+      },
+      {
+        "path": "dist/modules/reporting/application/services/active-candidates.service.js",
+        "sha256": "5da65f3d32166031d0d2bcb1bbe3d24a7e3a9ed556ffcbdc21ec5564690cacce",
+        "bytes": 3510
+      },
+      {
+        "path": "dist/modules/reporting/application/services/active-candidates.service.js.map",
+        "sha256": "92c890f254a2512bc4192f7f880b0f8ae9b2a0ce1a94d14f1d25a4015afecdd6",
+        "bytes": 3226
+      },
+      {
+        "path": "dist/modules/reporting/application/services/ranking.service.js",
+        "sha256": "41d42f4a1e33a65e786f003f356890f3a725bf5877f42ec5598b35fc8d7c110c",
+        "bytes": 3389
+      },
+      {
+        "path": "dist/modules/reporting/application/services/ranking.service.js.map",
+        "sha256": "dbfe73dfbca82b2f493c13c03c4fdbc5a398009372ff86c5e60de5cb5b2fa13c",
+        "bytes": 3333
+      },
+      {
+        "path": "dist/modules/reporting/domain/ranking.error.js",
+        "sha256": "44c830df9a2d3eb0a890b249c59f60e12f22554892816790adc5a2f96440bdaa",
+        "bytes": 1073
+      },
+      {
+        "path": "dist/modules/reporting/domain/ranking.error.js.map",
+        "sha256": "3217b1f3eaefaa496b64cc2cc12d9ca7287c0e6e811d38a1814cc107f7ae482c",
+        "bytes": 691
+      },
+      {
+        "path": "dist/modules/reporting/domain/reporting.error.js",
+        "sha256": "567b103d9b04a6695e4ba3ac7033f0e7c03fc1fb51afc1af05fa15ad093a26cd",
+        "bytes": 1079
+      },
+      {
+        "path": "dist/modules/reporting/domain/reporting.error.js.map",
+        "sha256": "63449ec1a6bcc24becaca10674745844e80a1a91949b5a8131bc5d406efd4869",
+        "bytes": 695
+      },
+      {
+        "path": "dist/modules/reporting/infrastructure/persistence/postgres-active-candidates.query.js",
+        "sha256": "d95b2693af3b513c4f662d6a334420c32fd0100af23e64337774fc5efd3ce67a",
+        "bytes": 2289
+      },
+      {
+        "path": "dist/modules/reporting/infrastructure/persistence/postgres-active-candidates.query.js.map",
+        "sha256": "df98ed97d84c3a33a1fc65e798b441acc21a844a96fc747df8931077fcbb507b",
+        "bytes": 1165
+      },
+      {
+        "path": "dist/modules/reporting/infrastructure/persistence/postgres-ranking.query.js",
+        "sha256": "58684073b88cbb278f74d03b016e50a4332041b24c616bdaf9531270d8772ee4",
+        "bytes": 4752
+      },
+      {
+        "path": "dist/modules/reporting/infrastructure/persistence/postgres-ranking.query.js.map",
+        "sha256": "b27caca55e4518808cdfbe125516ecc0ef750683e44a8a9ea253e57ed1f3a35b",
+        "bytes": 944
+      },
+      {
+        "path": "dist/modules/reporting/infrastructure/security/active-candidates-cursor.js",
+        "sha256": "edb1e6049f4a8576bb119a4a70b74723594a7cfc80a89ad3611d26d9760108f1",
+        "bytes": 2651
+      },
+      {
+        "path": "dist/modules/reporting/infrastructure/security/active-candidates-cursor.js.map",
+        "sha256": "c014ef7bae68625feef10c523dfaae8d123e89d9b25c70bcaee6ee9ae1db12a8",
+        "bytes": 2504
+      },
+      {
+        "path": "dist/modules/reporting/infrastructure/security/ranking-crypto.js",
+        "sha256": "4cb1414d8ee8b25bdb122c428cb639e467dceadf58952d98051590bc36436be1",
+        "bytes": 3105
+      },
+      {
+        "path": "dist/modules/reporting/infrastructure/security/ranking-crypto.js.map",
+        "sha256": "866fe915a659e40d00c21d107f73d165ed1a14f41b0e867ea12a71bef94c50a0",
+        "bytes": 2970
+      },
+      {
+        "path": "dist/modules/reporting/presentation/http/active-candidates.controller.js",
+        "sha256": "7690b6fde65d7232f17e4ff33c2022e25cc49f5c22ab3bac4efc833557fa1383",
+        "bytes": 3190
+      },
+      {
+        "path": "dist/modules/reporting/presentation/http/active-candidates.controller.js.map",
+        "sha256": "5023549af919ebab85cc897a8c94171a70aab37eaf73b073987e2b8d8e1ab721",
+        "bytes": 1442
+      },
+      {
+        "path": "dist/modules/reporting/presentation/http/dto/reporting.dto.js",
+        "sha256": "b72101b6ad6ce0a9a12603e31aeab09a22e1bc894aca25e712113ce210c4af17",
+        "bytes": 1458
+      },
+      {
+        "path": "dist/modules/reporting/presentation/http/dto/reporting.dto.js.map",
+        "sha256": "310f98a7e52eccb9c9efa806321926d34c03c48dc27b837c632959bdb204b5e0",
+        "bytes": 1453
+      },
+      {
+        "path": "dist/modules/reporting/reporting.module.js",
+        "sha256": "65e402969824181450dbb41b7ccdfa980df1828627a53abcac7cc9779768fed0",
+        "bytes": 3508
+      },
+      {
+        "path": "dist/modules/reporting/reporting.module.js.map",
+        "sha256": "f55ca0b84f860c2b3da0e577bf8f2f53805300c31389df9d3c82a6132915628f",
+        "bytes": 1220
+      },
+      {
+        "path": "dist/shared/application/errors/unavailable.error.js",
+        "sha256": "09da215626dfab09a6e585fcaa6fc395fb212fd3460f24b7ea91d6b8fe75ef61",
+        "bytes": 422
+      },
+      {
+        "path": "dist/shared/application/errors/unavailable.error.js.map",
+        "sha256": "3f092449b8cf88891174313707b38af1cb05262f31a64d822b87360b5072ccb3",
+        "bytes": 341
+      },
+      {
+        "path": "dist/shared/application/ports/idempotency.js",
+        "sha256": "c8b990a2e3d59998ab1f05d618c69ea10016eb08471a338da1e77d9c5566d7a1",
+        "bytes": 116
+      },
+      {
+        "path": "dist/shared/application/ports/idempotency.js.map",
+        "sha256": "e25bf9eb0d4250d740c15f2801d372d79257e3e377b6ac404cf075f98eaf0177",
+        "bytes": 157
+      },
+      {
+        "path": "dist/shared/application/ports/queue-consumer.port.js",
+        "sha256": "f6fddd030caf75042b86920dec4d6293eae75239238eb0deaf16e1f96b7b8dd6",
+        "bytes": 124
+      },
+      {
+        "path": "dist/shared/application/ports/queue-consumer.port.js.map",
+        "sha256": "a362d36044b9d1d075d8dd88844ea67a9ece039bd9450588d24d69204b2a680d",
+        "bytes": 173
+      },
+      {
+        "path": "dist/shared/application/ports/queue-publisher.port.js",
+        "sha256": "2f3e88975e6c877eecd5e972dcdabba5c46bfd363b90c27e60934fbce9c29e30",
+        "bytes": 484
+      },
+      {
+        "path": "dist/shared/application/ports/queue-publisher.port.js.map",
+        "sha256": "8ac654688e8c26ff51bd33c9a5256fb82426f3241e28391b5df4c4bfb0cfa157",
+        "bytes": 369
+      },
+      {
+        "path": "dist/shared/application/ports/readiness.js",
+        "sha256": "f3540f88966068cc487f494ee330d152f06b20e6fb9b12f9a7ead6ad7d7acbe1",
+        "bytes": 183
+      },
+      {
+        "path": "dist/shared/application/ports/readiness.js.map",
+        "sha256": "f5f7da832980626c79561fc44d86ac35c1eface1c567e1642da6002905122cc3",
+        "bytes": 200
+      },
+      {
+        "path": "dist/shared/application/ports/security.js",
+        "sha256": "1a9338f233d660312838492d3a92e192e040d17e7133c41432c04525dfdc37df",
+        "bytes": 113
+      },
+      {
+        "path": "dist/shared/application/ports/security.js.map",
+        "sha256": "1c790b9d228add095ba86077b4bb44cca9845058ff27e62dbdc356be2c824bde",
+        "bytes": 151
+      },
+      {
+        "path": "dist/shared/application/unit-of-work/unit-of-work.port.js",
+        "sha256": "06a3ffa02430e4c0d55d777705d653ecfc29ed5ce8dacf819979f2de81d645eb",
+        "bytes": 200
+      },
+      {
+        "path": "dist/shared/application/unit-of-work/unit-of-work.port.js.map",
+        "sha256": "7fe7f0a465a46ab29bdadb02bf95dc63a853be49ac2b84eedf55058c8e578578",
+        "bytes": 223
+      },
+      {
+        "path": "dist/shared/common/filters/domain-exception.filter.js",
+        "sha256": "c9c75c9a16facedf10829a67f381a37896e27c21ea64e6111f51063893f9adfb",
+        "bytes": 3197
+      },
+      {
+        "path": "dist/shared/common/filters/domain-exception.filter.js.map",
+        "sha256": "d187ba8e9be86cbe9caee161870c8a3ac0c00ddace6c59c3b51626f9d590771f",
+        "bytes": 2253
+      },
+      {
+        "path": "dist/shared/common/interceptors/api-response.interceptor.js",
+        "sha256": "e51d19d59983f785fd3f11492e67630e67b3fd97b3d88d0679295491b42f1449",
+        "bytes": 2297
+      },
+      {
+        "path": "dist/shared/common/interceptors/api-response.interceptor.js.map",
+        "sha256": "0a0889083b082d1877032426871d6fe95e506d5d0ac1fc4901501d178249daeb",
+        "bytes": 1644
+      },
+      {
+        "path": "dist/shared/domain/exceptions/domain-error.js",
+        "sha256": "237c27d4cb6c7a23951f2aae0de840c4b88a69b2290bc701e3bbb9f373541a14",
+        "bytes": 312
+      },
+      {
+        "path": "dist/shared/domain/exceptions/domain-error.js.map",
+        "sha256": "2214979d4d4a93cd10d57dc5eee7b0a7a00ba3fb3af1a30cfe31dcf005207e5b",
+        "bytes": 317
+      },
+      {
+        "path": "dist/shared/domain/exceptions/error-category.js",
+        "sha256": "baf0741a36c21b24adc4a3f2e6f16e12b53fccdb9bddde664015df9eb6bf8bf7",
+        "bytes": 749
+      },
+      {
+        "path": "dist/shared/domain/exceptions/error-category.js.map",
+        "sha256": "7180618b7a405d6e81725682e319594afca682148edf09c64bb0b10fb6e5d6d6",
+        "bytes": 371
+      },
+      {
+        "path": "dist/workers/operator/grading-replay.main.js",
+        "sha256": "e566a29537c48f018e0f5fe1cae542cd339bbbc22ecef80c0c41ca3e24914e31",
+        "bytes": 1728
+      },
+      {
+        "path": "dist/workers/operator/grading-replay.main.js.map",
+        "sha256": "5986b6ef89e2883445952f12ccab6397419b6f990f728a7e7cdb361e099270fe",
+        "bytes": 1398
+      },
+      {
+        "path": "dist/workers/operator/operator-admin.main.js",
+        "sha256": "d4d35e838e3c68feb388f45eedb6d2b68c3e879acc0038a2f9be2e81e5384852",
+        "bytes": 1607
+      },
+      {
+        "path": "dist/workers/operator/operator-admin.main.js.map",
+        "sha256": "14b0d90a8db93c8e6676abe173961d3ea14ad48fc6f6d85e0621c3fbbdaffbde",
+        "bytes": 1296
+      },
+      {
+        "path": "dist/workers/operator/submission-replay.main.js",
+        "sha256": "62558db319d5a5b194580f757a7ba2cc98a4f432d7713e1a976fec3078000c96",
+        "bytes": 1534
+      },
+      {
+        "path": "dist/workers/operator/submission-replay.main.js.map",
+        "sha256": "399050257f1e6768a76eaf920decb56ffb1159b62fffda9d2c91bc67be0a3745",
+        "bytes": 1189
+      },
+      {
+        "path": "dist/workers/outbox/submission.main.js",
+        "sha256": "706a8eac5e2e067dccdb5c61256189c585e283c3fa9c6de201a59305f5b57a36",
+        "bytes": 7850
+      },
+      {
+        "path": "dist/workers/outbox/submission.main.js.map",
+        "sha256": "8110417a55f1a980b21a55596a1f063df765cab4b6452568e563a7a95c8a5845",
+        "bytes": 7247
+      },
+      {
+        "path": "dist/workers/outbox/verification.main.js",
+        "sha256": "3e7c070ae828a0b400a3ba432e7bae14b7e7713d206afc99d34c9583cc6ad1d9",
+        "bytes": 3190
+      },
+      {
+        "path": "dist/workers/outbox/verification.main.js.map",
+        "sha256": "4e6d5be1fd51eef0a5e31f1eb989bcc6b3387cc19984df1279730eac608c2b61",
+        "bytes": 3190
+      },
+      {
+        "path": "dist/workers/scheduler/assessment-retention.main.js",
+        "sha256": "0d61906365ba70c88cc75d7f581bf1455964d37e3f7b3eb0b292312a6b8c2fe5",
+        "bytes": 2855
+      },
+      {
+        "path": "dist/workers/scheduler/assessment-retention.main.js.map",
+        "sha256": "3c81c761e10e5cf474b361bb6aab571606957362051a8a181ed985f08fdf99e7",
+        "bytes": 2274
+      },
+      {
+        "path": "dist/workers/scheduler/expiry.main.js",
+        "sha256": "fc5b4924667d136cdaf61d51e8688efe73e4dc277c342fee5861d1c12c7b7060",
+        "bytes": 4281
+      },
+      {
+        "path": "dist/workers/scheduler/expiry.main.js.map",
+        "sha256": "6ba91ae499cbd6766b74e17b60170e1a68a18abb8fe2959d53610634d64f7b1b",
+        "bytes": 4171
+      },
+      {
+        "path": "dist/workers/sqs/grading-delivery.js",
+        "sha256": "deb06dfa546d5f06e59230e6e213b69eea7f0a9e203786ca06b759057d664751",
+        "bytes": 1299
+      },
+      {
+        "path": "dist/workers/sqs/grading-delivery.js.map",
+        "sha256": "d6ac7caed761039e387687d14005dfe21346ec2ce68aa872dc0da2590e250f5f",
+        "bytes": 1203
+      },
+      {
+        "path": "dist/workers/sqs/grading.main.js",
+        "sha256": "258369e16b1fd21a336056d125590b0018ce0127845475ee9d48bcc82c4c5e09",
+        "bytes": 9680
+      },
+      {
+        "path": "dist/workers/sqs/grading.main.js.map",
+        "sha256": "f2100cef7d9d5520730d52265a3eca86252b4ba170dc4be5c45baa38ba586856",
+        "bytes": 8461
+      }
+    ]
+  }
+}

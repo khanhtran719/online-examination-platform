@@ -1,0 +1,298 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/.local/rep04/setup.cjs --runTestsByPath apps/api/tests/integration/admin-candidate-results.spec.ts --testNamePattern requires current permission
+
+(node:19930) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/admin-candidate-results.spec.ts
+  ● Admin retained best/latest on real primary PostgreSQL › returns an audited empty exact version and404 for missing/foreign versions
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › separates highest completed score from latest submission, preserving zero and pending/FAILED
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › resolves score/time ties by attempt UUID and ignores worker completion order
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › keeps latest stable across replay generations and duplicate delivery
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › includes expired completion, opt-out/disabled candidates and archived versions without merging versions
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › excludes unsubmitted candidates and returns best:null for pending/failed-only candidates
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › reads old committed best/latest while real grading is blocked, then fresh atomic selection
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › purges real best/latest payloads without repeating a candidate below the old cursor
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › binds cursors to actor/exam/version/pageSize/order with fixed original expiry
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › rejects unknown or unbounded query?pageSize=0
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › rejects unknown or unbounded query?pageSize=101
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › rejects unknown or unbounded query?pageSize=1.5
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › rejects unknown or unbounded query?candidateId=anything
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › rejects unknown or unbounded query?selection=BEST
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● Admin retained best/latest on real primary PostgreSQL › requires current permission, fails closed on audit outage and preserves the source completion guard
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● records natural best/latest plans and local diagnostics on100k constrained attempts
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● revalidates permission inside UoW after prior successful authentication
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+  ● bounds actor-lock wait without returning a report, then recovers
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      109 | }
+      110 | beforeAll(async () => {
+    > 111 |   await admin.query(`CREATE DATABASE ${name}`);
+          |   ^
+      112 |   await admin.query(await readFile("infra/database/roles.sql", "utf8"));
+      113 |   await admin.query(`GRANT CREATE ON DATABASE ${name} TO examination_owner`);
+      114 |   for (const [login, group] of [
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:111:3)
+
+
+  ● Test suite failed to run
+
+    connect ECONNREFUSED 127.0.0.1:55435
+
+      214 |   for (let n = 0; n < 100; n++) {
+      215 |     const count = (
+    > 216 |       await admin.query<{ n: number }>(
+          |       ^
+      217 |         `
+      218 |       SELECT
+      219 |         count(*)::int AS n
+
+      at node_modules/pg-pool/index.js:45:11
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:216:7)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 17 skipped, 18 total
+Snapshots:   0 total
+Time:        2.01 s, estimated 33 s
+Ran all test suites within paths "apps/api/tests/integration/admin-candidate-results.spec.ts".

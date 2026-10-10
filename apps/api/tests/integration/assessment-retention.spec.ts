@@ -752,6 +752,21 @@ describe("Completed payload withdrawal", () => {
     });
     expect(
       (
+        await fixture.query(
+          `
+      SELECT
+        epoch::text AS epoch
+      FROM
+        assessment.leaderboard_epochs
+      WHERE
+        version_id = $1
+    `,
+          [f.version],
+        )
+      ).rows[0]!.epoch,
+    ).toBe("1");
+    expect(
+      (
         await fixture.query(`
           SELECT
             attempt_id
@@ -1052,6 +1067,21 @@ describe("Completed payload withdrawal", () => {
         inbox: 1,
         audits: 0,
       });
+      expect(
+        (
+          await fixture.query(
+            `
+        SELECT
+          epoch
+        FROM
+          assessment.leaderboard_epochs
+        WHERE
+          version_id = $1
+      `,
+            [f.version],
+          )
+        ).rows,
+      ).toEqual([]);
       expect(
         (
           await fixture.query(

@@ -14,6 +14,7 @@ const files = {
     keys: { "mail-local-1": randomBytes(32).toString("base64url") },
   }),
   "csrf.key": randomBytes(32).toString("base64url"),
+  "leaderboard.key": randomBytes(32).toString("base64url"),
   "rate.key": randomBytes(32).toString("base64url"),
 };
 // Exclusive creation: rerunning cannot silently replace an identity or erase live mail key access.

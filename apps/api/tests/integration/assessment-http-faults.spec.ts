@@ -272,7 +272,7 @@ async function session(port: number, email: string, userId = "fixture-admin"): P
   };
 }
 
-async function prepare(operation: Operation): Promise<Context> {
+async function prepare(operation: Operation, leaderboardEnabled = false): Promise<Context> {
   const operator = await session(api.port, adminEmail);
   const mutation = async (path: string, body: object) => {
     const response = await http(
@@ -306,7 +306,7 @@ async function prepare(operation: Operation): Promise<Context> {
     displayTimezone: "Asia/Ho_Chi_Minh",
     attemptLimit: 1,
     explanationPolicy: "NEVER",
-    leaderboardEnabled: false,
+    leaderboardEnabled,
     expectedRevision: 0,
     sections: [
       {
@@ -680,6 +680,7 @@ beforeAll(async () => {
     }),
     "rate.key": randomBytes(32).toString("base64url"),
     "csrf.key": randomBytes(32).toString("base64url"),
+    "leaderboard.key": randomBytes(32).toString("base64url"),
   };
   for (const [file, value] of Object.entries(materials))
     await writeFile(join(secrets, file), value, { mode: 0o600 });
@@ -693,6 +694,7 @@ beforeAll(async () => {
     EMAIL_KEYS_FILE: join(secrets, "email.json"),
     RATE_KEY_FILE: join(secrets, "rate.key"),
     CSRF_KEY_FILE: join(secrets, "csrf.key"),
+    LEADERBOARD_KEY_FILE: join(secrets, "leaderboard.key"),
     MAIL_ADAPTER: "smtp",
     MAIL_FROM: "fixture@example.test",
     SMTP_HOST: "127.0.0.1",
@@ -766,6 +768,111 @@ afterAll(async () => {
         2,
       ) + "\n",
     );
+});
+
+it("serves leaderboard, Admin monitor, submissions/result, question statistics and best/latest through the actual compiled Reporting composition over TCP", async () => {
+  const f = await prepare("start", true);
+  const versionId = (
+    await fixture.query(
+      `
+    SELECT
+      current_version_id
+    FROM
+      catalog.exams
+    WHERE
+      id = $1
+  `,
+      [f.examId],
+    )
+  ).rows[0]!.current_version_id as string;
+  const path = `/v1/exams/${f.examId}/versions/${versionId}/leaderboard`,
+    started = performance.now();
+  const response = await http(api.port, "GET", path, f.actor.headers);
+  expect(response.status).toBe(200);
+  expect(response.headers["cache-control"]).toBe("no-store");
+  expect(envelope(response)).toEqual({
+    data: [],
+    metadata: { pageSize: 20, next: null },
+    errorCode: null,
+    message: null,
+    status: true,
+  });
+  expect((await http(api.port, "GET", path)).status).toBe(401);
+  expect((await http(api.port, "GET", path + "?pageSize=101", f.actor.headers)).status).toBe(400);
+  const adminSession = await session(api.port, adminEmail);
+  const monitorPath = `/v1/admin/exams/${f.examId}/active-candidates`;
+  const monitor = await http(api.port, "GET", monitorPath, adminSession.headers);
+  expect(monitor.status).toBe(200);
+  expect(monitor.headers["cache-control"]).toBe("no-store");
+  expect(envelope(monitor)).toMatchObject({
+    data: [],
+    metadata: { pageSize: 20, next: null, asOf: expect.any(String) },
+    status: true,
+  });
+  expect((await http(api.port, "GET", monitorPath, f.actor.headers)).status).toBe(403);
+  expect((await http(api.port, "GET", monitorPath)).status).toBe(401);
+  expect(
+    (await http(api.port, "GET", monitorPath + "?pageSize=101", adminSession.headers)).status,
+  ).toBe(400);
+  const statisticsPath = `/v1/admin/exams/${f.examId}/versions/${versionId}/question-statistics`;
+  const statistics = await http(api.port, "GET", statisticsPath, adminSession.headers);
+  expect(statistics.status).toBe(200);
+  expect(envelope(statistics)).toMatchObject({
+    data: [{ completedAttempts: 0, answered: 0, correct: 0, incorrect: 0, unanswered: 0 }],
+    status: true,
+  });
+  expect((await http(api.port, "GET", statisticsPath, f.actor.headers)).status).toBe(403);
+  const candidatesPath = `/v1/admin/exams/${f.examId}/versions/${versionId}/candidate-results`;
+  const candidates = await http(api.port, "GET", candidatesPath, adminSession.headers);
+  expect(candidates.status).toBe(200);
+  expect(envelope(candidates)).toMatchObject({
+    data: [],
+    metadata: { pageSize: 20, next: null },
+    status: true,
+  });
+  expect((await http(api.port, "GET", candidatesPath, f.actor.headers)).status).toBe(403);
+  const metricsPath = "/v1/admin/business-metrics";
+  const metrics = await http(api.port, "GET", metricsPath, adminSession.headers);
+  expect(metrics.status).toBe(200);
+  expect(metrics.headers["cache-control"]).toBe("no-store");
+  expect(envelope(metrics)).toMatchObject({
+    data: {
+      window: { basis: "ATTEMPT_STARTED_AT" },
+      counts: { startedAttempts: expect.any(Number) },
+      backlog: { pendingAttempts: expect.any(Number) },
+    },
+    status: true,
+  });
+  expect((await http(api.port, "GET", metricsPath, f.actor.headers)).status).toBe(403);
+  expect((await http(api.port, "GET", metricsPath)).status).toBe(401);
+  expect(
+    (
+      await http(
+        api.port,
+        "GET",
+        metricsPath + "?from=0000-01-01T00%3A00%3A00.000Z&to=0000-01-02T00%3A00%3A00.000Z",
+        adminSession.headers,
+      )
+    ).status,
+  ).toBe(400);
+  const submissionsPath = `/v1/admin/exams/${f.examId}/submissions`;
+  const submissions = await http(api.port, "GET", submissionsPath, adminSession.headers);
+  expect(submissions.status).toBe(200);
+  expect(envelope(submissions)).toMatchObject({
+    data: [],
+    metadata: { next: null, pageSize: 20 },
+    status: true,
+  });
+  expect((await http(api.port, "GET", submissionsPath, f.actor.headers)).status).toBe(403);
+  expect(
+    (await http(api.port, "GET", `/v1/admin/attempts/${randomUUID()}/result`, adminSession.headers))
+      .status,
+  ).toBe(404);
+  records.push({
+    operation: "leaderboard",
+    fault: "compiled-route-composition",
+    durationMs: performance.now() - started,
+  });
 });
 
 describe.each<Operation>(["start", "save", "submit"])(

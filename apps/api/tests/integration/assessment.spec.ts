@@ -444,7 +444,7 @@ beforeAll(async () => {
     databaseConfig({ NODE_ENV: "test", DATABASE_URL: ddlUrl.toString() }),
     await loadMigrations("apps/api/src/infrastructure/database/migrations"),
   );
-  fixture = new Pool({ connectionString: url.toString(), max: 2 });
+  fixture = new Pool({ connectionString: url.toString(), max: 2, statement_timeout: 20000 });
   ops = new Pool({ connectionString: opsUrl.toString(), max: 1 });
   const runtimeConfig = databaseConfig({ NODE_ENV: "test", DATABASE_URL: runtimeUrl.toString() });
   db = new PostgresDatabase(runtimeConfig, (value) => observations.push(value));
@@ -3487,8 +3487,11 @@ describe("Candidate projection query plans", () => {
     const actor = await activated(),
       f = await submittedForReview("NEVER", false, actor);
     const version = JSON.parse(f.raw).payload.publishedVersionId;
-    await fixture.query(
-      `
+    // Keep seed statements bounded and refresh relation statistics between
+    // batches rather than issuing one artificial100k-row fixture statement.
+    for (let batch = 0; batch < 100; batch++) {
+      await fixture.query(
+        `
       INSERT INTO assessment.attempts (
         id, user_id, exam_id, version_id, status, started_at, deadline, submitted_at,
         submission_id, submission_event_id, submission_kind, expired, failure_code, revision
@@ -3509,11 +3512,12 @@ describe("Candidate projection query plans", () => {
         'DIAGNOSTIC_FIXTURE',
         1
       FROM
-        generate_series(1,100000) g
+        generate_series($4::int, $5::int) g
     `,
-      [actor.id, f.exam, version],
-    );
-    await fixture.query("ANALYZE assessment.attempts");
+        [actor.id, f.exam, version, batch * 1000 + 1, (batch + 1) * 1000],
+      );
+      await fixture.query("ANALYZE assessment.attempts");
+    }
     let captured: { sql: string; parameters: unknown[] } | null = null;
     const traced = new Proxy(db, {
       get(target, key) {

@@ -23,5 +23,6 @@ export interface ApiConfig extends CommonConfig {
   passwordConcurrency: number;
   passwordMaxQueued: number;
   csrfKey: Buffer;
+  leaderboardKey: Buffer;
   trustedProxies: string[];
 }

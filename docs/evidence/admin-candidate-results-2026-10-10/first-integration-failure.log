@@ -1,0 +1,59 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/.local/rep04/setup.cjs
+
+(node:16581) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"729e46e0-a7af-4548-ad48-e6434677c37c"}
+{"event":"unhandled_exception","correlationId":"c99ef4da-d937-4b47-8f7b-a90431be3669"}
+{"event":"unhandled_exception","correlationId":"fed0a777-5830-4069-a601-2ba1b5c64b55"}
+{"event":"unhandled_exception","correlationId":"915eb905-58e9-49af-b309-64ff8134780d"}
+{"event":"unhandled_exception","correlationId":"e3399e2a-17e4-4aec-8c7e-251ff8fa65a3"}
+{"event":"unhandled_exception","correlationId":"3bab6a57-82c9-4116-924f-46da1cf15979"}
+{"event":"unhandled_exception","correlationId":"920660c2-b8db-4afb-b05c-307834f71494"}
+{"event":"unhandled_exception","correlationId":"8207462d-0c83-44c9-bfc3-910215372bac"}
+{"event":"unhandled_exception","correlationId":"0868b4fe-8328-4b34-abdd-80d58a638f6b"}
+{"event":"unhandled_exception","correlationId":"683e205d-e2a8-47ae-bd3e-cc72e5f05217"}
+{"event":"unhandled_exception","correlationId":"0e1c2353-01c3-403a-b94c-2f2ec16709f9"}
+FAIL apps/api/tests/integration/identity.spec.ts
+  ● Identity on real restricted PostgreSQL › delivers a captured SMTP verification link and never sends an already consumed job
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+      905 |     };
+      906 |     const item = messages.messages.find((m) => m.To.some((t) => t.Address === a.email));
+    > 907 |     expect(item).toBeDefined();
+          |                  ^
+      908 |     const mail = (await (
+      909 |       await fetch(`http://127.0.0.1:18025/api/v1/message/${item!.ID}`)
+      910 |     ).json()) as { Text: string };
+
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:907:18)
+
+
+Summary of all failing tests
+FAIL apps/api/tests/integration/identity.spec.ts
+  ● Identity on real restricted PostgreSQL › delivers a captured SMTP verification link and never sends an already consumed job
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+      905 |     };
+      906 |     const item = messages.messages.find((m) => m.To.some((t) => t.Address === a.email));
+    > 907 |     expect(item).toBeDefined();
+          |                  ^
+      908 |     const mail = (await (
+      909 |       await fetch(`http://127.0.0.1:18025/api/v1/message/${item!.ID}`)
+      910 |     ).json()) as { Text: string };
+
+      at Object.<anonymous> (apps/api/tests/integration/identity.spec.ts:907:18)
+
+
+Test Suites: 1 failed, 20 passed, 21 total
+Tests:       1 failed, 359 passed, 360 total
+Snapshots:   0 total
+Time:        225.451 s, estimated 245 s
+Ran all test suites.

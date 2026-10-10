@@ -1,15 +1,56 @@
 # Examination module guide
 
+Reporting business-metrics uses a private Application snapshot/query port and
+read-only Assessment attempt columns, with pure count/window/subset validation.
+Current Identity access and safe global access audit commit before response. Cohort
+current state and global backlog are separate; compact purged completions count,
+replay keeps original age, no SQS/HTTP/PII/score join. See [ADR-014](adr/014-business-metrics-snapshot.md)
+and [BM-01–06](admin-business-metrics-2026-10-10.md). No public export/new resource.
+
+Reporting's REP-04 Admin best/latest owns private candidate-results DTO/query/
+cursor/service, pure reported-score validation, pg/crypto and HTTP adapters.
+Declared Catalog/Assessment sources supply eligibility and both selections in one
+primary statement. Only Identity's public current-access capability crosses the
+service boundary; no private Assessment import or new facade export. Source
+schema/selection/retention changes require regression review. See
+[ADR-013](adr/013-admin-best-latest-report.md).
+
+Reporting REP-03 adds a private question-statistics Application service/query/
+cursor port, pure Domain count validation, pg/crypto adapters and thin HTTP
+controller. The query explicitly declares frozen Catalog and Assessment counter
+sources; Assessment alone maintains them. Only Identity's public access capability
+crosses the service boundary. No new exported facade, repository, business write
+or technical integration is introduced. See [REP-03](admin-question-statistics-2026-10-10.md).
+
+Reporting REP-02 owns private submissions/result DTOs, query/cursor ports, plain service, pg/crypto adapters and HTTP controller. No private Assessment imports or additional exported facade. Cross-schema sources are declared in SubmissionsQuery; only technical access audit writes. See [REP-02](admin-submissions-2026-10-10.md).
+
 This specializes the illustrative [.ai/module-template.md](../.ai/module-template.md), without replacing the architecture contract.
 
 | Capability | Owns | Write invariants | Read projections | Public boundary |
 | --- | --- | --- | --- | --- |
 | Identity | User, Role, permissions, Session | unique normalized identity, secure hash, session rotation/revocation | principal/session metadata, admin identity views | authenticate/authorize capability, no exported repository |
 | Catalog | Exam, ExamSection, Question, QuestionOption, ExamQuestion published snapshots | publication completeness, open/close/duration validity, immutable published versions | catalog/detail/question projections without keys | published policy/version, frozen candidate page and trusted grading snapshot capabilities for Assessment |
-| Assessment | ExamAttempt, AttemptAnswer, ExamResult, Leaderboard, question statistics | ownership, attempt limit, deadline, answer version, submit/result idempotency | resume/status/result/history/ranking | candidate use cases and grading command |
-| Reporting | operational/business read contracts | no business writes | active candidates, submissions/scores/question stats/audit/system summaries | read-only admin queries with permission/data scope |
+| Assessment | ExamAttempt, AttemptAnswer, ExamResult, Leaderboard, cursor epochs, question statistics | ownership, attempt limit, deadline, answer version, submit/result idempotency | resume/status/result/history; authorized leaderboard HTTP | candidate use cases/grading command; public Reporting ranking facade for read |
+| Reporting | operational/business read contracts | no business writes | public ranking; active candidates, submissions/scores/question stats/audit/system summaries | public ranking facade; read-only Admin queries with permission/data scope |
 
 AuditLog/outbox/inbox/pool/queue/cache/telemetry are technical mechanisms, not per-table business modules. Audit port participates in admin mutation transactions. Result/leaderboard/statistics initially share Assessment ownership; split capabilities only with a demonstrated lifecycle/ownership requirement and explicit event/projection freshness.
+
+REP-01 Admin monitor adds a Reporting-owned thin HTTP controller and private
+Application query/service/cursor plus SQL adapter; no additional exported facade
+is required because callers stay inside Reporting. Sources are catalog.exams(id)
+and assessment.attempts(exam_id/id/user_id/status/started_at/deadline/purged_at).
+Read-only business projection and technical audit share a short UnitOfWork with
+Identity public revalidation; no Assessment repository or write capability is
+imported. ReportingModule still exports only the Candidate ranking capability.
+See [scope, freshness and validation](admin-monitor-2026-10-10.md).
+
+2026-10-09 public leaderboard increment: Reporting owns the public Application
+ranking facade/query/cursor/alias ports and private read adapters under
+[ADR-012](adr/012-public-ranking-projection.md). Assessment authenticates/admits the
+HTTP call; no private Reporting service/port/repository crosses that boundary.
+Reporting declares fresh primary Identity/Catalog/Assessment read sources, including
+Assessment-owned destructive cursor epochs. Later paragraphs retain earlier stage
+context; [roadmap](implementation-roadmap.md) is the current delivery source.
 
 Use case specification before writing code: actor/permission, READ or WRITE, owning capability, input/result/error contract, invariant, UnitOfWork boundary, stable lock order, idempotency key/fingerprint/retention, public cross-module call, outbox/inbox requirement, deadline/time source, query/round-trip budget, failure/retry/observability policy and tests. No every-layer scaffold by default.
 

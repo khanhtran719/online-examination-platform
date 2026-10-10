@@ -178,6 +178,37 @@ test("requires module composition to use explicit public capabilities of another
     assert.ok(inspectImports(caller, `import x from '${dependency}';`).length > 0);
 });
 
+test("permits only reviewed Reporting ranking entry points and preserves private boundaries", () => {
+  const controller = "apps/api/src/modules/assessment/presentation/http/leaderboard.controller.ts";
+  assert.deepEqual(
+    inspectImports(
+      controller,
+      "import x from '../../../reporting/application/facades/ranking.facade';",
+    ),
+    [],
+  );
+  assert.deepEqual(
+    inspectImports(
+      "apps/api/src/modules/assessment/assessment.module.ts",
+      "import x from '../reporting/reporting.module';",
+    ),
+    [],
+  );
+  for (const dependency of [
+    "../../../reporting/reporting.module",
+    "../../../reporting/application/services/ranking.service",
+    "../../../reporting/application/ports/ranking.query",
+    "../../../reporting/infrastructure/persistence/postgres-ranking.query",
+  ])
+    assert.ok(inspectImports(controller, `import x from '${dependency}';`).length > 0);
+  assert.ok(
+    inspectImports(
+      "apps/api/src/infrastructure/http/adapter.ts",
+      "import x from '../../modules/reporting/application/facades/ranking.facade';",
+    ).length > 0,
+  );
+});
+
 test("rejects legacy placement after normalization closes", () => {
   for (const file of ["platform/application/security.ts", "worker.ts", "operator-admin.ts"])
     assert.ok(inspectPlacement(`apps/api/src/${file}`).length > 0);

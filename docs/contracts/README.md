@@ -1,5 +1,21 @@
 # HTTP and integration contract v1
 
+Business metrics use additive GET /v1/admin/business-metrics/reporting.read and
+[ADR-014](../adr/014-business-metrics-snapshot.md). Exact start-time cohort/current
+state plus independent global durable backlog, primary asOf, paired max7day UTC
+bounds, null empty oldest/age, safe access audit. Combined /v1/admin/metrics/its
+Metrics schema and Web parser remain unchanged/specification-only pending real
+HTTP/SQS providers. No fabricated queue depth, zero provider readings or charts.
+
+REP-04 Admin best/latest adds one v1 READ operation, retaining existing HTTP/event
+meanings:47 operations/435 examples validate. Exact-version candidate-results has
+nullable best COMPLETED and required latest submitted (including pending/FAILED
+with null scores). Current permission and exact-version audit, opaque15min
+candidate-order keyset and fresh primary selection are explicit. [ADR-013](../adr/013-admin-best-latest-report.md)
+and [subset plan](../admin-candidate-results-2026-10-10.md) record current delivery;
+paragraphs below retain historical Phase02/normalization context. Production and
+privacy-ledger/restore gates remain separate.
+
 [Source-layout normalization](../architecture-normalization-plan.md) does not change HTTP/event contracts. [API review](../api-architecture-review.md) distinguishes the nine implemented Identity routes from the 46 specified operations; keep status/cookies/CSRF/idempotency behavior stable during moves or ORM evaluation.
 
 Status: specified, not served by an application. SPEC-10 deliverables: [OpenAPI](openapi.yaml), [event schema](attempt-submitted.v1.schema.json), [acceptance matrix](../contract-tests.md). Implementation must also follow [product](../product-specification.md), [permissions](../security-and-permissions.md), [SLO/workload](../slo-and-workload.md) and architecture.

@@ -61,7 +61,8 @@ beforeEach(() => {
     region: "us-east-1",
     queueUrl: `${endpoint}/123456789012/submissions`,
     endpoint,
-    timeoutMs: 100,
+    // Happy-path SDK bootstrap is not a 100ms latency assertion.
+    timeoutMs: 1000,
   });
 });
 afterEach(() => adapter.close());
@@ -86,6 +87,13 @@ describe("SQS publisher SDK local HTTP contract (not live AWS)", () => {
     ]);
   });
   it("times out a pending send without waiting for the server", async () => {
+    adapter.close();
+    adapter = new SqsPublisher({
+      region: "us-east-1",
+      queueUrl: `${endpoint}/123456789012/submissions`,
+      endpoint,
+      timeoutMs: 100,
+    });
     mode = "slow";
     const started = performance.now();
     await expect(adapter.publish("{}")).rejects.toMatchObject({

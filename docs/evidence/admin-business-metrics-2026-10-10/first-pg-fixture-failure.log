@@ -1,0 +1,38 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/.local/rep05/setup.cjs --runTestsByPath apps/api/tests/integration/admin-business-metrics.spec.ts
+
+(node:21950) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"dd58e155-18af-42b6-9f2e-6336e8353fcd"}
+{"event":"unhandled_exception","correlationId":"d36ea625-b054-4371-b458-d34590ba13cd"}
+FAIL apps/api/tests/integration/admin-business-metrics.spec.ts (8.006 s)
+  ● Business metrics on real restricted primary PostgreSQL › distinguishes current cohort states from global backlog without consent/archive filters
+
+    expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+    -   "oldestSubmittedAt": undefined,
+    +   "oldestSubmittedAt": "2026-10-08T10:51:52.690Z",
+        "pendingAttempts": 4,
+        "replayPendingAttempts": 1,
+      }
+
+      769 |       expiredCompletedAttempts: 1,
+      770 |     });
+    > 771 |     expect(m.backlog).toMatchObject({
+          |                       ^
+      772 |       pendingAttempts: 4,
+      773 |       replayPendingAttempts: 1,
+      774 |       oldestSubmittedAt: old.event.payload.submittedAt,
+
+      at Object.<anonymous> (apps/api/tests/integration/admin-business-metrics.spec.ts:771:23)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 15 passed, 16 total
+Snapshots:   0 total
+Time:        8.038 s
+Ran all test suites within paths "apps/api/tests/integration/admin-business-metrics.spec.ts".

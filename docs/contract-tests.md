@@ -1,6 +1,6 @@
 # Required contract test matrix
 
-These system scenarios are **planned**. Executed tests cover pure Attempt/scoring, technical DB/config/UoW fixtures and contract tooling; they do not prove the complete business/API/worker/browser cases below. AC-31/30 have partial technical evidence in Phase03, while their application/image drills remain pending.
+This matrix defines required scenarios and contract traceability. Execution status and evidence are maintained in the [implementation roadmap](implementation-roadmap.md) and each owning closure report. Local API/PostgreSQL/worker and selected browser checks have run in the documented increments; they do not imply complete AWS, image, restore or production acceptance. AC-31/30 still require their application/image drills.
 
 Phase 02 case IDs below are public-contract traceability, not assertions of executed tests. OpenAPI `x-cases` resolves to these IDs. Policy owners are [product](product-specification.md), [security/permissions](security-and-permissions.md), [HTTP/events](contracts/README.md) and [SLO/workload](slo-and-workload.md).
 
@@ -41,8 +41,10 @@ Phase 02 case IDs below are public-contract traceability, not assertions of exec
 | AC-33 | Email verification/activation/resend races and pre-registration | No unverified session;30min single-use token, GET inert, final email-owner password, duplicate outcome without credential rewrite, generic resend with bounds | ID-01/02/09/10, PostgreSQL + API + HTTPS browser |
 | AC-34 | Asymmetric JWT substitution/key lifecycle | Wrong key/alg/kid/issuer/type/audience/use/claims rejected; refresh not access; DB revocation/current permissions; overlapping normal rotation and compromise deny | ID-03/05/09, crypto + two API instances + operational drill |
 | AC-35 | Verification email intent/crash/retry/privacy | Account/challenge/intent atomic, fenced lease, no transaction during sends, duplicate mail safe, expiry/consume ciphertext cleanup, no credential leaks; SES failure/backlog visible | ID-11, PostgreSQL + loopback mailbox, AWS SES operations later |
+| AC-36 | Admin best/latest selection and stable candidate pages | Exact frozen version; retained best COMPLETED by score/submit/UUID, latest submitted including pending/FAILED with null scores; current permission/version audit; grading/replay/purge and cursor preserve semantics | [REP-04 Admin subset](admin-candidate-results-2026-10-10.md), restricted PostgreSQL + compiled HTTP; AWS/privacy ledger remain separate |
+| AC-37 | Admin business cohort and global durable backlog | Started-at [from,to) current state, compact purged completion counts, replay-pending/global oldest age, explicit null empty backlog; current permission/audit and atomic grading/replay/purge visibility; no fabricated SQS/HTTP telemetry | [REP-05](admin-business-metrics-2026-10-10.md), restricted PostgreSQL + compiled HTTP; load/AWS remain separate |
 
-The older scenario-oriented matrix below remains an evidence-environment map; IDs above supply operation traceability. All system cases remain planned until their owning phases run them.
+The older scenario-oriented matrix below remains an evidence-environment map; IDs above supply operation traceability. Treat each scenario as pending unless the owning phase records its executed checks and evidence; local and AWS acceptance remain separate.
 
 | Capability | Failure/concurrency scenario | Required durable outcome | Evidence environment |
 | --- | --- | --- | --- |

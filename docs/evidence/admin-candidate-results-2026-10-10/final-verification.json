@@ -1,0 +1,30 @@
+{
+  "currentSourceHashFile": "source-final-sha256.json",
+  "files": 56,
+  "changedSincePriorSourceSnapshot": [
+    "apps/api/tests/integration/admin-candidate-results.spec.ts"
+  ],
+  "change": "SQL comma whitespace only; bindings/order/tokens unchanged",
+  "focusedSqlSpacing": {
+    "passed": 1,
+    "intentionallyDeselected": 17,
+    "seconds": 2.548,
+    "passedAfterFixtureReady": true,
+    "priorFixtureStoppedFailureRecorded": true
+  },
+  "fullIntegration": {
+    "passed": 361,
+    "suites": 21,
+    "skipped": 0
+  },
+  "fixtureCleanup": {
+    "otherDatabases": 0,
+    "extraLoginRoles": 0,
+    "otherClientConnections": 0,
+    "temporaryKeyDirectories": 0
+  },
+  "fixtureContainersStopped": true,
+  "volumesRetained": true,
+  "priorFilesUnchanged": 493,
+  "productionAccepted": false
+}

@@ -1,0 +1,53 @@
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (4.379875ms)
+✔ detects module-private and same-module infrastructure access from application (1.066334ms)
+✔ permits a public application capability and infrastructure driver adapter (1.263833ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.763875ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (0.5835ms)
+✔ checks TypeScript import types and import-equals dependencies (0.697209ms)
+✔ rejects Node network imports with or without node prefix (0.20025ms)
+✔ checks technical folder barrel imports without a trailing slash (0.191041ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.39875ms)
+✔ keeps domain independent of application orchestration (0.238ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.349792ms)
+✔ keeps all global technical roots independent from business modules (0.273667ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.2265ms)
+✔ requires module composition to use explicit public capabilities of another module (0.230333ms)
+✖ permits only reviewed Reporting ranking entry points and preserves private boundaries (1.210375ms)
+✔ rejects legacy placement after normalization closes (0.154583ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (0.292667ms)
+✔ allows only the reviewed Catalog worker composition boundary (0.176ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 17
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 246.845417
+
+✖ failing tests:
+
+test at scripts/__tests__/quality.unit.spec.mjs:181:1
+✖ permits only reviewed Reporting ranking entry points and preserves private boundaries (1.210375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'Private module contract is not a public entry point: ../../../reporting/application/facades/ranking.facade'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/quality.unit.spec.mjs:183:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'Private module contract is not a public entry point: ../../../reporting/application/facades/ranking.facade' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

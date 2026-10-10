@@ -20,6 +20,7 @@ export interface RuntimeSettings {
     publicKeys?: string;
     signing?: string;
     csrf?: string;
+    leaderboard?: string;
   };
 }
 /** Pure validation: file/provider access occurs only at the infrastructure startup boundary. */
@@ -42,9 +43,12 @@ export function validateRuntimeSettings(
     throw new Error("Invalid origin");
   if (
     mode === "worker" &&
-    (env.JWT_PRIVATE_KEY_FILE || env.JWT_ACTIVE_KID || env.JWT_PUBLIC_KEYS_FILE)
+    (env.JWT_PRIVATE_KEY_FILE ||
+      env.JWT_ACTIVE_KID ||
+      env.JWT_PUBLIC_KEYS_FILE ||
+      env.LEADERBOARD_KEY_FILE)
   )
-    throw new Error("Worker must not receive signing credentials");
+    throw new Error("Worker must not receive API identity credentials");
   const adapter = env.MAIL_ADAPTER;
   if (
     !["smtp", "ses"].includes(adapter ?? "") ||
@@ -86,6 +90,7 @@ export function validateRuntimeSettings(
             publicKeys: env.JWT_PUBLIC_KEYS_FILE,
             signing: env.JWT_PRIVATE_KEY_FILE,
             csrf: env.CSRF_KEY_FILE,
+            leaderboard: env.LEADERBOARD_KEY_FILE,
           }
         : {}),
     },

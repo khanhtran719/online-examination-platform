@@ -1,0 +1,10 @@
+
+> online-examination-platform@0.1.0 lint
+> eslint apps scripts && npm run quality
+
+
+> online-examination-platform@0.1.0 quality
+> node scripts/quality.mjs && npm run contracts:check
+
+apps/api/src/modules/assessment/assessment.module.ts: Private module contract is not a public entry point: ../reporting/reporting.module
+apps/api/src/modules/assessment/presentation/http/leaderboard.controller.ts: Private module contract is not a public entry point: ../../../reporting/application/facades/ranking.facade

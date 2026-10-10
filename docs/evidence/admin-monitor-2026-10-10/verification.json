@@ -1,0 +1,29 @@
+{
+  "protectedFiles": 451,
+  "appliedMigrations": 18,
+  "builtMigrationsMatch": true,
+  "apiUnitTests": 281,
+  "apiUnitSuites": 37,
+  "toolingTests": 42,
+  "webTests": 96,
+  "rootTotal": 419,
+  "integrationTests": 299,
+  "integrationSuites": 18,
+  "integrationSkipped": 0,
+  "httpsTests": 10,
+  "productionAccepted": false,
+  "postFormatIntegrationTests": 18,
+  "sourceFiles": 24,
+  "roadmap": {
+    "items": 216,
+    "checked": 82,
+    "pending": 134
+  },
+  "cleanup": {
+    "otherDatabases": 0,
+    "extraLoginRoles": 0,
+    "otherClientConnections": 0
+  },
+  "fixtureKeyDirectories": 0,
+  "testContainersStopped": true
+}

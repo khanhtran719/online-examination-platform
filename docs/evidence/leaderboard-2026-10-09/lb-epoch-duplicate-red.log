@@ -1,0 +1,29 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/leaderboard-baseline-env.cjs --runTestsByPath apps/api/tests/integration/leaderboard.spec.ts --testNamePattern invalidates a continuation
+
+(node:82748) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/leaderboard.spec.ts
+  ● Public leaderboard on restricted PostgreSQL/HTTP › invalidates a continuation when retention replaces a seen best with a worse surviving attempt
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 200
+
+      564 |       expect(body(continued).items[0]!.pseudonym).toBe(first.items[0]!.pseudonym);
+      565 |     }
+    > 566 |     expect(continued.statusCode).toBe(400);
+          |                                  ^
+      567 |     expect(body(await get(v)).items).toHaveLength(2);
+      568 |   });
+      569 |   it("keeps epoch changes atomic and restricts their write authority", async () => {
+
+      at Object.<anonymous> (apps/api/tests/integration/leaderboard.spec.ts:566:34)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 9 skipped, 10 total
+Snapshots:   0 total
+Time:        2.685 s, estimated 3 s
+Ran all test suites within paths "apps/api/tests/integration/leaderboard.spec.ts".

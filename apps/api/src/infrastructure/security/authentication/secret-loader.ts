@@ -82,6 +82,7 @@ export async function loadRuntimeConfig(
       passwordConcurrency: settings.passwordConcurrency,
       passwordMaxQueued: settings.passwordMaxQueued,
       csrfKey: await symmetric(settings.secretFiles.csrf),
+      leaderboardKey: await symmetric(settings.secretFiles.leaderboard),
       trustedProxies: settings.trustedProxies,
     };
   } catch {

@@ -1,0 +1,9 @@
+{
+  "cases": 18,
+  "suites": 1,
+  "skipped": 0,
+  "passed": true,
+  "seconds": 32.443,
+  "sqlTokensAndLiteralsUnchanged": true,
+  "queryLiteralsCompared": 51
+}

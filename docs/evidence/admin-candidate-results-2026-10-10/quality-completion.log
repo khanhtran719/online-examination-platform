@@ -1,0 +1,10 @@
+
+> online-examination-platform@0.1.0 quality
+> node scripts/quality.mjs && npm run contracts:check
+
+Quality passed: local Markdown links/anchors, project context/section IDs, source import boundaries and unit-test placement. Static checks do not prove runtime consistency.
+
+> online-examination-platform@0.1.0 contracts:check
+> node scripts/contracts.mjs
+
+Contracts passed: 47 operations, 435 examples, event schema and declared boundary metadata. Runtime security/durability/SLO remain unverified.

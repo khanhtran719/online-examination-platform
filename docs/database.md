@@ -1,5 +1,52 @@
 # PostgreSQL implementation
 
+Reporting business-metrics declares read-only assessment.attempts(started_at,
+submitted_at,status,expired,deadline,replay_pending) only. One primary statement
+counts current start-time cohort and global pending/replay age, including compact
+COMPLETED identities; no result/PII/answer join, source write or new index/grant.
+The baseline is an O(N) identity scan; bounded output/time window does not imply
+bounded work. [BM-01–06](admin-business-metrics-2026-10-10.md) records natural100k/
+1M plans, query budget and local diagnostics separately from DB saturation/AWS.
+
+REP-04 Admin best/latest uses one declared Reporting primary statement over exact
+Catalog publication identity and retained Assessment attempts/results. Candidate
+UUID limiting precedes two lateral selections; current Identity lock/projection/
+version audit share a short UoW. Existing attempt candidate/exam and result identity
+indexes serve the100k-attempt/10k-candidate diagnostic. No migration/index/grant,
+answer scan, COUNT/OFFSET, cache or source write. Scanned work still depends on
+population/skew; no capacity claim. [ADR-013](adr/013-admin-best-latest-report.md)
+and [subset plan](admin-candidate-results-2026-10-10.md) record semantics and limits.
+
+REP-03 adds one Reporting primary read projection over declared frozen Catalog
+versions/sections/questions/options and Assessment question/option counters. It
+limits frozen question candidates before lateral option aggregation and reads
+bigint counters as exact decimal text; invalid/out-of-contract counts fail closed.
+Existing indexes are retained after natural plans on10k questions/100k options;
+no attempt-answer scan, migration, new index or grant is added. The short audited
+read UoW holds only the current actor lock. Grading/purge writes stay Assessment
+owned. See [REP-03](admin-question-statistics-2026-10-10.md) and its diagnostic limits.
+
+REP-02 uses declared primary Catalog/Assessment projections with no new migration/index/grant. The list limits the attempt page before result join and uses stable start/ID keysets; detail aggregates bounded frozen section scores in one statement. Current actor revalidation and access audit share one short UoW. See [REP-02](admin-submissions-2026-10-10.md).
+
+REP-01 adds no migration/index/table or runtime grants. Its primary Reporting
+projection uses catalog.exams existence and assessment.attempts lifecycle columns,
+one bounded statement in an audited read UnitOfWork. An isolated100k/2000-active
+A/B/A compared an exam/start/ID partial index with natural existing plans; scoped
+tail benefit was not compelling, so the trial index was removed and all18
+migrations remain byte-identical. [Report](admin-monitor-2026-10-10.md) and
+[experiment](../experiments/admin-monitor/README.md) distinguish these local samples
+from saturation/production sizing. Revisit under larger active/historical/version
+distributions and concurrent Admin traffic before accepting schema overhead.
+
+Latest2026-10-09: [ADR-012](adr/012-public-ranking-projection.md) adds forward0018
+for Assessment-owned leaderboard cursor epochs and column-immutable best-row
+candidate/version identity. Runtime SELECT-only epoch access; owner-controlled
+transactional DELETE/downgrade triggers, no ordinary grading epoch write. Reporting
+reads declared Identity/Catalog/Assessment sources in one optimized statement.
+Eighteen source/build migrations are now required;0001–0017 stay immutable.
+Local tests apply them only in disposable databases; development55432 is untouched.
+Historical migration counts below describe their earlier increments.
+
 Prior dispatch2026-10-09: [submission dispatch closure](outbox-dispatch-2026-10-08.md) adds forward0014 and administrator-bootstrapped dispatch NOLOGIN role.0001–0013 bytes preserved. API loses delivery metadata UPDATE; worker has outbox-only grants; operator-only replay/audit is atomic. Separate replay_at does not alter event time/body. ACK/failure uses post-lock DB time, with real lease-expiry/rotation/replay/grants regressions. Historical eight-migration normalization evidence below remains historical.
 
 Scope: DB-01–11 foundation, Phase04 Identity adapters, local Catalog persistence and local Assessment attempt persistence. PostgreSQL17, parameterized pg infrastructure (ADR-001). Seventeen source migrations exist:0014 adds dispatch/replay privileges,0015 grading result/statistics/inbox ownership,0016 failure/replay generation fences and0017 retention compaction/maintenance functions.0001–0016 are immutable;0017 is the new forward file tested in disposable fixtures. Applied 0001–0011 retain their bytes; new 0012 fixes accepted provenance validation and 0013 adds scheduler retry metadata. `0009_catalog_question_points.sql` is the forward Catalog column. `0010_attempt_revision.sql` adds required `assessment.attempts.revision`. Identity real-PG/HTTP/retention tests and [local diagnostic](../experiments/identity-local/README.md) exist. Catalog draft, publication, projection and import flows have disposable-database tests. Assessment start, save and submit flows have disposable-database tests. Grading/recovery/retention persistence have local restricted-PG evidence; AWS saturation remains pending. [Foundation review](phase-03-review.md), [Identity review](phase-04-review.md), [migration runbook](runbooks/database-migrations.md), [decision](adr/004-postgresql-durability.md).

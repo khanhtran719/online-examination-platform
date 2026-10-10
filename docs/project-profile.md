@@ -1,5 +1,88 @@
 # Project profile
 
+REP-05 update2026-10-10: [Business metrics](admin-business-metrics-2026-10-10.md)
+BM-01–06 COMPLETE locally; **85/216 checked,131 pending**. Additive Reporting
+start-time cohort/current durable counts plus global pending/replay backlog,
+primary asOf, paired max7day UTC window, current permission and safe access audit.
+Combined HTTP/SQS metrics and Web parser unchanged/specification-only.38 new units/
+18 PG cases;559 root/379 integration22 suites/0 skipped,18 post-format PG PASS;
+lint/typecheck/build/quality/contracts48 operations/445 examples. SQL format
+preserves435 tokens/bindings;18 source/build migrations match,521 prior files
+unchanged,65 source hashes. SQS happy-path fixture timing separated from its100ms
+deadline test; original first-full failure cause unconfirmed, runtime unchanged.
+Cleanup0, test containers stopped/volumes retained. Natural100k/1M sequential
+scan baselines,8 SQL/507–511bytes;1M HTTP p95≈571–646ms across independent runs
+excludes TCP/TLS/ALB and proves no sustainable capacity/SLO/AWS savings. No new
+schema/resource or browser HTTPS rerun. REP-04 privacy ledger/deletion/restore
+stays SUBSET/unchecked. Next proposed REP-06 audit lifecycle; Web, technical
+providers and AWS gates remain open, production NOT ACCEPTED. No commit/deploy;
+prior workspace preserved on local codex/rep05-business-metrics branch.
+[Evidence](evidence/admin-business-metrics-2026-10-10/README.md). Previous paragraphs
+below retain their historical source/test states.
+
+Latest REP-04 Admin subset update2026-10-10: [Best/latest candidate report](admin-candidate-results-2026-10-10.md)
+BL-01–06 COMPLETE locally; roadmap84/216 checked,132 pending. Reporting-owned
+exact frozen-version pairs select retained best COMPLETED by score/submit/UUID
+and latest submitted including pending/FAILED with null scores. Current permission,
+exact-version audit, stable candidate keyset and grading/replay/purge verified.
+521 root/361 integration21 suites/0 skipped PASS; lint/typecheck/build/quality/
+contracts47 operations/435 examples.35 new units/18 PG cases; deterministic SMTP
+retry regression fixes the local test harness only, with no Identity runtime change.
+18 source/build migrations match,493 prior files unchanged,56 source hashes;
+cleanup0 and test containers stopped with volumes retained. Natural100k-attempt
+fixture,8 SQL/page,44,604bytes; paced local inject p95/p99≈46.380/50.591ms excludes
+TCP/TLS/ALB and proves no sustainable capacity/AWS savings/SLO. No new schema or
+resource; no browser HTTPS rerun. REP-04 remains SUBSET and unchecked: independent
+privacy ledger/deletion/restore still open. Web, audit lifecycle and AWS gates remain
+open; production NOT ACCEPTED. Next proposed: REP-05 business metrics.
+[Evidence](evidence/admin-candidate-results-2026-10-10/README.md).
+
+Latest REP-03 update2026-10-10: [Admin question statistics](admin-question-statistics-2026-10-10.md)
+accepted locally;roadmap84/216 checked,132 pending. Exact frozen version/all retained
+COMPLETED attempts, zero counts, atomic replay/purge semantics, current permission
+and exact-version access audit verified. Private Reporting projection/cursor/pure
+count policy;8 SQL/page, no new migration/index/grant/key/package/resource.486 root/
+342 integration20 suites/0 skipped PASS; lint/typecheck/build/quality/contracts46/425.
+18 source/build migration hashes match,481 prior files unchanged, fixture cleanup0.
+Maximum100/10-option local inject p95/p99≈39.297/39.854ms,92,313bytes;10k-question/
+100k-option synthetic projection fixture and raw natural plans. No sustained
+capacity/production SLO/AWS savings claim; no browser HTTPS rerun. Production NOT
+ACCEPTED. REP-04 stays SUBSET; next proposed Admin best/latest reporting semantics.
+Independent privacy ledger/deletion/restore, audit retention, Web and AWS gates
+remain open. [Evidence](evidence/admin-question-statistics-2026-10-10/README.md).
+
+Latest REP-02 update2026-10-10: [Admin submissions/scores](admin-submissions-2026-10-10.md)
+accepted locally;roadmap83/216. Reporting private primary projections include
+all unpurged attempts, optional frozen version filter and completed section scores;
+current permission, mandatory audit and opaque15min keyset,8 SQL/read.452 root/
+320 integration19 suites/0 skipped PASS; lint/typecheck/build/quality/contracts
+46/425.18 source/build migrations match,472 prior files unchanged, fixture cleanup0.
+No new schema/index/grant/resource/secret; no HTTPS rerun or AWS capacity/cost/SLO
+claim. REP-04 remains SUBSET; next REP-03. Production NOT ACCEPTED. Web/Admin
+review/audit retention/concurrent load/saturation/restore and AWS gates stay open.
+
+Latest REP-01 update2026-10-10: [Admin monitor](admin-monitor-2026-10-10.md) accepted
+locally;roadmap82/216. Reporting owns primary catalog.exams/assessment.attempts
+projection and private service/cursor/adapters/controller; current Identity public
+revalidation and safe audit share existing UnitOfWork. Minimal opaque-ID page,
+fresh asOf/deadline, no presence claim,60s cursor and8 fixed SQL calls/read.
+419 root/299 integration18 suites/10 HTTPS PASS;46 operations/425 examples;
+451 prior files unchanged,18 source/build migrations match, cleanup0. No index/
+migration/resource accepted after local A/B/A. REP-04 remains SUBSET; next REP-02.
+Concurrent load/AWS cost/SLO/restore/audit retention/Web integration still open.
+
+Latest2026-10-10: [Public leaderboard](public-leaderboard-2026-10-09.md) LB-01–05
+accepted locally; REP-04 remains SUBSET,roadmap81/216. Assessment owns authorized
+HTTP admission; Reporting public facade/private read adapters join fresh declared
+Identity/Catalog/Assessment sources. Dedicated API key, opaque15min cursor and
+forward0018 atomic destructive-change epochs preserve privacy/no-duplicate paging.
+396 root/281 integration17 suites/10 HTTPS PASS; lint/typecheck/build/contracts46/425.
+386 historical files unchanged,18 source/built migrations match, cleanup0. Same
+100k query comparison shows local p95 gains with large-scan limits; no sustainable
+capacity/SLO/AWS cost selection. Reporting Admin/independent ledger/restore/Web
+business integration and production remain open; next bounded scope REP-01.
+Previous update paragraphs below describe their own historical source states.
+
 Updated2026-10-09. **Latest increment: [Assessment HTTP faults](assessment-http-faults-2026-10-09.md), ATT-10/11 accepted locally; roadmap81/216,135 pending.**26 new compiled API/real HTTP/restricted-PG cases,375 root and268 integration/16 suites PASS,0 skipped; lint/typecheck/build/contracts46/425 PASS. All three writes have actual lost ACK/client timeout/restart, late pre-COMMIT API/backend crash and lock/statement/acquire timeout/back-pressure proof. Two independent API tasks preserve duplicate/stale-tab semantics; SIGTERM drains admitted submit. No runtime/migration/grant/dependency/resource/event change;17 source/build migrations match and364 prior files remain byte-identical. [Recovery runbook](runbooks/assessment-http-recovery.md) resolves ambiguous writes using the same key/current session and durable reads. ATT-01–11/ASYNC-01–07/10 local acceptance remains; REP-04 public leaderboard/privacy, Reporting/Admin, managed AWS/load/restore/compatible rollout and production gates stay open. No capacity/SLO/cost/recovery-time claim; no commit/deploy.
 
 Updated2026-10-09. **Latest increment: [Assessment retention](assessment-retention-2026-10-09.md) ATT-09 accepted locally; roadmap79/216,137 pending.375 root/242 integration/15 suites/0 skipped; lint/typecheck/build/contracts46/425 PASS.** Assessment owns fixed Domain policy/Application UoW/private pg maintenance port under [ADR-011](adr/011-assessment-retention-compaction.md). Forward0017 adds compact purge marker, query-driven indexes, deferred guard and dedicated EXECUTE-only maintenance authority. Payload withdrawal keeps quota/submission/inbox fencing and atomically updates retained statistics/ranking/audit. Fixed UTC and finite completion gates protect direct RPCs. Opt-in/default-off one-shot worker drains on SIGTERM; [runbook](runbooks/assessment-retention.md) requires purged-aware API/source/DLQ rollout before enabling.17 source/build migrations match;16 applied files +306 prior evidence unchanged. Local timing/index observations are not sustainable capacity or AWS savings. Full ATT-10/11, REP-04 leaderboard/privacy/Admin, metadata/account/Catalog cleanup, deployment/restore and AWS/production remain open. Previous entries below are historical.
@@ -16,7 +99,7 @@ Phase04 remains open for ID-11/live SES; ATT-09, the remainder of ATT-10/11, man
 
 Current documentation handoff: [Web UI for Grok](web-ui/README.md), five document deliverables complete, with visual/screen/state/API/acceptance specs and a roughly 1,000-word prompt. A local SPA now exists in `apps/web`; the FE checklist is7/32 checked (FE-01/03/04/07–10); WEB-02 has local HTTPS acceptance while other Web gates stay open. [ADR-007](adr/007-web-ui-implementation-direction.md) chooses React/strict TypeScript/Vite static SPA, Candidate/exam/Admin shells and a small semantic navy/teal design system. Preview build and browser checks are recorded in [fix evidence](web-ui/evidence/fix-2026-10-07/README.md). The newer [Identity HTTPS evidence](evidence/identity-https-2026-10-07/README.md) accepts actual Chromium/API/PG/SMTP auth locally. Live Catalog/Assessment/Reporting, full Web/public visual delivery and production remain separate gates. Backend permissions/frozen metadata/replay revision and other gaps are recorded explicitly; the brief does not create APIs or change production gates.
 
-The target is one NestJS modular monolith, separate API/worker entry points and a static browser client. Identity owns users/roles/permissions/sessions. Catalog owns exams/sections/question bank/options/published snapshots. Assessment owns attempt/answers/result and leaderboard/statistic projections. Reporting owns read-only admin queries. Audit writes use a shared application port in admin transactions at `shared/application/ports`. Refer to [module guide](examination-module-guide.md) and architecture §§77–79.
+The target is one NestJS modular monolith, separate API/worker entry points and a static browser client. Identity owns users/roles/permissions/sessions. Catalog owns exams/sections/question bank/options/published snapshots. Assessment owns attempt/answers/result and leaderboard/statistic/epoch write projections. Reporting owns read-only public ranking and Admin query contracts. Audit writes use a shared application port in admin transactions at `shared/application/ports`. Refer to [module guide](examination-module-guide.md) and architecture §§77–79.
 
 Identity [ADR-005](adr/005-email-verification-and-signed-tokens.md) is implemented for email/password, single-use30min verification and final email-owner password. Access/refresh use ES256/P-256; PostgreSQL controls live sessions/rotation/revocation/current permissions. Real restricted-PG tests cover concurrent refresh/activation, atomic rate admission, logout retries and audited operator actions. Cookies/CSRF are implemented at the HTTP boundary; ID-07/WEB-02 actual browser HTTPS is complete locally; ephemeral leaf trust is not public PKI acceptance. Identity owns encrypted durable email intents, leases/fencing, retry/park/replay and bounded maintenance. SMTP delivery was captured locally; SES request/timeout adapter tests are not live SES delivery. Magic link/GitHub remain later ID-12/13. No extra email queue/Redis baseline.
 
@@ -24,9 +107,9 @@ Current source follows `config/shared/modules/infrastructure/workers`. Identity 
 
 Implemented placement is `apps/api/src/{config,shared,modules,infrastructure,workers}` under architecture §5/[ADR-006](adr/006-source-layout-normalization.md). Pure shared Domain/Application do not import Nest helpers in shared/common; global infrastructure does not own business adapters. Typed settings/validation are pure; secret and CA file reads remain in Infrastructure. The [normalization plan](architecture-normalization-plan.md) records historical mapping and all twelve completed gates; legacy source placement is rejected.
 
-PostgreSQL is authoritative. Parameterized `pg` adapters implement business ports (ADR-001); no driver/client/SQL/SDK/Nest dependencies in Domain/Application. Plain UnitOfWork has implemented join/rollback-only semantics and real DB tests. Sixteen versioned SQL migrations under `apps/api/src/infrastructure/database/migrations` retain the applied0001–0011 bytes unchanged. Forward `0009_catalog_question_points.sql` adds required `catalog.questions.points` from 1 to 1000 after backfilling any existing row to 1. Forward `0010_attempt_revision.sql` adds required `assessment.attempts.revision` starting at 1, with column-level `UPDATE (revision)` for the runtime role. Forward `0011_submission_kind.sql` adds `assessment.attempts.submission_kind` and the expiry-worker grants. Forward0012 fixes the accepted-kind CHECK;0013 persists scheduler retry metadata with narrow column privileges. Forward0014 adds submission dispatch authority/leases;0015 adds digest-only poison evidence and grading table/column grants. Forward0016 adds terminal failure generations/history/audit, restricted recovery authority and operator-only replay. Disposable integration databases apply all16; no long-lived development database was migrated by these worker increments. API, mail/expiry/dispatch/grading/recovery workers, operator and migration roles have separate grants; bounded pools/timeouts and local pg_stat_statements are implemented. Identity repository/receipts/auth projections and Catalog draft, publication, projection and import adapters are implemented. Assessment attempt start, resume, save, submit, publisher, grading result/projection and terminal recovery/replay adapters are implemented. Reporting adapters remain subsequent work. See [database guide](database.md), [ADR-004](adr/004-postgresql-durability.md). The O-01–04 comparison ran75 configurations/76,800 application operations with0 errors. [ADR-008](adr/008-persistence-evaluation.md) retains pg for current Identity based on observed CPU/footprint/control burden and no demonstrated net maintenance/TCO benefit of conversion; TypeORM raw remains viable. Scoped local evidence is not a universal ORM or AWS winner. ORM dependencies remain in an isolated experiment package. Sequelize requires a scoped uuid override and production logging/lifecycle work. The evaluated shutdown fix drains active and queued admitted pg work before closing. Synchronize remains forbidden. Build copies the byte-identical SQL assets to `dist/infrastructure/database/migrations`; the compiled CLI passed fresh apply and an already-migrated rerun from `/tmp`.
+PostgreSQL is authoritative. Parameterized `pg` adapters implement business ports (ADR-001); no driver/client/SQL/SDK/Nest dependencies in Domain/Application. Plain UnitOfWork has implemented join/rollback-only semantics and real DB tests. Eighteen versioned SQL migrations under `apps/api/src/infrastructure/database/migrations` retain the applied0001–0011 bytes unchanged. Forward `0009_catalog_question_points.sql` adds required `catalog.questions.points` from 1 to 1000 after backfilling any existing row to 1. Forward `0010_attempt_revision.sql` adds required `assessment.attempts.revision` starting at 1, with column-level `UPDATE (revision)` for the runtime role. Forward `0011_submission_kind.sql` adds `assessment.attempts.submission_kind` and the expiry-worker grants. Forward0012 fixes the accepted-kind CHECK;0013 persists scheduler retry metadata with narrow column privileges. Forward0014 adds submission dispatch authority/leases;0015 adds digest-only poison evidence and grading table/column grants. Forward0016 adds terminal failure generations/history/audit, restricted recovery authority and operator-only replay. Forward0017 adds retention compaction/guards and0018 destructive leaderboard cursor epochs. Disposable integration databases apply all18; no long-lived development database was migrated by these worker increments. API, mail/expiry/dispatch/grading/recovery workers, operator and migration roles have separate grants; bounded pools/timeouts and local pg_stat_statements are implemented. Identity repository/receipts/auth projections and Catalog draft, publication, projection and import adapters are implemented. Assessment attempt start, resume, save, submit, publisher, grading result/projection and terminal recovery/replay adapters are implemented. Reporting private primary projections now implement public leaderboard, Admin monitoring/submissions/scores/question statistics/best-latest and the business-metrics increment; broader audit/export/technical providers remain separate. AssessmentModule composes Reporting through its public ranking facade. See [database guide](database.md), [ADR-004](adr/004-postgresql-durability.md). The O-01–04 comparison ran75 configurations/76,800 application operations with0 errors. [ADR-008](adr/008-persistence-evaluation.md) retains pg for current Identity based on observed CPU/footprint/control burden and no demonstrated net maintenance/TCO benefit of conversion; TypeORM raw remains viable. Scoped local evidence is not a universal ORM or AWS winner. ORM dependencies remain in an isolated experiment package. Sequelize requires a scoped uuid override and production logging/lifecycle work. The evaluated shutdown fix drains active and queued admitted pg work before closing. Synchronize remains forbidden. Build copies the byte-identical SQL assets to `dist/infrastructure/database/migrations`; the compiled CLI passed fresh apply and an already-migrated rerun from `/tmp`.
 
-HTTP envelope: `{data,errorCode,message,status}`. Success leaves `errorCode` and `message` null. Errors use the same safe text for both fields. Global response/filter tests enforce this contract. Health `/live` and `/ready` run outside the envelope; server-issued correlation IDs use headers/structured logs. Nine Identity operations, the Catalog exam, question and import operations, and the Assessment start, resume, questions, answers, save, submit and status operations in the OpenAPI contract are implemented. Reporting and result/review operations remain specifications. Catalog lists return ADR-002 `{next,pageSize}` metadata. Default Fastify body limit is16384 bytes. Catalog Presentation owns route metadata for POST/PUT exam128KiB, question512KiB and POST import1MiB; the reusable global adapter applies only bounded technical metadata, without business URL knowledge. Catalog text limits count Unicode code points consistently with JSON Schema/PG. Full UTF-8/escaped BMP/astral payload, overflow, permissions and CSRF regressions pass. Exact PublicExam projections do not leak internal cursor fields.
+HTTP envelope: `{data,errorCode,message,status}`. Success leaves `errorCode` and `message` null. Errors use the same safe text for both fields. Global response/filter tests enforce this contract. Health `/live` and `/ready` run outside the envelope; server-issued correlation IDs use headers/structured logs. Nine Identity operations, the Catalog exam, question and import operations, and the Assessment start, resume, questions, answers, save, submit and status operations in the OpenAPI contract are implemented. Owned candidate result/history/review and named Reporting subsets have local implementations; admin key review/replay HTTP, audit browse and combined telemetry remain specified. See the roadmap for current acceptance. Catalog lists return ADR-002 `{next,pageSize}` metadata. Default Fastify body limit is16384 bytes. Catalog Presentation owns route metadata for POST/PUT exam128KiB, question512KiB and POST import1MiB; the reusable global adapter applies only bounded technical metadata, without business URL knowledge. Catalog text limits count Unicode code points consistently with JSON Schema/PG. Full UTF-8/escaped BMP/astral payload, overflow, permissions and CSRF regressions pass. Exact PublicExam projections do not leak internal cursor fields.
 
 The current domain helper models CREATED, IN_PROGRESS, SUBMITTED, PROCESSING, COMPLETED, EXPIRED and FAILED; expired submissions can be scored and retain `expired=true`. It accepts injected server time. Production must resolve authoritative time after obtaining the write lock. Adopted v1 uses EXACT_MATCH_V1, integer points/no partial credit, deadline=min(start+duration,frozen close), limits across versions, NEVER explanations by default, opt-in best-score leaderboard per version and transaction-local PROCESSING. [ADR-003](adr/003-idempotency-retention.md) defines UUIDv7 first-use freshness and seven-day durable receipts. Local persistence/race/ownership/worker tests implement the accepted roadmap subsets; full retention, Admin replay HTTP and managed AWS failure/recovery evidence remain open.
 

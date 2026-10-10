@@ -1,0 +1,58 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/.local/rep05/setup.cjs
+
+(node:22834) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"aad46d65-2593-4186-bcad-3737b129437d"}
+{"event":"unhandled_exception","correlationId":"296a78a0-c4dd-4732-aa61-e3d2fd3efb97"}
+{"event":"unhandled_exception","correlationId":"0ce7d0a6-5d85-4be6-bc17-38a22ede0ec1"}
+{"event":"unhandled_exception","correlationId":"2422f354-5f60-4537-a14e-bfca8f5e8efc"}
+{"event":"unhandled_exception","correlationId":"09224718-6197-4d81-a311-a04a3dfa6dc1"}
+{"event":"unhandled_exception","correlationId":"bd5f0532-45d5-4fbc-8946-47e0a4738eae"}
+{"event":"unhandled_exception","correlationId":"a6f48e17-5f87-43e9-a5ed-80564f830705"}
+{"event":"unhandled_exception","correlationId":"31d77163-3182-4c59-9e74-a08f28628394"}
+{"event":"unhandled_exception","correlationId":"2f982f8f-c738-4491-b986-a0abf8b0c14f"}
+{"event":"unhandled_exception","correlationId":"b29bbaa0-4842-4338-8201-8928a0b0d641"}
+{"event":"unhandled_exception","correlationId":"a1c82bb0-7059-4ff4-97f2-b5c4b9cc04bc"}
+{"event":"unhandled_exception","correlationId":"d05d7081-6208-4a9c-af74-e7aecb5473c4"}
+{"event":"unhandled_exception","correlationId":"c2b52485-0cef-491c-9413-1741fdea825d"}
+FAIL apps/api/tests/integration/sqs-publisher.spec.ts
+  ● SQS publisher SDK local HTTP contract (not live AWS) › sends the exact body and waits for valid broker ACK, without FIFO parameters
+
+    QUEUE_UNAVAILABLE
+
+      80 |         "UnsupportedOperation",
+      81 |       ].includes(name);
+    > 82 |       throw new QueuePublishError(permanent);
+         |             ^
+      83 |     } finally {
+      84 |       if (timer) clearTimeout(timer);
+      85 |     }
+
+      at SqsPublisher.publish (apps/api/src/infrastructure/messaging/sqs/sqs-publisher.ts:82:13)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-publisher.spec.ts:83:5)
+
+Summary of all failing tests
+FAIL apps/api/tests/integration/sqs-publisher.spec.ts
+  ● SQS publisher SDK local HTTP contract (not live AWS) › sends the exact body and waits for valid broker ACK, without FIFO parameters
+
+    QUEUE_UNAVAILABLE
+
+      80 |         "UnsupportedOperation",
+      81 |       ].includes(name);
+    > 82 |       throw new QueuePublishError(permanent);
+         |             ^
+      83 |     } finally {
+      84 |       if (timer) clearTimeout(timer);
+      85 |     }
+
+      at SqsPublisher.publish (apps/api/src/infrastructure/messaging/sqs/sqs-publisher.ts:82:13)
+      at Object.<anonymous> (apps/api/tests/integration/sqs-publisher.spec.ts:83:5)
+
+
+Test Suites: 1 failed, 21 passed, 22 total
+Tests:       1 failed, 377 passed, 378 total
+Snapshots:   0 total
+Time:        339.582 s
+Ran all test suites.

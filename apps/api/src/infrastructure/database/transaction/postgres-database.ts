@@ -12,6 +12,7 @@ export type DatabaseOperation =
   | "catalog.read"
   | "catalog.write"
   | "assessment.read"
+  | "reporting.read"
   | "assessment.write"
   | "security.rate"
   | "audit.write"

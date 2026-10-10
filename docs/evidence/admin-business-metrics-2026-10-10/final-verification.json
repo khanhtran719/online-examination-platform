@@ -1,0 +1,34 @@
+{
+  "currentSourceHashFile": "source-final-sha256.json",
+  "fullRunSourceHashFile": "source-full-run-sha256.json",
+  "files": 65,
+  "changedSinceFullRun": [
+    "apps/api/src/modules/reporting/infrastructure/persistence/postgres-business-metrics.query.ts"
+  ],
+  "change": "435 SQL tokens and bindings unchanged; predicate line breaks only",
+  "priorFilesUnchanged": 521,
+  "migrationsMatch": 18,
+  "fixtureCleanup": {
+    "otherDatabases": 0,
+    "extraLoginRoles": 0,
+    "otherClientConnections": 0,
+    "temporaryKeyDirectories": 0
+  },
+  "fixtureContainersStopped": true,
+  "volumesRetained": true,
+  "fullIntegration": {
+    "cases": 379,
+    "suites": 22,
+    "skipped": 0,
+    "passed": true,
+    "seconds": 313.296,
+    "beforeQueryWhitespaceFormatting": true
+  },
+  "postFormatFocused": {
+    "cases": 18,
+    "passed": true,
+    "seconds": 99.838
+  },
+  "finalDocumentationValidation": true,
+  "productionAccepted": false
+}

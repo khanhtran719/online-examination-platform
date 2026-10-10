@@ -9,6 +9,7 @@ const env = {
   JWT_PUBLIC_KEYS_FILE: "public.json",
   JWT_PRIVATE_KEY_FILE: "private.pem",
   CSRF_KEY_FILE: "csrf.key",
+  LEADERBOARD_KEY_FILE: "leaderboard.key",
 };
 describe("typed configuration before secret I/O", () => {
   it("validates values and file references without reading secret files", () => {
@@ -17,6 +18,7 @@ describe("typed configuration before secret I/O", () => {
     expect(settings.port).toBe(3000);
     expect(settings.passwordConcurrency).toBe(2);
     expect(settings.secretFiles.signing).toBe("private.pem");
+    expect(settings.secretFiles.leaderboard).toBe("leaderboard.key");
   });
   it("rejects production HTTP, malformed origin and worker signing credentials before I/O", () => {
     expect(() => validateRuntimeSettings({ ...env, NODE_ENV: "production" }, "api")).toThrow();
@@ -24,5 +26,13 @@ describe("typed configuration before secret I/O", () => {
       validateRuntimeSettings({ ...env, PUBLIC_ORIGIN: "http://localhost:3000/" }, "api"),
     ).toThrow();
     expect(() => validateRuntimeSettings(env, "worker")).toThrow();
+  });
+  it("does not distribute leaderboard identity keys to mail workers", () => {
+    const worker = { ...env, JWT_PRIVATE_KEY_FILE: undefined, JWT_PUBLIC_KEYS_FILE: undefined };
+    expect(() => validateRuntimeSettings(worker, "worker")).toThrow();
+    expect(
+      validateRuntimeSettings({ ...worker, LEADERBOARD_KEY_FILE: undefined }, "worker").secretFiles
+        .leaderboard,
+    ).toBeUndefined();
   });
 });

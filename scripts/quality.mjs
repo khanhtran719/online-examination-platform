@@ -61,6 +61,7 @@ export function inspectImports(path, code) {
     "catalog/application/catalog.facade",
     "catalog/application/facades/catalog.facade",
     "identity/application/facades/identity.facade",
+    "reporting/application/facades/ranking.facade",
   ]);
   const publicComposition = new Set([
     "identity/identity.module",
@@ -68,6 +69,7 @@ export function inspectImports(path, code) {
     "identity/identity-operator.factory",
     "assessment/assessment-worker.factory",
     "catalog/catalog-worker.factory",
+    "reporting/reporting.module",
   ]);
   const forbidden =
     /^(?:@nestjs\/|@aws-sdk\/|@opentelemetry\/|@fastify\/|(?:pg|typeorm|sequelize|jose|argon2|nodemailer|redis|ioredis|kafkajs|aws-sdk|axios|express|fastify)(?:\/|$)|(?:node:)?(?:http|https|net|tls)(?:\/|$))/;

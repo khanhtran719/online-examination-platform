@@ -12,11 +12,11 @@ Role maps to permissions centrally; application receives a principal and uses pe
 | `catalog.read` | yes | yes | Published metadata; no keys/question bank. |
 | `assessment.take` | yes | separately assigned | Own start/resume/questions/answer/submit/status/history. |
 | `assessment.result.read` | yes | separately assigned | Own result/review with frozen release gate. |
-| `leaderboard.read` | yes | yes | Enabled publication, pseudonyms only. |
+| `leaderboard.read` | yes | yes | Frozen enabled version, current session; pseudonyms only. |
 | `catalog.manage` | no | yes | Draft CRUD, sections, membership, archive/publish; expected revision + audit. |
 | `catalog.keys.read` | no | yes | Bank/admin questions/keys/explanations; audit accesses, never candidate DTO. |
 | `catalog.import` | no | yes | Bounded question imports and owned import reports; audited. |
-| `reporting.read` | no | yes | Active candidate counts, submissions/scores/question statistics/business summary; restricted admin DTOs. |
+| `reporting.read` | no | yes | Exam-scoped active attempt list across frozen versions; submissions/aggregate-section scores; exact-version best/latest candidate pairs and question/option counts; business cohort/global backlog snapshot; restricted admin DTOs. |
 | `assessment.review.admin` | no | yes | Explicit admin submission review including keys; read-access audit, no candidate write impersonation. |
 | `assessment.replay` | no | yes | Failed submission replay only, required reason, stable identity and audit. |
 | `audit.read` | no | yes | Paginated redacted audit records; no secrets/answers. |
@@ -24,6 +24,49 @@ Role maps to permissions centrally; application receives a principal and uses pe
 | IAM/operator privilege | no | no | Migrations/secrets/admin provisioning/restore via separate least-privilege operator role, not app role. |
 
 All own-object APIs return 404 Not found for nonexistent/foreign IDs, after authentication. Lack of an action permission returns 403 Permission denied. Admin routes require their declared permission and audited sensitive access. Do not let supplied `actorId`, cursor, exam version, import report ID or resource path bypass authorization. State/deadline invariants apply even if principal is Admin.
+
+REP-04 Admin best/latest requires current locked Identity revalidation and safe
+reporting.candidate-results.read audit with EXAM_VERSION/resourceId=exact version.
+Only opaque candidate/version/attempt IDs, status/times and bounded scores appear;
+pending/FAILED scores are null. Caller verification/enabled/session/permission
+remain current; public ranking opt-in does not grant or deny Admin scope. Opaque
+15min candidate-order cursors derive a distinct purpose key from the CSRF root,
+bind actor/exam/version/page size/order and keep initial expiry. No cursor,
+credential or score payload in logs or metric labels. See
+[runbook](runbooks/admin-candidate-results.md). Independent privacy deletion/
+restore, access and audit retention acceptance remain open.
+
+REP-03 question statistics uses current locked Identity revalidation and mandatory
+`reporting.question-statistics.read` audit scoped to the exact `EXAM_VERSION` UUID.
+The primary projection and audit commit before response; audit or invalid counter
+failure releases no data. Only frozen question/option IDs and aggregate counts
+appear; no candidate PII, prompts, choices text, keys or explanations. Opaque15min
+cursors derive their own purpose key from the existing CSRF root and bind actor,
+exam, version, page size and order with fixed expiry. All replicas share that root;
+root rotation invalidates navigation. No cursor/credential in logs or metric labels.
+See the [runbook](runbooks/admin-question-statistics.md). Account deletion,
+independent privacy ledger/restore and audit retention remain separate gates.
+
+REP-01 uses current authentication/read admission plus transactional Identity
+revalidation and safe `reporting.active-candidates.read` audit (EXAM, actor,
+resource/correlation IDs, SUCCESS, empty changed fields). Audit failure is closed;
+no response page before COMMIT. Query sources expose opaque candidate/attempt IDs
+and lifecycle times only, including disabled candidates' still-live attempts.
+v1 Admin exam scope is global; no public Candidate access or query actor override.
+The encrypted60s cursor derives a distinct purpose key from the existing CSRF root,
+never the public leaderboard alias key. Root rotation invalidates navigation;
+restart first page. All replicas must share the root. No raw cursor/token/query
+or IDs in metric labels. [Runbook](runbooks/admin-monitor.md) explains polling and
+failure behavior; audit retention/browsing/restore production acceptance remains open.
+
+Public leaderboard [ADR-012](adr/012-public-ranking-projection.md) exposes only
+per-version pseudonyms/rank/earned/possible/completedAt. Fresh primary visibility
+requires enabled verified opted-in users without deletion request. The API-only
+stable leaderboard key is separate from JWT/CSRF/mail keys; AEAD cursors conceal
+actor/order identities and bind version/filter/page-size/watermark/epoch/expiry.
+Rotation deliberately resets aliases/cursors. No anonymous access, cached consent
+or Admin bypass of frozen ranking policy. Fresh read checks do not accept the
+independent privacy ledger/restore/account-deletion requirements below.
 
 ## 2. Registration, sessions and browser transport
 
@@ -110,3 +153,16 @@ GitHub later uses OAuth authorization code with state/PKCE (`S256`), exact regis
 
 
 Local browser evidence: [Identity HTTPS](evidence/identity-https-2026-10-07/README.md) covers actual Secure cookies, same-origin/CSRF, explicit email activation, shared-cookie tabs, logout/disable and commit-lost ACK. Ephemeral leaf trust is not public PKI/AWS TLS acceptance; production controls and live SES remain pending.
+
+REP-02 reports enforce current reporting.read twice (HTTP admission and locked Identity revalidation); safe mandatory access audit commits before payload. Scores never grant access to keys/answers/explanations; review:null and assessment.review.admin remains separate. Purged payloads are404 and unscored detail409. Scope/paging/failure policy: [Admin submissions runbook](runbooks/admin-submissions.md).
+
+
+Business count/backlog reads require reporting.read at /v1/admin/business-metrics;
+combined /v1/admin/metrics retains system.metrics.read and remains specified until
+real telemetry providers exist. Current locked Identity access and mandatory global
+reporting.business-metrics.read audit share the short read UoW. Target type is
+BUSINESS_METRICS with fixed single-platform UUID00000000-0000-4000-8000-000000000000;
+no counts/window/PII in audit payload. Future multi-tenant scope requires a separate
+contract review; this platform has one authorized Admin scope. Cost of the global
+scan is bounded by pool/admission/timeouts, not an assumed indexed time window.
+Manual/slow polling guidance is operational, not a newly enforced30s server limit.

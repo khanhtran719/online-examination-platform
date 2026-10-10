@@ -1,0 +1,14 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/.local/rep01/setup.cjs
+
+(node:3184) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"7b5872f2-fa1a-4672-be61-155e15416b36"}
+{"event":"unhandled_exception","correlationId":"231a69c5-c638-4a2c-a074-26e9edbb8ef0"}
+
+Test Suites: 18 passed, 18 total
+Tests:       299 passed, 299 total
+Snapshots:   0 total
+Time:        153.046 s
+Ran all test suites.

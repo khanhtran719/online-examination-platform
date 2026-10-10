@@ -1,5 +1,172 @@
 # Implementation plan
 
+## Latest increment — REP-05 Business metrics, 2026-10-10 (COMPLETE locally)
+
+REP-05 update2026-10-10: [Business metrics](admin-business-metrics-2026-10-10.md)
+BM-01–06 COMPLETE locally; **85/216 checked,131 pending**. Additive Reporting
+start-time cohort/current durable counts plus global pending/replay backlog,
+primary asOf, paired max7day UTC window, current permission and safe access audit.
+Combined HTTP/SQS metrics and Web parser unchanged/specification-only.38 new units/
+18 PG cases;559 root/379 integration22 suites/0 skipped,18 post-format PG PASS;
+lint/typecheck/build/quality/contracts48 operations/445 examples. SQL format
+preserves435 tokens/bindings;18 source/build migrations match,521 prior files
+unchanged,65 source hashes. SQS happy-path fixture timing separated from its100ms
+deadline test; original first-full failure cause unconfirmed, runtime unchanged.
+Cleanup0, test containers stopped/volumes retained. Natural100k/1M sequential
+scan baselines,8 SQL/507–511bytes;1M HTTP p95≈571–646ms across independent runs
+excludes TCP/TLS/ALB and proves no sustainable capacity/SLO/AWS savings. No new
+schema/resource or browser HTTPS rerun. REP-04 privacy ledger/deletion/restore
+stays SUBSET/unchecked. Next proposed REP-06 audit lifecycle; Web, technical
+providers and AWS gates remain open, production NOT ACCEPTED. No commit/deploy;
+prior workspace preserved on local codex/rep05-business-metrics branch.
+[Evidence](evidence/admin-business-metrics-2026-10-10/README.md). Previous paragraphs
+below retain their historical source/test states.
+
+## Previous increment — REP-04 Admin best/latest subset, 2026-10-10 (COMPLETE locally)
+
+[BL-01–06 plan](admin-candidate-results-2026-10-10.md) and
+[ADR-013](adr/013-admin-best-latest-report.md). Reporting-owned additive exact
+version candidate-results page pairs retained best COMPLETED and latest submitted
+attempts. Explicit pending/FAILED null scores, stable candidate UUID keyset, fresh
+primary selection and mandatory current permission/version audit. No schema,
+resource, Web, independent privacy ledger, deployment or commit. REP-04 remains
+SUBSET/unchecked; [evidence](evidence/admin-candidate-results-2026-10-10/README.md)
+closes the named local subset.521 root/361 full integration21 suites/0 skipped PASS;
+lint/typecheck/build/quality/contracts47/435; post-format PG18 PASS.18 source/build
+migrations match,493 prior files unchanged,56 source hashes, fixture cleanup0 and
+test containers stopped with volumes retained. Existing SMTP capture harness now
+waits for durable backoff, proved by one RED→GREEN local regression; no production
+Identity change.35 new unit and18 PG/HTTP cases,100k cardinality baseline8 SQL/
+44,604bytes; no AWS capacity/cost/SLO claim. Roadmap84/216 checked,132 pending.
+Next proposed: REP-05 business metrics, with explicit time/count/status/backlog
+semantics and measured bounded query budget. Independent privacy ledger/deletion/
+restore, Web, audit lifecycle and AWS gates remain open. No other work is running.
+
+## Previous increment — REP-03 Admin question statistics, 2026-10-10 (COMPLETE locally)
+
+[QS-01–06 plan](admin-question-statistics-2026-10-10.md). Exact frozen version
+counts/denominators and options, bounded opaque keyset, primary freshness/current
+permission and safe transactional access audit. Correct OpenAPI audit metadata and
+add answered. Existing grading/retention own counter writes. No new resource,
+migration, Web, deployment or commit. [Evidence](evidence/admin-question-statistics-2026-10-10/README.md)
+and [runbook](runbooks/admin-question-statistics.md) close QS-01–06.
+
+- [x] QS-01 Explicit retained-completed denominator, frozen scope, freshness,
+ query budget and481 protected migration/evidence hashes.
+- [x] QS-02 Fail-first count/Application/cursor and exact-version audit tests;
+34 new unit cases pass.
+- [x] QS-03 Private Reporting ports/service/query/crypto/DTO/controller wiring;
+ answered and mandatory audit-read OpenAPI correction.
+- [x] QS-04 22 PG/HTTP cases for actual grading/duplicates/replay/retention,
+ atomic reads, permission/audit, scope/paging/overflow; compiled TCP composition.
+- [x] QS-05 Maximum500-question/20-section/10-option fixture, natural10k/100k
+ plans and raw local diagnostics;8 SQL, maximum response92,313bytes.
+- [x] QS-06 486 root/342 integration20 suites/0 skipped; lint/typecheck/build/
+ quality/contracts46/425;18 source/build migrations and481 prior files unchanged,
+ fixture cleanup0, test containers stopped with volumes retained; self-review.
+
+Roadmap84/216 checked,132 pending. REP-04 remains SUBSET; next proposed bounded
+scope is Admin best/latest reporting semantics. Independent privacy ledger/
+deletion/restore, Web, audit retention and AWS load/SLO/cost remain open. Production
+NOT ACCEPTED. No fresh browser HTTPS or sustained capacity claim; early fixture/
+SMTP failures and final full pass are retained in evidence. Nothing else is running.
+
+## Previous increment — REP-02 Admin submissions/scores, 2026-10-10 (COMPLETE locally)
+
+[AS-01–06 closure](admin-submissions-2026-10-10.md),
+[evidence](evidence/admin-submissions-2026-10-10/README.md),
+[runbook](runbooks/admin-submissions.md). Reporting owns primary exam/version
+filtered attempt ledger and completed aggregate/section score detail. Current
+Identity permission/revalidation and safe access audit share existing UoW. Opaque
+15min stable start/ID cursor;8 SQL/read, no new migration/index/grant/resource/key.
+
+- [x] AS-01 Contract/source/rules and472 protected migration/evidence hashes.
+- [x] AS-02 Fail-first tests and33 new Application/crypto cases.
+- [x] AS-03 Private ports/service/query/crypto/DTO/controller/module wiring.
+- [x] AS-04 21 real PG/HTTP safety/race/filter/result/privacy cases and compiled TCP.
+- [x] AS-05 Natural100k first/continuation/version plans; raw list/detail diagnostics.
+- [x] AS-06 452 root/320 integration19 suites/0 skipped PASS; lint/typecheck/build/
+ quality/contracts46/425;18 source/build migrations and472 prior files match,
+ fixture cleanup0; self-review and docs closure.
+
+Roadmap83/216; next REP-03. REP-04 remains SUBSET. Production NOT ACCEPTED;
+AWS/concurrent load/saturation/cost/Web/Admin review/audit retention stay open.
+HTTPS browser was not rerun; prior REP-01 HTTPS evidence remains historical.
+
+## Previous increment — REP-01 Admin monitor, 2026-10-10 (COMPLETE locally)
+
+Bounded scope: [AM-01–06 plan/closure](admin-monitor-2026-10-10.md),
+[evidence](evidence/admin-monitor-2026-10-10/README.md),
+[runbook](runbooks/admin-monitor.md). Reporting-owned primary read projection,
+current Identity permission/revalidation, live DB deadline/asOf, minimal ID-only
+page and transactional fail-closed access audit. Opaque60s actor/exam/size cursor;
+8 statements including auth/rate/BEGIN/COMMIT, no new runtime schema/index/secret.
+Natural100k/2000-active A/B/A does not justify accepting a trial partial index.
+
+- [x] AM-01 Contract/ownership/freshness/audit plan and451 prior-file hashes.
+- [x] AM-02 Fail-first tests;23 new Application/crypto cases.
+- [x] AM-03 Query/service/ports/adapters/DTO/controller and compiled composition.
+- [x] AM-04 Real PG current permission/privacy/cursor/status/audit/lock regressions.
+- [x] AM-05 Natural query plans/A-B-A, bounded page/SQL and local HTTP diagnostics.
+- [x] AM-06 419 root/299 integration/10 HTTPS PASS; lint/typecheck/build/contracts
+ 46/425;18 bundles match,451 prior files unchanged, fixture cleanup0.
+
+Production remains NOT ACCEPTED; no AWS capacity/cost/saturation claim.
+REP-02 is the next proposed bounded increment. REP-04 remains SUBSET; all other
+Reporting/Web/retention/load/deploy phases remain governed by their own gates.
+
+## Previous increment — public leaderboard, 2026-10-09 (COMPLETE locally)
+
+Scope: REP-04 Candidate public ranking/privacy-read subset. Assessment owns the
+HTTP endpoint/current Identity authentication, permission and admission. Reporting
+owns a public plain Application ranking facade and its private read-only pg
+projection. Declare Identity enabled/verified/opt-in visibility, Catalog frozen
+version policy, Assessment best entries/results/attempts and cursor epoch sources.
+No private cross-module repository call, aggregate hydration, read transaction,
+Redis, AWS, Web, Admin reporting, independent privacy ledger or commit.
+
+One ranking statement gates exact exam/version and frozen leaderboardEnabled,
+joins current candidate visibility and durable unpurged COMPLETED results, ranks
+best entries by earned DESC/submittedAt ASC/attempt UUID ASC. SQL returns at most
+101 rows; query budget3 including authentication/admission (contract ceiling4).
+Application handles bounds, DB-clock15min cursor and exact pseudonym-only DTO.
+Dedicated stable32byte leaderboard secret derives domain-separated HMAC aliases
+and AEAD opaque actor/version/filter/page-size/tuple/watermark cursors. Rotation
+deliberately resets aliases/invalidates cursors; ordinary auth-key rotation does not.
+
+Correctness specialization: forward0018 stores a compact per-version cursor epoch
+only when a best entry is removed or worsens. Retention can replace a previously
+seen winner with a worse older attempt; without invalidation that candidate may
+appear again on a later page. Trigger updates are atomic/owner-scoped, SELECT-only
+to runtime; ordinary improving grading does not write epoch. Stale epoch cursors
+return400/refetch. New completions beyond the signed watermark remain omitted;
+opt-out is checked fresh in the same statement. No historical snapshot/total.
+
+- [x] LB-01: Preserve17 migrations/history; fail-first use-case/crypto/PG/HTTP
+  tests for visibility, ranking/ties/version, cursor/privacy and retention movement.
+- [x] LB-02: Public Reporting facade/read port, private SQL/crypto adapters and
+  thin Assessment controller/composition; exact safe contracts and dedicated keys.
+- [x] LB-03: Forward0018 cursor epoch/grants, atomic destructive-change/rollback
+  tests; preserve normal grading/retention and restricted privileges.
+- [x] LB-04: Query budgets, natural plans/large local dataset and HTTP percentile/
+  CPU/RSS/payload diagnostics; measured limitations, no AWS/capacity claims.
+- [x] LB-05: Full checks/self-review/cleanup, ADR/runbook/evidence and checklist.
+
+Closure2026-10-10 (increment started2026-10-09): [report](public-leaderboard-2026-10-09.md)/
+[evidence](evidence/leaderboard-2026-10-09/README.md)/
+[ADR-012](adr/012-public-ranking-projection.md)/
+[runbook](runbooks/public-leaderboard.md).396 root/281 integration17 suites/10 HTTPS
+PASS,0 full-run skipped; lint/typecheck/build/contracts46/425 PASS.12 ranking cases
+plus real compiled TCP composition; actual retention epoch commit/rollback checked.
+Same100k fixture SQL p95 first300→248ms/deep355→271ms;3 SQL calls/read, measured
+limitations explicit.386 protected files unchanged;18 source/build bundles match;
+external cleanup0 DB/login/connections/key dirs, fixture services stopped/volumes
+preserved. Migration-list/history-seed fixture failures corrected and kept as raw
+evidence; runtime history untouched. Roadmap stays81/216,135 pending; no commit/deploy.
+
+REP-04 remains SUBSET while Admin/best-latest reporting scope is incomplete.
+Public opt-out reads do not accept deletion/restore ledger or production gates.
+
 ## Active increment — Assessment HTTP faults, 2026-10-09 (COMPLETE locally)
 
 Scope: close the missing local ATT-10/11 start/save/submit HTTP timeout,

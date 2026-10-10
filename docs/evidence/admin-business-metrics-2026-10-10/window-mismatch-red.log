@@ -1,0 +1,30 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath apps/api/src/modules/reporting/application/services/__tests__/business-metrics.service.unit.spec.ts --testNamePattern different requested window
+
+(node:21595) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/src/modules/reporting/application/services/__tests__/business-metrics.service.unit.spec.ts
+  ● Business metrics audited primary read › fails closed if a projection returns a different requested window
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: {"asOf": "2026-10-10T00:00:00.000Z", "backlog": {"oldestAgeSeconds": null, "oldestSubmittedAt": null, "pendingAttempts": 0, "replayPendingAttempts": 0}, "counts": {"activeAttempts": 0, "completedAttempts": 0, "expiredCompletedAttempts": 0, "expiredSubmissions": 0, "failedAttempts": 0, "startedAttempts": 0, "submittedAttempts": 0}, "window": {"basis": "ATTEMPT_STARTED_AT", "from": "2026-10-08T00:00:00.000Z", "to": "2026-10-10T00:00:00.000Z"}}
+
+      157 |     const f = setup();
+      158 |     f.source({from: "2026-10-08T00:00:00.000Z"});
+    > 159 |     await expect(f.service.snapshot({...input,from:"2026-10-09T00:00:00.000Z",to:asOf})).rejects.toThrow("METRICS_STATE_UNAVAILABLE");
+          |           ^
+      160 |     expect(f.audits).toEqual([]);
+      161 |   });
+      162 |   it("releases no report when access audit fails", async () => {
+
+      at expect (node_modules/expect/build/index.js:2116:15)
+      at Object.<anonymous> (apps/api/src/modules/reporting/application/services/__tests__/business-metrics.service.unit.spec.ts:159:11)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 8 skipped, 9 total
+Snapshots:   0 total
+Time:        1.561 s, estimated 2 s
+Ran all test suites within paths "apps/api/src/modules/reporting/application/services/__tests__/business-metrics.service.unit.spec.ts".

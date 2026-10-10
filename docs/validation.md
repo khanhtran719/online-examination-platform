@@ -1,5 +1,94 @@
 # Validation log
 
+REP-05 update2026-10-10: [Business metrics](admin-business-metrics-2026-10-10.md)
+BM-01–06 COMPLETE locally; **85/216 checked,131 pending**. Additive Reporting
+start-time cohort/current durable counts plus global pending/replay backlog,
+primary asOf, paired max7day UTC window, current permission and safe access audit.
+Combined HTTP/SQS metrics and Web parser unchanged/specification-only.38 new units/
+18 PG cases;559 root/379 integration22 suites/0 skipped,18 post-format PG PASS;
+lint/typecheck/build/quality/contracts48 operations/445 examples. SQL format
+preserves435 tokens/bindings;18 source/build migrations match,521 prior files
+unchanged,65 source hashes. SQS happy-path fixture timing separated from its100ms
+deadline test; original first-full failure cause unconfirmed, runtime unchanged.
+Cleanup0, test containers stopped/volumes retained. Natural100k/1M sequential
+scan baselines,8 SQL/507–511bytes;1M HTTP p95≈571–646ms across independent runs
+excludes TCP/TLS/ALB and proves no sustainable capacity/SLO/AWS savings. No new
+schema/resource or browser HTTPS rerun. REP-04 privacy ledger/deletion/restore
+stays SUBSET/unchecked. Next proposed REP-06 audit lifecycle; Web, technical
+providers and AWS gates remain open, production NOT ACCEPTED. No commit/deploy;
+prior workspace preserved on local codex/rep05-business-metrics branch.
+[Evidence](evidence/admin-business-metrics-2026-10-10/README.md). Previous paragraphs
+below retain their historical source/test states.
+
+Latest REP-04 Admin subset update2026-10-10: [Best/latest candidate report](admin-candidate-results-2026-10-10.md)
+BL-01–06 COMPLETE locally; roadmap84/216 checked,132 pending. Reporting-owned
+exact frozen-version pairs select retained best COMPLETED by score/submit/UUID
+and latest submitted including pending/FAILED with null scores. Current permission,
+exact-version audit, stable candidate keyset and grading/replay/purge verified.
+521 root/361 integration21 suites/0 skipped PASS; lint/typecheck/build/quality/
+contracts47 operations/435 examples.35 new units/18 PG cases; deterministic SMTP
+retry regression fixes the local test harness only, with no Identity runtime change.
+18 source/build migrations match,493 prior files unchanged,56 source hashes;
+cleanup0 and test containers stopped with volumes retained. Natural100k-attempt
+fixture,8 SQL/page,44,604bytes; paced local inject p95/p99≈46.380/50.591ms excludes
+TCP/TLS/ALB and proves no sustainable capacity/AWS savings/SLO. No new schema or
+resource; no browser HTTPS rerun. REP-04 remains SUBSET and unchecked: independent
+privacy ledger/deletion/restore still open. Web, audit lifecycle and AWS gates remain
+open; production NOT ACCEPTED. Next proposed: REP-05 business metrics.
+[Evidence](evidence/admin-candidate-results-2026-10-10/README.md).
+
+Latest REP-03 update2026-10-10: [Admin question statistics](admin-question-statistics-2026-10-10.md)
+accepted locally;roadmap84/216 checked,132 pending. Exact frozen version/all retained
+COMPLETED attempts, zero counts, atomic replay/purge semantics, current permission
+and exact-version access audit verified. Private Reporting projection/cursor/pure
+count policy;8 SQL/page, no new migration/index/grant/key/package/resource.486 root/
+342 integration20 suites/0 skipped PASS; lint/typecheck/build/quality/contracts46/425.
+18 source/build migration hashes match,481 prior files unchanged, fixture cleanup0.
+Maximum100/10-option local inject p95/p99≈39.297/39.854ms,92,313bytes;10k-question/
+100k-option synthetic projection fixture and raw natural plans. No sustained
+capacity/production SLO/AWS savings claim; no browser HTTPS rerun. Production NOT
+ACCEPTED. REP-04 stays SUBSET; next proposed Admin best/latest reporting semantics.
+Independent privacy ledger/deletion/restore, audit retention, Web and AWS gates
+remain open. [Evidence](evidence/admin-question-statistics-2026-10-10/README.md).
+
+Latest REP-02 update2026-10-10: [Admin submissions/scores](admin-submissions-2026-10-10.md)
+accepted locally;roadmap83/216. Reporting private primary projections include
+all unpurged attempts, optional frozen version filter and completed section scores;
+current permission, mandatory audit and opaque15min keyset,8 SQL/read.452 root/
+320 integration19 suites/0 skipped PASS; lint/typecheck/build/quality/contracts
+46/425.18 source/build migrations match,472 prior files unchanged, fixture cleanup0.
+No new schema/index/grant/resource/secret; no HTTPS rerun or AWS capacity/cost/SLO
+claim. REP-04 remains SUBSET; next REP-03. Production NOT ACCEPTED. Web/Admin
+review/audit retention/concurrent load/saturation/restore and AWS gates stay open.
+
+REP-01 update2026-10-10: [Admin monitor closure](admin-monitor-2026-10-10.md)/
+[evidence](evidence/admin-monitor-2026-10-10/README.md):419 root PASS (281 API/37
+suites,42 tooling,96 Web);299 full integration18 suites/0 skipped,18 post-format
+focused PG cases;10 HTTPS PASS with actual AppModule/SMTP.23 new use-case/crypto
+units and18 PG/HTTP/diagnostic cases, plus compiled TCP Admin route checks.
+Lint/typecheck/build/quality/contracts46/425 PASS;451 prior files unchanged,
+18 source/built migrations match; cleanup0 DB/login/client connections.
+Natural100k/2000-active A/B/A retains existing indexes; raw samples have separate
+populations/variance and unmeasured cost/capacity/allocation fields. Full-regression
+inject HTTP p95/p99≈36.729/40.519ms is local evidence, not an AWS SLO/capacity claim.
+REP-04/other Admin reports/Web/production gates remain open.
+
+2026-10-10 latest: [Public leaderboard](public-leaderboard-2026-10-09.md)/
+[evidence](evidence/leaderboard-2026-10-09/README.md):396 root (258 API/35 suites,
+42 tooling,96 Web),281 integration/17 suites/0 skipped and10 Chromium HTTPS PASS.
+12 ranking cases,27 compiled TCP HTTP cases including new route composition,
+actual retention epoch commit/rollback and exact matched SQL first/deep comparison.
+Typecheck/build/lint/architecture/contracts46/425 PASS;18 source/built SQL match,
+386 protected files (17 prior migrations +369 historical evidence) unchanged.
+Initial provider/revision/seed failures and migration-list/history fixture timeouts
+retained; bounded batches/fixture SQL timeout correct setup without changing history
+runtime. Final40-request diagnostic captures achieved≈2.625 RPS in a paced one-actor
+window, p95≈275.074ms,3 SQL/read and pool/query observations; this is not sustainable
+load/SLO or allocation/AWS cost. External cleanup0 DB/login/connections/key dirs;
+test PG55435/Mailpit stopped with volumes,55432 untouched. LB-01–05 complete locally,
+REP-04 stays SUBSET,roadmap81/216. No commit/deploy or live AWS/image/security-audit/
+k6/PITR/restore acceptance; Admin/privacy ledger/Web/production gates stay open.
+
 2026-10-09 latest: [Assessment HTTP faults](assessment-http-faults-2026-10-09.md)/
 [evidence](evidence/assessment-http-faults-2026-10-09/README.md):375 root
 (238 API/33 suites,41 tooling,96 Web) +268 integration/16 suites PASS,0 skipped.

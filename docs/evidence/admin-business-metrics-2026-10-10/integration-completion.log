@@ -1,0 +1,25 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/.local/rep05/setup.cjs
+
+(node:24867) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"d7707156-c64f-44e3-b1b7-4e029a14aefb"}
+{"event":"unhandled_exception","correlationId":"b022b5d1-ec41-4cd9-a7a4-f10bb0787c7b"}
+{"event":"unhandled_exception","correlationId":"98729d25-525b-4fd0-971a-0636808e09cd"}
+{"event":"unhandled_exception","correlationId":"d0d61d26-085d-4b82-a323-8209c0ea1580"}
+{"event":"unhandled_exception","correlationId":"3cdce845-834a-40e0-834f-32379c89ab37"}
+{"event":"unhandled_exception","correlationId":"c424b2f8-4522-4958-8e98-1e0ce4123d2d"}
+{"event":"unhandled_exception","correlationId":"962ea45b-ec13-4211-9a7c-850fcde797b9"}
+{"event":"unhandled_exception","correlationId":"fb48fef9-921a-4773-be94-7a9f1d85e76c"}
+{"event":"unhandled_exception","correlationId":"8608adfc-3fd2-4c5d-a98c-103658056ae9"}
+{"event":"unhandled_exception","correlationId":"cb23b08c-e4ac-4899-9a64-ebeb39b437b0"}
+{"event":"unhandled_exception","correlationId":"bd121a01-8998-4666-9dab-816b0a9eaed1"}
+{"event":"unhandled_exception","correlationId":"ecc226eb-d4f5-4479-aa3e-1e461d51d1e8"}
+{"event":"unhandled_exception","correlationId":"d00d1e06-726b-47fd-a147-8ed047bb0430"}
+
+Test Suites: 22 passed, 22 total
+Tests:       379 passed, 379 total
+Snapshots:   0 total
+Time:        313.296 s, estimated 341 s
+Ran all test suites.

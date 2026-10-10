@@ -186,6 +186,7 @@ export async function startIdentityHttps() {
         keys: { "https-mail": randomBytes(32).toString("base64url") },
       }),
       "csrf.key": randomBytes(32).toString("base64url"),
+      "leaderboard.key": randomBytes(32).toString("base64url"),
       "rate.key": randomBytes(32).toString("base64url"),
     };
     for (const [file, data] of Object.entries(files))
@@ -325,6 +326,7 @@ export async function startIdentityHttps() {
       JWT_PUBLIC_KEYS_FILE: join(temp, "public.json"),
       EMAIL_KEYS_FILE: join(temp, "email.json"),
       CSRF_KEY_FILE: join(temp, "csrf.key"),
+      LEADERBOARD_KEY_FILE: join(temp, "leaderboard.key"),
       RATE_KEY_FILE: join(temp, "rate.key"),
       MAIL_ADAPTER: "smtp",
       MAIL_FROM: "no-reply@example.test",
@@ -344,6 +346,7 @@ export async function startIdentityHttps() {
       JWT_PUBLIC_KEYS_FILE: undefined,
       JWT_ACTIVE_KID: undefined,
       CSRF_KEY_FILE: undefined,
+      LEADERBOARD_KEY_FILE: undefined,
     };
     mailDb = new PostgresDatabase(databaseConfig(workerEnv));
     worker = createVerificationWorker(await loadRuntimeConfig(workerEnv, "worker"), mailDb);

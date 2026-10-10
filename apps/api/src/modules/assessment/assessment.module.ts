@@ -14,14 +14,16 @@ import { PostgresAttemptQuery } from "./infrastructure/persistence/postgres-atte
 import { PostgresAttemptRepository } from "./infrastructure/persistence/postgres-attempt.repository";
 import { PostgresSubmissionOutbox } from "./infrastructure/persistence/postgres-submission-outbox";
 import { AssessmentController } from "./presentation/http/assessment.controller";
+import { LeaderboardController } from "./presentation/http/leaderboard.controller";
+import { ReportingModule } from "../reporting/reporting.module";
 
 @Module({})
 export class AssessmentModule {
   static forRoot(config: ApiConfig): DynamicModule {
     return {
       module: AssessmentModule,
-      imports: [DatabaseModule],
-      controllers: [AssessmentController],
+      imports: [DatabaseModule, ReportingModule.forRoot(config)],
+      controllers: [AssessmentController, LeaderboardController],
       providers: [
         {
           provide: CandidateResultsService,

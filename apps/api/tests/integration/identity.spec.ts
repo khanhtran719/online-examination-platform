@@ -26,6 +26,8 @@ import { HTTP_SESSION } from "../../src/modules/identity/presentation/http/http-
 import { VerificationWorker } from "../../src/modules/identity/application/services/verification-worker";
 import { PostgresVerificationDelivery } from "../../src/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery";
 import { createVerificationWorker } from "../../src/modules/identity/identity-worker.factory";
+import { SmtpVerificationMail } from "../../src/modules/identity/infrastructure/mail/verification-mail";
+import { MailDeliveryError } from "../../src/modules/identity/application/ports/verification-delivery.port";
 
 import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
 
@@ -879,6 +881,7 @@ describe("Identity on real restricted PostgreSQL", () => {
   it("delivers a captured SMTP verification link and never sends an already consumed job", async () => {
     const a = await register(),
       delivery = new PostgresVerificationDelivery(mailDatabase);
+    const outcomes: { outcome: string; durationMs: number }[] = [];
     const worker = createVerificationWorker(
       {
         origin: "http://127.0.0.1:3000",
@@ -895,36 +898,78 @@ describe("Identity on real restricted PostgreSQL", () => {
         },
       },
       mailDatabase,
+      (event) => outcomes.push(event),
     );
-    // Drain earlier pending fixtures through local mailbox only.
-    for (let i = 0; i < 30; i++) {
-      if (!(await worker.runOnce())) break;
+    try {
+      const item = await capturedMail(worker, a.email, a.challenge, outcomes);
+      const mail = (await (
+        await fetch(`http://127.0.0.1:18025/api/v1/message/${item!.ID}`)
+      ).json()) as { Text: string };
+      expect(mail.Text).toContain(`/verify-email#token=${a.token}`);
+      const b = await register();
+      await identity.confirm(b.token, finalPassword);
+      let sent = 0;
+      const skipped = new VerificationWorker(
+        delivery,
+        codec,
+        {
+          send: async () => {
+            sent++;
+          },
+        },
+        "http://127.0.0.1:3000",
+      );
+      while (await skipped.runOnce()) {}
+      expect(sent).toBe(0);
+    } finally {
+      worker.close();
     }
-    const messages = (await (await fetch("http://127.0.0.1:18025/api/v1/messages")).json()) as {
-      messages: { ID: string; To: { Address: string }[] }[];
-    };
-    const item = messages.messages.find((m) => m.To.some((t) => t.Address === a.email));
-    expect(item).toBeDefined();
-    const mail = (await (
-      await fetch(`http://127.0.0.1:18025/api/v1/message/${item!.ID}`)
-    ).json()) as { Text: string };
-    expect(mail.Text).toContain(`/verify-email#token=${a.token}`);
-    const b = await register();
-    await identity.confirm(b.token, finalPassword);
-    let sent = 0;
-    const skipped = new VerificationWorker(
+  });
+  it("waits for bounded delivery retry before asserting local SMTP capture", async () => {
+    const a = await register(),
+      delivery = new PostgresVerificationDelivery(mailDatabase),
+      smtp = new SmtpVerificationMail("127.0.0.1", 11025, "no-reply@example.test");
+    let sends = 0;
+    const outcomes: { outcome: string; durationMs: number }[] = [];
+    const worker = new VerificationWorker(
       delivery,
       codec,
       {
-        send: async () => {
-          sent++;
+        send: async (email, link) => {
+          sends++;
+          if (sends === 1) throw new MailDeliveryError(true);
+          await smtp.send(email, link);
         },
       },
       "http://127.0.0.1:3000",
+      (event) => outcomes.push(event),
     );
-    while (await skipped.runOnce()) {}
-    expect(sent).toBe(0);
-    worker.close();
+    try {
+      const captured = await capturedMail(worker, a.email, a.challenge, outcomes);
+      expect(captured).toBeDefined();
+      expect(sends).toBeGreaterThanOrEqual(2);
+      expect(sends).toBeLessThanOrEqual(10);
+      expect(outcomes[0]!.outcome).toBe("retry");
+      expect(outcomes.at(-1)!.outcome).toBe("accepted");
+      expect(
+        (
+          await fixture.query(
+            `
+        SELECT
+          delivered_at IS NOT NULL AS delivered,
+          attempts
+        FROM
+          identity.email_intents
+        WHERE
+          challenge_id = $1
+      `,
+            [a.challenge],
+          )
+        ).rows[0],
+      ).toEqual({ delivered: true, attempts: sends });
+    } finally {
+      smtp.close();
+    }
   });
   it("fences expired delivery leases and parks bounded retry failures", async () => {
     const a = await register(),
@@ -1374,3 +1419,40 @@ describe("Identity on real restricted PostgreSQL", () => {
     }
   });
 });
+
+async function capturedMail(
+  worker: Pick<VerificationWorker, "runOnce">,
+  email: string,
+  challenge: string,
+  outcomes: { outcome: string; durationMs: number }[],
+): Promise<{ ID: string }> {
+  const deadline = Date.now() + 6000;
+  do {
+    await worker.runOnce();
+    const messages = (await (await fetch("http://127.0.0.1:18025/api/v1/messages")).json()) as {
+      messages: { ID: string; To: { Address: string }[] }[];
+    };
+    const item = messages.messages.find((m) => m.To.some((t) => t.Address === email));
+    if (item) return item;
+    // No ready job can mean a durable backoff, not an empty/finished delivery queue.
+    await new Promise((resolve) => setTimeout(resolve, 25));
+  } while (Date.now() < deadline);
+  const state = (
+    await fixture.query(
+      `
+    SELECT
+      attempts,
+      delivered_at IS NOT NULL AS delivered,
+      parked_at IS NOT NULL AS parked,
+      available_at > clock_timestamp() AS awaiting_retry,
+      failure_code
+    FROM
+      identity.email_intents
+    WHERE
+      challenge_id = $1
+  `,
+      [challenge],
+    )
+  ).rows;
+  throw new Error(JSON.stringify({ mailCaptureMissing: true, outcomes, state }));
+}

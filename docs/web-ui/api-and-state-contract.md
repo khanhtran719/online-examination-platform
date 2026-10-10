@@ -14,7 +14,7 @@ Public experience `/experience` được yêu cầu 2026-10-07 là feature minh 
 
 ## 2. API-to-screen mapping
 
-Business operations hiện44, cộng hai health là46 specified operations. Chỉ chín Identity operations ở nhóm đầu đã chạy local. “Specified” dưới đây nghĩa API có schema, không nghĩa endpoint hoạt động.
+The original handoff listed44 business plus2 health operations. Current contract has48 operations after additive Admin best/latest and business metrics. Execution status follows the [roadmap](../implementation-roadmap.md); the table below preserves the original handoff inventory, not the current backend acceptance ledger. “Specified” dưới đây nghĩa API có schema, không nghĩa endpoint hoạt động.
 
 | Operation / method + API path                                                                   | Browser feature                                             | Trạng thái integration |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------- |
@@ -60,6 +60,7 @@ Business operations hiện44, cộng hai health là46 specified operations. Ch�
 | getAdminReview — GET `/v1/admin/attempts/{attemptId}/review`                                    | audited answer review                                       | Specified              |
 | replayFailedAttempt — POST `/v1/admin/attempts/{attemptId}/replay`                              | reason/revision replay                                      | Specified              |
 | getQuestionStatistics — GET `/v1/admin/exams/{examId}/versions/{versionId}/question-statistics` | per-version question stats                                  | Specified              |
+| getAdminBusinessMetrics — GET `/v1/admin/business-metrics` | distinct cohort/backlog snapshot; new DTO, Web not wired | Backend increment BM-01–06; see roadmap |
 | getSystemBusinessMetrics — GET `/v1/admin/metrics`                                              | overview/metrics                                            | Specified              |
 | getAudit — GET `/v1/admin/audit`                                                                | audit                                                       | Specified              |
 | liveness/readiness — GET `/live`, `/ready`                                                      | operational checks, not browser availability banner polling | Technical local        |

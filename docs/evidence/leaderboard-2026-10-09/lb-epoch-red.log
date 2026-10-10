@@ -1,0 +1,22 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /private/tmp/leaderboard-baseline-env.cjs --runTestsByPath apps/api/tests/integration/leaderboard.spec.ts --testNamePattern invalidates a continuation
+
+(node:78406) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ●  process.exit called with "1"
+
+      38 |   const app = await NestFactory.create<NestFastifyApplication>(root, adapter, { logger: false });
+      39 |   await app.register(cookie);
+    > 40 |   const shutdown = app.get(ShutdownGate);
+         |                        ^
+      41 |   app.useGlobalInterceptors(new ApiResponseInterceptor());
+      42 |   app.useGlobalFilters(new DomainExceptionFilter());
+      43 |   adapter.getInstance().addHook("onRequest", async (request, reply) => {
+
+      at DEFAULT_TEARDOWN (node_modules/@nestjs/core/errors/exceptions-zone.js:3:40)
+      at ExceptionsZone.run (node_modules/@nestjs/core/errors/exceptions-zone.js:15:13)
+      at Proxy.<anonymous> (node_modules/@nestjs/core/nest-factory.js:143:28)
+      at Proxy.<anonymous> (node_modules/@nestjs/core/nest-factory.js:198:54)
+      at createHttpApplication (apps/api/src/infrastructure/http/configure-http-application.ts:40:24)
+      at Object.<anonymous> (apps/api/tests/integration/leaderboard.spec.ts:352:9)

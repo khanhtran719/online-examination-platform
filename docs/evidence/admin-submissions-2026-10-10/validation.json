@@ -1,0 +1,65 @@
+{
+  "localOnly": true,
+  "productionAccepted": false,
+  "root": {
+    "api": 314,
+    "apiSuites": 39,
+    "tooling": 42,
+    "web": 96,
+    "total": 452,
+    "passed": true
+  },
+  "integration": {
+    "cases": 320,
+    "suites": 19,
+    "skipped": 0,
+    "passed": true,
+    "seconds": 174.323
+  },
+  "focusedAdminPGHTTP": {
+    "cases": 21,
+    "passed": true
+  },
+  "newUnitCases": 33,
+  "checks": {
+    "lint": true,
+    "typecheck": true,
+    "build": true,
+    "quality": true,
+    "contracts": {
+      "operations": 46,
+      "examples": 425,
+      "passed": true
+    }
+  },
+  "httpsBrowserRerun": false,
+  "priorFilesUnchanged": 472,
+  "migrationSourceBuildSha256": {
+    "0016_grading_recovery.sql": "3900b9982805a03f06e6ec9f7bd8dd16d2d33019883dd918dfd1b68d87f3f69d",
+    "0006_immutable_submission.sql": "9466b432b0775f30d241f3b0a29bda8e4eb2e6ab297fa51e4cebd02dc139d043",
+    "0009_catalog_question_points.sql": "91e54a4e759575d2afafb871211334bb6de37cfae690bd7a53f86cf2df0dd5a1",
+    "0002_query_indexes.sql": "793d63cb795e80edee7adaa88edc42ee2b15643fe3a7bb3e4a6d5996f7139158",
+    "0001_capability_schema.sql": "c63a0178c83a83b2723636e2d865c3b825cb8789dab3cf76f65e1776a5e0de95",
+    "0011_submission_kind.sql": "9b2d1083a107a1cb54c76a1c75170ac09d35ac1125f5d406428e29de37528ad2",
+    "0008_identity_operations.sql": "3843b35b82c20fee502db3b0ef7e15965749941bf65f03cda1859e6abbab8b67",
+    "0010_attempt_revision.sql": "1c75fbbbabe656452b0b26dd532154eafa5f2b4059bd2cd1309e9cea3dc3be26",
+    "0013_expiry_retry_schedule.sql": "ff4145c79fc299019f6e3c20d7e76cded4a770ffd36a8715b73dbfb4ef7474cf",
+    "0007_identity_runtime.sql": "e3c0065f5a5d1f5d3111f1f26113e94c96335d8ed5b6e30bb8287b830d18e6b6",
+    "0005_frozen_category.sql": "4aac15e7e65fa1cb0471b3f894b5501c63be107d51b0349aeaec98d1d674e79b",
+    "0004_durable_state_guards.sql": "e3f4ff066f0a4aed6ed9e29116d60e94a5368f3ee5561df20613baf532874cd8",
+    "0003_runtime_privileges.sql": "03d0c4a48ae7cf7a02d22760981bfe92d29b7e9211b2dbef5addf2d6f3ea83e9",
+    "0012_required_submission_kind.sql": "95ae36cc0c7648db0cb1073912bf7d60afcda04edf298e94fc76ea674b2c2c49",
+    "0017_assessment_retention.sql": "108e4064af2f4dbabdceb52efe706976cad60fe43fe3c6c3aae143d9c3ef67ac",
+    "0018_leaderboard_cursor_epochs.sql": "2791a23a25e57b342aee747d1e34f08b6d34d9e5ca31cfcb27e094b89a1ccf7d",
+    "0015_grading_worker.sql": "9970d8c8eeb2ad3ca1f53833e2defdebed1745bf7e76754f72ba827b826a825f",
+    "0014_submission_dispatch.sql": "9286579d23c3f5df0b59fb53461ca4c20f6481deb9421551eafcd905a39e130d"
+  },
+  "fixtureCleanup": {
+    "otherDatabases": 0,
+    "extraLoginRoles": 0,
+    "otherClientConnections": 0,
+    "temporaryKeyDirectories": 0
+  },
+  "awsCapacity": null,
+  "awsCost": null
+}
