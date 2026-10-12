@@ -1,15 +1,17 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link } from "react-router";
-import { useMemory } from "../../app/memory";
-import { useRuntime } from "../../app/runtime";
-import { useSession } from "../../app/session";
-import { useTitle } from "../../app/use-title";
-import { CATEGORIES, type Category, type HistoryItem } from "../../shared/api/dto";
-import { categoryLabel, formatDateTime, formatDuration, statusLabel } from "../../shared/format";
-import { PaperArt } from "../../shared/ui/paper-art";
-import { EmptyState, ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
-import layout from "../../shared/styles/layout.module.css";
+
+import { useMemory } from "@web/app/memory";
+import { useRuntime } from "@web/app/runtime";
+import { useSession } from "@web/app/session";
+import { useTitle } from "@web/app/use-title";
+import { CATEGORIES, type Category, type HistoryItem } from "@web/shared/api/dto";
+import { categoryLabel, formatDateTime, formatDuration, statusLabel } from "@web/shared/format";
+import layout from "@web/shared/styles/layout.module.css";
+import { PaperArt } from "@web/shared/ui/paper-art";
+import { EmptyState, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+
 import styles from "./dashboard.module.css";
 
 export function DashboardPage() {

@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { QUESTION_TYPES, type QuestionType } from "../../shared/api/dto";
-import { Button, SelectField, TextArea, TextField } from "../../shared/ui/ui";
+
+import { QUESTION_TYPES, type QuestionType } from "@web/shared/api/dto";
+import { Button, SelectField, TextArea, TextField } from "@web/shared/ui/ui";
+
+import styles from "./admin.module.css";
 import { AdminBadge, AdminHeading, questionTypeLabel } from "./admin-ui";
 import { QuestionDialogs } from "./question-dialogs";
 import { QuestionPreview } from "./question-preview";
-import { useQuestionDraft, type QuestionFormProps } from "./use-question-draft";
-import styles from "./admin.module.css";
+import { type QuestionFormProps, useQuestionDraft } from "./use-question-draft";
+
 export function QuestionForm(props: QuestionFormProps) {
   const { initial, onArchive } = props;
   const [archiveConfirm, setArchiveConfirm] = useState(false);

@@ -1,21 +1,24 @@
-import { HttpQuestionPageSizer } from "./infrastructure/http/http-question-page-sizer";
 import { DynamicModule, Module } from "@nestjs/common";
-import { ApiConfig } from "../../config/app.config";
-import { DatabaseModule } from "../../infrastructure/database/database.module";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
-import { PostgresIdempotency } from "../../infrastructure/idempotency/postgres-idempotency";
-import { IdentityAccess, IDENTITY_ACCESS } from "../identity/application/facades/identity.facade";
-import { CatalogAccess, CATALOG_ACCESS } from "../catalog/application/facades/catalog.facade";
+
+import { CATALOG_ACCESS, CatalogAccess } from "@catalog/facade";
+import { ApiConfig } from "@config/app.config";
+import { IDENTITY_ACCESS, IdentityAccess } from "@identity/facade";
+import { DatabaseModule } from "@infrastructure/database/database.module";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresIdempotency } from "@infrastructure/idempotency/postgres-idempotency";
+
+import { ReportingModule } from "../reporting/reporting.module";
+
 import { AssessmentService } from "./application/services/assessment.service";
 import { CandidateResultsService } from "./application/services/candidate-results.service";
-import { PostgresCandidateResultsQuery } from "./infrastructure/persistence/postgres-candidate-results.query";
 import { HmacAssessmentCursor } from "./infrastructure/cursor/assessment-cursor";
+import { HttpQuestionPageSizer } from "./infrastructure/http/http-question-page-sizer";
 import { PostgresAttemptQuery } from "./infrastructure/persistence/postgres-attempt.query";
 import { PostgresAttemptRepository } from "./infrastructure/persistence/postgres-attempt.repository";
+import { PostgresCandidateResultsQuery } from "./infrastructure/persistence/postgres-candidate-results.query";
 import { PostgresSubmissionOutbox } from "./infrastructure/persistence/postgres-submission-outbox";
 import { AssessmentController } from "./presentation/http/assessment.controller";
 import { LeaderboardController } from "./presentation/http/leaderboard.controller";
-import { ReportingModule } from "../reporting/reporting.module";
 
 @Module({})
 export class AssessmentModule {

@@ -1,9 +1,12 @@
 import { randomUUID } from "node:crypto";
-import { PostgresDatabase } from "../../../../../../infrastructure/database/transaction/postgres-database";
-import {
+
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type {
   EmailJob,
   VerificationDelivery,
 } from "../../../../application/ports/verification-delivery.port";
+
 export class PostgresVerificationDelivery implements VerificationDelivery {
   constructor(private readonly db: PostgresDatabase) {}
   async claim(): Promise<EmailJob | null> {

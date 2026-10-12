@@ -1,14 +1,13 @@
 import { Controller, Get, Inject, Param, Query, Req } from "@nestjs/common";
 import { FastifyRequest } from "fastify";
-import {
-  IDENTITY_ACCESS,
-  IdentityAccess,
-  REQUEST_GUARD,
-  RequestGuard,
-} from "../../../identity/application/facades/identity.facade";
-import { invalidReport } from "../../domain/reporting.error";
+
+import { IDENTITY_ACCESS, IdentityAccess, REQUEST_GUARD, RequestGuard } from "@identity/facade";
+
 import { SubmissionsService } from "../../application/services/submissions.service";
+import { invalidReport } from "../../domain/reporting.error";
+
 import { activePageQuery, examResource, submissionsPageQuery } from "./dto/reporting.dto";
+
 @Controller("v1/admin")
 export class SubmissionsController {
   constructor(

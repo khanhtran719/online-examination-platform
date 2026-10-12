@@ -1,8 +1,10 @@
-import { RankingInput, RankingPage, RankingProjection } from "../facades/ranking.facade";
-import { RankingQuery } from "../ports/ranking.query";
-import { RankingAlias, RankingCursor, RankingCursorState } from "../ports/ranking-cursor.port";
+import type { RankingInput, RankingPage, RankingProjection } from "@reporting/ranking";
+
 import { invalidRanking, rankingDenied, rankingNotFound } from "../../domain/ranking.error";
 import { assertReportRows } from "../dto/reporting-response";
+import type { RankingQuery } from "../ports/ranking.query";
+import type { RankingAlias, RankingCursor, RankingCursorState } from "../ports/ranking-cursor.port";
+
 const ttl = 900000;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 function integer(value: string) {

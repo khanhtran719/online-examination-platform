@@ -1,11 +1,16 @@
-import { IdentityAccess } from "../../../identity/application/facades/identity.facade";
-import { SecurityControls } from "../../../../shared/application/ports/security";
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
+import type { IdentityAccess } from "@identity/facade";
+import type { SecurityControls } from "@shared/application/ports/security";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
 import { invalidReport, reportDenied, reportNotFound } from "../../domain/reporting.error";
-import { ActiveCandidatesInput, ActiveCandidatesPage } from "../dto/active-candidates.dto";
+import type { ActiveCandidatesInput, ActiveCandidatesPage } from "../dto/active-candidates.dto";
 import { activeCandidateResponse, assertReportRows } from "../dto/reporting-response";
-import { ActiveCandidatesQuery } from "../ports/active-candidates.query";
-import { ActiveCandidatesCursor, ActiveCursorState } from "../ports/active-candidates-cursor.port";
+import type { ActiveCandidatesQuery } from "../ports/active-candidates.query";
+import type {
+  ActiveCandidatesCursor,
+  ActiveCursorState,
+} from "../ports/active-candidates-cursor.port";
+
 const ttlMs = 60000;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 function time(value: string): number {

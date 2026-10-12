@@ -1,8 +1,10 @@
 import { createHash } from "node:crypto";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
+
 import { Pool } from "pg";
-import { DatabaseConfig } from "../../config/database.config";
+
+import type { DatabaseConfig } from "@config/database.config";
 
 export interface SqlMigration {
   name: string;

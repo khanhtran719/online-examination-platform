@@ -1,4 +1,4 @@
-import { LockedAttempt } from "../../../domain/repositories/attempt.repository";
+import type { LockedAttempt } from "../../../domain/repositories/attempt.repository";
 import { DeadlineSweep } from "../deadline-sweep";
 
 const row = (suffix: string): LockedAttempt => ({

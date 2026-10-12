@@ -1,6 +1,7 @@
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
+import type { CatalogAccess } from "@catalog/facade";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
 import { PostgresCatalogQuery } from "./infrastructure/persistence/postgres-catalog.query";
-import { CatalogAccess } from "./application/facades/catalog.facade";
 
 /** Trusted scoring only: no Identity/session keys or full HTTP service composition. */
 export function createScoringCatalog(

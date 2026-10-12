@@ -1,19 +1,21 @@
-import { lazy, Suspense, type ComponentType } from "react";
+import { type ComponentType, lazy, Suspense } from "react";
 import { createBrowserRouter, Navigate } from "react-router";
+
 import {
   CheckEmailPage,
-  HowPage,
   HelpPage,
+  HowPage,
   LoginPage,
   NotFoundPage,
   RegisterPage,
   VerifyPage,
 } from "../features/auth/auth-pages";
+import { BrowsePage, DashboardPage, ExamDetailPage } from "../features/catalog/catalog-pages";
 import { HomePage } from "../features/experience/home-page";
 import { SampleExperience as SampleExperiencePage } from "../features/experience/sample-experience";
-import { BrowsePage, DashboardPage, ExamDetailPage } from "../features/catalog/catalog-pages";
 import { ProfilePage } from "../features/profile/profile-page";
 import { SkeletonLines } from "../shared/ui/ui";
+
 import { RootFrame } from "./chrome";
 import { CandidateShell, ExamShell, PublicShell, RequireAuth } from "./shells";
 

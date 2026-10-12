@@ -1,4 +1,5 @@
-import { SessionLookup, PersistedSession } from "../../domain/entities/identity-state";
+import type { PersistedSession, SessionLookup } from "../../domain/entities/identity-state";
+
 export interface Passwords {
   hash(password: string): Promise<string>;
   verify(hash: string, password: string): Promise<boolean>;

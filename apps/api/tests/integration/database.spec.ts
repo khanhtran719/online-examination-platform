@@ -1,17 +1,16 @@
-import { randomUUID, createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
+
 import { Pool } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
+
+import { databaseConfig } from "@config/database.config";
+import type { SqlMigration } from "@infrastructure/database/migration-runner";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
+import type { DatabaseObservation } from "@infrastructure/database/transaction/postgres-database";
 import {
-  PostgresDatabase,
   DatabaseError,
-  DatabaseObservation,
-} from "../../src/infrastructure/database/transaction/postgres-database";
-import {
-  loadMigrations,
-  migrate,
-  SqlMigration,
-} from "../../src/infrastructure/database/migration-runner";
+  PostgresDatabase,
+} from "@infrastructure/database/transaction/postgres-database";
 
 // Explicit disposable DB names. Never truncate the main local development database.
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;

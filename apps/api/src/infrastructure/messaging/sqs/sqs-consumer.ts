@@ -1,16 +1,15 @@
-import {
-  QueueConsumer,
-  QueueDelivery,
-} from "../../../shared/application/ports/queue-consumer.port";
-import { generationDigest } from "./grading-generation-metadata";
 import { createHash } from "node:crypto";
+
 import {
-  SQSClient,
-  ReceiveMessageCommand,
-  DeleteMessageCommand,
   ChangeMessageVisibilityCommand,
+  DeleteMessageCommand,
   GetQueueAttributesCommand,
+  ReceiveMessageCommand,
+  SQSClient,
 } from "@aws-sdk/client-sqs";
+
+import { generationDigest } from "@infrastructure/messaging/sqs/grading-generation-metadata";
+import type { QueueConsumer, QueueDelivery } from "@shared/application/ports/queue-consumer.port";
 
 export interface SqsConsumerSettings {
   region: string;

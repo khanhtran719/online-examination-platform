@@ -1,31 +1,30 @@
-import { randomUUID, createHash } from "node:crypto";
-import { readFile, writeFile } from "node:fs/promises";
-import { Pool } from "pg";
-import { createServer } from "node:http";
 import { spawn } from "node:child_process";
-import { startGradingWorker } from "../../src/workers/sqs/grading.main";
+import { createHash, randomUUID } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+import { createServer } from "node:http";
+
+import { Pool } from "pg";
+
+import { databaseConfig } from "@config/database.config";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
+import type { DatabaseObservation } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import { GradingConsumer } from "../../src/modules/assessment/application/services/grading-consumer";
+import { GradingRecovery } from "../../src/modules/assessment/application/services/grading-recovery";
 import {
+  createGradingConsumer,
   createGradingRecovery,
   createGradingReplay,
-  createGradingConsumer,
   createSubmissionPublisher,
 } from "../../src/modules/assessment/assessment-worker.factory";
-import { createScoringCatalog } from "../../src/modules/catalog/catalog-worker.factory";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
-import {
-  PostgresDatabase,
-  DatabaseObservation,
-} from "../../src/infrastructure/database/transaction/postgres-database";
+import type { SubmittedEvent } from "../../src/modules/assessment/domain/assessment-policy";
+import { submissionEvent } from "../../src/modules/assessment/domain/assessment-policy";
 import { PostgresGradingRepository } from "../../src/modules/assessment/infrastructure/persistence/postgres-grading.repository";
-import { PostgresCatalogQuery } from "../../src/modules/catalog/infrastructure/persistence/postgres-catalog.query";
-import { GradingRecovery } from "../../src/modules/assessment/application/services/grading-recovery";
 import { PostgresGradingFailureRepository } from "../../src/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository";
-import { GradingConsumer } from "../../src/modules/assessment/application/services/grading-consumer";
-import {
-  submissionEvent,
-  SubmittedEvent,
-} from "../../src/modules/assessment/domain/assessment-policy";
+import { createScoringCatalog } from "../../src/modules/catalog/catalog-worker.factory";
+import { PostgresCatalogQuery } from "../../src/modules/catalog/infrastructure/persistence/postgres-catalog.query";
+import { startGradingWorker } from "../../src/workers/sqs/grading.main";
 
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
 if (!adminUrl || new URL(adminUrl).port === "55432")

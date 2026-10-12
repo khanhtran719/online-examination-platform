@@ -1,14 +1,15 @@
 import {
   CATEGORIES,
-  EXPLANATION_POLICIES,
   type Category,
+  EXPLANATION_POLICIES,
   type ExplanationPolicy,
-} from "../../shared/api/dto";
-import { categoryLabel, policyLabel } from "../../shared/format";
-import { timezoneChoices, utcToZonedInput, zonedInputToUtc } from "../../shared/timezone";
-import { SelectField, TextField } from "../../shared/ui/ui";
-import type { ExamDraft } from "./use-exam-draft";
+} from "@web/shared/api/dto";
+import { categoryLabel, policyLabel } from "@web/shared/format";
+import { timezoneChoices, utcToZonedInput, zonedInputToUtc } from "@web/shared/timezone";
+import { SelectField, TextField } from "@web/shared/ui/ui";
+
 import styles from "./admin.module.css";
+import type { ExamDraft } from "./use-exam-draft";
 
 export function ExamInformation({ draft }: { draft: ExamDraft }) {
   return (

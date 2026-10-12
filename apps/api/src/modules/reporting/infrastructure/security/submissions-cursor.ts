@@ -1,10 +1,12 @@
 import { createCipheriv, createDecipheriv, createHmac, randomBytes } from "node:crypto";
-import {
-  SubmissionsCursor,
+
+import type {
   SubmissionCursorClaims,
   SubmissionCursorState,
+  SubmissionsCursor,
 } from "../../application/ports/submissions-cursor.port";
 import { invalidReport } from "../../domain/reporting.error";
+
 const aad = Buffer.from("online-exam.reporting.submissions.startedAt.desc-id.desc.cursor.v1");
 /** Derived from the existing CSRF root with a distinct purpose; never ranking alias material. */
 export class SubmissionsCrypto implements SubmissionsCursor {

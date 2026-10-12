@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
-import type { QuestionType } from "../../shared/api/dto";
-import { Button } from "../../shared/ui/ui";
+
+import type { QuestionType } from "@web/shared/api/dto";
+import { Button } from "@web/shared/ui/ui";
+
 import styles from "./admin.module.css";
 
 export function adminId(value: string): string {

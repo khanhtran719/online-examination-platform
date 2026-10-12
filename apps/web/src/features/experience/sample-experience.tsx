@@ -1,9 +1,11 @@
 import { useEffect, useReducer, useRef } from "react";
 import { Link } from "react-router";
-import { useTitle } from "../../app/use-title";
+
+import { useTitle } from "@web/app/use-title";
+
+import styles from "./experience.module.css";
 import { initialSample, SAMPLE_QUESTIONS, sampleReducer } from "./sample";
 import { SampleSummary } from "./sample-summary";
-import styles from "./experience.module.css";
 
 export function SampleExperience() {
   useTitle("Trải nghiệm 3 câu mẫu");

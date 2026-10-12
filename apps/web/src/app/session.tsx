@@ -1,14 +1,15 @@
+import { useQueryClient } from "@tanstack/react-query";
 import {
   createContext,
+  type ReactNode,
   useCallback,
   useContext,
   useEffect,
   useMemo,
   useRef,
   useState,
-  type ReactNode,
 } from "react";
-import { useQueryClient } from "@tanstack/react-query";
+
 import {
   browserCoordination,
   createSessionCoordinator,
@@ -16,8 +17,9 @@ import {
   type SessionCoordinator,
   type SessionSignal,
 } from "../features/auth/session-coordinator";
-import { isApiError } from "../shared/api/errors";
 import type { Profile } from "../shared/api/dto";
+import { isApiError } from "../shared/api/errors";
+
 import { useMemory } from "./memory";
 import { useRuntime } from "./runtime";
 

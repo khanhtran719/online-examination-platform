@@ -1,11 +1,12 @@
-import {
+import type {
   Account,
   Challenge,
   Family,
+  PersistedSession,
   SessionLookup,
   SessionRecord,
-  PersistedSession,
 } from "../entities/identity-state";
+
 export interface IdentityRepository {
   now(): Promise<number>;
   accountByEmail(email: string): Promise<Account | null>;

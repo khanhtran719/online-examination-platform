@@ -1,4 +1,5 @@
-import { statisticCounts, selectedCount } from "../question-statistics";
+import { selectedCount, statisticCounts } from "../question-statistics";
+
 describe("Question statistic denominator integrity", () => {
   it("derives answered independently from unanswered and permits true zero", () => {
     expect(

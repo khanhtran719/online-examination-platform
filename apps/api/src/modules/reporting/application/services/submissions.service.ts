@@ -1,21 +1,23 @@
-import { IdentityAccess } from "../../../identity/application/facades/identity.facade";
-import { SecurityControls } from "../../../../shared/application/ports/security";
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
+import type { IdentityAccess } from "@identity/facade";
+import type { SecurityControls } from "@shared/application/ports/security";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
 import {
   invalidReport,
   reportDenied,
   reportNotFound,
   reportNotReady,
 } from "../../domain/reporting.error";
-import {
-  SubmissionsInput,
-  SubmissionPage,
+import { assertReportRows, scoreResponse, submissionResponse } from "../dto/reporting-response";
+import type {
   AdminReportInput,
   AdminScore,
+  SubmissionPage,
+  SubmissionsInput,
 } from "../dto/submissions.dto";
-import { SubmissionsQuery } from "../ports/submissions.query";
-import { assertReportRows, scoreResponse, submissionResponse } from "../dto/reporting-response";
-import { SubmissionsCursor, SubmissionCursorState } from "../ports/submissions-cursor.port";
+import type { SubmissionsQuery } from "../ports/submissions.query";
+import type { SubmissionCursorState, SubmissionsCursor } from "../ports/submissions-cursor.port";
+
 const ttlMs = 900000;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 function time(value: string): number {

@@ -1,13 +1,15 @@
-import { createElement as h, type ComponentType } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { type ComponentType, createElement as h } from "react";
 import { Link, MemoryRouter, Route, Routes } from "react-router";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
+
+import { ApiError } from "@web/shared/api/errors";
+
 import { AdminExamEditorPage } from "../admin-exams";
-import { QuestionEditorPage } from "../admin-questions";
 import { ImportPage } from "../admin-import";
-import { ApiError } from "../../../shared/api/errors";
+import { QuestionEditorPage } from "../admin-questions";
 
 const api = vi.hoisted(() => ({
   listBankQuestions: vi.fn(),
@@ -19,7 +21,7 @@ const api = vi.hoisted(() => ({
   archiveBankQuestion: vi.fn(),
   importQuestions: vi.fn(),
 }));
-vi.mock("../../../app/runtime", () => ({
+vi.mock("@web/app/runtime", () => ({
   useRuntime: () => ({
     mode: "demo",
     api,
@@ -81,7 +83,9 @@ it("asks before archiving a question and sends the current revision only after c
   await userEvent.click(within(dialog).getByRole("button", { name: "Hủy" }));
   expect(api.archiveBankQuestion).not.toHaveBeenCalled();
   await userEvent.click(screen.getByRole("button", { name: "Lưu trữ" }));
-  await userEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: "Xác nhận" }));
+  await userEvent.click(
+    within(screen.getByRole("dialog")).getByRole("button", { name: "Xác nhận" }),
+  );
   await waitFor(() => expect(api.archiveBankQuestion).toHaveBeenCalledTimes(1));
   expect(api.archiveBankQuestion.mock.calls[0]?.[2]).toEqual({ expectedRevision: 1 });
 });

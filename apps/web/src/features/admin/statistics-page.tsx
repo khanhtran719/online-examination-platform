@@ -1,15 +1,17 @@
-import { adminId as shortId } from "./admin-ui";
-import { useState } from "react";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { CapabilityGate, useCapability } from "./gate";
-import styles from "./admin.module.css";
-import { Link, useParams } from "react-router";
-import { EmptyState, ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
-import { AdminHeading, PageEnd } from "./admin-ui";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { Link, useParams } from "react-router";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { useProtectedAccess } from "@web/shared/protected-access";
+import { EmptyState, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+
 import { rateLabel } from "../assessment/progress";
+
+import styles from "./admin.module.css";
+import { AdminHeading, adminId as shortId, PageEnd } from "./admin-ui";
+import { CapabilityGate, useCapability } from "./gate";
 
 export function StatisticsPage() {
   const { examId = "", versionId = "" } = useParams();

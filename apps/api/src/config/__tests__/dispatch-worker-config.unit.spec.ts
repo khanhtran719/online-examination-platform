@@ -1,4 +1,4 @@
-import { dispatchWorkerConfig } from "../dispatch-worker.config";
+import { dispatchWorkerConfig } from "@config/dispatch-worker.config";
 
 const env = {
   NODE_ENV: "production",

@@ -1,6 +1,7 @@
-import type { ReviewQuestion } from "../../shared/api/dto";
-import { AdminBadge } from "./admin-ui";
+import type { ReviewQuestion } from "@web/shared/api/dto";
+
 import styles from "./admin.module.css";
+import { AdminBadge } from "./admin-ui";
 
 /** Render only review data already authorized by the Admin review capability. */
 export function AdminReviewCard({ row }: { row: ReviewQuestion }) {

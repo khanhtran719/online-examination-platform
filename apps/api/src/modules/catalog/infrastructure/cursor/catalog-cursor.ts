@@ -1,6 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
+
+import type { CatalogCursor, CursorClaims } from "../../application/ports/catalog-cursor.port";
 import { invalidRequest } from "../../domain/catalog-error";
-import { CatalogCursor, CursorClaims } from "../../application/ports/catalog-cursor.port";
 
 interface CursorBody extends CursorClaims {
   watermark: string;

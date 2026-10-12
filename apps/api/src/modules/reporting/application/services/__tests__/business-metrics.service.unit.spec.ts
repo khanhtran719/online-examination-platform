@@ -1,7 +1,9 @@
+import type { IdentityAccess } from "@identity/facade";
+import type { AuditRecord } from "@shared/application/ports/security";
+
+import type { BusinessMetricsQuery } from "../../ports/business-metrics.query";
 import { BusinessMetricsService } from "../business-metrics.service";
-import { BusinessMetricsQuery } from "../../ports/business-metrics.query";
-import { IdentityAccess } from "../../../../identity/application/facades/identity.facade";
-import { AuditRecord } from "../../../../../shared/application/ports/security";
+
 const actorId = "00000000-0000-4000-8000-000000000001",
   correlationId = "00000000-0000-4000-8000-000000000002",
   asOf = "2026-10-10T00:00:00.000Z";

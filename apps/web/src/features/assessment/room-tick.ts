@@ -1,6 +1,5 @@
-import { capture, type AutosaveState, type InFlightBatch } from "./autosave";
+import { type AutosaveState, capture, type InFlightBatch, setTransport } from "./autosave";
 import { beginDeadlineSubmit, noteSavesSettled, type SubmitState } from "./submit-flow";
-import { setTransport } from "./autosave";
 
 export const TRANSPORT_TIMEOUT_MS = 10_000;
 

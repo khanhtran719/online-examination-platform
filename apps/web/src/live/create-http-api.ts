@@ -1,4 +1,9 @@
 import type {
+  ProbeResult,
+  RecoverResult,
+  SessionTransport,
+} from "../features/auth/session-coordinator";
+import type {
   Accepted,
   AdminExam,
   AdminQuestion,
@@ -55,11 +60,6 @@ import {
   parseVerified,
 } from "../shared/api/parse";
 import type { PlatformApi, ResultRead } from "../shared/api/platform";
-import type {
-  ProbeResult,
-  RecoverResult,
-  SessionTransport,
-} from "../features/auth/session-coordinator";
 
 export interface LiveHandle {
   api: PlatformApi;

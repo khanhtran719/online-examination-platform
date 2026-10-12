@@ -1,4 +1,5 @@
-import { loadRuntimeConfig } from "../secret-loader";
+import { loadRuntimeConfig } from "@infrastructure/security/authentication/secret-loader";
+
 describe("entry point configuration", () => {
   it("fails startup with absent secrets rather than generating an ephemeral signing identity", async () => {
     await expect(

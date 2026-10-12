@@ -1,11 +1,12 @@
-import { CandidateResultsService } from "../candidate-results.service";
-import { CandidateResultsQuery } from "../../ports/candidate-results.query";
-import { AssessmentCursor, AssessmentCursorClaims } from "../../ports/assessment-cursor.port";
-import { QuestionPageSizer } from "../../ports/question-page-sizer.port";
-import { invalidRequest } from "../../../domain/assessment.error";
-import { OwnedAttempt } from "../../ports/attempt-query.port";
 import { randomUUID } from "node:crypto";
-import { ReviewRelease } from "../../../domain/review-release";
+
+import { invalidRequest } from "../../../domain/assessment.error";
+import type { ReviewRelease } from "../../../domain/review-release";
+import type { AssessmentCursor, AssessmentCursorClaims } from "../../ports/assessment-cursor.port";
+import type { OwnedAttempt } from "../../ports/attempt-query.port";
+import type { CandidateResultsQuery } from "../../ports/candidate-results.query";
+import type { QuestionPageSizer } from "../../ports/question-page-sizer.port";
+import { CandidateResultsService } from "../candidate-results.service";
 
 const user = randomUUID(),
   id = randomUUID(),

@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router";
-import { useSession } from "../../app/session";
+
+import { useSession } from "@web/app/session";
+import { Brand } from "@web/shared/ui/brand";
+import { Navigation } from "@web/shared/ui/navigation";
+
 import styles from "./public.module.css";
-import { Brand } from "../../shared/ui/brand";
-import { Navigation } from "../../shared/ui/navigation";
 
 export function PublicFrame({ children }: { children: ReactNode }) {
   const session = useSession();

@@ -1,10 +1,11 @@
-import { CommonConfig } from "../../config/app.config";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
-import { PostgresSecurity } from "../../infrastructure/security/authorization/postgres-security";
+import type { CommonConfig } from "@config/app.config";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresSecurity } from "@infrastructure/security/authorization/postgres-security";
+
 import { VerificationWorker } from "./application/services/verification-worker";
+import { SesVerificationMail, SmtpVerificationMail } from "./infrastructure/mail/verification-mail";
 import { PostgresVerificationDelivery } from "./infrastructure/persistence/postgres/delivery/postgres-verification-delivery";
 import { createVerificationSecrets } from "./infrastructure/security/identity-runtime";
-import { SesVerificationMail, SmtpVerificationMail } from "./infrastructure/mail/verification-mail";
 
 export interface VerificationWorkerRuntime {
   runOnce(): Promise<boolean>;

@@ -1,4 +1,4 @@
-import type { Answer, AnswerMutation, SaveReceipt } from "../../shared/api/dto";
+import type { Answer, AnswerMutation, SaveReceipt } from "@web/shared/api/dto";
 
 export const DEBOUNCE_MS = 500;
 export const FLUSH_BASE_MS = 10_000;
@@ -6,14 +6,7 @@ export const BATCH_LIMIT = 20;
 export const RETRY_DELAYS_MS = [1_000, 2_000, 4_000, 8_000, 16_000];
 
 export type SavePhase =
-  | "clean"
-  | "pending"
-  | "saving"
-  | "saved"
-  | "retrying"
-  | "conflict"
-  | "offline"
-  | "unconfirmed";
+  "clean" | "pending" | "saving" | "saved" | "retrying" | "conflict" | "offline" | "unconfirmed";
 
 export interface DraftIntent {
   questionId: string;
@@ -88,7 +81,8 @@ function derive(state: AutosaveState): AutosaveState {
   else if (state.offline && (dirty || state.inFlight)) phase = "offline";
   else if (!state.authenticated && (dirty || state.inFlight)) phase = "unconfirmed";
   else if (state.inFlight?.exhausted) phase = "unconfirmed";
-  else if (state.inFlight && state.inFlight.attempt > 0 && state.inFlight.retryAtMs !== null) phase = "retrying";
+  else if (state.inFlight && state.inFlight.attempt > 0 && state.inFlight.retryAtMs !== null)
+    phase = "retrying";
   else if (state.inFlight) phase = "saving";
   else if (dirty && !state.canSave) phase = "unconfirmed";
   else if (dirty) phase = "pending";
@@ -198,7 +192,12 @@ export function capture(
     }
     return { state, batch: null };
   }
-  if (!state.canSave || !state.authenticated || state.offline || state.conflictQuestionIds.length > 0) {
+  if (
+    !state.canSave ||
+    !state.authenticated ||
+    state.offline ||
+    state.conflictQuestionIds.length > 0
+  ) {
     return { state, batch: null };
   }
   const debounceDue = state.debounceDueMs !== null && nowMs >= state.debounceDueMs;
@@ -233,13 +232,14 @@ export function capture(
   };
 }
 
-export function acknowledge(state: AutosaveState, receipt: SaveReceipt, key: string): AutosaveState {
+export function acknowledge(
+  state: AutosaveState,
+  receipt: SaveReceipt,
+  key: string,
+): AutosaveState {
   const captureRecord = state.inFlight?.key === key ? state.inFlight : state.applied[key];
   if (!captureRecord) return state;
-  const sent =
-    "answers" in captureRecord
-      ? captureRecord.answers
-      : [];
+  const sent = "answers" in captureRecord ? captureRecord.answers : [];
   const sequences = captureRecord.capturedSequences;
   const loaded = { ...state.loaded };
   const drafts = { ...state.drafts };
@@ -262,7 +262,10 @@ export function acknowledge(state: AutosaveState, receipt: SaveReceipt, key: str
     if (draft && captured !== undefined && draft.localIntentSequence === captured) {
       delete drafts[mutation.questionId];
     } else if (draft) {
-      drafts[mutation.questionId] = { ...draft, baseVersion: Math.max(current.version, receiptVersion) };
+      drafts[mutation.questionId] = {
+        ...draft,
+        baseVersion: Math.max(current.version, receiptVersion),
+      };
     }
   }
   const applied = {
@@ -294,11 +297,17 @@ export function failRetryable(
   if (!state.inFlight) return state;
   const nextAttempt = state.inFlight.attempt + 1;
   const schedule = RETRY_DELAYS_MS[state.inFlight.attempt];
-  const exhausted = !input.allowRetry || schedule === undefined || nextAttempt > RETRY_DELAYS_MS.length;
+  const exhausted =
+    !input.allowRetry || schedule === undefined || nextAttempt > RETRY_DELAYS_MS.length;
   if (exhausted) {
     return derive({
       ...state,
-      inFlight: { ...state.inFlight, exhausted: true, retryAtMs: null, attempt: state.inFlight.attempt },
+      inFlight: {
+        ...state.inFlight,
+        exhausted: true,
+        retryAtMs: null,
+        attempt: state.inFlight.attempt,
+      },
     });
   }
   const jittered = Math.round(schedule * (0.8 + 0.4 * input.random));
@@ -419,7 +428,12 @@ export function resolveKeepMine(state: AutosaveState, answers: readonly Answer[]
 export function viewAnswer(
   state: AutosaveState,
   questionId: string,
-): { known: boolean; selectedOptionIds: readonly string[]; marked: boolean; version: number | null } {
+): {
+  known: boolean;
+  selectedOptionIds: readonly string[];
+  marked: boolean;
+  version: number | null;
+} {
   const draft = state.drafts[questionId];
   if (draft) {
     return {
@@ -454,9 +468,7 @@ export function saveStatusLabel(state: AutosaveState, savedClock: string): strin
   if (state.phase === "conflict") return "Đáp án đã thay đổi ở tab khác";
   if (state.phase === "offline") return "Chưa kết nối. Các thay đổi hiện chỉ ở trình duyệt";
   if (state.phase === "unconfirmed") {
-    return count > 0
-      ? `${count} thay đổi chưa được xác nhận`
-      : "Chưa xác nhận được đã lưu";
+    return count > 0 ? `${count} thay đổi chưa được xác nhận` : "Chưa xác nhận được đã lưu";
   }
   return "Chưa có thay đổi cần lưu";
 }

@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
+
+import { isApiError } from "@web/shared/api/errors";
+
 import { createDemoServer } from "../server";
-import { isApiError } from "../../shared/api/errors";
 
 const NOW = Date.parse("2026-10-06T13:00:00.000Z");
 

@@ -1,8 +1,9 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException } from "@nestjs/common";
 import { FastifyReply } from "fastify";
-import { DomainError } from "../../domain/exceptions/domain-error";
-import { ErrorCategory } from "../../domain/exceptions/error-category";
-import { UnavailableError } from "../../application/errors/unavailable.error";
+
+import { UnavailableError } from "@shared/application/errors/unavailable.error";
+import { DomainError } from "@shared/domain/exceptions/domain-error";
+import { ErrorCategory } from "@shared/domain/exceptions/error-category";
 
 export interface ErrorEnvelope {
   data: null;

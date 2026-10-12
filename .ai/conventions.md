@@ -2123,6 +2123,23 @@ Within groups, keep ordering deterministic through lint/formatter tooling when a
 
 Avoid deeply inconsistent manual ordering rules if tooling can enforce them.
 
+For this repository, `scripts/eslint-imports.mjs` enforces the policy in both API
+and Web flat configs. Side-effect initialization imports precede these groups and
+retain their relative order, including fonts/tokens/global CSS. Parent-relative
+imports precede sibling-relative imports. Groups and the following body are
+separated by a blank line. Use simple-import-sort for imports/exports; do not enable
+a second sorter. Prettier owns wrapping/spacing after ESLint fixes.
+
+Reject duplicate imports, allowing one separate `import type` declaration beside
+a value import. Prefer explicit type-only imports with the consistent-type-imports
+rule. API parser settings recognize legacy decorator metadata: retain value
+imports used by decorated constructors. Native CommonJS configuration files may
+use `require`; this is a file-format requirement, not a business-layer exception.
+Use `node:` for built-ins. `npm run lint` checks API/tooling and Web; `lint:fix`
+applies the same policy and then checks architecture/Reporting review receipts.
+`format:code` and `format:check` wrap/check current TypeScript and Node/config code
+without touching SQL migrations, historical evidence, HTML templates or CSS.
+
 ---
 
 # 83. Path Aliases
@@ -2143,6 +2160,21 @@ Do not create an alias for every directory.
 Within a module, relative imports may be clearer for local relationships.
 
 Avoid path aliases that hide cross-module dependency violations.
+
+The adopted API mapping authority is root `tsconfig.paths.json`: `@shared/*`,
+`@config/*`, `@infrastructure/*` and exact `@identity/facade`, `@catalog/facade`,
+`@reporting/ranking` entry points. The illustrative `@modules/*` wildcard above is
+not configured. API aliases must resolve to their physical source paths before
+the existing architecture checks run. Unsupported internal aliases, traversal and
+targets outside the API root are rejected. Alias names grant no extra permissions.
+
+CommonJS output uses the TypeScript compiler resolver/emit transform in
+`scripts/compile.mjs`; Jest derives mappings from the same JSON. Source maps are
+emitted in that compiler pass. TypeScript `paths` alone is not runtime support.
+Web defines its separate `@web/*` in its tsconfig and Vite/Vitest; it does not share
+API mappings. Plain Node tooling keeps relative imports. Do not add barrels just
+to shorten an import. Changes to Reporting query/port imports require renewed
+source-hash review; applied migrations and archived evidence stay immutable.
 
 ---
 

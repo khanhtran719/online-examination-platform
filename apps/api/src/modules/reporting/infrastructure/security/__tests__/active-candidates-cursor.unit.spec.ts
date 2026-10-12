@@ -1,5 +1,7 @@
 import { randomBytes } from "node:crypto";
+
 import { ActiveCandidatesCrypto } from "../active-candidates-cursor";
+
 const claims = { actorId: "actor", examId: "exam", pageSize: 20 };
 const state = {
   watermark: "2026-10-10T00:00:00.000Z",

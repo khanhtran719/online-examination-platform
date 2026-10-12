@@ -1,4 +1,5 @@
-import { UnavailableError } from "../../../../shared/application/errors/unavailable.error";
+import { UnavailableError } from "@shared/application/errors/unavailable.error";
+
 import { AdmissionSaturatedError } from "../errors/admission-saturated.error";
 
 describe("admission saturation", () => {

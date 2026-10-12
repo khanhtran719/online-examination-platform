@@ -1,0 +1,326 @@
+
+> online-examination-platform@0.1.0 test:integration:local
+> node --experimental-vm-modules --env-file=.env.integration.example node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand
+
+(node:29358) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"777ce663-0961-4ea2-bd35-7eaed34cbe43"}
+{"event":"unhandled_exception","correlationId":"487b41a0-6e6b-478a-84a0-6f3a1a4ff269"}
+{"event":"unhandled_exception","correlationId":"dfa0bc77-082e-4cf8-b985-5125f4522cfa"}
+{"event":"unhandled_exception","correlationId":"f44be013-b80a-4772-8a78-c3e4a5a0a662"}
+{"event":"unhandled_exception","correlationId":"ffab7ed8-28e7-4e33-b58c-14dd2a3120bc"}
+{"event":"unhandled_exception","correlationId":"e58e28c8-6e87-4a27-b204-90329f09d410"}
+{"event":"unhandled_exception","correlationId":"bca26bae-f225-40b3-b936-36e8da63374b"}
+{"event":"unhandled_exception","correlationId":"4fb08fec-cf3d-4035-96f0-4f9cc6478ffa"}
+{"event":"unhandled_exception","correlationId":"0c6bca9d-8f3f-4928-968b-4896cc74a561"}
+{"event":"unhandled_exception","correlationId":"762bd67f-d038-4591-b648-53093cb77c17"}
+{"event":"unhandled_exception","correlationId":"26ae834b-edc0-49fb-b538-86e28c66aacc"}
+{"event":"unhandled_exception","correlationId":"a580a2ed-cf97-4c64-b389-835b96e68836"}
+{"event":"unhandled_exception","correlationId":"f111e481-cf25-4b54-81f3-b53ce1e8a323"}
+{"event":"unhandled_exception","correlationId":"20bafad7-5762-4403-b182-259b876e82b7"}
+{"event":"unhandled_exception","correlationId":"69f9b84d-14b8-4e9c-9b79-309e6dc00dc0"}
+{"event":"unhandled_exception","correlationId":"a84e9ba7-6fcd-4289-8d88-9032d4f89c41"}
+{"event":"unhandled_exception","correlationId":"431cb2cf-7107-4666-a699-e782a30c4567"}
+{"event":"unhandled_exception","correlationId":"00879a03-5d0e-477e-834d-08c1a9c778a4"}
+{"event":"unhandled_exception","correlationId":"46015a52-e6c3-4c88-8817-d10d650a381a"}
+{"event":"unhandled_exception","correlationId":"bf7006b2-768b-4b95-86a9-845af6d41fc7"}
+{"event":"unhandled_exception","correlationId":"c3e87338-28ef-49a7-856c-17e3ab8be67b"}
+{"event":"unhandled_exception","correlationId":"c7ce00b4-7592-462a-b08c-edfe171e988d"}
+FAIL apps/api/tests/integration/assessment-expiry.spec.ts (88.172 s)
+  ● deadline sweep on restricted PostgreSQL › leaves a future attempt untouched and expires one whose deadline is already past
+
+    thrown: "Exceeded timeout of 30000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      at _getError (node_modules/jest-circus/build/jestAdapterInit.js:1985:12)
+          at Array.map (<anonymous>)
+
+    Cause:
+        thrown: "Exceeded timeout of 30000 ms for a test.
+        Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+          645 |
+          646 | describe("deadline sweep on restricted PostgreSQL", () => {
+        > 647 |   it("leaves a future attempt untouched and expires one whose deadline is already past", async () => {
+              |   ^
+          648 |     const exam = await publishExam();
+          649 |     const future = await assessment.start(candidateUser.raw, uuidv7(), exam.examId);
+          650 |     const [due] = await seedDue(exam.examId, ["1 minute"]);
+
+          at apps/api/tests/integration/assessment-expiry.spec.ts:647:3
+          at apps/api/tests/integration/assessment-expiry.spec.ts:646:1
+
+  ● deadline sweep on restricted PostgreSQL › keeps an acknowledged save and rejects a save after the deadline
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:717:21)
+
+  ● deadline sweep on restricted PostgreSQL › sweeps an offline attempt and an attempt whose session family was revoked
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:755:18)
+
+  ● deadline sweep on restricted PostgreSQL › lets a manual submit and the sweep keep one winner
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:776:20)
+
+  ● deadline sweep on restricted PostgreSQL › returns the sweep receipt unchanged over HTTP
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:814:21)
+
+  ● deadline sweep on restricted PostgreSQL › observes a real lock wait when manual submit needs the held attempt
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:887:21)
+
+  ● deadline sweep on restricted PostgreSQL › frees the active slot, keeps the quota, and preserves the frozen version across republish
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:1061:21)
+
+  ● deadline sweep on restricted PostgreSQL › keeps the manual hot-path query ceilings
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 422
+
+      1146 |         }),
+      1147 |       );
+    > 1148 |       expect(started.response.statusCode).toBe(201);
+           |                                           ^
+      1149 |       const attemptId = started.response.json().data.id as string;
+      1150 |       const question = (await assessment.questions(candidateUser.id, attemptId, 20, null)).items[0];
+      1151 |       if (!question) throw new Error("Question missing");
+
+      at apps/api/tests/integration/assessment-expiry.spec.ts:1148:43
+      at withHttp (apps/api/tests/integration/assessment-expiry.spec.ts:400:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:1134:5)
+
+
+Summary of all failing tests
+FAIL apps/api/tests/integration/assessment-expiry.spec.ts (88.172 s)
+  ● deadline sweep on restricted PostgreSQL › leaves a future attempt untouched and expires one whose deadline is already past
+
+    thrown: "Exceeded timeout of 30000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      at _getError (node_modules/jest-circus/build/jestAdapterInit.js:1985:12)
+          at Array.map (<anonymous>)
+
+    Cause:
+        thrown: "Exceeded timeout of 30000 ms for a test.
+        Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+          645 |
+          646 | describe("deadline sweep on restricted PostgreSQL", () => {
+        > 647 |   it("leaves a future attempt untouched and expires one whose deadline is already past", async () => {
+              |   ^
+          648 |     const exam = await publishExam();
+          649 |     const future = await assessment.start(candidateUser.raw, uuidv7(), exam.examId);
+          650 |     const [due] = await seedDue(exam.examId, ["1 minute"]);
+
+          at apps/api/tests/integration/assessment-expiry.spec.ts:647:3
+          at apps/api/tests/integration/assessment-expiry.spec.ts:646:1
+
+  ● deadline sweep on restricted PostgreSQL › keeps an acknowledged save and rejects a save after the deadline
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:717:21)
+
+  ● deadline sweep on restricted PostgreSQL › sweeps an offline attempt and an attempt whose session family was revoked
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:755:18)
+
+  ● deadline sweep on restricted PostgreSQL › lets a manual submit and the sweep keep one winner
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:776:20)
+
+  ● deadline sweep on restricted PostgreSQL › returns the sweep receipt unchanged over HTTP
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:814:21)
+
+  ● deadline sweep on restricted PostgreSQL › observes a real lock wait when manual submit needs the held attempt
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:887:21)
+
+  ● deadline sweep on restricted PostgreSQL › frees the active slot, keeps the quota, and preserves the frozen version across republish
+
+    ExamNotOpenError: Exam is not open
+
+      157 |         throw new ExamNotPublishedError();
+      158 |       }
+    > 159 |       if (nowMs < shared.openAt) throw new ExamNotOpenError();
+          |                                        ^
+      160 |       if (nowMs >= shared.closeAt) throw new ExamClosedError();
+      161 |       const deadlineMs = Math.min(nowMs + shared.durationSeconds * 1000, Math.ceil(shared.closeAt));
+      162 |       if (deadlineMs <= nowMs) throw new ExamClosedError();
+
+      at apps/api/src/modules/assessment/application/services/assessment.service.ts:159:40
+      at apps/api/src/infrastructure/database/transaction/postgres-database.ts:238:24
+      at PostgresDatabase.transaction (apps/api/src/infrastructure/database/transaction/postgres-database.ts:237:14)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:1061:21)
+
+  ● deadline sweep on restricted PostgreSQL › keeps the manual hot-path query ceilings
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 422
+
+      1146 |         }),
+      1147 |       );
+    > 1148 |       expect(started.response.statusCode).toBe(201);
+           |                                           ^
+      1149 |       const attemptId = started.response.json().data.id as string;
+      1150 |       const question = (await assessment.questions(candidateUser.id, attemptId, 20, null)).items[0];
+      1151 |       if (!question) throw new Error("Question missing");
+
+      at apps/api/tests/integration/assessment-expiry.spec.ts:1148:43
+      at withHttp (apps/api/tests/integration/assessment-expiry.spec.ts:400:5)
+      at Object.<anonymous> (apps/api/tests/integration/assessment-expiry.spec.ts:1134:5)
+
+
+Test Suites: 1 failed, 23 passed, 24 total
+Tests:       8 failed, 419 passed, 427 total
+Snapshots:   0 total
+Time:        472.302 s
+Ran all test suites.

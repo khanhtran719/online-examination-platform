@@ -3,8 +3,8 @@
   "queries": [
     {
       "id": "active-candidates",
-      "queryHash": "4de9de263b2d137aed04f40f1f3cb9edb020096a547f0ee643f9fbd82e69ecca",
-      "portHash": "febaee3596dd67852cbeca9f3a0aee7160cb4adaba2904c660a0f2eca5fa97e1",
+      "queryHash": "a6169ca34382f39737390654d68f823e7a7806cbfd434223f7c8586f2ab6e420",
+      "portHash": "d216e460a4cc731afd4be94134d5d7d79e7924b4a84e350e0d4636b0a85ef2ca",
       "sources": [
         "assessment.attempts",
         "catalog.exams"
@@ -12,24 +12,24 @@
     },
     {
       "id": "audit",
-      "queryHash": "d59989a63017faa92ab68039d1c2249d7122ad4ef1b8129b6988d8a223ea924b",
-      "portHash": "3af3f6feaee9b853dd9e353def3701c4fb28af40278b9d163d95575b0c679847",
+      "queryHash": "3572eb3c1bbbf4790b82c083788a35bc8263f473ee2ca20a419e799a3eeabfcc",
+      "portHash": "bab5b5a3e36fef147b215137601b304a976af5695359327391a7682d860f7653",
       "sources": [
         "platform.audit_logs"
       ]
     },
     {
       "id": "business-metrics",
-      "queryHash": "1b8cda3459bbd78845644be07a20e120f80571a1029b1c5950d1c833e73b06fc",
-      "portHash": "fadce4d2015e8b387b115da06b45001b46a9e66ce1d699c077abb24774384d60",
+      "queryHash": "ce778beff393bc6b3442432a6241fce4b7426275aaa244a79e9c2da33fb010b8",
+      "portHash": "dbf71e04b9618efeefc6bfb8c211ec933b28ebbaa0252ad87b5f0077ef35553f",
       "sources": [
         "assessment.attempts"
       ]
     },
     {
       "id": "candidate-results",
-      "queryHash": "51a98d6b7234ebed99e6c13ef973ac34a5891d3c73989218d9323a1d1d8f5585",
-      "portHash": "13c1c192332a6d0412257edab1ae4d11d5c4e626523c245ef3629281b1bfe2dd",
+      "queryHash": "f0556c2e8efc07b48bf9ab682468ea0aaccb302399ec5fbb269bd0764f6054c3",
+      "portHash": "d9430ccd29a62ef8fcb611f68e7f36047f463f518fea178f53b447546c493018",
       "sources": [
         "assessment.attempts",
         "assessment.results",
@@ -38,8 +38,8 @@
     },
     {
       "id": "question-statistics",
-      "queryHash": "56ff6cec2587813f1554e046a218342243475d241b200a30d1ec38df53d49503",
-      "portHash": "06b3e293198c1b940883fc422e3e679820f6ba7a8a1d527fbc49e33a657c06c1",
+      "queryHash": "2bb035124d10a7a04c0dc1a7ef3279b0ef527f8a22c807646a750a74e0719204",
+      "portHash": "a7ea5ef0287a271be1cc209fc4c94dfe9bf7e67c16f7b9e49bf0623920bb5a7e",
       "sources": [
         "assessment.option_statistics",
         "assessment.question_statistics",
@@ -51,7 +51,7 @@
     },
     {
       "id": "ranking",
-      "queryHash": "e2207e78a7e220cf7ba39f11b477bfba2fd1f427131b430aca134a705b36a61d",
+      "queryHash": "1d9021b0d171e896ed2a402d19cb5b79c874fc3d0dead835f52e9dde5c16eef2",
       "portHash": "5817c605f9eb8cc392683b05a209c02426c87f4b7ba5e3b41e1d563144985db0",
       "sources": [
         "assessment.attempts",
@@ -64,8 +64,8 @@
     },
     {
       "id": "submissions",
-      "queryHash": "8411a49f2a669dffeba6a01938fd633811198200b21feb1b6df96f5d37feccc5",
-      "portHash": "8b70d7ac7c43799201a273947daea30c40a41dafbd6eb64ea9ada96b6149a1c4",
+      "queryHash": "d2c02b98ccc8153ee2ed4b9c96da3df761d9cca23094b46163fd06aef6f6fdb5",
+      "portHash": "ac603919c1e7ad1d92bdc292cf9826c1c486a1d628801571e492dbb323f16e84",
       "sources": [
         "assessment.attempts",
         "assessment.result_questions",

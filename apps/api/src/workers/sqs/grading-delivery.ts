@@ -1,4 +1,4 @@
-import { QueueConsumer, QueueDelivery } from "../../shared/application/ports/queue-consumer.port";
+import type { QueueConsumer, QueueDelivery } from "@shared/application/ports/queue-consumer.port";
 
 export async function processGradingDelivery(input: {
   queue: QueueConsumer;

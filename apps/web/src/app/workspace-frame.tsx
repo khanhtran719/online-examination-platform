@@ -1,11 +1,13 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { Link } from "react-router";
+
+import layout from "../shared/styles/layout.module.css";
 import { Brand } from "../shared/ui/brand";
 import { Navigation, type NavItem } from "../shared/ui/navigation";
 import { Button, Dialog } from "../shared/ui/ui";
-import layout from "../shared/styles/layout.module.css";
-import styles from "./workspace-frame.module.css";
+
 import { useSession } from "./session";
+import styles from "./workspace-frame.module.css";
 
 export function WorkspaceFrame({
   items,

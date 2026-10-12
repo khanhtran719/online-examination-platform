@@ -1,5 +1,5 @@
 import { invalidRequest } from "../../../domain/assessment.error";
-import { SelectionCommand } from "../../../domain/assessment-policy";
+import type { SelectionCommand } from "../../../domain/assessment-policy";
 
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const idempotencyKey = /^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;

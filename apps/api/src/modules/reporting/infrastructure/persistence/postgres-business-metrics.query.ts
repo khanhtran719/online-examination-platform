@@ -1,6 +1,8 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { BusinessMetricCounters } from "../../domain/business-metrics";
-import { BusinessMetricsQuery } from "../../application/ports/business-metrics.query";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { BusinessMetricsQuery } from "../../application/ports/business-metrics.query";
+import type { BusinessMetricCounters } from "../../domain/business-metrics";
+
 export class PostgresBusinessMetricsQuery implements BusinessMetricsQuery {
   constructor(private readonly db: PostgresDatabase) {}
   async snapshot(input: Parameters<BusinessMetricsQuery["snapshot"]>[0]) {

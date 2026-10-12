@@ -1,7 +1,8 @@
-import { formatClock } from "../../shared/format";
-import { ExamGlyph } from "../../shared/ui/brand";
-import { Button } from "../../shared/ui/ui";
-import { saveStatusLabel, type AutosaveState } from "./autosave";
+import { formatClock } from "@web/shared/format";
+import { ExamGlyph } from "@web/shared/ui/brand";
+import { Button } from "@web/shared/ui/ui";
+
+import { type AutosaveState, saveStatusLabel } from "./autosave";
 import { formatRemaining } from "./clock";
 import styles from "./room.module.css";
 

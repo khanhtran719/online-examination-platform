@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@shared/*": ["./apps/api/src/shared/*"],
+      "@config/*": ["./apps/api/src/config/*"],
+      "@infrastructure/*": ["./apps/api/src/infrastructure/*"],
+      "@identity/facade": ["./apps/api/src/modules/identity/application/facades/identity.facade"],
+      "@catalog/facade": ["./apps/api/src/modules/catalog/application/facades/catalog.facade"],
+      "@reporting/ranking": ["./apps/api/src/modules/reporting/application/facades/ranking.facade"]
+    }
+  }
+}

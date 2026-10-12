@@ -1,4 +1,8 @@
-export function progressCopy(input: { loaded: number; answered: number; versionTotal: number | null }): string {
+export function progressCopy(input: {
+  loaded: number;
+  answered: number;
+  versionTotal: number | null;
+}): string {
   const loadedLine = `Đã trả lời ${input.answered} trên ${input.loaded} câu đã tải.`;
   if (input.versionTotal === null) {
     return `${loadedLine} Chưa có tổng số câu của đúng phiên bản.`;

@@ -1,10 +1,12 @@
 import { createCipheriv, createDecipheriv, createHmac, randomBytes } from "node:crypto";
-import {
+
+import type {
   CandidateResultsCursor,
   CandidateResultsCursorClaims,
   CandidateResultsCursorState,
 } from "../../application/ports/candidate-results-cursor.port";
 import { invalidReport } from "../../domain/reporting.error";
+
 const aad = Buffer.from("online-exam.reporting.candidate-results.candidateId.asc.cursor.v1");
 /** Derived from the existing CSRF root with a distinct purpose; never ranking alias material. */
 export class CandidateResultsCrypto implements CandidateResultsCursor {

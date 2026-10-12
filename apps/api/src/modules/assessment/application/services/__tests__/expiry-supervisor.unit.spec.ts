@@ -1,4 +1,4 @@
-import { SweepTickResult } from "../deadline-sweep";
+import type { SweepTickResult } from "../deadline-sweep";
 import { runExpirySupervisor, sweepDelay } from "../expiry-supervisor";
 
 const timing = {

@@ -1,4 +1,5 @@
-import { auditRetentionConfig } from "../audit-retention.config";
+import { auditRetentionConfig } from "@config/audit-retention.config";
+
 describe("Audit maintenance configuration", () => {
   it("defaults off with bounded500 rows", () =>
     expect(auditRetentionConfig({})).toEqual({ enabled: false, batch: 500 }));

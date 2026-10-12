@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+
 import { initialSample, sampleReducer, sampleScore } from "../sample";
 
 describe("public sample session", () => {

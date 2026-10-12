@@ -2,20 +2,22 @@ import { randomUUID } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
-import { Pool, PoolClient } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
-import {
-  PostgresDatabase,
-  DatabaseObservation,
-} from "../../src/infrastructure/database/transaction/postgres-database";
+
+import type { PoolClient } from "pg";
+import { Pool } from "pg";
+
+import { databaseConfig } from "@config/database.config";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
+import type { DatabaseObservation } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
 import { PostgresActiveCandidatesQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-active-candidates.query";
-import { PostgresSubmissionsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-submissions.query";
+import { PostgresAuditQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-audit.query";
+import { PostgresBusinessMetricsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-business-metrics.query";
 import { PostgresCandidateResultsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-candidate-results.query";
 import { PostgresQuestionStatisticsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-question-statistics.query";
-import { PostgresBusinessMetricsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-business-metrics.query";
-import { PostgresAuditQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-audit.query";
 import { PostgresRankingQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-ranking.query";
+import { PostgresSubmissionsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-submissions.query";
 
 interface Column {
   name: string;

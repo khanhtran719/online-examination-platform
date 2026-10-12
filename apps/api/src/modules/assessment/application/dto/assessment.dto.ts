@@ -1,4 +1,4 @@
-import { AttemptStatus } from "../../domain/attempt";
+import type { AttemptStatus } from "../../domain/attempt";
 
 export interface AttemptView {
   id: string;

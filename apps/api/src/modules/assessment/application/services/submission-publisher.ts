@@ -1,9 +1,8 @@
-import {
-  QueuePublisher,
-  QueuePublishError,
-} from "../../../../shared/application/ports/queue-publisher.port";
+import type { QueuePublisher } from "@shared/application/ports/queue-publisher.port";
+import { QueuePublishError } from "@shared/application/ports/queue-publisher.port";
+
 import { assertSubmittedEvent } from "../../domain/assessment-policy";
-import { SubmissionClaim, SubmissionDispatch } from "../ports/submission-dispatch.port";
+import type { SubmissionClaim, SubmissionDispatch } from "../ports/submission-dispatch.port";
 
 export interface PublisherPolicy {
   concurrency: number;

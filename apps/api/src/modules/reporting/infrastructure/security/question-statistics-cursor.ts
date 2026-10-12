@@ -1,10 +1,12 @@
 import { createCipheriv, createDecipheriv, createHmac, randomBytes } from "node:crypto";
-import {
+
+import type {
   QuestionStatisticsCursor,
   QuestionStatisticsCursorClaims,
   QuestionStatisticsCursorState,
 } from "../../application/ports/question-statistics-cursor.port";
 import { invalidReport } from "../../domain/reporting.error";
+
 const aad = Buffer.from(
   "online-exam.reporting.question-statistics.section.asc-question.asc-id.asc.cursor.v1",
 );

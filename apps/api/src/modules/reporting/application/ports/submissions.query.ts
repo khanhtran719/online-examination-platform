@@ -1,4 +1,5 @@
-import { AdminScore, AdminSubmission } from "../dto/submissions.dto";
+import type { AdminScore, AdminSubmission } from "../dto/submissions.dto";
+
 /** Primary read-only sources: catalog.exams(id), published_versions(id,exam_id,
  * scoring_policy), published_sections(version_id,id,position), published_questions
  * (version_id,id,section_id); assessment.attempts(id,exam_id,user_id,version_id,

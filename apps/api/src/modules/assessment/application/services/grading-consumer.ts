@@ -1,12 +1,14 @@
-import { CatalogAccess } from "../../../catalog/application/facades/catalog.facade";
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
-import { assertSubmittedEvent } from "../../domain/assessment-policy";
-import { matchesSubmission } from "../../domain/grading-submission";
+import type { CatalogAccess } from "@catalog/facade";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
 import { AssessmentError } from "../../domain/assessment.error";
-import { GradingRecovery } from "./grading-recovery";
+import { assertSubmittedEvent } from "../../domain/assessment-policy";
 import { Attempt } from "../../domain/attempt";
 import { grade } from "../../domain/grading";
-import { GradingRepository } from "../ports/grading-repository.port";
+import { matchesSubmission } from "../../domain/grading-submission";
+import type { GradingRepository } from "../ports/grading-repository.port";
+
+import type { GradingRecovery } from "./grading-recovery";
 
 export type GradingOutcome = "completed" | "duplicate" | "quarantined" | "stale" | "terminal";
 export class GradingConsumer {

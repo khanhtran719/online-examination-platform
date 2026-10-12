@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import type { SceneController } from "./scene/mount-scene";
+
 import styles from "./hero-scene.module.css";
+import type { SceneController } from "./scene/mount-scene";
 
 function subscribeReducedMotion(onChange: () => void) {
   const media = window.matchMedia?.("(prefers-reduced-motion: reduce)");

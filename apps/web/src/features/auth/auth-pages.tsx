@@ -1,13 +1,15 @@
-import { useEffect, useId, useState, type FormEvent } from "react";
+import { type FormEvent, useEffect, useId, useState } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router";
-import { useTitle } from "../../app/use-title";
-import { useRuntime } from "../../app/runtime";
-import { useSession } from "../../app/session";
-import { isApiError } from "../../shared/api/errors";
-import { safeReturnPath } from "../../shared/format";
-import { validateFinalPassword, validateLogin, validateRegister } from "../../shared/validation";
-import { Alert, Button, PasswordField, TextField } from "../../shared/ui/ui";
-import styles from "../../shared/styles/layout.module.css";
+
+import { useRuntime } from "@web/app/runtime";
+import { useSession } from "@web/app/session";
+import { useTitle } from "@web/app/use-title";
+import { isApiError } from "@web/shared/api/errors";
+import { safeReturnPath } from "@web/shared/format";
+import styles from "@web/shared/styles/layout.module.css";
+import { Alert, Button, PasswordField, TextField } from "@web/shared/ui/ui";
+import { validateFinalPassword, validateLogin, validateRegister } from "@web/shared/validation";
+
 import { AuthFrame } from "./auth-frame";
 import authStyles from "./auth-frame.module.css";
 

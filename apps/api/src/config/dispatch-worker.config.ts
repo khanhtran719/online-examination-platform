@@ -1,4 +1,5 @@
-import { submissionQueueConfig } from "./submission-queue.config";
+import { submissionQueueConfig } from "@config/submission-queue.config";
+
 export interface DispatchWorkerConfig {
   region: string;
   queueUrl: string;

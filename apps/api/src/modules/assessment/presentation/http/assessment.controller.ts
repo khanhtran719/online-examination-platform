@@ -1,15 +1,18 @@
 import { Body, Controller, Get, Inject, Param, Post, Put, Query, Req, Res } from "@nestjs/common";
 import { FastifyReply, FastifyRequest } from "fastify";
+
 import {
   GuardedRequest,
   IDENTITY_ACCESS,
   IdentityAccess,
   REQUEST_GUARD,
   RequestGuard,
-} from "../../../identity/application/facades/identity.facade";
+} from "@identity/facade";
+
+import { Commit } from "../../application/dto/assessment.dto";
 import { AssessmentService } from "../../application/services/assessment.service";
 import { CandidateResultsService } from "../../application/services/candidate-results.service";
-import { Commit } from "../../application/dto/assessment.dto";
+
 import { idempotency, pageQuery, resourceId, saveRequest, submitBody } from "./dto/assessment.dto";
 
 function guarded(request: FastifyRequest): GuardedRequest {

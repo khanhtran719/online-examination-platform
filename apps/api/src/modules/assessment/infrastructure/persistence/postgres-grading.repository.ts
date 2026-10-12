@@ -1,7 +1,11 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { GradingAttempt, GradingRepository } from "../../application/ports/grading-repository.port";
-import { Grade } from "../../domain/grading";
-import { ScoringAnswer } from "../../domain/scoring";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type {
+  GradingAttempt,
+  GradingRepository,
+} from "../../application/ports/grading-repository.port";
+import type { Grade } from "../../domain/grading";
+import type { ScoringAnswer } from "../../domain/scoring";
 
 export class PostgresGradingRepository implements GradingRepository {
   constructor(private readonly db: PostgresDatabase) {}

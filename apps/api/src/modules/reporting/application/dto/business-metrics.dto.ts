@@ -1,4 +1,5 @@
-import { businessMetricValues } from "../../domain/business-metrics";
+import type { businessMetricValues } from "../../domain/business-metrics";
+
 export type BusinessMetrics = ReturnType<typeof businessMetricValues>;
 export interface BusinessMetricsInput {
   raw: string;

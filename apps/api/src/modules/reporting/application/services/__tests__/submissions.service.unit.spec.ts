@@ -1,9 +1,10 @@
+import type { IdentityAccess } from "@identity/facade";
+import type { AuditRecord } from "@shared/application/ports/security";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
+import type { SubmissionsQuery } from "../../ports/submissions.query";
+import type { SubmissionCursorState, SubmissionsCursor } from "../../ports/submissions-cursor.port";
 import { SubmissionsService } from "../submissions.service";
-import { SubmissionsQuery } from "../../ports/submissions.query";
-import { SubmissionsCursor, SubmissionCursorState } from "../../ports/submissions-cursor.port";
-import { IdentityAccess } from "../../../../identity/application/facades/identity.facade";
-import { UnitOfWork } from "../../../../../shared/application/unit-of-work/unit-of-work.port";
-import { AuditRecord } from "../../../../../shared/application/ports/security";
 
 const now = "2026-10-10T00:00:00.000Z";
 const actorId = "00000000-0000-4000-8000-000000000001";

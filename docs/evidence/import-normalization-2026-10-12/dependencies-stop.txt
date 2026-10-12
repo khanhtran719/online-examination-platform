@@ -1,0 +1,4 @@
+ Container examination-platform-sqs-1 Stopping 
+ Container examination-platform-mailpit-1 Stopping 
+ Container examination-platform-sqs-1 Stopped 
+ Container examination-platform-mailpit-1 Stopped 

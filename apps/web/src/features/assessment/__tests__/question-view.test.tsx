@@ -1,7 +1,9 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { CandidateQuestion } from "../../../shared/api/dto";
+
+import type { CandidateQuestion } from "@web/shared/api/dto";
+
 import { QuestionView } from "../question-view";
 
 const question: CandidateQuestion = {

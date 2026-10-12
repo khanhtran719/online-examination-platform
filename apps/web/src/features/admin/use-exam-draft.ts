@@ -1,15 +1,18 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import type { Category, ExamWriteRequest, ExplanationPolicy } from "../../shared/api/dto";
-import { isApiError } from "../../shared/api/errors";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { uuidV7 } from "../../shared/api/uuid";
-import { utcToZonedInput, zonedInputToUtc } from "../../shared/timezone";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import type { Category, ExamWriteRequest, ExplanationPolicy } from "@web/shared/api/dto";
+import { isApiError } from "@web/shared/api/errors";
+import { uuidV7 } from "@web/shared/api/uuid";
+import { useProtectedAccess } from "@web/shared/protected-access";
+import { utcToZonedInput, zonedInputToUtc } from "@web/shared/timezone";
+
 import { useCapability } from "./gate";
-import { idleIntent, settleIntent, startIntent, type IntentMachine } from "./mutation-intent";
+import { idleIntent, type IntentMachine, settleIntent, startIntent } from "./mutation-intent";
+
 interface Membership {
   bankQuestionId: string;
   points: number;

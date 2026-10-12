@@ -1,10 +1,12 @@
-import { IdentityAccess } from "../../../identity/application/facades/identity.facade";
-import { SecurityControls } from "../../../../shared/application/ports/security";
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
-import { validateMetricWindow, businessMetricValues } from "../../domain/business-metrics";
+import type { IdentityAccess } from "@identity/facade";
+import type { SecurityControls } from "@shared/application/ports/security";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
+import { businessMetricValues, validateMetricWindow } from "../../domain/business-metrics";
 import { invalidReport, reportDenied } from "../../domain/reporting.error";
-import { BusinessMetricsInput, BusinessMetrics } from "../dto/business-metrics.dto";
-import { BusinessMetricsQuery } from "../ports/business-metrics.query";
+import type { BusinessMetrics, BusinessMetricsInput } from "../dto/business-metrics.dto";
+import type { BusinessMetricsQuery } from "../ports/business-metrics.query";
+
 export class BusinessMetricsService {
   constructor(
     private readonly access: IdentityAccess,

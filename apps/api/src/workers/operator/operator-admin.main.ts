@@ -1,6 +1,8 @@
 import { randomUUID } from "node:crypto";
-import { loadDatabaseConfig } from "../../infrastructure/database/load-database-config";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
+
+import { loadDatabaseConfig } from "@infrastructure/database/load-database-config";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
 import { createOperatorAdmin } from "../../modules/identity/identity-operator.factory";
 
 async function main(): Promise<void> {

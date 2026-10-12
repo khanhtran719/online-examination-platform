@@ -1,0 +1,141 @@
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (5.531792ms)
+✔ detects module-private and same-module infrastructure access from application (0.98925ms)
+✔ permits a public application capability and infrastructure driver adapter (0.973292ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.366125ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (0.56125ms)
+✔ checks TypeScript import types and import-equals dependencies (0.7295ms)
+✔ rejects Node network imports with or without node prefix (0.209ms)
+✔ checks technical folder barrel imports without a trailing slash (0.185583ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.388792ms)
+✔ keeps domain independent of application orchestration (0.2445ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.396042ms)
+✔ keeps all global technical roots independent from business modules (0.281625ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.217125ms)
+✔ requires module composition to use explicit public capabilities of another module (0.251584ms)
+✔ permits only reviewed Reporting ranking entry points and preserves private boundaries (0.304125ms)
+✔ rejects legacy placement after normalization closes (2.412708ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (0.459709ms)
+✔ allows only the reviewed Catalog worker composition boundary (0.221458ms)
+✖ resolves configured shared aliases while preserving protected layer boundaries (1.427958ms)
+✖ public facade aliases keep capability and global technical ownership (0.735708ms)
+✖ checks aliased type, export, dynamic, require and import-equals dependencies (0.231292ms)
+✖ rejects unconfigured internal aliases and alias traversal at composition roots (0.428292ms)
+✖ permits outer aliases without treating external scoped packages as source aliases (0.360042ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 18
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 311.215709
+
+✖ failing tests:
+
+test at scripts/__tests__/quality.unit.spec.mjs:252:1
+✖ resolves configured shared aliases while preserving protected layer boundaries (1.427958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'Source alias is not configured for boundary resolution: @shared/application/ports/security'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/quality.unit.spec.mjs:254:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'Source alias is not configured for boundary resolution: @shared/application/ports/security' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/quality.unit.spec.mjs:260:1
+✖ public facade aliases keep capability and global technical ownership (0.735708ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Platform imports a business module/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/quality.unit.spec.mjs:264:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /Platform imports a business module/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/quality.unit.spec.mjs:267:1
+✖ checks aliased type, export, dynamic, require and import-equals dependencies (0.231292ms)
+  AssertionError [ERR_ASSERTION]: type X = import('@config/app.config').X;
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/quality.unit.spec.mjs:275:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Source alias is not configured for boundary resolution: @config/app.config',
+    expected: /Protected business layer/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/quality.unit.spec.mjs:278:1
+✖ rejects unconfigured internal aliases and alias traversal at composition roots (0.428292ms)
+  AssertionError [ERR_ASSERTION]: @identity/private
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/quality.unit.spec.mjs:280:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/quality.unit.spec.mjs:283:1
+✖ permits outer aliases without treating external scoped packages as source aliases (0.360042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'Source alias is not configured for boundary resolution: @config/app.config',
+  +   'Source alias is not configured for boundary resolution: @infrastructure/http/configure-http-application'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/quality.unit.spec.mjs:284:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'Source alias is not configured for boundary resolution: @config/app.config', 'Source alias is not configured for boundary resolution: @infrastructure/http/configure-http-application' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

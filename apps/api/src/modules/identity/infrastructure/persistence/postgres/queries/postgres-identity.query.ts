@@ -1,8 +1,11 @@
-import { PostgresDatabase } from "../../../../../../infrastructure/database/transaction/postgres-database";
-import { SessionLookup } from "../../../../domain/entities/identity-state";
-import { Principal } from "../../../../application/dto/identity.dto";
-import { IdentityQuery } from "../../../../application/ports/identity-query.port";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { Principal } from "../../../../application/dto/identity.dto";
+import type { IdentityQuery } from "../../../../application/ports/identity-query.port";
+import type { SessionLookup } from "../../../../domain/entities/identity-state";
+
 import { livePrincipalSql } from "./live-principal.sql";
+
 export class PostgresIdentityQuery implements IdentityQuery {
   constructor(private readonly db: PostgresDatabase) {}
   async principal(c: SessionLookup, hash: Uint8Array): Promise<Principal | null> {

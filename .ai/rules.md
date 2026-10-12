@@ -1752,6 +1752,14 @@ Typed configuration/validation and secret-provider I/O MUST remain distinct resp
 
 The ADR-006 placement transition is closed with N-01–12 evidence. Source MUST NOT use the legacy `platform/` tree or root `worker.ts`/`operator-admin.ts`; migrations MUST live in `infrastructure/database/migrations` and ship in the compiled bundle without changing applied checksums. Keep regressions for legacy and new boundary bypasses; do not waive existing boundary checks. Documentation status MUST distinguish implemented placement, measured evidence and proposed persistence choice. No ORM performance/cost claim without comparison data.
 
+Source alias use under R-76 MUST preserve dependency permissions: resolve the
+configured alias to its physical source path before checking boundaries, reject
+unsupported internal aliases/traversal, and keep compiler/test/runtime mappings
+consistent. Alias names MUST NOT authorize private cross-module access or create
+new shared/barrel APIs. Enforce the import policy in conventions §§82–85 in both
+API/tooling and Web. Reporting import changes still require explicit source-hash
+review; migration receipts and historical evidence MUST remain immutable.
+
 ## 77. SQL Readability and Formatting Preservation Rule (R-77)
 
 MUST follow conventions §102.1 for current SQL queries and newly authored migrations: multiline clauses/projections/predicates, visible CTE/subquery/locking boundaries and adjacent parameter bindings. MUST keep SQL and formatting tools out of Domain/Application and request-time execution. A formatting-only change MUST preserve SQL tokens, literals, parameter/interpolation order, result shape and transaction/lock semantics; validate the affected queries against existing PostgreSQL regression tests. MUST NOT rewrite applied/checksummed migrations or archived benchmark source/evidence to normalize style. New schema/behavior/query optimization changes require their own review and evidence, not a formatting label.

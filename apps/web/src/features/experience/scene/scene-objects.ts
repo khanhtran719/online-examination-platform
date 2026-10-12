@@ -10,9 +10,10 @@ import {
   Shape,
   ShapeGeometry,
   SphereGeometry,
-  TorusGeometry,
   type Texture,
+  TorusGeometry,
 } from "three";
+
 import type { ScenePalette } from "./paper-texture";
 
 function roundedShape(width: number, height: number, radius: number) {

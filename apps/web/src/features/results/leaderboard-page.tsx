@@ -1,21 +1,23 @@
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useParams } from "react-router";
-import { useMemory } from "../../app/memory";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { isApiError } from "../../shared/api/errors";
-import { formatDateTime } from "../../shared/format";
-import { useProtectedAccess } from "../../shared/protected-access";
+
+import { useMemory } from "@web/app/memory";
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { isApiError } from "@web/shared/api/errors";
+import { formatDateTime } from "@web/shared/format";
+import { useProtectedAccess } from "@web/shared/protected-access";
+import layout from "@web/shared/styles/layout.module.css";
 import {
   Button,
   EmptyState,
   ErrorPanel,
   SkeletonLines,
-  TableScroll,
   tableClass,
-} from "../../shared/ui/ui";
-import layout from "../../shared/styles/layout.module.css";
+  TableScroll,
+} from "@web/shared/ui/ui";
+
 import styles from "./results.module.css";
 
 export function LeaderboardPage() {

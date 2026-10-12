@@ -1,10 +1,12 @@
 import { StrictMode, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
+
 import { App } from "../app/app";
 import type { DemoControls } from "../app/runtime";
+import type { SessionTransport } from "../features/auth/session-coordinator";
 import { isApiError } from "../shared/api/errors";
 import type { PlatformApi } from "../shared/api/platform";
-import type { SessionTransport } from "../features/auth/session-coordinator";
+
 import { DemoChrome } from "./chrome";
 import { createDemoServer, type DemoExtras } from "./server";
 

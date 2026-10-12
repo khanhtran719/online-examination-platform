@@ -1,5 +1,7 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { QuestionStatisticsQuery } from "../../application/ports/question-statistics.query";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { QuestionStatisticsQuery } from "../../application/ports/question-statistics.query";
+
 export class PostgresQuestionStatisticsQuery implements QuestionStatisticsQuery {
   constructor(private readonly db: PostgresDatabase) {}
   async page(input: Parameters<QuestionStatisticsQuery["page"]>[0]) {

@@ -1,10 +1,12 @@
 import { createCipheriv, createDecipheriv, createHmac, randomBytes } from "node:crypto";
-import {
+
+import type {
   AuditCursor,
   AuditCursorClaims,
   AuditCursorState,
 } from "../../application/ports/audit-cursor.port";
 import { invalidReport } from "../../domain/reporting.error";
+
 const aad = Buffer.from("online-exam.reporting.audit.occurredAt.desc-id.desc.cursor.v1");
 /** Derived from the existing CSRF root with a distinct purpose; never ranking alias material. */
 export class AuditCrypto implements AuditCursor {

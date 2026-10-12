@@ -1,6 +1,7 @@
-import type { SubmitReceipt } from "../../shared/api/dto";
+import type { SubmitReceipt } from "@web/shared/api/dto";
 
-export type SubmitPhase = "idle" | "flushing" | "save-blocked" | "posting" | "accepted" | "verifying" | "deadline";
+export type SubmitPhase =
+  "idle" | "flushing" | "save-blocked" | "posting" | "accepted" | "verifying" | "deadline";
 
 export interface SubmitState {
   phase: SubmitPhase;
@@ -13,8 +14,13 @@ export function createSubmitState(): SubmitState {
   return { phase: "idle", key: null, receipt: null, unconfirmedCount: 0 };
 }
 
-export function beginManualSubmit(state: SubmitState, unconfirmedCount: number, keyFactory: () => string): SubmitState {
-  if (state.phase === "posting" || state.phase === "accepted" || state.phase === "verifying") return state;
+export function beginManualSubmit(
+  state: SubmitState,
+  unconfirmedCount: number,
+  keyFactory: () => string,
+): SubmitState {
+  if (state.phase === "posting" || state.phase === "accepted" || state.phase === "verifying")
+    return state;
   return {
     phase: "flushing",
     key: state.key ?? keyFactory(),
@@ -28,7 +34,8 @@ export function beginDeadlineSubmit(
   unconfirmedCount: number,
   keyFactory: () => string,
 ): SubmitState {
-  if (state.phase === "accepted" || state.phase === "posting" || state.phase === "verifying") return state;
+  if (state.phase === "accepted" || state.phase === "posting" || state.phase === "verifying")
+    return state;
   return {
     phase: "deadline",
     key: state.key ?? keyFactory(),
@@ -42,7 +49,11 @@ export function noteSavesSettled(state: SubmitState, unconfirmedCount: number): 
   if (state.phase === "flushing" && unconfirmedCount > 0) {
     return { ...state, phase: "save-blocked", unconfirmedCount };
   }
-  return { ...state, phase: "posting", unconfirmedCount: state.phase === "deadline" ? unconfirmedCount : 0 };
+  return {
+    ...state,
+    phase: "posting",
+    unconfirmedCount: state.phase === "deadline" ? unconfirmedCount : 0,
+  };
 }
 
 export function markSubmitUnknown(state: SubmitState): SubmitState {

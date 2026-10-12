@@ -1,13 +1,16 @@
 import "@testing-library/jest-dom/vitest";
+
 import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ApiError } from "../../../shared/api/errors";
+
+import { ApiError } from "@web/shared/api/errors";
+
 import { CheckEmailPage } from "../auth-pages";
 
 const request = vi.hoisted(() => vi.fn());
-vi.mock("../../../app/runtime", () => ({
+vi.mock("@web/app/runtime", () => ({
   useRuntime: () => ({ api: { requestEmailVerification: request }, demo: null }),
 }));
 afterEach(() => {

@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import type { Answer, SaveReceipt } from "../../../shared/api/dto";
+
+import type { Answer, SaveReceipt } from "@web/shared/api/dto";
+
 import {
   acknowledge,
   capture,
@@ -10,9 +12,9 @@ import {
   holdForReauth,
   ingestAnswerPage,
   rearmExhausted,
-  resumeAuthenticated,
   resolveKeepMine,
   resolveUseServer,
+  resumeAuthenticated,
   saveStatusLabel,
   setTransport,
   viewAnswer,
@@ -48,7 +50,12 @@ function receipt(version: number, questionId = Q1): SaveReceipt {
 
 describe("autosave coordinator", () => {
   it("stays pending until the debounce elapses and is not saved before ACK", () => {
-    const edited = editAnswer(ready(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 1_000, 0);
+    const edited = editAnswer(
+      ready(),
+      { questionId: Q1, selectedOptionIds: [A], marked: false },
+      1_000,
+      0,
+    );
     expect(edited.phase).toBe("pending");
     expect(saveStatusLabel(edited, "20:12:36")).toBe("Có 1 thay đổi chờ lưu");
     expect(capture(edited, 1_499, () => "k").batch).toBeNull();
@@ -63,10 +70,20 @@ describe("autosave coordinator", () => {
   });
 
   it("keeps one immutable batch and a newer edit for the next key", () => {
-    const first = editAnswer(ready(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 0, 0);
+    const first = editAnswer(
+      ready(),
+      { questionId: Q1, selectedOptionIds: [A], marked: false },
+      0,
+      0,
+    );
     const sent = capture(first, 500, () => "k-a", { force: true });
     const body = sent.batch?.answers;
-    const newer = editAnswer(sent.state, { questionId: Q1, selectedOptionIds: [B], marked: false }, 800, 0);
+    const newer = editAnswer(
+      sent.state,
+      { questionId: Q1, selectedOptionIds: [B], marked: false },
+      800,
+      0,
+    );
     expect(sent.batch?.answers).toBe(body);
     expect(sent.batch?.answers[0]?.selectedOptionIds).toEqual([A]);
     expect(viewAnswer(newer, Q1).selectedOptionIds).toEqual([B]);
@@ -82,9 +99,19 @@ describe("autosave coordinator", () => {
   });
 
   it("ignores a duplicate older ACK after a newer version", () => {
-    let state = editAnswer(ready(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 0, 0);
+    let state = editAnswer(
+      ready(),
+      { questionId: Q1, selectedOptionIds: [A], marked: false },
+      0,
+      0,
+    );
     let sent = capture(state, 500, () => "k", { force: true });
-    state = editAnswer(sent.state, { questionId: Q1, selectedOptionIds: [B], marked: true }, 700, 0);
+    state = editAnswer(
+      sent.state,
+      { questionId: Q1, selectedOptionIds: [B], marked: true },
+      700,
+      0,
+    );
     state = acknowledge(state, receipt(1), "k");
     sent = capture(state, 1_200, () => "k2", { force: true });
     state = acknowledge(sent.state, receipt(2), "k2");
@@ -96,7 +123,12 @@ describe("autosave coordinator", () => {
   });
 
   it("stops the whole batch on conflict and waits for an explicit choice", () => {
-    let state = editAnswer(ready(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 0, 0);
+    let state = editAnswer(
+      ready(),
+      { questionId: Q1, selectedOptionIds: [A], marked: false },
+      0,
+      0,
+    );
     state = editAnswer(state, { questionId: Q2, selectedOptionIds: [A2], marked: true }, 10, 0);
     const sent = capture(state, 600, () => "batch", { force: true });
     expect(sent.batch?.answers).toHaveLength(2);
@@ -116,16 +148,31 @@ describe("autosave coordinator", () => {
   });
 
   it("retries the same key and body, then stops after the bounded schedule", () => {
-    const edited = editAnswer(ready(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 0, 0);
+    const edited = editAnswer(
+      ready(),
+      { questionId: Q1, selectedOptionIds: [A], marked: false },
+      0,
+      0,
+    );
     const sent = capture(edited, 500, () => "same-key", { force: true });
-    let state = failRetryable(sent.state, { nowMs: 1_000, retryAfterSeconds: 3, random: 0, allowRetry: true });
+    let state = failRetryable(sent.state, {
+      nowMs: 1_000,
+      retryAfterSeconds: 3,
+      random: 0,
+      allowRetry: true,
+    });
     expect(state.phase).toBe("retrying");
     const retried = capture(state, 1_000 + 3_000, () => "other", { force: true });
     expect(retried.batch?.key).toBe("same-key");
     expect(retried.batch?.answers).toBe(sent.batch?.answers);
     state = retried.state;
     for (let index = 0; index < 6; index += 1) {
-      state = failRetryable(state, { nowMs: 10_000 + index, retryAfterSeconds: null, random: 0, allowRetry: true });
+      state = failRetryable(state, {
+        nowMs: 10_000 + index,
+        retryAfterSeconds: null,
+        random: 0,
+        allowRetry: true,
+      });
     }
     expect(state.inFlight?.exhausted).toBe(true);
     expect(state.phase).toBe("unconfirmed");
@@ -139,14 +186,20 @@ describe("autosave coordinator", () => {
     ).not.toThrow();
     expect(locked.drafts[Q1]).toBeUndefined();
     expect(capture(locked, 10_000, () => "late", { force: true }).batch).toBeNull();
-    expect(() => editAnswer(createAutosaveState(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 0, 0)).toThrow(
-      /not loaded/,
-    );
+    expect(() =>
+      editAnswer(
+        createAutosaveState(),
+        { questionId: Q1, selectedOptionIds: [A], marked: false },
+        0,
+        0,
+      ),
+    ).toThrow(/not loaded/);
   });
 
   it("caps a batch at 20 distinct questions and includes clear and mark", () => {
-    const ids = Array.from({ length: 21 }, (_, index) =>
-      `00000000-0000-4000-8000-${String(index + 1).padStart(12, "0")}`,
+    const ids = Array.from(
+      { length: 21 },
+      (_, index) => `00000000-0000-4000-8000-${String(index + 1).padStart(12, "0")}`,
     );
     let state = ingestAnswerPage(
       createAutosaveState(),
@@ -167,7 +220,12 @@ describe("autosave coordinator", () => {
   });
 
   it("holds the same key while signed out and retries it after reauth", () => {
-    let state = editAnswer(ready(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 0, 0);
+    let state = editAnswer(
+      ready(),
+      { questionId: Q1, selectedOptionIds: [A], marked: false },
+      0,
+      0,
+    );
     const sent = capture(state, 500, () => "same-key", { force: true });
     state = holdForReauth(sent.state);
     expect(state.phase).toBe("unconfirmed");
@@ -190,12 +248,21 @@ describe("autosave coordinator", () => {
     const confirmed = ingestAnswerPage(createAutosaveState(), [Q1, Q2], [loaded(Q2, 4)], {
       authoritative: true,
     });
-    expect(viewAnswer(confirmed, Q1)).toMatchObject({ known: true, version: 0, selectedOptionIds: [] });
+    expect(viewAnswer(confirmed, Q1)).toMatchObject({
+      known: true,
+      version: 0,
+      selectedOptionIds: [],
+    });
     expect(viewAnswer(confirmed, Q2).version).toBe(4);
   });
 
   it("does not let jitter shorten a server Retry-After", () => {
-    const edited = editAnswer(ready(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 0, 0);
+    const edited = editAnswer(
+      ready(),
+      { questionId: Q1, selectedOptionIds: [A], marked: false },
+      0,
+      0,
+    );
     const sent = capture(edited, 500, () => "same-key", { force: true });
     const state = failRetryable(sent.state, {
       nowMs: 500,
@@ -208,7 +275,12 @@ describe("autosave coordinator", () => {
   });
 
   it("keeps one in-flight batch and does not send when the draft is clean", () => {
-    const edited = editAnswer(ready(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 0, 0);
+    const edited = editAnswer(
+      ready(),
+      { questionId: Q1, selectedOptionIds: [A], marked: false },
+      0,
+      0,
+    );
     const sent = capture(edited, 500, () => "only", { force: true });
     expect(capture(sent.state, 20_000, () => "second").batch).toBeNull();
     const clean = acknowledge(sent.state, receipt(1), "only");
@@ -217,11 +289,21 @@ describe("autosave coordinator", () => {
   });
 
   it("retries an exhausted batch with the same key and body", () => {
-    const edited = editAnswer(ready(), { questionId: Q1, selectedOptionIds: [A], marked: false }, 0, 0);
+    const edited = editAnswer(
+      ready(),
+      { questionId: Q1, selectedOptionIds: [A], marked: false },
+      0,
+      0,
+    );
     const sent = capture(edited, 500, () => "held-key", { force: true });
     let state = sent.state;
     for (let index = 0; index < 6; index += 1) {
-      state = failRetryable(state, { nowMs: 1_000 + index, retryAfterSeconds: null, random: 0, allowRetry: true });
+      state = failRetryable(state, {
+        nowMs: 1_000 + index,
+        retryAfterSeconds: null,
+        random: 0,
+        allowRetry: true,
+      });
     }
     expect(state.inFlight?.exhausted).toBe(true);
     const rearmed = rearmExhausted(state, 9_000);

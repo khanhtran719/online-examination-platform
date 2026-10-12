@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router";
-import { useTitle } from "../../app/use-title";
-import { statusLabel } from "../../shared/format";
-import { Alert, Button, EmptyState, ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
-import { useAttemptPolling } from "./use-attempt-polling";
-import layout from "../../shared/styles/layout.module.css";
+
+import { useTitle } from "@web/app/use-title";
+import { statusLabel } from "@web/shared/format";
+import layout from "@web/shared/styles/layout.module.css";
+import { Alert, Button, EmptyState, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+
 import styles from "./results.module.css";
+import { useAttemptPolling } from "./use-attempt-polling";
 
 export function StatusPage() {
   const { attemptId = "" } = useParams();

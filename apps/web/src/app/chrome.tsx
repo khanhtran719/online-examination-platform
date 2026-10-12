@@ -1,4 +1,4 @@
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, type ReactNode, useContext } from "react";
 import { Outlet } from "react-router";
 
 const ChromeContext = createContext<ReactNode>(null);

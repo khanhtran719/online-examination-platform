@@ -1,5 +1,23 @@
 # Roadmap triển khai có đánh dấu
 
+Import normalization update2026-10-12: [IMP-01–06](import-normalization-2026-10-12.md)
+COMPLETE locally; BOOT-11 added/closed, **89/217 checked,128 pending**. Shared
+ESLint import/type/duplicate policy, bounded API aliases and separate Web alias,
+physical-path architecture guards and runtime-free CommonJS alias emit.653 root
+(492 API/62 tooling/99 Web),427 integration24 suites/0 skipped and10 real HTTPS
+PASS; lint/types/API/live/demo builds/format/contracts48/445 PASS.409 normalized
+source signatures match,1,121 protected old files unchanged,19 migrations match;
+Reporting source hashes renewed without changing source declarations/receipts.
+Wrong-profile rejection and first-full timeout/ExamNotOpen failures are retained;
+unchanged focused17/full427 reruns pass, earlier transient cause unconfirmed.
+Runtime audit0; existing development findings root20 moderate/Web9 high remain.
+Cleanup0; test resources stopped/volumes retained. No business/SQL/HTTP/event or
+AWS resource change, no performance/cost/production claim. REP-04 privacy lifecycle
+and wider Web/AWS gates remain open. Production NOT ACCEPTED. Next proposed
+WEB-03 real Catalog browse/detail integration.
+[Evidence](evidence/import-normalization-2026-10-12/README.md). Previous entries
+below retain their historical source/test/next-step states.
+
 REP-08 update2026-10-12: [Reporting evaluation](reporting-evaluation-2026-10-12.md)
 RE-01–06 COMPLETE locally; **88/216 checked,128 pending**. Shared exact scope/
 committed freshness,7 deferred access-audit COMMIT failures/recovery,8 mixed-scope
@@ -194,6 +212,7 @@ Mục đích: bootstrap/dependencies/domain và composition roots; Git/remote v�
 - [x] **BOOT-08** Kiểm tra health PostgreSQL và queue local; đây chỉ là dependency check, chưa phải integration test hệ thống.
 - [ ] **BOOT-09** PARTIAL — Git đã có, baseline commit `cac9416`, remote name `origin` hiện diện; branch codex/catalog-review-fixes đã được tạo, nhưng PR workflow và remote connectivity chưa kiểm chứng. Không tạo PR chỉ để đóng checklist.
 - [x] **BOOT-10** Nest composition root/API/email-worker entry points, config fail-fast, health/correlation/error mapper và graceful drain; actual local smoke PASS.
+- [x] **BOOT-11** Chuẩn hoá ESLint import/export groups, duplicate/type imports và API/Web aliases; guard kiểm tra đường dẫn thật, compiled runtime không cần alias hook. [IMP-01–06 closure](import-normalization-2026-10-12.md)/[evidence](evidence/import-normalization-2026-10-12/README.md):653 root +427 integration/24 suites +10 HTTPS PASS; lint/types/build/format/contracts48/445. 409 source signatures,19 migration bundles và1.121 artifact cũ được bảo toàn; chỉ thêm sorter dev dependency. Đây là correctness/readability, không phải capacity/AWS acceptance.
 
 BOOT-06–08 có [bootstrap evidence lịch sử](completed-checklist-review.md). BOOT-10 có [runtime review](phase-04-review.md): actual API/worker live/ready/SIGTERM PASS. Hiện100 unit/tooling +52 integration PASS sau normalization, runtime audit0,20 moderate dev findings. BOOT-09 PARTIAL; không suy ra Docker/AWS readiness từ local roots.
 

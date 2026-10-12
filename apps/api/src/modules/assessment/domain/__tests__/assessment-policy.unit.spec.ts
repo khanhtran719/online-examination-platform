@@ -1,12 +1,12 @@
 import {
   assertSelections,
   canonical,
-  normalizeSelections,
   fitQuestionPage,
   manualSubmissionEvent,
-  submissionEvent,
+  normalizeSelections,
   QUESTION_PAGE_BYTES,
   requireFreshKey,
+  submissionEvent,
 } from "../assessment-policy";
 
 const now = Date.parse("2026-10-07T00:00:00.000Z");

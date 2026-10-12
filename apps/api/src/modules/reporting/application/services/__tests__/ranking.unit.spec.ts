@@ -1,10 +1,10 @@
-import { RankingService } from "../ranking.service";
-import { RankingQuery, RankingSlice } from "../../ports/ranking.query";
-import {
+import type { RankingQuery, RankingSlice } from "../../ports/ranking.query";
+import type {
   RankingCursor,
   RankingCursorClaims,
   RankingCursorState,
 } from "../../ports/ranking-cursor.port";
+import { RankingService } from "../ranking.service";
 
 const actorId = "10000000-0000-4000-8000-000000000001";
 const examId = "20000000-0000-4000-8000-000000000001";

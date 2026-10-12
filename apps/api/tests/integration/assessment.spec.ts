@@ -1,32 +1,42 @@
-import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
-import { HttpQuestionPageSizer } from "../../src/modules/assessment/infrastructure/http/http-question-page-sizer";
-import { createHmac, createHash, generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { createHash, createHmac, generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { performance } from "node:perf_hooks";
-import { Module } from "@nestjs/common";
+
 import SwaggerParser from "@apidevtools/swagger-parser";
+import { Module } from "@nestjs/common";
 import Ajv, { type AnySchema, type ValidateFunction } from "ajv";
 import addFormats from "ajv-formats";
 import { Pool, type QueryResultRow } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
+
+import { databaseConfig } from "@config/database.config";
+import { IDENTITY_ACCESS, REQUEST_GUARD } from "@identity/facade";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
 import {
-  PostgresDatabase,
   type DatabaseObservation,
   type DatabaseOperation,
-} from "../../src/infrastructure/database/transaction/postgres-database";
-import { createHttpApplication } from "../../src/infrastructure/http/configure-http-application";
-import { PostgresIdempotency } from "../../src/infrastructure/idempotency/postgres-idempotency";
-import { ShutdownGate } from "../../src/infrastructure/resilience/shutdown/shutdown-gate";
-import { PostgresSecurity } from "../../src/infrastructure/security/authorization/postgres-security";
+  PostgresDatabase,
+} from "@infrastructure/database/transaction/postgres-database";
+import { createHttpApplication } from "@infrastructure/http/configure-http-application";
+import { PostgresIdempotency } from "@infrastructure/idempotency/postgres-idempotency";
+import { ShutdownGate } from "@infrastructure/resilience/shutdown/shutdown-gate";
+import { PostgresSecurity } from "@infrastructure/security/authorization/postgres-security";
+
 import { AssessmentService } from "../../src/modules/assessment/application/services/assessment.service";
+import { CandidateResultsService } from "../../src/modules/assessment/application/services/candidate-results.service";
+import {
+  createGradingConsumer,
+  createGradingRecovery,
+} from "../../src/modules/assessment/assessment-worker.factory";
 import { HmacAssessmentCursor } from "../../src/modules/assessment/infrastructure/cursor/assessment-cursor";
+import { HttpQuestionPageSizer } from "../../src/modules/assessment/infrastructure/http/http-question-page-sizer";
 import { PostgresAttemptQuery } from "../../src/modules/assessment/infrastructure/persistence/postgres-attempt.query";
 import { PostgresAttemptRepository } from "../../src/modules/assessment/infrastructure/persistence/postgres-attempt.repository";
+import { PostgresCandidateResultsQuery } from "../../src/modules/assessment/infrastructure/persistence/postgres-candidate-results.query";
 import { PostgresSubmissionOutbox } from "../../src/modules/assessment/infrastructure/persistence/postgres-submission-outbox";
 import { AssessmentController } from "../../src/modules/assessment/presentation/http/assessment.controller";
 import { CatalogService } from "../../src/modules/catalog/application/services/catalog.service";
+import { createScoringCatalog } from "../../src/modules/catalog/catalog-worker.factory";
 import {
   type QuestionDraft,
   type QuestionType,
@@ -34,12 +44,9 @@ import {
 import { HmacCatalogCursor } from "../../src/modules/catalog/infrastructure/cursor/catalog-cursor";
 import { PostgresCatalogQuery } from "../../src/modules/catalog/infrastructure/persistence/postgres-catalog.query";
 import { PostgresCatalogRepository } from "../../src/modules/catalog/infrastructure/persistence/postgres-catalog.repository";
-import {
-  IDENTITY_ACCESS,
-  REQUEST_GUARD,
-} from "../../src/modules/identity/application/facades/identity.facade";
 import { IdentityService } from "../../src/modules/identity/application/services/identity.service";
 import { HttpSession } from "../../src/modules/identity/infrastructure/http/http-session";
+import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
 import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
 import { PostgresIdentityRepository } from "../../src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository";
 import {
@@ -47,15 +54,8 @@ import {
   JwtSessionTokens,
   VerificationCodec,
 } from "../../src/modules/identity/infrastructure/security/identity-crypto";
-import { IdentityController } from "../../src/modules/identity/presentation/http/identity.controller";
 import { HTTP_SESSION } from "../../src/modules/identity/presentation/http/http-session.port";
-import { CandidateResultsService } from "../../src/modules/assessment/application/services/candidate-results.service";
-import { PostgresCandidateResultsQuery } from "../../src/modules/assessment/infrastructure/persistence/postgres-candidate-results.query";
-import {
-  createGradingConsumer,
-  createGradingRecovery,
-} from "../../src/modules/assessment/assessment-worker.factory";
-import { createScoringCatalog } from "../../src/modules/catalog/catalog-worker.factory";
+import { IdentityController } from "../../src/modules/identity/presentation/http/identity.controller";
 
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
 if (!adminUrl) throw new Error("Local test administrator required");

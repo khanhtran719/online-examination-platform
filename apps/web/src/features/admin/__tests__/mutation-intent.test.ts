@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+
 import { idleIntent, settleIntent, startIntent } from "../mutation-intent";
 
 describe("mutation intents", () => {

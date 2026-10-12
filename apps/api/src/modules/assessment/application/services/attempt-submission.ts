@@ -1,14 +1,16 @@
 import { randomUUID } from "node:crypto";
+
 import { AssessmentError } from "../../domain/assessment.error";
-import { SubmissionKind, submissionEvent } from "../../domain/assessment-policy";
+import type { SubmissionKind } from "../../domain/assessment-policy";
+import { submissionEvent } from "../../domain/assessment-policy";
 import { Attempt } from "../../domain/attempt";
-import {
+import type {
   AttemptRecord,
   AttemptRepository,
   LockedAttempt,
 } from "../../domain/repositories/attempt.repository";
-import { SubmitReceipt } from "../dto/assessment.dto";
-import { SubmissionOutbox } from "../ports/submission-outbox";
+import type { SubmitReceipt } from "../dto/assessment.dto";
+import type { SubmissionOutbox } from "../ports/submission-outbox";
 
 export interface Acceptance {
   receipt: SubmitReceipt;

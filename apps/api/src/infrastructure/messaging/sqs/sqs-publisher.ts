@@ -1,10 +1,10 @@
-import { generationDigest } from "./grading-generation-metadata";
 import { createHash } from "node:crypto";
-import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
-import {
-  QueuePublisher,
-  QueuePublishError,
-} from "../../../shared/application/ports/queue-publisher.port";
+
+import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
+
+import { generationDigest } from "@infrastructure/messaging/sqs/grading-generation-metadata";
+import type { QueuePublisher } from "@shared/application/ports/queue-publisher.port";
+import { QueuePublishError } from "@shared/application/ports/queue-publisher.port";
 
 export interface SqsPublisherSettings {
   region: string;

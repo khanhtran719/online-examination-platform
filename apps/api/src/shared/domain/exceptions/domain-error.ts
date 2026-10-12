@@ -1,4 +1,4 @@
-import type { ErrorCategory } from "./error-category";
+import type { ErrorCategory } from "@shared/domain/exceptions/error-category";
 
 export abstract class DomainError extends Error {
   abstract readonly code: string;

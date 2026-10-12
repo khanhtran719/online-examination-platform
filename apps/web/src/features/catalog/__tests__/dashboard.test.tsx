@@ -1,21 +1,23 @@
 import "@testing-library/jest-dom/vitest";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
 import { DashboardPage } from "../catalog-pages";
 
 const state = vi.hoisted(() => ({ history: vi.fn(), browse: vi.fn(), lookup: vi.fn() }));
-vi.mock("../../../app/runtime", () => ({
+vi.mock("@web/app/runtime", () => ({
   useRuntime: () => ({
     api: { getHistory: state.history, browseExams: state.browse },
     mode: "demo",
   }),
 }));
-vi.mock("../../../app/session", () => ({
+vi.mock("@web/app/session", () => ({
   useSession: () => ({ profile: { displayName: "Lan Nguyễn" } }),
 }));
-vi.mock("../../../app/memory", () => ({ useMemory: () => ({ lookup: state.lookup }) }));
+vi.mock("@web/app/memory", () => ({ useMemory: () => ({ lookup: state.lookup }) }));
 beforeEach(() => {
   state.browse.mockResolvedValue({ data: { items: [], next: null } });
 });

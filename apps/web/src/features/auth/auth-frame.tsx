@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
-import { PaperArt } from "../../shared/ui/paper-art";
+
+import { PaperArt } from "@web/shared/ui/paper-art";
+
 import styles from "./auth-frame.module.css";
 
 const steps = ["Tạo tài khoản", "Xác nhận email", "Đăng nhập và chọn đề"];

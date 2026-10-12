@@ -1,16 +1,11 @@
 import { Controller, Get, Inject, Param, Query, Req } from "@nestjs/common";
 import { FastifyRequest } from "fastify";
-import {
-  IDENTITY_ACCESS,
-  IdentityAccess,
-  REQUEST_GUARD,
-  RequestGuard,
-} from "../../../identity/application/facades/identity.facade";
-import {
-  RANKING_PROJECTION,
-  RankingProjection,
-} from "../../../reporting/application/facades/ranking.facade";
+
+import { IDENTITY_ACCESS, IdentityAccess, REQUEST_GUARD, RequestGuard } from "@identity/facade";
+import { RANKING_PROJECTION, RankingProjection } from "@reporting/ranking";
+
 import { pageQuery, resourceId } from "./dto/assessment.dto";
+
 @Controller("v1")
 export class LeaderboardController {
   constructor(

@@ -1,8 +1,12 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { CandidateResultsQuery, ReviewRow } from "../../application/ports/candidate-results.query";
-import { HistoryItemView, ResultView } from "../../application/dto/candidate-results.dto";
-import { OwnedAttempt } from "../../application/ports/attempt-query.port";
-import { ReviewRelease } from "../../domain/review-release";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { HistoryItemView, ResultView } from "../../application/dto/candidate-results.dto";
+import type { OwnedAttempt } from "../../application/ports/attempt-query.port";
+import type {
+  CandidateResultsQuery,
+  ReviewRow,
+} from "../../application/ports/candidate-results.query";
+import type { ReviewRelease } from "../../domain/review-release";
 
 const stamp = (column: string) =>
   `to_char(${column} AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')`;

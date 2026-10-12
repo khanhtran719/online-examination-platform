@@ -1,4 +1,5 @@
-import { MailSettings } from "./app.config";
+import type { MailSettings } from "@config/app.config";
+
 function integer(value: string | undefined, fallback: number, min: number, max: number): number {
   const n = value === undefined ? fallback : Number(value);
   if (!Number.isInteger(n) || n < min || n > max) throw new Error("Invalid configuration");

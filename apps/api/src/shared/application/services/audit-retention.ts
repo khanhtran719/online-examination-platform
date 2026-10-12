@@ -1,5 +1,6 @@
-import { UnitOfWork } from "../unit-of-work/unit-of-work.port";
-import { AuditRetentionPort } from "../ports/audit-retention.port";
+import type { AuditRetentionPort } from "@shared/application/ports/audit-retention.port";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
 export class AuditRetention {
   constructor(
     private readonly port: AuditRetentionPort,

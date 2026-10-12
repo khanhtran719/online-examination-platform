@@ -1,21 +1,27 @@
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
-import { DeadlineSweep } from "./application/services/deadline-sweep";
-import { ExpiryLoopTiming, runExpirySupervisor } from "./application/services/expiry-supervisor";
-import { PostgresAttemptRepository } from "./infrastructure/persistence/postgres-attempt.repository";
-import { PostgresSubmissionOutbox } from "./infrastructure/persistence/postgres-submission-outbox";
-import { PostgresSubmissionDispatch } from "./infrastructure/persistence/postgres-submission-dispatch";
-import { QueuePublisher } from "../../shared/application/ports/queue-publisher.port";
-import { PublisherPolicy, SubmissionPublisher } from "./application/services/submission-publisher";
-import { PublisherLoop, runPublisherSupervisor } from "./application/services/publisher-supervisor";
 import { createHash } from "node:crypto";
-import { CatalogAccess } from "../catalog/application/facades/catalog.facade";
+
+import type { CatalogAccess } from "@catalog/facade";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import type { QueuePublisher } from "@shared/application/ports/queue-publisher.port";
+
+import type { RetentionBatch } from "./application/services/assessment-retention";
+import { AssessmentRetention } from "./application/services/assessment-retention";
+import { DeadlineSweep } from "./application/services/deadline-sweep";
+import type { ExpiryLoopTiming } from "./application/services/expiry-supervisor";
+import { runExpirySupervisor } from "./application/services/expiry-supervisor";
 import { GradingConsumer } from "./application/services/grading-consumer";
-import { PostgresGradingRepository } from "./infrastructure/persistence/postgres-grading.repository";
-import { assertSubmittedEvent } from "./domain/assessment-policy";
 import { GradingRecovery } from "./application/services/grading-recovery";
-import { PostgresGradingFailureRepository } from "./infrastructure/persistence/postgres-grading-failure.repository";
-import { AssessmentRetention, RetentionBatch } from "./application/services/assessment-retention";
+import type { PublisherLoop } from "./application/services/publisher-supervisor";
+import { runPublisherSupervisor } from "./application/services/publisher-supervisor";
+import type { PublisherPolicy } from "./application/services/submission-publisher";
+import { SubmissionPublisher } from "./application/services/submission-publisher";
+import { assertSubmittedEvent } from "./domain/assessment-policy";
 import { PostgresAssessmentRetentionRepository } from "./infrastructure/persistence/postgres-assessment-retention.repository";
+import { PostgresAttemptRepository } from "./infrastructure/persistence/postgres-attempt.repository";
+import { PostgresGradingRepository } from "./infrastructure/persistence/postgres-grading.repository";
+import { PostgresGradingFailureRepository } from "./infrastructure/persistence/postgres-grading-failure.repository";
+import { PostgresSubmissionDispatch } from "./infrastructure/persistence/postgres-submission-dispatch";
+import { PostgresSubmissionOutbox } from "./infrastructure/persistence/postgres-submission-outbox";
 
 /** One-shot scheduled maintenance; each UoW must reach its own durable COMMIT. */
 export function createAssessmentRetention(db: PostgresDatabase, batch: RetentionBatch) {

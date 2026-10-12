@@ -1,0 +1,34 @@
+
+> online-examination-platform@0.1.0 test:integration:local
+> node --experimental-vm-modules --env-file=.env.integration.example node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand
+
+(node:33647) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"aa2c3a22-36f7-4b35-836b-86f73d98667a"}
+{"event":"unhandled_exception","correlationId":"f07bf495-8005-4f80-9d1a-b4125b9e265a"}
+{"event":"unhandled_exception","correlationId":"65b8323f-81ab-4540-abba-1eb8af6a7a79"}
+{"event":"unhandled_exception","correlationId":"e5e6dda6-b211-4e6e-9e1b-45464afee8b6"}
+{"event":"unhandled_exception","correlationId":"136479a7-fcfb-48c6-8a7c-e627bb4b4874"}
+{"event":"unhandled_exception","correlationId":"2f1e7c56-efd3-48c5-9b63-881db8590a5f"}
+{"event":"unhandled_exception","correlationId":"2dbe03c2-3708-445f-91cd-263850b1d727"}
+{"event":"unhandled_exception","correlationId":"ebddbf2e-ac0c-48ca-bcb7-a55bf0a43f2a"}
+{"event":"unhandled_exception","correlationId":"1be7d759-a1f8-45f8-95fb-9d8a89490de2"}
+{"event":"unhandled_exception","correlationId":"62273b37-a5e7-4131-b15b-954d6698cf9d"}
+{"event":"unhandled_exception","correlationId":"e05c765d-36a3-4051-ae37-32751b923b46"}
+{"event":"unhandled_exception","correlationId":"8880be75-cd33-496a-8071-d72371a37c9d"}
+{"event":"unhandled_exception","correlationId":"375592d4-c232-47e8-9270-166c97185ba3"}
+{"event":"unhandled_exception","correlationId":"a5b381cc-cbb9-47fa-8ee7-8dcf67742887"}
+{"event":"unhandled_exception","correlationId":"359d3caa-38d9-4b4e-902a-30a71b632e3e"}
+{"event":"unhandled_exception","correlationId":"864e76f3-0abb-4cc7-9afb-6b9f94296f12"}
+{"event":"unhandled_exception","correlationId":"6084df98-0359-426f-80b0-d57dcc12ff60"}
+{"event":"unhandled_exception","correlationId":"c10a90d1-a38c-4b59-960c-ec20acf502e8"}
+{"event":"unhandled_exception","correlationId":"e4c9aba5-eac8-4d5b-89dd-2c31e5e28f9c"}
+{"event":"unhandled_exception","correlationId":"6e779536-a10d-49a7-ae1b-03cd2599e6e4"}
+{"event":"unhandled_exception","correlationId":"a21417ec-a9ef-485f-8e93-33e6f0d00cdd"}
+{"event":"unhandled_exception","correlationId":"ca41c38f-abc6-4433-b51b-b47e29ce6820"}
+
+Test Suites: 24 passed, 24 total
+Tests:       427 passed, 427 total
+Snapshots:   0 total
+Time:        351.098 s, estimated 389 s
+Ran all test suites.

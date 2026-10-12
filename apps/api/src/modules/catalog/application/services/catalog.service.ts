@@ -1,23 +1,24 @@
 import { createHash, randomUUID, timingSafeEqual } from "node:crypto";
-import { IdempotencyStore } from "../../../../shared/application/ports/idempotency";
-import { SecurityControls } from "../../../../shared/application/ports/security";
-import { UnavailableError } from "../../../../shared/application/errors/unavailable.error";
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
-import { IdentityAccess } from "../../../identity/application/facades/identity.facade";
+
+import type { CatalogAccess } from "@catalog/facade";
+import type { IdentityAccess } from "@identity/facade";
+import { UnavailableError } from "@shared/application/errors/unavailable.error";
+import type { IdempotencyStore } from "@shared/application/ports/idempotency";
+import type { SecurityControls } from "@shared/application/ports/security";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
 import {
   ExamArchivedError,
   ExamNotPublishedError,
   IdempotencyConflictError,
+  invalidRequest,
+  notFound,
   PublicationIncompleteError,
   QuestionArchivedError,
   RevisionConflictError,
-  invalidRequest,
-  notFound,
 } from "../../domain/catalog-error";
+import type { ExamDraft, ImportCommand, QuestionDraft } from "../../domain/catalog-policy";
 import {
-  ExamDraft,
-  ImportCommand,
-  QuestionDraft,
   assertImportStructure,
   canonical,
   importIssues,
@@ -26,12 +27,12 @@ import {
   validatePublication,
   validateQuestion,
 } from "../../domain/catalog-policy";
-import {
+import type {
   CatalogRepository,
   LockedExam,
   LockedQuestion,
 } from "../../domain/repositories/catalog.repository";
-import {
+import type {
   AdminExam,
   AdminQuestion,
   CandidateQuestion,
@@ -45,9 +46,8 @@ import {
   ScoringItem,
   SharedPublication,
 } from "../dto/catalog.dto";
-import { CatalogAccess } from "../facades/catalog.facade";
-import { CatalogCursor, CursorClaims } from "../ports/catalog-cursor.port";
-import { CatalogQuery } from "../ports/catalog-query.port";
+import type { CatalogCursor, CursorClaims } from "../ports/catalog-cursor.port";
+import type { CatalogQuery } from "../ports/catalog-query.port";
 
 const CURSOR_TTL_MS = 900_000;
 

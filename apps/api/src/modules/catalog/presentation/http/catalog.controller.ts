@@ -13,15 +13,18 @@ import {
 } from "@nestjs/common";
 import { RouteConfig } from "@nestjs/platform-fastify";
 import { FastifyReply, FastifyRequest } from "fastify";
+
 import {
+  GuardedRequest,
   IDENTITY_ACCESS,
   IdentityAccess,
   REQUEST_GUARD,
-  GuardedRequest,
   RequestGuard,
-} from "../../../identity/application/facades/identity.facade";
-import { CatalogService } from "../../application/services/catalog.service";
+} from "@identity/facade";
+
 import { Commit } from "../../application/dto/catalog.dto";
+import { CatalogService } from "../../application/services/catalog.service";
+
 import {
   examWrite,
   idempotency,

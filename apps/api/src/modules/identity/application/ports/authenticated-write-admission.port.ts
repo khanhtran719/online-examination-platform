@@ -1,5 +1,6 @@
-import { SessionLookup } from "../../domain/entities/identity-state";
-import { Principal } from "../dto/identity.dto";
+import type { SessionLookup } from "../../domain/entities/identity-state";
+import type { Principal } from "../dto/identity.dto";
+
 export const WRITE_ADMISSION_INTERVAL_MS = 200;
 export const WRITE_ADMISSION_BURST = 20;
 

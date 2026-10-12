@@ -1,8 +1,9 @@
 import { HttpException, NotFoundException } from "@nestjs/common";
-import { DomainError } from "../../../domain/exceptions/domain-error";
-import { ErrorCategory } from "../../../domain/exceptions/error-category";
-import { UnavailableError } from "../../../application/errors/unavailable.error";
-import { toTransportError } from "../domain-exception.filter";
+
+import { UnavailableError } from "@shared/application/errors/unavailable.error";
+import { toTransportError } from "@shared/common/filters/domain-exception.filter";
+import { DomainError } from "@shared/domain/exceptions/domain-error";
+import { ErrorCategory } from "@shared/domain/exceptions/error-category";
 
 class MissingError extends DomainError {
   readonly code = "MISSING";

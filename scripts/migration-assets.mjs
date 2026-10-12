@@ -1,5 +1,6 @@
-import { readdir, mkdir, copyFile, lstat } from "node:fs/promises";
+import { copyFile, lstat, mkdir, readdir } from "node:fs/promises";
 import { join } from "node:path";
+
 export async function copyMigrationBundle(source, destination) {
   const entries = (await readdir(source)).filter((name) => name.endsWith(".sql")).sort();
   if (!entries.length) throw new Error("Missing migration bundle");

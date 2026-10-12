@@ -1,7 +1,9 @@
 import { randomUUID } from "node:crypto";
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { ExamDraft, QuestionDraft, QuestionType } from "../../domain/catalog-policy";
-import {
+
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { ExamDraft, QuestionDraft, QuestionType } from "../../domain/catalog-policy";
+import type {
   CatalogRepository,
   ImportedQuestion,
   LockedExam,

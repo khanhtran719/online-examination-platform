@@ -1,4 +1,5 @@
 import { score, validateSelection } from "../scoring";
+
 describe("Exact-match deterministic scoring", () => {
   const q = {
     id: "q",

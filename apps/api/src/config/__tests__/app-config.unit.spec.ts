@@ -1,4 +1,5 @@
-import { validateRuntimeSettings } from "../config.validation";
+import { validateRuntimeSettings } from "@config/config.validation";
+
 const env = {
   NODE_ENV: "test",
   PUBLIC_ORIGIN: "http://localhost:3000",

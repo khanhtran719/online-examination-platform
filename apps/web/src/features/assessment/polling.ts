@@ -1,4 +1,4 @@
-import type { Attempt } from "../../shared/api/dto";
+import type { Attempt } from "@web/shared/api/dto";
 
 export const POLL_CAP_MS = 5 * 60 * 1000;
 

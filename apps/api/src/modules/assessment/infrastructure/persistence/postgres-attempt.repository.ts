@@ -1,11 +1,12 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { AttemptStatus } from "../../domain/attempt";
-import { ExpiryRetry } from "../../application/ports/expiry-retry.port";
-import {
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { ExpiryRetry } from "../../application/ports/expiry-retry.port";
+import type { AttemptStatus } from "../../domain/attempt";
+import type {
   AnswerWrite,
   AttemptRecord,
-  LockedAttempt,
   AttemptRepository,
+  LockedAttempt,
 } from "../../domain/repositories/attempt.repository";
 
 const stamp = (column: string, alias: string) =>

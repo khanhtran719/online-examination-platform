@@ -1,16 +1,18 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter, Routes, Route } from "react-router";
+import { MemoryRouter, Route, Routes } from "react-router";
 import { afterEach, expect, it, vi } from "vitest";
+
+import { ApiError } from "@web/shared/api/errors";
+
 import { LeaderboardPage } from "../result-pages";
-import { ApiError } from "../../../shared/api/errors";
 
 const readBoard = vi.hoisted(() => vi.fn());
-vi.mock("../../../app/runtime", () => ({
+vi.mock("@web/app/runtime", () => ({
   useRuntime: () => ({ api: { getLeaderboard: readBoard } }),
 }));
-vi.mock("../../../app/memory", () => ({ useMemory: () => ({ lookup: () => null }) }));
+vi.mock("@web/app/memory", () => ({ useMemory: () => ({ lookup: () => null }) }));
 afterEach(() => {
   cleanup();
   vi.resetAllMocks();

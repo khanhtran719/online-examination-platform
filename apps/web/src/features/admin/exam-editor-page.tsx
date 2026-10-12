@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link, useMatch, useParams } from "react-router";
-import { categoryLabel, policyLabel } from "../../shared/format";
-import { Button, Dialog, ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
-import { CapabilityGate } from "./gate";
+
+import { categoryLabel, policyLabel } from "@web/shared/format";
+import { Button, Dialog, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+
+import styles from "./admin.module.css";
 import { AdminBadge, AdminHeading } from "./admin-ui";
 import { ExamInformation } from "./exam-information";
 import { ExamStructure } from "./exam-structure";
+import { CapabilityGate } from "./gate";
 import { useExamDraft } from "./use-exam-draft";
-import styles from "./admin.module.css";
 
 export function AdminExamEditorPage() {
   const isNew = Boolean(useMatch("/admin/exams/new"));

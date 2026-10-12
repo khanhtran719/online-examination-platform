@@ -1,6 +1,8 @@
+import type { SendEmailCommand } from "@aws-sdk/client-sesv2";
 import { jest } from "@jest/globals";
+
 import { SesVerificationMail } from "../verification-mail";
-import { SendEmailCommand } from "@aws-sdk/client-sesv2";
+
 describe("SES provider boundary without AWS delivery", () => {
   it("builds the narrow send request and classifies permanent rejection", async () => {
     let captured: SendEmailCommand | undefined;

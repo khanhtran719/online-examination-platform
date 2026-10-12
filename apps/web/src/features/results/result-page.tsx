@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router";
-import { useMemory } from "../../app/memory";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { formatBasisPoints, formatDateTime } from "../../shared/format";
-import { isReleasedReviewHref } from "../../shared/review-href";
-import { Alert, ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
-import layout from "../../shared/styles/layout.module.css";
+
+import { useMemory } from "@web/app/memory";
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { formatBasisPoints, formatDateTime } from "@web/shared/format";
+import { isReleasedReviewHref } from "@web/shared/review-href";
+import layout from "@web/shared/styles/layout.module.css";
+import { Alert, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+
 import styles from "./results.module.css";
 
 export function ResultPage() {

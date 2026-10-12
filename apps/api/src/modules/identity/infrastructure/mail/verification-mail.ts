@@ -1,9 +1,10 @@
-import nodemailer, { Transporter } from "nodemailer";
-import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
-import {
-  MailDeliveryError,
-  VerificationMail,
-} from "../../application/ports/verification-delivery.port";
+import { SendEmailCommand, SESv2Client } from "@aws-sdk/client-sesv2";
+import type { Transporter } from "nodemailer";
+import nodemailer from "nodemailer";
+
+import type { VerificationMail } from "../../application/ports/verification-delivery.port";
+import { MailDeliveryError } from "../../application/ports/verification-delivery.port";
+
 const content = (link: string) =>
   `Xác thực email của bạn\n\nMở liên kết, rồi chọn mật khẩu cuối cùng của bạn: ${link}\n\nLiên kết có hiệu lực 30 phút. Nếu bạn không yêu cầu, hãy bỏ qua email này.`;
 export class SmtpVerificationMail implements VerificationMail {

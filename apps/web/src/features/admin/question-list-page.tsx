@@ -1,14 +1,21 @@
-import { adminId as shortId } from "./admin-ui";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link } from "react-router";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { EmptyState, ErrorPanel, SkeletonLines, TableScroll, tableClass } from "../../shared/ui/ui";
-import { CapabilityGate, useCapability } from "./gate";
-import { AdminBadge, AdminHeading, PageEnd, questionTypeLabel } from "./admin-ui";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { useProtectedAccess } from "@web/shared/protected-access";
+import { EmptyState, ErrorPanel, SkeletonLines, tableClass, TableScroll } from "@web/shared/ui/ui";
+
 import styles from "./admin.module.css";
+import {
+  AdminBadge,
+  AdminHeading,
+  adminId as shortId,
+  PageEnd,
+  questionTypeLabel,
+} from "./admin-ui";
+import { CapabilityGate, useCapability } from "./gate";
 
 export function QuestionListPage() {
   useTitle("Ngân hàng câu");

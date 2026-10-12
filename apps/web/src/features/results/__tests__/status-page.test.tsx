@@ -2,11 +2,12 @@ import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Link, MemoryRouter, Route, Routes } from "react-router";
 import { afterEach, expect, it, vi } from "vitest";
+
 import { StatusPage } from "../result-pages";
 
 const statusApi = vi.hoisted(() => ({ getAttemptStatus: vi.fn() }));
 const readStatus = statusApi.getAttemptStatus;
-vi.mock("../../../app/runtime", () => ({
+vi.mock("@web/app/runtime", () => ({
   useRuntime: () => ({ api: statusApi }),
 }));
 afterEach(() => {

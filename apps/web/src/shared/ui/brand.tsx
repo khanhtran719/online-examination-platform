@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+
 import styles from "./brand.module.css";
 
 export function Brand() {

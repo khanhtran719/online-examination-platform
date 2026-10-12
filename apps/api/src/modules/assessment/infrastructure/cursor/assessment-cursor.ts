@@ -1,9 +1,10 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import { invalidRequest } from "../../domain/assessment.error";
-import {
+
+import type {
   AssessmentCursor,
   AssessmentCursorClaims,
 } from "../../application/ports/assessment-cursor.port";
+import { invalidRequest } from "../../domain/assessment.error";
 
 interface CursorBody extends AssessmentCursorClaims {
   watermark: string;

@@ -1,5 +1,7 @@
-import { FastifyReply, FastifyRequest } from "fastify";
-import { IssuedTokens } from "../../application/ports/identity-crypto.ports";
+import type { FastifyReply, FastifyRequest } from "fastify";
+
+import type { IssuedTokens } from "../../application/ports/identity-crypto.ports";
+
 export const HTTP_SESSION = Symbol("HTTP_SESSION");
 export interface HttpSessionPort {
   csrfResponse(

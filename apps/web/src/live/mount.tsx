@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+
 import { App } from "../app/app";
+
 import { createHttpApi } from "./create-http-api";
 
 export function mountLive(root: HTMLElement, verifyToken: string): void {

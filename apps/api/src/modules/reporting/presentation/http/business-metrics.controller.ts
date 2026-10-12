@@ -1,13 +1,12 @@
 import { Controller, Get, Inject, Query, Req } from "@nestjs/common";
 import { FastifyRequest } from "fastify";
-import {
-  IDENTITY_ACCESS,
-  IdentityAccess,
-  REQUEST_GUARD,
-  RequestGuard,
-} from "../../../identity/application/facades/identity.facade";
+
+import { IDENTITY_ACCESS, IdentityAccess, REQUEST_GUARD, RequestGuard } from "@identity/facade";
+
 import { BusinessMetricsService } from "../../application/services/business-metrics.service";
+
 import { businessMetricsQuery } from "./dto/business-metrics.dto";
+
 @Controller("v1/admin/business-metrics")
 export class BusinessMetricsController {
   constructor(

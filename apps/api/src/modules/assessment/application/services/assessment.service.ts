@@ -1,9 +1,10 @@
-import { attemptView } from "./attempt-view";
 import { createHash, randomUUID, timingSafeEqual } from "node:crypto";
-import { IdempotencyStore } from "../../../../shared/application/ports/idempotency";
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
-import { CatalogAccess } from "../../../catalog/application/facades/catalog.facade";
-import { IdentityAccess } from "../../../identity/application/facades/identity.facade";
+
+import type { CatalogAccess } from "@catalog/facade";
+import type { IdentityAccess } from "@identity/facade";
+import type { IdempotencyStore } from "@shared/application/ports/idempotency";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
 import {
   AssessmentError,
   AttemptLimitError,
@@ -12,12 +13,12 @@ import {
   ExamNotOpenError,
   ExamNotPublishedError,
   IdempotencyConflictError,
-  RevisionConflictError,
   invalidRequest,
   notFound,
+  RevisionConflictError,
 } from "../../domain/assessment.error";
+import type { SelectionCommand } from "../../domain/assessment-policy";
 import {
-  SelectionCommand,
   assertSelections,
   canonical,
   fitQuestionPage,
@@ -25,8 +26,11 @@ import {
   requireFreshKey,
 } from "../../domain/assessment-policy";
 import { Attempt } from "../../domain/attempt";
-import { AttemptRecord, AttemptRepository } from "../../domain/repositories/attempt.repository";
-import {
+import type {
+  AttemptRecord,
+  AttemptRepository,
+} from "../../domain/repositories/attempt.repository";
+import type {
   AnswerView,
   AttemptView,
   CandidateQuestionView,
@@ -35,11 +39,13 @@ import {
   SaveReceipt,
   SubmitReceipt,
 } from "../dto/assessment.dto";
-import { AssessmentCursor, AssessmentCursorClaims } from "../ports/assessment-cursor.port";
-import { AttemptQuery } from "../ports/attempt-query.port";
-import { QuestionPageSizer } from "../ports/question-page-sizer.port";
-import { SubmissionOutbox } from "../ports/submission-outbox";
+import type { AssessmentCursor, AssessmentCursorClaims } from "../ports/assessment-cursor.port";
+import type { AttemptQuery } from "../ports/attempt-query.port";
+import type { QuestionPageSizer } from "../ports/question-page-sizer.port";
+import type { SubmissionOutbox } from "../ports/submission-outbox";
+
 import { acceptAttemptSubmission } from "./attempt-submission";
+import { attemptView } from "./attempt-view";
 
 const CURSOR_TTL_MS = 900_000;
 

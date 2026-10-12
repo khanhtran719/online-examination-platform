@@ -1,11 +1,13 @@
-import { AttemptView, PageResult } from "../dto/assessment.dto";
-import { HistoryItemView, ResultView, ReviewQuestionView } from "../dto/candidate-results.dto";
-import { CandidateResultsQuery, ReviewPosition } from "../ports/candidate-results.query";
-import { AssessmentCursor, AssessmentCursorClaims } from "../ports/assessment-cursor.port";
-import { QuestionPageSizer } from "../ports/question-page-sizer.port";
 import { invalidRequest, notFound, PermissionDeniedError } from "../../domain/assessment.error";
-import { attemptView } from "./attempt-view";
 import { canReleaseReview } from "../../domain/review-release";
+import type { AttemptView, PageResult } from "../dto/assessment.dto";
+import type { HistoryItemView, ResultView, ReviewQuestionView } from "../dto/candidate-results.dto";
+import type { AssessmentCursor, AssessmentCursorClaims } from "../ports/assessment-cursor.port";
+import type { CandidateResultsQuery, ReviewPosition } from "../ports/candidate-results.query";
+import type { QuestionPageSizer } from "../ports/question-page-sizer.port";
+
+import { attemptView } from "./attempt-view";
+
 const ttl = 900000,
   cap = 262144;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;

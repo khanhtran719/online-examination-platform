@@ -1,10 +1,12 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import {
-  GradingFailureRepository,
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type {
   GradingFailureCode,
+  GradingFailureRepository,
 } from "../../application/ports/grading-failure-repository.port";
-import { GradingAttempt } from "../../application/ports/grading-repository.port";
-import { SubmittedEvent } from "../../domain/assessment-policy";
+import type { GradingAttempt } from "../../application/ports/grading-repository.port";
+import type { SubmittedEvent } from "../../domain/assessment-policy";
+
 import { PostgresGradingRepository } from "./postgres-grading.repository";
 
 export class PostgresGradingFailureRepository implements GradingFailureRepository {

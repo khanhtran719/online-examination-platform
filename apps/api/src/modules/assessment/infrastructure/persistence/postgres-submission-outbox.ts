@@ -1,6 +1,7 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { SubmittedEvent } from "../../domain/assessment-policy";
-import { SubmissionOutbox } from "../../application/ports/submission-outbox";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { SubmissionOutbox } from "../../application/ports/submission-outbox";
+import type { SubmittedEvent } from "../../domain/assessment-policy";
 
 /** Inserts the durable intent only. No queue client runs inside the submit transaction. */
 export class PostgresSubmissionOutbox implements SubmissionOutbox {

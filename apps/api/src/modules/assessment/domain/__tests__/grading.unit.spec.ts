@@ -1,5 +1,6 @@
-import { grade, GradingQuestion } from "../grading";
 import { AssessmentError } from "../assessment.error";
+import type { GradingQuestion } from "../grading";
+import { grade } from "../grading";
 
 const questions: GradingQuestion[] = [
   {

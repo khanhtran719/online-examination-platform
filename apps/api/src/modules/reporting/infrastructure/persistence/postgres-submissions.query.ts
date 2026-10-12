@@ -1,6 +1,8 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { AdminScore, AdminSubmission } from "../../application/dto/submissions.dto";
-import { SubmissionsQuery } from "../../application/ports/submissions.query";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { AdminScore, AdminSubmission } from "../../application/dto/submissions.dto";
+import type { SubmissionsQuery } from "../../application/ports/submissions.query";
+
 const stamp = (column: string) =>
   `to_char(${column} AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')`;
 export class PostgresSubmissionsQuery implements SubmissionsQuery {

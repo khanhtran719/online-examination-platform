@@ -1,11 +1,7 @@
-import { VerificationSecrets } from "../../application/ports/identity-crypto.ports";
-import {
-  ArgonPasswords,
-  JwtSessionTokens,
-  PublicKey,
-  SigningKey,
-  VerificationCodec,
-} from "./identity-crypto";
+import type { VerificationSecrets } from "../../application/ports/identity-crypto.ports";
+
+import type { PublicKey, SigningKey } from "./identity-crypto";
+import { ArgonPasswords, JwtSessionTokens, VerificationCodec } from "./identity-crypto";
 
 export function createVerificationSecrets(
   activeKid: string,

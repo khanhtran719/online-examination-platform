@@ -1,13 +1,12 @@
 import { Controller, Get, Inject, Query, Req } from "@nestjs/common";
 import { FastifyRequest } from "fastify";
-import {
-  IDENTITY_ACCESS,
-  IdentityAccess,
-  REQUEST_GUARD,
-  RequestGuard,
-} from "../../../identity/application/facades/identity.facade";
+
+import { IDENTITY_ACCESS, IdentityAccess, REQUEST_GUARD, RequestGuard } from "@identity/facade";
+
 import { AuditService } from "../../application/services/audit.service";
+
 import { activePageQuery } from "./dto/reporting.dto";
+
 @Controller("v1/admin/audit")
 export class AuditController {
   constructor(

@@ -1,9 +1,10 @@
 import { randomUUID } from "node:crypto";
-import { auditRetentionConfig } from "../../config/audit-retention.config";
-import { loadDatabaseConfig } from "../../infrastructure/database/load-database-config";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
-import { AuditRetention } from "../../shared/application/services/audit-retention";
-import { PostgresAuditRetention } from "../../infrastructure/observability/audit/postgres-audit-retention";
+
+import { auditRetentionConfig } from "@config/audit-retention.config";
+import { loadDatabaseConfig } from "@infrastructure/database/load-database-config";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresAuditRetention } from "@infrastructure/observability/audit/postgres-audit-retention";
+import { AuditRetention } from "@shared/application/services/audit-retention";
 
 /** Finite scheduled job. Scheduling/overlap belongs to the deployer; no permanent service. */
 export async function runAuditRetentionJob(

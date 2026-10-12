@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { ApiError } from "../../../shared/api/errors";
+
+import type { Session } from "@web/shared/api/dto";
+import { ApiError } from "@web/shared/api/errors";
+
 import {
-  createSessionCoordinator,
   type CoordinationLock,
+  createSessionCoordinator,
   type SessionSignal,
 } from "../session-coordinator";
-import type { Session } from "../../../shared/api/dto";
 
 const session: Session = {
   userId: "00000000-0000-4000-8000-0000000000a1",

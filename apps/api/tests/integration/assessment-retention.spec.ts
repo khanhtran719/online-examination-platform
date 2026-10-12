@@ -1,30 +1,31 @@
-import { randomUUID, createHash } from "node:crypto";
-import { readFile, writeFile } from "node:fs/promises";
 import { spawn } from "node:child_process";
+import { createHash, randomUUID } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+
 import { Pool } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
-import {
-  PostgresDatabase,
-  DatabaseObservation,
-} from "../../src/infrastructure/database/transaction/postgres-database";
+
+import type { CatalogAccess } from "@catalog/facade";
+import { databaseConfig } from "@config/database.config";
+import type { IdentityAccess } from "@identity/facade";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
+import type { DatabaseObservation } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresIdempotency } from "@infrastructure/idempotency/postgres-idempotency";
+
+import { AssessmentService } from "../../src/modules/assessment/application/services/assessment.service";
 import {
   createAssessmentRetention,
   createGradingConsumer,
   createGradingRecovery,
 } from "../../src/modules/assessment/assessment-worker.factory";
-import { createScoringCatalog } from "../../src/modules/catalog/catalog-worker.factory";
 import { submissionEvent } from "../../src/modules/assessment/domain/assessment-policy";
-import { PostgresCandidateResultsQuery } from "../../src/modules/assessment/infrastructure/persistence/postgres-candidate-results.query";
-import { PostgresAttemptQuery } from "../../src/modules/assessment/infrastructure/persistence/postgres-attempt.query";
-import { PostgresAttemptRepository } from "../../src/modules/assessment/infrastructure/persistence/postgres-attempt.repository";
-import { PostgresSubmissionOutbox } from "../../src/modules/assessment/infrastructure/persistence/postgres-submission-outbox";
-import { PostgresIdempotency } from "../../src/infrastructure/idempotency/postgres-idempotency";
-import { AssessmentService } from "../../src/modules/assessment/application/services/assessment.service";
-import { IdentityAccess } from "../../src/modules/identity/application/facades/identity.facade";
-import { CatalogAccess } from "../../src/modules/catalog/application/facades/catalog.facade";
 import { HmacAssessmentCursor } from "../../src/modules/assessment/infrastructure/cursor/assessment-cursor";
 import { HttpQuestionPageSizer } from "../../src/modules/assessment/infrastructure/http/http-question-page-sizer";
+import { PostgresAttemptQuery } from "../../src/modules/assessment/infrastructure/persistence/postgres-attempt.query";
+import { PostgresAttemptRepository } from "../../src/modules/assessment/infrastructure/persistence/postgres-attempt.repository";
+import { PostgresCandidateResultsQuery } from "../../src/modules/assessment/infrastructure/persistence/postgres-candidate-results.query";
+import { PostgresSubmissionOutbox } from "../../src/modules/assessment/infrastructure/persistence/postgres-submission-outbox";
+import { createScoringCatalog } from "../../src/modules/catalog/catalog-worker.factory";
 
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
 if (!adminUrl || new URL(adminUrl).port === "55432")

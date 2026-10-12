@@ -1,5 +1,6 @@
+import { type QueryKey, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
-import { useQueryClient, type QueryKey } from "@tanstack/react-query";
+
 import { isApiError } from "./api/errors";
 
 export function isForbidden(error: unknown): boolean {

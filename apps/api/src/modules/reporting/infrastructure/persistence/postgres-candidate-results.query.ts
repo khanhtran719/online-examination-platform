@@ -1,6 +1,8 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { CandidateResultPair } from "../../application/dto/candidate-results.dto";
-import { CandidateResultsQuery } from "../../application/ports/candidate-results.query";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { CandidateResultPair } from "../../application/dto/candidate-results.dto";
+import type { CandidateResultsQuery } from "../../application/ports/candidate-results.query";
+
 const stamp = (column: string) =>
   `to_char(${column} AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')`;
 // Identifiers below are fixed adapter-owned fragments, never caller data.

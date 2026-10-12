@@ -1,8 +1,9 @@
-import { createRequire } from "node:module";
-import { writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
-import { platform, arch, release, cpus } from "node:os";
+import { writeFile } from "node:fs/promises";
+import { createRequire } from "node:module";
+import { arch, cpus, platform, release } from "node:os";
+
 const require = createRequire(import.meta.url);
 const { grade } = require("../dist/modules/assessment/domain/grading.js");
 const scenarios = [];

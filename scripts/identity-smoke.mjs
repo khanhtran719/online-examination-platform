@@ -1,5 +1,6 @@
 import { spawn } from "node:child_process";
 import { performance } from "node:perf_hooks";
+
 if (process.env.NODE_ENV === "production") throw new Error("Local smoke only");
 const children = [];
 function start(file, entry, port) {

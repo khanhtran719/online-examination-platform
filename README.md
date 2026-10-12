@@ -1,12 +1,12 @@
 # Production-Grade Online Examination Platform
 
-**73/216 đầu mục hoàn tất. ATT-07 đã nghiệm thu lại sau khi sửa đủ4 finding của review độc lập.** [Closure](docs/assessment-expiry-fixes-2026-10-08.md)/[evidence](docs/evidence/assessment-expiry-fixes-2026-10-08/README.md):254 root +144 integration PASS; durable retry, provenance, deadline index range và COMMIT ACK measurement. CAT-09/10 và ATT-01–06 giữ nghiệm thu local. Identity/API/email-worker và browser HTTPS có evidence local: email/password, link xác thực một lần, JWT ES256 access/refresh, rotation/revocation, profile receipt và operator admin. ID-07/WEB-02 đóng locally; live SES còn PARTIAL. Magic link/GitHub để sau. Chưa đạt production acceptance trên AWS.
+**89/217 đầu mục hoàn tất, 128 còn mở. BOOT-11 chuẩn hoá import/alias đã hoàn tất local.** [Review/evidence](docs/import-normalization-2026-10-12.md):653 root tests +427 integration/24 suites +10 HTTPS PASS. Trạng thái hiện hành ở [roadmap](docs/implementation-roadmap.md) và [implementation plan](docs/implementation-plan.md). Backend đã có Identity, Catalog, Assessment/scoring/recovery/retention và các projection Reporting với evidence local. Identity hỗ trợ email/password, link xác thực một lần, JWT ES256 access/refresh và rotation/revocation; magic link/GitHub để sau. Live SES, phần Web còn lại và các cổng AWS/capacity/FinOps vẫn mở. Chưa đạt production acceptance trên AWS.
 
 - [Web UI handoff cho Grok](docs/web-ui/README.md): phong cách đã chốt, mô tả màn hình, API/state rules, [32 task frontend](docs/web-ui/implementation-tasks.md), 24 scenarios và [prompt khoảng 1.000 từ](docs/web-ui/grok-implementation-prompt.md). SPA local đã có trong `apps/web`; checklist7/32 task được tick (FE-01/03/04/07–10). WEB-02 hoàn tất local với [10 ca HTTPS Identity thật](docs/evidence/identity-https-2026-10-07/README.md). Live Catalog/Assessment/Reporting, full Web và production acceptance vẫn mở. Bằng chứng sửa 2026-10-07: [fix evidence](docs/web-ui/evidence/fix-2026-10-07/README.md).
 
 - [Chuẩn hóa kiến trúc — checklist 12/12](docs/architecture-normalization-plan.md), [review API và lựa chọn pg/ORM](docs/api-architecture-review.md), [ADR-006](docs/adr/006-source-layout-normalization.md): source/tooling đã chuẩn hóa. Persistence evaluation4/4 local: [pg/TypeORM/Sequelize evidence](experiments/persistence-comparison/README.md), [ADR-008 giữ pg hiện tại](docs/adr/008-persistence-evaluation.md);76.800 operations/0 errors. AWS capacity/cost vẫn chưa đo.
 - [Fix API Assessment](docs/assessment-fixes-2026-10-08.md): AR-01–05 CLOSED local, giữ Architecture Contract.234 root +105 integration +10 HTTPS PASS; queries start11/save11/submit10 trong ceiling. [Review gốc](docs/assessment-review-2026-10-07.md) và evidence cũ giữ nguyên.
-- [Deadline sweep ATT-07 closure](docs/assessment-expiry-fixes-2026-10-08.md): ER-01–04 CLOSED local với21 independent regressions,4 matching before/after runs, natural100k-future plans và compiled SIGTERM/restart. [Review](docs/assessment-expiry-review-2026-10-08.md) và raw cũ giữ lịch sử; [runbook](docs/runbooks/expiry-worker.md) ghi semantics/correction/rollout hiện hành. Publisher SQS có acceptance local; scoring/consumer và AWS vẫn pending.
+- [Deadline sweep ATT-07 closure](docs/assessment-expiry-fixes-2026-10-08.md): ER-01–04 CLOSED local với21 independent regressions,4 matching before/after runs, natural100k-future plans và compiled SIGTERM/restart. [Review](docs/assessment-expiry-review-2026-10-08.md) và raw cũ giữ lịch sử; [runbook](docs/runbooks/expiry-worker.md) ghi semantics/correction/rollout hiện hành. Publisher/consumer/scoring có evidence local; AWS vẫn pending.
 - [Outbox dispatch ASYNC-02–04](docs/outbox-dispatch-2026-10-08.md):280 root +173 integration PASS; lease/fencing, real SDK/local HTTP, retry/park/audited replay, health/drain. [Runbook](docs/runbooks/submission-publisher.md).
 - [Architecture Contract](architecture.md) và [AGENTS.md](AGENTS.md): boundaries và quy trình.
 - [Roadmap có đánh dấu](docs/implementation-roadmap.md), [review Phần04](docs/phase-04-review.md), [profile](docs/project-profile.md): trạng thái/evidence.
@@ -25,7 +25,7 @@ npm run db:migrate:local
 npm run build
 ```
 
-Generator ghi exclusive vào ignored .local/identity, quyền600; chạy lại không ghi đè hay tự rotate key. API/worker/operator có config và DB login riêng. Credentials example chỉ dùng local. Source/build có13 migrations. Bytes applied0001–0011 và archived evidence giữ nguyên; forward0012 sửa CHECK,0013 thêm retry metadata/grants. Review Assessment trước đó kiểm tra 10 migration trên database tạm và giữ bytes 0001–0009. Increment deadline không migrate database phát triển lâu dài.
+Generator ghi exclusive vào ignored .local/identity, quyền600; chạy lại không ghi đè hay tự rotate key. API/worker/operator có config và DB login riêng. Credentials example chỉ dùng local. Source/build hiện có19 migrations; các migration đã áp dụng và evidence lịch sử giữ nguyên. Xem [database](docs/database.md) và [migration runbook](docs/runbooks/database-migrations.md) trước khi nâng database phát triển lâu dài.
 
 Chạy hai terminal:
 
@@ -43,7 +43,7 @@ Deadline sweep, sau `npm run build`, dùng login kế thừa `examination_expiry
 npm run expiry:local
 ```
 
-API tại http://127.0.0.1:3000, email-worker health tại http://127.0.0.1:3001, expiry health mặc định tại http://127.0.0.1:3017, Mailpit tại http://127.0.0.1:18025. /live và /ready ngoài response envelope. Identity, Catalog và các operation làm bài start/resume/save/submit/status đã chạy local. Reporting, result/review, chấm điểm và SQS trong OpenAPI chưa triển khai. Success có errorCode/message null. JWT chỉ trong Secure/HttpOnly cookies. Browser HTTPS thật đã kiểm tra register/email worker/link activation, hai tab dùng chung cookies, refresh/logout/restart và lost ACK; confirmation cần explicit POST với anonymous Origin/CSRF/token/final password. GET link không activate. [Runbook HTTPS](docs/runbooks/identity-https.md) dùng certificate tạm scoped cho Chromium, không thay OS trust hay chứng minh public PKI.
+API tại http://127.0.0.1:3000, email-worker health tại http://127.0.0.1:3001, expiry health mặc định tại http://127.0.0.1:3017, Mailpit tại http://127.0.0.1:18025. /live và /ready ngoài response envelope. Identity, Catalog, lifecycle làm bài, result/review, leaderboard và Admin Reporting đã có các kiểm tra local; tích hợp Web đầy đủ vẫn mở. Success có errorCode/message null. JWT chỉ trong Secure/HttpOnly cookies. Browser HTTPS thật đã kiểm tra register/email worker/link activation, hai tab dùng chung cookies, refresh/logout/restart và lost ACK; confirmation cần explicit POST với anonymous Origin/CSRF/token/final password. GET link không activate. [Runbook HTTPS](docs/runbooks/identity-https.md) dùng certificate tạm scoped cho Chromium, không thay OS trust hay chứng minh public PKI.
 
 Các kiểm tra và phép đo thực thi được:
 
@@ -51,7 +51,7 @@ Các kiểm tra và phép đo thực thi được:
 npm test
 npm run typecheck
 npm run lint
-npm run test:integration:local
+npm run format:check
 npm run smoke:identity:local
 npm run bench:identity:local
 npm run db:budget -- infra/database/connection-budget.local.json
@@ -61,7 +61,9 @@ npm run web:test
 npm run test:identity:https
 ```
 
-Đã chạy100 backend unit/tooling +53 real-PG/SMTP integration +73 web unit +10 real Chromium HTTPS cases PASS; actual API/worker/operator CLI và SIGTERM PASS; diagnostic trước/sau với hai API có0 lỗi. Tests/benchmark dùng database/role riêng rồi dọn, không truncate development DB. Raw benchmark có latency/CPU/RSS/query/pool; RPS là diagnostic tuần tự, không phải sustainable capacity. AWS costs giữ null; chưa chọn capacity/pool/compute thắng.
+Full integration cần PostgreSQL riêng tại55435, ElasticMQ và Mailpit; [.env.integration.example](.env.integration.example) và [hướng dẫn database](docs/database.md) ghi cách chuẩn bị. Sau đó chạy `npm run build` và `npm run test:integration:local`. Không trỏ fault/retention suite vào database phát triển55432. Shell environment được ưu tiên hơn env-file.
+
+`npm run lint` kiểm tra cả API/tooling và Web. `npm run lint:fix` sort import/export, xử lý type/duplicate imports rồi format code và kiểm tra boundaries. API alias lấy từ [tsconfig.paths.json](tsconfig.paths.json), compiled output dùng relative paths; Web dùng `@web/*`. [Conventions §§82–85](.ai/conventions.md#82-import-ordering) và [review](docs/import-normalization-2026-10-12.md) ghi policy và evidence. Tests/benchmark dùng database/role riêng rồi dọn. Raw benchmark có latency/CPU/RSS/query/pool; diagnostic tuần tự không chứng minh sustainable capacity. AWS costs giữ null.
 
 Khi xong, Ctrl-C các process rồi dừng dependencies:
 
@@ -69,4 +71,4 @@ Khi xong, Ctrl-C các process rồi dừng dependencies:
 docker compose stop postgres mailpit
 ```
 
-SQS dành cho phase scoring sau: docker compose up -d sqs. Host dùng127.0.0.1:9324, Docker network dùng sqs:9324; queue local in-memory không chứng minh AWS durability. Browser app đã có; scoring worker, Terraform, k6 và AWS account/region/sender/domain còn pending. Git có origin remote; delivery branch/PR workflow chưa kiểm chứng. [Validation](docs/validation.md) và [test inventory](docs/test-inventory.md) ghi giới hạn/evidence.
+SQS local: `docker compose up -d sqs`. Host dùng127.0.0.1:9324, Docker network dùng sqs:9324; queue local in-memory không chứng minh AWS durability. Các entry point dispatch/grading/recovery/retention có trong package scripts; [grading runbook](docs/runbooks/grading-worker.md) liên kết các quy trình vận hành liên quan. Terraform, k6 và cấu hình AWS/domain vẫn theo các mục mở trên roadmap. Git có origin remote; delivery branch/PR workflow chưa kiểm chứng. [Validation](docs/validation.md) và [test inventory](docs/test-inventory.md) ghi giới hạn/evidence.

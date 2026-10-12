@@ -1,11 +1,12 @@
 import { Module } from "@nestjs/common";
-import { READINESS } from "../../shared/application/ports/readiness";
-import { ShutdownGate } from "../resilience/shutdown/shutdown-gate";
-import { DatabaseModule } from "../database/database.module";
-import { PostgresDatabase } from "../database/transaction/postgres-database";
-import { PostgresReadiness } from "./postgres-readiness";
-import { LiveController } from "./http/live.controller";
-import { ReadyController } from "./http/ready.controller";
+
+import { DatabaseModule } from "@infrastructure/database/database.module";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { LiveController } from "@infrastructure/health/http/live.controller";
+import { ReadyController } from "@infrastructure/health/http/ready.controller";
+import { PostgresReadiness } from "@infrastructure/health/postgres-readiness";
+import { ShutdownGate } from "@infrastructure/resilience/shutdown/shutdown-gate";
+import { READINESS } from "@shared/application/ports/readiness";
 
 @Module({
   imports: [DatabaseModule],

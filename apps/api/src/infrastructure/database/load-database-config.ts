@@ -1,5 +1,8 @@
 import { readFileSync } from "node:fs";
-import { databaseConfig, DatabaseConfig } from "../../config/database.config";
+
+import type { DatabaseConfig } from "@config/database.config";
+import { databaseConfig } from "@config/database.config";
+
 export function loadDatabaseConfig(env: NodeJS.ProcessEnv): DatabaseConfig {
   return databaseConfig(
     env,

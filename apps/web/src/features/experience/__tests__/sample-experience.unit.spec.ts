@@ -1,8 +1,9 @@
-import { createElement } from "react";
-import { MemoryRouter } from "react-router";
 import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { createElement } from "react";
+import { MemoryRouter } from "react-router";
 import { afterEach, describe, expect, it } from "vitest";
+
 import { SampleExperience } from "../sample-experience";
 
 afterEach(cleanup);

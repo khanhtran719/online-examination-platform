@@ -1,5 +1,5 @@
 import { runPublisherSupervisor } from "../publisher-supervisor";
-import { PublishResult } from "../submission-publisher";
+import type { PublishResult } from "../submission-publisher";
 
 const timing = {
   concurrency: 2,

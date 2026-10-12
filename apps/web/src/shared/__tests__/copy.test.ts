@@ -1,10 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { progressCopy, rateLabel } from "../../features/assessment/progress";
+
+import { progressCopy, rateLabel } from "@web/features/assessment/progress";
+
 import { isReleasedReviewHref } from "../review-href";
 
 describe("display copy", () => {
   it("does not invent an attempt total", () => {
-    expect(progressCopy({ loaded: 2, answered: 1, versionTotal: null })).toContain("Chưa có tổng số câu");
+    expect(progressCopy({ loaded: 2, answered: 1, versionTotal: null })).toContain(
+      "Chưa có tổng số câu",
+    );
     expect(progressCopy({ loaded: 2, answered: 1, versionTotal: 6 })).toContain("có 6 câu");
   });
 

@@ -1,5 +1,6 @@
-import { AttemptRecord } from "../../domain/repositories/attempt.repository";
-import { AttemptView } from "../dto/assessment.dto";
+import type { AttemptRecord } from "../../domain/repositories/attempt.repository";
+import type { AttemptView } from "../dto/assessment.dto";
+
 export function attemptView(record: AttemptRecord, serverNow: string): AttemptView {
   const now = Date.parse(serverNow),
     deadline = Date.parse(record.deadline);

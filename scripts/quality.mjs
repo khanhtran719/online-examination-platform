@@ -1,8 +1,38 @@
-import { readdirSync, readFileSync, existsSync } from "node:fs";
-import { dirname, resolve, relative, posix } from "node:path";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { dirname, posix, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+
 import ts from "typescript";
+
 import { checkReportingDependencies } from "./reporting-dependencies.mjs";
+
+const sourceAliases = JSON.parse(
+  readFileSync(new URL("../tsconfig.paths.json", import.meta.url), "utf8"),
+).compilerOptions.paths;
+
+function resolveDependency(path, dependency) {
+  if (dependency.startsWith("."))
+    return { target: posix.normalize(posix.join(posix.dirname(path), dependency)) };
+  for (const [alias, destinations] of Object.entries(sourceAliases)) {
+    const wildcard = alias.endsWith("*");
+    const prefix = wildcard ? alias.slice(0, -1) : alias;
+    if (wildcard ? !dependency.startsWith(prefix) : dependency !== alias) continue;
+    const suffix = wildcard ? dependency.slice(prefix.length) : "";
+    if (suffix.split("/").some((part) => part === "." || part === "..") || suffix.includes("\\"))
+      return { error: `Source alias traversal is forbidden: ${dependency}` };
+    const target = posix.normalize(destinations[0].replace("*", suffix));
+    if (!target.startsWith("apps/api/src/"))
+      return { error: `Source alias escapes the API root: ${dependency}` };
+    return { target };
+  }
+  if (
+    /^(?:@(?:shared|config|infrastructure|modules|workers|platform|identity|catalog|reporting|assessment|api|app|web)(?:\/|$)|#)/.test(
+      dependency,
+    )
+  )
+    return { error: `Source alias is not configured for boundary resolution: ${dependency}` };
+  return { target: dependency };
+}
 
 function withoutFences(markdown) {
   let fence = null;
@@ -104,11 +134,12 @@ export function inspectImports(path, code) {
   }
   visit(source);
   for (const dependency of dependencies) {
-    if (/^@(?:shared|config|infrastructure|modules|workers|platform)(?:\/|$)/.test(dependency))
-      errors.push(`Source alias is not configured for boundary resolution: ${dependency}`);
-    const target = dependency.startsWith(".")
-      ? posix.normalize(posix.join(posix.dirname(path), dependency))
-      : dependency;
+    const resolved = resolveDependency(path, dependency);
+    if (resolved.error) {
+      errors.push(resolved.error);
+      continue;
+    }
+    const target = resolved.target;
     if (
       protectedLayer &&
       (forbidden.test(dependency) ||

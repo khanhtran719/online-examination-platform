@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import { useTitle } from "../app/use-title";
+import styles from "../shared/styles/layout.module.css";
 import {
   Alert,
   Badge,
@@ -9,12 +11,11 @@ import {
   PasswordField,
   SelectField,
   SkeletonLines,
+  tableClass,
   TableScroll,
   TextArea,
   TextField,
-  tableClass,
 } from "../shared/ui/ui";
-import styles from "../shared/styles/layout.module.css";
 
 export default function DevUi() {
   useTitle("Thư viện giao diện");

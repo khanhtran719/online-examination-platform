@@ -1,6 +1,7 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { AssessmentRetentionRepository } from "../../application/ports/assessment-retention.repository";
-import { RetentionState } from "../../domain/retention";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { AssessmentRetentionRepository } from "../../application/ports/assessment-retention.repository";
+import type { RetentionState } from "../../domain/retention";
 
 export class PostgresAssessmentRetentionRepository implements AssessmentRetentionRepository {
   constructor(private readonly db: PostgresDatabase) {}

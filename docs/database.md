@@ -78,10 +78,27 @@ npm ci
 docker compose up -d --wait postgres
 npm run db:local
 npm run db:migrate:local
-npm run test:integration:local
 npm run db:budget -- infra/database/connection-budget.local.json
 docker compose stop postgres
 ```
+
+Full integration uses [.env.integration.example](../.env.integration.example), a
+separate disposable PostgreSQL administrator on localhost:55435 and the root
+ElasticMQ service. Some fault/retention suites deliberately reject the development
+database on 55432. Start the dedicated dependencies before running the suite:
+
+```sh
+docker compose -f infra/identity-https/compose.yaml up -d --wait postgres
+docker compose up -d --wait sqs mailpit
+npm run build
+npm run test:integration:local
+docker compose -f infra/identity-https/compose.yaml stop postgres
+docker compose stop sqs mailpit
+```
+
+These commands retain local volumes. Environment variables already exported by
+the shell override Node's env-file; clear stale test URLs before using this local
+profile. `test:integration` remains the explicit environment-based runner.
 
 Local-only commands use fake example credentials. `db:local` provisions NOLOGIN owner/runtime/operator/mail-worker groups and distinct local migrator/app/operator/mail logins, revokes public CREATE and installs diagnostics. Migrator SET ROLE owner; app DML only cannot SET ROLE owner or directly mutate role grants. Worker only reads required user columns/challenges/intents and uses narrow maintenance, not passwords/JWT sessions/catalog keys. Production secret-managed logins remain pending: **never inject local/test/admin/migration/operator URLs into API/worker containers**. General db:migrate requires DATABASE_MIGRATION_URL, integration requires TEST_DATABASE_ADMIN_URL. Isolated test databases/roles are cleaned after connections close; development data is not truncated.
 

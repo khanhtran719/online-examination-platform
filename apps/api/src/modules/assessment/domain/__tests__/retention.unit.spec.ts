@@ -1,4 +1,5 @@
-import { canPurgeCompleted, RetentionState } from "../retention";
+import type { RetentionState } from "../retention";
+import { canPurgeCompleted } from "../retention";
 
 const day = 86400000;
 const now = Date.parse("2026-10-09T00:00:00.000Z");

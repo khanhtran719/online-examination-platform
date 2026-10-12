@@ -1,5 +1,7 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { ActiveCandidatesQuery } from "../../application/ports/active-candidates.query";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { ActiveCandidatesQuery } from "../../application/ports/active-candidates.query";
+
 export class PostgresActiveCandidatesQuery implements ActiveCandidatesQuery {
   constructor(private readonly db: PostgresDatabase) {}
   async page(input: Parameters<ActiveCandidatesQuery["page"]>[0]) {

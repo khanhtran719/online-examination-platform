@@ -1,5 +1,14 @@
 # Test inventory
 
+Current2026-10-12: [import normalization](import-normalization-2026-10-12.md) records
+**653 root tests** (492 API/53 suites,62 tooling,99 Web/24 files), **427 integration
+cases/24 suites** and **10 real Chromium HTTPS cases**, all PASS. New tooling:
+five alias-boundary, two compiled alias/source-map and two autofix preservation
+regressions. Earlier failed integration attempts remain recorded, followed by
+unchanged green reruns. [Evidence](evidence/import-normalization-2026-10-12/README.md).
+The inventory entries below are historical checkpoints, not current aggregate
+counts or current pending status. AWS/SLO/capacity/privacy acceptance remains open.
+
 Latest2026-10-09: [outbox delivery evidence](evidence/outbox-dispatch-2026-10-08/README.md)
 records280 root (144 API/40 tooling/96 Web) and173 integration/11 suites/0 skips.
 New publisher13, config11, supervisor2 unit cases; outbox full-schema19,

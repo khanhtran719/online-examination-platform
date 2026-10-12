@@ -1,14 +1,16 @@
-import { useState } from "react";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { CapabilityGate, useCapability } from "./gate";
-import styles from "./admin.module.css";
-import { Link, useParams } from "react-router";
-import { formatDateTime } from "../../shared/format";
-import { ErrorPanel, SkeletonLines, tableClass, TableScroll } from "../../shared/ui/ui";
-import { AdminBadge, AdminHeading } from "./admin-ui";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { Link, useParams } from "react-router";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { formatDateTime } from "@web/shared/format";
+import { useProtectedAccess } from "@web/shared/protected-access";
+import { ErrorPanel, SkeletonLines, tableClass, TableScroll } from "@web/shared/ui/ui";
+
+import styles from "./admin.module.css";
+import { AdminBadge, AdminHeading } from "./admin-ui";
+import { CapabilityGate, useCapability } from "./gate";
 
 export function ImportReportPage() {
   const { importId = "" } = useParams();

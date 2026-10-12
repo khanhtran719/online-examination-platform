@@ -1,12 +1,13 @@
 import { Link } from "react-router";
+
+import styles from "./experience.module.css";
 import {
   SAMPLE_QUESTIONS,
+  type SampleAction,
   sampleIsCorrect,
   sampleScore,
-  type SampleAction,
   type SampleState,
 } from "./sample";
-import styles from "./experience.module.css";
 
 export function SampleSummary({
   state,

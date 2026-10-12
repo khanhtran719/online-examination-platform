@@ -1,40 +1,37 @@
 import { createHash, generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
-import { Module } from "@nestjs/common";
+
 import SwaggerParser from "@apidevtools/swagger-parser";
+import { Module } from "@nestjs/common";
 import Ajv, { type AnySchema, type ValidateFunction } from "ajv";
 import addFormats from "ajv-formats";
 import { Pool } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
+
+import { databaseConfig } from "@config/database.config";
+import { IDENTITY_ACCESS, REQUEST_GUARD } from "@identity/facade";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
 import {
-  PostgresDatabase,
   type DatabaseObservation,
-} from "../../src/infrastructure/database/transaction/postgres-database";
-import { PostgresIdempotency } from "../../src/infrastructure/idempotency/postgres-idempotency";
-import { PostgresSecurity } from "../../src/infrastructure/security/authorization/postgres-security";
-import { createHttpApplication } from "../../src/infrastructure/http/configure-http-application";
-import { ShutdownGate } from "../../src/infrastructure/resilience/shutdown/shutdown-gate";
+  PostgresDatabase,
+} from "@infrastructure/database/transaction/postgres-database";
+import { createHttpApplication } from "@infrastructure/http/configure-http-application";
+import { PostgresIdempotency } from "@infrastructure/idempotency/postgres-idempotency";
+import { ShutdownGate } from "@infrastructure/resilience/shutdown/shutdown-gate";
+import { PostgresSecurity } from "@infrastructure/security/authorization/postgres-security";
+import { RANKING_PROJECTION, type RankingPage } from "@reporting/ranking";
+
+import { LeaderboardController } from "../../src/modules/assessment/presentation/http/leaderboard.controller";
 import { IdentityService } from "../../src/modules/identity/application/services/identity.service";
-import {
-  IDENTITY_ACCESS,
-  REQUEST_GUARD,
-} from "../../src/modules/identity/application/facades/identity.facade";
+import { HttpSession } from "../../src/modules/identity/infrastructure/http/http-session";
+import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
+import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
+import { PostgresIdentityRepository } from "../../src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository";
 import {
   ArgonPasswords,
   JwtSessionTokens,
   VerificationCodec,
 } from "../../src/modules/identity/infrastructure/security/identity-crypto";
-import { PostgresIdentityRepository } from "../../src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository";
-import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
-import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
-import { HttpSession } from "../../src/modules/identity/infrastructure/http/http-session";
-import { LeaderboardController } from "../../src/modules/assessment/presentation/http/leaderboard.controller";
-import {
-  RANKING_PROJECTION,
-  type RankingPage,
-} from "../../src/modules/reporting/application/facades/ranking.facade";
 import { RankingService } from "../../src/modules/reporting/application/services/ranking.service";
 import { PostgresRankingQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-ranking.query";
 import { RankingCrypto } from "../../src/modules/reporting/infrastructure/security/ranking-crypto";

@@ -1,4 +1,7 @@
 import { describe, expect, it } from "vitest";
+
+import type { Attempt, SubmitReceipt } from "@web/shared/api/dto";
+
 import { clockMilestone, formatRemaining, remainingMs } from "../clock";
 import { canRestartPoll, monitorDelayMs, nextPollDelayMs, shouldStopPolling } from "../polling";
 import {
@@ -10,7 +13,6 @@ import {
   markSubmitUnknown,
   noteSavesSettled,
 } from "../submit-flow";
-import type { Attempt, SubmitReceipt } from "../../../shared/api/dto";
 
 const sample = {
   serverNowMs: Date.parse("2026-10-06T13:10:00.000Z"),

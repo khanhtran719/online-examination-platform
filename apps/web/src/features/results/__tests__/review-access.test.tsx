@@ -3,11 +3,13 @@ import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router";
 import { afterEach, expect, it, vi } from "vitest";
-import { ApiError } from "../../../shared/api/errors";
+
+import { ApiError } from "@web/shared/api/errors";
+
 import { ReviewPage } from "../result-pages";
 
 const api = vi.hoisted(() => ({ getResult: vi.fn(), getReleasedReview: vi.fn() }));
-vi.mock("../../../app/runtime", () => ({ useRuntime: () => ({ api }) }));
+vi.mock("@web/app/runtime", () => ({ useRuntime: () => ({ api }) }));
 afterEach(() => {
   cleanup();
   vi.resetAllMocks();

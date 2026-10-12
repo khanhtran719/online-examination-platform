@@ -1,6 +1,6 @@
-import { createContext, useContext, type ReactNode } from "react";
-import type { SessionTransport } from "../features/auth/session-coordinator";
-import type { RecoverResult } from "../features/auth/session-coordinator";
+import { createContext, type ReactNode, useContext } from "react";
+
+import type { RecoverResult, SessionTransport } from "../features/auth/session-coordinator";
 import type { Permission } from "../shared/api/dto";
 import type { PlatformApi } from "../shared/api/platform";
 
@@ -18,7 +18,14 @@ export interface DemoControls {
   mailbox: readonly MailPreview[];
   setPreset: (preset: "candidate" | "admin" | "reviewer") => void;
   setFault: (
-    fault: "none" | "delay-ack" | "lose-ack" | "conflict-save" | "save-429" | "save-503" | "refresh-lost",
+    fault:
+      | "none"
+      | "delay-ack"
+      | "lose-ack"
+      | "conflict-save"
+      | "save-429"
+      | "save-503"
+      | "refresh-lost",
   ) => void;
   reset: () => void;
   notify: () => void;

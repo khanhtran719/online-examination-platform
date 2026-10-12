@@ -1,8 +1,11 @@
 import { randomUUID } from "node:crypto";
+
+import { QueuePublishError } from "@shared/application/ports/queue-publisher.port";
+
 import { submissionEvent } from "../../../domain/assessment-policy";
-import { QueuePublishError } from "../../../../../shared/application/ports/queue-publisher.port";
-import { SubmissionClaim, SubmissionDispatch } from "../../ports/submission-dispatch.port";
-import { PublisherPolicy, SubmissionPublisher } from "../submission-publisher";
+import type { SubmissionClaim, SubmissionDispatch } from "../../ports/submission-dispatch.port";
+import type { PublisherPolicy } from "../submission-publisher";
+import { SubmissionPublisher } from "../submission-publisher";
 
 const policy: PublisherPolicy = {
   concurrency: 2,

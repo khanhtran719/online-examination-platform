@@ -1,5 +1,5 @@
-import { SubmittedEvent } from "../../../domain/assessment-policy";
-import { LockedAttempt } from "../../../domain/repositories/attempt.repository";
+import type { SubmittedEvent } from "../../../domain/assessment-policy";
+import type { LockedAttempt } from "../../../domain/repositories/attempt.repository";
 import { acceptAttemptSubmission } from "../attempt-submission";
 
 const ids = {

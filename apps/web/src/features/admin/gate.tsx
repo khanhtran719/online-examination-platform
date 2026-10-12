@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router";
-import { useRuntime } from "../../app/runtime";
-import type { Permission } from "../../shared/api/dto";
-import { Alert } from "../../shared/ui/ui";
+
+import { useRuntime } from "@web/app/runtime";
+import type { Permission } from "@web/shared/api/dto";
+import { Alert } from "@web/shared/ui/ui";
 
 export function useCapability(permission: Permission): "live-blocked" | "denied" | "allowed" {
   const { mode, demo } = useRuntime();

@@ -1,16 +1,18 @@
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
-import { SecurityControls } from "../../../../shared/application/ports/security";
-import { IdempotencyStore } from "../../../../shared/application/ports/idempotency";
+import type { IdempotencyStore } from "@shared/application/ports/idempotency";
+import type { SecurityControls } from "@shared/application/ports/security";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+import { DomainError } from "@shared/domain/exceptions/domain-error";
+import { ErrorCategory } from "@shared/domain/exceptions/error-category";
+
+import type { Account } from "../../domain/entities/identity-state";
 import {
-  IdempotencyConflictError,
-  RevisionConflictError,
   forbidden,
+  IdempotencyConflictError,
   invalidRequest,
   rateLimited,
+  RevisionConflictError,
   unauthenticated,
 } from "../../domain/errors/index";
-import { DomainError } from "../../../../shared/domain/exceptions/domain-error";
-import { ErrorCategory } from "../../../../shared/domain/exceptions/error-category";
 import {
   absoluteSessionExpiry,
   canRequestVerification,
@@ -19,21 +21,21 @@ import {
   requireLogin,
   verificationDeadline,
 } from "../../domain/identity-policy";
-import { Account } from "../../domain/entities/identity-state";
-import { IdentityRepository } from "../../domain/repositories/identity.repository";
-import { Principal, MutationReceipt } from "../dto/identity.dto";
-import { IdentityQuery } from "../ports/identity-query.port";
+import type { IdentityRepository } from "../../domain/repositories/identity.repository";
+import type { MutationReceipt, Principal } from "../dto/identity.dto";
+import type { AuthenticatedWriteAdmission } from "../ports/authenticated-write-admission.port";
 import {
-  AuthenticatedWriteAdmission,
-  WRITE_ADMISSION_INTERVAL_MS,
   WRITE_ADMISSION_BURST,
+  WRITE_ADMISSION_INTERVAL_MS,
 } from "../ports/authenticated-write-admission.port";
-import {
+import type {
+  IssuedTokens,
   Passwords,
   SessionTokens,
   VerificationSecrets,
-  IssuedTokens,
 } from "../ports/identity-crypto.ports";
+import type { IdentityQuery } from "../ports/identity-query.port";
+
 export class IdentityService {
   constructor(
     private readonly repo: IdentityRepository,

@@ -1,5 +1,6 @@
-import type { SqsConsumerSettings } from "../infrastructure/messaging/sqs/sqs-consumer";
-import { submissionQueueConfig } from "./submission-queue.config";
+import { submissionQueueConfig } from "@config/submission-queue.config";
+import type { SqsConsumerSettings } from "@infrastructure/messaging/sqs/sqs-consumer";
+
 export interface GradingWorkerConfig extends SqsConsumerSettings {
   concurrency: number;
   heartbeatMs: number;

@@ -1,35 +1,37 @@
-import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
 import { generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
+
 import { Module } from "@nestjs/common";
 import { Pool } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { PostgresDatabase } from "../../src/infrastructure/database/transaction/postgres-database";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
+
+import { databaseConfig } from "@config/database.config";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { LiveController } from "@infrastructure/health/http/live.controller";
+import { ReadyController } from "@infrastructure/health/http/ready.controller";
+import { createHttpApplication } from "@infrastructure/http/configure-http-application";
+import { PostgresIdempotency } from "@infrastructure/idempotency/postgres-idempotency";
+import { ShutdownGate } from "@infrastructure/resilience/shutdown/shutdown-gate";
+import { PostgresSecurity } from "@infrastructure/security/authorization/postgres-security";
+import { READINESS } from "@shared/application/ports/readiness";
+
+import { MailDeliveryError } from "../../src/modules/identity/application/ports/verification-delivery.port";
 import { IdentityService } from "../../src/modules/identity/application/services/identity.service";
+import { VerificationWorker } from "../../src/modules/identity/application/services/verification-worker";
+import { createVerificationWorker } from "../../src/modules/identity/identity-worker.factory";
+import { HttpSession } from "../../src/modules/identity/infrastructure/http/http-session";
+import { SmtpVerificationMail } from "../../src/modules/identity/infrastructure/mail/verification-mail";
+import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
+import { PostgresVerificationDelivery } from "../../src/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery";
+import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
 import { PostgresIdentityRepository } from "../../src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository";
 import {
   ArgonPasswords,
   JwtSessionTokens,
   VerificationCodec,
 } from "../../src/modules/identity/infrastructure/security/identity-crypto";
-import { PostgresIdempotency } from "../../src/infrastructure/idempotency/postgres-idempotency";
-import { PostgresSecurity } from "../../src/infrastructure/security/authorization/postgres-security";
-import { READINESS } from "../../src/shared/application/ports/readiness";
-import { ShutdownGate } from "../../src/infrastructure/resilience/shutdown/shutdown-gate";
-import { createHttpApplication } from "../../src/infrastructure/http/configure-http-application";
-import { LiveController } from "../../src/infrastructure/health/http/live.controller";
-import { ReadyController } from "../../src/infrastructure/health/http/ready.controller";
-import { HttpSession } from "../../src/modules/identity/infrastructure/http/http-session";
-import { IdentityController } from "../../src/modules/identity/presentation/http/identity.controller";
 import { HTTP_SESSION } from "../../src/modules/identity/presentation/http/http-session.port";
-import { VerificationWorker } from "../../src/modules/identity/application/services/verification-worker";
-import { PostgresVerificationDelivery } from "../../src/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery";
-import { createVerificationWorker } from "../../src/modules/identity/identity-worker.factory";
-import { SmtpVerificationMail } from "../../src/modules/identity/infrastructure/mail/verification-mail";
-import { MailDeliveryError } from "../../src/modules/identity/application/ports/verification-delivery.port";
-
-import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
+import { IdentityController } from "../../src/modules/identity/presentation/http/identity.controller";
 
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
 if (!adminUrl) throw new Error("Local test administrator required");

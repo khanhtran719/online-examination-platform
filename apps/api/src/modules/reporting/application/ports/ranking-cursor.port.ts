@@ -1,4 +1,5 @@
-import { RankingPosition } from "./ranking.query";
+import type { RankingPosition } from "./ranking.query";
+
 export interface RankingCursorClaims {
   actorId: string;
   examId: string;

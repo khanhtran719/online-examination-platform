@@ -1,36 +1,39 @@
 import { DynamicModule, Module } from "@nestjs/common";
-import { ApiConfig } from "../../config/app.config";
-import { DatabaseModule } from "../../infrastructure/database/database.module";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
-import { RANKING_PROJECTION } from "./application/facades/ranking.facade";
-import { RankingService } from "./application/services/ranking.service";
-import { PostgresRankingQuery } from "./infrastructure/persistence/postgres-ranking.query";
-import { RankingCrypto } from "./infrastructure/security/ranking-crypto";
-import { IDENTITY_ACCESS, IdentityAccess } from "../identity/application/facades/identity.facade";
-import { PostgresSecurity } from "../../infrastructure/security/authorization/postgres-security";
+
+import { ApiConfig } from "@config/app.config";
+import { IDENTITY_ACCESS, IdentityAccess } from "@identity/facade";
+import { DatabaseModule } from "@infrastructure/database/database.module";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresSecurity } from "@infrastructure/security/authorization/postgres-security";
+import { RANKING_PROJECTION } from "@reporting/ranking";
+
 import { ActiveCandidatesService } from "./application/services/active-candidates.service";
-import { PostgresActiveCandidatesQuery } from "./infrastructure/persistence/postgres-active-candidates.query";
-import { ActiveCandidatesCrypto } from "./infrastructure/security/active-candidates-cursor";
-import { ActiveCandidatesController } from "./presentation/http/active-candidates.controller";
-import { SubmissionsService } from "./application/services/submissions.service";
-import { PostgresSubmissionsQuery } from "./infrastructure/persistence/postgres-submissions.query";
-import { SubmissionsCrypto } from "./infrastructure/security/submissions-cursor";
-import { SubmissionsController } from "./presentation/http/submissions.controller";
-import { QuestionStatisticsService } from "./application/services/question-statistics.service";
-import { PostgresQuestionStatisticsQuery } from "./infrastructure/persistence/postgres-question-statistics.query";
-import { QuestionStatisticsCrypto } from "./infrastructure/security/question-statistics-cursor";
-import { QuestionStatisticsController } from "./presentation/http/question-statistics.controller";
-import { CandidateResultsService } from "./application/services/candidate-results.service";
-import { PostgresCandidateResultsQuery } from "./infrastructure/persistence/postgres-candidate-results.query";
-import { CandidateResultsCrypto } from "./infrastructure/security/candidate-results-cursor";
-import { CandidateResultsController } from "./presentation/http/candidate-results.controller";
-import { BusinessMetricsService } from "./application/services/business-metrics.service";
-import { PostgresBusinessMetricsQuery } from "./infrastructure/persistence/postgres-business-metrics.query";
-import { BusinessMetricsController } from "./presentation/http/business-metrics.controller";
 import { AuditService } from "./application/services/audit.service";
+import { BusinessMetricsService } from "./application/services/business-metrics.service";
+import { CandidateResultsService } from "./application/services/candidate-results.service";
+import { QuestionStatisticsService } from "./application/services/question-statistics.service";
+import { RankingService } from "./application/services/ranking.service";
+import { SubmissionsService } from "./application/services/submissions.service";
+import { PostgresActiveCandidatesQuery } from "./infrastructure/persistence/postgres-active-candidates.query";
 import { PostgresAuditQuery } from "./infrastructure/persistence/postgres-audit.query";
+import { PostgresBusinessMetricsQuery } from "./infrastructure/persistence/postgres-business-metrics.query";
+import { PostgresCandidateResultsQuery } from "./infrastructure/persistence/postgres-candidate-results.query";
+import { PostgresQuestionStatisticsQuery } from "./infrastructure/persistence/postgres-question-statistics.query";
+import { PostgresRankingQuery } from "./infrastructure/persistence/postgres-ranking.query";
+import { PostgresSubmissionsQuery } from "./infrastructure/persistence/postgres-submissions.query";
+import { ActiveCandidatesCrypto } from "./infrastructure/security/active-candidates-cursor";
 import { AuditCrypto } from "./infrastructure/security/audit-cursor";
+import { CandidateResultsCrypto } from "./infrastructure/security/candidate-results-cursor";
+import { QuestionStatisticsCrypto } from "./infrastructure/security/question-statistics-cursor";
+import { RankingCrypto } from "./infrastructure/security/ranking-crypto";
+import { SubmissionsCrypto } from "./infrastructure/security/submissions-cursor";
+import { ActiveCandidatesController } from "./presentation/http/active-candidates.controller";
 import { AuditController } from "./presentation/http/audit.controller";
+import { BusinessMetricsController } from "./presentation/http/business-metrics.controller";
+import { CandidateResultsController } from "./presentation/http/candidate-results.controller";
+import { QuestionStatisticsController } from "./presentation/http/question-statistics.controller";
+import { SubmissionsController } from "./presentation/http/submissions.controller";
+
 @Module({})
 export class ReportingModule {
   static forRoot(config: ApiConfig): DynamicModule {

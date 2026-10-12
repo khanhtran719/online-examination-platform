@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { useRuntime } from "../../app/runtime";
-import { useSession } from "../../app/session";
-import { useTitle } from "../../app/use-title";
-import { isApiError } from "../../shared/api/errors";
-import { uuidV7 } from "../../shared/api/uuid";
-import { Alert, Button, TextField } from "../../shared/ui/ui";
-import styles from "../../shared/styles/layout.module.css";
+
+import { useRuntime } from "@web/app/runtime";
+import { useSession } from "@web/app/session";
+import { useTitle } from "@web/app/use-title";
+import { isApiError } from "@web/shared/api/errors";
+import { uuidV7 } from "@web/shared/api/uuid";
+import styles from "@web/shared/styles/layout.module.css";
+import { Alert, Button, TextField } from "@web/shared/ui/ui";
 
 export function ProfilePage() {
   useTitle("Hồ sơ");

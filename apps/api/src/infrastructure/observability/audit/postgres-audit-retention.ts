@@ -1,5 +1,6 @@
-import { AuditRetentionPort } from "../../../shared/application/ports/audit-retention.port";
-import { PostgresDatabase } from "../../database/transaction/postgres-database";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import type { AuditRetentionPort } from "@shared/application/ports/audit-retention.port";
+
 export class PostgresAuditRetention implements AuditRetentionPort {
   constructor(private readonly db: PostgresDatabase) {}
   async prune(batch: number, correlationId: string): Promise<number> {

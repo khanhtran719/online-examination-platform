@@ -1,4 +1,5 @@
 import { invalidReport } from "./reporting.error";
+
 export interface AuditSource {
   id: string;
   occurredAt: string;

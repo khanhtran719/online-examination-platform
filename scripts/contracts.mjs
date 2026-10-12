@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+
 import SwaggerParser from "@apidevtools/swagger-parser";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";

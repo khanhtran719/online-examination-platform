@@ -1,12 +1,16 @@
 import "reflect-metadata";
-import { DynamicModule, Type } from "@nestjs/common";
-import { NestFactory } from "@nestjs/core";
-import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
-import cookie from "@fastify/cookie";
+
 import { randomUUID } from "node:crypto";
-import { ShutdownGate } from "../resilience/shutdown/shutdown-gate";
-import { ApiResponseInterceptor } from "../../shared/common/interceptors/api-response.interceptor";
-import { DomainExceptionFilter } from "../../shared/common/filters/domain-exception.filter";
+
+import cookie from "@fastify/cookie";
+import type { DynamicModule, Type } from "@nestjs/common";
+import { NestFactory } from "@nestjs/core";
+import type { NestFastifyApplication } from "@nestjs/platform-fastify";
+import { FastifyAdapter } from "@nestjs/platform-fastify";
+
+import { ShutdownGate } from "@infrastructure/resilience/shutdown/shutdown-gate";
+import { DomainExceptionFilter } from "@shared/common/filters/domain-exception.filter";
+import { ApiResponseInterceptor } from "@shared/common/interceptors/api-response.interceptor";
 
 export interface HttpApplicationOptions {
   trustedProxies?: string[];

@@ -1,4 +1,11 @@
-const ZONES = ["Asia/Ho_Chi_Minh", "Asia/Bangkok", "Asia/Tokyo", "UTC", "America/New_York", "Europe/London"];
+const ZONES = [
+  "Asia/Ho_Chi_Minh",
+  "Asia/Bangkok",
+  "Asia/Tokyo",
+  "UTC",
+  "America/New_York",
+  "Europe/London",
+];
 
 export function timezoneChoices(current: string): string[] {
   return current && !ZONES.includes(current) ? [current, ...ZONES] : ZONES;

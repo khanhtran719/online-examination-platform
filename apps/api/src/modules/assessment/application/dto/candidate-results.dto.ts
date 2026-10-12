@@ -1,5 +1,6 @@
-import { AttemptStatus } from "../../domain/attempt";
-import { CandidateQuestionView } from "./assessment.dto";
+import type { AttemptStatus } from "../../domain/attempt";
+
+import type { CandidateQuestionView } from "./assessment.dto";
 
 export interface SectionScoreView {
   sectionId: string;

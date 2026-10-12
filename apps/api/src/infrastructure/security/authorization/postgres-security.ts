@@ -1,10 +1,12 @@
 import { createHmac, randomUUID } from "node:crypto";
-import {
+
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import type {
   AuditRecord,
   SecurityControls,
   SecurityMaintenance,
-} from "../../../shared/application/ports/security";
-import { PostgresDatabase } from "../../database/transaction/postgres-database";
+} from "@shared/application/ports/security";
+
 export class PostgresSecurity implements SecurityControls, SecurityMaintenance {
   constructor(
     private readonly db: PostgresDatabase,

@@ -1,9 +1,12 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
-import type { AdminQuestion, QuestionType, QuestionWriteRequest } from "../../shared/api/dto";
-import { isApiError } from "../../shared/api/errors";
-import { uuidV7 } from "../../shared/api/uuid";
-import { questionIssues } from "../../shared/validation";
-import { idleIntent, settleIntent, startIntent, type IntentMachine } from "./mutation-intent";
+import { type FormEvent, useEffect, useRef, useState } from "react";
+
+import type { AdminQuestion, QuestionType, QuestionWriteRequest } from "@web/shared/api/dto";
+import { isApiError } from "@web/shared/api/errors";
+import { uuidV7 } from "@web/shared/api/uuid";
+import { questionIssues } from "@web/shared/validation";
+
+import { idleIntent, type IntentMachine, settleIntent, startIntent } from "./mutation-intent";
+
 export interface QuestionFormProps {
   initial: AdminQuestion | null;
   onSave: (

@@ -1,7 +1,7 @@
+import type { ExamDraft } from "../catalog-policy";
 import {
-  importIssues,
   assertImportStructure,
-  ExamDraft,
+  importIssues,
   normalizeExplanation,
   requireFreshKey,
   validateExamDraft,

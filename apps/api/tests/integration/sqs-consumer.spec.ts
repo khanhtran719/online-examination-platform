@@ -1,6 +1,8 @@
 import { createHash } from "node:crypto";
-import { createServer, Server } from "node:http";
-import { SqsConsumer } from "../../src/infrastructure/messaging/sqs/sqs-consumer";
+import type { Server } from "node:http";
+import { createServer } from "node:http";
+
+import { SqsConsumer } from "@infrastructure/messaging/sqs/sqs-consumer";
 
 let server: Server, endpoint: string, adapter: SqsConsumer;
 let mode:

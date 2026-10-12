@@ -1,4 +1,4 @@
-import { databaseConfig, connectionBudget } from "../database.config";
+import { connectionBudget, databaseConfig } from "@config/database.config";
 
 const local = {
   NODE_ENV: "test",

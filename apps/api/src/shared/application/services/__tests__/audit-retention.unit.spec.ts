@@ -1,4 +1,5 @@
-import { AuditRetention } from "../audit-retention";
+import { AuditRetention } from "@shared/application/services/audit-retention";
+
 describe("Finite audit-retention invocation", () => {
   it.each([0, 1001, 1.5])("rejects unsafe batch %s", (batch) =>
     expect(

@@ -1,6 +1,8 @@
 import { readFile, stat } from "node:fs/promises";
-import { ApiConfig, CommonConfig } from "../../../config/app.config";
-import { validateRuntimeSettings } from "../../../config/config.validation";
+
+import type { ApiConfig, CommonConfig } from "@config/app.config";
+import { validateRuntimeSettings } from "@config/config.validation";
+
 async function secretFile(path: string | undefined): Promise<string> {
   if (!path) throw new Error("Missing secret");
   const info = await stat(path);

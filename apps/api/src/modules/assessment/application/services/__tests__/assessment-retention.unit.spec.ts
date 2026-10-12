@@ -1,6 +1,6 @@
+import type { RetentionState } from "../../../domain/retention";
+import type { AssessmentRetentionRepository } from "../../ports/assessment-retention.repository";
 import { AssessmentRetention } from "../assessment-retention";
-import { AssessmentRetentionRepository } from "../../ports/assessment-retention.repository";
-import { RetentionState } from "../../../domain/retention";
 
 const now = Date.parse("2026-10-09T00:00:00Z");
 function fixture() {

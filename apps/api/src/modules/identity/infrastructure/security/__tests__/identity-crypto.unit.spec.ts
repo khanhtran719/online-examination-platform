@@ -1,6 +1,8 @@
 import { generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
-import { JwtSessionTokens, VerificationCodec, ArgonPasswords } from "../identity-crypto";
+
 import { importPKCS8, SignJWT } from "jose";
+
+import { ArgonPasswords, JwtSessionTokens, VerificationCodec } from "../identity-crypto";
 
 function pair() {
   const keys = generateKeyPairSync("ec", { namedCurve: "prime256v1" });

@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
-import { useMemory } from "../../app/memory";
-import { useTitle } from "../../app/use-title";
-import { formatDateTime, shortId } from "../../shared/format";
-import { validateLogin } from "../../shared/validation";
+
+import { useMemory } from "@web/app/memory";
+import { useTitle } from "@web/app/use-title";
+import { formatDateTime, shortId } from "@web/shared/format";
+import styles from "@web/shared/styles/layout.module.css";
 import {
   Alert,
   Button,
   Dialog,
   ErrorPanel,
   PasswordField,
+  sheetClass,
   SkeletonLines,
   TextField,
-  sheetClass,
-} from "../../shared/ui/ui";
-import styles from "../../shared/styles/layout.module.css";
+} from "@web/shared/ui/ui";
+import { validateLogin } from "@web/shared/validation";
+
 import { dirtyCount, viewAnswer } from "./autosave";
 import { progressCopy } from "./progress";
 import { QuestionView } from "./question-view";
-import { useExamRoom } from "./use-exam-room";
+import roomStyles from "./room.module.css";
+import { RoomDialogs } from "./room-dialogs";
 import { RoomNavigator } from "./room-navigator";
 import { RoomToolbar } from "./room-toolbar";
-import { RoomDialogs } from "./room-dialogs";
-import roomStyles from "./room.module.css";
+import { useExamRoom } from "./use-exam-room";
 
 export function ExamRoomPage() {
   const { attemptId = "" } = useParams();

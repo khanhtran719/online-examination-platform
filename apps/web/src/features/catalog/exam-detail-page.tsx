@@ -1,15 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import { useMemory } from "../../app/memory";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { isApiError } from "../../shared/api/errors";
-import { uuidV7 } from "../../shared/api/uuid";
-import { categoryLabel, formatDateTime, formatDuration, policyLabel } from "../../shared/format";
-import { PaperArt } from "../../shared/ui/paper-art";
-import { actionsClass, Button, Dialog, ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
-import layout from "../../shared/styles/layout.module.css";
+
+import { useMemory } from "@web/app/memory";
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { isApiError } from "@web/shared/api/errors";
+import { uuidV7 } from "@web/shared/api/uuid";
+import { categoryLabel, formatDateTime, formatDuration, policyLabel } from "@web/shared/format";
+import layout from "@web/shared/styles/layout.module.css";
+import { PaperArt } from "@web/shared/ui/paper-art";
+import { actionsClass, Button, Dialog, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+
 import styles from "./catalog.module.css";
 
 export function ExamDetailPage() {

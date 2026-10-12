@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { CapabilityGate } from "./gate";
-import styles from "./admin.module.css";
 import { useNavigate } from "react-router";
-import { isApiError } from "../../shared/api/errors";
-import { uuidV7 } from "../../shared/api/uuid";
-import { IMPORT_TEMPLATE, inspectImportText } from "../../shared/validation";
-import { Alert, Button, TextArea, Dialog } from "../../shared/ui/ui";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import type { ImportReport, ImportRequest } from "@web/shared/api/dto";
+import { isApiError } from "@web/shared/api/errors";
+import { uuidV7 } from "@web/shared/api/uuid";
+import { Alert, Button, Dialog, TextArea } from "@web/shared/ui/ui";
+import { IMPORT_TEMPLATE, inspectImportText } from "@web/shared/validation";
+
+import styles from "./admin.module.css";
 import { AdminHeading } from "./admin-ui";
-import { idleIntent, settleIntent, startIntent, type IntentMachine } from "./mutation-intent";
-import type { ImportReport, ImportRequest } from "../../shared/api/dto";
+import { CapabilityGate } from "./gate";
+import { idleIntent, type IntentMachine, settleIntent, startIntent } from "./mutation-intent";
 
 function unknownTransport(error: unknown): boolean {
   return isApiError(error) && (error.kind === "network" || error.kind === "timeout");

@@ -1,5 +1,7 @@
-import { auditValues } from "../../domain/audit";
-import { AdminReportInput } from "./submissions.dto";
+import type { auditValues } from "../../domain/audit";
+
+import type { AdminReportInput } from "./submissions.dto";
+
 export type AuditEntry = ReturnType<typeof auditValues>;
 export interface AuditInput extends AdminReportInput {
   pageSize: number;

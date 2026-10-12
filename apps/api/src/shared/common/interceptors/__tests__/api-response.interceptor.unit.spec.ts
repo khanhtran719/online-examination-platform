@@ -1,10 +1,11 @@
-import { ExecutionContext } from "@nestjs/common";
+import type { ExecutionContext } from "@nestjs/common";
 import { firstValueFrom, of } from "rxjs";
+
 import {
   ApiResponseInterceptor,
   isHealthPath,
   toSuccessEnvelope,
-} from "../api-response.interceptor";
+} from "@shared/common/interceptors/api-response.interceptor";
 
 function context(url: string): ExecutionContext {
   return { switchToHttp: () => ({ getRequest: () => ({ url }) }) } as ExecutionContext;

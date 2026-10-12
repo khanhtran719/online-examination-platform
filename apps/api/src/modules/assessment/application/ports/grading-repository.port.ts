@@ -1,7 +1,7 @@
-import { AttemptState } from "../../domain/attempt";
-import { Grade } from "../../domain/grading";
-import { ScoringAnswer } from "../../domain/scoring";
-import { SubmissionKind } from "../../domain/assessment-policy";
+import type { SubmissionKind } from "../../domain/assessment-policy";
+import type { AttemptState } from "../../domain/attempt";
+import type { Grade } from "../../domain/grading";
+import type { ScoringAnswer } from "../../domain/scoring";
 
 export interface GradingAttempt extends AttemptState {
   publishedVersionId: string;

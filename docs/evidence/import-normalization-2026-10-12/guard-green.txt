@@ -1,0 +1,31 @@
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (6.050709ms)
+✔ detects module-private and same-module infrastructure access from application (0.99925ms)
+✔ permits a public application capability and infrastructure driver adapter (0.918417ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.354208ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (0.539541ms)
+✔ checks TypeScript import types and import-equals dependencies (0.597041ms)
+✔ rejects Node network imports with or without node prefix (0.174291ms)
+✔ checks technical folder barrel imports without a trailing slash (0.183708ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.376459ms)
+✔ keeps domain independent of application orchestration (0.2365ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.427875ms)
+✔ keeps all global technical roots independent from business modules (0.254417ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.204541ms)
+✔ requires module composition to use explicit public capabilities of another module (0.228875ms)
+✔ permits only reviewed Reporting ranking entry points and preserves private boundaries (0.307083ms)
+✔ rejects legacy placement after normalization closes (0.116084ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (3.114417ms)
+✔ allows only the reviewed Catalog worker composition boundary (2.117ms)
+✔ resolves configured shared aliases while preserving protected layer boundaries (0.565917ms)
+✔ public facade aliases keep capability and global technical ownership (0.497875ms)
+✔ checks aliased type, export, dynamic, require and import-equals dependencies (1.108917ms)
+✔ rejects unconfigured internal aliases and alias traversal at composition roots (0.32025ms)
+✔ permits outer aliases without treating external scoped packages as source aliases (0.178583ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 307.4695

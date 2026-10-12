@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs";
-import { connectionBudget, ConnectionBudget } from "../../config/database.config";
+
+import type { ConnectionBudget } from "@config/database.config";
+import { connectionBudget } from "@config/database.config";
 
 try {
   const path = process.argv[2];

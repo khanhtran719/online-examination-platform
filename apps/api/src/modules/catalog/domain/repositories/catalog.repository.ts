@@ -1,4 +1,4 @@
-import { ExamDraft, QuestionDraft, QuestionType } from "../catalog-policy";
+import type { ExamDraft, QuestionDraft, QuestionType } from "../catalog-policy";
 
 export interface LockedQuestion {
   id: string;

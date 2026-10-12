@@ -1,0 +1,34 @@
+{
+  "apiRuntimeAndUnit": {
+    "before": {
+      "files": 262,
+      "imports": 784,
+      "aliases": 0,
+      "deepRelative": 156,
+      "maxParentLevels": 6
+    },
+    "after": {
+      "files": 262,
+      "imports": 811,
+      "aliases": 252,
+      "deepRelative": 28,
+      "maxParentLevels": 4
+    }
+  },
+  "web": {
+    "before": {
+      "files": 123,
+      "imports": 647,
+      "aliases": 0,
+      "deepRelative": 9,
+      "maxParentLevels": 3
+    },
+    "after": {
+      "files": 123,
+      "imports": 637,
+      "aliases": 220,
+      "deepRelative": 0,
+      "maxParentLevels": 1
+    }
+  }
+}

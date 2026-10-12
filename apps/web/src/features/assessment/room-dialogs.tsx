@@ -1,6 +1,7 @@
-import { shortId } from "../../shared/format";
-import { Button, Dialog, ErrorPanel } from "../../shared/ui/ui";
-import styles from "../../shared/styles/layout.module.css";
+import { shortId } from "@web/shared/format";
+import styles from "@web/shared/styles/layout.module.css";
+import { Button, Dialog, ErrorPanel } from "@web/shared/ui/ui";
+
 import { viewAnswer } from "./autosave";
 import type { useExamRoom } from "./use-exam-room";
 

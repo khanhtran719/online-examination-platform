@@ -1,22 +1,26 @@
-import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
 import { generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
-import { Pool, PoolClient } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
+
+import type { PoolClient } from "pg";
+import { Pool } from "pg";
+
+import { databaseConfig } from "@config/database.config";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
 import {
   DatabaseError,
   PostgresDatabase,
-} from "../../src/infrastructure/database/transaction/postgres-database";
-import { PostgresIdempotency } from "../../src/infrastructure/idempotency/postgres-idempotency";
-import { PostgresSecurity } from "../../src/infrastructure/security/authorization/postgres-security";
+} from "@infrastructure/database/transaction/postgres-database";
+import { PostgresIdempotency } from "@infrastructure/idempotency/postgres-idempotency";
+import { PostgresSecurity } from "@infrastructure/security/authorization/postgres-security";
+
 import { CatalogService } from "../../src/modules/catalog/application/services/catalog.service";
-import { ExamDraft } from "../../src/modules/catalog/domain/catalog-policy";
+import type { ExamDraft } from "../../src/modules/catalog/domain/catalog-policy";
 import { HmacCatalogCursor } from "../../src/modules/catalog/infrastructure/cursor/catalog-cursor";
 import { PostgresCatalogQuery } from "../../src/modules/catalog/infrastructure/persistence/postgres-catalog.query";
 import { PostgresCatalogRepository } from "../../src/modules/catalog/infrastructure/persistence/postgres-catalog.repository";
 import { IdentityService } from "../../src/modules/identity/application/services/identity.service";
+import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
 import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
 import { PostgresIdentityRepository } from "../../src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository";
 import {

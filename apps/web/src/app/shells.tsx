@@ -1,12 +1,14 @@
 import { Link, Navigate, Outlet, useLocation } from "react-router";
+
+import { PublicFrame } from "../features/experience/public-chrome";
 import { safeReturnPath } from "../shared/format";
-import { ErrorPanel, SkeletonLines } from "../shared/ui/ui";
-import type { NavItem } from "../shared/ui/navigation";
 import styles from "../shared/styles/layout.module.css";
+import type { NavItem } from "../shared/ui/navigation";
+import { ErrorPanel, SkeletonLines } from "../shared/ui/ui";
+
 import { useRuntime } from "./runtime";
 import { useSession } from "./session";
 import { WorkspaceFrame } from "./workspace-frame";
-import { PublicFrame } from "../features/experience/public-chrome";
 
 export function PublicShell() {
   return (

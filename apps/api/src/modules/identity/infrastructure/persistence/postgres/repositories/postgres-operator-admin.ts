@@ -1,4 +1,4 @@
-import { PostgresDatabase } from "../../../../../../infrastructure/database/transaction/postgres-database";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
 
 export class PostgresOperatorAdmin {
   constructor(private readonly db: PostgresDatabase) {}

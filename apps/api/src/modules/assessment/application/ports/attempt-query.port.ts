@@ -1,4 +1,4 @@
-import { AttemptRecord } from "../../domain/repositories/attempt.repository";
+import type { AttemptRecord } from "../../domain/repositories/attempt.repository";
 
 export interface OwnedAttempt extends AttemptRecord {
   serverNow: string;

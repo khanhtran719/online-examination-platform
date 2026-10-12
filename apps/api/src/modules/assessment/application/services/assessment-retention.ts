@@ -1,6 +1,7 @@
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
 import { canPurgeCompleted } from "../../domain/retention";
-import { AssessmentRetentionRepository } from "../ports/assessment-retention.repository";
+import type { AssessmentRetentionRepository } from "../ports/assessment-retention.repository";
 
 export interface RetentionBatch {
   receiptBatch: number;

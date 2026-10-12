@@ -1,0 +1,35 @@
+✔ compiled aliases resolve static, dynamic, re-export and import-equals without a runtime hook (283.266875ms)
+✔ unresolved aliases fail compilation instead of producing a broken runnable artifact (148.439333ms)
+✔ autofix preserves the order of side-effect initialization imports (631.97175ms)
+✔ type-import autofix retains value imports used in Nest decorator metadata (9.525541ms)
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (5.443666ms)
+✔ detects module-private and same-module infrastructure access from application (0.800583ms)
+✔ permits a public application capability and infrastructure driver adapter (0.889042ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.316167ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (0.527917ms)
+✔ checks TypeScript import types and import-equals dependencies (0.57575ms)
+✔ rejects Node network imports with or without node prefix (0.173917ms)
+✔ checks technical folder barrel imports without a trailing slash (0.182667ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.381958ms)
+✔ keeps domain independent of application orchestration (0.228917ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.361083ms)
+✔ keeps all global technical roots independent from business modules (0.278917ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.215958ms)
+✔ requires module composition to use explicit public capabilities of another module (0.235667ms)
+✔ permits only reviewed Reporting ranking entry points and preserves private boundaries (0.31225ms)
+✔ rejects legacy placement after normalization closes (0.108167ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (3.390833ms)
+✔ allows only the reviewed Catalog worker composition boundary (0.228375ms)
+✔ resolves configured shared aliases while preserving protected layer boundaries (1.292625ms)
+✔ public facade aliases keep capability and global technical ownership (0.274708ms)
+✔ checks aliased type, export, dynamic, require and import-equals dependencies (0.525375ms)
+✔ rejects unconfigured internal aliases and alias traversal at composition roots (0.442375ms)
+✔ permits outer aliases without treating external scoped packages as source aliases (0.190792ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1121.736041

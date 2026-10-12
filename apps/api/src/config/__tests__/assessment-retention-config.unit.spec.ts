@@ -1,4 +1,5 @@
-import { assessmentRetentionConfig } from "../assessment-retention.config";
+import { assessmentRetentionConfig } from "@config/assessment-retention.config";
+
 describe("One-shot retention admission", () => {
   it("is disabled by default and has finite batches", () => {
     expect(assessmentRetentionConfig({})).toEqual({

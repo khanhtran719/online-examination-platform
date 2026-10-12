@@ -1,12 +1,15 @@
 import { createHash, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
+
 import { Pool } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
+
+import { databaseConfig } from "@config/database.config";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
 import {
   DatabaseError,
   PostgresDatabase,
-} from "../../src/infrastructure/database/transaction/postgres-database";
+} from "@infrastructure/database/transaction/postgres-database";
+
 import { createGradingConsumer } from "../../src/modules/assessment/assessment-worker.factory";
 import { createScoringCatalog } from "../../src/modules/catalog/catalog-worker.factory";
 import { processGradingDelivery } from "../../src/workers/sqs/grading-delivery";

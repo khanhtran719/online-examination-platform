@@ -1,6 +1,25 @@
 # Implementation plan
 
-## Active increment — REP-08 Reporting evaluation, 2026-10-12 (COMPLETE locally)
+## Active increment — Import normalization, 2026-10-12 (COMPLETE locally)
+
+[IMP-01–06 checklist](import-normalization-2026-10-12.md): enforce import groups,
+duplicate/type policy, bounded source aliases and architecture-aware resolution;
+wire compiled API/Jest/Web paths, normalize current imports and verify artifacts.
+Business/SQL/HTTP/event behavior and migration receipts remain intact. 653 root
+tests, 427 full integration/24 suites and 10 real HTTPS cases PASS; lint, safe
+format, types, API/live/demo builds and contracts48/445 pass. 409 source syntax/
+binding signatures match, 1,121 protected old files unchanged and 19 source/build
+migrations match. Earlier wrong-profile and transient deadline failures are
+retained, followed by unchanged green reruns. Only the sorter is added as a dev
+dependency; existing dev audit findings remain open, runtime findings zero.
+[Evidence](evidence/import-normalization-2026-10-12/README.md).
+
+BOOT-11 closes locally: **89/217 checked,128 pending**. No commit/PR/deploy or
+background implementation. Next proposed WEB-03 real Catalog browse/detail;
+REP-04 privacy lifecycle and wider Web/AWS/performance/FinOps acceptance remain
+open. Production NOT ACCEPTED.
+
+## Previous increment — REP-08 Reporting evaluation, 2026-10-12 (COMPLETE locally)
 
 [RE-01–06 plan/review](reporting-evaluation-2026-10-12.md),
 [experiment](../experiments/reporting-evaluation/README.md),

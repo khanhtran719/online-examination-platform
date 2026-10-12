@@ -1,4 +1,5 @@
-import { gradingWorkerConfig } from "../grading-worker.config";
+import { gradingWorkerConfig } from "@config/grading-worker.config";
+
 const env = {
   NODE_ENV: "production",
   AWS_REGION: "ap-southeast-1",

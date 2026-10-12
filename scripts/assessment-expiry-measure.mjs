@@ -1,9 +1,11 @@
-import { createHash, randomUUID } from "node:crypto";
 import { spawn } from "node:child_process";
+import { createHash, randomUUID } from "node:crypto";
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { performance } from "node:perf_hooks";
+
 import pg from "pg";
+
 import { calibrateClock, createExpiryLagRecorder } from "./expiry-lag.mjs";
 
 const require = createRequire(import.meta.url);

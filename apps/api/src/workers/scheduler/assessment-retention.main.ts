@@ -1,7 +1,9 @@
 import { randomUUID } from "node:crypto";
-import { assessmentRetentionConfig } from "../../config/assessment-retention.config";
-import { loadDatabaseConfig } from "../../infrastructure/database/load-database-config";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
+
+import { assessmentRetentionConfig } from "@config/assessment-retention.config";
+import { loadDatabaseConfig } from "@infrastructure/database/load-database-config";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
 import { createAssessmentRetention } from "../../modules/assessment/assessment-worker.factory";
 
 /** Finite scheduled job. Scheduling/overlap belongs to the deployer; no permanent service. */

@@ -1,13 +1,17 @@
-import { createServer, Server } from "node:http";
-import { gradingWorkerConfig } from "../../config/grading-worker.config";
-import { loadDatabaseConfig } from "../../infrastructure/database/load-database-config";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
-import { SqsConsumer } from "../../infrastructure/messaging/sqs/sqs-consumer";
+import type { Server } from "node:http";
+import { createServer } from "node:http";
+
+import { gradingWorkerConfig } from "@config/grading-worker.config";
+import { loadDatabaseConfig } from "@infrastructure/database/load-database-config";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { SqsConsumer } from "@infrastructure/messaging/sqs/sqs-consumer";
+
 import {
   createGradingConsumer,
   createGradingRecovery,
 } from "../../modules/assessment/assessment-worker.factory";
 import { createScoringCatalog } from "../../modules/catalog/catalog-worker.factory";
+
 import { processGradingDelivery } from "./grading-delivery";
 
 export async function startGradingWorker(

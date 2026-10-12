@@ -1,23 +1,25 @@
-import { adminId as shortId } from "./admin-ui";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { CapabilityGate, useCapability } from "./gate";
-import styles from "./admin.module.css";
 import { Link, useParams } from "react-router";
-import { formatDateTime, statusLabel } from "../../shared/format";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { formatDateTime, statusLabel } from "@web/shared/format";
+import { useProtectedAccess } from "@web/shared/protected-access";
 import {
   Button,
   EmptyState,
   ErrorPanel,
   SkeletonLines,
-  TableScroll,
   tableClass,
-} from "../../shared/ui/ui";
-import { AdminBadge, AdminHeading, PageEnd } from "./admin-ui";
-import { useInfiniteQuery } from "@tanstack/react-query";
+  TableScroll,
+} from "@web/shared/ui/ui";
+
 import { canRestartPoll, monitorDelayMs } from "../assessment/polling";
+
+import styles from "./admin.module.css";
+import { AdminBadge, AdminHeading, adminId as shortId, PageEnd } from "./admin-ui";
+import { CapabilityGate, useCapability } from "./gate";
 
 export function MonitorExamPage() {
   const { examId = "" } = useParams();

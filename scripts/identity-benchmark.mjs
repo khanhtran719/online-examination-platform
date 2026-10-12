@@ -1,9 +1,11 @@
+import { generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
-import { randomBytes, randomUUID, generateKeyPairSync } from "node:crypto";
-import { readFile, mkdir, writeFile } from "node:fs/promises";
-import { performance } from "node:perf_hooks";
 import os from "node:os";
+import { performance } from "node:perf_hooks";
+
 import pg from "pg";
+
 const require = createRequire(import.meta.url);
 const artifact = process.env.IDENTITY_BENCH_OUTPUT ?? "experiments/identity-local/latest.json";
 if (!/^experiments\/[a-z0-9_-]+\/[a-z0-9_-]+\.json$/.test(artifact))

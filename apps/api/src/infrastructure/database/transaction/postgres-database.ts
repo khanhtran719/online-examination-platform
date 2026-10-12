@@ -1,8 +1,11 @@
 import { AsyncLocalStorage } from "node:async_hooks";
 import { performance } from "node:perf_hooks";
-import { Pool, PoolClient, QueryResult, QueryResultRow } from "pg";
-import { UnitOfWork } from "../../../shared/application/unit-of-work/unit-of-work.port";
-import { DatabaseConfig } from "../../../config/database.config";
+
+import type { PoolClient, QueryResult, QueryResultRow } from "pg";
+import { Pool } from "pg";
+
+import type { DatabaseConfig } from "@config/database.config";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
 
 // Bounded labels only. Add a reviewed label when a business adapter is implemented.
 export type DatabaseOperation =

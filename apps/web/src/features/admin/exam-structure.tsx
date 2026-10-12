@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Button, Dialog, ErrorPanel, SkeletonLines, TextField } from "../../shared/ui/ui";
-import type { ExamDraft } from "./use-exam-draft";
-import { questionTypeLabel } from "./admin-ui";
+
+import { Button, Dialog, ErrorPanel, SkeletonLines, TextField } from "@web/shared/ui/ui";
+
 import styles from "./admin.module.css";
+import { questionTypeLabel } from "./admin-ui";
+import type { ExamDraft } from "./use-exam-draft";
 
 export function ExamStructure({ draft }: { draft: ExamDraft }) {
   const [picker, setPicker] = useState<number | null>(null);

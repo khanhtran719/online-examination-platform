@@ -1,10 +1,12 @@
 import { createCipheriv, createDecipheriv, createHmac, randomBytes } from "node:crypto";
-import {
+
+import type {
   ActiveCandidatesCursor,
   ActiveCursorClaims,
   ActiveCursorState,
 } from "../../application/ports/active-candidates-cursor.port";
 import { invalidReport } from "../../domain/reporting.error";
+
 const aad = Buffer.from("online-exam.reporting.active-candidates.cursor.v1");
 /** Derived from the existing CSRF root with a distinct purpose; never ranking alias material. */
 export class ActiveCandidatesCrypto implements ActiveCandidatesCursor {

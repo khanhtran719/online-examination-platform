@@ -78,8 +78,13 @@ export function normalizeEmail(value: string): string {
 }
 
 export function safeReturnPath(value: unknown): string {
-  if (typeof value !== "string" || !value.startsWith("/") || value.startsWith("//")) return "/dashboard";
-  if (value.startsWith("/login") || value.startsWith("/register") || value.startsWith("/verify-email")) {
+  if (typeof value !== "string" || !value.startsWith("/") || value.startsWith("//"))
+    return "/dashboard";
+  if (
+    value.startsWith("/login") ||
+    value.startsWith("/register") ||
+    value.startsWith("/verify-email")
+  ) {
     return "/dashboard";
   }
   return value;

@@ -1,5 +1,6 @@
 import { generateKeyPairSync, randomBytes } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
+
 if (process.env.NODE_ENV === "production") throw new Error("Local key generator only");
 await mkdir(".local/identity", { recursive: true, mode: 0o700 });
 const pair = generateKeyPairSync("ec", { namedCurve: "prime256v1" }),

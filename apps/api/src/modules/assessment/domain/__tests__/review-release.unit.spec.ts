@@ -1,4 +1,5 @@
 import { canReleaseReview } from "../review-release";
+
 describe("Frozen candidate review release", () => {
   it.each([
     ["NEVER", true, 100, 100, false],

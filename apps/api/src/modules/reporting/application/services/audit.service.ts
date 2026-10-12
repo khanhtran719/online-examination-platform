@@ -1,11 +1,13 @@
-import { IdentityAccess } from "../../../identity/application/facades/identity.facade";
-import { SecurityControls } from "../../../../shared/application/ports/security";
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
+import type { IdentityAccess } from "@identity/facade";
+import type { SecurityControls } from "@shared/application/ports/security";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
 import { auditTime, auditValues, validateAuditPosition } from "../../domain/audit";
 import { invalidReport, reportDenied } from "../../domain/reporting.error";
-import { AuditInput, AuditPage } from "../dto/audit.dto";
-import { AuditQuery } from "../ports/audit.query";
-import { AuditCursor } from "../ports/audit-cursor.port";
+import type { AuditInput, AuditPage } from "../dto/audit.dto";
+import type { AuditQuery } from "../ports/audit.query";
+import type { AuditCursor } from "../ports/audit-cursor.port";
+
 export class AuditService {
   constructor(
     private readonly access: IdentityAccess,

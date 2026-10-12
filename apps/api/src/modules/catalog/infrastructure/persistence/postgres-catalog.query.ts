@@ -1,6 +1,6 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { Category, ExplanationPolicy, QuestionType } from "../../domain/catalog-policy";
-import {
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type {
   AdminExam,
   AdminExamRow,
   AdminQuestion,
@@ -17,12 +17,13 @@ import {
   SectionInput,
   SectionSummary,
 } from "../../application/dto/catalog.dto";
-import {
+import type {
   BrowseInput,
   CatalogQuery,
   FrozenInput,
   KeysetInput,
 } from "../../application/ports/catalog-query.port";
+import type { Category, ExplanationPolicy, QuestionType } from "../../domain/catalog-policy";
 
 interface Stamp {
   watermark: Date;

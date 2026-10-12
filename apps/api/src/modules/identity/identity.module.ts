@@ -1,26 +1,24 @@
-import { PostgresAuthenticatedWriteAdmission } from "./infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
 import { DynamicModule, Module } from "@nestjs/common";
-import { DatabaseModule } from "../../infrastructure/database/database.module";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
-import { PostgresIdempotency } from "../../infrastructure/idempotency/postgres-idempotency";
-import { PostgresSecurity } from "../../infrastructure/security/authorization/postgres-security";
-import { ApiConfig } from "../../config/app.config";
+import { FastifyRequest } from "fastify";
+
+import { ApiConfig } from "@config/app.config";
+import { IDENTITY_ACCESS, REQUEST_GUARD, RequestGuard } from "@identity/facade";
+import { DatabaseModule } from "@infrastructure/database/database.module";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresIdempotency } from "@infrastructure/idempotency/postgres-idempotency";
+import { PostgresSecurity } from "@infrastructure/security/authorization/postgres-security";
+
 import { IdentityService } from "./application/services/identity.service";
 import { HttpSession } from "./infrastructure/http/http-session";
+import { PostgresAuthenticatedWriteAdmission } from "./infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
+import { PostgresIdentityQuery } from "./infrastructure/persistence/postgres/queries/postgres-identity.query";
+import { PostgresIdentityRepository } from "./infrastructure/persistence/postgres/repositories/postgres-identity.repository";
 import {
   createSessionCredentials,
   createVerificationSecrets,
 } from "./infrastructure/security/identity-runtime";
-import { PostgresIdentityRepository } from "./infrastructure/persistence/postgres/repositories/postgres-identity.repository";
 import { HTTP_SESSION } from "./presentation/http/http-session.port";
-import { PostgresIdentityQuery } from "./infrastructure/persistence/postgres/queries/postgres-identity.query";
 import { IdentityController } from "./presentation/http/identity.controller";
-import {
-  IDENTITY_ACCESS,
-  REQUEST_GUARD,
-  RequestGuard,
-} from "./application/facades/identity.facade";
-import { FastifyRequest } from "fastify";
 
 /**
  * Identity composition root. Binds application ports to adapters and registers the HTTP adapter.

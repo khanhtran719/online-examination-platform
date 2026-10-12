@@ -1,15 +1,18 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { useRuntime } from "../../app/runtime";
-import { useSession } from "../../app/session";
-import type { Answer, Attempt } from "../../shared/api/dto";
-import { isApiError } from "../../shared/api/errors";
-import type { PlatformApi } from "../../shared/api/platform";
-import { uuidV7 } from "../../shared/api/uuid";
-import { normalizeEmail } from "../../shared/format";
+
+import { useRuntime } from "@web/app/runtime";
+import { useSession } from "@web/app/session";
+import type { Answer, Attempt } from "@web/shared/api/dto";
+import { isApiError } from "@web/shared/api/errors";
+import type { PlatformApi } from "@web/shared/api/platform";
+import { uuidV7 } from "@web/shared/api/uuid";
+import { normalizeEmail } from "@web/shared/format";
+
 import {
   acknowledge,
+  type AutosaveState,
   capture,
   createAutosaveState,
   dirtyCount,
@@ -18,18 +21,17 @@ import {
   failOffline,
   failRetryable,
   holdForReauth,
+  type InFlightBatch,
   ingestAnswerPage,
   rearmExhausted,
-  resumeAuthenticated,
-  resumeOnline,
   resolveKeepMine,
   resolveUseServer,
+  resumeAuthenticated,
+  resumeOnline,
   setTransport,
-  type AutosaveState,
-  type InFlightBatch,
 } from "./autosave";
+import { clockMilestone, type ClockSample, remainingMs } from "./clock";
 import { advanceSubmitClock } from "./room-tick";
-import { clockMilestone, remainingMs, type ClockSample } from "./clock";
 import {
   beginManualSubmit,
   cancelBlockedSubmit,
@@ -90,12 +92,16 @@ export function useExamRoom(attemptId: string) {
     queryFn: () => api.resumeAttempt(attemptId).then((response) => response.data),
     staleTime: Infinity,
   });
-  const runnable = attemptQuery.data?.status === "IN_PROGRESS" || attemptQuery.data?.status === "CREATED";
+  const runnable =
+    attemptQuery.data?.status === "IN_PROGRESS" || attemptQuery.data?.status === "CREATED";
   const questions = useInfiniteQuery({
     queryKey: ["attempt-questions", attemptId],
     enabled: runnable,
     initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) => api.getQuestions(attemptId, { pageSize: 20, cursor: pageParam }).then((response) => response.data),
+    queryFn: ({ pageParam }) =>
+      api
+        .getQuestions(attemptId, { pageSize: 20, cursor: pageParam })
+        .then((response) => response.data),
     getNextPageParam: (last) => last.next ?? undefined,
     staleTime: Infinity,
   });
@@ -103,7 +109,10 @@ export function useExamRoom(attemptId: string) {
     queryKey: ["attempt-answers", attemptId],
     enabled: runnable,
     initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) => api.getAnswers(attemptId, { pageSize: 20, cursor: pageParam }).then((response) => response.data),
+    queryFn: ({ pageParam }) =>
+      api
+        .getAnswers(attemptId, { pageSize: 20, cursor: pageParam })
+        .then((response) => response.data),
     getNextPageParam: (last) => last.next ?? undefined,
     staleTime: Infinity,
   });
@@ -129,11 +138,15 @@ export function useExamRoom(attemptId: string) {
       canSave: attempt.canSave,
     };
     sampleRef.current = sample;
-    commit(setTransport(saveRef.current, { canSave: attempt.canSave && remainingMs(sample, mono) > 0 }));
+    commit(
+      setTransport(saveRef.current, { canSave: attempt.canSave && remainingMs(sample, mono) > 0 }),
+    );
   }, [attemptQuery.data, commit]);
 
   useEffect(() => {
-    const questionIds = (questions.data?.pages ?? []).flatMap((page) => page.items.map((item) => item.id));
+    const questionIds = (questions.data?.pages ?? []).flatMap((page) =>
+      page.items.map((item) => item.id),
+    );
     const observed = (answers.data?.pages ?? []).flatMap((page) => page.items);
     if (questionIds.length === 0 && observed.length === 0) return;
     const authoritative =
@@ -196,7 +209,9 @@ export function useExamRoom(attemptId: string) {
               allowRetry: true,
             }),
           );
-          setNotice("Hết thời gian chờ. Chưa rõ đáp án đã được ghi nhận chưa. Cùng một lần lưu sẽ được gửi lại.");
+          setNotice(
+            "Hết thời gian chờ. Chưa rõ đáp án đã được ghi nhận chưa. Cùng một lần lưu sẽ được gửi lại.",
+          );
         } else if (isApiError(caught) && caught.kind === "network" && !navigator.onLine) {
           commit(failOffline(saveRef.current));
         } else if (
@@ -213,7 +228,9 @@ export function useExamRoom(attemptId: string) {
             }),
           );
           if (caught.status === 429 || caught.status === 503) {
-            setNotice(`Máy chủ yêu cầu chờ ${retryAfter ?? "một lúc"} giây. Cùng một lần lưu sẽ được gửi lại.`);
+            setNotice(
+              `Máy chủ yêu cầu chờ ${retryAfter ?? "một lúc"} giây. Cùng một lần lưu sẽ được gửi lại.`,
+            );
           }
         } else {
           commit(
@@ -287,7 +304,11 @@ export function useExamRoom(attemptId: string) {
       const sample = sampleRef.current;
       if (sample) {
         const left = remainingMs(sample, now);
-        setRemaining((previous) => (previous !== null && Math.ceil(previous / 1000) === Math.ceil(left / 1000) ? previous : left));
+        setRemaining((previous) =>
+          previous !== null && Math.ceil(previous / 1000) === Math.ceil(left / 1000)
+            ? previous
+            : left,
+        );
         const mark = clockMilestone(previousRemaining.current, left);
         previousRemaining.current = left;
         if (mark === "five") setMilestone("Còn 5 phút");
@@ -351,7 +372,12 @@ export function useExamRoom(attemptId: string) {
         };
         sampleRef.current = sample;
         const left = remainingMs(sample, mono);
-        commit(setTransport(saveRef.current, { canSave: response.data.canSave && left > 0, offline: false }));
+        commit(
+          setTransport(saveRef.current, {
+            canSave: response.data.canSave && left > 0,
+            offline: false,
+          }),
+        );
         queryClient.setQueryData<Attempt>(["attempt", attemptIdRef.current], response.data);
       } catch (caught) {
         if (isApiError(caught) && caught.kind === "network") commit(failOffline(saveRef.current));
@@ -394,7 +420,14 @@ export function useExamRoom(attemptId: string) {
     },
     change(questionId: string, selectedOptionIds: readonly string[], marked: boolean) {
       try {
-        commit(editAnswer(saveRef.current, { questionId, selectedOptionIds, marked }, performance.now(), Math.random()));
+        commit(
+          editAnswer(
+            saveRef.current,
+            { questionId, selectedOptionIds, marked },
+            performance.now(),
+            Math.random(),
+          ),
+        );
       } catch {
         setNotice("Câu này chưa tải xong nên chưa sửa được.");
       }

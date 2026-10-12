@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { inspectImports, inspectPlacement, localLinks, headingAnchors } from "../quality.mjs";
+
+import { headingAnchors, inspectImports, inspectPlacement, localLinks } from "../quality.mjs";
 
 test("finds forbidden external, dynamic and re-export imports while ignoring comments", () => {
   const code = `// import { Client } from 'pg';\nexport { Client } from 'pg';\nconst driver = import('@aws-sdk/client-sqs');`;
@@ -244,6 +245,87 @@ test("allows only the reviewed Catalog worker composition boundary", () => {
     inspectImports(
       worker,
       "import x from '../../modules/catalog/infrastructure/persistence/postgres-catalog.query';",
+    ),
+    [],
+  );
+});
+
+test("resolves configured shared aliases while preserving protected layer boundaries", () => {
+  const path = "apps/api/src/modules/identity/application/services/identity.service.ts";
+  assert.deepEqual(
+    inspectImports(path, "import type { X } from '@shared/application/ports/security';"),
+    [],
+  );
+  for (const dependency of [
+    "@shared/common/guards/request",
+    "@config/app.config",
+    "@infrastructure/database/transaction/postgres-database",
+  ])
+    assert.match(
+      inspectImports(path, `import { X } from '${dependency}';`).join("\n"),
+      /Protected business layer/,
+    );
+  assert.match(
+    inspectImports(
+      "apps/api/src/modules/identity/domain/entities/user.ts",
+      "import type { X } from '@shared/application/ports/security';",
+    ).join("\n"),
+    /Domain imports application/,
+  );
+});
+
+test("public facade aliases keep capability and global technical ownership", () => {
+  const path = "apps/api/src/modules/assessment/application/services/start.ts";
+  for (const alias of ["@identity/facade", "@catalog/facade", "@reporting/ranking"])
+    assert.deepEqual(inspectImports(path, `import { X } from '${alias}';`), [], alias);
+  assert.match(
+    inspectImports(
+      "apps/api/src/infrastructure/http/adapter.ts",
+      "import { X } from '@identity/facade';",
+    ).join("\n"),
+    /Platform imports a business module/,
+  );
+});
+
+test("checks aliased type, export, dynamic, require and import-equals dependencies", () => {
+  const path = "apps/api/src/modules/assessment/application/services/save.ts";
+  for (const code of [
+    "type X = import('@config/app.config').X;",
+    "export { X } from '@config/app.config';",
+    "const x = import('@config/app.config');",
+    "const x = require('@config/app.config');",
+    "import x = require('@config/app.config');",
+  ])
+    assert.match(inspectImports(path, code).join("\n"), /Protected business layer/, code);
+});
+
+test("rejects unconfigured internal aliases and alias traversal at composition roots", () => {
+  for (const alias of [
+    "@modules/identity/private",
+    "@identity/private",
+    "@api/main",
+    "@web/app/runtime",
+    "#internal/private",
+    "@shared/../modules/identity/private",
+  ])
+    assert.ok(
+      inspectImports("apps/api/src/main.ts", `import { X } from '${alias}';`).length > 0,
+      alias,
+    );
+});
+
+test("permits outer aliases without treating external scoped packages as source aliases", () => {
+  assert.deepEqual(
+    inspectImports(
+      "apps/api/src/main.ts",
+      "import { X } from '@config/app.config'; import { Y } from '@infrastructure/http/configure-http-application';",
+    ),
+    [],
+  );
+  assert.deepEqual(
+    inspectImports(
+      "apps/api/src/infrastructure/mail/sender.ts",
+      "import { X } from '@aws-sdk/client-sesv2';",
     ),
     [],
   );

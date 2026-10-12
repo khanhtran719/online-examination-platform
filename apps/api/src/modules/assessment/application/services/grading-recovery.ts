@@ -1,10 +1,11 @@
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
 import { assertSubmittedEvent } from "../../domain/assessment-policy";
 import { Attempt } from "../../domain/attempt";
 import { matchesSubmission } from "../../domain/grading-submission";
-import {
-  GradingFailureRepository,
+import type {
   GradingFailureCode,
+  GradingFailureRepository,
 } from "../ports/grading-failure-repository.port";
 
 export class GradingRecovery {

@@ -1,0 +1,103 @@
+{
+  "status": "complete-locally",
+  "recordedAt": "2026-10-12T05:19:04.966Z",
+  "node": "v24.17.0",
+  "arch": "arm64",
+  "roadmap": {
+    "checked": 89,
+    "total": 217,
+    "pending": 128
+  },
+  "tests": {
+    "api": 492,
+    "tooling": 62,
+    "web": 99,
+    "root": 653,
+    "integration": 427,
+    "integrationSuites": 24,
+    "https": 10,
+    "skipped": 0
+  },
+  "static": {
+    "lint": true,
+    "format": true,
+    "apiTypes": true,
+    "webTypes": true,
+    "apiBuild": true,
+    "webLiveBuild": true,
+    "webDemoBuild": true,
+    "contractsOperations": 48,
+    "contractsExamples": 445
+  },
+  "preservation": {
+    "checked": 409,
+    "mismatches": [],
+    "protectedFiles": 1121,
+    "changedProtected": []
+  },
+  "artifactResolution": {
+    "compiledFiles": 209,
+    "requires": 387,
+    "migrations": 19,
+    "errors": []
+  },
+  "imports": {
+    "apiRuntimeAndUnit": {
+      "before": {
+        "files": 262,
+        "imports": 784,
+        "aliases": 0,
+        "deepRelative": 156,
+        "maxParentLevels": 6
+      },
+      "after": {
+        "files": 262,
+        "imports": 811,
+        "aliases": 252,
+        "deepRelative": 28,
+        "maxParentLevels": 4
+      }
+    },
+    "web": {
+      "before": {
+        "files": 123,
+        "imports": 647,
+        "aliases": 0,
+        "deepRelative": 9,
+        "maxParentLevels": 3
+      },
+      "after": {
+        "files": 123,
+        "imports": 637,
+        "aliases": 220,
+        "deepRelative": 0,
+        "maxParentLevels": 1
+      }
+    }
+  },
+  "dependencies": {
+    "newDev": "eslint-plugin-simple-import-sort@14.0.0",
+    "newRuntime": [],
+    "runtimeAuditFindings": 0,
+    "existingDevFindings": {
+      "root": {
+        "moderate": 20
+      },
+      "web": {
+        "high": 9
+      }
+    }
+  },
+  "acceptedFullRerunSeconds": 351.098,
+  "earlierFailures": [
+    "development DB profile rejected by fixture guards",
+    "first disposable full run: timeout and seven ExamNotOpen failures; cause unconfirmed, unchanged focused/full reruns pass"
+  ],
+  "cleanup": {
+    "extraFixtureDatabases": 0,
+    "testContainersStopped": true,
+    "volumesRetained": true
+  },
+  "awsMeasured": false,
+  "productionAccepted": false
+}

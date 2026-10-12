@@ -1,13 +1,15 @@
 import { Link, NavLink, Outlet } from "react-router";
-import { WorkspaceFrame } from "../../app/workspace-frame";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import type { Permission } from "../../shared/api/dto";
-import { Alert } from "../../shared/ui/ui";
-import { PaperArt } from "../../shared/ui/paper-art";
-import { AdminHeading } from "./admin-ui";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { WorkspaceFrame } from "@web/app/workspace-frame";
+import type { Permission } from "@web/shared/api/dto";
+import styles from "@web/shared/styles/layout.module.css";
+import { PaperArt } from "@web/shared/ui/paper-art";
+import { Alert } from "@web/shared/ui/ui";
+
 import adminStyles from "./admin.module.css";
-import styles from "../../shared/styles/layout.module.css";
+import { AdminHeading } from "./admin-ui";
 
 const links = [
   ["/admin", "Tổng quan", "grid"],

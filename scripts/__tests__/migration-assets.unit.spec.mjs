@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
-import { test } from "node:test";
-import { mkdtemp, mkdir, writeFile, readFile, readdir, rm, symlink } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { test } from "node:test";
+
 import { copyMigrationBundle } from "../migration-assets.mjs";
 
 test("packages immutable SQL bytes and ordered filenames independently of process cwd", async () => {

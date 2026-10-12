@@ -1,8 +1,9 @@
-import { shortId } from "../../shared/format";
-import { Button } from "../../shared/ui/ui";
-import styles from "../../shared/styles/layout.module.css";
-import roomStyles from "./room.module.css";
+import { shortId } from "@web/shared/format";
+import styles from "@web/shared/styles/layout.module.css";
+import { Button } from "@web/shared/ui/ui";
+
 import { viewAnswer } from "./autosave";
+import roomStyles from "./room.module.css";
 import { passesSheetFilter, sheetLabel } from "./sheet";
 import type { useExamRoom } from "./use-exam-room";
 

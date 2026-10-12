@@ -2,10 +2,13 @@ import { randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+
 import { Pool } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
-import { PostgresDatabase } from "../../src/infrastructure/database/transaction/postgres-database";
+
+import { databaseConfig } from "@config/database.config";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
 import { DeadlineSweep } from "../../src/modules/assessment/application/services/deadline-sweep";
 import {
   claimDueSql,

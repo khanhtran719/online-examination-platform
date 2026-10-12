@@ -1,12 +1,15 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useMatch, useNavigate, useParams } from "react-router";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { useProtectedAccess } from "@web/shared/protected-access";
+import { ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+
 import { CapabilityGate, useCapability } from "./gate";
 import { QuestionForm } from "./question-form";
+
 export function QuestionEditorPage() {
   const isNew = Boolean(useMatch("/admin/questions/new"));
   const { questionId = "" } = useParams();

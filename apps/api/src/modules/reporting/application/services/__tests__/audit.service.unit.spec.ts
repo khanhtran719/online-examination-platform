@@ -1,5 +1,6 @@
+import type { AuditSource } from "../../../domain/audit";
 import { AuditService } from "../audit.service";
-import { AuditSource } from "../../../domain/audit";
+
 const id = "00000000-0000-4000-8000-000000000001",
   now = "2026-10-10T00:00:00.000Z";
 const input = { actorId: id, raw: "credential", correlationId: id, pageSize: 1, cursor: null };

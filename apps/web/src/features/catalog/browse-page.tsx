@@ -1,11 +1,13 @@
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { CATEGORIES, type Category } from "../../shared/api/dto";
-import { isApiError } from "../../shared/api/errors";
-import { categoryLabel, formatDateTime, formatDuration } from "../../shared/format";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { CATEGORIES, type Category } from "@web/shared/api/dto";
+import { isApiError } from "@web/shared/api/errors";
+import { categoryLabel, formatDateTime, formatDuration } from "@web/shared/format";
+import layout from "@web/shared/styles/layout.module.css";
 import {
   Alert,
   Button,
@@ -13,8 +15,8 @@ import {
   ErrorPanel,
   SelectField,
   SkeletonLines,
-} from "../../shared/ui/ui";
-import layout from "../../shared/styles/layout.module.css";
+} from "@web/shared/ui/ui";
+
 import styles from "./catalog.module.css";
 
 export function BrowsePage() {

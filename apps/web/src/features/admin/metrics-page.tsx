@@ -1,13 +1,15 @@
-import { useState } from "react";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { CapabilityGate, useCapability } from "./gate";
-import styles from "./admin.module.css";
-import { formatDateTime } from "../../shared/format";
-import { ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
-import { AdminHeading } from "./admin-ui";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { formatDateTime } from "@web/shared/format";
+import { useProtectedAccess } from "@web/shared/protected-access";
+import { ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+
+import styles from "./admin.module.css";
+import { AdminHeading } from "./admin-ui";
+import { CapabilityGate, useCapability } from "./gate";
 
 export function MetricsPage() {
   useTitle("Số liệu hệ thống");

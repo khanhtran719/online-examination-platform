@@ -1,11 +1,10 @@
-import { adminId as shortId } from "./admin-ui";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { CapabilityGate, useCapability } from "./gate";
-import styles from "./admin.module.css";
-import { formatDateTime } from "../../shared/format";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { formatDateTime } from "@web/shared/format";
+import { useProtectedAccess } from "@web/shared/protected-access";
 import {
   Button,
   Dialog,
@@ -14,9 +13,11 @@ import {
   SkeletonLines,
   tableClass,
   TableScroll,
-} from "../../shared/ui/ui";
-import { AdminBadge, AdminHeading, PageEnd } from "./admin-ui";
-import { useInfiniteQuery } from "@tanstack/react-query";
+} from "@web/shared/ui/ui";
+
+import styles from "./admin.module.css";
+import { AdminBadge, AdminHeading, adminId as shortId, PageEnd } from "./admin-ui";
+import { CapabilityGate, useCapability } from "./gate";
 
 export function AuditPage() {
   useTitle("Nhật ký");

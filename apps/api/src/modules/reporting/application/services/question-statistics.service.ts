@@ -1,15 +1,20 @@
-import { IdentityAccess } from "../../../identity/application/facades/identity.facade";
-import { SecurityControls } from "../../../../shared/application/ports/security";
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
+import type { IdentityAccess } from "@identity/facade";
+import type { SecurityControls } from "@shared/application/ports/security";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
+import { selectedCount, statisticCounts } from "../../domain/question-statistics";
 import { invalidReport, reportDenied, reportNotFound } from "../../domain/reporting.error";
-import { QuestionStatisticsInput, QuestionStatisticsPage } from "../dto/question-statistics.dto";
-import { QuestionStatisticsQuery } from "../ports/question-statistics.query";
-import {
+import type {
+  QuestionStatisticsInput,
+  QuestionStatisticsPage,
+} from "../dto/question-statistics.dto";
+import { assertReportRows } from "../dto/reporting-response";
+import type { QuestionStatisticsQuery } from "../ports/question-statistics.query";
+import type {
   QuestionStatisticsCursor,
   QuestionStatisticsCursorState,
 } from "../ports/question-statistics-cursor.port";
-import { statisticCounts, selectedCount } from "../../domain/question-statistics";
-import { assertReportRows } from "../dto/reporting-response";
+
 const ttlMs = 900000;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 function time(value: string): number {

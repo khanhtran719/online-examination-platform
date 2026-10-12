@@ -1,5 +1,6 @@
+import type { QueueConsumer } from "@shared/application/ports/queue-consumer.port";
+
 import { processGradingDelivery } from "../grading-delivery";
-import { QueueConsumer } from "../../../shared/application/ports/queue-consumer.port";
 
 describe("grading delivery settlement", () => {
   it("waits for durable completion before delete and permits verified duplicate/quarantine ACK", async () => {

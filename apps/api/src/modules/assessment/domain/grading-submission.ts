@@ -1,6 +1,5 @@
-import { SubmittedEvent } from "./assessment-policy";
-import { AttemptState } from "./attempt";
-import { SubmissionKind } from "./assessment-policy";
+import type { SubmissionKind, SubmittedEvent } from "./assessment-policy";
+import type { AttemptState } from "./attempt";
 
 interface SubmissionIdentity extends Pick<
   AttemptState,

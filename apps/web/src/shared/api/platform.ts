@@ -45,9 +45,16 @@ export interface ResultRead {
 
 export interface PlatformApi {
   getCsrf(): Promise<ApiSuccess<Csrf>>;
-  register(body: { email: string; displayName: string; password: string }): Promise<ApiSuccess<Accepted>>;
+  register(body: {
+    email: string;
+    displayName: string;
+    password: string;
+  }): Promise<ApiSuccess<Accepted>>;
   requestEmailVerification(body: { email: string }): Promise<ApiSuccess<Accepted>>;
-  confirmEmailVerification(body: { token: string; password: string }): Promise<ApiSuccess<Verified>>;
+  confirmEmailVerification(body: {
+    token: string;
+    password: string;
+  }): Promise<ApiSuccess<Verified>>;
   login(body: { email: string; password: string }): Promise<ApiSuccess<Session>>;
   refresh(): Promise<ApiSuccess<Session>>;
   logout(): Promise<ApiSuccess<Revoked>>;
@@ -59,7 +66,11 @@ export interface PlatformApi {
   resumeAttempt(attemptId: string): Promise<ApiSuccess<Attempt>>;
   getQuestions(attemptId: string, query: PageQuery): Promise<ApiSuccess<Page<CandidateQuestion>>>;
   getAnswers(attemptId: string, query: PageQuery): Promise<ApiSuccess<Page<Answer>>>;
-  saveAnswers(attemptId: string, key: string, body: SaveAnswersRequest): Promise<ApiSuccess<SaveReceipt>>;
+  saveAnswers(
+    attemptId: string,
+    key: string,
+    body: SaveAnswersRequest,
+  ): Promise<ApiSuccess<SaveReceipt>>;
   submitAttempt(attemptId: string, key: string): Promise<ApiSuccess<SubmitReceipt>>;
   getAttemptStatus(attemptId: string): Promise<ApiSuccess<Attempt>>;
   getResult(attemptId: string): Promise<ApiSuccess<ResultRead>>;
@@ -73,10 +84,26 @@ export interface PlatformApi {
   listAdminExams(query: PageQuery): Promise<ApiSuccess<Page<AdminExam>>>;
   createExam(key: string, body: ExamWriteRequest): Promise<ApiSuccess<MutationReceipt>>;
   getAdminExam(examId: string): Promise<ApiSuccess<AdminExam>>;
-  replaceExamDraft(examId: string, key: string, body: ExamWriteRequest): Promise<ApiSuccess<MutationReceipt>>;
-  archiveExam(examId: string, key: string, body: RevisionRequest): Promise<ApiSuccess<MutationReceipt>>;
-  publishExam(examId: string, key: string, body: RevisionRequest): Promise<ApiSuccess<MutationReceipt>>;
-  unpublishExam(examId: string, key: string, body: RevisionRequest): Promise<ApiSuccess<MutationReceipt>>;
+  replaceExamDraft(
+    examId: string,
+    key: string,
+    body: ExamWriteRequest,
+  ): Promise<ApiSuccess<MutationReceipt>>;
+  archiveExam(
+    examId: string,
+    key: string,
+    body: RevisionRequest,
+  ): Promise<ApiSuccess<MutationReceipt>>;
+  publishExam(
+    examId: string,
+    key: string,
+    body: RevisionRequest,
+  ): Promise<ApiSuccess<MutationReceipt>>;
+  unpublishExam(
+    examId: string,
+    key: string,
+    body: RevisionRequest,
+  ): Promise<ApiSuccess<MutationReceipt>>;
   listBankQuestions(query: PageQuery): Promise<ApiSuccess<Page<AdminQuestion>>>;
   createBankQuestion(key: string, body: QuestionWriteRequest): Promise<ApiSuccess<MutationReceipt>>;
   getBankQuestion(questionId: string): Promise<ApiSuccess<AdminQuestion>>;
@@ -85,17 +112,28 @@ export interface PlatformApi {
     key: string,
     body: QuestionWriteRequest,
   ): Promise<ApiSuccess<MutationReceipt>>;
-  archiveBankQuestion(questionId: string, key: string, body: RevisionRequest): Promise<ApiSuccess<MutationReceipt>>;
+  archiveBankQuestion(
+    questionId: string,
+    key: string,
+    body: RevisionRequest,
+  ): Promise<ApiSuccess<MutationReceipt>>;
   importQuestions(key: string, body: ImportRequest): Promise<ApiSuccess<ImportReport>>;
   getImportReport(importId: string): Promise<ApiSuccess<ImportReport>>;
-  listActiveCandidates(examId: string, query: PageQuery): Promise<ApiSuccess<Page<ActiveCandidate>>>;
+  listActiveCandidates(
+    examId: string,
+    query: PageQuery,
+  ): Promise<ApiSuccess<Page<ActiveCandidate>>>;
   listSubmissions(
     examId: string,
     query: PageQuery & { publishedVersionId?: string },
   ): Promise<ApiSuccess<Page<AdminSubmission>>>;
   getAdminResult(attemptId: string): Promise<ApiSuccess<ResultRead>>;
   getAdminReview(attemptId: string, query: PageQuery): Promise<ApiSuccess<Page<ReviewQuestion>>>;
-  replayFailedAttempt(attemptId: string, key: string, body: ReplayRequest): Promise<ApiSuccess<Accepted>>;
+  replayFailedAttempt(
+    attemptId: string,
+    key: string,
+    body: ReplayRequest,
+  ): Promise<ApiSuccess<Accepted>>;
   getQuestionStatistics(
     examId: string,
     versionId: string,

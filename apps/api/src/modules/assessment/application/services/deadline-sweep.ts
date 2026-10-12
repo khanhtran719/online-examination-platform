@@ -1,9 +1,12 @@
 import { randomUUID } from "node:crypto";
-import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
-import { AttemptRepository } from "../../domain/repositories/attempt.repository";
-import { SubmissionOutbox } from "../ports/submission-outbox";
-import { ExpiryRetry } from "../ports/expiry-retry.port";
-import { SubmissionCommitObserver } from "../ports/submission-commit-observer.port";
+
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
+import type { AttemptRepository } from "../../domain/repositories/attempt.repository";
+import type { ExpiryRetry } from "../ports/expiry-retry.port";
+import type { SubmissionCommitObserver } from "../ports/submission-commit-observer.port";
+import type { SubmissionOutbox } from "../ports/submission-outbox";
+
 import { acceptAttemptSubmission } from "./attempt-submission";
 
 export interface SweepTickResult {

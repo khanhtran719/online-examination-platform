@@ -1,18 +1,20 @@
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router";
-import { useMemory } from "../../app/memory";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { formatDateTime, statusLabel } from "../../shared/format";
+
+import { useMemory } from "@web/app/memory";
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { formatDateTime, statusLabel } from "@web/shared/format";
+import layout from "@web/shared/styles/layout.module.css";
 import {
   Button,
   EmptyState,
   ErrorPanel,
   SkeletonLines,
-  TableScroll,
   tableClass,
-} from "../../shared/ui/ui";
-import layout from "../../shared/styles/layout.module.css";
+  TableScroll,
+} from "@web/shared/ui/ui";
+
 import styles from "./results.module.css";
 
 export function HistoryPage() {

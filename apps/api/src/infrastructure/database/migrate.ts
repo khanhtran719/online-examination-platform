@@ -1,6 +1,7 @@
 import { resolve } from "node:path";
-import { loadDatabaseConfig } from "./load-database-config";
-import { loadMigrations, migrate } from "./migration-runner";
+
+import { loadDatabaseConfig } from "@infrastructure/database/load-database-config";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
 
 async function main(): Promise<void> {
   const url = process.env.DATABASE_MIGRATION_URL;

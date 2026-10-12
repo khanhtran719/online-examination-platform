@@ -1,8 +1,12 @@
 import { randomUUID } from "node:crypto";
-import { Pool, PoolClient } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { PostgresDatabase } from "../../src/infrastructure/database/transaction/postgres-database";
-import { SubmissionClaim } from "../../src/modules/assessment/application/ports/submission-dispatch.port";
+
+import type { PoolClient } from "pg";
+import { Pool } from "pg";
+
+import { databaseConfig } from "@config/database.config";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { SubmissionClaim } from "../../src/modules/assessment/application/ports/submission-dispatch.port";
 import { PostgresSubmissionDispatch } from "../../src/modules/assessment/infrastructure/persistence/postgres-submission-dispatch";
 
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;

@@ -1,9 +1,7 @@
-import { VerificationSecrets } from "../ports/identity-crypto.ports";
-import {
-  MailDeliveryError,
-  VerificationDelivery,
-  VerificationMail,
-} from "../ports/verification-delivery.port";
+import type { VerificationSecrets } from "../ports/identity-crypto.ports";
+import type { VerificationDelivery, VerificationMail } from "../ports/verification-delivery.port";
+import { MailDeliveryError } from "../ports/verification-delivery.port";
+
 export class VerificationWorker {
   constructor(
     private readonly delivery: VerificationDelivery,

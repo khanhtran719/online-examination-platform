@@ -1,4 +1,5 @@
 import { invalidReport } from "./reporting.error";
+
 const maxWindowMs = 7 * 86400000;
 export interface BusinessMetricCounters {
   startedAttempts: string;

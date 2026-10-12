@@ -1,5 +1,6 @@
-import { PostgresDatabase } from "../../../../../../infrastructure/database/transaction/postgres-database";
-import {
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type {
   AuthenticatedWriteAdmission,
   WriteAdmissionInput,
   WriteAdmissionResult,

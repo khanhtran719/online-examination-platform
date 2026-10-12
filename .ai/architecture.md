@@ -283,6 +283,13 @@ Invoice/member/POS names above are teaching examples. The examination project us
 
 ### Adoption and verification
 
+Source aliases are a tooling convenience under R-76, not additional dependency
+permissions. Root `tsconfig.paths.json` is the API alias authority; the guard
+resolves it before applying these boundaries. CommonJS compiler emit and Jest use
+the same mapping. Web owns a separate `@web/*` mapping. Import policy and preserved
+side-effect/decorator behavior are specified in conventions §§82–85; see the
+[normalization review](../docs/import-normalization-2026-10-12.md).
+
 [ADR-006](../docs/adr/006-source-layout-normalization.md) is implemented locally. The [normalization plan](../docs/architecture-normalization-plan.md) records all twelve completed gates and evidence. Source and build no longer contain the legacy `platform/` tree or root worker/operator files; the checker rejects legacy source placement and enforces the new dependency boundaries. The SQL schema `platform` remains unchanged. This adoption does not select an ORM or establish AWS capacity, cost or production acceptance.
 
 Target SQL migration placement is `apps/api/src/infrastructure/database/migrations`; preserve the existing bundle names, checksums, receipt history and artifact inclusion. SQL schema `platform` is not renamed because the source folder is removed. ORM selection is a separate evidence-based decision; no performance gain is claimed from folder moves.

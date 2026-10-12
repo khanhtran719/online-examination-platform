@@ -1,7 +1,9 @@
 import { createServer } from "node:http";
-import { loadDatabaseConfig } from "../../infrastructure/database/load-database-config";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
-import { loadRuntimeConfig } from "../../infrastructure/security/authentication/secret-loader";
+
+import { loadDatabaseConfig } from "@infrastructure/database/load-database-config";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { loadRuntimeConfig } from "@infrastructure/security/authentication/secret-loader";
+
 import { createVerificationWorker } from "../../modules/identity/identity-worker.factory";
 
 async function main(): Promise<void> {

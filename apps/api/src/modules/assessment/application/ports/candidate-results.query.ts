@@ -1,6 +1,8 @@
-import { OwnedAttempt } from "./attempt-query.port";
-import { ReviewRelease } from "../../domain/review-release";
-import { HistoryItemView, ResultView, ReviewQuestionView } from "../dto/candidate-results.dto";
+import type { ReviewRelease } from "../../domain/review-release";
+import type { HistoryItemView, ResultView, ReviewQuestionView } from "../dto/candidate-results.dto";
+
+import type { OwnedAttempt } from "./attempt-query.port";
+
 export interface ReviewRow extends ReviewQuestionView {
   sectionPosition: number;
 }

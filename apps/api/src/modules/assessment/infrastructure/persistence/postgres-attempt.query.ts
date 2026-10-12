@@ -1,6 +1,11 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { AttemptStatus } from "../../domain/attempt";
-import { AnswerRow, AttemptQuery, OwnedAttempt } from "../../application/ports/attempt-query.port";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type {
+  AnswerRow,
+  AttemptQuery,
+  OwnedAttempt,
+} from "../../application/ports/attempt-query.port";
+import type { AttemptStatus } from "../../domain/attempt";
 
 const stamp = (column: string, alias: string) =>
   `to_char(${column} AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS "${alias}"`;

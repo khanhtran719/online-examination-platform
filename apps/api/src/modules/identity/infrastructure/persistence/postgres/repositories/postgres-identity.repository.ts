@@ -1,13 +1,15 @@
-import { PostgresDatabase } from "../../../../../../infrastructure/database/transaction/postgres-database";
-import {
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type {
   Account,
   Challenge,
   Family,
+  PersistedSession,
   SessionLookup,
   SessionRecord,
-  PersistedSession,
 } from "../../../../domain/entities/identity-state";
-import { IdentityRepository } from "../../../../domain/repositories/identity.repository";
+import type { IdentityRepository } from "../../../../domain/repositories/identity.repository";
+
 const accountColumns = `
   id,
   email,

@@ -1,7 +1,7 @@
-import { GradingConsumer } from "../grading-consumer";
-import { GradingAttempt, GradingRepository } from "../../ports/grading-repository.port";
 import { submissionEvent } from "../../../domain/assessment-policy";
-import { Grade } from "../../../domain/grading";
+import type { Grade } from "../../../domain/grading";
+import type { GradingAttempt, GradingRepository } from "../../ports/grading-repository.port";
+import { GradingConsumer } from "../grading-consumer";
 import { GradingRecovery } from "../grading-recovery";
 
 const attemptId = "11111111-1111-4111-8111-111111111111";

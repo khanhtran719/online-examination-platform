@@ -1,42 +1,42 @@
 import { createHash, generateKeyPairSync, randomBytes, randomUUID } from "node:crypto";
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
-import { Module } from "@nestjs/common";
+
 import SwaggerParser from "@apidevtools/swagger-parser";
+import { Module } from "@nestjs/common";
 import Ajv, { type AnySchema, type ValidateFunction } from "ajv";
 import addFormats from "ajv-formats";
 import { Pool, type QueryResultRow } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
+
+import { databaseConfig } from "@config/database.config";
+import { IDENTITY_ACCESS, REQUEST_GUARD } from "@identity/facade";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
 import {
-  PostgresDatabase,
   type DatabaseObservation,
   type DatabaseOperation,
-} from "../../src/infrastructure/database/transaction/postgres-database";
-import { PostgresIdempotency } from "../../src/infrastructure/idempotency/postgres-idempotency";
-import { PostgresSecurity } from "../../src/infrastructure/security/authorization/postgres-security";
-import { createHttpApplication } from "../../src/infrastructure/http/configure-http-application";
-import { ShutdownGate } from "../../src/infrastructure/resilience/shutdown/shutdown-gate";
+  PostgresDatabase,
+} from "@infrastructure/database/transaction/postgres-database";
+import { createHttpApplication } from "@infrastructure/http/configure-http-application";
+import { PostgresIdempotency } from "@infrastructure/idempotency/postgres-idempotency";
+import { ShutdownGate } from "@infrastructure/resilience/shutdown/shutdown-gate";
+import { PostgresSecurity } from "@infrastructure/security/authorization/postgres-security";
+
 import { IdentityService } from "../../src/modules/identity/application/services/identity.service";
-import {
-  IDENTITY_ACCESS,
-  REQUEST_GUARD,
-} from "../../src/modules/identity/application/facades/identity.facade";
+import { HttpSession } from "../../src/modules/identity/infrastructure/http/http-session";
+import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
+import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
+import { PostgresIdentityRepository } from "../../src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository";
 import {
   ArgonPasswords,
   JwtSessionTokens,
   VerificationCodec,
 } from "../../src/modules/identity/infrastructure/security/identity-crypto";
-import { PostgresIdentityRepository } from "../../src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository";
-import { PostgresIdentityQuery } from "../../src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query";
-import { PostgresAuthenticatedWriteAdmission } from "../../src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission";
-import { HttpSession } from "../../src/modules/identity/infrastructure/http/http-session";
-
-import { SubmissionsController } from "../../src/modules/reporting/presentation/http/submissions.controller";
-import { SubmissionsService } from "../../src/modules/reporting/application/services/submissions.service";
 import { SubmissionPage } from "../../src/modules/reporting/application/dto/submissions.dto";
+import { SubmissionsService } from "../../src/modules/reporting/application/services/submissions.service";
 import { PostgresSubmissionsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-submissions.query";
 import { SubmissionsCrypto } from "../../src/modules/reporting/infrastructure/security/submissions-cursor";
+import { SubmissionsController } from "../../src/modules/reporting/presentation/http/submissions.controller";
+
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
 if (!adminUrl || new URL(adminUrl).port !== "55435")
   throw new Error("Disposable55435 administrator required");

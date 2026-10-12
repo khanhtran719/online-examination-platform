@@ -1,12 +1,14 @@
-import { CandidateResultsService } from "../candidate-results.service";
-import { CandidateResultsQuery } from "../../ports/candidate-results.query";
-import {
+import type { IdentityAccess } from "@identity/facade";
+import type { AuditRecord } from "@shared/application/ports/security";
+import type { UnitOfWork } from "@shared/application/unit-of-work/unit-of-work.port";
+
+import type { CandidateResultsQuery } from "../../ports/candidate-results.query";
+import type {
   CandidateResultsCursor,
   CandidateResultsCursorState,
 } from "../../ports/candidate-results-cursor.port";
-import { IdentityAccess } from "../../../../identity/application/facades/identity.facade";
-import { UnitOfWork } from "../../../../../shared/application/unit-of-work/unit-of-work.port";
-import { AuditRecord } from "../../../../../shared/application/ports/security";
+import { CandidateResultsService } from "../candidate-results.service";
+
 const now = "2026-10-10T00:00:00.000Z";
 const actorId = "00000000-0000-4000-8000-000000000001";
 const examId = "00000000-0000-4000-8000-000000000002";

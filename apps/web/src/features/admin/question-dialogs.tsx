@@ -1,5 +1,6 @@
-import type { QuestionType } from "../../shared/api/dto";
-import { Button, Dialog } from "../../shared/ui/ui";
+import type { QuestionType } from "@web/shared/api/dto";
+import { Button, Dialog } from "@web/shared/ui/ui";
+
 import styles from "./admin.module.css";
 
 export function QuestionDialogs({

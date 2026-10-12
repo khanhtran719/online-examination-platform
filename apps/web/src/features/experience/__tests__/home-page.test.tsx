@@ -1,11 +1,13 @@
 import "@testing-library/jest-dom/vitest";
+
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router";
 import { StrictMode } from "react";
+import { MemoryRouter } from "react-router";
 import { afterEach, expect, it, vi } from "vitest";
+
 import { HomePage } from "../home-page";
 
-vi.mock("../../../app/session", () => ({ useSession: () => ({ status: "anonymous" }) }));
+vi.mock("@web/app/session", () => ({ useSession: () => ({ status: "anonymous" }) }));
 vi.mock("../hero-scene", () => ({ HeroScene: () => <div>Minh họa giao diện</div> }));
 afterEach(cleanup);
 

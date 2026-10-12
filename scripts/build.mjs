@@ -1,7 +1,9 @@
-import { copyMigrationBundle } from "./migration-assets.mjs";
-import { rm, lstat } from "node:fs/promises";
-import { spawnSync } from "node:child_process";
+import { lstat, rm } from "node:fs/promises";
 import { resolve } from "node:path";
+
+import { compileProject } from "./compile.mjs";
+import { copyMigrationBundle } from "./migration-assets.mjs";
+
 // dist is generated output. Remove obsolete paths after source-folder refactors.
 const output = resolve("dist");
 try {
@@ -12,13 +14,7 @@ try {
   if (!error || typeof error !== "object" || !("code" in error) || error.code !== "ENOENT")
     throw error;
 }
-const result = spawnSync(
-  process.execPath,
-  ["node_modules/typescript/bin/tsc", "-p", "tsconfig.json"],
-  { stdio: "inherit" },
-);
-if (result.error) throw new Error("Compiler failed to start");
-process.exitCode = result.status ?? 1;
+process.exitCode = compileProject(resolve("tsconfig.json")) ? 0 : 1;
 
 if (process.exitCode === 0)
   await copyMigrationBundle(

@@ -1,17 +1,18 @@
-import { randomUUID, createHash } from "node:crypto";
-import { createServer } from "node:http";
 import { spawn } from "node:child_process";
+import { createHash, randomUUID } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
+import { createServer } from "node:http";
+
 import { Pool } from "pg";
-import { databaseConfig } from "../../src/config/database.config";
-import { loadMigrations, migrate } from "../../src/infrastructure/database/migration-runner";
-import {
-  PostgresDatabase,
-  DatabaseObservation,
-} from "../../src/infrastructure/database/transaction/postgres-database";
-import { PostgresSubmissionDispatch } from "../../src/modules/assessment/infrastructure/persistence/postgres-submission-dispatch";
+
+import { databaseConfig } from "@config/database.config";
+import { loadMigrations, migrate } from "@infrastructure/database/migration-runner";
+import type { DatabaseObservation } from "@infrastructure/database/transaction/postgres-database";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
 import { SubmissionPublisher } from "../../src/modules/assessment/application/services/submission-publisher";
 import { submissionEvent } from "../../src/modules/assessment/domain/assessment-policy";
+import { PostgresSubmissionDispatch } from "../../src/modules/assessment/infrastructure/persistence/postgres-submission-dispatch";
 import { startSubmissionPublisher } from "../../src/workers/outbox/submission.main";
 
 const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;

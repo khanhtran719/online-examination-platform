@@ -1,5 +1,7 @@
 import { randomBytes } from "node:crypto";
+
 import { CandidateResultsCrypto } from "../candidate-results-cursor";
+
 const root = randomBytes(32),
   now = Date.parse("2026-10-10T00:00:00.000Z");
 const claims = { actorId: "actor", examId: "exam", versionId: "version", pageSize: 20 };

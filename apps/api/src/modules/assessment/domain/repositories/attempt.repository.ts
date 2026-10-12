@@ -1,4 +1,4 @@
-import { AttemptStatus } from "../attempt";
+import type { AttemptStatus } from "../attempt";
 
 export interface AttemptRecord {
   id: string;

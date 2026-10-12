@@ -1,6 +1,7 @@
-import type { QuestionType } from "../../shared/api/dto";
-import { questionTypeLabel } from "./admin-ui";
+import type { QuestionType } from "@web/shared/api/dto";
+
 import styles from "./admin.module.css";
+import { questionTypeLabel } from "./admin-ui";
 
 // The preview accepts only candidate-visible text; keys and explanations cannot be passed here.
 export function QuestionPreview({

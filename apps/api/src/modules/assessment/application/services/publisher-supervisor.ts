@@ -1,4 +1,4 @@
-import { PublishResult } from "./submission-publisher";
+import type { PublishResult } from "./submission-publisher";
 
 export interface PublisherLoop {
   concurrency: number;

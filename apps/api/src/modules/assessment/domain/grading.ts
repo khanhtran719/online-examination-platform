@@ -1,5 +1,6 @@
-import { ScoringAnswer, ScoringQuestion, score } from "./scoring";
 import { AssessmentError } from "./assessment.error";
+import type { ScoringAnswer, ScoringQuestion } from "./scoring";
+import { score } from "./scoring";
 
 export interface GradingQuestion extends ScoringQuestion {
   sectionId: string;

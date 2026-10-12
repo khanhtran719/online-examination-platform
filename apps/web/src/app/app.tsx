@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { RouterProvider } from "react-router";
+
 import { ChromeProvider } from "./chrome";
 import { MemoryProvider } from "./memory";
 import { router } from "./router";

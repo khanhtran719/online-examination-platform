@@ -1,7 +1,10 @@
 import { randomUUID } from "node:crypto";
-import { loadDatabaseConfig } from "../../infrastructure/database/load-database-config";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
+
+import { loadDatabaseConfig } from "@infrastructure/database/load-database-config";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
 import { createGradingReplay } from "../../modules/assessment/assessment-worker.factory";
+
 async function main() {
   const [attempt, revisionText, extra] = process.argv.slice(2);
   const actor = process.env.OPERATOR_IDENTITY;

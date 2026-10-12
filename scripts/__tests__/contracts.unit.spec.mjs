@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
-import { test, before } from "node:test";
 import { resolve } from "node:path";
-import { loadContracts, inspectOperations, validateEvent } from "../contracts.mjs";
+import { before, test } from "node:test";
+
+import { inspectOperations, loadContracts, validateEvent } from "../contracts.mjs";
 
 let contracts;
 before(async () => {

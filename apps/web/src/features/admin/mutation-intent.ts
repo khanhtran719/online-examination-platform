@@ -21,7 +21,11 @@ function sameBody(left: unknown, right: unknown): boolean {
 export function startIntent<T>(
   machine: IntentMachine<T>,
   input: { action: string; body: T; expectedRevision: number; keyFactory: () => string },
-): { machine: IntentMachine<T>; send: FrozenIntent<T> | null; blocked: "duplicate" | "changed" | null } {
+): {
+  machine: IntentMachine<T>;
+  send: FrozenIntent<T> | null;
+  blocked: "duplicate" | "changed" | null;
+} {
   if (machine.phase === "inflight") return { machine, send: null, blocked: "duplicate" };
   if (machine.phase === "unknown" && machine.frozen) {
     const same =

@@ -1,4 +1,4 @@
-import { Category, ExplanationPolicy, QuestionType } from "../../domain/catalog-policy";
+import type { Category, ExplanationPolicy, QuestionType } from "../../domain/catalog-policy";
 
 export interface PageMetadata {
   next: string | null;

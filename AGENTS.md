@@ -58,6 +58,8 @@ For source placement/refactoring work, also read rules R-76 and architecture §5
 
 For SQL authoring or formatting, also read rules R-77 and conventions §102.1. Format current queries and future migrations; preserve applied migration checksums and archived benchmark evidence.
 
+For import/alias changes, also read conventions §§82–85 and the [import normalization review](docs/import-normalization-2026-10-12.md). API aliases are owned by `tsconfig.paths.json`, resolved by the architecture guard and emitted through the existing TypeScript compiler; Web uses its separate `@web/*`. `npm run lint` checks both applications/tooling. Preserve decorator value imports, CSS side-effect order and Reporting source/migration review receipts.
+
 For examination lifecycle work, also read architecture §§77–79 and rules R-64–R-65. For AWS/performance/FinOps work, read architecture §§80–85, rules R-66–R-75 and [performance protocol](docs/performance.md). For any production acceptance task, read [acceptance ledger](docs/production-acceptance.md). Existing Invoice/POS snippets are historical teaching examples; use [examination module guide](docs/examination-module-guide.md) for this project.
 
 ## Work loop

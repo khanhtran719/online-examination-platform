@@ -1,4 +1,4 @@
-import { expiryWorkerConfig } from "../expiry-worker.config";
+import { expiryWorkerConfig } from "@config/expiry-worker.config";
 
 describe("expiryWorkerConfig", () => {
   it("defaults to a five second poll and does not require identity secrets", () => {

@@ -1,4 +1,5 @@
 import { assertCandidateSelections } from "../candidate-results";
+
 const complete = { status: "COMPLETED", earned: 0, possible: 100 };
 const pending = { status: "FAILED", earned: null, possible: null };
 describe("Admin best/latest reported-score policy", () => {

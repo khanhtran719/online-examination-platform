@@ -1,0 +1,11 @@
+
+> online-examination-platform@0.1.0 test:integration:local
+> node --experimental-vm-modules --env-file=.env.integration.example node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --runTestsByPath apps/api/tests/integration/assessment-expiry.spec.ts
+
+(node:33564) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Test Suites: 1 passed, 1 total
+Tests:       17 passed, 17 total
+Snapshots:   0 total
+Time:        4.564 s, estimated 89 s
+Ran all test suites within paths "apps/api/tests/integration/assessment-expiry.spec.ts".

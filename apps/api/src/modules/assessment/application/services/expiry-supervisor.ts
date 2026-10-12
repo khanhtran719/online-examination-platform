@@ -1,4 +1,4 @@
-import { SweepTickResult } from "./deadline-sweep";
+import type { SweepTickResult } from "./deadline-sweep";
 
 export interface ExpiryLoopTiming {
   pollIntervalMs: number;

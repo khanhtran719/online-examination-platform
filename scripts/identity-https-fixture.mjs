@@ -6,7 +6,7 @@ import {
   randomUUID,
   X509Certificate,
 } from "node:crypto";
-import { chmod, cp, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { chmod, cp, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { request as httpRequest } from "node:http";
 import { Agent, createServer, get, request as httpsRequest } from "node:https";
 import { createRequire } from "node:module";

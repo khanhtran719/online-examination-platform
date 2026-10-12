@@ -1,4 +1,4 @@
-import { validateMigrationSql } from "../migration-runner";
+import { validateMigrationSql } from "@infrastructure/database/migration-runner";
 
 describe("migration transaction ownership", () => {
   it.each([

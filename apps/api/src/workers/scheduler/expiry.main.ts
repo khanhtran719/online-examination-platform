@@ -1,8 +1,11 @@
-import { createServer, Server } from "node:http";
 import { randomUUID } from "node:crypto";
-import { expiryWorkerConfig } from "../../config/expiry-worker.config";
-import { loadDatabaseConfig } from "../../infrastructure/database/load-database-config";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
+import type { Server } from "node:http";
+import { createServer } from "node:http";
+
+import { expiryWorkerConfig } from "@config/expiry-worker.config";
+import { loadDatabaseConfig } from "@infrastructure/database/load-database-config";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
 import { createExpiryWorker } from "../../modules/assessment/assessment-worker.factory";
 
 export interface ExpiryHandle {

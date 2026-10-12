@@ -1,0 +1,460 @@
+FAIL apps/api/tests/integration/admin-business-metrics.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      46 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      47 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 48 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      49 | const name = "business_metrics_" + randomUUID().replaceAll("-", ""),
+      50 |   suffix = name.slice(-12),
+      51 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-business-metrics.spec.ts:48:9
+
+FAIL apps/api/tests/integration/admin-candidate-results.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      71 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      72 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 73 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      74 | const name = "candidate_results_" + randomUUID().replaceAll("-", ""),
+      75 |   suffix = name.slice(-12),
+      76 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-candidate-results.spec.ts:73:9
+
+FAIL apps/api/tests/integration/leaderboard.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      39 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      40 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 41 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      42 | const name = `ranking_${randomUUID().replaceAll("-", "")}`,
+      43 |   suffix = name.slice(-12),
+      44 |   password = randomUUID();
+
+      at apps/api/tests/integration/leaderboard.spec.ts:41:9
+
+FAIL apps/api/tests/integration/assessment-http-faults.spec.ts
+  ● Test suite failed to run
+
+    HTTP crash fixtures require isolated PostgreSQL on port55435
+
+      21 | const target = new URL(adminUrl);
+      22 | if (!["127.0.0.1", "localhost"].includes(target.hostname) || target.port !== "55435")
+    > 23 |   throw new Error("HTTP crash fixtures require isolated PostgreSQL on port55435");
+         |         ^
+      24 | const name = `assessment_http_${randomUUID().replaceAll("-", "")}`;
+      25 | const suffix = name.slice(-12);
+      26 | const owner = `http_ddl_${suffix}`;
+
+      at apps/api/tests/integration/assessment-http-faults.spec.ts:23:9
+
+FAIL apps/api/tests/integration/admin-submissions.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      40 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      41 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 42 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      43 | const name = "submissions_" + randomUUID().replaceAll("-", ""),
+      44 |   suffix = name.slice(-12),
+      45 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-submissions.spec.ts:42:9
+
+(node:28590) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/admin-monitor.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      40 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      41 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 42 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      43 | const name = "monitor_" + randomUUID().replaceAll("-", ""),
+      44 |   suffix = name.slice(-12),
+      45 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-monitor.spec.ts:42:9
+
+FAIL apps/api/tests/integration/admin-question-statistics.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      47 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      48 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 49 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      50 | const name = "question_stats_" + randomUUID().replaceAll("-", ""),
+      51 |   suffix = name.slice(-12),
+      52 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-question-statistics.spec.ts:49:9
+
+FAIL apps/api/tests/integration/admin-audit.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      44 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      45 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 46 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      47 | const name = "audit_lifecycle_" + randomUUID().replaceAll("-", ""),
+      48 |   suffix = name.slice(-12),
+      49 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-audit.spec.ts:46:9
+
+FAIL apps/api/tests/integration/assessment-retention.spec.ts
+  ● Test suite failed to run
+
+    Disposable administrator required
+
+      30 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      31 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 32 |   throw new Error("Disposable administrator required");
+         |         ^
+      33 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      34 | const name = `retention_${suffix}`,
+      35 |   password = randomUUID();
+
+      at apps/api/tests/integration/assessment-retention.spec.ts:32:9
+
+FAIL apps/api/tests/integration/assessment-expiry-fixes.spec.ts
+  ● Test suite failed to run
+
+    Expiry regression tests must not use the development database
+
+      22 | if (!adminUrl) throw new Error("Local test administrator required");
+      23 | if (new URL(adminUrl).port === "55432") {
+    > 24 |   throw new Error("Expiry regression tests must not use the development database");
+         |         ^
+      25 | }
+      26 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      27 | const name = `expiry_fixes_${suffix}`;
+
+      at apps/api/tests/integration/assessment-expiry-fixes.spec.ts:24:9
+
+FAIL apps/api/tests/integration/grading-consumer.spec.ts
+  ● Test suite failed to run
+
+    Disposable administrator required
+
+      29 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      30 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 31 |   throw new Error("Disposable administrator required");
+         |         ^
+      32 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      33 | const name = `grading_${suffix}`,
+      34 |   owner = `grading_ddl_${suffix}`,
+
+      at apps/api/tests/integration/grading-consumer.spec.ts:31:9
+
+FAIL apps/api/tests/integration/outbox-fencing.spec.ts
+  ● Test suite failed to run
+
+    Disposable test administrator required
+
+      12 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      13 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 14 |   throw new Error("Disposable test administrator required");
+         |         ^
+      15 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      16 | const databaseName = `outbox_fence_${suffix}`;
+      17 | const workerRole = `outbox_fence_worker_${suffix}`;
+
+      at apps/api/tests/integration/outbox-fencing.spec.ts:14:9
+
+FAIL apps/api/tests/integration/outbox-dispatch.spec.ts
+  ● Test suite failed to run
+
+    Disposable test administrator required
+
+      18 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      19 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 20 |   throw new Error("Disposable test administrator required");
+         |         ^
+      21 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      22 | const name = `dispatch_${suffix}`;
+      23 | const owner = `dispatch_ddl_${suffix}`;
+
+      at apps/api/tests/integration/outbox-dispatch.spec.ts:20:9
+
+FAIL apps/api/tests/integration/reporting-dependencies.spec.ts
+  ● Test suite failed to run
+
+    Disposable localhost55435 administrator required
+
+      31 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      32 | if (!adminUrl || new URL(adminUrl).port !== "55435" || new URL(adminUrl).hostname !== "127.0.0.1")
+    > 33 |   throw new Error("Disposable localhost55435 administrator required");
+         |         ^
+      34 | const suffix = randomUUID().replaceAll("-", ""),
+      35 |   name = "report_contract_" + suffix;
+      36 | const owner = "rc_ddl_" + suffix.slice(-12),
+
+      at apps/api/tests/integration/reporting-dependencies.spec.ts:33:9
+
+FAIL apps/api/tests/integration/grading-boundary.spec.ts
+  ● Test suite failed to run
+
+    Disposable administrator required
+
+      17 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      18 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 19 |   throw new Error("Disposable administrator required");
+         |         ^
+      20 |
+      21 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      22 | const name = `grading_boundary_${suffix}`;
+
+      at apps/api/tests/integration/grading-boundary.spec.ts:19:9
+
+
+Summary of all failing tests
+FAIL apps/api/tests/integration/admin-business-metrics.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      46 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      47 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 48 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      49 | const name = "business_metrics_" + randomUUID().replaceAll("-", ""),
+      50 |   suffix = name.slice(-12),
+      51 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-business-metrics.spec.ts:48:9
+
+FAIL apps/api/tests/integration/admin-candidate-results.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      71 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      72 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 73 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      74 | const name = "candidate_results_" + randomUUID().replaceAll("-", ""),
+      75 |   suffix = name.slice(-12),
+      76 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-candidate-results.spec.ts:73:9
+
+FAIL apps/api/tests/integration/leaderboard.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      39 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      40 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 41 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      42 | const name = `ranking_${randomUUID().replaceAll("-", "")}`,
+      43 |   suffix = name.slice(-12),
+      44 |   password = randomUUID();
+
+      at apps/api/tests/integration/leaderboard.spec.ts:41:9
+
+FAIL apps/api/tests/integration/assessment-http-faults.spec.ts
+  ● Test suite failed to run
+
+    HTTP crash fixtures require isolated PostgreSQL on port55435
+
+      21 | const target = new URL(adminUrl);
+      22 | if (!["127.0.0.1", "localhost"].includes(target.hostname) || target.port !== "55435")
+    > 23 |   throw new Error("HTTP crash fixtures require isolated PostgreSQL on port55435");
+         |         ^
+      24 | const name = `assessment_http_${randomUUID().replaceAll("-", "")}`;
+      25 | const suffix = name.slice(-12);
+      26 | const owner = `http_ddl_${suffix}`;
+
+      at apps/api/tests/integration/assessment-http-faults.spec.ts:23:9
+
+FAIL apps/api/tests/integration/admin-submissions.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      40 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      41 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 42 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      43 | const name = "submissions_" + randomUUID().replaceAll("-", ""),
+      44 |   suffix = name.slice(-12),
+      45 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-submissions.spec.ts:42:9
+
+FAIL apps/api/tests/integration/admin-monitor.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      40 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      41 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 42 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      43 | const name = "monitor_" + randomUUID().replaceAll("-", ""),
+      44 |   suffix = name.slice(-12),
+      45 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-monitor.spec.ts:42:9
+
+FAIL apps/api/tests/integration/admin-question-statistics.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      47 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      48 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 49 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      50 | const name = "question_stats_" + randomUUID().replaceAll("-", ""),
+      51 |   suffix = name.slice(-12),
+      52 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-question-statistics.spec.ts:49:9
+
+FAIL apps/api/tests/integration/admin-audit.spec.ts
+  ● Test suite failed to run
+
+    Disposable55435 administrator required
+
+      44 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      45 | if (!adminUrl || new URL(adminUrl).port !== "55435")
+    > 46 |   throw new Error("Disposable55435 administrator required");
+         |         ^
+      47 | const name = "audit_lifecycle_" + randomUUID().replaceAll("-", ""),
+      48 |   suffix = name.slice(-12),
+      49 |   password = randomUUID();
+
+      at apps/api/tests/integration/admin-audit.spec.ts:46:9
+
+FAIL apps/api/tests/integration/assessment-retention.spec.ts
+  ● Test suite failed to run
+
+    Disposable administrator required
+
+      30 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      31 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 32 |   throw new Error("Disposable administrator required");
+         |         ^
+      33 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      34 | const name = `retention_${suffix}`,
+      35 |   password = randomUUID();
+
+      at apps/api/tests/integration/assessment-retention.spec.ts:32:9
+
+FAIL apps/api/tests/integration/assessment-expiry-fixes.spec.ts
+  ● Test suite failed to run
+
+    Expiry regression tests must not use the development database
+
+      22 | if (!adminUrl) throw new Error("Local test administrator required");
+      23 | if (new URL(adminUrl).port === "55432") {
+    > 24 |   throw new Error("Expiry regression tests must not use the development database");
+         |         ^
+      25 | }
+      26 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      27 | const name = `expiry_fixes_${suffix}`;
+
+      at apps/api/tests/integration/assessment-expiry-fixes.spec.ts:24:9
+
+FAIL apps/api/tests/integration/grading-consumer.spec.ts
+  ● Test suite failed to run
+
+    Disposable administrator required
+
+      29 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      30 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 31 |   throw new Error("Disposable administrator required");
+         |         ^
+      32 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      33 | const name = `grading_${suffix}`,
+      34 |   owner = `grading_ddl_${suffix}`,
+
+      at apps/api/tests/integration/grading-consumer.spec.ts:31:9
+
+FAIL apps/api/tests/integration/outbox-fencing.spec.ts
+  ● Test suite failed to run
+
+    Disposable test administrator required
+
+      12 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      13 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 14 |   throw new Error("Disposable test administrator required");
+         |         ^
+      15 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      16 | const databaseName = `outbox_fence_${suffix}`;
+      17 | const workerRole = `outbox_fence_worker_${suffix}`;
+
+      at apps/api/tests/integration/outbox-fencing.spec.ts:14:9
+
+FAIL apps/api/tests/integration/outbox-dispatch.spec.ts
+  ● Test suite failed to run
+
+    Disposable test administrator required
+
+      18 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      19 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 20 |   throw new Error("Disposable test administrator required");
+         |         ^
+      21 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      22 | const name = `dispatch_${suffix}`;
+      23 | const owner = `dispatch_ddl_${suffix}`;
+
+      at apps/api/tests/integration/outbox-dispatch.spec.ts:20:9
+
+FAIL apps/api/tests/integration/reporting-dependencies.spec.ts
+  ● Test suite failed to run
+
+    Disposable localhost55435 administrator required
+
+      31 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      32 | if (!adminUrl || new URL(adminUrl).port !== "55435" || new URL(adminUrl).hostname !== "127.0.0.1")
+    > 33 |   throw new Error("Disposable localhost55435 administrator required");
+         |         ^
+      34 | const suffix = randomUUID().replaceAll("-", ""),
+      35 |   name = "report_contract_" + suffix;
+      36 | const owner = "rc_ddl_" + suffix.slice(-12),
+
+      at apps/api/tests/integration/reporting-dependencies.spec.ts:33:9
+
+FAIL apps/api/tests/integration/grading-boundary.spec.ts
+  ● Test suite failed to run
+
+    Disposable administrator required
+
+      17 | const adminUrl = process.env.TEST_DATABASE_ADMIN_URL;
+      18 | if (!adminUrl || new URL(adminUrl).port === "55432")
+    > 19 |   throw new Error("Disposable administrator required");
+         |         ^
+      20 |
+      21 | const suffix = randomUUID().replaceAll("-", "").slice(0, 12);
+      22 | const name = `grading_boundary_${suffix}`;
+
+      at apps/api/tests/integration/grading-boundary.spec.ts:19:9
+
+
+Test Suites: 15 failed, 9 passed, 24 total
+Tests:       152 passed, 152 total
+Snapshots:   0 total
+Time:        52.525 s, estimated 378 s
+Ran all test suites.

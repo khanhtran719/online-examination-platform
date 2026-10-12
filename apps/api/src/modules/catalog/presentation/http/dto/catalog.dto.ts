@@ -1,8 +1,6 @@
 import { invalidRequest } from "../../../domain/catalog-error";
+import type { ExamDraft, ImportCommand, QuestionDraft } from "../../../domain/catalog-policy";
 import {
-  ExamDraft,
-  ImportCommand,
-  QuestionDraft,
   assertImportStructure,
   categories,
   explanationPolicies,

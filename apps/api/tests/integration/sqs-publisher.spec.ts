@@ -1,6 +1,8 @@
 import { createHash } from "node:crypto";
-import { createServer, Server } from "node:http";
-import { SqsPublisher } from "../../src/infrastructure/messaging/sqs/sqs-publisher";
+import type { Server } from "node:http";
+import { createServer } from "node:http";
+
+import { SqsPublisher } from "@infrastructure/messaging/sqs/sqs-publisher";
 
 let server: Server;
 let endpoint: string;

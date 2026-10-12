@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+
 /** Fixed SQS Number attribute checksum; never modifies the immutable event envelope. */
 export function generationDigest(value: string): string {
   const parts: Buffer[] = [];

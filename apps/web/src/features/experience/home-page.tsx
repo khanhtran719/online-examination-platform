@@ -1,11 +1,13 @@
 import { Link } from "react-router";
-import { useSession } from "../../app/session";
-import { useTitle } from "../../app/use-title";
-import { CATEGORIES } from "../../shared/api/dto";
-import { categoryLabel } from "../../shared/format";
+
+import { useSession } from "@web/app/session";
+import { useTitle } from "@web/app/use-title";
+import { CATEGORIES } from "@web/shared/api/dto";
+import { categoryLabel } from "@web/shared/format";
+
 import { HeroScene } from "./hero-scene";
-import { SampleExperiencePanel } from "./sample-experience";
 import styles from "./public.module.css";
+import { SampleExperiencePanel } from "./sample-experience";
 
 const faqs = [
   {

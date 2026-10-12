@@ -1,5 +1,6 @@
-import type { CandidateQuestion } from "../../shared/api/dto";
-import { Button } from "../../shared/ui/ui";
+import type { CandidateQuestion } from "@web/shared/api/dto";
+import { Button } from "@web/shared/ui/ui";
+
 import styles from "./room.module.css";
 
 const typeLabel = {

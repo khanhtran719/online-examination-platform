@@ -1,7 +1,8 @@
 import { Controller, Get, Inject, Res } from "@nestjs/common";
 import { FastifyReply } from "fastify";
-import { READINESS, Readiness } from "../../../shared/application/ports/readiness";
-import { ShutdownGate } from "../../resilience/shutdown/shutdown-gate";
+
+import { ShutdownGate } from "@infrastructure/resilience/shutdown/shutdown-gate";
+import { READINESS, Readiness } from "@shared/application/ports/readiness";
 
 @Controller()
 export class ReadyController {

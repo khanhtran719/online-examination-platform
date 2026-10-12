@@ -1,15 +1,16 @@
 import {
   ACESFilmicToneMapping,
   AmbientLight,
+  type BufferGeometry,
   DirectionalLight,
+  type Material,
   Mesh,
   PerspectiveCamera,
   Scene,
   SRGBColorSpace,
   WebGLRenderer,
-  type BufferGeometry,
-  type Material,
 } from "three";
+
 import { paperTexture, type ScenePalette } from "./paper-texture";
 import { sceneObjects } from "./scene-objects";
 

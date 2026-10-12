@@ -1,5 +1,5 @@
-import type { Session } from "../../shared/api/dto";
-import { ApiError, isApiError } from "../../shared/api/errors";
+import type { Session } from "@web/shared/api/dto";
+import { ApiError, isApiError } from "@web/shared/api/errors";
 
 export type ProbeResult = "authenticated" | "anonymous" | "unknown";
 

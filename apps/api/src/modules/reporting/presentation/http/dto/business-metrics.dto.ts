@@ -1,4 +1,5 @@
 import { invalidReport } from "../../../domain/reporting.error";
+
 export function businessMetricsQuery(value: unknown): { from: string | null; to: string | null } {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw invalidReport();
   const row = value as Record<string, unknown>;

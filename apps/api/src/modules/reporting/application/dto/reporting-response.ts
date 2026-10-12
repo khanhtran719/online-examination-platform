@@ -1,6 +1,6 @@
-import { ActiveCandidate } from "./active-candidates.dto";
-import { AdminScore, AdminSubmission } from "./submissions.dto";
-import { CandidateResultPair, SubmittedAttemptSummary } from "./candidate-results.dto";
+import type { ActiveCandidate } from "./active-candidates.dto";
+import type { CandidateResultPair, SubmittedAttemptSummary } from "./candidate-results.dto";
+import type { AdminScore, AdminSubmission } from "./submissions.dto";
 
 // Query ports are typed contracts, not runtime field allowlists. Construct DTOs
 // explicitly so an adapter's extra columns cannot expand the public response.

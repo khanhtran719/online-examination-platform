@@ -1,19 +1,20 @@
-import { adminId as shortId } from "./admin-ui";
-import { useState } from "react";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { CapabilityGate, useCapability } from "./gate";
-import { AdminReviewCard } from "./admin-review-card";
-import styles from "./admin.module.css";
-import { useParams } from "react-router";
-import { formatBasisPoints } from "../../shared/format";
-import { Alert, Button, ErrorPanel, SkeletonLines, TextArea } from "../../shared/ui/ui";
-import { AdminHeading, PageEnd } from "./admin-ui";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { uuidV7 } from "../../shared/api/uuid";
-import { isApiError } from "../../shared/api/errors";
-import { idleIntent, settleIntent, startIntent, type IntentMachine } from "./mutation-intent";
+import { useState } from "react";
+import { useParams } from "react-router";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { isApiError } from "@web/shared/api/errors";
+import { uuidV7 } from "@web/shared/api/uuid";
+import { formatBasisPoints } from "@web/shared/format";
+import { useProtectedAccess } from "@web/shared/protected-access";
+import { Alert, Button, ErrorPanel, SkeletonLines, TextArea } from "@web/shared/ui/ui";
+
+import styles from "./admin.module.css";
+import { AdminReviewCard } from "./admin-review-card";
+import { AdminHeading, adminId as shortId, PageEnd } from "./admin-ui";
+import { CapabilityGate, useCapability } from "./gate";
+import { idleIntent, type IntentMachine, settleIntent, startIntent } from "./mutation-intent";
 
 function unknownTransport(error: unknown): boolean {
   return isApiError(error) && (error.kind === "network" || error.kind === "timeout");

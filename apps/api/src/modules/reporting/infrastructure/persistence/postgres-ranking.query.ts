@@ -1,5 +1,7 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { RankingQuery, RankingSlice } from "../../application/ports/ranking.query";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { RankingQuery, RankingSlice } from "../../application/ports/ranking.query";
+
 export class PostgresRankingQuery implements RankingQuery {
   constructor(private readonly db: PostgresDatabase) {}
   async page(input: Parameters<RankingQuery["page"]>[0]): Promise<RankingSlice> {

@@ -1,6 +1,8 @@
-import { PostgresDatabase } from "../../../../infrastructure/database/transaction/postgres-database";
-import { AuditSource } from "../../domain/audit";
-import { AuditQuery } from "../../application/ports/audit.query";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+
+import type { AuditQuery } from "../../application/ports/audit.query";
+import type { AuditSource } from "../../domain/audit";
+
 export class PostgresAuditQuery implements AuditQuery {
   constructor(private readonly db: PostgresDatabase) {}
   async page(input: Parameters<AuditQuery["page"]>[0]) {

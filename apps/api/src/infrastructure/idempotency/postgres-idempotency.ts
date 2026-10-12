@@ -1,5 +1,5 @@
-import { IdempotencyStore, StoredReceipt } from "../../shared/application/ports/idempotency";
-import { PostgresDatabase } from "../database/transaction/postgres-database";
+import type { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import type { IdempotencyStore, StoredReceipt } from "@shared/application/ports/idempotency";
 
 export class PostgresIdempotency implements IdempotencyStore {
   constructor(private readonly db: PostgresDatabase) {}

@@ -1,4 +1,5 @@
 import { RankingCrypto } from "../ranking-crypto";
+
 const key = Buffer.alloc(32, 7);
 const claims = { actorId: "actor", examId: "exam", versionId: "version", pageSize: 20 };
 const state = {

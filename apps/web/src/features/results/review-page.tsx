@@ -1,12 +1,14 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useParams } from "react-router";
-import { useRuntime } from "../../app/runtime";
-import { useTitle } from "../../app/use-title";
-import { useProtectedAccess } from "../../shared/protected-access";
-import { isReleasedReviewHref } from "../../shared/review-href";
-import { Button, ErrorPanel, SkeletonLines } from "../../shared/ui/ui";
-import layout from "../../shared/styles/layout.module.css";
+
+import { useRuntime } from "@web/app/runtime";
+import { useTitle } from "@web/app/use-title";
+import { useProtectedAccess } from "@web/shared/protected-access";
+import { isReleasedReviewHref } from "@web/shared/review-href";
+import layout from "@web/shared/styles/layout.module.css";
+import { Button, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+
 import styles from "./results.module.css";
 
 export function ReviewPage() {

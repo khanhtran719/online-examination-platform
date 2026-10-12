@@ -1,11 +1,13 @@
 import { createCipheriv, createDecipheriv, createHmac, randomBytes } from "node:crypto";
-import {
+
+import type {
   RankingAlias,
   RankingCursor,
   RankingCursorClaims,
   RankingCursorState,
 } from "../../application/ports/ranking-cursor.port";
 import { invalidRanking } from "../../domain/ranking.error";
+
 const aad = Buffer.from("online-exam.ranking.cursor.v1");
 export class RankingCrypto implements RankingCursor, RankingAlias {
   private readonly cursorKey: Buffer;

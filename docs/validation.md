@@ -1,5 +1,23 @@
 # Validation log
 
+Import normalization update2026-10-12: [IMP-01–06](import-normalization-2026-10-12.md)
+COMPLETE locally; BOOT-11 added/closed, **89/217 checked,128 pending**. Shared
+ESLint import/type/duplicate policy, bounded API aliases and separate Web alias,
+physical-path architecture guards and runtime-free CommonJS alias emit.653 root
+(492 API/62 tooling/99 Web),427 integration24 suites/0 skipped and10 real HTTPS
+PASS; lint/types/API/live/demo builds/format/contracts48/445 PASS.409 normalized
+source signatures match,1,121 protected old files unchanged,19 migrations match;
+Reporting source hashes renewed without changing source declarations/receipts.
+Wrong-profile rejection and first-full timeout/ExamNotOpen failures are retained;
+unchanged focused17/full427 reruns pass, earlier transient cause unconfirmed.
+Runtime audit0; existing development findings root20 moderate/Web9 high remain.
+Cleanup0; test resources stopped/volumes retained. No business/SQL/HTTP/event or
+AWS resource change, no performance/cost/production claim. REP-04 privacy lifecycle
+and wider Web/AWS gates remain open. Production NOT ACCEPTED. Next proposed
+WEB-03 real Catalog browse/detail integration.
+[Evidence](evidence/import-normalization-2026-10-12/README.md). Previous entries
+below retain their historical source/test/next-step states.
+
 REP-05 update2026-10-10: [Business metrics](admin-business-metrics-2026-10-10.md)
 BM-01–06 COMPLETE locally; **85/216 checked,131 pending**. Additive Reporting
 start-time cohort/current durable counts plus global pending/replay backlog,

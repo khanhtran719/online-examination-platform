@@ -1,4 +1,4 @@
-import { UnavailableError } from "../../../../shared/application/errors/unavailable.error";
+import { UnavailableError } from "@shared/application/errors/unavailable.error";
 
 export class AdmissionSaturatedError extends UnavailableError {
   constructor() {

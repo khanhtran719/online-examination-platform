@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useRuntime } from "../../app/runtime";
-import type { Attempt } from "../../shared/api/dto";
-import { isApiError } from "../../shared/api/errors";
+
+import { useRuntime } from "@web/app/runtime";
+import type { Attempt } from "@web/shared/api/dto";
+import { isApiError } from "@web/shared/api/errors";
+
 import { canRestartPoll, nextPollDelayMs, shouldStopPolling } from "../assessment/polling";
 
 export function useAttemptPolling(attemptId: string) {

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+
 import { calibrateClock, createExpiryLagRecorder } from "../expiry-lag.mjs";
 
 test("calibrates database UTC to local wall clock with a round-trip uncertainty bound", async () => {

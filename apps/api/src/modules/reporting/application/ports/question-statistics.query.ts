@@ -1,4 +1,5 @@
-import { StatisticCounters } from "../../domain/question-statistics";
+import type { StatisticCounters } from "../../domain/question-statistics";
+
 /** Primary read-only sources: catalog.published_versions(id,exam_id),
  * published_sections(version_id,id,position), published_questions(version_id,id,
  * section_id,position), published_options(version_id,question_id,id,position),

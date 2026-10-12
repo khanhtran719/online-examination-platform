@@ -1,8 +1,11 @@
-import { createServer, Server } from "node:http";
-import { dispatchWorkerConfig } from "../../config/dispatch-worker.config";
-import { loadDatabaseConfig } from "../../infrastructure/database/load-database-config";
-import { PostgresDatabase } from "../../infrastructure/database/transaction/postgres-database";
-import { SqsPublisher } from "../../infrastructure/messaging/sqs/sqs-publisher";
+import type { Server } from "node:http";
+import { createServer } from "node:http";
+
+import { dispatchWorkerConfig } from "@config/dispatch-worker.config";
+import { loadDatabaseConfig } from "@infrastructure/database/load-database-config";
+import { PostgresDatabase } from "@infrastructure/database/transaction/postgres-database";
+import { SqsPublisher } from "@infrastructure/messaging/sqs/sqs-publisher";
+
 import { createSubmissionPublisher } from "../../modules/assessment/assessment-worker.factory";
 
 export interface SubmissionPublisherHandle {

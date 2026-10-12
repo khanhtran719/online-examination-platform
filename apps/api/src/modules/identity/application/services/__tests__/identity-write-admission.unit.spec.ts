@@ -1,12 +1,13 @@
-import { IdentityService } from "../identity.service";
-import {
+import type { SecurityControls } from "@shared/application/ports/security";
+
+import type { Principal } from "../../dto/identity.dto";
+import type {
   AuthenticatedWriteAdmission,
   WriteAdmissionInput,
   WriteAdmissionResult,
 } from "../../ports/authenticated-write-admission.port";
-import { Principal } from "../../dto/identity.dto";
-import { SessionTokens } from "../../ports/identity-crypto.ports";
-import { SecurityControls } from "../../../../../shared/application/ports/security";
+import type { SessionTokens } from "../../ports/identity-crypto.ports";
+import { IdentityService } from "../identity.service";
 
 const claims = { userId: "user", familyId: "family", sessionId: "session", jti: "jti", kid: "kid" };
 const principal: Principal = {
