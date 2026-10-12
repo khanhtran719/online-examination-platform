@@ -1,5 +1,19 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
+**Trạng thái mới nhất — UI tạm chốt:** người dùng đã chọn [ba bản điều chỉnh History/Leaderboard/Admin list](templates/codex-desktop-adjustments-2026-10-12/selection.md) làm main reference desktop Loaded; có thể sửa thêm sau. Registry hiện **33/33 page families có named visual reference, 0 main references chờ chọn, 0 prompt-only**. Mobile/full variants/states, findings khi port và application implementation vẫn mở. Các đoạn counts/chờ chọn phía dưới là checkpoint lịch sử.
+
+**Ba bản điều chỉnh mới 2026-10-12:** [Lịch sử, Bảng xếp hạng và Danh sách đề Admin](templates/codex-desktop-adjustments-2026-10-12/README.md) đã có PNG, brief/prompt nguyên văn và root review. [So sánh trước/sau](templates/codex-desktop-adjustments-2026-10-12/gallery.html), [findings](templates/codex-desktop-adjustments-2026-10-12/review.md). Đây là ba đề xuất chờ chọn main reference, chưa port; registry vẫn30 giữ/3 chờ chọn/0 prompt-only. Bộ35 references bên dưới giữ nguyên.
+
+**Kết quả hiện hành 2026-10-12:** [Bộ Codex Desktop V1](templates/codex-desktop-v1/README.md) có **35 ảnh chọn cuối: 34 frame mới + preflight đã giữ**, 34 brief và prompt chính 1.039–1.491 whitespace words. [Gallery](templates/codex-desktop-v1/gallery.html), [review và checklist tiếp theo](templates/codex-desktop-v1/review-2026-10-12.md), [kế hoạch theo nhóm/rủi ro](codex-desktop-delivery-2026-10-12.md). Root đã review từng ảnh; findings nhỏ xử lý khi code. Registry hiện **30 families giữ visual reference/3 main references đã review chờ chọn/0 chỉ có prompt**. Mobile, broader states và application port còn mở. Các thống kê/lựa chọn bên dưới là checkpoint lịch sử, không ghi đè kết quả mới.
+
+**Pilot Codex trước lựa chọn:** [Preflight ready và prompt đầy đủ](concepts/codex-2026-10-12/README.md), tạo bằng built-in image generation theo hướng Cobalt–Apricot. Sau đó người dùng đã chọn giữ làm template và yêu cầu tạo bộ mới như checkpoint trên; application chưa port.
+
+**Review05B-1 ngày2026-10-12:** [đủ3 desktop frame, findings còn mở](stitch-05b1-review-2026-10-12.md). Foreground dialog đúng ý chính nhưng background sai fixture và tự thêm capabilities; Validation có lỗi counter/copy. Chưa chọn template hoặc port. Không tạo lại05B-1; nhóm tiếp theo05B-2 sau quyết định giữ mẫu.
+
+**Inventory 2026-10-12:** [Danh sách 33 nhóm màn và phần còn thiếu](screen-inventory-2026-10-12.md). Vẫn 16 đã chốt mẫu/4 chờ chọn/13 chưa có template lưu-review; ba preview 05B-1 đã review, chưa xuất nguồn/chọn làm template. Sau quyết định giữ mẫu, tiếp tục 05B-2; không gửi lại prompt tạo 05B-1.
+
+**Review 2026-10-12: UI hiện tại chưa khớp template đã chọn.** [Báo cáo đối chiếu và checklist](template-alignment-review-2026-10-12.md) xác nhận bản đang chạy vẫn là navy/teal/mint; Dashboard V2 và bộ Cobalt–Apricot V3/V4 mới được lưu để port sau. Các báo cáo visual cũ bên dưới là lịch sử theo từng phạm vi, không chứng minh đã port bộ mới.
+
 Ngày 2026-10-06 cho bộ spec;2026-10-07 có SPA trong `apps/web`. **FE7/32 và WEB-02 local complete**; [Identity HTTPS evidence](../evidence/identity-https-2026-10-07/README.md) dùng API/PG/SMTP thật và có boundary bug fixes theo security contract. [Runbook](runbook.md), [UI-GAP](ui-gap.md) và [prior evidence](evidence/README.md) giữ phạm vi từng lần chạy. Full frontend/production acceptance chưa hoàn tất; không ORM switch hoặc AWS deployment trong increment này.
 
 ## 1. Đọc và giao việc

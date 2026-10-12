@@ -1,0 +1,422 @@
+{
+  "fixturePolicy": "Public fictional fixtures. No runtime/production evidence. Opaque publishedVersionId never implies numeric version or draft revision.",
+  "shell": {
+    "wordmark": "ExamPlatform",
+    "logo": "ticket-check",
+    "adminDisplayName": "Minh Anh",
+    "avatar": "MA",
+    "adminRailWidthPx": 72,
+    "headerHeightPx": 68,
+    "palette": {
+      "canvas": "#F3F6FC",
+      "surface": "#FFFFFF",
+      "primary": "#315CF4",
+      "accent": "#FFB36B",
+      "primaryTint": "#E8EEFF",
+      "ink": "#1B2540",
+      "muted": "#58627A"
+    },
+    "headingBodyFontTarget": "Be Vietnam Pro",
+    "numericFontTarget": "JetBrains Mono"
+  },
+  "frozenExamContext": {
+    "examId": "019a82d0-3000-7000-8000-000000000001",
+    "publishedVersionId": "019a82d0-3000-7000-8000-000000000004",
+    "publishedVersionDisplay": "Phiên bản đã khóa · …0004",
+    "numericPublishedVersion": null,
+    "title": "Nền tảng điện toán đám mây — Bài ôn tập 01",
+    "category": "IT_CERTIFICATION",
+    "durationSeconds": 5400,
+    "openAt": "2026-11-15T01:00:00.000Z",
+    "closeAt": "2026-11-15T05:00:00.000Z",
+    "displayTimezone": "Asia/Ho_Chi_Minh",
+    "sections": 3,
+    "questions": 6,
+    "configuredPossiblePoints": 100,
+    "differenceFromSharedDraftFixture": "Frozen published identity rather than draft revision4/unpublished edits; no numeric published-version label inferred."
+  },
+  "failedAttempt": {
+    "id": "019a82d0-3000-7000-8000-000000000081",
+    "candidateIdFromLoadedSubmission": "019a82d0-3000-7000-8000-000000000034",
+    "examId": "019a82d0-3000-7000-8000-000000000001",
+    "publishedVersionId": "019a82d0-3000-7000-8000-000000000004",
+    "status": "FAILED",
+    "startedAt": "2026-11-15T01:00:00.000Z",
+    "deadline": "2026-11-15T02:30:00.000Z",
+    "submittedAt": "2026-11-15T01:56:00.000Z",
+    "expired": false,
+    "replayPending": false,
+    "earned": null,
+    "possible": null,
+    "resultAvailable": false,
+    "currentLiveReplayAvailable": false,
+    "currentLiveUnavailableReason": "Chưa thể yêu cầu xử lý lại ở phiên bản này.",
+    "targetReplayConditions": [
+      "status=FAILED",
+      "reporting.read for background",
+      "assessment.replay",
+      "valid current admin revision source",
+      "trimmed reason >=8 characters in current Web, <=500 contract",
+      "no inflight intent"
+    ],
+    "targetDemoAdminRevision": 3,
+    "reasonDraft": "Phụ thuộc đã được khôi phục; xử lý lại bài nộp gốc.",
+    "reviewDisplayed": false
+  },
+  "statistics": {
+    "examId": "019a82d0-3000-7000-8000-000000000001",
+    "publishedVersionId": "019a82d0-3000-7000-8000-000000000004",
+    "pageSize": 20,
+    "next": null,
+    "serverAsOfAvailable": false,
+    "clientLoadedAtShown": false,
+    "displayPositionPolicy": "Identifiers only, source ordering; no fabricated question prompt/type/position field",
+    "denominatorPolicy": "All retained COMPLETED attempts of exact exam/version; repeated, expired completed, leaderboard opted-out included. Pending/FAILED excluded. Fresh per primary statement, not a cross-page snapshot.",
+    "selectedQuestionId": "019a82d0-3000-7000-8000-000000000202",
+    "items": [
+      {
+        "questionId": "019a82d0-3000-7000-8000-000000000201",
+        "completedAttempts": 80,
+        "answered": 76,
+        "correct": 60,
+        "incorrect": 16,
+        "unanswered": 4,
+        "derivedCorrectPercent": 75.0,
+        "options": [
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002010",
+            "displayCode": null,
+            "selectedCount": 60
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002011",
+            "displayCode": null,
+            "selectedCount": 10
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002012",
+            "displayCode": null,
+            "selectedCount": 4
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002013",
+            "displayCode": null,
+            "selectedCount": 2
+          }
+        ]
+      },
+      {
+        "questionId": "019a82d0-3000-7000-8000-000000000202",
+        "completedAttempts": 80,
+        "answered": 74,
+        "correct": 50,
+        "incorrect": 24,
+        "unanswered": 6,
+        "derivedCorrectPercent": 62.5,
+        "options": [
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000001201",
+            "displayCode": "…1201",
+            "selectedCount": 60
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000001202",
+            "displayCode": "…1202",
+            "selectedCount": 55
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000001203",
+            "displayCode": "…1203",
+            "selectedCount": 18
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000001204",
+            "displayCode": "…1204",
+            "selectedCount": 7
+          }
+        ]
+      },
+      {
+        "questionId": "019a82d0-3000-7000-8000-000000000203",
+        "completedAttempts": 80,
+        "answered": 76,
+        "correct": 64,
+        "incorrect": 12,
+        "unanswered": 4,
+        "derivedCorrectPercent": 80.0,
+        "options": [
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002030",
+            "displayCode": null,
+            "selectedCount": 64
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002031",
+            "displayCode": null,
+            "selectedCount": 8
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002032",
+            "displayCode": null,
+            "selectedCount": 4
+          }
+        ]
+      },
+      {
+        "questionId": "019a82d0-3000-7000-8000-000000000204",
+        "completedAttempts": 80,
+        "answered": 76,
+        "correct": 68,
+        "incorrect": 8,
+        "unanswered": 4,
+        "derivedCorrectPercent": 85.0,
+        "options": [
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002040",
+            "displayCode": null,
+            "selectedCount": 68
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002041",
+            "displayCode": null,
+            "selectedCount": 8
+          }
+        ]
+      },
+      {
+        "questionId": "019a82d0-3000-7000-8000-000000000205",
+        "completedAttempts": 80,
+        "answered": 76,
+        "correct": 48,
+        "incorrect": 28,
+        "unanswered": 4,
+        "derivedCorrectPercent": 60.0,
+        "options": [
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002050",
+            "displayCode": null,
+            "selectedCount": 60
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002051",
+            "displayCode": null,
+            "selectedCount": 56
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002052",
+            "displayCode": null,
+            "selectedCount": 25
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002053",
+            "displayCode": null,
+            "selectedCount": 11
+          }
+        ]
+      },
+      {
+        "questionId": "019a82d0-3000-7000-8000-000000000206",
+        "completedAttempts": 80,
+        "answered": 76,
+        "correct": 56,
+        "incorrect": 20,
+        "unanswered": 4,
+        "derivedCorrectPercent": 70.0,
+        "options": [
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002060",
+            "displayCode": null,
+            "selectedCount": 56
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002061",
+            "displayCode": null,
+            "selectedCount": 10
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002062",
+            "displayCode": null,
+            "selectedCount": 6
+          },
+          {
+            "optionId": "019a82d0-3000-7000-8000-000000002063",
+            "displayCode": null,
+            "selectedCount": 4
+          }
+        ]
+      }
+    ]
+  },
+  "businessMetrics": {
+    "asOf": "2026-11-15T02:10:00.000Z",
+    "window": {
+      "from": "2026-11-14T02:10:00.000Z",
+      "to": "2026-11-15T02:10:00.000Z",
+      "basis": "ATTEMPT_STARTED_AT"
+    },
+    "counts": {
+      "startedAttempts": 240,
+      "activeAttempts": 24,
+      "submittedAttempts": 216,
+      "completedAttempts": 180,
+      "failedAttempts": 6,
+      "expiredSubmissions": 14,
+      "expiredCompletedAttempts": 12
+    },
+    "backlog": {
+      "pendingAttempts": 36,
+      "replayPendingAttempts": 3,
+      "oldestSubmittedAt": "2026-11-15T01:40:00.000Z",
+      "oldestAgeSeconds": 1800
+    },
+    "httpProviderAvailable": false,
+    "queueProviderAvailable": false,
+    "technicalFields": {
+      "httpRps": null,
+      "httpP95Ms": null,
+      "queueDepth": null,
+      "oldestJobSeconds": null
+    },
+    "presentationStatus": "target Web adapter for implemented BusinessMetrics endpoint; combined technical metrics provider unavailable"
+  },
+  "audit": {
+    "pageSize": 8,
+    "next": null,
+    "selectedId": "019a82d0-3000-7000-8000-000000000901",
+    "serverAsOfAvailable": false,
+    "items": [
+      {
+        "id": "019a82d0-3000-7000-8000-000000000901",
+        "occurredAt": "2026-11-15T02:10:00.000Z",
+        "actorId": "019a82d0-3000-7000-8000-000000000031",
+        "actorType": "USER",
+        "action": "catalog.exam.replace",
+        "resourceType": "EXAM",
+        "resourceId": "019a82d0-3000-7000-8000-000000000001",
+        "outcome": "SUCCESS",
+        "reason": null,
+        "correlationId": "019a82d0-3010-7000-8000-000000000901",
+        "changedFields": [
+          "title",
+          "sections"
+        ]
+      },
+      {
+        "id": "019a82d0-3000-7000-8000-000000000902",
+        "occurredAt": "2026-11-15T02:09:32.000Z",
+        "actorId": "019a82d0-3000-7000-8000-000000000031",
+        "actorType": "USER",
+        "action": "reporting.question-statistics.read",
+        "resourceType": "EXAM_VERSION",
+        "resourceId": "019a82d0-3000-7000-8000-000000000004",
+        "outcome": "SUCCESS",
+        "reason": null,
+        "correlationId": "019a82d0-3010-7000-8000-000000000902",
+        "changedFields": []
+      },
+      {
+        "id": "019a82d0-3000-7000-8000-000000000903",
+        "occurredAt": "2026-11-15T02:08:40.000Z",
+        "actorId": null,
+        "actorType": "SYSTEM",
+        "action": "assessment.grading.failed",
+        "resourceType": "ATTEMPT",
+        "resourceId": "019a82d0-3000-7000-8000-000000000082",
+        "outcome": "FAILED",
+        "reason": null,
+        "correlationId": "019a82d0-3010-7000-8000-000000000903",
+        "changedFields": [
+          "failureCode"
+        ]
+      },
+      {
+        "id": "019a82d0-3000-7000-8000-000000000904",
+        "occurredAt": "2026-11-15T02:07:10.000Z",
+        "actorId": "019a82d0-3000-7000-8000-000000000031",
+        "actorType": "USER",
+        "action": "catalog.exam.publish",
+        "resourceType": "EXAM",
+        "resourceId": "019a82d0-3000-7000-8000-000000000001",
+        "outcome": "SUCCESS",
+        "reason": null,
+        "correlationId": "019a82d0-3010-7000-8000-000000000904",
+        "changedFields": [
+          "published",
+          "currentVersionId"
+        ]
+      },
+      {
+        "id": "019a82d0-3000-7000-8000-000000000905",
+        "occurredAt": "2026-11-15T02:06:00.000Z",
+        "actorId": "019a82d0-3000-7000-8000-000000000034",
+        "actorType": "USER",
+        "action": "identity.admin.grant",
+        "resourceType": "USER",
+        "resourceId": "019a82d0-3000-7000-8000-000000000034",
+        "outcome": "DENIED",
+        "reason": null,
+        "correlationId": "019a82d0-3010-7000-8000-000000000905",
+        "changedFields": []
+      },
+      {
+        "id": "019a82d0-3000-7000-8000-000000000906",
+        "occurredAt": "2026-11-15T02:05:20.000Z",
+        "actorId": "019a82d0-3000-7000-8000-000000000031",
+        "actorType": "USER",
+        "action": "reporting.business-metrics.read",
+        "resourceType": "BUSINESS_METRICS",
+        "resourceId": "00000000-0000-4000-8000-000000000000",
+        "outcome": "SUCCESS",
+        "reason": null,
+        "correlationId": "019a82d0-3010-7000-8000-000000000906",
+        "changedFields": []
+      },
+      {
+        "id": "019a82d0-3000-7000-8000-000000000907",
+        "occurredAt": "2026-11-15T02:04:10.000Z",
+        "actorId": "019a82d0-3000-7000-8000-000000000031",
+        "actorType": "USER",
+        "action": "catalog.question.replace",
+        "resourceType": "QUESTION",
+        "resourceId": "019a82d0-3000-7000-8000-000000000202",
+        "outcome": "SUCCESS",
+        "reason": null,
+        "correlationId": "019a82d0-3010-7000-8000-000000000907",
+        "changedFields": [
+          "prompt",
+          "options"
+        ]
+      },
+      {
+        "id": "019a82d0-3000-7000-8000-000000000908",
+        "occurredAt": "2026-11-15T02:03:00.000Z",
+        "actorId": "019a82d0-3000-7000-8000-000000000031",
+        "actorType": "USER",
+        "action": "reporting.audit.read",
+        "resourceType": "AUDIT_LOG",
+        "resourceId": "00000000-0000-4000-8000-000000000000",
+        "outcome": "SUCCESS",
+        "reason": null,
+        "correlationId": "019a82d0-3010-7000-8000-000000000908",
+        "changedFields": []
+      }
+    ]
+  },
+  "public404": {
+    "session": "unauthenticated",
+    "route": "*",
+    "title": "Không tìm thấy nội dung",
+    "helper": "Trang bạn mở không còn ở đây hoặc đường dẫn chưa đúng.",
+    "primary": "Về trang chủ",
+    "secondary": "Quay lại",
+    "footer": "ExamPlatform · Vào nhịp thi",
+    "navigation": [
+      "Trải nghiệm",
+      "Cách bắt đầu",
+      "Trợ giúp",
+      "Đăng nhập",
+      "Tạo tài khoản"
+    ],
+    "presentationStatus": "target copy and safe history-back; current NotFoundPage already has home link"
+  }
+}

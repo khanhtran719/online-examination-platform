@@ -1,0 +1,76 @@
+{
+  "reviewDate": "2026-10-12",
+  "sourceCommit": "08f17dc",
+  "mode": "demo",
+  "captures": [
+    {
+      "path": "docs/web-ui/evidence/template-alignment-review-2026-10-12/home-desktop.jpg",
+      "bytes": 83926,
+      "sha256": "7ce52640ceca62caae729c2599f678d617c04ce697f8e76a2a85b236e9f2cc70"
+    },
+    {
+      "path": "docs/web-ui/evidence/template-alignment-review-2026-10-12/login-desktop.jpg",
+      "bytes": 73597,
+      "sha256": "b752227cc3945e92f9bdeccbf5860efb5c3391cfd8f8b3567ff94dd708c80612"
+    },
+    {
+      "path": "docs/web-ui/evidence/template-alignment-review-2026-10-12/dashboard-desktop.jpg",
+      "bytes": 83867,
+      "sha256": "a125816e70230e5cf3ce0dbd96505d30da847187131dee9c4795a909d8729353"
+    },
+    {
+      "path": "docs/web-ui/evidence/template-alignment-review-2026-10-12/exam-list-desktop.jpg",
+      "bytes": 73491,
+      "sha256": "41820e9173d565bb0896b7a9003e191c4dc1aa598880cb884ddc190e942818b6"
+    },
+    {
+      "path": "docs/web-ui/evidence/template-alignment-review-2026-10-12/exam-detail-desktop.jpg",
+      "bytes": 86513,
+      "sha256": "fbae4acb52cb0fec4cc89db438603eabf5741686baf801bb9654f50298c5cb3b"
+    },
+    {
+      "path": "docs/web-ui/evidence/template-alignment-review-2026-10-12/exam-list-mobile.jpg",
+      "bytes": 38402,
+      "sha256": "a9b2cbbb79f75ccc3e4751844ce4ff8406cd4d5619a6cb79693ce014ba59503e"
+    },
+    {
+      "path": "docs/web-ui/evidence/template-alignment-review-2026-10-12/runtime-tokens.json",
+      "bytes": 448,
+      "sha256": "c8068597f36a39bfa713c29a7e75e8ac44c9f76e3ba5774701024b399fd76d08"
+    }
+  ],
+  "referenceFiles": [
+    {
+      "path": "docs/web-ui/templates/stitch-v3/home-desktop-v3.png",
+      "bytes": 948430,
+      "sha256": "a18076e1a42716fc1d4e723b28d7704abc01b0562b2e55e446b2c826065090d8"
+    },
+    {
+      "path": "docs/web-ui/templates/auth-v3/login-desktop-v3.png",
+      "bytes": 552224,
+      "sha256": "5d5528bb7807ebdd9bfdd04246b77e6e3125b03e6e3c36e133756970871ee095"
+    },
+    {
+      "path": "docs/web-ui/templates/dashboard-v2/reference-full.png",
+      "bytes": 740350,
+      "sha256": "15688145acd8f3e0f1e9cfd03b752941a28616eef4f49966781f20fa4c5f3d5e"
+    },
+    {
+      "path": "docs/web-ui/templates/catalog-profile-v4/exam-list-desktop-v4.png",
+      "bytes": 481713,
+      "sha256": "424a6d682fe9456bb244f5881e8d88a4b6b0cf68ef9774e3589e877208b5000a"
+    },
+    {
+      "path": "docs/web-ui/templates/catalog-profile-v4/exam-detail-desktop-v4.png",
+      "bytes": 761171,
+      "sha256": "8e3fc3ca8fa4a9d0472ffd6d109c2b4060e50d203b102713a7792959c2917136"
+    },
+    {
+      "path": "docs/web-ui/templates/catalog-profile-v4/exam-list-mobile-v4.png",
+      "bytes": 523199,
+      "sha256": "6df211dca2fc7e37c3f86d8cec829806db0ab187ca15be904d1bed59be780347"
+    }
+  ],
+  "visualAcceptance": false,
+  "applicationModified": false
+}

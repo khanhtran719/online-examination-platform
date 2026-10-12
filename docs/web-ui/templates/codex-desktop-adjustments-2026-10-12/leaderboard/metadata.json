@@ -1,0 +1,79 @@
+{
+  "id": "codex-ep15-leaderboard-adjusted-v1",
+  "pageFamily": "EP-15",
+  "title": "Bảng xếp hạng — Desktop Loaded — Adjusted proposal",
+  "route": "/exams/:examId/versions/:versionId/leaderboard",
+  "state": "Loaded",
+  "file": "leaderboard-adjusted-v1.png",
+  "brief": "brief.md",
+  "prompt": "leaderboard-adjusted-v1.prompt.txt",
+  "promptWords": 1299,
+  "width": 1402,
+  "height": 1122,
+  "bytes": 1312909,
+  "sha256": "e759500cd8f1ce5c9cb53253bada552442fa1a406a67a9405ef19909aa6f221d",
+  "inputImages": [
+    {
+      "role": "edit_target",
+      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/stitch-03b-review-2026-10-08/leaderboard-desktop-v4-b91abc13.png",
+      "sha256": "7da8cf8ea872613cfdcf95efd327f24c86d69ba06d00023cc0725393a2fa3294",
+      "width": 2560,
+      "height": 2358,
+      "inspectedWith": "view_image"
+    },
+    {
+      "role": "style_reference",
+      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/images/preflight-ready-v1.png",
+      "sha256": "38639680282bc95b6c71640c907a5be22f486a0879279e94a5312a99a491d38f",
+      "width": 1195,
+      "height": 1316,
+      "inspectedWith": "view_image"
+    }
+  ],
+  "sourcePaths": [
+    "docs/web-ui/stitch-03b-review-2026-10-08.md",
+    "docs/web-ui/stitch-page-prompts-v3/03b-history-ranking-desktop.md",
+    "docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+    "docs/web-ui/templates/dashboard-v2/tokens.json",
+    "apps/web/src/features/results/leaderboard-page.tsx",
+    "docs/contracts/openapi.yaml",
+    "apps/web/src/features/results/__tests__/leaderboard-refresh.test.tsx"
+  ],
+  "generationRequest": "generation-request-v1.json",
+  "review": "review.md",
+  "status": "retained_with_port_findings",
+  "acceptance": {
+    "visualReference": true,
+    "runtime": false,
+    "mobile": false,
+    "production": false
+  },
+  "versionLabelMeaning": "Legacy visual fixture from original image; not a publishedVersionId, draft revision or API-provided semantic version.",
+  "selection": {
+    "selectedOn": "2026-10-12",
+    "selectedBy": "user",
+    "userInstruction": "Tạm thời chốt UI như vậy đi, có gì sửa thêm sau",
+    "scope": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+    "revisionsAllowed": true,
+    "receipt": "../selection.md"
+  },
+  "generator": "built_in_image_gen",
+  "successfulGenerationCalls": 1,
+  "correctionCalls": 0,
+  "reviewSummary": {
+    "visualInspection": "view_image after copy; all ten record fields checked against source fixture",
+    "businessPrivacyFindings": [],
+    "minorPortFindings": [
+      "LB-PORT-01 rail history icon uses question mark; use shared history clock during port",
+      "LB-PORT-02 verify actual CSS shell/fonts/contrast/focus; raster not exact viewport proof",
+      "LB-PORT-03 frozen metadata fallback and runtime cursor/permissions/opt-in checks remain"
+    ]
+  },
+  "rootReview": {
+    "status": "PASS_WITH_MINOR_PORT_FINDINGS",
+    "inputsViewed": true,
+    "outputViewed": true,
+    "review": "../review.md",
+    "reviewedOn": "2026-10-12"
+  }
+}

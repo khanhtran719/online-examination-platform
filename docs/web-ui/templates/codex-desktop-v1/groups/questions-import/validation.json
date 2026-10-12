@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "checks": [
+    "13 original prompts1000–1500whitespace words",
+    "13briefs/source refs present",
+    "18PNGs match hashes/dimensions/sourcepaths",
+    "13selected visualreviews recorded",
+    "5originals superseded/correction prompts preserved",
+    "importUTF8bytes2203/schema1/3entries",
+    "dry-runnotcommitted/questions empty",
+    "committed mappings distinct from existing bank"
+  ],
+  "notRun": [
+    "runtime unit/e2e/browser interaction",
+    "mobile",
+    "production acceptance"
+  ],
+  "counts": {
+    "requestedFrames": 13,
+    "selectedImages": 13,
+    "supersededOriginals": 5,
+    "builtInCalls": 18,
+    "visualReviewed": 13,
+    "selectedBusinessDefectsFlagged": 0,
+    "rootAcceptance": "pending",
+    "mobileGenerated": 0
+  }
+}

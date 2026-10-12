@@ -1,0 +1,27 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built_in_edit",
+  "promptFile": "primary.prompt.txt",
+  "promptWords": 1322,
+  "promptSha256": "2d4656f8e216c9251efa4aebbfe3969b97df9d699a94a17336a291a3093a788e",
+  "inputImages": [
+    {
+      "path": "docs/web-ui/evidence/stitch-05a-review-2026-10-08/exam-list-desktop-v4.png",
+      "role": "edit_target",
+      "bytes": 450028,
+      "width": 2560,
+      "height": 2476,
+      "sha256": "ecc5f1b23f16a8dc523e98b0548d177f2288bc433075b660150c34351fe53eba"
+    },
+    {
+      "path": "docs/web-ui/templates/codex-desktop-v1/images/preflight-ready-v1.png",
+      "role": "style_reference",
+      "bytes": 1372248,
+      "width": 1195,
+      "height": 1316,
+      "sha256": "38639680282bc95b6c71640c907a5be22f486a0879279e94a5312a99a491d38f"
+    }
+  ],
+  "transparent_background": false,
+  "generationStarted": false
+}

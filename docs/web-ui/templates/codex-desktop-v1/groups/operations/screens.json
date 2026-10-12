@@ -1,0 +1,575 @@
+{
+  "schemaVersion": 1,
+  "group": "operations",
+  "date": "2026-10-12",
+  "status": "desktop_primary_frames_complete_with_minor_port_findings",
+  "ownerScope": "docs/web-ui/templates/codex-desktop-v1/groups/operations",
+  "plannedPrimaryFrames": 4,
+  "generatedPrimaryFrames": 4,
+  "scope": "Desktop primary successful states only. Mobile and separately rendered state variants deferred.",
+  "designContract": "../../design-contract.md",
+  "fixturesFile": "fixtures.json",
+  "instructions": [
+    "One built-in imagegen call per distinct approved screen; never CLI fallback without user request.",
+    "Do not generate until root internal prompt review go-ahead.",
+    "Copy selected image into this group before final handoff; record actual dimensions/hash and visual findings.",
+    "No runtime/mobile/production acceptance from raster output."
+  ],
+  "screens": [
+    {
+      "screenId": "EP-25",
+      "localArtifactId": "codex-desktop-v1-operations-ep-25",
+      "title": "Tổng quan quản trị",
+      "route": "/admin",
+      "briefFile": "ep-25-admin-overview.brief.md",
+      "promptFile": "ep-25-admin-overview.prompt.md",
+      "promptWordCount": 1395,
+      "wordCountMethod": "Unicode whitespace split, including prompt labels and source/behavior requirements.",
+      "primaryState": "success-with-fixed-public-fixture",
+      "intendedDesignViewport": {
+        "width": 1280,
+        "height": 960,
+        "validated": false
+      },
+      "imageFile": "images/ep-25-admin-overview-v1.png",
+      "generation": {
+        "tool": "image_gen.imagegen (built-in)",
+        "status": "complete",
+        "outputPath": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/operations/images/ep-25-admin-overview-v1.png",
+        "width": 1448,
+        "height": 1086,
+        "sha256": "31707c580d47d318e9ffaf98728909fb55677cea43dcb9b81450ed5bb6027bf4",
+        "callReference": "exec-cfbb2122-5464-44e4-875a-ab5403393b20",
+        "originalToolOutputPath": "/Users/trankhanh/.codex/generated_images/01a12ee4-e393-7bb2-b835-8459d8038c04/exec-cfbb2122-5464-44e4-875a-ab5403393b20.png",
+        "promptSha256": "04dc9c24012adb29010e5ec236bccf948fd754483929ab9ead838f597075da14"
+      },
+      "sourceReferences": [
+        {
+          "path": "apps/web/src/features/admin/admin-layout.tsx",
+          "symbols": [
+            "AdminHomePage",
+            "AdminLayout"
+          ],
+          "role": "current Web action navigation and demo-only capability gate"
+        },
+        {
+          "path": "apps/api/src/modules/reporting/domain/business-metrics.ts",
+          "symbols": [
+            "businessMetricValues"
+          ],
+          "role": "cohort counters, subset invariants, backlog population"
+        },
+        {
+          "path": "apps/api/src/modules/reporting/application/services/business-metrics.service.ts",
+          "symbols": [
+            "BusinessMetricsService.snapshot"
+          ],
+          "role": "reporting.read and mandatory access audit"
+        },
+        {
+          "path": "apps/api/src/modules/reporting/presentation/http/business-metrics.controller.ts",
+          "role": "implemented read endpoint"
+        },
+        {
+          "path": "apps/api/tests/integration/admin-business-metrics.spec.ts",
+          "role": "referenced semantics tests, not rerun"
+        },
+        {
+          "path": "docs/contracts/openapi.yaml",
+          "sections": [
+            "/v1/admin/business-metrics",
+            "BusinessMetrics"
+          ],
+          "role": "HTTP field/scope/freshness contract"
+        }
+      ],
+      "sourceScopeAndFreshness": "Current state of global attempt-start cohort [from,to), explicit backend asOf; completed/failed subsets of submitted.",
+      "targetVsCurrentWeb": "New overview Reporting integration is not in current AdminHomePage; old combined metrics DTO stays out of image.",
+      "fixtureScope": "fixtures.businessMetrics",
+      "actionRequirements": [
+        "Tải lại snapshot read only",
+        "Capability-filtered route shortcuts"
+      ],
+      "requiredNonRenderedStates": [
+        "initial_loading",
+        "empty_success",
+        "refresh_error_or_stale",
+        "permission_denied"
+      ],
+      "review": {
+        "sourcePreflight": "passed_by_group_agent",
+        "rootPromptReview": "passed_internal_root_review",
+        "visualReview": "passed_with_minor_port_findings",
+        "findings": [
+          {
+            "severity": "minor",
+            "item": "Icon tiles and heading render slightly larger than compact target; first task row is closer to 1.4:1 than 2:1. Port using contracted control/type sizes and 2:1 layout."
+          },
+          {
+            "severity": "minor",
+            "item": "Check-only mark, although readable, is simpler than requested paper/check logo. Use project logo in implementation."
+          },
+          {
+            "severity": "info",
+            "item": "Font family cannot be confirmed from raster; use Be Vietnam Pro/JetBrains Mono tokens during port."
+          }
+        ],
+        "acceptanceChecklist": {
+          "prompt1000To1500Words": true,
+          "fieldAllowlist": true,
+          "fixedFixture": true,
+          "scopeAndFreshness": true,
+          "noInventedCapabilities": true,
+          "rootGoAhead": true,
+          "imageExists": true,
+          "actualDimensionsRecorded": true,
+          "sha256Recorded": true,
+          "visualReviewCompleted": true,
+          "runtimeAcceptance": false,
+          "mobileAcceptance": false,
+          "productionAcceptance": false
+        },
+        "checksPassed": [
+          "Exact counters4/6/2/1, no additive total",
+          "Exact cohort/window and asOf copy",
+          "Subset note present",
+          "All4source-supported action shortcuts",
+          "No fabricated chart/presence/PII/capability",
+          "Cobalt/Apricot, icon-only rail and full primary frame"
+        ]
+      },
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "screenId": "EP-26",
+      "localArtifactId": "codex-desktop-v1-operations-ep-26",
+      "title": "Chọn đề để giám sát",
+      "route": "/admin/monitor",
+      "briefFile": "ep-26-monitor-index.brief.md",
+      "promptFile": "ep-26-monitor-index.prompt.md",
+      "promptWordCount": 1485,
+      "wordCountMethod": "Unicode whitespace split, including prompt labels and source/behavior requirements.",
+      "primaryState": "success-with-fixed-public-fixture",
+      "intendedDesignViewport": {
+        "width": 1280,
+        "height": 960,
+        "validated": false
+      },
+      "imageFile": "images/ep-26-monitor-index-v1.png",
+      "generation": {
+        "tool": "image_gen.imagegen (built-in)",
+        "status": "complete",
+        "outputPath": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/operations/images/ep-26-monitor-index-v1.png",
+        "width": 1448,
+        "height": 1086,
+        "sha256": "a9c9b38d093cfd4dd7a99df04e16b9c18b757e914126313db1246bea73c781fc",
+        "callReference": "exec-a190eb67-aad2-49db-9eac-e30124407d6d",
+        "originalToolOutputPath": "/Users/trankhanh/.codex/generated_images/01a12ee4-e393-7bb2-b835-8459d8038c04/exec-a190eb67-aad2-49db-9eac-e30124407d6d.png",
+        "promptSha256": "a54755a4a2f857e0a1022f280c8001e5b7c041e1ff1305e6262982cbdb3bb067"
+      },
+      "sourceReferences": [
+        {
+          "path": "apps/web/src/features/admin/monitor-index-page.tsx",
+          "symbols": [
+            "MonitorIndexPage"
+          ],
+          "role": "current dual permissions, Catalog page and next handling"
+        },
+        {
+          "path": "apps/web/src/shared/api/dto.ts",
+          "symbols": [
+            "AdminExam"
+          ],
+          "role": "allowed contextual fields"
+        },
+        {
+          "path": "apps/web/src/features/admin/__tests__/admin-workflows.unit.spec.ts",
+          "role": "referenced existing Web workflow tests, not rerun"
+        },
+        {
+          "path": "docs/contracts/openapi.yaml",
+          "sections": [
+            "/v1/admin/exams",
+            "AdminExam",
+            "AdminExamListEnvelope"
+          ],
+          "role": "list field and cursor contract"
+        }
+      ],
+      "sourceScopeAndFreshness": "Authorized Catalog exams loaded via cursor; no server total/asOf/per-exam active counts. Tải lúc is client receipt time.",
+      "targetVsCurrentWeb": "Target adds source-supported category/revision/schedule columns and refresh, not new backend filters.",
+      "fixtureScope": "fixtures.pages.monitorIndex",
+      "actionRequirements": [
+        "Mở giám sát exact exam route",
+        "Tải lại",
+        "Tải thêm only when next exists"
+      ],
+      "requiredNonRenderedStates": [
+        "initial_loading",
+        "empty_success",
+        "refresh_error_or_stale",
+        "permission_denied"
+      ],
+      "review": {
+        "sourcePreflight": "passed_by_group_agent",
+        "rootPromptReview": "passed_internal_root_review",
+        "visualReview": "passed_with_minor_port_findings",
+        "findings": [
+          {
+            "severity": "minor",
+            "item": "Rail bank/import/back icons are rendered as database/code/info approximations. Map these to the actual bank/upload/back icons and accessible capability labels when porting; no new destinations are implied."
+          },
+          {
+            "severity": "minor",
+            "item": "Header Quản trị badge uses Apricot and avatar Cobalt unlike EP-25; normalize shared shell styles."
+          },
+          {
+            "severity": "minor",
+            "item": "Check-only logo is simpler than requested paper/check mark; use project logo."
+          },
+          {
+            "severity": "info",
+            "item": "Raster font family cannot be verified."
+          }
+        ],
+        "acceptanceChecklist": {
+          "prompt1000To1500Words": true,
+          "fieldAllowlist": true,
+          "fixedFixture": true,
+          "scopeAndFreshness": true,
+          "noInventedCapabilities": true,
+          "rootGoAhead": true,
+          "imageExists": true,
+          "actualDimensionsRecorded": true,
+          "sha256Recorded": true,
+          "visualReviewCompleted": true,
+          "runtimeAcceptance": false,
+          "mobileAcceptance": false,
+          "productionAcceptance": false
+        },
+        "checksPassed": [
+          "All3fixed exam titles/category/durations/revisions/statuses/schedules correct",
+          "No per-exam active count or unsupported filters",
+          "Tải lúc is client metadata, no fabricated backend asOf",
+          "Full-width table and Mở giám sát actions",
+          "next=null footer without pagination/total",
+          "No PII/presence/analytics claim"
+        ]
+      },
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "screenId": "EP-27",
+      "localArtifactId": "codex-desktop-v1-operations-ep-27",
+      "title": "Giám sát đề thi",
+      "route": "/admin/exams/:examId/monitor",
+      "briefFile": "ep-27-exam-monitor.brief.md",
+      "promptFile": "ep-27-exam-monitor.prompt.md",
+      "promptWordCount": 1445,
+      "wordCountMethod": "Unicode whitespace split, including prompt labels and source/behavior requirements.",
+      "primaryState": "success-with-fixed-public-fixture",
+      "intendedDesignViewport": {
+        "width": 1280,
+        "height": 960,
+        "validated": false
+      },
+      "imageFile": "images/ep-27-exam-monitor-v1.png",
+      "generation": {
+        "tool": "image_gen.imagegen (built-in)",
+        "status": "complete",
+        "outputPath": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/operations/images/ep-27-exam-monitor-v1.png",
+        "width": 1448,
+        "height": 1086,
+        "sha256": "cabb9fcf4ba69cb1163c39f8610a4e0410bbfb15dbd4dbda38d51d71b9dda135",
+        "callReference": "exec-42bde31d-6f77-45e7-88a9-29edf313b140",
+        "originalToolOutputPath": "/Users/trankhanh/.codex/generated_images/01a12ee4-e393-7bb2-b835-8459d8038c04/exec-42bde31d-6f77-45e7-88a9-29edf313b140.png",
+        "promptSha256": "134d7d741c80e0f3929cd6ddd6fe5b53c60c91acd7eb7ccecb0258d07d4aaacf"
+      },
+      "sourceReferences": [
+        {
+          "path": "apps/web/src/features/admin/monitor-exam-page.tsx",
+          "symbols": [
+            "MonitorExamPage"
+          ],
+          "role": "current polling and client loadedAt, context for target changes"
+        },
+        {
+          "path": "apps/web/src/shared/api/parse.ts",
+          "symbols": [
+            "parsePage"
+          ],
+          "role": "current shared parser lacks active metadata.asOf; port requirement"
+        },
+        {
+          "path": "apps/api/src/modules/reporting/application/dto/active-candidates.dto.ts",
+          "role": "private active allowlist"
+        },
+        {
+          "path": "apps/api/src/modules/reporting/infrastructure/persistence/postgres-active-candidates.query.ts",
+          "role": "across-version lifecycle, deadline/asOf/order"
+        },
+        {
+          "path": "apps/api/tests/integration/admin-monitor.spec.ts",
+          "role": "referenced current lifecycle test, not rerun"
+        },
+        {
+          "path": "docs/contracts/openapi.yaml",
+          "sections": [
+            "/v1/admin/exams/{examId}/active-candidates",
+            "ActiveCandidate",
+            "ActiveCandidateMetadata"
+          ],
+          "role": "read scope and per-page freshness"
+        }
+      ],
+      "sourceScopeAndFreshness": "Retained IN_PROGRESS across frozen exam versions, startedAt<=asOf<deadline; metadata.asOf per-page primary DB statement, not presence; no total.",
+      "targetVsCurrentWeb": "Target adds attemptId/startedAt and backend asOf display; current Web parser/page uses client dataUpdatedAt and needs a separate later integration change.",
+      "fixtureScope": "fixtures.pages.examMonitor",
+      "actionRequirements": [
+        "Tải lại read only",
+        "Visible-tab polling, no overlapping requests",
+        "Bài đã nộp route",
+        "Xem lượt exact attempt route"
+      ],
+      "requiredNonRenderedStates": [
+        "initial_loading",
+        "empty_success",
+        "refresh_error_or_stale",
+        "permission_denied"
+      ],
+      "review": {
+        "sourcePreflight": "passed_by_group_agent",
+        "rootPromptReview": "passed_internal_root_review",
+        "visualReview": "passed_with_minor_port_findings",
+        "findings": [
+          {
+            "severity": "minor",
+            "item": "Rail uses a database shape for question bank and grid for final back action; normalize to bank/back icons and accessible labels when porting."
+          },
+          {
+            "severity": "minor",
+            "item": "Header Quản trị uses Apricot while EP-25 uses Cobalt tint; shared shell must be normalized."
+          },
+          {
+            "severity": "minor",
+            "item": "Check-only logo simpler than paper/check target."
+          },
+          {
+            "severity": "info",
+            "item": "Raster font family cannot be verified; actual dimensions do not establish browser viewport testing."
+          }
+        ],
+        "acceptanceChecklist": {
+          "prompt1000To1500Words": true,
+          "fieldAllowlist": true,
+          "fixedFixture": true,
+          "scopeAndFreshness": true,
+          "noInventedCapabilities": true,
+          "rootGoAhead": true,
+          "imageExists": true,
+          "actualDimensionsRecorded": true,
+          "sha256Recorded": true,
+          "visualReviewCompleted": true,
+          "runtimeAcceptance": false,
+          "mobileAcceptance": false,
+          "productionAcceptance": false
+        },
+        "checksPassed": [
+          "Exact4candidate/attempt rows and order",
+          "All started/deadline pairs match fixture and deadline>asOf",
+          "Across-version scope and no-presence explanation visible",
+          "No version filter/row version/point/PII/force-submit invented",
+          "Backend asOf+UTC+7 and visible-tab auto-refresh helper",
+          "next=null footer and supported read/navigation actions",
+          "Full-width table, Cobalt and icon-only rail"
+        ]
+      },
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "screenId": "EP-28",
+      "localArtifactId": "codex-desktop-v1-operations-ep-28",
+      "title": "Bài đã nộp",
+      "route": "/admin/exams/:examId/submissions",
+      "briefFile": "ep-28-submissions.brief.md",
+      "promptFile": "ep-28-submissions.prompt.md",
+      "promptWordCount": 1491,
+      "wordCountMethod": "Unicode whitespace split, including prompt labels and source/behavior requirements.",
+      "primaryState": "success-with-fixed-public-fixture",
+      "intendedDesignViewport": {
+        "width": 1280,
+        "height": 960,
+        "validated": false
+      },
+      "imageFile": "images/ep-28-submissions-v1.png",
+      "generation": {
+        "tool": "image_gen.imagegen (built-in)",
+        "status": "complete",
+        "outputPath": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/operations/images/ep-28-submissions-v1.png",
+        "width": 1448,
+        "height": 1086,
+        "sha256": "f6b7a5c45df9227410e9dcd6b4bafdaaf2a97e0452f146d8285034a867055e8a",
+        "callReference": "exec-41afdd17-23a4-4286-a24f-61a5dce852ed",
+        "originalToolOutputPath": "/Users/trankhanh/.codex/generated_images/01a12ee4-e393-7bb2-b835-8459d8038c04/exec-41afdd17-23a4-4286-a24f-61a5dce852ed.png",
+        "promptSha256": "05dd390dfe61672df61c6d1c0c1c371a37a069283b9cf3fd1c01f640958b65c0"
+      },
+      "sourceReferences": [
+        {
+          "path": "apps/web/src/features/admin/submissions-page.tsx",
+          "symbols": [
+            "SubmissionsPage"
+          ],
+          "role": "current text version filter and null handling"
+        },
+        {
+          "path": "apps/web/src/shared/format.ts",
+          "symbols": [
+            "statusLabel"
+          ],
+          "role": "Vietnamese status labels"
+        },
+        {
+          "path": "apps/api/src/modules/reporting/application/dto/submissions.dto.ts",
+          "role": "private list allowlist"
+        },
+        {
+          "path": "apps/api/src/modules/reporting/infrastructure/persistence/postgres-submissions.query.ts",
+          "role": "all-lifecycle ledger, version scope and completed scores"
+        },
+        {
+          "path": "apps/api/tests/integration/admin-submissions.spec.ts",
+          "role": "referenced field/scope/null tests, not rerun"
+        },
+        {
+          "path": "docs/contracts/openapi.yaml",
+          "sections": [
+            "/v1/admin/exams/{examId}/submissions",
+            "AdminSubmission"
+          ],
+          "role": "filter, nullable score and freshness contract"
+        }
+      ],
+      "sourceScopeAndFreshness": "All retained attempt lifecycles for exam; optional exact publishedVersionId; scores only COMPLETED. Per-page fresh state, no returned asOf; Tải lúc is client receipt time.",
+      "targetVsCurrentWeb": "Target adds attemptId/context/refresh and clarifies ledger scope; current text UUID filter/null score handling reused conceptually.",
+      "fixtureScope": "fixtures.pages.submissions",
+      "actionRequirements": [
+        "Apply only publishedVersionId",
+        "Blank apply clears filter",
+        "Version change resets cursor",
+        "Tải lại",
+        "Xem lượt route"
+      ],
+      "requiredNonRenderedStates": [
+        "initial_loading",
+        "empty_success",
+        "refresh_error_or_stale",
+        "permission_denied",
+        "invalid_version_input",
+        "version_not_in_exam",
+        "null_submittedAt",
+        "unsubmitted_lifecycle"
+      ],
+      "review": {
+        "sourcePreflight": "passed_by_group_agent",
+        "rootPromptReview": "passed_internal_root_review",
+        "visualReview": "passed_with_minor_port_findings",
+        "findings": [
+          {
+            "severity": "minor",
+            "item": "Giám sát rail uses bar chart instead of activity/monitor icon, visually close to adjacent Số liệu. Use separate actual capability icons and accessible labels during port."
+          },
+          {
+            "severity": "minor",
+            "item": "Header badge treatment differs across the4images; normalize the shared shell to design contract."
+          },
+          {
+            "severity": "minor",
+            "item": "Check-only logo simpler than paper/check target."
+          },
+          {
+            "severity": "info",
+            "item": "Font family and runtime input behavior are not established by raster."
+          }
+        ],
+        "acceptanceChecklist": {
+          "prompt1000To1500Words": true,
+          "fieldAllowlist": true,
+          "fixedFixture": true,
+          "scopeAndFreshness": true,
+          "noInventedCapabilities": true,
+          "rootGoAhead": true,
+          "imageExists": true,
+          "actualDimensionsRecorded": true,
+          "sha256Recorded": true,
+          "visualReviewCompleted": true,
+          "runtimeAcceptance": false,
+          "mobileAcceptance": false,
+          "productionAcceptance": false
+        },
+        "checksPassed": [
+          "Exact6rows, candidate/attempt/version IDs and order",
+          "Exact90/100 and70/100,4nullscores all Chưa có điểm",
+          "Only EXPIRED has Nộp khi hết giờ",
+          "UUID input and all table versions match f001",
+          "Scope helper admits unsubmitted lifecycles",
+          "Client Tải lúc, no invented backend asOf",
+          "next=null footer without total/pagination",
+          "No unsupported filters/replay/force-submit/PII/score/edit/export"
+        ]
+      },
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    }
+  ],
+  "generationSummary": {
+    "builtInCalls": 4,
+    "editsOrRetries": 0,
+    "generatedPngs": 4,
+    "selectedPngs": 4,
+    "actualRasterDimensions": [
+      1448,
+      1086
+    ],
+    "viewportTested": false,
+    "severeDataOrCapabilityFindings": 0,
+    "mobileFrames": 0,
+    "runtimeTestsRun": false,
+    "productionAcceptance": false
+  },
+  "rootReview": {
+    "status": "complete_visual_reference_only",
+    "date": "2026-10-12",
+    "inspectedCount": 4
+  }
+}

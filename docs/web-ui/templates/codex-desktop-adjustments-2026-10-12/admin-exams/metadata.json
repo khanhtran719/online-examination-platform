@@ -1,0 +1,91 @@
+{
+  "id": "codex-adj-ep19-admin-exams-v1",
+  "pageFamily": "EP-19",
+  "title": "Danh sách đề Admin — điều chỉnh v1",
+  "route": "/admin/exams",
+  "state": "loaded-six-exams",
+  "file": "admin-exams-adjusted-v1.png",
+  "brief": "brief.md",
+  "prompt": "primary.prompt.txt",
+  "promptWords": 1322,
+  "width": 1275,
+  "height": 1233,
+  "bytes": 1413744,
+  "sha256": "44883a207e6011c15225b69cc0a201ff6d496b84079ad16344395d6dacaf9404",
+  "inputImages": [
+    {
+      "path": "docs/web-ui/evidence/stitch-05a-review-2026-10-08/exam-list-desktop-v4.png",
+      "role": "edit_target",
+      "bytes": 450028,
+      "width": 2560,
+      "height": 2476,
+      "sha256": "ecc5f1b23f16a8dc523e98b0548d177f2288bc433075b660150c34351fe53eba"
+    },
+    {
+      "path": "docs/web-ui/templates/codex-desktop-v1/images/preflight-ready-v1.png",
+      "role": "style_reference",
+      "bytes": 1372248,
+      "width": 1195,
+      "height": 1316,
+      "sha256": "38639680282bc95b6c71640c907a5be22f486a0879279e94a5312a99a491d38f"
+    }
+  ],
+  "sourcePaths": [
+    "AGENTS.md",
+    "docs/project-profile.md",
+    "docs/web-ui/stitch-05a-review-2026-10-08.md",
+    "docs/web-ui/stitch-page-prompts-v3/05a-admin-exams-desktop.md",
+    "docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+    "docs/web-ui/templates/dashboard-v2/tokens.json",
+    "docs/contracts/openapi.yaml",
+    "apps/web/src/features/admin/exam-list-page.tsx"
+  ],
+  "generationRequest": "generation-request.json",
+  "generation": {
+    "mode": "built_in_edit",
+    "successfulCalls": 1,
+    "correctionCalls": 0,
+    "originalOutput": "/Users/trankhanh/.codex/generated_images/01a12f47-a924-7241-aa6b-8b7e8b9ddbff/exec-07973c8d-6dd3-4780-b770-807e03cbca78.png",
+    "originalPreserved": true,
+    "primaryPromptSha256": "2d4656f8e216c9251efa4aebbfe3969b97df9d699a94a17336a291a3093a788e",
+    "primaryPromptVerbatim": true,
+    "sourceSha256": "44883a207e6011c15225b69cc0a201ff6d496b84079ad16344395d6dacaf9404",
+    "workspaceCopyByteIdentical": true
+  },
+  "review": {
+    "file": "review.md",
+    "inputsViewed": true,
+    "outputViewed": true,
+    "detail": "original",
+    "fixture": "PASS",
+    "mainAdjustments": "PASS",
+    "minorFindings": [
+      "Revision remains single-line beside publication metadata rather than on separate lower line.",
+      "Archived edit link is not permission to save archived records."
+    ],
+    "rootReview": "PASS_WITH_MINOR_PORT_FINDINGS",
+    "rootInputsAndFinalViewed": true
+  },
+  "status": "retained_with_port_findings",
+  "acceptance": {
+    "visualReference": true,
+    "runtime": false,
+    "mobile": false,
+    "production": false
+  },
+  "selection": {
+    "selectedOn": "2026-10-12",
+    "selectedBy": "user",
+    "userInstruction": "Tạm thời chốt UI như vậy đi, có gì sửa thêm sau",
+    "scope": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+    "revisionsAllowed": true,
+    "receipt": "../selection.md"
+  },
+  "rootReview": {
+    "status": "PASS_WITH_MINOR_PORT_FINDINGS",
+    "inputsViewed": true,
+    "outputViewed": true,
+    "review": "../review.md",
+    "reviewedOn": "2026-10-12"
+  }
+}

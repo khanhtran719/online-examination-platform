@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "dryRun": true,
+  "questions": [
+    {
+      "clientRef": "cloud-001",
+      "type": "SINGLE_CHOICE",
+      "prompt": "Trong mô hình IaaS, khách hàng quản lý thành phần nào?",
+      "correctOptionPositions": [
+        2
+      ],
+      "points": 10,
+      "explanation": "Với IaaS, khách hàng quản lý hệ điều hành và ứng dụng; nhà cung cấp quản lý hạ tầng vật lý.",
+      "options": [
+        {
+          "position": 1,
+          "text": "Trung tâm dữ liệu vật lý"
+        },
+        {
+          "position": 2,
+          "text": "Hệ điều hành và ứng dụng"
+        },
+        {
+          "position": 3,
+          "text": "Nguồn điện của máy chủ"
+        },
+        {
+          "position": 4,
+          "text": "Hạ tầng mạng vật lý"
+        }
+      ]
+    },
+    {
+      "clientRef": "cloud-002",
+      "type": "MULTIPLE_CHOICE",
+      "prompt": "Những biện pháp nào giúp bảo vệ tài khoản quản trị?",
+      "correctOptionPositions": [
+        1,
+        3
+      ],
+      "points": 15,
+      "explanation": "Xác thực đa yếu tố và quyền tối thiểu giúp giảm nguy cơ truy cập trái phép.",
+      "options": [
+        {
+          "position": 1,
+          "text": "Bật xác thực đa yếu tố"
+        },
+        {
+          "position": 2,
+          "text": "Dùng chung tài khoản quản trị"
+        },
+        {
+          "position": 3,
+          "text": "Cấp quyền tối thiểu cần thiết"
+        },
+        {
+          "position": 4,
+          "text": "Tắt ghi nhật ký truy cập"
+        }
+      ]
+    },
+    {
+      "clientRef": "cloud-003",
+      "type": "TRUE_FALSE",
+      "prompt": "Mã hóa dữ liệu khi truyền giúp giảm nguy cơ bị đọc trộm.",
+      "correctOptionPositions": [
+        1
+      ],
+      "points": 10,
+      "explanation": "Mã hóa đường truyền bảo vệ nội dung trước việc đọc trộm trên mạng.",
+      "options": [
+        {
+          "position": 1,
+          "text": "Đúng"
+        },
+        {
+          "position": 2,
+          "text": "Sai"
+        }
+      ]
+    }
+  ]
+}

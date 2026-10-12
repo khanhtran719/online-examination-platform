@@ -1,0 +1,3874 @@
+{
+  "date": "2026-10-12",
+  "status": "PASS",
+  "checkCount": 961,
+  "passed": 961,
+  "failed": [],
+  "protectedFileCount": 831,
+  "frameCount": 3,
+  "promptWords": [
+    1351,
+    1299,
+    1322
+  ],
+  "rootVisualReview": "all inputs and three final images directly viewed; semantic fixture review recorded in review.md; no OCR automation claim",
+  "runtimeTests": "not run; artifact-only change",
+  "repositoryQuality": {
+    "status": "PASS",
+    "command": "npm run quality",
+    "contracts": {
+      "operations": 48,
+      "examples": 445
+    }
+  },
+  "gitDiffCheck": {
+    "status": "PASS",
+    "command": "git diff --check"
+  },
+  "checks": [
+    {
+      "name": "three requested families",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 PNG signature",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 dimensions",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 bytes/hash",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 exact request prompt",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 primary1000–1500words",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 proposal not accepted",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 root direct review",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 exists file",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 exists brief",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 exists prompt",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 exists generationRequest",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 exists metadata",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 exists originalFile",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 input preserved edit_target",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 input preserved style_reference",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 source apps/web/src/features/results/history-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 source apps/web/src/shared/api/dto.ts",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 source apps/web/src/shared/format.ts",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 source docs/contracts/openapi.yaml",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 source docs/web-ui/stitch-page-prompts-v3/03b-history-ranking-desktop.md",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 source docs/web-ui/stitch-03b-review-2026-10-08.md",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 source docs/web-ui/templates/dashboard-v2/tokens.json",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 source docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 generated source-copy identity",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 original ref",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 PNG signature",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 dimensions",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 bytes/hash",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 exact request prompt",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 primary1000–1500words",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 proposal not accepted",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 root direct review",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 exists file",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 exists brief",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 exists prompt",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 exists generationRequest",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 exists metadata",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 exists originalFile",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 input preserved edit_target",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 input preserved style_reference",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 source docs/web-ui/stitch-03b-review-2026-10-08.md",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 source docs/web-ui/stitch-page-prompts-v3/03b-history-ranking-desktop.md",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 source docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 source docs/web-ui/templates/dashboard-v2/tokens.json",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 source apps/web/src/features/results/leaderboard-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 source docs/contracts/openapi.yaml",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 source apps/web/src/features/results/__tests__/leaderboard-refresh.test.tsx",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 generated source-copy identity",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 original ref",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 PNG signature",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 dimensions",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 bytes/hash",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 exact request prompt",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 primary1000–1500words",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 proposal not accepted",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 root direct review",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 exists file",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 exists brief",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 exists prompt",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 exists generationRequest",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 exists metadata",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 exists originalFile",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 input preserved edit_target",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 input preserved style_reference",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 source AGENTS.md",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 source docs/project-profile.md",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 source docs/web-ui/stitch-05a-review-2026-10-08.md",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 source docs/web-ui/stitch-page-prompts-v3/05a-admin-exams-desktop.md",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 source docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 source docs/web-ui/templates/dashboard-v2/tokens.json",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 source docs/contracts/openapi.yaml",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 source apps/web/src/features/admin/exam-list-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 generated source-copy identity",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 original ref",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/index.html",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/.env.demo",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/package-lock.json",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/package.json",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/tsconfig.json",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/playwright.identity-https.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/playwright.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/vite.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/eslint.config.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/.env.live",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/index.html",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/licenses/noto-sans-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/licenses/source-sans-3-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/ui-DHxfIuBN.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/gate-eag8_bJH.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/mount-CJ6zb7v7.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/admin-insights--I3z29b_.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/admin-monitor-s9U6xGd_.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/jetbrains-mono-latin-700-normal-BYuf6tUa.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/polling-DFBeh31A.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/progress-CrhD1lsq.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/dev-ui-bvnHc1yc.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/source-sans-3-latin-700-normal-CkzU-mV9.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/index-D2bkJ1WT.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/protected-access-oUVwqHD4.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/admin-ui-BPyZmF4T.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/result-pages-lcSmu8t1.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/noto-sans-latin-400-normal-BTkUljjl.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/exam-room-tduVSi4b.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/source-sans-3-vietnamese-700-normal-Bgamivog.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/admin-questions-j8c7pK-P.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/format-Gtaq8p98.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/brand-DoDVISWT.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/admin-ui-BmXzeSbx.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/memory-DRd-EQqm.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/mutation-intent-DIWikAAn.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/mount-scene-DL16NffI.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/source-sans-3-vietnamese-600-normal-B2sTNYey.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/noto-sans-latin-600-normal-Dkgu5AE5.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/layout.module-kOaVuOni.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/jetbrains-mono-latin-700-normal-D3wTyLJW.woff",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/noto-sans-vietnamese-500-normal-B_DgfjT4.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/jetbrains-mono-vietnamese-700-normal-BDLVIk2r.woff",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/layout-BgSLLubf.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/index-CFumFhoq.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/noto-sans-vietnamese-400-normal-D2wP-Vm-.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/mount-MPxgrTyI.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/exam-room-C3IhSGTN.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/admin-layout-CeR53-ev.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/result-pages-B45I3LXA.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/admin-exams-DJc5_hBx.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/ui-MVuKlvee.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/noto-sans-vietnamese-600-normal-mhyQDSzg.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/noto-sans-latin-500-normal-DCA2Z9Cj.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/admin-import-DUsQnnV3.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/source-sans-3-latin-600-normal-DeckBYAU.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/brand-C0yyyUnb.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist-demo/assets/runtime-vdtXcWVE.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/index.html",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/licenses/noto-sans-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/licenses/source-sans-3-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/use-title-Coc8uJ5g.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/admin-questions-BZULK3UZ.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/session-CDPi0CVD.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/mount-C-ngsZPA.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/useQuery-vRSK2wvT.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/memory-CuXTXi1z.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/jetbrains-mono-latin-700-normal-BYuf6tUa.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/protected-access-DQh6HobQ.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/polling-DFBeh31A.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/gate-CVJ0HEnW.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/progress-CrhD1lsq.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/admin-insights-Bj8ZoO4O.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/source-sans-3-latin-700-normal-CkzU-mV9.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/index-D2bkJ1WT.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/admin-layout-XiMjooN7.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/result-pages-lcSmu8t1.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/noto-sans-latin-400-normal-BTkUljjl.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/exam-room-tduVSi4b.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/source-sans-3-vietnamese-700-normal-Bgamivog.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/admin-monitor-CTpIfcNP.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/result-pages-BV_wAegX.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/admin-ui-BmXzeSbx.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/mutation-intent-DIWikAAn.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/mount-scene-DL16NffI.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/source-sans-3-vietnamese-600-normal-B2sTNYey.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/noto-sans-latin-600-normal-Dkgu5AE5.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/jetbrains-mono-latin-700-normal-D3wTyLJW.woff",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/admin-ui-CBqxi-Cb.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/noto-sans-vietnamese-500-normal-B_DgfjT4.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/jetbrains-mono-vietnamese-700-normal-BDLVIk2r.woff",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/index-DLYJiUNQ.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/use-title-DHxfIuBN.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/exam-room-BIDDERfl.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/admin-import-CjUdkyuG.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/noto-sans-vietnamese-400-normal-D2wP-Vm-.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/session-DoDVISWT.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/noto-sans-vietnamese-600-normal-mhyQDSzg.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/noto-sans-latin-500-normal-DCA2Z9Cj.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/mount-lsY2Yr-3.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/source-sans-3-latin-600-normal-DeckBYAU.woff2",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/admin-exams-BBq5cp0s.js",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/dist/assets/memory-BgSLLubf.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/.local/identity-https-results/summary.json",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/.local/identity-https-results/boundaries.json",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/.local/identity-https-results/verification-mobile.png",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/.local/identity-https-results/verification-desktop.png",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/.local/identity-https-results/environment.json",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/.local/identity-https-results/artifacts/.last-run.json",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/public/licenses/noto-sans-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/public/licenses/source-sans-3-OFL.txt",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/playwright-report/results.json",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/test-results/.last-run.json",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/e2e/browser.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/e2e/foundation.e2e-spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/e2e/admin-workflows.e2e-spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/e2e/onboarding-catalog.e2e-spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/e2e/assessment-results.e2e-spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/e2e/public-experience.e2e-spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/e2e/identity-https/identity.spec.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/e2e/identity-https/reporter.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/main.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/vite-env.d.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/demo/mount.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/demo/dev-ui.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/demo/chrome.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/demo/server.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/demo/chrome.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/demo/__tests__/server.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/app.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/runtime.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/use-title.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/session.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/workspace-frame.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/router.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/shells.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/workspace-frame.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/chrome.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/app/memory.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/public.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/sample-summary.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/home-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/experience.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/sample-experience.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/sample.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/public-chrome.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/hero-scene.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/hero-scene.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/__tests__/sample-experience.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/__tests__/sample.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/__tests__/home-page.test.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/scene/paper-texture.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/scene/mount-scene.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/experience/scene/scene-objects.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/auth/session-coordinator.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/auth/auth-pages.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/auth/auth-frame.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/auth/auth-frame.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/auth/__tests__/forms.test.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/auth/__tests__/session-coordinator.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/auth/__tests__/check-email.test.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/catalog/dashboard-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/catalog/exam-detail-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/catalog/catalog.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/catalog/dashboard.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/catalog/catalog-pages.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/catalog/browse-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/catalog/__tests__/dashboard.test.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin-exams.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/exam-information.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin-questions.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/gate.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin-attempt-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin-layout.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/import-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin-review-card.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/metrics-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/mutation-intent.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/question-editor-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/exam-list-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/exam-structure.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/question-dialogs.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin-import.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/audit-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/question-form.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/use-question-draft.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/exam-editor-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin-ui.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/monitor-exam-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin-monitor.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/question-list-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/statistics-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/use-exam-draft.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/import-report-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/monitor-index-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/submissions-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/admin-insights.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/question-preview.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/__tests__/mutation-intent.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/admin/__tests__/admin-workflows.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/use-exam-room.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/room-toolbar.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/polling.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/progress.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/exam-room.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/sheet.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/room.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/clock.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/autosave.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/room-dialogs.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/room-tick.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/question-view.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/submit-flow.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/room-navigator.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/__tests__/autosave.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/__tests__/sheet.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/__tests__/question-view.test.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/__tests__/room-tick.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/assessment/__tests__/clock-submit-poll.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/result-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/leaderboard-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/status-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/review-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/result-pages.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/results.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/history-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/use-attempt-polling.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/__tests__/status-page.test.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/__tests__/review-access.test.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/results/__tests__/leaderboard-refresh.test.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/features/profile/profile-page.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/validation.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/protected-access.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/timezone.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/review-href.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/format.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/ui/brand.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/ui/navigation.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/ui/paper-art.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/ui/brand.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/ui/ui.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/ui/navigation.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/ui/ui.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/ui/paper-art.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/ui/__tests__/fields.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/styles/global.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/styles/tokens.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/styles/fonts.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/styles/layout.module.css",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/__tests__/timezone.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/__tests__/protected-access.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/__tests__/copy.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/api/uuid.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/api/dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/api/parse.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/api/errors.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/api/http.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/api/platform.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/shared/api/__tests__/http-parse.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/live/mount.tsx",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/live/create-http-api.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/web/src/live/__tests__/csrf-coordination.test.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/admin-monitor.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/assessment-expiry-fixes.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/outbox-fencing.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/admin-business-metrics.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/grading-boundary.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/assessment-retention.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/admin-candidate-results.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/identity.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/leaderboard.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/catalog.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/sqs-consumer.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/assessment-expiry.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/admin-audit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/catalog-publication.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/assessment.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/database.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/admin-submissions.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/assessment-http-faults.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/reporting-dependencies.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/catalog-http.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/sqs-publisher.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/grading-consumer.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/admin-question-statistics.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/tests/integration/outbox-dispatch.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/app.module.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/config.validation.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/submission-queue.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/assessment-retention.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/database.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/dispatch-worker.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/app.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/audit-retention.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/grading-worker.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/expiry-worker.config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/__tests__/dispatch-worker-config.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/__tests__/app-config.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/__tests__/grading-worker-config.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/__tests__/database-config.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/__tests__/assessment-retention-config.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/__tests__/expiry-worker-config.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/config/__tests__/audit-retention.config.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/common/filters/domain-exception.filter.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/common/filters/__tests__/domain-exception.filter.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/common/interceptors/api-response.interceptor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/common/interceptors/__tests__/api-response.interceptor.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/unit-of-work/unit-of-work.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/errors/unavailable.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/ports/readiness.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/ports/security.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/ports/idempotency.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/ports/queue-publisher.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/ports/audit-retention.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/ports/queue-consumer.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/services/audit-retention.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/application/services/__tests__/audit-retention.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/domain/exceptions/error-category.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/shared/domain/exceptions/domain-error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/outbox/verification.main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/outbox/submission.main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/scheduler/audit-retention.main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/scheduler/assessment-retention.main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/scheduler/expiry.main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/sqs/grading.main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/sqs/grading-delivery.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/sqs/__tests__/grading-delivery.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/operator/grading-replay.main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/operator/submission-replay.main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/workers/operator/operator-admin.main.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/connection-budget.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrate.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/load-database-config.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migration-runner.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/database.module.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/transaction/postgres-database.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0016_grading_recovery.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0006_immutable_submission.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0009_catalog_question_points.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0002_query_indexes.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0001_capability_schema.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0011_submission_kind.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0008_identity_operations.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0010_attempt_revision.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0019_audit_retention.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0013_expiry_retry_schedule.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0007_identity_runtime.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0005_frozen_category.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0004_durable_state_guards.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0003_runtime_privileges.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0012_required_submission_kind.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0017_assessment_retention.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0018_leaderboard_cursor_epochs.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0015_grading_worker.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/migrations/0014_submission_dispatch.sql",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/database/__tests__/migration-runner.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/security/authorization/postgres-security.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/security/authentication/secret-loader.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/security/authentication/__tests__/secret-loader.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/health/health.module.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/health/postgres-readiness.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/health/http/ready.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/health/http/live.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/idempotency/postgres-idempotency.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/observability/audit/postgres-audit-retention.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/resilience/shutdown/shutdown-gate.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/http/configure-http-application.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/messaging/sqs/sqs-publisher.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/messaging/sqs/sqs-consumer.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/infrastructure/messaging/sqs/grading-generation-metadata.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/reporting.module.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/dto/audit.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/dto/business-metrics.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/dto/question-statistics.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/dto/submissions.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/dto/reporting-response.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/dto/active-candidates.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/dto/candidate-results.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/facades/ranking.facade.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/ranking.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/question-statistics.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/candidate-results.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/active-candidates-cursor.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/business-metrics.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/audit-cursor.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/ranking-cursor.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/submissions.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/active-candidates.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/question-statistics-cursor.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/candidate-results-cursor.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/audit.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/ports/submissions-cursor.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/question-statistics.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/active-candidates.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/audit.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/business-metrics.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/ranking.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/candidate-results.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/submissions.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/__tests__/active-candidates.service.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/__tests__/submissions.service.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/__tests__/question-statistics.service.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/__tests__/audit.service.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/__tests__/candidate-results.service.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/__tests__/business-metrics.service.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/application/services/__tests__/ranking.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/submissions-cursor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/candidate-results-cursor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/question-statistics-cursor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/active-candidates-cursor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/audit-cursor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/ranking-crypto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/__tests__/active-candidates-cursor.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/__tests__/submissions-cursor.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/__tests__/audit-cursor.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/__tests__/candidate-results-cursor.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/__tests__/ranking-crypto.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/security/__tests__/question-statistics-cursor.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/persistence/postgres-active-candidates.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/persistence/postgres-submissions.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/persistence/postgres-business-metrics.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/persistence/postgres-audit.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/persistence/postgres-candidate-results.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/persistence/postgres-question-statistics.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/infrastructure/persistence/postgres-ranking.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/ranking.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/reporting.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/candidate-results.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/question-statistics.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/business-metrics.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/audit.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/__tests__/candidate-results.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/__tests__/business-metrics.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/__tests__/audit.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/domain/__tests__/question-statistics.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/presentation/http/question-statistics.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/presentation/http/submissions.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/presentation/http/candidate-results.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/presentation/http/active-candidates.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/presentation/http/business-metrics.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/presentation/http/audit.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/presentation/http/dto/business-metrics.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/reporting/presentation/http/dto/reporting.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/identity.module.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/identity-worker.factory.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/identity-operator.factory.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/dto/identity.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/__tests__/admission.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/facades/identity.facade.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/errors/admission-saturated.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/ports/verification-delivery.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/ports/operator-admin.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/ports/identity-query.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/ports/identity-crypto.ports.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/ports/authenticated-write-admission.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/services/verification-worker.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/services/identity.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/application/services/__tests__/identity-write-admission.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/security/identity-runtime.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/security/identity-crypto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/security/__tests__/identity-crypto.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/mail/verification-mail.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/mail/__tests__/verification-mail.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/http/http-session.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/persistence/postgres/admission/postgres-authenticated-write-admission.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/persistence/postgres/queries/live-principal.sql.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/persistence/postgres/queries/postgres-identity.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-operator-admin.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/persistence/postgres/repositories/postgres-identity.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/infrastructure/persistence/postgres/delivery/postgres-verification-delivery.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/identity-policy.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/repositories/identity.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/__tests__/identity-policy.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/errors/invalid-request.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/errors/unauthenticated.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/errors/idempotency-key-expired.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/errors/permission-denied.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/errors/rate-limited.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/errors/idempotency-conflict.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/errors/index.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/errors/revision-conflict.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/domain/entities/identity-state.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/presentation/http/http-session.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/presentation/http/identity.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/identity/presentation/http/dto/identity.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/catalog-worker.factory.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/catalog.module.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/application/dto/catalog.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/application/facades/catalog.facade.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/application/ports/catalog-cursor.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/application/ports/catalog-query.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/application/services/catalog.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/infrastructure/cursor/catalog-cursor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/infrastructure/persistence/postgres-catalog.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/infrastructure/persistence/postgres-catalog.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/domain/catalog-error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/domain/catalog-policy.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/domain/repositories/catalog.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/domain/__tests__/catalog-policy.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/presentation/http/catalog.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/catalog/presentation/http/dto/catalog.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/assessment-worker.factory.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/assessment.module.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/dto/assessment.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/dto/candidate-results.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/submission-commit-observer.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/expiry-retry.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/candidate-results.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/grading-failure-repository.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/submission-dispatch.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/grading-repository.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/attempt-query.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/assessment-retention.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/assessment-cursor.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/question-page-sizer.port.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/ports/submission-outbox.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/assessment-retention.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/attempt-submission.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/publisher-supervisor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/grading-recovery.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/deadline-sweep.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/assessment.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/submission-publisher.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/grading-consumer.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/expiry-supervisor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/candidate-results.service.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/attempt-view.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep-retry.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/candidate-results.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/publisher-supervisor.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/grading-recovery.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/attempt-submission.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/assessment-retention.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/submission-publisher.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/deadline-sweep.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/expiry-supervisor.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/application/services/__tests__/grading-consumer.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/cursor/assessment-cursor.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/http/http-question-page-sizer.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/persistence/postgres-submission-dispatch.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/persistence/postgres-submission-outbox.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/persistence/postgres-candidate-results.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/persistence/postgres-grading-failure.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.query.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/persistence/postgres-assessment-retention.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/infrastructure/persistence/postgres-attempt.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/assessment.error.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/grading-submission.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/retention.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/scoring.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/grading.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/review-release.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/assessment-policy.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/attempt.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/repositories/attempt.repository.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/__tests__/attempt.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/__tests__/retention.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/__tests__/review-release.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/__tests__/assessment-policy.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/__tests__/scoring.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/domain/__tests__/grading.unit.spec.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/presentation/http/assessment.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/presentation/http/leaderboard.controller.ts",
+      "pass": true
+    },
+    {
+      "name": "protected apps/api/src/modules/assessment/presentation/http/dto/assessment.dto.ts",
+      "pass": true
+    },
+    {
+      "name": "protected .ai/architecture.md",
+      "pass": true
+    },
+    {
+      "name": "protected .ai/overview.md",
+      "pass": true
+    },
+    {
+      "name": "protected .ai/module-template.md",
+      "pass": true
+    },
+    {
+      "name": "protected .ai/conventions.md",
+      "pass": true
+    },
+    {
+      "name": "protected .ai/workflow.md",
+      "pass": true
+    },
+    {
+      "name": "protected .ai/rules.md",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/reporting-dependencies.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/eslint-imports.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/quality.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/local-identity-keys.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/identity-https.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/migration-assets.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/identity-https-fixture.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/contracts.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/identity-smoke.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/build.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/local-db.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/grading-benchmark.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/assessment-expiry-measure.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/compile.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/identity-benchmark.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/catalog-diagnostic-report.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/expiry-lag.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/__tests__/quality.unit.spec.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/__tests__/reporting-dependencies.unit.spec.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/__tests__/migration-assets.unit.spec.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/__tests__/eslint-imports.unit.spec.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/__tests__/catalog-diagnostic-report.unit.spec.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/__tests__/expiry-lag.unit.spec.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/__tests__/compile.unit.spec.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected scripts/__tests__/contracts.unit.spec.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected infra/local-sqs.conf",
+      "pass": true
+    },
+    {
+      "name": "protected infra/database/diagnostics.sql",
+      "pass": true
+    },
+    {
+      "name": "protected infra/database/roles.sql",
+      "pass": true
+    },
+    {
+      "name": "protected infra/database/observability.sql",
+      "pass": true
+    },
+    {
+      "name": "protected infra/database/connection-budget.local.json",
+      "pass": true
+    },
+    {
+      "name": "protected infra/identity-https/compose.yaml",
+      "pass": true
+    },
+    {
+      "name": "protected jest.integration.cjs",
+      "pass": true
+    },
+    {
+      "name": "protected jest.config.cjs",
+      "pass": true
+    },
+    {
+      "name": "protected .prettierrc.json",
+      "pass": true
+    },
+    {
+      "name": "protected package-lock.json",
+      "pass": true
+    },
+    {
+      "name": "protected package.json",
+      "pass": true
+    },
+    {
+      "name": "protected compose.yaml",
+      "pass": true
+    },
+    {
+      "name": "protected tsconfig.json",
+      "pass": true
+    },
+    {
+      "name": "protected tsconfig.paths.json",
+      "pass": true
+    },
+    {
+      "name": "protected eslint.config.mjs",
+      "pass": true
+    },
+    {
+      "name": "protected docs/implementation-roadmap.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/exam-mobile-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/home-desktop-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/implementation-notes.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/screenshot-cleanup.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/home-mobile-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/exam-desktop-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/exam-mobile-sheet-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/dashboard-mobile-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/brand/examplatform-wordmark.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/brand/examplatform-mark.svg",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/brand/preview.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/brand/examplatform-mark.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/brand/examplatform-wordmark.svg",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/stitch-v3/brand/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/dashboard-v2/source.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/dashboard-v2/reference.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/dashboard-v2/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/dashboard-v2/reference-full.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/dashboard-v2/tokens.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/gallery.html",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/validation.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/review-2026-10-12.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/images/preflight-ready-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/sample-import.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/screens.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/validation.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/fixtures.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep21-question-bank.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-multiple.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-create-single.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep23-import-confirm.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep24-committed-report.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-question-conflict.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-archive-confirm.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-candidate-preview.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-true-false.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep23-json-input.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-single.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-type-change-confirm.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep23-dry-run-valid.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep23-dry-run-valid-initial.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep23-json-input-initial.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep24-committed-report-initial.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep22-edit-multiple-initial.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep22-create-single-initial.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep24-committed-report-correction.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep24-committed-report.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-question-conflict.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-archive-confirm.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-create-single-correction.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep21-question-bank.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep23-import-confirm.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-edit-multiple.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-create-single.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-edit-single.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-edit-true-false.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep23-json-input.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-edit-multiple-correction.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-type-change-confirm.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep23-dry-run-valid.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep23-dry-run-valid-correction.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep22-candidate-preview.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/prompts/ep23-json-input-correction.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep23-json-input.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep22-candidate-preview.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep22-edit-multiple.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep23-import-confirm.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep21-question-bank.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep22-edit-true-false.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep22-question-conflict.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep23-dry-run-valid.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep22-type-change-confirm.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep22-edit-single.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep24-committed-report.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep22-create-single.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/questions-import/briefs/ep22-archive-confirm.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/ep-28-submissions.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/ep-25-admin-overview.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/ep-26-monitor-index.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/screens.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/ep-25-admin-overview.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/fixtures.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/review.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/ep-28-submissions.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/ep-27-exam-monitor.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/ep-27-exam-monitor.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/ep-26-monitor-index.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/images/ep-28-submissions-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/images/ep-25-admin-overview-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/images/ep-26-monitor-index-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/operations/images/ep-27-exam-monitor-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/sy-07-audit-detail-drawer.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/ep-29-failed-attempt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/ep-32-audit-list.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/sy-01-public-404.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/sy-07-replay-reason-dialog.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/ep-31-business-metrics-unavailable-technical.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/screens.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/ep-30-exact-version-statistics.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/fixtures.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/sy-07-replay-reason-confirmation-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/ep-31-business-metrics-unavailable-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/ep-30-exact-version-statistics-v2-repair-bars.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/ep-30-exact-version-statistics-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/ep-30-exact-version-statistics-v3-count-ratios.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/ep-29-failed-attempt-current-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/ep-32-audit-list-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/sy-01-public-404-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/sy-07-audit-detail-drawer-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/prompts/failed-attempt-current.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/prompts/audit-list.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/prompts/exact-version-statistics.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/prompts/audit-detail-drawer.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/prompts/replay-reason-confirmation.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/prompts/business-metrics-technical-unavailable.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/prompts/exact-version-statistics-repair-02.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/prompts/exact-version-statistics-repair-01.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/prompts/public-404.txt",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-preflight-ready-v2.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/unpublish-confirmation-v2.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-preflight-ready-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/unpublish-confirmation.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/draft-conflict-comparison-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/unpublish-confirmation-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-preflight-ready.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/publish-confirmation.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/publish-confirmation-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-preflight-ready-correction.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/archive-confirmation-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/preflight-validation-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/preflight-validation-v2.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/draft-conflict-comparison.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/draft-conflict-comparison.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-information.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/archive-confirmation.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/preflight-validation-correction.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/remove-section-confirmation-v2.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/screens.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/leave-unsaved-confirmation-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/remove-section-confirmation.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/remove-section-confirmation-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/leave-unsaved-confirmation.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-structure-empty-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/remove-section-confirmation-correction.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/preflight-validation.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-structure-empty.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-structure-empty.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/unpublish-confirmation.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/unpublish-confirmation-correction.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/publish-confirmation.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-information.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/archive-confirmation.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/leave-unsaved-confirmation.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-information-v1.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/create-preflight-ready.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/preflight-validation.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/groups/editor-dialogs/remove-section-confirmation.brief.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/codex-desktop-v1/prompts/preflight-ready-v1.prompt.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/check-email-mobile-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/verify-email-mobile-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/login-desktop-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/register-mobile-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/implementation-notes.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/check-email-desktop-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/login-mobile-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/verify-email-desktop-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/auth-v3/register-desktop-v3.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/public-v4/sample-experience-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/public-v4/implementation-notes.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/public-v4/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/public-v4/how-it-works-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/public-v4/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/public-v4/help-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/implementation-notes.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/exam-list-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/exam-list-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/exam-detail-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/exam-detail-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/profile-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/profile-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/states/exam-list-loading-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/states/exam-list-load-more-error-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/states/exam-list-filter-sheet-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/states/exam-list-search-no-match-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/states/exam-list-load-more-pending-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/states/exam-list-error-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/states/exam-list-empty-category-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/dialogs/profile-conflict-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/dialogs/profile-conflict-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/dialogs/start-confirmation-mobile-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/catalog-profile-v4/dialogs/start-confirmation-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/results-v4/implementation-notes.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/results-v4/submission-status-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/results-v4/README.md",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/results-v4/result-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/results-v4/released-review-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "protected docs/web-ui/templates/results-v4/manifest.json",
+      "pass": true
+    },
+    {
+      "name": "JSON validation.json",
+      "pass": true
+    },
+    {
+      "name": "JSON manifest.json",
+      "pass": true
+    },
+    {
+      "name": "JSON protected-baseline.json",
+      "pass": true
+    },
+    {
+      "name": "JSON leaderboard/fixture.json",
+      "pass": true
+    },
+    {
+      "name": "JSON leaderboard/provenance.json",
+      "pass": true
+    },
+    {
+      "name": "JSON leaderboard/generation-request-v1.json",
+      "pass": true
+    },
+    {
+      "name": "JSON leaderboard/metadata.json",
+      "pass": true
+    },
+    {
+      "name": "JSON leaderboard/validation.json",
+      "pass": true
+    },
+    {
+      "name": "JSON admin-exams/metadata.json",
+      "pass": true
+    },
+    {
+      "name": "JSON admin-exams/generation-request.json",
+      "pass": true
+    },
+    {
+      "name": "JSON admin-exams/preflight.json",
+      "pass": true
+    },
+    {
+      "name": "JSON history/fixture.json",
+      "pass": true
+    },
+    {
+      "name": "JSON history/generation-request-v1.json",
+      "pass": true
+    },
+    {
+      "name": "JSON history/metadata.json",
+      "pass": true
+    },
+    {
+      "name": "JSON history/generation-result-v1.json",
+      "pass": true
+    },
+    {
+      "name": "gallery no scripts/network",
+      "pass": true
+    },
+    {
+      "name": "gallery link #EP-14",
+      "pass": true
+    },
+    {
+      "name": "gallery link #EP-15",
+      "pass": true
+    },
+    {
+      "name": "gallery link #EP-19",
+      "pass": true
+    },
+    {
+      "name": "gallery link review.md",
+      "pass": true
+    },
+    {
+      "name": "gallery link README.md",
+      "pass": true
+    },
+    {
+      "name": "gallery link ../../evidence/stitch-03b-review-2026-10-08/history-desktop-v4-34514bb3.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link ../../evidence/stitch-03b-review-2026-10-08/history-desktop-v4-34514bb3.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link history/history-adjusted-desktop-v1.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link history/history-adjusted-desktop-v1.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link history/brief.md",
+      "pass": true
+    },
+    {
+      "name": "gallery link history/primary.prompt.txt",
+      "pass": true
+    },
+    {
+      "name": "gallery link history/metadata.json",
+      "pass": true
+    },
+    {
+      "name": "gallery link ../../evidence/stitch-03b-review-2026-10-08/leaderboard-desktop-v4-b91abc13.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link ../../evidence/stitch-03b-review-2026-10-08/leaderboard-desktop-v4-b91abc13.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link leaderboard/leaderboard-adjusted-v1.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link leaderboard/leaderboard-adjusted-v1.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link leaderboard/brief.md",
+      "pass": true
+    },
+    {
+      "name": "gallery link leaderboard/leaderboard-adjusted-v1.prompt.txt",
+      "pass": true
+    },
+    {
+      "name": "gallery link leaderboard/metadata.json",
+      "pass": true
+    },
+    {
+      "name": "gallery link ../../evidence/stitch-05a-review-2026-10-08/exam-list-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link ../../evidence/stitch-05a-review-2026-10-08/exam-list-desktop-v4.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link admin-exams/admin-exams-adjusted-v1.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link admin-exams/admin-exams-adjusted-v1.png",
+      "pass": true
+    },
+    {
+      "name": "gallery link admin-exams/brief.md",
+      "pass": true
+    },
+    {
+      "name": "gallery link admin-exams/primary.prompt.txt",
+      "pass": true
+    },
+    {
+      "name": "gallery link admin-exams/metadata.json",
+      "pass": true
+    },
+    {
+      "name": "history six scores",
+      "pass": true
+    },
+    {
+      "name": "history nullable never zero",
+      "pass": true
+    },
+    {
+      "name": "history expired completed review",
+      "pass": true
+    },
+    {
+      "name": "history FAILED status only",
+      "pass": true
+    },
+    {
+      "name": "leaderboard ten descending scores",
+      "pass": true
+    },
+    {
+      "name": "leaderboard rank pseudonym privacy",
+      "pass": true
+    },
+    {
+      "name": "registry counts unchanged",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 registry pending",
+      "pass": true
+    },
+    {
+      "name": "EP-14-adjusted-desktop-v1 registry ref",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 registry pending",
+      "pass": true
+    },
+    {
+      "name": "codex-ep15-leaderboard-adjusted-v1 registry ref",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 registry pending",
+      "pass": true
+    },
+    {
+      "name": "codex-adj-ep19-admin-exams-v1 registry ref",
+      "pass": true
+    }
+  ]
+}

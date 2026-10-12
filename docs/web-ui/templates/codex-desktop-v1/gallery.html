@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light">
+<title>ExamPlatform — Thư viện mẫu Desktop V1</title>
+<style>
+:root{--canvas:#f3f6fc;--surface:#fff;--primary:#315cf4;--accent:#ffb36b;--ink:#1b2540;--muted:#58627a;--line:#dce3f2}
+*{box-sizing:border-box}html{scroll-behavior:auto;scroll-padding-top:140px}body{margin:0;background:var(--canvas);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,sans-serif;font-size:16px;line-height:1.6}
+a{color:var(--primary);text-underline-offset:3px}a:focus-visible,summary:focus-visible{outline:3px solid var(--primary);outline-offset:4px;border-radius:4px}
+header{background:var(--surface);border-bottom:1px solid var(--line);padding:24px 32px}.wrap{max-width:1540px;margin:auto}.brand{font-weight:750;font-size:22px}.brand span{color:var(--primary)}h1{font-size:32px;margin:12px 0 4px;line-height:1.25}h2{font-size:24px;margin:0}h3{font-size:20px;margin:4px 0;line-height:1.4}
+header p{margin:8px 0;color:var(--muted);max-width:1050px}nav{position:sticky;top:0;z-index:1;background:#fffffff5;border-bottom:1px solid var(--line);padding:12px 32px}nav .wrap{display:flex;gap:12px;flex-wrap:wrap}nav a{display:flex;min-height:44px;align-items:center;padding:8px 14px;border-radius:12px;background:#e8eeff;text-decoration:none;font-weight:600}
+main{padding:24px 32px 64px}section{margin:20px 0 40px}.section-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:16px}.section-title span,.meta{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.card{background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 6px 24px #1b254006}.preview{display:block;background:#eaf0fa;padding:12px;border-bottom:1px solid var(--line)}img{display:block;width:100%;height:340px;object-fit:contain}
+.body{padding:24px}.eyebrow{color:var(--primary);font-size:14px;font-weight:600;margin:0}.meta{margin:8px 0}.note{display:inline-block;background:#fff0e1;border-radius:8px;padding:4px 10px;font-size:14px;margin:4px 0 12px}.links{display:flex;flex-wrap:wrap;gap:12px}.links a{display:flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;text-decoration:none}details{margin-top:16px;border-top:1px solid var(--line);padding-top:12px;font-size:14px;color:var(--muted)}summary{cursor:pointer;min-height:44px;display:list-item}details p{overflow-wrap:anywhere}footer{color:var(--muted);padding:24px 32px;background:white;border-top:1px solid var(--line)}
+@media(max-width:800px){.grid{grid-template-columns:1fr}header,nav,main,footer{padding-left:16px;padding-right:16px}h1{font-size:26px}img{height:280px}.section-title{display:block}}
+</style></head><body>
+<header><div class="wrap"><div class="brand">Exam<span>Platform</span> · Thư viện mẫu</div><h1>Desktop và dialog — Codex V1</h1>
+<p>35 ảnh chọn cuối, gồm 34 frame mới và preflight đã giữ. Mỗi frame mới có mô tả chức năng, style và prompt riêng. Nhấn ảnh để xem đầy đủ.</p>
+<p>Đây là bộ tham chiếu thiết kế. Các con số trên ảnh là dữ liệu mẫu; mobile, những trạng thái còn thiếu và UI chạy thật cần triển khai/kiểm thử riêng.</p>
+<p><a href="review-2026-10-12.md">Review và checklist tiếp theo</a> · <a href="design-contract.md">Style chung</a> · <a href="manifest.json">Danh mục ảnh chọn cuối</a></p></div></header>
+<nav aria-label="Nhóm ảnh"><div class="wrap"><a href="#pilot">Preflight đã giữ</a><a href="#editor-dialogs">Editor và dialog</a><a href="#questions-import">Câu hỏi và Import</a><a href="#operations">Vận hành</a><a href="#reporting-shared">Báo cáo và trạng thái dùng chung</a></div></nav>
+<main class="wrap"><section id="pilot"><div class="section-title"><h2>Preflight đã giữ</h2><span>1 ảnh chọn cuối</span></div><div class="grid"><article class="card" id="CD-EP20-PREFLIGHT">
+<a class="preview" href="images/preflight-ready-v1.png" target="_blank" rel="noopener"><img src="images/preflight-ready-v1.png" alt="Rà soát bản nháp đã có — Edit preflight ready" loading="lazy" width="1195" height="1316"></a>
+<div class="body"><p class="eyebrow">EP-20 · Edit preflight ready</p><h3>Rà soát bản nháp đã có</h3>
+<p class="meta">Prompt pilot nguyên bản · ảnh 1195 × 1316</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="images/preflight-ready-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="README.md">Mô tả chức năng</a><a href="prompts/preflight-ready-v1.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP20-PREFLIGHT</p><p>State: Edit preflight ready</p><p>Route: /admin/exams/:examId/edit</p><a href="manifest.json">Nguồn, hash và findings</a></details>
+</div></article></div></section><section id="editor-dialogs"><div class="section-title"><h2>Editor và dialog</h2><span>10 ảnh chọn cuối</span></div><div class="grid"><article class="card" id="CD-EP20-CREATE-INFO">
+<a class="preview" href="groups/editor-dialogs/create-information-v1.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/create-information-v1.png" alt="Tạo đề — Thông tin — Create / Information" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-20 · Create / Information</p><h3>Tạo đề — Thông tin</h3>
+<p class="meta">1160 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/create-information-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/create-information.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/create-information.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP20-CREATE-INFO</p><p>State: Create / Information</p><p>Route: /admin/exams/new</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="CD-EP20-CREATE-STRUCTURE">
+<a class="preview" href="groups/editor-dialogs/create-structure-empty-v1.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/create-structure-empty-v1.png" alt="Tạo đề — Thêm câu hỏi — Create / Sections empty" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-20 · Create / Sections empty</p><h3>Tạo đề — Thêm câu hỏi</h3>
+<p class="meta">1147 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/create-structure-empty-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/create-structure-empty.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/create-structure-empty.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP20-CREATE-STRUCTURE</p><p>State: Create / Sections empty</p><p>Route: /admin/exams/new</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="CD-EP20-CREATE-REVIEW">
+<a class="preview" href="groups/editor-dialogs/create-preflight-ready-v2.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/create-preflight-ready-v2.png" alt="Tạo đề — Rà soát hợp lệ — Create / Preflight ready" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-20 · Create / Preflight ready</p><h3>Tạo đề — Rà soát hợp lệ</h3>
+<p class="meta">1147 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/create-preflight-ready-v2.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/create-preflight-ready.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/create-preflight-ready.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP20-CREATE-REVIEW</p><p>State: Create / Preflight ready</p><p>Route: /admin/exams/new</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="CD-EP20-VALIDATION">
+<a class="preview" href="groups/editor-dialogs/preflight-validation-v2.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/preflight-validation-v2.png" alt="Rà soát — Cần sửa hai mục — Edit / Validation blocked" loading="lazy" width="1195" height="1316"></a>
+<div class="body"><p class="eyebrow">EP-20 · Edit / Validation blocked</p><h3>Rà soát — Cần sửa hai mục</h3>
+<p class="meta">1158 từ prompt chính · ảnh 1195 × 1316</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/preflight-validation-v2.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/preflight-validation.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/preflight-validation.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP20-VALIDATION</p><p>State: Edit / Validation blocked</p><p>Route: /admin/exams/:examId/edit</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="CD-EP20-PUBLISH">
+<a class="preview" href="groups/editor-dialogs/publish-confirmation-v1.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/publish-confirmation-v1.png" alt="Xác nhận lưu và phát hành — Publish confirmation" loading="lazy" width="1402" height="1122"></a>
+<div class="body"><p class="eyebrow">EP-20 · Publish confirmation</p><h3>Xác nhận lưu và phát hành</h3>
+<p class="meta">1163 từ prompt chính · ảnh 1402 × 1122</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/publish-confirmation-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/publish-confirmation.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/publish-confirmation.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP20-PUBLISH</p><p>State: Publish confirmation</p><p>Route: /admin/exams/:examId/edit</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="CD-EP19-UNPUBLISH">
+<a class="preview" href="groups/editor-dialogs/unpublish-confirmation-v2.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/unpublish-confirmation-v2.png" alt="Gỡ phát hành đề — Unpublish confirmation" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-19 · Unpublish confirmation</p><h3>Gỡ phát hành đề</h3>
+<p class="meta">1158 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/unpublish-confirmation-v2.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/unpublish-confirmation.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/unpublish-confirmation.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP19-UNPUBLISH</p><p>State: Unpublish confirmation</p><p>Route: /admin/exams</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="CD-EP19-ARCHIVE">
+<a class="preview" href="groups/editor-dialogs/archive-confirmation-v1.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/archive-confirmation-v1.png" alt="Lưu trữ đề — Archive confirmation" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-19 · Archive confirmation</p><h3>Lưu trữ đề</h3>
+<p class="meta">1159 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/archive-confirmation-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/archive-confirmation.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/archive-confirmation.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP19-ARCHIVE</p><p>State: Archive confirmation</p><p>Route: /admin/exams</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="CD-EP20-REMOVE">
+<a class="preview" href="groups/editor-dialogs/remove-section-confirmation-v2.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/remove-section-confirmation-v2.png" alt="Bỏ phần thi — Remove section confirmation" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-20 · Remove section confirmation</p><h3>Bỏ phần thi</h3>
+<p class="meta">1143 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/remove-section-confirmation-v2.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/remove-section-confirmation.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/remove-section-confirmation.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP20-REMOVE</p><p>State: Remove section confirmation</p><p>Route: /admin/exams/:examId/edit</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="CD-EP20-LEAVE">
+<a class="preview" href="groups/editor-dialogs/leave-unsaved-confirmation-v1.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/leave-unsaved-confirmation-v1.png" alt="Rời bản nháp chưa lưu — Unsaved exit confirmation" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-20 · Unsaved exit confirmation</p><h3>Rời bản nháp chưa lưu</h3>
+<p class="meta">1144 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/leave-unsaved-confirmation-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/leave-unsaved-confirmation.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/leave-unsaved-confirmation.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP20-LEAVE</p><p>State: Unsaved exit confirmation</p><p>Route: /admin/exams/:examId/edit</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="CD-EP20-CONFLICT">
+<a class="preview" href="groups/editor-dialogs/draft-conflict-comparison-v1.png" target="_blank" rel="noopener"><img src="groups/editor-dialogs/draft-conflict-comparison-v1.png" alt="Đối chiếu xung đột bản nháp — Draft conflict comparison" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-20 · Draft conflict comparison</p><h3>Đối chiếu xung đột bản nháp</h3>
+<p class="meta">1136 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/editor-dialogs/draft-conflict-comparison-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/editor-dialogs/draft-conflict-comparison.brief.md">Mô tả chức năng</a><a href="groups/editor-dialogs/draft-conflict-comparison.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: CD-EP20-CONFLICT</p><p>State: Draft conflict comparison</p><p>Route: /admin/exams/:examId/edit</p><a href="groups/editor-dialogs/screens.json">Nguồn, hash và findings</a></details>
+</div></article></div></section><section id="questions-import"><div class="section-title"><h2>Câu hỏi và Import</h2><span>13 ảnh chọn cuối</span></div><div class="grid"><article class="card" id="ep21-question-bank">
+<a class="preview" href="groups/questions-import/images/ep21-question-bank.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep21-question-bank.png" alt="EP-21 — Ngân hàng câu hỏi — page" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-21 · page</p><h3>EP-21 — Ngân hàng câu hỏi</h3>
+<p class="meta">1326 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep21-question-bank.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep21-question-bank.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep21-question-bank.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep21-question-bank</p><p>State: page</p><p>Route: /admin/questions</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep22-edit-single">
+<a class="preview" href="groups/questions-import/images/ep22-edit-single.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep22-edit-single.png" alt="EP-22 — Sửa câu một lựa chọn — page" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-22 · page</p><h3>EP-22 — Sửa câu một lựa chọn</h3>
+<p class="meta">1473 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep22-edit-single.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep22-edit-single.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep22-edit-single.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep22-edit-single</p><p>State: page</p><p>Route: /admin/questions/019b18a0-0000-7000-8000-000000000012/edit</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep22-edit-multiple">
+<a class="preview" href="groups/questions-import/images/ep22-edit-multiple.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep22-edit-multiple.png" alt="EP-22 — Sửa câu nhiều lựa chọn — page" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-22 · page</p><h3>EP-22 — Sửa câu nhiều lựa chọn</h3>
+<p class="meta">1472 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep22-edit-multiple.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep22-edit-multiple.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep22-edit-multiple.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep22-edit-multiple</p><p>State: page</p><p>Route: /admin/questions/019b18a0-0000-7000-8000-000000000013/edit</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep22-edit-true-false">
+<a class="preview" href="groups/questions-import/images/ep22-edit-true-false.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep22-edit-true-false.png" alt="EP-22 — Sửa câu Đúng–Sai — page" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-22 · page</p><h3>EP-22 — Sửa câu Đúng–Sai</h3>
+<p class="meta">1396 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep22-edit-true-false.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep22-edit-true-false.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep22-edit-true-false.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep22-edit-true-false</p><p>State: page</p><p>Route: /admin/questions/019b18a0-0000-7000-8000-000000000014/edit</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep22-create-single">
+<a class="preview" href="groups/questions-import/images/ep22-create-single.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep22-create-single.png" alt="EP-22 — Tạo câu một lựa chọn — page" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-22 · page</p><h3>EP-22 — Tạo câu một lựa chọn</h3>
+<p class="meta">1401 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep22-create-single.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep22-create-single.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep22-create-single.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep22-create-single</p><p>State: page</p><p>Route: /admin/questions/new</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep23-json-input">
+<a class="preview" href="groups/questions-import/images/ep23-json-input.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep23-json-input.png" alt="EP-23 — Chọn hoặc dán JSON — page" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-23 · page</p><h3>EP-23 — Chọn hoặc dán JSON</h3>
+<p class="meta">1399 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep23-json-input.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep23-json-input.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep23-json-input.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep23-json-input</p><p>State: page</p><p>Route: /admin/imports/new</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep23-dry-run-valid">
+<a class="preview" href="groups/questions-import/images/ep23-dry-run-valid.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep23-dry-run-valid.png" alt="EP-23 — Kiểm tra hợp lệ, chưa nhập — page" loading="lazy" width="1486" height="1059"></a>
+<div class="body"><p class="eyebrow">EP-23 · page</p><h3>EP-23 — Kiểm tra hợp lệ, chưa nhập</h3>
+<p class="meta">1376 từ prompt chính · ảnh 1486 × 1059</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep23-dry-run-valid.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep23-dry-run-valid.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep23-dry-run-valid.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep23-dry-run-valid</p><p>State: page</p><p>Route: /admin/imports/new</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep23-import-confirm">
+<a class="preview" href="groups/questions-import/images/ep23-import-confirm.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep23-import-confirm.png" alt="EP-23 — Xác nhận nhập câu hỏi — dialog" loading="lazy" width="1487" height="1058"></a>
+<div class="body"><p class="eyebrow">EP-23 · dialog</p><h3>EP-23 — Xác nhận nhập câu hỏi</h3>
+<p class="meta">1353 từ prompt chính · ảnh 1487 × 1058</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep23-import-confirm.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep23-import-confirm.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep23-import-confirm.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep23-import-confirm</p><p>State: dialog</p><p>Route: /admin/imports/new</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep24-committed-report">
+<a class="preview" href="groups/questions-import/images/ep24-committed-report.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep24-committed-report.png" alt="EP-24 — Báo cáo nhập đã ghi ngân hàng — page" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-24 · page</p><h3>EP-24 — Báo cáo nhập đã ghi ngân hàng</h3>
+<p class="meta">1386 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep24-committed-report.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep24-committed-report.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep24-committed-report.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep24-committed-report</p><p>State: page</p><p>Route: /admin/imports/019b18a0-1000-7000-8000-000000000102</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep22-type-change-confirm">
+<a class="preview" href="groups/questions-import/images/ep22-type-change-confirm.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep22-type-change-confirm.png" alt="EP-22 — Xác nhận đổi loại câu hỏi — dialog" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-22 · dialog</p><h3>EP-22 — Xác nhận đổi loại câu hỏi</h3>
+<p class="meta">1340 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep22-type-change-confirm.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep22-type-change-confirm.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep22-type-change-confirm.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep22-type-change-confirm</p><p>State: dialog</p><p>Route: /admin/questions/019b18a0-0000-7000-8000-000000000013/edit</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep22-archive-confirm">
+<a class="preview" href="groups/questions-import/images/ep22-archive-confirm.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep22-archive-confirm.png" alt="EP-22 — Xác nhận lưu trữ câu hỏi — dialog" loading="lazy" width="1448" height="1086"></a>
+<div class="body"><p class="eyebrow">EP-22 · dialog</p><h3>EP-22 — Xác nhận lưu trữ câu hỏi</h3>
+<p class="meta">1330 từ prompt chính · ảnh 1448 × 1086</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep22-archive-confirm.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep22-archive-confirm.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep22-archive-confirm.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep22-archive-confirm</p><p>State: dialog</p><p>Route: /admin/questions/019b18a0-0000-7000-8000-000000000012/edit</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep22-question-conflict">
+<a class="preview" href="groups/questions-import/images/ep22-question-conflict.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep22-question-conflict.png" alt="EP-22 — Xung đột khi lưu câu hỏi — dialog" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-22 · dialog</p><h3>EP-22 — Xung đột khi lưu câu hỏi</h3>
+<p class="meta">1366 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep22-question-conflict.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep22-question-conflict.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep22-question-conflict.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep22-question-conflict</p><p>State: dialog</p><p>Route: /admin/questions/019b18a0-0000-7000-8000-000000000012/edit</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="ep22-candidate-preview">
+<a class="preview" href="groups/questions-import/images/ep22-candidate-preview.png" target="_blank" rel="noopener"><img src="groups/questions-import/images/ep22-candidate-preview.png" alt="EP-22 — Xem câu hỏi như thí sinh — dialog" loading="lazy" width="1536" height="1024"></a>
+<div class="body"><p class="eyebrow">EP-22 · dialog</p><h3>EP-22 — Xem câu hỏi như thí sinh</h3>
+<p class="meta">1358 từ prompt chính · ảnh 1536 × 1024</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/questions-import/images/ep22-candidate-preview.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/questions-import/briefs/ep22-candidate-preview.md">Mô tả chức năng</a><a href="groups/questions-import/prompts/ep22-candidate-preview.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: ep22-candidate-preview</p><p>State: dialog</p><p>Route: /admin/questions/019b18a0-0000-7000-8000-000000000012/edit</p><a href="groups/questions-import/screens.json">Nguồn, hash và findings</a></details>
+</div></article></div></section><section id="operations"><div class="section-title"><h2>Vận hành</h2><span>4 ảnh chọn cuối</span></div><div class="grid"><article class="card" id="codex-desktop-v1-operations-ep-25">
+<a class="preview" href="groups/operations/images/ep-25-admin-overview-v1.png" target="_blank" rel="noopener"><img src="groups/operations/images/ep-25-admin-overview-v1.png" alt="Tổng quan quản trị — success-with-fixed-public-fixture" loading="lazy" width="1448" height="1086"></a>
+<div class="body"><p class="eyebrow">EP-25 · success-with-fixed-public-fixture</p><h3>Tổng quan quản trị</h3>
+<p class="meta">1395 từ prompt chính · ảnh 1448 × 1086</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/operations/images/ep-25-admin-overview-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/operations/ep-25-admin-overview.brief.md">Mô tả chức năng</a><a href="groups/operations/ep-25-admin-overview.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-operations-ep-25</p><p>State: success-with-fixed-public-fixture</p><p>Route: /admin</p><a href="groups/operations/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="codex-desktop-v1-operations-ep-26">
+<a class="preview" href="groups/operations/images/ep-26-monitor-index-v1.png" target="_blank" rel="noopener"><img src="groups/operations/images/ep-26-monitor-index-v1.png" alt="Chọn đề để giám sát — success-with-fixed-public-fixture" loading="lazy" width="1448" height="1086"></a>
+<div class="body"><p class="eyebrow">EP-26 · success-with-fixed-public-fixture</p><h3>Chọn đề để giám sát</h3>
+<p class="meta">1485 từ prompt chính · ảnh 1448 × 1086</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/operations/images/ep-26-monitor-index-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/operations/ep-26-monitor-index.brief.md">Mô tả chức năng</a><a href="groups/operations/ep-26-monitor-index.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-operations-ep-26</p><p>State: success-with-fixed-public-fixture</p><p>Route: /admin/monitor</p><a href="groups/operations/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="codex-desktop-v1-operations-ep-27">
+<a class="preview" href="groups/operations/images/ep-27-exam-monitor-v1.png" target="_blank" rel="noopener"><img src="groups/operations/images/ep-27-exam-monitor-v1.png" alt="Giám sát đề thi — success-with-fixed-public-fixture" loading="lazy" width="1448" height="1086"></a>
+<div class="body"><p class="eyebrow">EP-27 · success-with-fixed-public-fixture</p><h3>Giám sát đề thi</h3>
+<p class="meta">1445 từ prompt chính · ảnh 1448 × 1086</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/operations/images/ep-27-exam-monitor-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/operations/ep-27-exam-monitor.brief.md">Mô tả chức năng</a><a href="groups/operations/ep-27-exam-monitor.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-operations-ep-27</p><p>State: success-with-fixed-public-fixture</p><p>Route: /admin/exams/:examId/monitor</p><a href="groups/operations/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="codex-desktop-v1-operations-ep-28">
+<a class="preview" href="groups/operations/images/ep-28-submissions-v1.png" target="_blank" rel="noopener"><img src="groups/operations/images/ep-28-submissions-v1.png" alt="Bài đã nộp — success-with-fixed-public-fixture" loading="lazy" width="1448" height="1086"></a>
+<div class="body"><p class="eyebrow">EP-28 · success-with-fixed-public-fixture</p><h3>Bài đã nộp</h3>
+<p class="meta">1491 từ prompt chính · ảnh 1448 × 1086</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/operations/images/ep-28-submissions-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/operations/ep-28-submissions.brief.md">Mô tả chức năng</a><a href="groups/operations/ep-28-submissions.prompt.md">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-operations-ep-28</p><p>State: success-with-fixed-public-fixture</p><p>Route: /admin/exams/:examId/submissions</p><a href="groups/operations/screens.json">Nguồn, hash và findings</a></details>
+</div></article></div></section><section id="reporting-shared"><div class="section-title"><h2>Báo cáo và trạng thái dùng chung</h2><span>7 ảnh chọn cuối</span></div><div class="grid"><article class="card" id="codex-desktop-v1-reporting-failed-attempt-current">
+<a class="preview" href="groups/reporting-shared/images/ep-29-failed-attempt-current-v1.png" target="_blank" rel="noopener"><img src="groups/reporting-shared/images/ep-29-failed-attempt-current-v1.png" alt="Chi tiết lượt thi thất bại — current-live-unavailable-replay" loading="lazy" width="1495" height="1052"></a>
+<div class="body"><p class="eyebrow">EP-29 · current-live-unavailable-replay</p><h3>Chi tiết lượt thi thất bại</h3>
+<p class="meta">1125 từ prompt chính · ảnh 1495 × 1052</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/reporting-shared/images/ep-29-failed-attempt-current-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/reporting-shared/ep-29-failed-attempt.md">Mô tả chức năng</a><a href="groups/reporting-shared/prompts/failed-attempt-current.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-reporting-failed-attempt-current</p><p>State: current-live-unavailable-replay</p><p>Route: /admin/attempts/:attemptId</p><a href="groups/reporting-shared/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="codex-desktop-v1-reporting-exact-version-statistics">
+<a class="preview" href="groups/reporting-shared/images/ep-30-exact-version-statistics-v3-count-ratios.png" target="_blank" rel="noopener"><img src="groups/reporting-shared/images/ep-30-exact-version-statistics-v3-count-ratios.png" alt="Thống kê đúng phiên bản — target-presentation-current-report-contract" loading="lazy" width="1420" height="1108"></a>
+<div class="body"><p class="eyebrow">EP-30 · target-presentation-current-report-contract</p><h3>Thống kê đúng phiên bản</h3>
+<p class="meta">1087 từ prompt chính · ảnh 1420 × 1108</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/reporting-shared/images/ep-30-exact-version-statistics-v3-count-ratios.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/reporting-shared/ep-30-exact-version-statistics.md">Mô tả chức năng</a><a href="groups/reporting-shared/prompts/exact-version-statistics.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-reporting-exact-version-statistics</p><p>State: target-presentation-current-report-contract</p><p>Route: /admin/exams/:examId/versions/:versionId/statistics</p><a href="groups/reporting-shared/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="codex-desktop-v1-reporting-business-metrics-technical-unavailable">
+<a class="preview" href="groups/reporting-shared/images/ep-31-business-metrics-unavailable-v1.png" target="_blank" rel="noopener"><img src="groups/reporting-shared/images/ep-31-business-metrics-unavailable-v1.png" alt="Snapshot nghiệp vụ, thiếu nguồn kỹ thuật — target-web-business-adapter-technical-unavailable" loading="lazy" width="1402" height="1122"></a>
+<div class="body"><p class="eyebrow">EP-31 · target-web-business-adapter-technical-unavailable</p><h3>Snapshot nghiệp vụ, thiếu nguồn kỹ thuật</h3>
+<p class="meta">1088 từ prompt chính · ảnh 1402 × 1122</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/reporting-shared/images/ep-31-business-metrics-unavailable-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/reporting-shared/ep-31-business-metrics-unavailable-technical.md">Mô tả chức năng</a><a href="groups/reporting-shared/prompts/business-metrics-technical-unavailable.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-reporting-business-metrics-technical-unavailable</p><p>State: target-web-business-adapter-technical-unavailable</p><p>Route: /admin/metrics</p><a href="groups/reporting-shared/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="codex-desktop-v1-reporting-audit-list">
+<a class="preview" href="groups/reporting-shared/images/ep-32-audit-list-v1.png" target="_blank" rel="noopener"><img src="groups/reporting-shared/images/ep-32-audit-list-v1.png" alt="Nhật ký audit — target-table-presentation-current-redacted-audit-contract" loading="lazy" width="1455" height="1081"></a>
+<div class="body"><p class="eyebrow">EP-32 · target-table-presentation-current-redacted-audit-contract</p><h3>Nhật ký audit</h3>
+<p class="meta">1039 từ prompt chính · ảnh 1455 × 1081</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/reporting-shared/images/ep-32-audit-list-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/reporting-shared/ep-32-audit-list.md">Mô tả chức năng</a><a href="groups/reporting-shared/prompts/audit-list.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-reporting-audit-list</p><p>State: target-table-presentation-current-redacted-audit-contract</p><p>Route: /admin/audit</p><a href="groups/reporting-shared/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="codex-desktop-v1-reporting-public-404">
+<a class="preview" href="groups/reporting-shared/images/sy-01-public-404-v1.png" target="_blank" rel="noopener"><img src="groups/reporting-shared/images/sy-01-public-404-v1.png" alt="Không tìm thấy nội dung — target-public-copy-safe-back" loading="lazy" width="1496" height="1051"></a>
+<div class="body"><p class="eyebrow">SY-01 · target-public-copy-safe-back</p><h3>Không tìm thấy nội dung</h3>
+<p class="meta">1149 từ prompt chính · ảnh 1496 × 1051</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/reporting-shared/images/sy-01-public-404-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/reporting-shared/sy-01-public-404.md">Mô tả chức năng</a><a href="groups/reporting-shared/prompts/public-404.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-reporting-public-404</p><p>State: target-public-copy-safe-back</p><p>Route: *</p><a href="groups/reporting-shared/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="codex-desktop-v1-reporting-replay-reason-confirmation">
+<a class="preview" href="groups/reporting-shared/images/sy-07-replay-reason-confirmation-v1.png" target="_blank" rel="noopener"><img src="groups/reporting-shared/images/sy-07-replay-reason-confirmation-v1.png" alt="Yêu cầu xử lý lại — target-contract-demo-conditional-not-current-live" loading="lazy" width="1495" height="1052"></a>
+<div class="body"><p class="eyebrow">SY-07 · target-contract-demo-conditional-not-current-live</p><h3>Yêu cầu xử lý lại</h3>
+<p class="meta">1105 từ prompt chính · ảnh 1495 × 1052</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/reporting-shared/images/sy-07-replay-reason-confirmation-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/reporting-shared/sy-07-replay-reason-dialog.md">Mô tả chức năng</a><a href="groups/reporting-shared/prompts/replay-reason-confirmation.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-reporting-replay-reason-confirmation</p><p>State: target-contract-demo-conditional-not-current-live</p><p>Route: /admin/attempts/:attemptId#replay-confirm</p><a href="groups/reporting-shared/screens.json">Nguồn, hash và findings</a></details>
+</div></article><article class="card" id="codex-desktop-v1-reporting-audit-detail-drawer">
+<a class="preview" href="groups/reporting-shared/images/sy-07-audit-detail-drawer-v1.png" target="_blank" rel="noopener"><img src="groups/reporting-shared/images/sy-07-audit-detail-drawer-v1.png" alt="Chi tiết nhật ký — target-drawer-current-loaded-entry-contract" loading="lazy" width="1455" height="1081"></a>
+<div class="body"><p class="eyebrow">SY-07 · target-drawer-current-loaded-entry-contract</p><h3>Chi tiết nhật ký</h3>
+<p class="meta">1200 từ prompt chính · ảnh 1455 × 1081</p>
+<p class="note">Đã review hình ảnh · cần chuẩn hóa khi code</p>
+<div class="links"><a href="groups/reporting-shared/images/sy-07-audit-detail-drawer-v1.png" target="_blank" rel="noopener">Mở ảnh đầy đủ ↗</a><a href="groups/reporting-shared/sy-07-audit-detail-drawer.md">Mô tả chức năng</a><a href="groups/reporting-shared/prompts/audit-detail-drawer.txt">Prompt</a></div>
+<details><summary>Thông tin tham chiếu</summary><p>ID: codex-desktop-v1-reporting-audit-detail-drawer</p><p>State: target-drawer-current-loaded-entry-contract</p><p>Route: /admin/audit#detail</p><a href="groups/reporting-shared/screens.json">Nguồn, hash và findings</a></details>
+</div></article></div></section></main><footer><div class="wrap">Ngày 12/10/2026 · Chỉ ảnh đã chọn trong manifest; các iterations được thay thế giữ ngoài gallery. Gallery không dùng thư viện/font/network bên ngoài.</div></footer>
+</body></html>

@@ -1,0 +1,46 @@
+[
+  {
+    "screenId": "8bdb6a1a0a4c4814a9017994e6f05355",
+    "headings": [
+      "Bảng tổng kiểm tra cấu trúc đề",
+      "Cấu trúc các phần thi đã duyệt",
+      "Lưu và phát hành đề này?"
+    ],
+    "buttons": [
+      "Xem trước đề thi",
+      "\nclose\n",
+      "\n            Hủy\n          ",
+      "\ncloud_upload\nLưu và phát hành\n"
+    ]
+  },
+  {
+    "screenId": "bef67930ab4e4b5e93f17f82d06d7193",
+    "headings": [
+      "\n              Nền tảng điện toán đám mây — Bài ôn tập 01\n            ",
+      "Rà soát trước khi phát hành",
+      "1. Thông tin cơ bản",
+      "2. Lịch thi & chính sách",
+      "3. Cấu trúc đề thi",
+      "Kiểm tra bản nháp",
+      "Xác nhận phát hành đề thi?"
+    ],
+    "buttons": [
+      "\n          Quay lại: Phần & câu hỏi\n        ",
+      "\n          Lưu nháp\n        ",
+      "\nLưu và phát hành\narrow_forward\n"
+    ]
+  },
+  {
+    "screenId": "3a591de37dfc4248b3151e7ffe17725d",
+    "headings": [
+      "\n            Cần sửa 2 mục trước khi lưu và phát hành\n          ",
+      "Rà soát trước khi phát hành",
+      "Kiểm tra bản nháp"
+    ],
+    "buttons": [
+      "\narrow_back\n              Quay lại: Phần & câu hỏi\n            ",
+      "\n              Lưu nháp\n            ",
+      "\npublish\n              Lưu và phát hành\n            "
+    ]
+  }
+]

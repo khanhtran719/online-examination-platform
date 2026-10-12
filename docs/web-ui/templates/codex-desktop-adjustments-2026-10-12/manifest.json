@@ -1,0 +1,127 @@
+{
+  "title": "Three retained desktop adjusted templates",
+  "preparedOn": "2026-10-12",
+  "status": "template_retained_with_port_findings",
+  "generatedWith": "built-in image_gen.imagegen edits only",
+  "cliFallbackUsed": false,
+  "successfulImageCalls": 3,
+  "correctionCalls": 0,
+  "frameCount": 3,
+  "review": "review.md",
+  "gallery": "gallery.html",
+  "validation": "selection-validation.json",
+  "frames": [
+    {
+      "id": "EP-14-adjusted-desktop-v1",
+      "pageFamily": "EP-14",
+      "title": "Lịch sử thi — bản điều chỉnh desktop",
+      "route": "/history",
+      "state": "loaded",
+      "promptWords": 1351,
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1338524,
+      "sha256": "1d0cfaccb1ff8cea72916282bec420dc8f53babc04b55b6411a9b9a3112d6b01",
+      "status": "retained_with_port_findings",
+      "acceptance": {
+        "visualReference": true,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      },
+      "file": "history/history-adjusted-desktop-v1.png",
+      "brief": "history/brief.md",
+      "prompt": "history/primary.prompt.txt",
+      "generationRequest": "history/generation-request-v1.json",
+      "metadata": "history/metadata.json",
+      "originalFile": "../../evidence/stitch-03b-review-2026-10-08/history-desktop-v4-34514bb3.png",
+      "originalSha256": "3874d734bcd940e104b0e186e20687cd006e7875e7941837f0e63dddfd86e129",
+      "selection": {
+        "selectedOn": "2026-10-12",
+        "selectedBy": "user",
+        "userInstruction": "Tạm thời chốt UI như vậy đi, có gì sửa thêm sau",
+        "scope": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+        "revisionsAllowed": true,
+        "receipt": "selection.md"
+      }
+    },
+    {
+      "id": "codex-ep15-leaderboard-adjusted-v1",
+      "pageFamily": "EP-15",
+      "title": "Bảng xếp hạng — Desktop Loaded — Adjusted proposal",
+      "route": "/exams/:examId/versions/:versionId/leaderboard",
+      "state": "Loaded",
+      "promptWords": 1299,
+      "width": 1402,
+      "height": 1122,
+      "bytes": 1312909,
+      "sha256": "e759500cd8f1ce5c9cb53253bada552442fa1a406a67a9405ef19909aa6f221d",
+      "status": "retained_with_port_findings",
+      "acceptance": {
+        "visualReference": true,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      },
+      "file": "leaderboard/leaderboard-adjusted-v1.png",
+      "brief": "leaderboard/brief.md",
+      "prompt": "leaderboard/leaderboard-adjusted-v1.prompt.txt",
+      "generationRequest": "leaderboard/generation-request-v1.json",
+      "metadata": "leaderboard/metadata.json",
+      "originalFile": "../../evidence/stitch-03b-review-2026-10-08/leaderboard-desktop-v4-b91abc13.png",
+      "originalSha256": "7da8cf8ea872613cfdcf95efd327f24c86d69ba06d00023cc0725393a2fa3294",
+      "selection": {
+        "selectedOn": "2026-10-12",
+        "selectedBy": "user",
+        "userInstruction": "Tạm thời chốt UI như vậy đi, có gì sửa thêm sau",
+        "scope": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+        "revisionsAllowed": true,
+        "receipt": "selection.md"
+      }
+    },
+    {
+      "id": "codex-adj-ep19-admin-exams-v1",
+      "pageFamily": "EP-19",
+      "title": "Danh sách đề Admin — điều chỉnh v1",
+      "route": "/admin/exams",
+      "state": "loaded-six-exams",
+      "promptWords": 1322,
+      "width": 1275,
+      "height": 1233,
+      "bytes": 1413744,
+      "sha256": "44883a207e6011c15225b69cc0a201ff6d496b84079ad16344395d6dacaf9404",
+      "status": "retained_with_port_findings",
+      "acceptance": {
+        "visualReference": true,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      },
+      "file": "admin-exams/admin-exams-adjusted-v1.png",
+      "brief": "admin-exams/brief.md",
+      "prompt": "admin-exams/primary.prompt.txt",
+      "generationRequest": "admin-exams/generation-request.json",
+      "metadata": "admin-exams/metadata.json",
+      "originalFile": "../../evidence/stitch-05a-review-2026-10-08/exam-list-desktop-v4.png",
+      "originalSha256": "ecc5f1b23f16a8dc523e98b0548d177f2288bc433075b660150c34351fe53eba",
+      "selection": {
+        "selectedOn": "2026-10-12",
+        "selectedBy": "user",
+        "userInstruction": "Tạm thời chốt UI như vậy đi, có gì sửa thêm sau",
+        "scope": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+        "revisionsAllowed": true,
+        "receipt": "selection.md"
+      }
+    }
+  ],
+  "selection": {
+    "selectedOn": "2026-10-12",
+    "selectedBy": "user",
+    "userInstruction": "Tạm thời chốt UI như vậy đi, có gì sửa thêm sau",
+    "scope": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+    "revisionsAllowed": true,
+    "receipt": "selection.md"
+  },
+  "selectionValidation": "selection-validation.json",
+  "preSelectionValidation": "validation.json"
+}

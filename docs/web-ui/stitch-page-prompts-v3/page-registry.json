@@ -5,12 +5,13 @@
   "routeSource": "../../../apps/web/src/app/router.tsx",
   "routePatternCount": 39,
   "productPageFamilyCount": 33,
-  "retainedPageFamilyCount": 16,
-  "remainingPageFamilyCount": 13,
+  "retainedPageFamilyCount": 33,
+  "remainingPageFamilyCount": 0,
   "statusMeaning": {
     "template_retained": "Existing selected reference images are saved; implementation defects remain deferred.",
     "prompt_prepared": "Prompt is ready locally; retrieved and verified frame coverage has not yet been recorded.",
-    "design_reviewed_with_open_findings": "The referenced screenshots and their actual viewport coverage are retrieved and reviewed; open issues are recorded. This is not acceptance of implementation or interactive behavior."
+    "design_reviewed_with_open_findings": "The referenced screenshots and their actual viewport coverage are retrieved and reviewed; open issues are recorded. This is not acceptance of implementation or interactive behavior.",
+    "partial_desktop_references_retained": "Specific desktop references retained; the shared-state family remains incomplete."
   },
   "pages": [
     {
@@ -485,7 +486,7 @@
       "paths": [
         "/history"
       ],
-      "status": "design_reviewed_with_open_findings",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
@@ -494,20 +495,55 @@
       "supplementaryPrompts": [
         "03-results-history-ranking.md"
       ],
-      "review": "../stitch-03b-review-2026-10-08.md",
-      "reviewedOn": "2026-10-08",
+      "review": "../templates/codex-desktop-adjustments-2026-10-12/review.md",
+      "reviewedOn": "2026-10-12",
       "viewportsReviewed": [
         1280
       ],
-      "acceptedAsTemplate": false,
+      "acceptedAsTemplate": true,
       "references": [
         {
           "screenId": "34514bb3f3e5425c9eb4252958064aa9",
           "state": "Loaded",
-          "file": "../evidence/stitch-03b-review-2026-10-08/history-desktop-v4-34514bb3.png"
+          "file": "../evidence/stitch-03b-review-2026-10-08/history-desktop-v4-34514bb3.png",
+          "acceptedAsVisualReference": false,
+          "usage": "Historical original for comparison; current main reference is the selected adjusted image."
+        },
+        {
+          "localId": "EP-14-adjusted-desktop-v1",
+          "state": "Desktop Loaded — retained adjusted reference",
+          "file": "../templates/codex-desktop-adjustments-2026-10-12/history/history-adjusted-desktop-v1.png",
+          "brief": "../templates/codex-desktop-adjustments-2026-10-12/history/brief.md",
+          "prompt": "../templates/codex-desktop-adjustments-2026-10-12/history/primary.prompt.txt",
+          "source": "Built-in image generation edit of original; local proposal, not Stitch export",
+          "review": "../templates/codex-desktop-adjustments-2026-10-12/review.md",
+          "status": "retained_with_port_findings",
+          "acceptedAsVisualReference": true,
+          "actualRasterDimensions": [
+            1536,
+            1024
+          ],
+          "acceptedOn": "2026-10-12",
+          "revisionsAllowed": true
         }
       ],
-      "stateCoverage": "Desktop Loaded reviewed with open findings; mobile and supplementary states remain deferred."
+      "stateCoverage": "Adjusted desktop Loaded main reference retained by user with minor port findings; mobile, supplementary states and runtime remain open.",
+      "supplementaryReviews": [
+        "../stitch-03b-review-2026-10-08.md",
+        "../templates/codex-desktop-adjustments-2026-10-12/review.md"
+      ],
+      "adjustedProposalReviewedOn": "2026-10-12",
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+      "template": "../templates/codex-desktop-adjustments-2026-10-12/manifest.json",
+      "defects": "../templates/codex-desktop-adjustments-2026-10-12/review.md",
+      "selectionReceipt": "../templates/codex-desktop-adjustments-2026-10-12/selection.md",
+      "selectedMainReferenceId": "EP-14-adjusted-desktop-v1",
+      "revisionsAllowed": true,
+      "viewportAcceptance": false,
+      "intendedDesignWidths": [
+        1280
+      ]
     },
     {
       "id": "EP-15",
@@ -515,7 +551,7 @@
       "paths": [
         "/exams/:examId/versions/:versionId/leaderboard"
       ],
-      "status": "design_reviewed_with_open_findings",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
@@ -524,20 +560,55 @@
       "supplementaryPrompts": [
         "03-results-history-ranking.md"
       ],
-      "review": "../stitch-03b-review-2026-10-08.md",
-      "reviewedOn": "2026-10-08",
+      "review": "../templates/codex-desktop-adjustments-2026-10-12/review.md",
+      "reviewedOn": "2026-10-12",
       "viewportsReviewed": [
         1280
       ],
-      "acceptedAsTemplate": false,
+      "acceptedAsTemplate": true,
       "references": [
         {
           "screenId": "b91abc139e804b7b859bf9a071518b1e",
           "state": "Loaded",
-          "file": "../evidence/stitch-03b-review-2026-10-08/leaderboard-desktop-v4-b91abc13.png"
+          "file": "../evidence/stitch-03b-review-2026-10-08/leaderboard-desktop-v4-b91abc13.png",
+          "acceptedAsVisualReference": false,
+          "usage": "Historical original for comparison; current main reference is the selected adjusted image."
+        },
+        {
+          "localId": "codex-ep15-leaderboard-adjusted-v1",
+          "state": "Desktop Loaded — retained adjusted reference",
+          "file": "../templates/codex-desktop-adjustments-2026-10-12/leaderboard/leaderboard-adjusted-v1.png",
+          "brief": "../templates/codex-desktop-adjustments-2026-10-12/leaderboard/brief.md",
+          "prompt": "../templates/codex-desktop-adjustments-2026-10-12/leaderboard/leaderboard-adjusted-v1.prompt.txt",
+          "source": "Built-in image generation edit of original; local proposal, not Stitch export",
+          "review": "../templates/codex-desktop-adjustments-2026-10-12/review.md",
+          "status": "retained_with_port_findings",
+          "acceptedAsVisualReference": true,
+          "actualRasterDimensions": [
+            1402,
+            1122
+          ],
+          "acceptedOn": "2026-10-12",
+          "revisionsAllowed": true
         }
       ],
-      "stateCoverage": "Desktop Loaded reviewed with open findings; mobile and supplementary states remain deferred."
+      "stateCoverage": "Adjusted desktop Loaded main reference retained by user with minor port findings; mobile, supplementary states and runtime remain open.",
+      "supplementaryReviews": [
+        "../stitch-03b-review-2026-10-08.md",
+        "../templates/codex-desktop-adjustments-2026-10-12/review.md"
+      ],
+      "adjustedProposalReviewedOn": "2026-10-12",
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+      "template": "../templates/codex-desktop-adjustments-2026-10-12/manifest.json",
+      "defects": "../templates/codex-desktop-adjustments-2026-10-12/review.md",
+      "selectionReceipt": "../templates/codex-desktop-adjustments-2026-10-12/selection.md",
+      "selectedMainReferenceId": "codex-ep15-leaderboard-adjusted-v1",
+      "revisionsAllowed": true,
+      "viewportAcceptance": false,
+      "intendedDesignWidths": [
+        1280
+      ]
     },
     {
       "id": "EP-16",
@@ -654,7 +725,7 @@
       "paths": [
         "/admin/exams"
       ],
-      "status": "design_reviewed_with_open_findings",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
@@ -664,20 +735,74 @@
         "05-admin-exams.md",
         "05b-admin-preflight-dialogs-desktop.md"
       ],
-      "review": "../stitch-05a-review-2026-10-08.md",
-      "reviewedOn": "2026-10-08",
+      "review": "../templates/codex-desktop-adjustments-2026-10-12/review.md",
+      "reviewedOn": "2026-10-12",
       "viewportsReviewed": [
         1280
       ],
-      "acceptedAsTemplate": false,
+      "acceptedAsTemplate": true,
       "references": [
         {
           "screenId": "1642281b82914f34bba01f4569e7f41c",
           "state": "Loaded",
-          "file": "../evidence/stitch-05a-review-2026-10-08/exam-list-desktop-v4.png"
+          "file": "../evidence/stitch-05a-review-2026-10-08/exam-list-desktop-v4.png",
+          "acceptedAsVisualReference": false,
+          "usage": "Historical original for comparison; current main reference is the selected adjusted image."
+        },
+        {
+          "localId": "CD-EP19-UNPUBLISH",
+          "state": "Unpublish confirmation",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/unpublish-confirmation-v2.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/unpublish-confirmation.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "CD-EP19-ARCHIVE",
+          "state": "Archive confirmation",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/archive-confirmation-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/archive-confirmation.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "codex-adj-ep19-admin-exams-v1",
+          "state": "Desktop Loaded — retained adjusted reference",
+          "file": "../templates/codex-desktop-adjustments-2026-10-12/admin-exams/admin-exams-adjusted-v1.png",
+          "brief": "../templates/codex-desktop-adjustments-2026-10-12/admin-exams/brief.md",
+          "prompt": "../templates/codex-desktop-adjustments-2026-10-12/admin-exams/primary.prompt.txt",
+          "source": "Built-in image generation edit of original; local proposal, not Stitch export",
+          "review": "../templates/codex-desktop-adjustments-2026-10-12/review.md",
+          "status": "retained_with_port_findings",
+          "acceptedAsVisualReference": true,
+          "actualRasterDimensions": [
+            1275,
+            1233
+          ],
+          "acceptedOn": "2026-10-12",
+          "revisionsAllowed": true
         }
       ],
-      "stateCoverage": "05A desktop Loaded reviewed with open findings; not selected as template. Mobile, menus/dialogs and supplementary states remain backlog."
+      "stateCoverage": "Adjusted desktop Loaded main reference retained by user with minor port findings; mobile, supplementary states and runtime remain open. Previously retained unpublish/archive dialog references remain selected separately.",
+      "supplementaryReviews": [
+        "../stitch-05a-review-2026-10-08.md",
+        "../templates/codex-desktop-v1/review-2026-10-12.md",
+        "../templates/codex-desktop-adjustments-2026-10-12/review.md"
+      ],
+      "adjustedProposalReviewedOn": "2026-10-12",
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+      "template": "../templates/codex-desktop-adjustments-2026-10-12/manifest.json",
+      "defects": "../templates/codex-desktop-adjustments-2026-10-12/review.md",
+      "selectionReceipt": "../templates/codex-desktop-adjustments-2026-10-12/selection.md",
+      "selectedMainReferenceId": "codex-adj-ep19-admin-exams-v1",
+      "revisionsAllowed": true,
+      "viewportAcceptance": false,
+      "intendedDesignWidths": [
+        1280
+      ]
     },
     {
       "id": "EP-20",
@@ -686,7 +811,7 @@
         "/admin/exams/new",
         "/admin/exams/:examId/edit"
       ],
-      "status": "design_reviewed_with_open_findings",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
@@ -696,12 +821,12 @@
         "05-admin-exams.md",
         "05b-admin-preflight-dialogs-desktop.md"
       ],
-      "review": "../stitch-05a-review-2026-10-08.md",
-      "reviewedOn": "2026-10-08",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
       "viewportsReviewed": [
         1280
       ],
-      "acceptedAsTemplate": false,
+      "acceptedAsTemplate": true,
       "references": [
         {
           "screenId": "59c8a6e4b05d4cbf8d54505d3f3303b8",
@@ -712,9 +837,88 @@
           "screenId": "70f9bc116ec544f29510f7cf38ce8ff1",
           "state": "Edit Sections and questions",
           "file": "../evidence/stitch-05a-review-2026-10-08/exam-structure-desktop-v4.png"
+        },
+        {
+          "localId": "CD-EP20-PREFLIGHT",
+          "state": "Edit preflight ready",
+          "file": "../templates/codex-desktop-v1/images/preflight-ready-v1.png",
+          "source": "Built-in image generation; not a Stitch export",
+          "review": "../templates/codex-desktop-v1/README.md"
+        },
+        {
+          "localId": "CD-EP20-CREATE-INFO",
+          "state": "Create / Information",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/create-information-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/create-information.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "CD-EP20-CREATE-STRUCTURE",
+          "state": "Create / Sections empty",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/create-structure-empty-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/create-structure-empty.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "CD-EP20-CREATE-REVIEW",
+          "state": "Create / Preflight ready",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/create-preflight-ready-v2.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/create-preflight-ready.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "CD-EP20-VALIDATION",
+          "state": "Edit / Validation blocked",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/preflight-validation-v2.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/preflight-validation.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "CD-EP20-PUBLISH",
+          "state": "Publish confirmation",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/publish-confirmation-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/publish-confirmation.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "CD-EP20-REMOVE",
+          "state": "Remove section confirmation",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/remove-section-confirmation-v2.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/remove-section-confirmation.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "CD-EP20-LEAVE",
+          "state": "Unsaved exit confirmation",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/leave-unsaved-confirmation-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/leave-unsaved-confirmation.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "CD-EP20-CONFLICT",
+          "state": "Draft conflict comparison",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/draft-conflict-comparison-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/editor-dialogs/draft-conflict-comparison.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
         }
       ],
-      "stateCoverage": "05A desktop Edit Information/Sections and questions reviewed with open findings; not selected as template. Preflight/publish, Create, mobile and dialogs/states remain backlog.",
+      "stateCoverage": "Selected desktop states: Edit preflight ready, Create / Information, Create / Sections empty, Create / Preflight ready, Edit / Validation blocked, Publish confirmation, Remove section confirmation, Unsaved exit confirmation, Draft conflict comparison. Other states/mobile and implementation remain backlog.",
       "requiredVariants": [
         "Create",
         "Edit"
@@ -723,7 +927,54 @@
         "Information",
         "Sections and questions",
         "Preflight and publish"
-      ]
+      ],
+      "externalPreviewObservations": [
+        {
+          "screenId": "bef67930ab4e4b5e93f17f82d06d7193",
+          "state": "Preflight review",
+          "observedOn": "2026-10-12",
+          "viewportWidth": 1280,
+          "status": "design_reviewed_with_open_findings",
+          "evidence": "../evidence/screen-inventory-2026-10-12/publish-preview-observations.json",
+          "reviewedOn": "2026-10-12",
+          "review": "../stitch-05b1-review-2026-10-12.md",
+          "acceptedAsTemplate": false
+        },
+        {
+          "screenId": "8bdb6a1a0a4c4814a9017994e6f05355",
+          "state": "Publish confirmation",
+          "observedOn": "2026-10-12",
+          "viewportWidth": 1280,
+          "status": "design_reviewed_with_open_findings",
+          "evidence": "../evidence/screen-inventory-2026-10-12/publish-preview-observations.json",
+          "reviewedOn": "2026-10-12",
+          "review": "../stitch-05b1-review-2026-10-12.md",
+          "acceptedAsTemplate": false
+        },
+        {
+          "screenId": "3a591de37dfc4248b3151e7ffe17725d",
+          "state": "Validation error",
+          "observedOn": "2026-10-12",
+          "viewportWidth": 1280,
+          "status": "design_reviewed_with_open_findings",
+          "evidence": "../evidence/screen-inventory-2026-10-12/publish-preview-observations.json",
+          "reviewedOn": "2026-10-12",
+          "review": "../stitch-05b1-review-2026-10-12.md",
+          "acceptedAsTemplate": false
+        }
+      ],
+      "supplementaryReviews": [
+        "../stitch-05b1-review-2026-10-12.md"
+      ],
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false
     },
     {
       "id": "EP-21",
@@ -731,12 +982,36 @@
       "paths": [
         "/admin/questions"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "06-admin-questions-import.md"
+      "prompt": "06-admin-questions-import.md",
+      "references": [
+        {
+          "localId": "ep21-question-bank",
+          "state": "page",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep21-question-bank.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep21-question-bank.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: page. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-22",
@@ -745,7 +1020,7 @@
         "/admin/questions/new",
         "/admin/questions/:questionId/edit"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
@@ -759,7 +1034,94 @@
         "SINGLE_CHOICE",
         "MULTIPLE_CHOICE",
         "TRUE_FALSE"
-      ]
+      ],
+      "references": [
+        {
+          "localId": "ep22-edit-single",
+          "state": "page",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-single.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep22-edit-single.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "ep22-edit-multiple",
+          "state": "page",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-multiple.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep22-edit-multiple.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "ep22-edit-true-false",
+          "state": "page",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-true-false.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep22-edit-true-false.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "ep22-create-single",
+          "state": "page",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-create-single.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep22-create-single.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "ep22-type-change-confirm",
+          "state": "dialog",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-type-change-confirm.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep22-type-change-confirm.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "ep22-archive-confirm",
+          "state": "dialog",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-archive-confirm.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep22-archive-confirm.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "ep22-question-conflict",
+          "state": "dialog",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-question-conflict.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep22-question-conflict.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "ep22-candidate-preview",
+          "state": "dialog",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-candidate-preview.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep22-candidate-preview.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: page, page, page, page, dialog, dialog, dialog, dialog. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-23",
@@ -767,7 +1129,7 @@
       "paths": [
         "/admin/imports/new"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
@@ -777,7 +1139,49 @@
         "Select or paste JSON",
         "Preview and dry-run",
         "Confirm import"
-      ]
+      ],
+      "references": [
+        {
+          "localId": "ep23-json-input",
+          "state": "page",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep23-json-input.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep23-json-input.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "ep23-dry-run-valid",
+          "state": "page",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep23-dry-run-valid.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep23-dry-run-valid.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        },
+        {
+          "localId": "ep23-import-confirm",
+          "state": "dialog",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep23-import-confirm.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep23-import-confirm.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: page, page, dialog. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-24",
@@ -785,12 +1189,36 @@
       "paths": [
         "/admin/imports/:importId"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "06-admin-questions-import.md"
+      "prompt": "06-admin-questions-import.md",
+      "references": [
+        {
+          "localId": "ep24-committed-report",
+          "state": "page",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep24-committed-report.png",
+          "brief": "../templates/codex-desktop-v1/groups/questions-import/briefs/ep24-committed-report.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: page. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-25",
@@ -798,12 +1226,36 @@
       "paths": [
         "/admin"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "07-admin-overview-monitor-submissions.md"
+      "prompt": "07-admin-overview-monitor-submissions.md",
+      "references": [
+        {
+          "localId": "codex-desktop-v1-operations-ep-25",
+          "state": "success-with-fixed-public-fixture",
+          "file": "../templates/codex-desktop-v1/groups/operations/images/ep-25-admin-overview-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/operations/ep-25-admin-overview.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: success-with-fixed-public-fixture. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-26",
@@ -811,12 +1263,36 @@
       "paths": [
         "/admin/monitor"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "07-admin-overview-monitor-submissions.md"
+      "prompt": "07-admin-overview-monitor-submissions.md",
+      "references": [
+        {
+          "localId": "codex-desktop-v1-operations-ep-26",
+          "state": "success-with-fixed-public-fixture",
+          "file": "../templates/codex-desktop-v1/groups/operations/images/ep-26-monitor-index-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/operations/ep-26-monitor-index.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: success-with-fixed-public-fixture. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-27",
@@ -824,12 +1300,36 @@
       "paths": [
         "/admin/exams/:examId/monitor"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "07-admin-overview-monitor-submissions.md"
+      "prompt": "07-admin-overview-monitor-submissions.md",
+      "references": [
+        {
+          "localId": "codex-desktop-v1-operations-ep-27",
+          "state": "success-with-fixed-public-fixture",
+          "file": "../templates/codex-desktop-v1/groups/operations/images/ep-27-exam-monitor-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/operations/ep-27-exam-monitor.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: success-with-fixed-public-fixture. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-28",
@@ -837,12 +1337,36 @@
       "paths": [
         "/admin/exams/:examId/submissions"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "07-admin-overview-monitor-submissions.md"
+      "prompt": "07-admin-overview-monitor-submissions.md",
+      "references": [
+        {
+          "localId": "codex-desktop-v1-operations-ep-28",
+          "state": "success-with-fixed-public-fixture",
+          "file": "../templates/codex-desktop-v1/groups/operations/images/ep-28-submissions-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/operations/ep-28-submissions.brief.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: success-with-fixed-public-fixture. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-29",
@@ -850,12 +1374,36 @@
       "paths": [
         "/admin/attempts/:attemptId"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "08-admin-attempt-statistics-metrics-audit.md"
+      "prompt": "08-admin-attempt-statistics-metrics-audit.md",
+      "references": [
+        {
+          "localId": "codex-desktop-v1-reporting-failed-attempt-current",
+          "state": "current-live-unavailable-replay",
+          "file": "../templates/codex-desktop-v1/groups/reporting-shared/images/ep-29-failed-attempt-current-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/reporting-shared/ep-29-failed-attempt.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: current-live-unavailable-replay. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-30",
@@ -863,12 +1411,36 @@
       "paths": [
         "/admin/exams/:examId/versions/:versionId/statistics"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "08-admin-attempt-statistics-metrics-audit.md"
+      "prompt": "08-admin-attempt-statistics-metrics-audit.md",
+      "references": [
+        {
+          "localId": "codex-desktop-v1-reporting-exact-version-statistics",
+          "state": "target-presentation-current-report-contract",
+          "file": "../templates/codex-desktop-v1/groups/reporting-shared/images/ep-30-exact-version-statistics-v3-count-ratios.png",
+          "brief": "../templates/codex-desktop-v1/groups/reporting-shared/ep-30-exact-version-statistics.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: target-presentation-current-report-contract. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-31",
@@ -876,12 +1448,36 @@
       "paths": [
         "/admin/metrics"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "08-admin-attempt-statistics-metrics-audit.md"
+      "prompt": "08-admin-attempt-statistics-metrics-audit.md",
+      "references": [
+        {
+          "localId": "codex-desktop-v1-reporting-business-metrics-technical-unavailable",
+          "state": "target-web-business-adapter-technical-unavailable",
+          "file": "../templates/codex-desktop-v1/groups/reporting-shared/images/ep-31-business-metrics-unavailable-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/reporting-shared/ep-31-business-metrics-unavailable-technical.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: target-web-business-adapter-technical-unavailable. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "EP-32",
@@ -889,12 +1485,36 @@
       "paths": [
         "/admin/audit"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "requiredViewports": [
         1280,
         390
       ],
-      "prompt": "08-admin-attempt-statistics-metrics-audit.md"
+      "prompt": "08-admin-attempt-statistics-metrics-audit.md",
+      "references": [
+        {
+          "localId": "codex-desktop-v1-reporting-audit-list",
+          "state": "target-table-presentation-current-redacted-audit-contract",
+          "file": "../templates/codex-desktop-v1/groups/reporting-shared/images/ep-32-audit-list-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/reporting-shared/ep-32-audit-list.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: target-table-presentation-current-redacted-audit-contract. Other states/mobile and implementation remain backlog."
     },
     {
       "id": "SY-01",
@@ -902,12 +1522,36 @@
       "paths": [
         "*"
       ],
-      "status": "prompt_prepared",
+      "status": "template_retained",
       "prompt": "09-shared-states-handoff.md",
       "requiredViewports": [
         1280,
         390
-      ]
+      ],
+      "references": [
+        {
+          "localId": "codex-desktop-v1-reporting-public-404",
+          "state": "target-public-copy-safe-back",
+          "file": "../templates/codex-desktop-v1/groups/reporting-shared/images/sy-01-public-404-v1.png",
+          "brief": "../templates/codex-desktop-v1/groups/reporting-shared/sy-01-public-404.md",
+          "source": "Built-in image generation; local artifact, not a Stitch export",
+          "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+          "acceptedAsVisualReference": true
+        }
+      ],
+      "acceptedAsTemplate": true,
+      "acceptedOn": "2026-10-12",
+      "acceptedFor": "Named Codex desktop states only with port findings; not complete mobile/state coverage or runtime",
+      "template": "../templates/codex-desktop-v1/manifest.json",
+      "defects": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "reviewedOn": "2026-10-12",
+      "intendedDesignWidths": [
+        1280
+      ],
+      "actualRasterDimensionsVerified": true,
+      "viewportAcceptance": false,
+      "stateCoverage": "Selected desktop states: target-public-copy-safe-back. Other states/mobile and implementation remain backlog."
     }
   ],
   "aliasesAndRedirects": [
@@ -974,7 +1618,7 @@
       "id": "SY-05",
       "title": "Save states and conflicts",
       "paths": [],
-      "status": "prompt_prepared",
+      "status": "partial_desktop_references_retained",
       "prompt": "09-shared-states-handoff.md",
       "requiredViewports": [
         1280,
@@ -982,6 +1626,18 @@
       ],
       "supplementaryPrompts": [
         "05b-admin-preflight-dialogs-desktop.md"
+      ],
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "stateCoverage": "Named desktop references only; mobile and broader states remain backlog.",
+      "references": [
+        {
+          "localId": "CD-EP20-CONFLICT",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/draft-conflict-comparison-v1.png"
+        },
+        {
+          "localId": "ep22-question-conflict",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-question-conflict.png"
+        }
       ]
     },
     {
@@ -999,7 +1655,7 @@
       "id": "SY-07",
       "title": "Admin dialogs",
       "paths": [],
-      "status": "prompt_prepared",
+      "status": "partial_desktop_references_retained",
       "prompt": "09-shared-states-handoff.md",
       "requiredViewports": [
         1280,
@@ -1007,6 +1663,62 @@
       ],
       "supplementaryPrompts": [
         "05b-admin-preflight-dialogs-desktop.md"
+      ],
+      "review": "../templates/codex-desktop-v1/review-2026-10-12.md",
+      "stateCoverage": "Named desktop references only; mobile and broader states remain backlog.",
+      "references": [
+        {
+          "localId": "CD-EP20-PUBLISH",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/publish-confirmation-v1.png"
+        },
+        {
+          "localId": "CD-EP19-UNPUBLISH",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/unpublish-confirmation-v2.png"
+        },
+        {
+          "localId": "CD-EP19-ARCHIVE",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/archive-confirmation-v1.png"
+        },
+        {
+          "localId": "CD-EP20-REMOVE",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/remove-section-confirmation-v2.png"
+        },
+        {
+          "localId": "CD-EP20-LEAVE",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/leave-unsaved-confirmation-v1.png"
+        },
+        {
+          "localId": "CD-EP20-CONFLICT",
+          "file": "../templates/codex-desktop-v1/groups/editor-dialogs/draft-conflict-comparison-v1.png"
+        },
+        {
+          "localId": "ep23-import-confirm",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep23-import-confirm.png"
+        },
+        {
+          "localId": "ep22-type-change-confirm",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-type-change-confirm.png"
+        },
+        {
+          "localId": "ep22-archive-confirm",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-archive-confirm.png"
+        },
+        {
+          "localId": "ep22-question-conflict",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-question-conflict.png"
+        },
+        {
+          "localId": "ep22-candidate-preview",
+          "file": "../templates/codex-desktop-v1/groups/questions-import/images/ep22-candidate-preview.png"
+        },
+        {
+          "localId": "codex-desktop-v1-reporting-replay-reason-confirmation",
+          "file": "../templates/codex-desktop-v1/groups/reporting-shared/images/sy-07-replay-reason-confirmation-v1.png"
+        },
+        {
+          "localId": "codex-desktop-v1-reporting-audit-detail-drawer",
+          "file": "../templates/codex-desktop-v1/groups/reporting-shared/images/sy-07-audit-detail-drawer-v1.png"
+        }
       ]
     }
   ],
@@ -1015,18 +1727,19 @@
     "status": "prompt_prepared",
     "placement": "Separate designer frame or document, outside product pages."
   },
-  "reviewedPageFamilyCount": 17,
+  "reviewedPageFamilyCount": 30,
   "countDefinitions": {
-    "reviewedPageFamilyCount": "Pages with a recorded review, including pages subsequently retained as templates. This count can overlap retainedPageFamilyCount.",
+    "reviewedPageFamilyCount": "Page entries with a recorded review path; can overlap retained/awaiting-selection. Not an implementation count.",
     "remainingPageFamilyCount": "Page families still at prompt_prepared: verified frame coverage is not recorded yet, even if a newer external preview may exist. Selected/reviewed pages can still lack mobile and supplementary states.",
-    "reviewedAwaitingSelectionPageFamilyCount": "Reviewed page families not yet selected as visual templates. Desktop-only review does not accept mobile or complete state coverage."
+    "reviewedAwaitingSelectionPageFamilyCount": "Reviewed page families not yet selected as visual templates. Desktop-only review does not accept mobile or complete state coverage.",
+    "retainedPageFamilyCount": "At least one named selected visual-reference state in the page family. Does not mean all variants/mobile/interaction are complete."
   },
   "deliveryPriority": {
-    "updatedOn": "2026-10-09",
+    "updatedOn": "2026-10-12",
     "source": "User requested the remaining web UI first; desktop layouts now precede remaining mobile and supplementary states.",
     "nextPrompt": "05b-admin-preflight-dialogs-desktop.md",
-    "nextBrief": "05-admin-exams.md",
-    "nextPromptStatus": "05B_prepared",
+    "nextBrief": "../templates/codex-desktop-v1/review-2026-10-12.md",
+    "nextPromptStatus": "desktop_visual_baseline_selected_with_port_findings",
     "order": [
       "Remaining desktop page layouts",
       "Mobile counterparts and supplementary states"
@@ -1036,7 +1749,11 @@
       "EP-09 mobile: 7 states and desktop: 7 states",
       "EP-10 mobile: 7 states and desktop: 7 states"
     ],
-    "nextAction": "05B is prepared locally in three paste blocks: 05B-1 preflight/publish/validation (3 frames), 05B-2 unpublish/archive/remove-section (3), 05B-3 leave/conflict (2). Send only 05B-1 first, verify actual frames, then continue the remaining blocks. No 05B frames are retrieved or accepted, no external generation/refinement was sent, and 05A remains reviewed rather than selected as template."
+    "nextAction": "Current desktop UI temporarily selected by user. All33 page families have at least one named visual reference,0 main references await selection. Minor port findings, mobile/full variants/shared states and bounded application port remain open; no regeneration required just to refine these selected images.",
+    "nextBlock": "DESIGN-NEXT-02–04 / PORT-01–05",
+    "deliveryPlan": "../codex-desktop-delivery-2026-10-12.md",
+    "desktopDeliveryManifest": "../templates/codex-desktop-v1/manifest.json",
+    "adjustedDesktopTemplateManifest": "../templates/codex-desktop-adjustments-2026-10-12/manifest.json"
   },
-  "reviewedAwaitingSelectionPageFamilyCount": 4
+  "reviewedAwaitingSelectionPageFamilyCount": 0
 }

@@ -1,0 +1,22 @@
+[
+  {
+    "state": "preflight-ready",
+    "smallText": [],
+    "primary": {
+      "background": "rgb(49, 92, 244)",
+      "borderRadius": "9999px",
+      "disabled": false,
+      "fontSize": "14px"
+    }
+  },
+  {
+    "state": "publish-confirmation",
+    "smallText": [],
+    "primary": {
+      "background": "rgb(49, 92, 244)",
+      "borderRadius": "12px",
+      "disabled": false,
+      "fontSize": "16px"
+    }
+  }
+]

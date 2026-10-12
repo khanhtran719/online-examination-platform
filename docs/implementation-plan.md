@@ -1,6 +1,89 @@
 # Implementation plan
 
-## Active increment — Import normalization, 2026-10-12 (COMPLETE locally)
+## Active increment — Desktop UI baseline selection, 2026-10-12 (COMPLETE)
+
+User temporarily accepts the current three adjusted UI references and allows
+later revisions. [Selection receipt](web-ui/templates/codex-desktop-adjustments-2026-10-12/selection.md)
+selects EP-14 History/EP-15 Leaderboard/EP-19 Admin exam list desktop Loaded only.
+Manifest/metadata/registry and current indexes now record33 retained families,
+0 awaiting main-reference selection,0 prompt-only. ADJ-07/DESIGN-NEXT-01 closed;
+minor port findings, mobile/full state coverage, runtime and production remain
+open. Existing35-reference bundle stays separate; no PNG/prompt/app/API/schema/
+AWS/implementation-roadmap change. [Selection checks](web-ui/templates/codex-desktop-adjustments-2026-10-12/selection-validation.json)
+preserve pre-selection generation evidence rather than rewriting it.
+
+## Active increment — Three desktop reference adjustments, 2026-10-12 (IMAGE DELIVERY COMPLETE)
+
+User requests adjusted images based on existing EP-14 History, EP-15 Leaderboard
+and EP-19 Admin exam list. [Bounded image plan](web-ui/templates/codex-desktop-adjustments-2026-10-12/README.md)
+records per-screen agent ownership, three exact 1,299–1,351-word prompts and
+three generated original-image edits, shared Cobalt–Apricot contract and root
+visual review. [Before/after gallery](web-ui/templates/codex-desktop-adjustments-2026-10-12/gallery.html),
+[review](web-ui/templates/codex-desktop-adjustments-2026-10-12/review.md) and
+[validation](web-ui/templates/codex-desktop-adjustments-2026-10-12/validation.json)
+record complete image delivery with minor port findings. Old PNGs remain and
+outputs use versioned sibling paths. These are proposals for selection; no automatic main
+template acceptance, application port, mobile or production claim. No app/API/SQL,
+dependencies/AWS or implementation-roadmap mutation belongs to this increment.
+Registry remains30 retained/3 awaiting main-reference selection/0 prompt-only;
+the old35-reference bundle remains separate. ADJ-01–06 complete; selection/port open.
+
+## Active increment — Codex desktop references and per-group delivery, 2026-10-12 (VISUAL REFERENCES COMPLETE)
+
+[Delivery plan/risk controls](web-ui/codex-desktop-delivery-2026-10-12.md) and
+[shared design contract](web-ui/templates/codex-desktop-v1/design-contract.md):
+user selected the generated preflight as visual reference and authorized missing
+desktop screens/Admin dialogs first, mobile later. Per-group agents prepare
+detailed functional/style briefs and approximately 1,000–1,500-word prompts where
+needed, followed by root prompt review and actual image review. Completed 34 new
+frames/briefs/primary prompts (1,039–1,491 whitespace words): 10 Editor, 13 Questions,
+4 Operations and 7 Reporting. Plus the retained pilot gives 35 selected references.
+Root viewed all selected images; 11 superseded iterations remain outside gallery.
+Preflight retained byte-identical with findings; registry 30 retained/3 reviewed
+awaiting main-reference selection/0 prompt-only families. This count does not close
+mobile, full variant/state coverage or port. [Gallery](web-ui/templates/codex-desktop-v1/gallery.html),
+[review/next checklist](web-ui/templates/codex-desktop-v1/review-2026-10-12.md) and
+[validation](web-ui/templates/codex-desktop-v1/validation.json) record evidence.
+No application/implementation-roadmap/production acceptance change.
+
+## Previous increment — UI/template alignment and screen inventory, 2026-10-12 (REVIEW COMPLETE)
+
+User follow-up: [Codex image-generation pilot](web-ui/concepts/codex-2026-10-12/README.md)
+adds one Admin preflight ready concept with its exact prompt and PNG manifest.
+The pilot is complete; it is not a selected template or an application port, and
+does not change the registry counts or roadmap. Further screen generation remains
+a bounded next task rather than an automatic replacement of existing references.
+
+[05B-1 review](web-ui/stitch-05b1-review-2026-10-12.md) now confirms all3 desktop
+frames and records open findings: mismatched dialog background/unsupported
+capabilities, validation counter/metadata and editor consistency. Canvas captures
+and DOM evidence retained; ZIP export not confirmed. Review completed, no template
+selection/port/implementation acceptance. Do not regenerate05B-1;05B-2 is the next
+design group after the existing direction is retained. Counts remain16/4/13 and
+roadmap89/217 checked,128 pending. No application source change.
+
+[Screen inventory](web-ui/screen-inventory-2026-10-12.md) verifies 33 page families,
+39 normalized router patterns and 38 retained PNG hashes. Local template status
+remains 16 selected/4 reviewed awaiting selection/13 unverified. The three 05B-1
+previews observed during inventory have now been reviewed; source export and
+template selection remain open. Shared/mobile/state coverage remains open;
+no application implementation or roadmap tick added.
+
+[Review/checklist](web-ui/template-alignment-review-2026-10-12.md) and
+[browser evidence](web-ui/evidence/template-alignment-review-2026-10-12/README.md):
+five desktop pages/one mobile page confirm current navy/teal/mint implementation
+does not match the selected Dashboard V2/Cobalt–Apricot V3/V4 references. The
+earlier port report belongs to the old Stitch project; saved new templates do not
+mean application port completion. No application change or new visual acceptance.
+
+The previous proposal to move straight to WEB-03 omitted this gap. Follow the
+recorded design-first preference: complete/select remaining desktop references,
+then mobile/states and a bounded shared foundation/page port plan; integrate and
+verify live flows with separate visual/function evidence. WEB-03 remains pending;
+roadmap counts unchanged at89/217 checked,128 pending. Review only; no Stitch
+generation, port, API integration or background implementation started.
+
+## Previous increment — Import normalization, 2026-10-12 (COMPLETE locally)
 
 [IMP-01–06 checklist](import-normalization-2026-10-12.md): enforce import groups,
 duplicate/type policy, bounded source aliases and architecture-aware resolution;

@@ -1,0 +1,36 @@
+{
+  "state": "preflight-ready",
+  "screenId": "bef67930ab4e4b5e93f17f82d06d7193",
+  "text": "school\ndashboard\nquiz\nfact_check\nupload_file\nvisibility\nanalytics\nsettings\nExamPlatform\nQuản trị\nperson\nMinh Anh\nkeyboard_arrow_down\nQuản trị\nchevron_right\nĐề thi\nchevron_right\nSửa bản nháp\narrow_back\nDanh sách đề\nNền tảng điện toán đám mây — Bài ôn tập 01\nBản nháp\n\nChuẩn bị thông tin và cấu trúc trước khi phát hành\n\ncheck\n1. Thông tin\nĐã hoàn thành\ncheck\n2. Phần & câu hỏi\nĐã cấu hình\n3\n3. Kiểm tra & phát hành\nSẵn sàng kích hoạt\nassignment_turned_in\nRà soát trước khi phát hành\n\nKiểm tra thông số bài thi, chính sách thời gian và câu trúc phân bổ điểm\n\n3 Nhóm mục\ninfo\n1. Thông tin cơ bản\nSửa thông tin\nedit\nTiêu đề đề thi\nNền tảng điện toán đám mây — Bài ôn tập 01\nDanh mục\nIT Certification\nThời lượng làm bài\n90\nphút\nevent_note\n2. Lịch thi & chính sách\nUTC+7 · Giờ Việt Nam\nplay_circle\nThời điểm mở đề\n15/11/2026 08:00\nstop_circle\nThời điểm đóng đề\n15/11/2026 12:00\nrepeat\nGiới hạn lượt thi\nTối đa 3 lượt\nvisibility\nChính sách đáp án\nMở sau khi có kết quả\nleaderboard\nBảng xếp hạng\nBật xếp hạng bí danh (Bảo mật thông tin thí sinh)\nẨn danh\naccount_tree\n3. Cấu trúc đề thi\nSửa cấu trúc\nedit\n01\nPhần 1: Kiến thức nền\nLý thuyết chung, khái niệm cốt lõi\n2 câu · 20 điểm\n20% tổng số\n02\nPhần 2: Quyền truy cập & bảo mật\nIAM, xác thực, chính sách mạng\n2 câu · 30 điểm\n30% tổng số\n03\nPhần 3: Tình huống triển khai\nBài toán kiến trúc thực tế\n2 câu · 50 điểm\n50% tổng số\npie_chart\nTổng quan cấu trúc đề\n3 phần · 6 câu · 100 điểm\nchecklist\nKiểm tra bản nháp\n5/5 tiêu chí vượt qua\ncheck_circle\nThông tin bắt buộc đầy đủ\ncheck_circle\nLịch đóng sau lịch mở\n15/11 12:00 > 08:00\ncheck_circle\nMỗi phần đều có câu hỏi\ncheck_circle\n6 câu hỏi không trùng lặp\ncheck_circle\nĐiểm từng câu trong phạm vi hợp lệ\nThang điểm 10 - 25đ/câu\nverified\nMáy chủ sẽ kiểm tra lại khi phát hành.\nlock\nQuy tắc phiên bản\n\nPhiên bản phát hành giữ nội dung cố định cho các lượt thi bắt đầu với phiên bản đó.\n\nCó thay đổi chưa lưu\nQuay lại: Phần & câu hỏi\nLưu nháp\nLưu và phát hành\narrow_forward",
+  "buttons": [
+    {
+      "ariaLabel": null,
+      "disabled": false,
+      "height": 42,
+      "text": "Quay lại: Phần & câu hỏi",
+      "width": 200.09375
+    },
+    {
+      "ariaLabel": null,
+      "disabled": false,
+      "height": 42,
+      "text": "Lưu nháp",
+      "width": 95.640625
+    },
+    {
+      "ariaLabel": null,
+      "disabled": false,
+      "height": 42,
+      "text": "Lưu và phát hành\narrow_forward",
+      "width": 193.046875
+    }
+  ],
+  "styles": {
+    "background": "rgb(250, 248, 255)",
+    "dialogCount": 0,
+    "fontFamily": "\"Be Vietnam Pro\"",
+    "fontSize": "16px",
+    "height": 1482,
+    "width": 1280
+  }
+}

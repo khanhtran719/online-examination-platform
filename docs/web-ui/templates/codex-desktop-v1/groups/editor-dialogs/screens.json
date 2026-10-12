@@ -1,0 +1,807 @@
+[
+  {
+    "id": "CD-EP20-CREATE-INFO",
+    "slug": "create-information",
+    "family": "EP-20",
+    "name": "Tạo đề — Thông tin",
+    "state": "Create / Information",
+    "description": "Tạo đề mới: nhập thông tin, lịch và chính sách; giữ local edits giữa các bước, chỉ lưu khi full draft hợp lệ.",
+    "sources": [
+      "apps/web/src/features/admin/exam-information.tsx",
+      "apps/web/src/features/admin/use-exam-draft.ts"
+    ],
+    "wordCount": 1160,
+    "promptFile": "create-information.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "create-information-v1.png",
+    "currentVsTarget": "Đề mới chưa có receipt; không in revision đã lưu. Hiển thị phút là target UX và phải chuyển sang durationSeconds. Helper ngoài contract về leaderboard trong ảnh phải bỏ khi port.",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1205082,
+    "sha256": "11c9af863055c13c1d926cf1a0c699cf3a226efaa2a3e5132118c3a7660f7d6b",
+    "review": {
+      "content": "Manual visual review: safe defaults/no server revision/1section0questions0points/timezone90min and disabledsave correct",
+      "findings": [
+        "Rail icon family/settings placement differs from shared shell; normalize in code",
+        "Image has extra leaderboard helper implying availability after results; verify actual leaderboard policy and replace with contracted wording",
+        "Actual raster size differs from intended1280px; not viewport evidence"
+      ],
+      "acceptedAsTemplate": true
+    },
+    "route": "/admin/exams/new",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "Chưa có server ID hoặc bản sửa; 90 phút; 15/11/2026 08:00–12:00 UTC+7; tối đa 3 lượt; một phần/0 câu/0 điểm; lời giải NEVER, bảng xếp hạng tắt.",
+    "actions": [
+      "Nhập tên, danh mục, phút, lịch và chính sách vào local draft.",
+      "Tiếp tục chuyển bước, giữ nội dung đang nhập.",
+      "Lưu nháp disabled khi toàn cấu trúc còn không hợp lệ."
+    ],
+    "briefFile": "create-information.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-f54d4749-9560-45b1-933c-bc51cac0f7f5.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "generationSuffix": "",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "correctionPromptFile": null,
+    "generationHistory": [
+      {
+        "image": "create-information-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-f54d4749-9560-45b1-933c-bc51cac0f7f5.png",
+        "mode": "new",
+        "referencedImage": null,
+        "promptFile": "create-information.prompt.md",
+        "generationSuffix": "",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1205082,
+        "sha256": "11c9af863055c13c1d926cf1a0c699cf3a226efaa2a3e5132118c3a7660f7d6b"
+      }
+    ]
+  },
+  {
+    "id": "CD-EP20-CREATE-STRUCTURE",
+    "slug": "create-structure-empty",
+    "family": "EP-20",
+    "name": "Tạo đề — Thêm câu hỏi",
+    "state": "Create / Sections empty",
+    "description": "Bước 2 tạo đề với một phần rỗng; thêm câu từ bank đã tải, tổng1/0/0 và chưa có server revision.",
+    "sources": [
+      "apps/web/src/features/admin/exam-structure.tsx",
+      "apps/web/src/features/admin/use-exam-draft.ts"
+    ],
+    "wordCount": 1147,
+    "promptFile": "create-structure-empty.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "create-structure-empty-v1.png",
+    "currentVsTarget": "Bank search chỉ trong phần đã tải, không global search. Không lộ keys. Header bell do raster tự thêm phải bỏ khi port.",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1255348,
+    "sha256": "cc945a00d4468ff6ce95cefbc00be5dd5f0ae2cb22d3fe066c8ba9342e0f5db0",
+    "review": {
+      "content": "One empty section/0questions0points; unsaved new exam;90min schedule and disabledsave/forward correct; bank local-scope/no keys.",
+      "findings": [
+        "Header adds unrequested notification bell; omit during port",
+        "Unify stepper/icons and compact spacing with shared shell; no pixel/font acceptance",
+        "Bank wording and option previews illustrative; bind actual loaded question projection when coding"
+      ],
+      "acceptedAsTemplate": true
+    },
+    "route": "/admin/exams/new",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "Cùng đề mới; bước 2, phần Kiến thức nền rỗng; summary 1 phần/0 câu/0 điểm; bank đã tải có các câu có thể thêm.",
+    "actions": [
+      "Đổi tên phần; thêm câu từ bank đã tải và giữ local state.",
+      "Không cho bỏ phần cuối; không thêm trùng câu.",
+      "Lưu và bước kiểm tra disabled tới khi cấu trúc hợp lệ."
+    ],
+    "briefFile": "create-structure-empty.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-b8037710-6817-40cf-a9fd-5836e38fcb7c.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "generationSuffix": "",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "correctionPromptFile": null,
+    "generationHistory": [
+      {
+        "image": "create-structure-empty-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-b8037710-6817-40cf-a9fd-5836e38fcb7c.png",
+        "mode": "new",
+        "referencedImage": null,
+        "promptFile": "create-structure-empty.prompt.md",
+        "generationSuffix": "",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1255348,
+        "sha256": "cc945a00d4468ff6ce95cefbc00be5dd5f0ae2cb22d3fe066c8ba9342e0f5db0"
+      }
+    ]
+  },
+  {
+    "id": "CD-EP20-CREATE-REVIEW",
+    "slug": "create-preflight-ready",
+    "family": "EP-20",
+    "name": "Tạo đề — Rà soát hợp lệ",
+    "state": "Create / Preflight ready",
+    "description": "Rà soát đề mới với một phần/hai câu/20 điểm; local validation đạt, lưu trước rồi phát hành bằng receipts.",
+    "sources": [
+      "apps/web/src/features/admin/exam-editor-page.tsx",
+      "apps/web/src/features/admin/use-exam-draft.ts"
+    ],
+    "wordCount": 1147,
+    "promptFile": "create-preflight-ready.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "create-preflight-ready-v2.png",
+    "currentVsTarget": "5/5 là local validation, không server approval. Chỉ báo thành công sau kết quả thật; tạo nháp thành công chưa đồng nghĩa phát hành.",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1721083,
+    "sha256": "fb073ce7b0317578e61975226b2f26a7c5ef0ea8e336daa00cef53ceff8d4669",
+    "review": {
+      "content": "Corrected boardoff, explicitlocalcheck, enabledsave;1/2/20 no serverrevision and correct schedule",
+      "findings": [
+        "Normalize stepper/rail icons to shared components",
+        "Typography/tokens/spacing not measured or runtime accepted"
+      ],
+      "acceptedAsTemplate": true
+    },
+    "discardedIterations": [
+      {
+        "file": "create-preflight-ready-v1.png",
+        "reason": "Contradictory board-off helper and disabled-looking save; targeted correction replaces this reference"
+      }
+    ],
+    "correctionPrompt": "create-preflight-ready-correction.prompt.md",
+    "route": "/admin/exams/new",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "Một phần Kiến thức nền, hai câu 10 điểm, tổng 1/2/20; 90 phút, lịch 15/11 08:00–12:00; NEVER và leaderboard tắt; chưa có revision.",
+    "actions": [
+      "Sửa thông tin/cấu trúc quay về bước tương ứng mà không mất edits.",
+      "Lưu nháp và Lưu và phát hành enabled trên local form hợp lệ.",
+      "Lưu và phát hành mở confirm, rồi create receipt trước publish."
+    ],
+    "briefFile": "create-preflight-ready.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-58a464ff-3629-4dbc-8df2-d513d2742c0c.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "generationSuffix": "",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "correctionPromptFile": "create-preflight-ready-correction.prompt.md",
+    "generationHistory": [
+      {
+        "image": "create-preflight-ready-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-7c01baf8-393f-47d7-bb97-ea9ec2d07339.png",
+        "mode": "new",
+        "referencedImage": null,
+        "promptFile": "create-preflight-ready.prompt.md",
+        "generationSuffix": "",
+        "selected": false,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1417443,
+        "sha256": "485ae388db97895ec360d1528a926822c06b81bb30e3b5573d96c5ae37b7798e"
+      },
+      {
+        "image": "create-preflight-ready-v2.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-58a464ff-3629-4dbc-8df2-d513d2742c0c.png",
+        "mode": "edit",
+        "referencedImage": "create-preflight-ready-v1.png",
+        "promptFile": "create-preflight-ready-correction.prompt.md",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1721083,
+        "sha256": "fb073ce7b0317578e61975226b2f26a7c5ef0ea8e336daa00cef53ceff8d4669"
+      }
+    ]
+  },
+  {
+    "id": "CD-EP20-VALIDATION",
+    "slug": "preflight-validation",
+    "family": "EP-20",
+    "name": "Rà soát — Cần sửa hai mục",
+    "state": "Edit / Validation blocked",
+    "description": "Bản sửa4 có hai lỗi: lịch đóng trước mở và phần2rỗng; tổng3/4/70, checklist3/5 và save/publish disabled.",
+    "sources": [
+      "docs/web-ui/stitch-05b1-review-2026-10-12.md",
+      "apps/web/src/features/admin/use-exam-draft.ts"
+    ],
+    "wordCount": 1158,
+    "promptFile": "preflight-validation.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "preflight-validation-v2.png",
+    "currentVsTarget": "Pre-disable là target UX; current Web có validation lúc save. Hai lỗi độc lập, không gán green check cho lịch sai.",
+    "width": 1195,
+    "height": 1316,
+    "bytes": 1646675,
+    "sha256": "868b6ecd199e0a27314685c6ae850c30ba841343367f2b50558c94beab176f53",
+    "review": {
+      "acceptedAsTemplate": true,
+      "criticalFindings": [],
+      "minorFindings": [
+        "Icon/rail/stepper size follows retained pilot but needs shared CSS token normalization during port.",
+        "Raster cannot validate runtime, actual fonts or keyboard behavior."
+      ],
+      "verified": [
+        "open08:00/close07:30 remains invalid",
+        "section2 empty0/0",
+        "3 sections4 questions70 points",
+        "3/5 checks; duplicate questions green4 câu không trùng",
+        "save/publish disabled before errors corrected"
+      ]
+    },
+    "correctionPromptFile": "preflight-validation-correction.prompt.md",
+    "discardedIterations": [
+      {
+        "image": "preflight-validation-v1.png",
+        "reason": "Third green checklist row contradicted invalid schedule; replaced with 4 câu không trùng."
+      }
+    ],
+    "route": "/admin/exams/:examId/edit",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "Bản sửa 4, chưa phát hành; mở 08:00 nhưng đóng 07:30 cùng 15/11/2026; phần 2 rỗng; tổng 3 phần/4 câu/70 điểm; checklist 3/5.",
+    "actions": [
+      "Sửa lịch thi đưa về đúng field; thêm câu vào phần 2.",
+      "Quay lại giữ local draft.",
+      "Lưu nháp và Lưu và phát hành disabled vì hai lỗi."
+    ],
+    "briefFile": "preflight-validation.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-0feebeef-9db8-457c-9044-0a4af06484b6.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "generationSuffix": "",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "generationHistory": [
+      {
+        "image": "preflight-validation-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-1e275932-14e5-42c6-98d4-4857ecc7ca6f.png",
+        "mode": "edit",
+        "referencedImage": "../../images/preflight-ready-v1.png",
+        "promptFile": "preflight-validation.prompt.md",
+        "generationSuffix": "",
+        "selected": false,
+        "exactPromptComplete": false,
+        "provenanceLimitation": "Original edit used primary prompt plus an edit-only suffix whose exact text was not retained. Selected correction prompt is retained exactly; do not reconstruct the missing suffix.",
+        "width": 1195,
+        "height": 1316,
+        "bytes": 1519546,
+        "sha256": "5962dabad9274e4243fc5dab0ae7d4320dcaad29642e18956d9a988152b56d95"
+      },
+      {
+        "image": "preflight-validation-v2.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-0feebeef-9db8-457c-9044-0a4af06484b6.png",
+        "mode": "edit",
+        "referencedImage": "preflight-validation-v1.png",
+        "promptFile": "preflight-validation-correction.prompt.md",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1195,
+        "height": 1316,
+        "bytes": 1646675,
+        "sha256": "868b6ecd199e0a27314685c6ae850c30ba841343367f2b50558c94beab176f53"
+      }
+    ]
+  },
+  {
+    "id": "CD-EP20-PUBLISH",
+    "slug": "publish-confirmation",
+    "family": "EP-20",
+    "name": "Xác nhận lưu và phát hành",
+    "state": "Publish confirmation",
+    "description": "Xác nhận trên preflight đã giữ; lưu edits trước phát hành, hủy giữ local draft, chỉ báo success sau receipts.",
+    "sources": [
+      "docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "apps/web/src/features/admin/use-exam-draft.ts"
+    ],
+    "wordCount": 1163,
+    "promptFile": "publish-confirmation.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "publish-confirmation-v1.png",
+    "currentVsTarget": "Overlay là trước quyết định. Không tự thay background thành published; không gán version ID hoặc báo success khi chưa receipt.",
+    "width": 1402,
+    "height": 1122,
+    "bytes": 1533872,
+    "sha256": "9a237c55d4c80da60ff252c949c92651538db8388c2723827e81b257ad5896ad",
+    "review": {
+      "acceptedAsTemplate": true,
+      "criticalFindings": [],
+      "minorFindings": [
+        "Underlying pilot rail retains text labels; normalize to shared icon-only rail when porting.",
+        "Actual raster1402×1122 differs from intended1280px CSS viewport; not viewport evidence."
+      ],
+      "verified": [
+        "same6questions100points90minutes",
+        "save-before-publish warning",
+        "cancel andconfirm enabled awaitingreceipt",
+        "no new version/successfabrication"
+      ]
+    },
+    "route": "/admin/exams/:examId/edit",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "Nền preflight được giữ: bản sửa 4, edits chưa lưu; 90 phút/3 phần/6 câu/100 điểm; lịch 15/11/2026 08:00–12:00.",
+    "actions": [
+      "Hủy/X/Esc trở về cùng local draft.",
+      "Lưu và phát hành chạy save trước, publish sau.",
+      "Pending chặn gửi lặp; save success/publish failure phải tách kết quả."
+    ],
+    "briefFile": "publish-confirmation.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-3d8fd1a6-55ba-4bf2-a616-7e12b6ec8c39.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "generationSuffix": "",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "correctionPromptFile": null,
+    "generationHistory": [
+      {
+        "image": "publish-confirmation-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-3d8fd1a6-55ba-4bf2-a616-7e12b6ec8c39.png",
+        "mode": "edit",
+        "referencedImage": "../../images/preflight-ready-v1.png",
+        "promptFile": "publish-confirmation.prompt.md",
+        "generationSuffix": "",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1402,
+        "height": 1122,
+        "bytes": 1533872,
+        "sha256": "9a237c55d4c80da60ff252c949c92651538db8388c2723827e81b257ad5896ad"
+      }
+    ]
+  },
+  {
+    "id": "CD-EP19-UNPUBLISH",
+    "slug": "unpublish-confirmation",
+    "family": "EP-19",
+    "name": "Gỡ phát hành đề",
+    "state": "Unpublish confirmation",
+    "description": "Gỡ phát hành TOEIC luyện01 đang published; ngừng start mới, giữ lượt đã bắt đầu và kết quả.",
+    "sources": [
+      "docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "apps/web/src/features/admin/exam-list-page.tsx"
+    ],
+    "wordCount": 1158,
+    "promptFile": "unpublish-confirmation.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "unpublish-confirmation-v2.png",
+    "currentVsTarget": "Dialog là target presentation trên list; source list hiện chỉ có Sửa đề. Không tự thêm endpoint hay menu hành động. Lượt cũ/kết quả giữ; chỉ phát hành lại khi đủ điều kiện.",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1572829,
+    "sha256": "4c99e94b96ee0ab144a2c56286ac1ae56b73334e646cd9ea4495bb74e13cd031",
+    "review": {
+      "acceptedAsTemplate": true,
+      "criticalFindings": [],
+      "minorFindings": [
+        "Normalize shell icon family/spacing in CSS; raster is no runtime proof."
+      ],
+      "verified": [
+        "TOEIC75minutes14Nov08-12publishedrevision7",
+        "background target remainspublished",
+        "newstartsblocked; existingattemptsandresultskept",
+        "conditionalrepublishonly",
+        "background row action Sửa đề; no added filters"
+      ]
+    },
+    "correctionPromptFile": "unpublish-confirmation-correction.prompt.md",
+    "discardedIterations": [
+      {
+        "image": "unpublish-confirmation-v1.png",
+        "reason": "Unrequested list search/dropdown/ellipsis actions; corrected to current simple loaded list."
+      }
+    ],
+    "route": "/admin/exams",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "TOEIC Reading — Luyện tập 01; 75 phút, published, bản sửa 7; lịch 14/11/2026 08:00–12:00; nền vẫn published.",
+    "actions": [
+      "Hủy/X không mutation.",
+      "Gỡ phát hành chặn start mới sau receipt.",
+      "Pending khóa lặp, unknown outcome phải reconcile trước báo trạng thái."
+    ],
+    "briefFile": "unpublish-confirmation.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-c889ef59-a901-4e16-978a-d1d458a55dd2.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "generationSuffix": "",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "generationHistory": [
+      {
+        "image": "unpublish-confirmation-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-57edc080-0342-49d7-8d84-fb45ce45e3a1.png",
+        "mode": "new",
+        "referencedImage": null,
+        "promptFile": "unpublish-confirmation.prompt.md",
+        "generationSuffix": "",
+        "selected": false,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1325418,
+        "sha256": "248ee8bb4182ee5cfc2565d3d773197f68f33ba18f142c31fde6560cf3eb4f4c"
+      },
+      {
+        "image": "unpublish-confirmation-v2.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-c889ef59-a901-4e16-978a-d1d458a55dd2.png",
+        "mode": "edit",
+        "referencedImage": "unpublish-confirmation-v1.png",
+        "promptFile": "unpublish-confirmation-correction.prompt.md",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1572829,
+        "sha256": "4c99e94b96ee0ab144a2c56286ac1ae56b73334e646cd9ea4495bb74e13cd031"
+      }
+    ]
+  },
+  {
+    "id": "CD-EP19-ARCHIVE",
+    "slug": "archive-confirmation",
+    "family": "EP-19",
+    "name": "Lưu trữ đề",
+    "state": "Archive confirmation",
+    "description": "Lưu trữ đề CSDL45phút; giữ lượt và kết quả, không hứa unarchive; nền vẫn published trước confirm.",
+    "sources": [
+      "docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "apps/web/src/features/admin/exam-editor-page.tsx"
+    ],
+    "wordCount": 1159,
+    "promptFile": "archive-confirmation.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "archive-confirmation-v1.png",
+    "currentVsTarget": "Không xóa lượt/kết quả; không hứa unarchive. List overlay là target UX, không chứng minh list đã có action.",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1481843,
+    "sha256": "9a1adf4b2910e38188ec329477cada16d16783b2a278785e107223fcd58dd245",
+    "review": {
+      "acceptedAsTemplate": true,
+      "criticalFindings": [],
+      "minorFindings": [
+        "Shared shell icon family/spacing require CSS normalization.",
+        "Background label CSDL category IT Certification illustrative; bind actual exam category."
+      ],
+      "verified": [
+        "CSDL45minutes17Nov13:30-16:00publishedrev6",
+        "no unarchive guarantee ordelete",
+        "keeps existingattemptsandresults",
+        "backgroundpublishedconfirmnotyetexecuted"
+      ]
+    },
+    "generationSuffix": "\nUse the referenced image as the exact exam-list background and replace only the existing confirmation overlay with this archive overlay. Keep the same three list rows, shell and dates. Remove the unrequested search input and status dropdown from the background; leave natural whitespace above the table. The third row status must read “Đang phát hành” and the revision column label “Bản sửa”. Background row actions read “Sửa đề →”, not ellipsis menus. These are presentation corrections to match the current list contract. Preserve all other foreground requirements exactly.",
+    "route": "/admin/exams",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "Cơ sở dữ liệu — Kiểm tra giữa kỳ; 45 phút, published, bản sửa 6; lịch 17/11/2026 13:30–16:00; nền vẫn published.",
+    "actions": [
+      "Hủy/X giữ nguyên.",
+      "Lưu trữ đề cần catalog.manage, đúng target và receipt.",
+      "Pending chặn lặp; lỗi giữ context và local intent."
+    ],
+    "briefFile": "archive-confirmation.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-4467e1d0-7a9e-4d5f-a172-26d204c08589.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "correctionPromptFile": null,
+    "generationHistory": [
+      {
+        "image": "archive-confirmation-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-4467e1d0-7a9e-4d5f-a172-26d204c08589.png",
+        "mode": "edit",
+        "referencedImage": "unpublish-confirmation-v1.png",
+        "promptFile": "archive-confirmation.prompt.md",
+        "generationSuffix": "\nUse the referenced image as the exact exam-list background and replace only the existing confirmation overlay with this archive overlay. Keep the same three list rows, shell and dates. Remove the unrequested search input and status dropdown from the background; leave natural whitespace above the table. The third row status must read “Đang phát hành” and the revision column label “Bản sửa”. Background row actions read “Sửa đề →”, not ellipsis menus. These are presentation corrections to match the current list contract. Preserve all other foreground requirements exactly.",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1481843,
+        "sha256": "9a1adf4b2910e38188ec329477cada16d16783b2a278785e107223fcd58dd245"
+      }
+    ]
+  },
+  {
+    "id": "CD-EP20-REMOVE",
+    "slug": "remove-section-confirmation",
+    "family": "EP-20",
+    "name": "Bỏ phần thi",
+    "state": "Remove section confirmation",
+    "description": "Bỏ Kiến thức nền2câu/20điểm khỏi local draft; preview2/4/80, không đổi bank hoặc frozen attempts.",
+    "sources": [
+      "apps/web/src/features/admin/exam-structure.tsx",
+      "docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md"
+    ],
+    "wordCount": 1143,
+    "promptFile": "remove-section-confirmation.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "remove-section-confirmation-v2.png",
+    "currentVsTarget": "Không gọi archive/delete question. Nền không đổi tổng trước confirm. Hai phần còn lại nên không phải case bỏ phần cuối.",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1688818,
+    "sha256": "7620e9963cee94ecaada99d9da6a0c1ba423c5043cda0392d66c1ddaf0ef89f7",
+    "review": {
+      "acceptedAsTemplate": true,
+      "criticalFindings": [],
+      "minorFindings": [
+        "Normalize shared shell/stepper/icons and constrain bank search to loaded items during port.",
+        "Raster no runtime/focus/persistence evidence."
+      ],
+      "verified": [
+        "loaded Bản sửa4 no publication",
+        "background3sections6questions100points",
+        "preview2sections4questions80points",
+        "bankoriginalskept",
+        "localstructureonlymustsave"
+      ]
+    },
+    "correctionPromptFile": "remove-section-confirmation-correction.prompt.md",
+    "discardedIterations": [
+      {
+        "image": "remove-section-confirmation-v1.png",
+        "reason": "Wrong draft-version wording and unrequested notification bell; corrected."
+      }
+    ],
+    "route": "/admin/exams/:examId/edit",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "Bước 2, bản sửa 4 chưa phát hành; nền 3 phần/6 câu/100 điểm. Bỏ Kiến thức nền 2 câu/20 điểm; preview sau confirm 2/4/80.",
+    "actions": [
+      "Giữ phần/X/Esc bảo toàn membership.",
+      "Bỏ phần chỉ thay local cấu trúc.",
+      "Cần Lưu nháp để ghi lại; bank originals và frozen attempts giữ nguyên."
+    ],
+    "briefFile": "remove-section-confirmation.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-b18151a7-3ffb-4080-892f-b8c09ae17e0f.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "generationSuffix": "",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "generationHistory": [
+      {
+        "image": "remove-section-confirmation-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-ed47f030-a93b-4eab-b57b-125107e1a2ff.png",
+        "mode": "new",
+        "referencedImage": null,
+        "promptFile": "remove-section-confirmation.prompt.md",
+        "generationSuffix": "",
+        "selected": false,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1520815,
+        "sha256": "fb82c0a3314a0844bcdf696618df75539a81060238c223b493754e0e9c4908f4"
+      },
+      {
+        "image": "remove-section-confirmation-v2.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-b18151a7-3ffb-4080-892f-b8c09ae17e0f.png",
+        "mode": "edit",
+        "referencedImage": "remove-section-confirmation-v1.png",
+        "promptFile": "remove-section-confirmation-correction.prompt.md",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1688818,
+        "sha256": "7620e9963cee94ecaada99d9da6a0c1ba423c5043cda0392d66c1ddaf0ef89f7"
+      }
+    ]
+  },
+  {
+    "id": "CD-EP20-LEAVE",
+    "slug": "leave-unsaved-confirmation",
+    "family": "EP-20",
+    "name": "Rời bản nháp chưa lưu",
+    "state": "Unsaved exit confirmation",
+    "description": "Rời editor step2: primary ở lại, rời chỉ bỏ unsaved edits; không autosave hoặc hứa recovery reload.",
+    "sources": [
+      "docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "apps/web/src/features/admin/use-exam-draft.ts"
+    ],
+    "wordCount": 1144,
+    "promptFile": "leave-unsaved-confirmation.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "leave-unsaved-confirmation-v1.png",
+    "currentVsTarget": "Navigation blocker cần implementation riêng, ảnh không chứng minh handler. Reload/tab close dùng handling native và phải test; không xóa saved draft/kết quả.",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1648254,
+    "sha256": "0c6998b5883c8027debc500deef4c93b62be0c0670611689463ed9955a6f0a9d",
+    "review": {
+      "acceptedAsTemplate": true,
+      "criticalFindings": [],
+      "minorFindings": [
+        "Shared shell/stepper/icons must normalize in CSS; bank preview illustrative."
+      ],
+      "verified": [
+        "same draftrev4nophublication3/6/100",
+        "primaryỞlạichỉnhsửa",
+        "Rờivàbỏthayđổi onlylocalunsavededits",
+        "no autosave/reloadpromise"
+      ]
+    },
+    "route": "/admin/exams/:examId/edit",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "Cùng step 2, bản sửa 4 và local changes; 90 phút/3 phần/6 câu/100 điểm. Điều hướng nội bộ đang bị chặn trước khi rời.",
+    "actions": [
+      "Ở lại chỉnh sửa là primary; X/Esc giữ local state.",
+      "Rời và bỏ thay đổi chỉ bỏ local unsaved edits rồi đi đúng đích nội bộ.",
+      "Không autosave, không Lưu và rời hoặc hứa recovery reload."
+    ],
+    "briefFile": "leave-unsaved-confirmation.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-55494eb9-f092-41ec-9828-4f21d2c36a74.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "generationSuffix": "\nEdit the exact supplied corrected structure-editor screen, replacing its existing removal modal with only this leave-unsaved modal. Keep all background data, Bản sửa4/no publication and3sections6questions100points unchanged. No notification bell or new controls. Keep the local draft unchanged before the leave decision.",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "correctionPromptFile": null,
+    "generationHistory": [
+      {
+        "image": "leave-unsaved-confirmation-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-55494eb9-f092-41ec-9828-4f21d2c36a74.png",
+        "mode": "edit",
+        "referencedImage": "remove-section-confirmation-v2.png",
+        "promptFile": "leave-unsaved-confirmation.prompt.md",
+        "generationSuffix": "\nEdit the exact supplied corrected structure-editor screen, replacing its existing removal modal with only this leave-unsaved modal. Keep all background data, Bản sửa4/no publication and3sections6questions100points unchanged. No notification bell or new controls. Keep the local draft unchanged before the leave decision.",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1648254,
+        "sha256": "0c6998b5883c8027debc500deef4c93b62be0c0670611689463ed9955a6f0a9d"
+      }
+    ]
+  },
+  {
+    "id": "CD-EP20-CONFLICT",
+    "slug": "draft-conflict-comparison",
+    "family": "EP-20",
+    "name": "Đối chiếu xung đột bản nháp",
+    "state": "Draft conflict comparison",
+    "description": "Đối chiếu latest bản5/75phút/80điểm với local bản4/90/100; giữ edits, không force-save/auto-merge.",
+    "sources": [
+      "apps/web/src/features/admin/use-exam-draft.ts",
+      "docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md"
+    ],
+    "wordCount": 1136,
+    "promptFile": "draft-conflict-comparison.prompt.md",
+    "status": "generated_reviewed_with_open_findings",
+    "imageFile": "draft-conflict-comparison-v1.png",
+    "currentVsTarget": "Latest chỉ được render sau read thật; fixture không chứng minh API đã chạy. Mọi lần save tiếp vẫn cần server validation. Chevron ở rows do raster tự thêm phải bỏ hoặc chỉ là trang trí, không tạo action.",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1552960,
+    "sha256": "e639e9af486b1bc195c3c1cdedcce122809cb0fb46778986d5ca3f3fed2eab73",
+    "review": {
+      "acceptedAsTemplate": true,
+      "criticalFindings": [],
+      "minorFindings": [
+        "Unrequestedchevrons in comparisonrows shouldbe noninteractive/omittedwhenported.",
+        "Modalwidth/rail/stepper need CSSsharedtokens; raster notviewport proof."
+      ],
+      "verified": [
+        "latestrev5/75minutes80points16+24+40",
+        "localrev4/90minutes100points20+30+50",
+        "sixquestionseach",
+        "same schedule15Nov08-12",
+        "backgroundlocalunchanged",
+        "keep/discard explicitnoforcemerge"
+      ]
+    },
+    "route": "/admin/exams/:examId/edit",
+    "permissions": [
+      "catalog.manage"
+    ],
+    "fixture": "Latest bản sửa 5: 75 phút/3 phần/6 câu/80 điểm (16+24+40). Local dựa bản 4: 90 phút/3/6/100 (20+30+50). Lịch/chính sách giống nhau.",
+    "actions": [
+      "Quay lại đối chiếu/X giữ local edits; conflict chưa tự giải quyết.",
+      "Bỏ sửa và dùng bản mới thay local bằng latest sau quyết định rõ.",
+      "Không auto-merge, toggle từng field hoặc force-save."
+    ],
+    "briefFile": "draft-conflict-comparison.brief.md",
+    "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-93fffce4-9324-422d-89eb-59cc5a043e42.png",
+    "generationTool": "image_gen.imagegen built-in",
+    "generationSuffix": "\nEdit the exact supplied corrected structure-editor image, replacing only the existing removal modal with the wide conflict-comparison dialog. Keep local background data90minutes3sections6questions100points, Bản sửa4/no publication unchanged. Do not change background to the newly saved75/80 draft before an explicit decision. No notification bell, new controls or merge buttons. Use clearly aligned two-column comparison, exact values from the frame.",
+    "rootReview": {
+      "status": "retained_with_port_findings",
+      "date": "2026-10-12",
+      "visualInspection": true,
+      "runtime": false,
+      "mobile": false,
+      "production": false
+    },
+    "correctionPromptFile": null,
+    "generationHistory": [
+      {
+        "image": "draft-conflict-comparison-v1.png",
+        "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a10f1d-c2f4-7a52-a9ce-3d55fdc117db/exec-93fffce4-9324-422d-89eb-59cc5a043e42.png",
+        "mode": "edit",
+        "referencedImage": "remove-section-confirmation-v2.png",
+        "promptFile": "draft-conflict-comparison.prompt.md",
+        "generationSuffix": "\nEdit the exact supplied corrected structure-editor image, replacing only the existing removal modal with the wide conflict-comparison dialog. Keep local background data90minutes3sections6questions100points, Bản sửa4/no publication unchanged. Do not change background to the newly saved75/80 draft before an explicit decision. No notification bell, new controls or merge buttons. Use clearly aligned two-column comparison, exact values from the frame.",
+        "selected": true,
+        "exactPromptComplete": true,
+        "width": 1536,
+        "height": 1024,
+        "bytes": 1552960,
+        "sha256": "e639e9af486b1bc195c3c1cdedcce122809cb0fb46778986d5ca3f3fed2eab73"
+      }
+    ]
+  }
+]

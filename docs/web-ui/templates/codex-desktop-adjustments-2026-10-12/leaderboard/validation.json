@@ -1,0 +1,128 @@
+{
+  "status": "PASS",
+  "artifactCheckCount": 30,
+  "checks": [
+    {
+      "check": "PNG signature",
+      "passed": true
+    },
+    {
+      "check": "Dimensions1402x1122",
+      "passed": true
+    },
+    {
+      "check": "Output copy byte identical",
+      "passed": true
+    },
+    {
+      "check": "Saved prompt equals request",
+      "passed": true
+    },
+    {
+      "check": "Primary prompt1000–1500words",
+      "passed": true
+    },
+    {
+      "check": "Unchanged input edit_target",
+      "passed": true
+    },
+    {
+      "check": "Unchanged input style_reference",
+      "passed": true
+    },
+    {
+      "check": "Fixture10rows/ranks",
+      "passed": true
+    },
+    {
+      "check": "Fixture scores",
+      "passed": true
+    },
+    {
+      "check": "Fixture all1000",
+      "passed": true
+    },
+    {
+      "check": "Link brief.md ../../../evidence/stitch-03b-review-2026-10-08/leaderboard-desktop-v4-b91abc13.png",
+      "passed": true
+    },
+    {
+      "check": "Link brief.md ../../../stitch-03b-review-2026-10-08.md",
+      "passed": true
+    },
+    {
+      "check": "Link brief.md ../../../stitch-page-prompts-v3/03b-history-ranking-desktop.md",
+      "passed": true
+    },
+    {
+      "check": "Link brief.md ../../codex-desktop-v1/images/preflight-ready-v1.png",
+      "passed": true
+    },
+    {
+      "check": "Link brief.md ../../codex-desktop-v1/design-contract.md",
+      "passed": true
+    },
+    {
+      "check": "Link brief.md ../../dashboard-v2/tokens.json",
+      "passed": true
+    },
+    {
+      "check": "Link brief.md ../../../../../apps/web/src/features/results/leaderboard-page.tsx",
+      "passed": true
+    },
+    {
+      "check": "Link brief.md ../../../../../docs/contracts/openapi.yaml",
+      "passed": true
+    },
+    {
+      "check": "Link review.md generation-request-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Link review.md leaderboard-adjusted-v1.png",
+      "passed": true
+    },
+    {
+      "check": "Link README.md leaderboard-adjusted-v1.png",
+      "passed": true
+    },
+    {
+      "check": "Link README.md brief.md",
+      "passed": true
+    },
+    {
+      "check": "Link README.md leaderboard-adjusted-v1.prompt.txt",
+      "passed": true
+    },
+    {
+      "check": "Link README.md fixture.json",
+      "passed": true
+    },
+    {
+      "check": "Link README.md generation-request-v1.json",
+      "passed": true
+    },
+    {
+      "check": "Link README.md review.md",
+      "passed": true
+    },
+    {
+      "check": "Link README.md metadata.json",
+      "passed": true
+    },
+    {
+      "check": "Link README.md provenance.json",
+      "passed": true
+    },
+    {
+      "check": "Link README.md validation.json",
+      "passed": true
+    },
+    {
+      "check": "Acceptance all false",
+      "passed": true
+    }
+  ],
+  "manualVisualReview": "review.md; record content manually compared with source/fixture, not inferred from metadata",
+  "testsNotRun": "No app/API/source behavior changes; runtime/mobile/production gates stay false."
+}

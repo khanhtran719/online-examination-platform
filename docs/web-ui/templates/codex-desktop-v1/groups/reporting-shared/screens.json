@@ -1,0 +1,821 @@
+{
+  "group": "reporting-shared",
+  "stage": "retained_with_port_findings",
+  "generatedCount": 7,
+  "requestedImageCount": 7,
+  "mobileScope": "deferred",
+  "screens": [
+    {
+      "localId": "codex-desktop-v1-reporting-failed-attempt-current",
+      "screenCode": "EP-29",
+      "title": "Chi tiết lượt thi thất bại",
+      "route": "/admin/attempts/:attemptId",
+      "state": "current-live-unavailable-replay",
+      "scope": "desktop only, one image/state",
+      "status": "retained_with_port_findings",
+      "briefFile": "ep-29-failed-attempt.md",
+      "promptFile": "prompts/failed-attempt-current.txt",
+      "promptWhitespaceWords": 1125,
+      "fixtureFile": "fixtures.json",
+      "fixtureRefs": [
+        "failedAttempt",
+        "frozenExamContext"
+      ],
+      "sources": [
+        "AGENTS.md",
+        "docs/project-profile.md",
+        "docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+        "docs/web-ui/templates/dashboard-v2/tokens.json",
+        "docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+        "docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+        "apps/web/src/features/admin/admin-attempt-page.tsx",
+        "apps/web/src/live/create-http-api.ts",
+        "apps/web/src/shared/api/dto.ts",
+        "apps/web/src/shared/api/parse.ts",
+        "apps/web/src/features/admin/mutation-intent.ts",
+        "docs/contracts/openapi.yaml"
+      ],
+      "permissions": [
+        "reporting.read",
+        "assessment.replay"
+      ],
+      "actions": [
+        "Về bài nộp",
+        "Yêu cầu xử lý lại: disabled"
+      ],
+      "backgroundLocalId": null,
+      "generationMode": "built-in new image; no reference args",
+      "image": "images/ep-29-failed-attempt-current-v1.png",
+      "dimensions": {
+        "width": 1495,
+        "height": 1052
+      },
+      "sha256": "7e84c122a49b3d3ce9c9ad43d4a944e6b30a1bde7586369ffbcec003d604e934",
+      "preflightReview": {
+        "status": "self-reviewed-source-and-fixture",
+        "checks": [
+          "No score",
+          "No review/keys",
+          "Disabled replay with short reason",
+          "Frozen opaque version identity"
+        ]
+      },
+      "visualReview": {
+        "status": "inspected-no-material-data-or-capability-blocker",
+        "reviewDate": "2026-10-12",
+        "checks": [
+          "Viewed generated and local image",
+          "FAILED/no score/no review keys",
+          "Main replay button visually disabled with unavailable reason",
+          "Attempt …0081, candidate …0034, version …0004",
+          "08:00 start/09:30 deadline/08:56 submitted, expiredfalse",
+          "Reason exact and no accepted receipt"
+        ],
+        "findings": [
+          {
+            "severity": "minor",
+            "area": "design-system port",
+            "finding": "Rail glyph vocabulary/order and header badge placement vary between generated pages; use one accessible navigation component when porting."
+          },
+          {
+            "severity": "minor",
+            "area": "brand",
+            "finding": "Generated header marks emphasize the check; restore the shared ticket/check vector mark when porting."
+          },
+          {
+            "severity": "unverified",
+            "area": "font/tokens",
+            "finding": "Raster review does not confirm installed Be Vietnam Pro, exact hex colors, CSS widths, interaction or accessibility."
+          },
+          {
+            "severity": "minor",
+            "area": "contrast/spacing",
+            "finding": "Disabled CTA text is low contrast and result card has extra tinted subgroups; tune during port without enabling action."
+          }
+        ]
+      },
+      "acceptanceClaims": {
+        "runtime": false,
+        "interaction": false,
+        "mobile": false,
+        "production": false
+      },
+      "bytes": 1299655,
+      "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-6f5d1109-0beb-4d8c-bff9-086e50c1be81.png",
+      "generationTool": "image_gen.imagegen built-in",
+      "promptSha256": "60c797388b70feae1739e8696f13ce9fe1b15bf913ea7bd8f9841e2320c654b4",
+      "request": {
+        "transparent_background": false,
+        "promptFile": "prompts/failed-attempt-current.txt"
+      },
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "localId": "codex-desktop-v1-reporting-exact-version-statistics",
+      "screenCode": "EP-30",
+      "title": "Thống kê đúng phiên bản",
+      "route": "/admin/exams/:examId/versions/:versionId/statistics",
+      "state": "target-presentation-current-report-contract",
+      "scope": "desktop only, one image/state",
+      "status": "retained_with_port_findings",
+      "briefFile": "ep-30-exact-version-statistics.md",
+      "promptFile": "prompts/exact-version-statistics.txt",
+      "promptWhitespaceWords": 1087,
+      "fixtureFile": "fixtures.json",
+      "fixtureRefs": [
+        "statistics",
+        "frozenExamContext"
+      ],
+      "sources": [
+        "AGENTS.md",
+        "docs/project-profile.md",
+        "docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+        "docs/web-ui/templates/dashboard-v2/tokens.json",
+        "docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+        "docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+        "apps/web/src/features/admin/statistics-page.tsx",
+        "apps/api/src/modules/reporting/application/dto/question-statistics.dto.ts",
+        "apps/api/src/modules/reporting/application/services/question-statistics.service.ts",
+        "docs/contracts/openapi.yaml"
+      ],
+      "permissions": [
+        "reporting.read"
+      ],
+      "actions": [
+        "Về đề",
+        "Tải lại: same query",
+        "Local selection detail"
+      ],
+      "backgroundLocalId": null,
+      "generationMode": "built-in new image; no reference args",
+      "image": "images/ep-30-exact-version-statistics-v3-count-ratios.png",
+      "dimensions": {
+        "width": 1420,
+        "height": 1108
+      },
+      "sha256": "9882ad63da20a65f27fc4b4bd120f73c6ea828d648df69c52dc707cac234d183",
+      "preflightReview": {
+        "status": "self-reviewed-source-and-fixture",
+        "checks": [
+          "6 denominators80",
+          "Correct+incorrect+unanswered=80",
+          "Selected options sum140; not partition",
+          "No server asOf/prompts/keys"
+        ]
+      },
+      "visualReview": {
+        "status": "inspected-no-material-data-or-capability-blocker",
+        "reviewDate": "2026-10-12",
+        "checks": [
+          "Viewed all3 attempts; selectedv3",
+          "Six rows each complete80 and sums correct",
+          "Correct percentages75/62.5/80/85/60/70",
+          "Main ratios60/80,50/80,64/80,68/80,48/80,56/80",
+          "Option counts60+55+18+7=140",
+          "Removed inaccurate stacked geometry; retained option count bars",
+          "No server asOf/prompt/keys/PII"
+        ],
+        "findings": [
+          {
+            "severity": "minor",
+            "area": "design-system port",
+            "finding": "Rail glyph vocabulary/order and header badge placement vary between generated pages; use one accessible navigation component when porting."
+          },
+          {
+            "severity": "minor",
+            "area": "brand",
+            "finding": "Generated header marks emphasize the check; restore the shared ticket/check vector mark when porting."
+          },
+          {
+            "severity": "unverified",
+            "area": "font/tokens",
+            "finding": "Raster review does not confirm installed Be Vietnam Pro, exact hex colors, CSS widths, interaction or accessibility."
+          },
+          {
+            "severity": "minor",
+            "area": "table spacing",
+            "finding": "Removed legend leaves a blank horizontal band; collapse it in implementation. Numeric labels are authoritative; option bars should use exact ratios in code."
+          }
+        ]
+      },
+      "acceptanceClaims": {
+        "runtime": false,
+        "interaction": false,
+        "mobile": false,
+        "production": false
+      },
+      "bytes": 1541110,
+      "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-793d01f5-8041-4e16-a16c-2dd783337b04.png",
+      "generationTool": "image_gen.imagegen built-in",
+      "promptSha256": "c8fb1188bfa8051cdb85686127e4dd70e91232bb8f6c17467d0c840f0d7319d9",
+      "request": {
+        "transparent_background": false,
+        "promptFile": "prompts/exact-version-statistics-repair-02.txt",
+        "referenced_image_paths": [
+          "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/ep-30-exact-version-statistics-v2-repair-bars.png"
+        ]
+      },
+      "generationAttempts": [
+        {
+          "image": "images/ep-30-exact-version-statistics-v1.png",
+          "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-79b94e32-c0b7-40fb-80c7-805468dcf4a6.png",
+          "promptFile": "prompts/exact-version-statistics.txt",
+          "promptSha256": "c8fb1188bfa8051cdb85686127e4dd70e91232bb8f6c17467d0c840f0d7319d9",
+          "mode": "new",
+          "review": "rejected: stacked geometry inconsistent with displayed counts",
+          "dimensions": {
+            "width": 1419,
+            "height": 1108
+          },
+          "sha256": "2f07203544eba53f6610789eab4c3535f0d4df7f1088632c7c87d8ef24dd32ac",
+          "bytes": 1210974
+        },
+        {
+          "image": "images/ep-30-exact-version-statistics-v2-repair-bars.png",
+          "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-b852ed4c-cd8b-4e29-bd8e-0d73929f1bde.png",
+          "promptFile": "prompts/exact-version-statistics-repair-01.txt",
+          "promptSha256": "7e15fe45535b75eb65c9a08eee73bbd28ecddc368aa40a220bed9fa60ade57d8",
+          "mode": "edit",
+          "review": "rejected: targeted percentages still inaccurate",
+          "dimensions": {
+            "width": 1420,
+            "height": 1108
+          },
+          "sha256": "69e95179498301e0b64d5f76067541974937f85036d95b917d577536a64a3870",
+          "bytes": 1533049,
+          "referencedImage": "images/ep-30-exact-version-statistics-v1.png",
+          "targetViewedBeforeEdit": true
+        },
+        {
+          "image": "images/ep-30-exact-version-statistics-v3-count-ratios.png",
+          "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-793d01f5-8041-4e16-a16c-2dd783337b04.png",
+          "promptFile": "prompts/exact-version-statistics-repair-02.txt",
+          "promptSha256": "95b41ade077b516e1dee6ab65e5e6f2d0fded6ae62a077c1bc9677300f201a31",
+          "mode": "edit",
+          "review": "selected: exact textual count ratios, option bars retained",
+          "dimensions": {
+            "width": 1420,
+            "height": 1108
+          },
+          "sha256": "9882ad63da20a65f27fc4b4bd120f73c6ea828d648df69c52dc707cac234d183",
+          "bytes": 1541110,
+          "referencedImage": "images/ep-30-exact-version-statistics-v2-repair-bars.png",
+          "targetViewedBeforeEdit": true
+        }
+      ],
+      "finalPromptSha256": "95b41ade077b516e1dee6ab65e5e6f2d0fded6ae62a077c1bc9677300f201a31",
+      "designAdjustment": "Stacked question-distribution bars removed after two inaccurate raster attempts; exact numerator/denominator and percentages replace them. Option-selection count bars remain.",
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "localId": "codex-desktop-v1-reporting-business-metrics-technical-unavailable",
+      "screenCode": "EP-31",
+      "title": "Snapshot nghiệp vụ, thiếu nguồn kỹ thuật",
+      "route": "/admin/metrics",
+      "state": "target-web-business-adapter-technical-unavailable",
+      "scope": "desktop only, one image/state",
+      "status": "retained_with_port_findings",
+      "briefFile": "ep-31-business-metrics-unavailable-technical.md",
+      "promptFile": "prompts/business-metrics-technical-unavailable.txt",
+      "promptWhitespaceWords": 1088,
+      "fixtureFile": "fixtures.json",
+      "fixtureRefs": [
+        "businessMetrics"
+      ],
+      "sources": [
+        "AGENTS.md",
+        "docs/project-profile.md",
+        "docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+        "docs/web-ui/templates/dashboard-v2/tokens.json",
+        "docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+        "docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+        "apps/web/src/features/admin/metrics-page.tsx",
+        "apps/web/src/shared/api/dto.ts",
+        "apps/web/src/shared/api/parse.ts",
+        "apps/api/src/modules/reporting/presentation/http/business-metrics.controller.ts",
+        "apps/api/src/modules/reporting/domain/business-metrics.ts",
+        "apps/api/src/modules/reporting/application/dto/business-metrics.dto.ts",
+        "docs/contracts/openapi.yaml"
+      ],
+      "permissions": [
+        "reporting.read for business-metrics",
+        "system.metrics.read for specification technical metrics"
+      ],
+      "actions": [
+        "Tải lại: read snapshot"
+      ],
+      "backgroundLocalId": null,
+      "generationMode": "built-in new image; no reference args",
+      "image": "images/ep-31-business-metrics-unavailable-v1.png",
+      "dimensions": {
+        "width": 1402,
+        "height": 1122
+      },
+      "sha256": "714871969360a6de88604f9ac4bf47d7e7f9a00e80d5e86255591636992d89fe",
+      "preflightReview": {
+        "status": "self-reviewed-source-and-fixture",
+        "checks": [
+          "No fake HTTP/SQS zero",
+          "Current state cohort not unique users/online",
+          "Backlog global not SQS depth",
+          "asOf09:10-oldest08:40=1800s"
+        ]
+      },
+      "visualReview": {
+        "status": "inspected-no-material-data-or-capability-blocker",
+        "reviewDate": "2026-10-12",
+        "checks": [
+          "Viewed image",
+          "Counts240/24/216/180/6/14/12 match fixture",
+          "Backlog36/replay3 and09:10-08:40=1800seconds",
+          "HTTP/queue unavailable text, no fake0 or telemetry",
+          "Snapshot and cohort scope clear; backlog global",
+          "No online/trend/SLO/cost"
+        ],
+        "findings": [
+          {
+            "severity": "minor",
+            "area": "design-system port",
+            "finding": "Rail glyph vocabulary/order and header badge placement vary between generated pages; use one accessible navigation component when porting."
+          },
+          {
+            "severity": "minor",
+            "area": "brand",
+            "finding": "Generated header marks emphasize the check; restore the shared ticket/check vector mark when porting."
+          },
+          {
+            "severity": "unverified",
+            "area": "font/tokens",
+            "finding": "Raster review does not confirm installed Be Vietnam Pro, exact hex colors, CSS widths, interaction or accessibility."
+          },
+          {
+            "severity": "minor",
+            "area": "layout",
+            "finding": "Cohort/backlog cards are closer to equal widths than requested2:1; readable and data-correct, tune at port."
+          }
+        ]
+      },
+      "acceptanceClaims": {
+        "runtime": false,
+        "interaction": false,
+        "mobile": false,
+        "production": false
+      },
+      "bytes": 1298918,
+      "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-6c0c5578-3e4d-4269-9e9f-2cad32b13cb1.png",
+      "generationTool": "image_gen.imagegen built-in",
+      "promptSha256": "aa2e0c4d7a9d1274993207ea9f955fe74a5d111f45b9e79a17183827eb5bd9e9",
+      "request": {
+        "transparent_background": false,
+        "promptFile": "prompts/business-metrics-technical-unavailable.txt"
+      },
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "localId": "codex-desktop-v1-reporting-audit-list",
+      "screenCode": "EP-32",
+      "title": "Nhật ký audit",
+      "route": "/admin/audit",
+      "state": "target-table-presentation-current-redacted-audit-contract",
+      "scope": "desktop only, one image/state",
+      "status": "retained_with_port_findings",
+      "briefFile": "ep-32-audit-list.md",
+      "promptFile": "prompts/audit-list.txt",
+      "promptWhitespaceWords": 1039,
+      "fixtureFile": "fixtures.json",
+      "fixtureRefs": [
+        "audit"
+      ],
+      "sources": [
+        "AGENTS.md",
+        "docs/project-profile.md",
+        "docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+        "docs/web-ui/templates/dashboard-v2/tokens.json",
+        "docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+        "docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+        "apps/web/src/features/admin/audit-page.tsx",
+        "apps/web/src/shared/api/dto.ts",
+        "apps/api/src/modules/reporting/domain/audit.ts",
+        "apps/api/src/modules/reporting/application/services/audit.service.ts",
+        "apps/api/src/modules/reporting/presentation/http/audit.controller.ts",
+        "docs/contracts/openapi.yaml"
+      ],
+      "permissions": [
+        "audit.read"
+      ],
+      "actions": [
+        "Tải lại: first-page read",
+        "Chi tiết: selected loaded item"
+      ],
+      "backgroundLocalId": null,
+      "generationMode": "built-in new image; no reference args",
+      "image": "images/ep-32-audit-list-v1.png",
+      "dimensions": {
+        "width": 1455,
+        "height": 1081
+      },
+      "sha256": "9a82fb86a91a6b51834541941f10c2e73f21e206a476d8abb94a641de22caae1",
+      "preflightReview": {
+        "status": "self-reviewed-source-and-fixture",
+        "checks": [
+          "8 rows in descending time order",
+          "No filter/export/edit/delete",
+          "No raw reason/PII",
+          "No server asOf/global total"
+        ]
+      },
+      "visualReview": {
+        "status": "inspected-no-material-data-or-capability-blocker",
+        "reviewDate": "2026-10-12",
+        "checks": [
+          "Viewed generated and local image",
+          "Eight rows descending time and correct actions/resources/outcomes",
+          "Anonymous actors; no raw reason/metadata",
+          "No search/filter/export/edit/delete/globaltotal/asOf",
+          "Row1 matches drawer fixture"
+        ],
+        "findings": [
+          {
+            "severity": "minor",
+            "area": "design-system port",
+            "finding": "Rail glyph vocabulary/order and header badge placement vary between generated pages; use one accessible navigation component when porting."
+          },
+          {
+            "severity": "minor",
+            "area": "brand",
+            "finding": "Generated header marks emphasize the check; restore the shared ticket/check vector mark when porting."
+          },
+          {
+            "severity": "unverified",
+            "area": "font/tokens",
+            "finding": "Raster review does not confirm installed Be Vietnam Pro, exact hex colors, CSS widths, interaction or accessibility."
+          }
+        ]
+      },
+      "acceptanceClaims": {
+        "runtime": false,
+        "interaction": false,
+        "mobile": false,
+        "production": false
+      },
+      "bytes": 1321215,
+      "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-43d40137-e3ea-44b2-8566-9366fb142233.png",
+      "generationTool": "image_gen.imagegen built-in",
+      "promptSha256": "6b1383ca150914ac2ac1a01dda9e6b0afecc00ca07a3cef8ec553c9ef0611e28",
+      "request": {
+        "transparent_background": false,
+        "promptFile": "prompts/audit-list.txt"
+      },
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "localId": "codex-desktop-v1-reporting-public-404",
+      "screenCode": "SY-01",
+      "title": "Không tìm thấy nội dung",
+      "route": "*",
+      "state": "target-public-copy-safe-back",
+      "scope": "desktop only, one image/state",
+      "status": "retained_with_port_findings",
+      "briefFile": "sy-01-public-404.md",
+      "promptFile": "prompts/public-404.txt",
+      "promptWhitespaceWords": 1149,
+      "fixtureFile": "fixtures.json",
+      "fixtureRefs": [
+        "public404"
+      ],
+      "sources": [
+        "AGENTS.md",
+        "docs/project-profile.md",
+        "docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+        "docs/web-ui/templates/dashboard-v2/tokens.json",
+        "docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+        "docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+        "apps/web/src/app/router.tsx",
+        "apps/web/src/features/auth/auth-pages.tsx",
+        "apps/web/src/features/experience/public-chrome.tsx"
+      ],
+      "permissions": [
+        "public"
+      ],
+      "actions": [
+        "Về trang chủ: /",
+        "Quay lại: safe history fallback /",
+        "Trợ giúp: /help"
+      ],
+      "backgroundLocalId": null,
+      "generationMode": "built-in new image; no reference args",
+      "image": "images/sy-01-public-404-v1.png",
+      "dimensions": {
+        "width": 1496,
+        "height": 1051
+      },
+      "sha256": "a48453a0155d1978dbe527159ecf3816656b655a29d4fc01c975424757a52bd7",
+      "preflightReview": {
+        "status": "self-reviewed-source-and-fixture",
+        "checks": [
+          "Public shell/no Admin rail",
+          "No private path/data",
+          "404 distinct403/session/network"
+        ]
+      },
+      "visualReview": {
+        "status": "inspected-no-material-data-or-capability-blocker",
+        "reviewDate": "2026-10-12",
+        "checks": [
+          "Viewed image",
+          "Public header links/noAdminrail/avatar",
+          "Exact title/helper/home/back",
+          "Public footer/no private route/data",
+          "404 only"
+        ],
+        "findings": [
+          {
+            "severity": "unverified",
+            "area": "font/tokens",
+            "finding": "Raster review does not confirm installed Be Vietnam Pro, exact hex colors, CSS widths, interaction or accessibility."
+          },
+          {
+            "severity": "minor",
+            "area": "scale/brand",
+            "finding": "Paper illustration larger than requested; header uses check-only logo. Use smaller illustration and shared ticket mark in code."
+          }
+        ]
+      },
+      "acceptanceClaims": {
+        "runtime": false,
+        "interaction": false,
+        "mobile": false,
+        "production": false
+      },
+      "bytes": 1115622,
+      "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-c1381232-1893-4005-8029-3ab4d462dddd.png",
+      "generationTool": "image_gen.imagegen built-in",
+      "promptSha256": "d230ce877e70746bd1a0addaddd069b4f51c88e5c24fa6f61a5a732cf8374300",
+      "request": {
+        "transparent_background": false,
+        "promptFile": "prompts/public-404.txt"
+      },
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "localId": "codex-desktop-v1-reporting-replay-reason-confirmation",
+      "screenCode": "SY-07",
+      "title": "Yêu cầu xử lý lại",
+      "route": "/admin/attempts/:attemptId#replay-confirm",
+      "state": "target-contract-demo-conditional-not-current-live",
+      "scope": "desktop only, one image/state",
+      "status": "retained_with_port_findings",
+      "briefFile": "sy-07-replay-reason-dialog.md",
+      "promptFile": "prompts/replay-reason-confirmation.txt",
+      "promptWhitespaceWords": 1105,
+      "fixtureFile": "fixtures.json",
+      "fixtureRefs": [
+        "failedAttempt",
+        "frozenExamContext"
+      ],
+      "sources": [
+        "AGENTS.md",
+        "docs/project-profile.md",
+        "docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+        "docs/web-ui/templates/dashboard-v2/tokens.json",
+        "docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+        "docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+        "apps/web/src/features/admin/admin-attempt-page.tsx",
+        "apps/web/src/features/admin/mutation-intent.ts",
+        "apps/web/src/demo/server.ts",
+        "docs/contracts/openapi.yaml"
+      ],
+      "permissions": [
+        "reporting.read",
+        "assessment.replay",
+        "valid current admin revision",
+        "FAILED"
+      ],
+      "actions": [
+        "Hủy",
+        "Close",
+        "Gửi yêu cầu: target condition only"
+      ],
+      "backgroundLocalId": "codex-desktop-v1-reporting-failed-attempt-current",
+      "generationMode": "built-in edit after view_image",
+      "image": "images/sy-07-replay-reason-confirmation-v1.png",
+      "dimensions": {
+        "width": 1495,
+        "height": 1052
+      },
+      "sha256": "7f8ab5251c3b168e3ceb17cf2b61d9ca49cff78105c206ce75ca079d69026b8d",
+      "preflightReview": {
+        "status": "self-reviewed-source-and-fixture",
+        "checks": [
+          "Background exact EP29 and disabled live CTA",
+          "Reason identical",
+          "No mutation/receipt/grading success",
+          "Not score/answer/quota edit or new attempt"
+        ]
+      },
+      "visualReview": {
+        "status": "inspected-no-material-data-or-capability-blocker",
+        "reviewDate": "2026-10-12",
+        "checks": [
+          "Viewed local exactEP29 before edit, reviewed output",
+          "Same background fixture and disabled live CTA",
+          "Opaque version…0004; exactreason",
+          "Close/cancel/conditionaltargetconfirm",
+          "Pre-send only; no grading/result/score/newattempt"
+        ],
+        "findings": [
+          {
+            "severity": "unverified",
+            "area": "font/tokens",
+            "finding": "Raster review does not confirm installed Be Vietnam Pro, exact hex colors, CSS widths, interaction or accessibility."
+          }
+        ]
+      },
+      "acceptanceClaims": {
+        "runtime": false,
+        "interaction": false,
+        "mobile": false,
+        "production": false
+      },
+      "bytes": 1434925,
+      "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-8b1ea670-5d3b-4268-9027-5a9b816f160d.png",
+      "generationTool": "image_gen.imagegen built-in",
+      "promptSha256": "40f3da2eb822faf6df199e432b427e7467d4f3edfb9385c0d3ac65d1e3ef3eb5",
+      "request": {
+        "transparent_background": false,
+        "promptFile": "prompts/replay-reason-confirmation.txt",
+        "referenced_image_paths": [
+          "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/ep-29-failed-attempt-current-v1.png"
+        ]
+      },
+      "backgroundSha256": "7e84c122a49b3d3ce9c9ad43d4a944e6b30a1bde7586369ffbcec003d604e934",
+      "backgroundViewedBeforeEdit": true,
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "localId": "codex-desktop-v1-reporting-audit-detail-drawer",
+      "screenCode": "SY-07",
+      "title": "Chi tiết nhật ký",
+      "route": "/admin/audit#detail",
+      "state": "target-drawer-current-loaded-entry-contract",
+      "scope": "desktop only, one image/state",
+      "status": "retained_with_port_findings",
+      "briefFile": "sy-07-audit-detail-drawer.md",
+      "promptFile": "prompts/audit-detail-drawer.txt",
+      "promptWhitespaceWords": 1200,
+      "fixtureFile": "fixtures.json",
+      "fixtureRefs": [
+        "audit"
+      ],
+      "sources": [
+        "AGENTS.md",
+        "docs/project-profile.md",
+        "docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+        "docs/web-ui/templates/dashboard-v2/tokens.json",
+        "docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+        "docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+        "apps/web/src/features/admin/audit-page.tsx",
+        "apps/api/src/modules/reporting/domain/audit.ts",
+        "apps/api/src/modules/reporting/application/dto/audit.dto.ts",
+        "docs/contracts/openapi.yaml"
+      ],
+      "permissions": [
+        "audit.read"
+      ],
+      "actions": [
+        "Close",
+        "Đóng",
+        "Chép mã đối chiếu: correlation only"
+      ],
+      "backgroundLocalId": "codex-desktop-v1-reporting-audit-list",
+      "generationMode": "built-in edit after view_image",
+      "image": "images/sy-07-audit-detail-drawer-v1.png",
+      "dimensions": {
+        "width": 1455,
+        "height": 1081
+      },
+      "sha256": "0ea64ad0c4c1881f984fe1cdb047da1b19965ed57b300dcb624c0143a859975c",
+      "preflightReview": {
+        "status": "self-reviewed-source-and-fixture",
+        "checks": [
+          "Exact EP32 row1 background",
+          "Reason Không được cung cấp",
+          "title/sections only no values",
+          "Full correct correlation UUID",
+          "Copy idle no copied success"
+        ]
+      },
+      "visualReview": {
+        "status": "inspected-no-material-data-or-capability-blocker",
+        "reviewDate": "2026-10-12",
+        "checks": [
+          "Viewed local exactEP32 before edit, reviewed output",
+          "Same list background/row1catalog.exam.replace",
+          "USER…0031/EXAM…0001/time09:10",
+          "Reason Không được cung cấp; title/sections only",
+          "Full correlation019a82d0-3010-7000-8000-000000000901 correct",
+          "Copy idle, no rawmetadata/PII/delete/edit"
+        ],
+        "findings": [
+          {
+            "severity": "unverified",
+            "area": "font/tokens",
+            "finding": "Raster review does not confirm installed Be Vietnam Pro, exact hex colors, CSS widths, interaction or accessibility."
+          },
+          {
+            "severity": "minor",
+            "area": "redundant identifiers",
+            "finding": "Drawer shows short and full actor/resource IDs; remove duplication during port while preserving full correlation copy value."
+          }
+        ]
+      },
+      "acceptanceClaims": {
+        "runtime": false,
+        "interaction": false,
+        "mobile": false,
+        "production": false
+      },
+      "bytes": 1468102,
+      "sourceGeneratedFile": "/Users/trankhanh/.codex/generated_images/01a12ee5-27fb-78e2-904d-55d0302cb0c9/exec-673302e6-ee48-4375-8031-0e8e93cc818e.png",
+      "generationTool": "image_gen.imagegen built-in",
+      "promptSha256": "47f2a3b8f367055e1b31a91a0b02f6db29e4eaec56da65b6f0983b1f758e6ef8",
+      "request": {
+        "transparent_background": false,
+        "promptFile": "prompts/audit-detail-drawer.txt",
+        "referenced_image_paths": [
+          "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/reporting-shared/images/ep-32-audit-list-v1.png"
+        ]
+      },
+      "backgroundSha256": "9a82fb86a91a6b51834541941f10c2e73f21e206a476d8abb94a641de22caae1",
+      "backgroundViewedBeforeEdit": true,
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    }
+  ],
+  "selectedImageCount": 7,
+  "rawGeneratedArtifactCount": 9,
+  "builtInGenerationCallCount": 9,
+  "rejectedAttemptCount": 2,
+  "cliFallbackUsed": false,
+  "materialOpenBlockers": [],
+  "rootReview": {
+    "status": "complete_visual_reference_only",
+    "date": "2026-10-12",
+    "inspectedCount": 7
+  }
+}

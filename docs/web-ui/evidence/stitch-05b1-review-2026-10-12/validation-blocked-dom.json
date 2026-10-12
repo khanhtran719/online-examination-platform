@@ -1,0 +1,36 @@
+{
+  "state": "validation-blocked",
+  "screenId": "3a591de37dfc4248b3151e7ffe17725d",
+  "text": "school\ndashboard\nquiz\nfact_check\nupload_file\nvisibility\nanalytics\nsettings\nExamPlatform\nQuản trị\nperson\nMinh Anh\nkeyboard_arrow_down\nQuản trị\nchevron_right\nĐề thi\nchevron_right\nSửa bản nháp\nĐang chỉnh sửa bản nháp\ncheck\nBước 1\nThông tin & Cài đặt\ncheck\nBước 2\nPhần & Câu hỏi\n3\nBước 3\nKiểm tra & Phát hành\nerror\nCần sửa 2 mục trước khi lưu và phát hành\n\nHệ thống phát hiện các ràng buộc nghiệp vụ chưa đạt yêu cầu. Bản nháp bị khóa lưu và phát hành cho đến khi hoàn thành xử lý.\n\ncancel\n1. Thời điểm đóng phải sau thời điểm mở (Lịch đóng 07:30 < Lịch mở 08:00)\nĐến vị trí\nformat_h4\ncancel\n2. Phần 'Quyền truy cập & bảo mật' chưa có câu hỏi nào (cần ít nhất 1 câu)\nĐến vị trí\nformat_h4\nfact_check\nRà soát trước khi phát hành\nTài liệu xác thực pre-flight\nMỤC 01 · THÔNG TIN CHUNG\nNền tảng điện toán đám mây — Bài ôn tập 01\ncategory\nIT Certification\n•\ntimer\n90 phút\n•\nBản nháp #01\nSửa thông tin\nlaunch\nMỤC 02 · LỊCH THI & CHÍNH SÁCH (CÓ LỖI)\ncalendar_clock\nMở: 15/11/2026 08:00 · Đóng: 15/11/2026 07:30\nGiờ Việt Nam · UTC+7\nSửa lịch thi (Bước 1)\nopen_in_new\nclose\nThời điểm đóng phải sau thời điểm mở (chênh lệch âm 30 phút)\nVề Bước 1 chỉnh giờ →\nreplay\nGiới hạn 3 lượt\nvisibility\nMở sau khi có KQ\nleaderboard\nXếp hạng bật\nMỤC 03 · PHÂN BỔ PHẦN THI & CÂU HỎI\nXem chi tiết câu hỏi\nedit_note\n1\nPhần 1: Kiến thức nền\n2 câu hỏi trắc nghiệm khách quan\n20 điểm\ncheck_circle\nHợp lệ\n2\nPhần 2: Quyền truy cập & bảo mật\n0 câu · 0 điểm\nerror\nThiếu nội dung\nclose\n✕ Phần Quyền truy cập & bảo mật cần ít nhất một câu hỏi\nBổ sung câu hỏi (Bước 2)\narrow_forward\n3\nPhần 3: Tình huống triển khai\n2 câu hỏi tự luận phân tích case study\n50 điểm\ncheck_circle\nHợp lệ\nanalytics\nTổng quan cấu trúc: 3 phần · 4 câu · 70 điểm\nĐang hụt 1 phần & 30 điểm dự kiến\nKiểm tra bản nháp\n\nTrạng thái tự động kiểm thử tiêu chuẩn\n\n2/5\ncheck\nThông tin bắt buộc đầy đủ\nTiêu đề, thời lượng, danh mục\nclose\nLịch đóng sau lịch mở\nLỗi: 07:30 < 08:00\nclose\nMỗi phần đều có câu hỏi\nLỗi: Phần 2 có 0 câu\ncheck\n4 câu hỏi không trùng lặp\nKhông phát hiện trùng khớp ID\ncheck\nĐiểm từng câu hợp lệ\nPhạm vi 10 – 35 điểm/câu\nMỨC ĐỘ SẴN SÀNG\nChưa thể phát hành (Còn 2 vi phạm)\nCó thay đổi chưa lưu\n· Lần sửa cuối 2 phút trước\narrow_back\nQuay lại: Phần & câu hỏi\nLưu nháp\npublish\nLưu và phát hành\ninfo\nVui lòng khắc phục các lỗi trên để tiếp tục lưu hoặc phát hành.",
+  "buttons": [
+    {
+      "ariaLabel": null,
+      "disabled": false,
+      "height": 42,
+      "text": "arrow_back\nQuay lại: Phần & câu hỏi",
+      "width": 224.09375
+    },
+    {
+      "ariaLabel": null,
+      "disabled": true,
+      "height": 42,
+      "text": "Lưu nháp",
+      "width": 95.640625
+    },
+    {
+      "ariaLabel": null,
+      "disabled": true,
+      "height": 42,
+      "text": "publish\nLưu và phát hành",
+      "width": 191.046875
+    }
+  ],
+  "styles": {
+    "background": "rgb(250, 248, 255)",
+    "dialogCount": 0,
+    "fontFamily": "\"Be Vietnam Pro\"",
+    "fontSize": "16px",
+    "height": 1492,
+    "width": 1280
+  }
+}

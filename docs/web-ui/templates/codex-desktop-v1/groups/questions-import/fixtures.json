@@ -1,0 +1,218 @@
+{
+  "publicSampleOnly": true,
+  "bank": [
+    {
+      "label": "Q-012",
+      "id": "019b18a0-0000-7000-8000-000000000012",
+      "revision": 3,
+      "archived": false,
+      "clientRef": "cloud-001",
+      "type": "SINGLE_CHOICE",
+      "prompt": "Trong mô hình IaaS, khách hàng quản lý thành phần nào?",
+      "options": [
+        "Trung tâm dữ liệu vật lý",
+        "Hệ điều hành và ứng dụng",
+        "Nguồn điện của máy chủ",
+        "Hạ tầng mạng vật lý"
+      ],
+      "correctOptionPositions": [
+        2
+      ],
+      "points": 10,
+      "explanation": "Với IaaS, khách hàng quản lý hệ điều hành và ứng dụng; nhà cung cấp quản lý hạ tầng vật lý."
+    },
+    {
+      "label": "Q-013",
+      "id": "019b18a0-0000-7000-8000-000000000013",
+      "revision": 2,
+      "archived": false,
+      "clientRef": "cloud-002",
+      "type": "MULTIPLE_CHOICE",
+      "prompt": "Những biện pháp nào giúp bảo vệ tài khoản quản trị?",
+      "options": [
+        "Bật xác thực đa yếu tố",
+        "Dùng chung tài khoản quản trị",
+        "Cấp quyền tối thiểu cần thiết",
+        "Tắt ghi nhật ký truy cập"
+      ],
+      "correctOptionPositions": [
+        1,
+        3
+      ],
+      "points": 15,
+      "explanation": "Xác thực đa yếu tố và quyền tối thiểu giúp giảm nguy cơ truy cập trái phép."
+    },
+    {
+      "label": "Q-014",
+      "id": "019b18a0-0000-7000-8000-000000000014",
+      "revision": 1,
+      "archived": false,
+      "clientRef": "cloud-003",
+      "type": "TRUE_FALSE",
+      "prompt": "Mã hóa dữ liệu khi truyền giúp giảm nguy cơ bị đọc trộm.",
+      "options": [
+        "Đúng",
+        "Sai"
+      ],
+      "correctOptionPositions": [
+        1
+      ],
+      "points": 10,
+      "explanation": "Mã hóa đường truyền bảo vệ nội dung trước việc đọc trộm trên mạng."
+    },
+    {
+      "label": "Q-015",
+      "id": "019b18a0-0000-7000-8000-000000000015",
+      "revision": 4,
+      "archived": true,
+      "clientRef": "cloud-004",
+      "type": "SINGLE_CHOICE",
+      "prompt": "Dịch vụ DNS chuyển tên miền thành loại thông tin nào?",
+      "options": [
+        "Địa chỉ IP",
+        "Mã nguồn",
+        "Mật khẩu",
+        "Tệp lưu trữ"
+      ],
+      "correctOptionPositions": [
+        1
+      ],
+      "points": 5,
+      "explanation": "DNS phân giải tên miền thành địa chỉ IP."
+    }
+  ],
+  "createDraft": {
+    "type": "SINGLE_CHOICE",
+    "prompt": "Dịch vụ DNS chủ yếu giúp thực hiện việc gì?",
+    "options": [
+      "Chuyển tên miền thành địa chỉ IP",
+      "Mã hóa toàn bộ ổ đĩa"
+    ],
+    "correctOptionPositions": [
+      1
+    ],
+    "points": 5,
+    "explanation": "DNS phân giải tên miền thành địa chỉ IP để truy cập dịch vụ."
+  },
+  "import": {
+    "schemaVersion": 1,
+    "dryRun": true,
+    "questions": [
+      {
+        "clientRef": "cloud-001",
+        "type": "SINGLE_CHOICE",
+        "prompt": "Trong mô hình IaaS, khách hàng quản lý thành phần nào?",
+        "correctOptionPositions": [
+          2
+        ],
+        "points": 10,
+        "explanation": "Với IaaS, khách hàng quản lý hệ điều hành và ứng dụng; nhà cung cấp quản lý hạ tầng vật lý.",
+        "options": [
+          {
+            "position": 1,
+            "text": "Trung tâm dữ liệu vật lý"
+          },
+          {
+            "position": 2,
+            "text": "Hệ điều hành và ứng dụng"
+          },
+          {
+            "position": 3,
+            "text": "Nguồn điện của máy chủ"
+          },
+          {
+            "position": 4,
+            "text": "Hạ tầng mạng vật lý"
+          }
+        ]
+      },
+      {
+        "clientRef": "cloud-002",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Những biện pháp nào giúp bảo vệ tài khoản quản trị?",
+        "correctOptionPositions": [
+          1,
+          3
+        ],
+        "points": 15,
+        "explanation": "Xác thực đa yếu tố và quyền tối thiểu giúp giảm nguy cơ truy cập trái phép.",
+        "options": [
+          {
+            "position": 1,
+            "text": "Bật xác thực đa yếu tố"
+          },
+          {
+            "position": 2,
+            "text": "Dùng chung tài khoản quản trị"
+          },
+          {
+            "position": 3,
+            "text": "Cấp quyền tối thiểu cần thiết"
+          },
+          {
+            "position": 4,
+            "text": "Tắt ghi nhật ký truy cập"
+          }
+        ]
+      },
+      {
+        "clientRef": "cloud-003",
+        "type": "TRUE_FALSE",
+        "prompt": "Mã hóa dữ liệu khi truyền giúp giảm nguy cơ bị đọc trộm.",
+        "correctOptionPositions": [
+          1
+        ],
+        "points": 10,
+        "explanation": "Mã hóa đường truyền bảo vệ nội dung trước việc đọc trộm trên mạng.",
+        "options": [
+          {
+            "position": 1,
+            "text": "Đúng"
+          },
+          {
+            "position": 2,
+            "text": "Sai"
+          }
+        ]
+      }
+    ]
+  },
+  "importFileName": "cau-hoi-dam-may.json",
+  "importUtf8Bytes": 2203,
+  "dryReport": {
+    "id": "019b18a0-1000-7000-8000-000000000101",
+    "valid": true,
+    "committed": false,
+    "issues": [],
+    "questions": [],
+    "createdAt": "2026-10-12T02:15:00Z"
+  },
+  "committedReport": {
+    "id": "019b18a0-1000-7000-8000-000000000102",
+    "valid": true,
+    "committed": true,
+    "issues": [],
+    "questions": [
+      {
+        "clientRef": "cloud-001",
+        "questionId": "019b18a0-0000-7000-8000-000000000016"
+      },
+      {
+        "clientRef": "cloud-002",
+        "questionId": "019b18a0-0000-7000-8000-000000000017"
+      },
+      {
+        "clientRef": "cloud-003",
+        "questionId": "019b18a0-0000-7000-8000-000000000018"
+      }
+    ],
+    "createdAt": "2026-10-12T02:16:00Z"
+  },
+  "conflictLocal": {
+    "baseRevision": 3,
+    "questionLabel": "Q-012",
+    "points": 12,
+    "remoteRevision": null,
+    "remoteContent": null
+  }
+}

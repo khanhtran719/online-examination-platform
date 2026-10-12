@@ -1,0 +1,38 @@
+[
+  {
+    "state": "validation-blocked",
+    "screenId": "3a591de37dfc4248b3151e7ffe17725d",
+    "bounds": {
+      "height": 703,
+      "width": 603.3121337890625,
+      "x": 630.343994140625,
+      "y": 96
+    },
+    "clip": {
+      "x": 630,
+      "y": 96,
+      "width": 604,
+      "height": 703
+    },
+    "zoom": "- button \"47%\" [active]:",
+    "filename": "validation-blocked-fit-canvas.jpg"
+  },
+  {
+    "state": "preflight-ready",
+    "screenId": "bef67930ab4e4b5e93f17f82d06d7193",
+    "bounds": {
+      "height": 703,
+      "width": 607.1795043945312,
+      "x": 628.4102172851562,
+      "y": 96
+    },
+    "clip": {
+      "x": 628,
+      "y": 96,
+      "width": 608,
+      "height": 703
+    },
+    "zoom": "- button \"47%\" [active]:",
+    "filename": "preflight-ready-fit-canvas.jpg"
+  }
+]

@@ -1,15 +1,23 @@
 # Tạo các page còn lại trên Stitch — bám template V3
 
+**Lựa chọn mới nhất:** người dùng đã tạm chốt [ba bản desktop điều chỉnh](../templates/codex-desktop-adjustments-2026-10-12/selection.md) cho EP-14/EP-15/EP-19. Registry hiện33 families có named visual reference/0 main references chờ chọn/0 prompt-only; findings và mobile/full states/port vẫn mở. Các counts30/3/0 và chờ chọn bên dưới là lịch sử trước lựa chọn này; không tạo lại desktop chỉ vì prompt cũ còn ghi chờ.
+
+**Checkpoint mới 2026-10-12:** người dùng đã chuyển phần desktop/dialog còn thiếu sang built-in image generation. [Codex Desktop V1](../templates/codex-desktop-v1/README.md) giữ 35 references; [review/checklist](../templates/codex-desktop-v1/review-2026-10-12.md) và [registry](page-registry.json) ghi 30 families giữ/3 main references chờ chọn/0 prompt-only. Không gửi lại các prompt Stitch dưới đây để tạo trùng desktop đã có; các chỉ dẫn/phân kỳ bên dưới giữ checkpoint lịch sử. Mobile và supplementary states vẫn mở, chưa port ứng dụng.
+
 Dự án hiện hành: [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955), ID `18257628123124303955`. Phạm vi theo yêu cầu ngày 2026-10-08: chốt đủ UI trước, sau đó mới làm lại frontend. Các lỗi V3 đã ghi để xử lý lúc code; không cần chạy thêm lượt refinement cho ba page đầu.
 
 ## Cách gửi
 
 1. Mở chat của đúng dự án trên, đính kèm [logo wordmark PNG](../templates/stitch-v3/brand/examplatform-wordmark.png) và [mark PNG](../templates/stitch-v3/brand/examplatform-mark.png) ở lượt đầu nếu muốn Stitch dùng đúng tài sản tạm.
-2. Copy duy nhất khối `text` của nhóm đang làm; không paste cả tài liệu chứa nhiều nhóm. **[05B — Kiểm tra/phát hành và dialog desktop](05b-admin-preflight-dialogs-desktop.md) đã chuẩn bị ngày 2026-10-09: gửi 05B-1 trước, sau khi kiểm tra frame thật mới gửi 05B-2/05B-3.** Tổng 8 frame, chia 3 + 3 + 2. [05A](05a-admin-exams-desktop.md) đã tạo/[review](../stitch-05a-review-2026-10-08.md), không gửi lại để tạo trùng. [Brief 05](05-admin-exams.md) là backlog đầy đủ, không paste nguyên khối. Không gửi lại 03A/03B/04A.
+2. Copy duy nhất khối `text` của nhóm đang làm; không paste cả tài liệu chứa nhiều nhóm. **Cập nhật 2026-10-12: [05B-1](05b-admin-preflight-dialogs-desktop.md) đã review đủ ba preview desktop, có findings mở; chưa chọn template. Không gửi lại prompt tạo 05B-1.** Sau quyết định giữ mẫu, nhóm tiếp theo là 05B-2; 05B-2/05B-3 chưa có frame được kiểm chứng. Tổng 05B là 8 frame, chia 3+3+2. [05A](05a-admin-exams-desktop.md) đã tạo/[review](../stitch-05a-review-2026-10-08.md), không gửi lại để tạo trùng. [Brief 05](05-admin-exams.md) là backlog đầy đủ, không paste nguyên khối. Không gửi lại 03A/03B/04A.
 3. Kiểm tra các frame thực sự được tạo sau mỗi nhóm, rồi gửi nhóm kế. Không dựa riêng vào câu “đã hoàn thành” của chat Stitch.
 4. Giữ các màn V2/V3/V4 đã chọn. Không gửi các prompt trước đây của dự án `ExamPlatform UI/UX Redesign` vào dự án này.
 
 ## Thứ tự và coverage
+
+**Review05B-1 hoàn tất2026-10-12:** [báo cáo/findings](../stitch-05b1-review-2026-10-12.md) đã đối chiếu đủ3 frame. Chưa chọn template; nền dialog sai fixture/capability và các lỗi Validation cần sửa trước sản phẩm. Không tạo lại05B-1. Sau quyết định giữ mẫu, nhóm kế là05B-2 rồi05B-3. Các checkpoint observed-only bên dưới giữ lịch sử inventory trước review.
+
+**Coverage 2026-10-12:** trạng thái template vẫn 16 đã lưu/4 review chờ chọn/13 chưa có coverage được kiểm chứng. Ba preview 05B-1 đã review bổ sung cho EP-20, chưa thành template và không tăng page-family count. [Danh sách đầy đủ 33 nhóm và mobile/state backlog](../screen-inventory-2026-10-12.md) giữ checkpoint inventory và cập nhật kết quả review; các đoạn ngày 08/10 dưới đây giữ trạng thái lịch sử của lượt lưu/review đó.
 
 Ngày 2026-10-08: Home/Dashboard/Exam, [Auth V3](../templates/auth-v3/README.md), [Catalog/Profile V4](../templates/catalog-profile-v4/README.md), [Results V4](../templates/results-v4/README.md) và [Public V4](../templates/public-v4/README.md) là **16 page families có template thị giác**. Catalog/Profile có 17 ảnh, Results ba desktop states, Public ba desktop states 04A. Ảnh giữ nguyên bytes và findings vẫn mở để sửa khi code. **[03B desktop](../stitch-03b-review-2026-10-08.md) và [05A desktop](../stitch-05a-review-2026-10-08.md) có bốn page families đã review chờ chọn**, ảnh ở evidence; EP-20 mới có hai bước Edit. 13 page families còn ở prompt_prepared/coverage chưa được kiểm chứng; không suy ra chúng chắc chắn chưa được tạo bên ngoài. Chi tiết đề/Hồ sơ mobile, 21 desktop states 02B và sample variants/mobile 04 vẫn backlog. **Ưu tiên đủ desktop trước; tiếp tục nhóm Admin quản lý đề.** Assistant chưa tạo/chỉnh Stitch hoặc bắt đầu port trong các lượt review/lưu mẫu.
 
@@ -29,7 +37,7 @@ Thứ tự mới: 03A/03B, Public 04A và [05A Admin desktop](05a-admin-exams-de
 | [04A — Public desktop](04a-public-desktop.md) | Đã review/lưu template | Ba page chính: Trải nghiệm mẫu, Cách hoạt động, Trợ giúp; findings còn mở |
 | [04 — Public đầy đủ](04-public-experience-help.md) | Backlog variants/mobile/states | Các dạng câu, rà soát/kết quả mẫu và mobile của ba page |
 | [05A — Admin Exams desktop](05a-admin-exams-desktop.md) | Đã review, chưa chọn template | Danh sách đề Loaded; cùng editor Edit ở bước Thông tin và Phần & câu hỏi; đúng 3 frame 1280px, findings mở |
-| [05B — Preflight & Dialogs desktop](05b-admin-preflight-dialogs-desktop.md) | **Nhóm kế, prompt đã chuẩn bị** | 05B-1: preflight/publish/validation; 05B-2: unpublish/archive/bỏ phần; 05B-3: rời editor/conflict; chưa có frame 05B được kiểm chứng |
+| [05B — Preflight & Dialogs desktop](05b-admin-preflight-dialogs-desktop.md) | **05B-1 đã review, chờ lưu/chọn** | 3 desktop frame có findings mở;05B-2 unpublish/archive/bỏ phần và05B-3 rời editor/conflict chưa được kiểm chứng |
 | [05 — Admin Exams đầy đủ](05-admin-exams.md) | Backlog bước 3/dialogs/Create/mobile/states | Brief toàn nhóm; không gửi nguyên khối hiện tại |
 | [06 — Questions & Import](06-admin-questions-import.md) | Ngân hàng câu hỏi | Question list/editor, Import preview/dry-run, Import report |
 | [07 — Admin Operations](07-admin-overview-monitor-submissions.md) | Vận hành kỳ thi | Overview, Monitor index, Exam monitor, Submissions |

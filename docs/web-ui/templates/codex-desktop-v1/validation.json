@@ -1,0 +1,3344 @@
+{
+  "date": "2026-10-12",
+  "status": "PASS",
+  "selectedFrames": 35,
+  "newFrames": 34,
+  "rawPngs": 46,
+  "supersededIterations": 11,
+  "primaryPrompts": 34,
+  "promptWordsRange": [
+    1039,
+    1491
+  ],
+  "sourceCopiesChecked": 34,
+  "sourceReferenceChecks": 183,
+  "registry": {
+    "template_retained": 30,
+    "design_reviewed_with_open_findings": 3,
+    "prompt_prepared": 0
+  },
+  "checks": [
+    {
+      "name": "selected counts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "raw PNG count",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "unique selected IDs/files",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "PNG CD-EP20-PREFLIGHT",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP20-PREFLIGHT",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP20-PREFLIGHT",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "PNG CD-EP20-CREATE-INFO",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP20-CREATE-INFO",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP20-CREATE-INFO",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP20-CREATE-INFO",
+      "status": "PASS",
+      "detail": 1160
+    },
+    {
+      "name": "PNG CD-EP20-CREATE-STRUCTURE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP20-CREATE-STRUCTURE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP20-CREATE-STRUCTURE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP20-CREATE-STRUCTURE",
+      "status": "PASS",
+      "detail": 1147
+    },
+    {
+      "name": "PNG CD-EP20-CREATE-REVIEW",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP20-CREATE-REVIEW",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP20-CREATE-REVIEW",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP20-CREATE-REVIEW",
+      "status": "PASS",
+      "detail": 1147
+    },
+    {
+      "name": "PNG CD-EP20-VALIDATION",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP20-VALIDATION",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP20-VALIDATION",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP20-VALIDATION",
+      "status": "PASS",
+      "detail": 1158
+    },
+    {
+      "name": "PNG CD-EP20-PUBLISH",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP20-PUBLISH",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP20-PUBLISH",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP20-PUBLISH",
+      "status": "PASS",
+      "detail": 1163
+    },
+    {
+      "name": "PNG CD-EP19-UNPUBLISH",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP19-UNPUBLISH",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP19-UNPUBLISH",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP19-UNPUBLISH",
+      "status": "PASS",
+      "detail": 1158
+    },
+    {
+      "name": "PNG CD-EP19-ARCHIVE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP19-ARCHIVE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP19-ARCHIVE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP19-ARCHIVE",
+      "status": "PASS",
+      "detail": 1159
+    },
+    {
+      "name": "PNG CD-EP20-REMOVE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP20-REMOVE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP20-REMOVE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP20-REMOVE",
+      "status": "PASS",
+      "detail": 1143
+    },
+    {
+      "name": "PNG CD-EP20-LEAVE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP20-LEAVE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP20-LEAVE",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP20-LEAVE",
+      "status": "PASS",
+      "detail": 1144
+    },
+    {
+      "name": "PNG CD-EP20-CONFLICT",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists CD-EP20-CONFLICT",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists CD-EP20-CONFLICT",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt CD-EP20-CONFLICT",
+      "status": "PASS",
+      "detail": 1136
+    },
+    {
+      "name": "PNG ep21-question-bank",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep21-question-bank",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep21-question-bank",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep21-question-bank",
+      "status": "PASS",
+      "detail": 1326
+    },
+    {
+      "name": "PNG ep22-edit-single",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep22-edit-single",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep22-edit-single",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep22-edit-single",
+      "status": "PASS",
+      "detail": 1473
+    },
+    {
+      "name": "PNG ep22-edit-multiple",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep22-edit-multiple",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep22-edit-multiple",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep22-edit-multiple",
+      "status": "PASS",
+      "detail": 1472
+    },
+    {
+      "name": "PNG ep22-edit-true-false",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep22-edit-true-false",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep22-edit-true-false",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep22-edit-true-false",
+      "status": "PASS",
+      "detail": 1396
+    },
+    {
+      "name": "PNG ep22-create-single",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep22-create-single",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep22-create-single",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep22-create-single",
+      "status": "PASS",
+      "detail": 1401
+    },
+    {
+      "name": "PNG ep23-json-input",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep23-json-input",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep23-json-input",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep23-json-input",
+      "status": "PASS",
+      "detail": 1399
+    },
+    {
+      "name": "PNG ep23-dry-run-valid",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep23-dry-run-valid",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep23-dry-run-valid",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep23-dry-run-valid",
+      "status": "PASS",
+      "detail": 1376
+    },
+    {
+      "name": "PNG ep23-import-confirm",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep23-import-confirm",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep23-import-confirm",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep23-import-confirm",
+      "status": "PASS",
+      "detail": 1353
+    },
+    {
+      "name": "PNG ep24-committed-report",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep24-committed-report",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep24-committed-report",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep24-committed-report",
+      "status": "PASS",
+      "detail": 1386
+    },
+    {
+      "name": "PNG ep22-type-change-confirm",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep22-type-change-confirm",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep22-type-change-confirm",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep22-type-change-confirm",
+      "status": "PASS",
+      "detail": 1340
+    },
+    {
+      "name": "PNG ep22-archive-confirm",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep22-archive-confirm",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep22-archive-confirm",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep22-archive-confirm",
+      "status": "PASS",
+      "detail": 1330
+    },
+    {
+      "name": "PNG ep22-question-conflict",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep22-question-conflict",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep22-question-conflict",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep22-question-conflict",
+      "status": "PASS",
+      "detail": 1366
+    },
+    {
+      "name": "PNG ep22-candidate-preview",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists ep22-candidate-preview",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists ep22-candidate-preview",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt ep22-candidate-preview",
+      "status": "PASS",
+      "detail": 1358
+    },
+    {
+      "name": "PNG codex-desktop-v1-operations-ep-25",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-operations-ep-25",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-operations-ep-25",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-operations-ep-25",
+      "status": "PASS",
+      "detail": 1395
+    },
+    {
+      "name": "PNG codex-desktop-v1-operations-ep-26",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-operations-ep-26",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-operations-ep-26",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-operations-ep-26",
+      "status": "PASS",
+      "detail": 1485
+    },
+    {
+      "name": "PNG codex-desktop-v1-operations-ep-27",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-operations-ep-27",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-operations-ep-27",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-operations-ep-27",
+      "status": "PASS",
+      "detail": 1445
+    },
+    {
+      "name": "PNG codex-desktop-v1-operations-ep-28",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-operations-ep-28",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-operations-ep-28",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-operations-ep-28",
+      "status": "PASS",
+      "detail": 1491
+    },
+    {
+      "name": "PNG codex-desktop-v1-reporting-failed-attempt-current",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-reporting-failed-attempt-current",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-reporting-failed-attempt-current",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-reporting-failed-attempt-current",
+      "status": "PASS",
+      "detail": 1125
+    },
+    {
+      "name": "PNG codex-desktop-v1-reporting-exact-version-statistics",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-reporting-exact-version-statistics",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-reporting-exact-version-statistics",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-reporting-exact-version-statistics",
+      "status": "PASS",
+      "detail": 1087
+    },
+    {
+      "name": "PNG codex-desktop-v1-reporting-business-metrics-technical-unavailable",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-reporting-business-metrics-technical-unavailable",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-reporting-business-metrics-technical-unavailable",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-reporting-business-metrics-technical-unavailable",
+      "status": "PASS",
+      "detail": 1088
+    },
+    {
+      "name": "PNG codex-desktop-v1-reporting-audit-list",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-reporting-audit-list",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-reporting-audit-list",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-reporting-audit-list",
+      "status": "PASS",
+      "detail": 1039
+    },
+    {
+      "name": "PNG codex-desktop-v1-reporting-public-404",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-reporting-public-404",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-reporting-public-404",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-reporting-public-404",
+      "status": "PASS",
+      "detail": 1149
+    },
+    {
+      "name": "PNG codex-desktop-v1-reporting-replay-reason-confirmation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-reporting-replay-reason-confirmation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-reporting-replay-reason-confirmation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-reporting-replay-reason-confirmation",
+      "status": "PASS",
+      "detail": 1105
+    },
+    {
+      "name": "PNG codex-desktop-v1-reporting-audit-detail-drawer",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "brief exists codex-desktop-v1-reporting-audit-detail-drawer",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "prompt exists codex-desktop-v1-reporting-audit-detail-drawer",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "primary prompt codex-desktop-v1-reporting-audit-detail-drawer",
+      "status": "PASS",
+      "detail": 1200
+    },
+    {
+      "name": "pilot preserved",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "group selected count editor-dialogs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy create-information-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/exam-information.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-exam-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual create-information-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy create-structure-empty-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/exam-structure.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-exam-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual create-structure-empty-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy create-preflight-ready-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/exam-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-exam-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual create-preflight-ready-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy preflight-validation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-05b1-review-2026-10-12.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-exam-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual preflight-validation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy publish-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-exam-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual publish-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy unpublish-confirmation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/exam-list-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual unpublish-confirmation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy archive-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/exam-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual archive-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy remove-section-confirmation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/exam-structure.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual remove-section-confirmation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy leave-unsaved-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-exam-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual leave-unsaved-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy draft-conflict-comparison-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-exam-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual draft-conflict-comparison-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "group selected count questions-import",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep21-question-bank.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-list-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/paths/~1v1~1admin~1questions/get",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep21-question-bank.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep22-edit-single.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-form.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-question-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep22-edit-single.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep22-edit-multiple.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-form.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-question-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep22-edit-multiple.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep22-edit-true-false.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-form.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-question-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep22-edit-true-false.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep22-create-single.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-form.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-question-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep22-create-single.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep23-json-input.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/import-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/paths/~1v1~1admin~1question-imports/post",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/ImportRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/ImportReport",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep23-json-input.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep23-dry-run-valid.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/import-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/paths/~1v1~1admin~1question-imports/post",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/ImportRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/ImportReport",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep23-dry-run-valid.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep23-import-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/import-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/paths/~1v1~1admin~1question-imports/post",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/ImportRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/ImportReport",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep23-import-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep24-committed-report.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/import-report-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/ImportReport",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/paths/~1v1~1admin~1question-imports~1{importId}/get",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep24-committed-report.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep22-type-change-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-form.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-question-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-dialogs.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep22-type-change-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep22-archive-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-form.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-question-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-dialogs.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/paths/~1v1~1admin~1questions~1{questionId}/delete",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep22-archive-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep22-question-conflict.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-form.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-question-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/paths/~1v1~1admin~1questions~1{questionId}/get",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep22-question-conflict.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep22-candidate-preview.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-form.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/use-question-draft.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-editor-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/validation.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/question-preview.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep22-candidate-preview.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "group selected count operations",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep-25-admin-overview-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/admin-layout.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/domain/business-metrics.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/application/services/business-metrics.service.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/presentation/http/business-metrics.controller.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/tests/integration/admin-business-metrics.spec.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep-25-admin-overview-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep-26-monitor-index-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/monitor-index-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/api/dto.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/__tests__/admin-workflows.unit.spec.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep-26-monitor-index-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep-27-exam-monitor-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/monitor-exam-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/api/parse.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/application/dto/active-candidates.dto.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/infrastructure/persistence/postgres-active-candidates.query.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/tests/integration/admin-monitor.spec.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep-27-exam-monitor-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep-28-submissions-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/submissions-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/format.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/application/dto/submissions.dto.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/infrastructure/persistence/postgres-submissions.query.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/tests/integration/admin-submissions.spec.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep-28-submissions-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "group selected count reporting-shared",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep-29-failed-attempt-current-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference AGENTS.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/project-profile.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/dashboard-v2/tokens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/admin-attempt-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/live/create-http-api.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/api/dto.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/api/parse.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/mutation-intent.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep-29-failed-attempt-current-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep-30-exact-version-statistics-v3-count-ratios.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference AGENTS.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/project-profile.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/dashboard-v2/tokens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/statistics-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/application/dto/question-statistics.dto.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/application/services/question-statistics.service.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep-30-exact-version-statistics-v3-count-ratios.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep-31-business-metrics-unavailable-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference AGENTS.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/project-profile.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/dashboard-v2/tokens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/metrics-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/api/dto.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/api/parse.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/presentation/http/business-metrics.controller.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/domain/business-metrics.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/application/dto/business-metrics.dto.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep-31-business-metrics-unavailable-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/ep-32-audit-list-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference AGENTS.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/project-profile.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/dashboard-v2/tokens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/audit-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/shared/api/dto.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/domain/audit.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/application/services/audit.service.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/presentation/http/audit.controller.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/ep-32-audit-list-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/sy-01-public-404-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference AGENTS.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/project-profile.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/dashboard-v2/tokens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/app/router.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/auth/auth-pages.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/experience/public-chrome.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/sy-01-public-404-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/sy-07-replay-reason-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference AGENTS.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/project-profile.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/dashboard-v2/tokens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/admin-attempt-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/mutation-intent.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/demo/server.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/sy-07-replay-reason-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source copy images/sy-07-audit-detail-drawer-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference AGENTS.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/project-profile.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/codex-desktop-v1/design-contract.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/templates/dashboard-v2/tokens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/08-admin-attempt-statistics-metrics-audit.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/web-ui/stitch-page-prompts-v3/09-shared-states-handoff.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/web/src/features/admin/audit-page.tsx",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/domain/audit.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference apps/api/src/modules/reporting/application/dto/audit.dto.ts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "source reference docs/contracts/openapi.yaml",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "root visual images/sy-07-audit-detail-drawer-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "import fixture",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "import IDs new",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "statistics denominators",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "multi option selections not partition",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "failed/live replay guard",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "operation deadlines",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "registry counts",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "EP19 main not auto-selected",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery selected images only",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link review-2026-10-12.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link design-contract.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link manifest.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery anchor #pilot",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery anchor #editor-dialogs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery anchor #questions-import",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery anchor #operations",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery anchor #reporting-shared",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link images/preflight-ready-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link images/preflight-ready-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link README.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link prompts/preflight-ready-v1.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link manifest.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-information-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-information-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-information.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-information.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-structure-empty-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-structure-empty-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-structure-empty.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-structure-empty.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-preflight-ready-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-preflight-ready-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-preflight-ready.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/create-preflight-ready.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/preflight-validation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/preflight-validation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/preflight-validation.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/preflight-validation.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/publish-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/publish-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/publish-confirmation.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/publish-confirmation.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/unpublish-confirmation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/unpublish-confirmation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/unpublish-confirmation.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/unpublish-confirmation.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/archive-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/archive-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/archive-confirmation.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/archive-confirmation.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/remove-section-confirmation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/remove-section-confirmation-v2.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/remove-section-confirmation.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/remove-section-confirmation.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/leave-unsaved-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/leave-unsaved-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/leave-unsaved-confirmation.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/leave-unsaved-confirmation.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/draft-conflict-comparison-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/draft-conflict-comparison-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/draft-conflict-comparison.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/draft-conflict-comparison.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/editor-dialogs/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep21-question-bank.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep21-question-bank.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep21-question-bank.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep21-question-bank.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-edit-single.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-edit-single.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep22-edit-single.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep22-edit-single.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-edit-multiple.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-edit-multiple.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep22-edit-multiple.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep22-edit-multiple.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-edit-true-false.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-edit-true-false.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep22-edit-true-false.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep22-edit-true-false.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-create-single.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-create-single.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep22-create-single.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep22-create-single.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep23-json-input.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep23-json-input.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep23-json-input.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep23-json-input.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep23-dry-run-valid.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep23-dry-run-valid.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep23-dry-run-valid.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep23-dry-run-valid.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep23-import-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep23-import-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep23-import-confirm.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep23-import-confirm.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep24-committed-report.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep24-committed-report.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep24-committed-report.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep24-committed-report.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-type-change-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-type-change-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep22-type-change-confirm.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep22-type-change-confirm.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-archive-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-archive-confirm.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep22-archive-confirm.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep22-archive-confirm.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-question-conflict.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-question-conflict.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep22-question-conflict.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep22-question-conflict.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-candidate-preview.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/images/ep22-candidate-preview.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/briefs/ep22-candidate-preview.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/prompts/ep22-candidate-preview.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/questions-import/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/images/ep-25-admin-overview-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/images/ep-25-admin-overview-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/ep-25-admin-overview.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/ep-25-admin-overview.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/images/ep-26-monitor-index-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/images/ep-26-monitor-index-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/ep-26-monitor-index.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/ep-26-monitor-index.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/images/ep-27-exam-monitor-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/images/ep-27-exam-monitor-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/ep-27-exam-monitor.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/ep-27-exam-monitor.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/images/ep-28-submissions-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/images/ep-28-submissions-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/ep-28-submissions.brief.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/ep-28-submissions.prompt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/operations/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/ep-29-failed-attempt-current-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/ep-29-failed-attempt-current-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/ep-29-failed-attempt.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/prompts/failed-attempt-current.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/ep-30-exact-version-statistics-v3-count-ratios.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/ep-30-exact-version-statistics-v3-count-ratios.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/ep-30-exact-version-statistics.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/prompts/exact-version-statistics.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/ep-31-business-metrics-unavailable-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/ep-31-business-metrics-unavailable-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/ep-31-business-metrics-unavailable-technical.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/prompts/business-metrics-technical-unavailable.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/ep-32-audit-list-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/ep-32-audit-list-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/ep-32-audit-list.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/prompts/audit-list.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/sy-01-public-404-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/sy-01-public-404-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/sy-01-public-404.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/prompts/public-404.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/sy-07-replay-reason-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/sy-07-replay-reason-confirmation-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/sy-07-replay-reason-dialog.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/prompts/replay-reason-confirmation.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/sy-07-audit-detail-drawer-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/images/sy-07-audit-detail-drawer-v1.png",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/sy-07-audit-detail-drawer.md",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/prompts/audit-detail-drawer.txt",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "gallery link groups/reporting-shared/screens.json",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "all JSON parse",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "protected tracked paths unchanged",
+      "status": "PASS",
+      "detail": {
+        "trackedChangedFiles": [],
+        "scope": [
+          "apps",
+          ".ai",
+          "scripts",
+          "package.json",
+          "package-lock.json",
+          "docs/implementation-roadmap.md",
+          "docs/web-ui/templates/dashboard-v2",
+          "docs/web-ui/templates/stitch-v3",
+          "docs/web-ui/templates/auth-v3",
+          "docs/web-ui/templates/catalog-profile-v4",
+          "docs/web-ui/templates/results-v4",
+          "docs/web-ui/templates/public-v4"
+        ]
+      }
+    }
+  ],
+  "selectedFiles": [
+    {
+      "id": "CD-EP20-PREFLIGHT",
+      "file": "images/preflight-ready-v1.png",
+      "sha256": "38639680282bc95b6c71640c907a5be22f486a0879279e94a5312a99a491d38f",
+      "dimensions": [
+        1195,
+        1316
+      ]
+    },
+    {
+      "id": "CD-EP20-CREATE-INFO",
+      "file": "groups/editor-dialogs/create-information-v1.png",
+      "sha256": "11c9af863055c13c1d926cf1a0c699cf3a226efaa2a3e5132118c3a7660f7d6b",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "CD-EP20-CREATE-STRUCTURE",
+      "file": "groups/editor-dialogs/create-structure-empty-v1.png",
+      "sha256": "cc945a00d4468ff6ce95cefbc00be5dd5f0ae2cb22d3fe066c8ba9342e0f5db0",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "CD-EP20-CREATE-REVIEW",
+      "file": "groups/editor-dialogs/create-preflight-ready-v2.png",
+      "sha256": "fb073ce7b0317578e61975226b2f26a7c5ef0ea8e336daa00cef53ceff8d4669",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "CD-EP20-VALIDATION",
+      "file": "groups/editor-dialogs/preflight-validation-v2.png",
+      "sha256": "868b6ecd199e0a27314685c6ae850c30ba841343367f2b50558c94beab176f53",
+      "dimensions": [
+        1195,
+        1316
+      ]
+    },
+    {
+      "id": "CD-EP20-PUBLISH",
+      "file": "groups/editor-dialogs/publish-confirmation-v1.png",
+      "sha256": "9a237c55d4c80da60ff252c949c92651538db8388c2723827e81b257ad5896ad",
+      "dimensions": [
+        1402,
+        1122
+      ]
+    },
+    {
+      "id": "CD-EP19-UNPUBLISH",
+      "file": "groups/editor-dialogs/unpublish-confirmation-v2.png",
+      "sha256": "4c99e94b96ee0ab144a2c56286ac1ae56b73334e646cd9ea4495bb74e13cd031",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "CD-EP19-ARCHIVE",
+      "file": "groups/editor-dialogs/archive-confirmation-v1.png",
+      "sha256": "9a1adf4b2910e38188ec329477cada16d16783b2a278785e107223fcd58dd245",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "CD-EP20-REMOVE",
+      "file": "groups/editor-dialogs/remove-section-confirmation-v2.png",
+      "sha256": "7620e9963cee94ecaada99d9da6a0c1ba423c5043cda0392d66c1ddaf0ef89f7",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "CD-EP20-LEAVE",
+      "file": "groups/editor-dialogs/leave-unsaved-confirmation-v1.png",
+      "sha256": "0c6998b5883c8027debc500deef4c93b62be0c0670611689463ed9955a6f0a9d",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "CD-EP20-CONFLICT",
+      "file": "groups/editor-dialogs/draft-conflict-comparison-v1.png",
+      "sha256": "e639e9af486b1bc195c3c1cdedcce122809cb0fb46778986d5ca3f3fed2eab73",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep21-question-bank",
+      "file": "groups/questions-import/images/ep21-question-bank.png",
+      "sha256": "b0431e75949e19a692639fe589dc7602d7b37d98ead551b0ea2a8e5dddbfa872",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep22-edit-single",
+      "file": "groups/questions-import/images/ep22-edit-single.png",
+      "sha256": "63777b142138448719e01a68d434b6334d4fd36507a733493c3f97f08c40ecf8",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep22-edit-multiple",
+      "file": "groups/questions-import/images/ep22-edit-multiple.png",
+      "sha256": "ea7ddae409aafc96237223f3324a13614772bb8da53d38b50ae9920ff3cafad0",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep22-edit-true-false",
+      "file": "groups/questions-import/images/ep22-edit-true-false.png",
+      "sha256": "53e41cb4045d6f7365c1daf0c0b62b7af412702142a2669ba1f4a14766f841cb",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep22-create-single",
+      "file": "groups/questions-import/images/ep22-create-single.png",
+      "sha256": "a3319743b784700644aa65f183880503e64b95dee287ba73b39c85a587934bb8",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep23-json-input",
+      "file": "groups/questions-import/images/ep23-json-input.png",
+      "sha256": "f2f855eac74dfd11b9bf7f6cb65b2a0aae6d9cbfda5eac84919e0dd6b3e79937",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep23-dry-run-valid",
+      "file": "groups/questions-import/images/ep23-dry-run-valid.png",
+      "sha256": "acbcec8bfa6535a9a7d9fceb57b1faf6aa5a9ab922f195c06df9def03693751d",
+      "dimensions": [
+        1486,
+        1059
+      ]
+    },
+    {
+      "id": "ep23-import-confirm",
+      "file": "groups/questions-import/images/ep23-import-confirm.png",
+      "sha256": "76c78e8b94b4f425830f3ab1569fbb5b17647ca28267b1d47ab6b7ae62f0e491",
+      "dimensions": [
+        1487,
+        1058
+      ]
+    },
+    {
+      "id": "ep24-committed-report",
+      "file": "groups/questions-import/images/ep24-committed-report.png",
+      "sha256": "ff57e189fb069b379cbfbebcaef97bbcb0044e6f8f942e00b1f9b3bd6888f364",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep22-type-change-confirm",
+      "file": "groups/questions-import/images/ep22-type-change-confirm.png",
+      "sha256": "bde026fa949d363c1b3dde692d2141855dd090c39c6793e24cd656f5a20bfb10",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep22-archive-confirm",
+      "file": "groups/questions-import/images/ep22-archive-confirm.png",
+      "sha256": "82e693859dc7e44e492c8c16d919e6e26952bb07f5cf388e2f12c849e040fb26",
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "ep22-question-conflict",
+      "file": "groups/questions-import/images/ep22-question-conflict.png",
+      "sha256": "f14513252efc4cfce4a8a70baa24f02f5ba5813e5c282826a02fdbe786050a3c",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "ep22-candidate-preview",
+      "file": "groups/questions-import/images/ep22-candidate-preview.png",
+      "sha256": "70e51a7bb3bcec74838f3ee01de926ced3484d35e7aaa5dedb9060c508f55ee2",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-operations-ep-25",
+      "file": "groups/operations/images/ep-25-admin-overview-v1.png",
+      "sha256": "31707c580d47d318e9ffaf98728909fb55677cea43dcb9b81450ed5bb6027bf4",
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-operations-ep-26",
+      "file": "groups/operations/images/ep-26-monitor-index-v1.png",
+      "sha256": "a9c9b38d093cfd4dd7a99df04e16b9c18b757e914126313db1246bea73c781fc",
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-operations-ep-27",
+      "file": "groups/operations/images/ep-27-exam-monitor-v1.png",
+      "sha256": "cabb9fcf4ba69cb1163c39f8610a4e0410bbfb15dbd4dbda38d51d71b9dda135",
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-operations-ep-28",
+      "file": "groups/operations/images/ep-28-submissions-v1.png",
+      "sha256": "f6b7a5c45df9227410e9dcd6b4bafdaaf2a97e0452f146d8285034a867055e8a",
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-reporting-failed-attempt-current",
+      "file": "groups/reporting-shared/images/ep-29-failed-attempt-current-v1.png",
+      "sha256": "7e84c122a49b3d3ce9c9ad43d4a944e6b30a1bde7586369ffbcec003d604e934",
+      "dimensions": [
+        1495,
+        1052
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-reporting-exact-version-statistics",
+      "file": "groups/reporting-shared/images/ep-30-exact-version-statistics-v3-count-ratios.png",
+      "sha256": "9882ad63da20a65f27fc4b4bd120f73c6ea828d648df69c52dc707cac234d183",
+      "dimensions": [
+        1420,
+        1108
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-reporting-business-metrics-technical-unavailable",
+      "file": "groups/reporting-shared/images/ep-31-business-metrics-unavailable-v1.png",
+      "sha256": "714871969360a6de88604f9ac4bf47d7e7f9a00e80d5e86255591636992d89fe",
+      "dimensions": [
+        1402,
+        1122
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-reporting-audit-list",
+      "file": "groups/reporting-shared/images/ep-32-audit-list-v1.png",
+      "sha256": "9a82fb86a91a6b51834541941f10c2e73f21e206a476d8abb94a641de22caae1",
+      "dimensions": [
+        1455,
+        1081
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-reporting-public-404",
+      "file": "groups/reporting-shared/images/sy-01-public-404-v1.png",
+      "sha256": "a48453a0155d1978dbe527159ecf3816656b655a29d4fc01c975424757a52bd7",
+      "dimensions": [
+        1496,
+        1051
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-reporting-replay-reason-confirmation",
+      "file": "groups/reporting-shared/images/sy-07-replay-reason-confirmation-v1.png",
+      "sha256": "7f8ab5251c3b168e3ceb17cf2b61d9ca49cff78105c206ce75ca079d69026b8d",
+      "dimensions": [
+        1495,
+        1052
+      ]
+    },
+    {
+      "id": "codex-desktop-v1-reporting-audit-detail-drawer",
+      "file": "groups/reporting-shared/images/sy-07-audit-detail-drawer-v1.png",
+      "sha256": "0ea64ad0c4c1881f984fe1cdb047da1b19965ed57b300dcb624c0143a859975c",
+      "dimensions": [
+        1455,
+        1081
+      ]
+    }
+  ],
+  "errors": [],
+  "repositoryQuality": {
+    "status": "PASS",
+    "command": "npm run quality",
+    "exitCode": 0,
+    "qualityChecks": "Local Markdown links/anchors, project context/section IDs, source import boundaries, unit-test placement, reviewed Reporting query/migration dependencies",
+    "contracts": {
+      "operations": 48,
+      "examples": 445,
+      "eventSchema": "PASS",
+      "declaredBoundaryMetadata": "PASS"
+    },
+    "priorRun": {
+      "status": "FAIL",
+      "reason": "Three links referenced validation.json before the artifact was written; resolved by writing validation.json and rerunning. No source changes."
+    }
+  },
+  "diffWhitespace": {
+    "status": "PASS",
+    "command": "git diff --check"
+  },
+  "runtimeTestsRun": false,
+  "mobileAcceptance": false,
+  "productionAcceptance": false,
+  "limitations": [
+    "Raster cannot prove CSS/font/contrast/interaction/viewport/runtime.",
+    "Original validation edit suffix not retained; exact selected correction and hashes retained.",
+    "Port findings and3main-reference selections/mobile/variant/shared-state backlog remain."
+  ]
+}

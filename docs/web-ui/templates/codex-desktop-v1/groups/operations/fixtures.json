@@ -1,0 +1,337 @@
+{
+  "fixtureVersion": 1,
+  "purpose": "Public deterministic UI illustration only; no runtime or production evidence.",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "displayTimezone": "UTC+7",
+  "asOf": "2026-11-15T03:00:00.000Z",
+  "clientLoadedAt": "2026-11-15T03:00:00.000Z",
+  "actor": {
+    "displayName": "Minh Anh",
+    "initials": "MA",
+    "permissions": [
+      "reporting.read",
+      "catalog.manage",
+      "catalog.import",
+      "audit.read",
+      "system.metrics.read",
+      "assessment.review.admin"
+    ]
+  },
+  "canonicalEditorDifferences": [
+    "Operations has published=true and frozen versions f001/f002; canonical editor is unpublished.",
+    "Operations is viewed on 15/11/2026 10:00 UTC+7 with 10 retained attempts; fixture is illustrative, not time-relative live data.",
+    "No local unsaved draft is represented on these read pages."
+  ],
+  "exams": [
+    {
+      "id": "019b4110-0000-7000-8000-00000000e001",
+      "title": "Nền tảng điện toán đám mây — Bài ôn tập 01",
+      "category": "IT_CERTIFICATION",
+      "revision": 4,
+      "published": true,
+      "archived": false,
+      "publishedVersionId": "019b4102-0000-7000-8000-00000000f002",
+      "durationSeconds": 5400,
+      "openAt": "2026-11-15T01:00:00.000Z",
+      "closeAt": "2026-11-15T05:00:00.000Z",
+      "displayTimezone": "Asia/Ho_Chi_Minh",
+      "attemptLimit": 3,
+      "explanationPolicy": "AFTER_COMPLETION",
+      "leaderboardEnabled": true,
+      "leaderboardDisplay": "alias only",
+      "sections": [
+        {
+          "title": "Kiến thức nền",
+          "questionCount": 2,
+          "possible": 20
+        },
+        {
+          "title": "Quyền truy cập & bảo mật",
+          "questionCount": 2,
+          "possible": 30
+        },
+        {
+          "title": "Tình huống triển khai",
+          "questionCount": 2,
+          "possible": 50
+        }
+      ],
+      "sectionCount": 3,
+      "questionCount": 6,
+      "possible": 100
+    },
+    {
+      "id": "019b4111-0000-7000-8000-00000000e002",
+      "title": "Nhập môn cơ sở dữ liệu — Bài ôn tập 02",
+      "category": "UNIVERSITY",
+      "revision": 2,
+      "published": false,
+      "archived": false,
+      "publishedVersionId": null,
+      "durationSeconds": 3600,
+      "openAt": "2026-11-20T01:00:00.000Z",
+      "closeAt": "2026-11-20T05:00:00.000Z",
+      "displayTimezone": "Asia/Ho_Chi_Minh"
+    },
+    {
+      "id": "019b4112-0000-7000-8000-00000000e003",
+      "title": "An toàn thông tin — Bài kiểm tra nền tảng",
+      "category": "CORPORATE",
+      "revision": 5,
+      "published": false,
+      "archived": true,
+      "publishedVersionId": null,
+      "durationSeconds": 2700,
+      "openAt": "2026-11-01T01:00:00.000Z",
+      "closeAt": "2026-11-01T05:00:00.000Z",
+      "displayTimezone": "Asia/Ho_Chi_Minh"
+    }
+  ],
+  "publishedVersions": [
+    {
+      "id": "019b4101-0000-7000-8000-00000000f001",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "possible": 100,
+      "questionCount": 6,
+      "sectionCount": 3,
+      "durationSeconds": 5400
+    },
+    {
+      "id": "019b4102-0000-7000-8000-00000000f002",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "possible": 100,
+      "questionCount": 6,
+      "sectionCount": 3,
+      "durationSeconds": 5400
+    }
+  ],
+  "attempts": [
+    {
+      "fixtureKey": "a001",
+      "candidateId": "019b4201-0000-7000-8000-00000000c001",
+      "attemptId": "019b4301-0000-7000-8000-00000000a001",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4101-0000-7000-8000-00000000f001",
+      "startedAt": "2026-11-15T01:00:00.000Z",
+      "deadline": "2026-11-15T02:30:00.000Z",
+      "submittedAt": "2026-11-15T02:00:00.000Z",
+      "status": "COMPLETED",
+      "expired": false,
+      "earned": 70,
+      "possible": 100,
+      "replayPending": false
+    },
+    {
+      "fixtureKey": "a002",
+      "candidateId": "019b4202-0000-7000-8000-00000000c002",
+      "attemptId": "019b4302-0000-7000-8000-00000000a002",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4101-0000-7000-8000-00000000f001",
+      "startedAt": "2026-11-15T01:02:00.000Z",
+      "deadline": "2026-11-15T02:32:00.000Z",
+      "submittedAt": "2026-11-15T02:10:00.000Z",
+      "status": "FAILED",
+      "expired": false,
+      "earned": null,
+      "possible": null,
+      "replayPending": false
+    },
+    {
+      "fixtureKey": "a003",
+      "candidateId": "019b4203-0000-7000-8000-00000000c003",
+      "attemptId": "019b4303-0000-7000-8000-00000000a003",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4101-0000-7000-8000-00000000f001",
+      "startedAt": "2026-11-15T01:04:00.000Z",
+      "deadline": "2026-11-15T02:34:00.000Z",
+      "submittedAt": "2026-11-15T02:34:00.000Z",
+      "status": "EXPIRED",
+      "expired": true,
+      "earned": null,
+      "possible": null,
+      "replayPending": false
+    },
+    {
+      "fixtureKey": "a004",
+      "candidateId": "019b4204-0000-7000-8000-00000000c004",
+      "attemptId": "019b4304-0000-7000-8000-00000000a004",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4101-0000-7000-8000-00000000f001",
+      "startedAt": "2026-11-15T01:06:00.000Z",
+      "deadline": "2026-11-15T02:36:00.000Z",
+      "submittedAt": "2026-11-15T02:15:00.000Z",
+      "status": "PROCESSING",
+      "expired": false,
+      "earned": null,
+      "possible": null,
+      "replayPending": false
+    },
+    {
+      "fixtureKey": "a005",
+      "candidateId": "019b4205-0000-7000-8000-00000000c005",
+      "attemptId": "019b4305-0000-7000-8000-00000000a005",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4101-0000-7000-8000-00000000f001",
+      "startedAt": "2026-11-15T01:08:00.000Z",
+      "deadline": "2026-11-15T02:38:00.000Z",
+      "submittedAt": "2026-11-15T02:25:00.000Z",
+      "status": "SUBMITTED",
+      "expired": false,
+      "earned": null,
+      "possible": null,
+      "replayPending": false
+    },
+    {
+      "fixtureKey": "a006",
+      "candidateId": "019b4206-0000-7000-8000-00000000c006",
+      "attemptId": "019b4306-0000-7000-8000-00000000a006",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4101-0000-7000-8000-00000000f001",
+      "startedAt": "2026-11-15T01:10:00.000Z",
+      "deadline": "2026-11-15T02:40:00.000Z",
+      "submittedAt": "2026-11-15T02:20:00.000Z",
+      "status": "COMPLETED",
+      "expired": false,
+      "earned": 90,
+      "possible": 100,
+      "replayPending": false
+    },
+    {
+      "fixtureKey": "a007",
+      "candidateId": "019b4207-0000-7000-8000-00000000c007",
+      "attemptId": "019b4307-0000-7000-8000-00000000a007",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4102-0000-7000-8000-00000000f002",
+      "startedAt": "2026-11-15T01:35:00.000Z",
+      "deadline": "2026-11-15T03:05:00.000Z",
+      "submittedAt": null,
+      "status": "IN_PROGRESS",
+      "expired": false,
+      "earned": null,
+      "possible": null,
+      "replayPending": false
+    },
+    {
+      "fixtureKey": "a008",
+      "candidateId": "019b4208-0000-7000-8000-00000000c008",
+      "attemptId": "019b4308-0000-7000-8000-00000000a008",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4102-0000-7000-8000-00000000f002",
+      "startedAt": "2026-11-15T01:40:00.000Z",
+      "deadline": "2026-11-15T03:10:00.000Z",
+      "submittedAt": null,
+      "status": "IN_PROGRESS",
+      "expired": false,
+      "earned": null,
+      "possible": null,
+      "replayPending": false
+    },
+    {
+      "fixtureKey": "a009",
+      "candidateId": "019b4209-0000-7000-8000-00000000c009",
+      "attemptId": "019b4309-0000-7000-8000-00000000a009",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4102-0000-7000-8000-00000000f002",
+      "startedAt": "2026-11-15T01:45:00.000Z",
+      "deadline": "2026-11-15T03:15:00.000Z",
+      "submittedAt": null,
+      "status": "IN_PROGRESS",
+      "expired": false,
+      "earned": null,
+      "possible": null,
+      "replayPending": false
+    },
+    {
+      "fixtureKey": "a010",
+      "candidateId": "019b4210-0000-7000-8000-00000000c010",
+      "attemptId": "019b4310-0000-7000-8000-00000000a010",
+      "examId": "019b4110-0000-7000-8000-00000000e001",
+      "publishedVersionId": "019b4102-0000-7000-8000-00000000f002",
+      "startedAt": "2026-11-15T01:50:00.000Z",
+      "deadline": "2026-11-15T03:20:00.000Z",
+      "submittedAt": null,
+      "status": "IN_PROGRESS",
+      "expired": false,
+      "earned": null,
+      "possible": null,
+      "replayPending": false
+    }
+  ],
+  "businessMetrics": {
+    "asOf": "2026-11-15T03:00:00.000Z",
+    "window": {
+      "from": "2026-11-14T03:00:00.000Z",
+      "to": "2026-11-15T03:00:00.000Z",
+      "basis": "ATTEMPT_STARTED_AT"
+    },
+    "counts": {
+      "startedAttempts": 10,
+      "activeAttempts": 4,
+      "submittedAttempts": 6,
+      "completedAttempts": 2,
+      "failedAttempts": 1,
+      "expiredSubmissions": 1,
+      "expiredCompletedAttempts": 0
+    },
+    "backlog": {
+      "pendingAttempts": 3,
+      "replayPendingAttempts": 0,
+      "oldestSubmittedAt": "2026-11-15T02:15:00.000Z",
+      "oldestAgeSeconds": 2700
+    },
+    "displayedFields": [
+      "counts.activeAttempts",
+      "counts.submittedAttempts",
+      "counts.completedAttempts",
+      "counts.failedAttempts",
+      "window",
+      "asOf"
+    ],
+    "backlogDisplayed": false
+  },
+  "pages": {
+    "monitorIndex": {
+      "pageSize": 20,
+      "next": null,
+      "examIds": [
+        "019b4110-0000-7000-8000-00000000e001",
+        "019b4111-0000-7000-8000-00000000e002",
+        "019b4112-0000-7000-8000-00000000e003"
+      ]
+    },
+    "examMonitor": {
+      "pageSize": 20,
+      "next": null,
+      "asOf": "2026-11-15T03:00:00.000Z",
+      "attemptFixtureKeys": [
+        "a010",
+        "a009",
+        "a008",
+        "a007"
+      ]
+    },
+    "submissions": {
+      "pageSize": 20,
+      "next": null,
+      "publishedVersionId": "019b4101-0000-7000-8000-00000000f001",
+      "attemptFixtureKeys": [
+        "a006",
+        "a005",
+        "a004",
+        "a003",
+        "a002",
+        "a001"
+      ]
+    }
+  },
+  "consistency": [
+    "Overview counts are a start-time cohort, not additive funnel stages.",
+    "Only the primary exam has attempts in this fixture cohort; the other two Catalog exams have none in fixture, and no per-exam active counts are rendered.",
+    "Active monitor has IN_PROGRESS with deadline>asOf; across all versions; no version field on rows.",
+    "Submissions filtered f001 contain six submitted lifecycles; unfiltered endpoint also includes f002 IN_PROGRESS rows.",
+    "Submissions sort follows immutable startedAt DESC, not submittedAt DESC.",
+    "Scores exist only for COMPLETED; null rendered Chưa có điểm; expired true only a003.",
+    "timestamps for Catalog/submissions Tải lúc are client receipt times, unlike backend active/metrics asOf."
+  ]
+}
+

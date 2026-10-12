@@ -1,0 +1,99 @@
+{
+  "id": "EP-14-adjusted-desktop-v1",
+  "pageFamily": "EP-14",
+  "title": "Lịch sử thi — bản điều chỉnh desktop",
+  "route": "/history",
+  "state": "loaded",
+  "file": "history-adjusted-desktop-v1.png",
+  "brief": "brief.md",
+  "prompt": "primary.prompt.txt",
+  "promptWords": 1351,
+  "inputImages": [
+    {
+      "role": "edit_target",
+      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/evidence/stitch-03b-review-2026-10-08/history-desktop-v4-34514bb3.png",
+      "sha256": "3874d734bcd940e104b0e186e20687cd006e7875e7941837f0e63dddfd86e129",
+      "bytes": 463684,
+      "width": 2560,
+      "height": 3432
+    },
+    {
+      "role": "style_reference",
+      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/images/preflight-ready-v1.png",
+      "sha256": "38639680282bc95b6c71640c907a5be22f486a0879279e94a5312a99a491d38f",
+      "bytes": 1372248,
+      "width": 1195,
+      "height": 1316
+    }
+  ],
+  "sourcePaths": [
+    "apps/web/src/features/results/history-page.tsx",
+    "apps/web/src/shared/api/dto.ts",
+    "apps/web/src/shared/format.ts",
+    "docs/contracts/openapi.yaml",
+    "docs/web-ui/stitch-page-prompts-v3/03b-history-ranking-desktop.md",
+    "docs/web-ui/stitch-03b-review-2026-10-08.md",
+    "docs/web-ui/templates/dashboard-v2/tokens.json",
+    "docs/web-ui/templates/codex-desktop-v1/design-contract.md"
+  ],
+  "generationRequest": "generation-request-v1.json",
+  "review": {
+    "preflight": "root_read_exact_prompt_approved",
+    "final": "direct_view_image_reviewed",
+    "report": "review.md",
+    "materialBlockers": [],
+    "findings": [
+      {
+        "id": "HIST-POLISH-01",
+        "severity": "minor",
+        "detail": "Status labels remain purposeful two-line badges; implementation can widen completed/failed badges for single-line labels."
+      },
+      {
+        "id": "HIST-POLISH-02",
+        "severity": "minor",
+        "detail": "Title allocation is visually approximately35–39%, below preferred40–45%, yet AWS fits2 lines and long final name3 lines without clipping. Verify actual column widths at1280px when porting."
+      },
+      {
+        "id": "HIST-POLISH-03",
+        "severity": "minor",
+        "detail": "Slim rail includes small text labels like retained preflight; icon-only requirement is not exact. Shared Candidate component decides final navigation."
+      }
+    ]
+  },
+  "status": "retained_with_port_findings",
+  "acceptance": {
+    "visualReference": true,
+    "runtime": false,
+    "mobile": false,
+    "production": false
+  },
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1338524,
+  "sha256": "1d0cfaccb1ff8cea72916282bec420dc8f53babc04b55b6411a9b9a3112d6b01",
+  "fixture": "fixture.json",
+  "generationResult": "generation-result-v1.json",
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "mode": "built_in_edit",
+    "successfulCalls": 1,
+    "corrections": [],
+    "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12f46-fe9d-7722-a672-bf885a632aed/exec-4e0a9496-be28-4407-a4d6-d932ac8a2650.png",
+    "copyByteIdentical": true
+  },
+  "selection": {
+    "selectedOn": "2026-10-12",
+    "selectedBy": "user",
+    "userInstruction": "Tạm thời chốt UI như vậy đi, có gì sửa thêm sau",
+    "scope": "Main visual reference for desktop Loaded only; minor findings retained; revisions allowed",
+    "revisionsAllowed": true,
+    "receipt": "../selection.md"
+  },
+  "rootReview": {
+    "status": "PASS_WITH_MINOR_PORT_FINDINGS",
+    "inputsViewed": true,
+    "outputViewed": true,
+    "review": "../review.md",
+    "reviewedOn": "2026-10-12"
+  }
+}

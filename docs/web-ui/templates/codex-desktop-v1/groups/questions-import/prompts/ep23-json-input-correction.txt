@@ -1,0 +1,84 @@
+Edit target ep23-json-input.png, preserve all page layout, header, title, three-step progress with step1 active, filename cau-hoi-dam-may.json, sidebar 3/100/schema1, controls, disabled Nhập câu hỏi, palette and all regions except (a) JSON textarea content and (b) rail active icon. JSON textarea currently contains invented EC2/SaaS content: replace with EXACT valid JSON below. Render only first visible lines in existing scrolling box; full three-entry content continues below the scroll area, never replace any real string with ellipsis. The visible cloud-001 must show exact IaaS management prompt, four exact options, key[2],10 points and matching explanation; do not invent brand names. Use existing monospace scale. For left rail: third bank cylinder must become neutral/inactive; fourth code-brackets icon must become upload-arrow-over-tray ACTIVE Cobalt with light #E8EEFF selection square and tiny indicator. Other icons unchanged. No additional note, no success banner, no new controls. Exact full textarea data:
+{
+  "schemaVersion": 1,
+  "dryRun": true,
+  "questions": [
+    {
+      "clientRef": "cloud-001",
+      "type": "SINGLE_CHOICE",
+      "prompt": "Trong mô hình IaaS, khách hàng quản lý thành phần nào?",
+      "correctOptionPositions": [
+        2
+      ],
+      "points": 10,
+      "explanation": "Với IaaS, khách hàng quản lý hệ điều hành và ứng dụng; nhà cung cấp quản lý hạ tầng vật lý.",
+      "options": [
+        {
+          "position": 1,
+          "text": "Trung tâm dữ liệu vật lý"
+        },
+        {
+          "position": 2,
+          "text": "Hệ điều hành và ứng dụng"
+        },
+        {
+          "position": 3,
+          "text": "Nguồn điện của máy chủ"
+        },
+        {
+          "position": 4,
+          "text": "Hạ tầng mạng vật lý"
+        }
+      ]
+    },
+    {
+      "clientRef": "cloud-002",
+      "type": "MULTIPLE_CHOICE",
+      "prompt": "Những biện pháp nào giúp bảo vệ tài khoản quản trị?",
+      "correctOptionPositions": [
+        1,
+        3
+      ],
+      "points": 15,
+      "explanation": "Xác thực đa yếu tố và quyền tối thiểu giúp giảm nguy cơ truy cập trái phép.",
+      "options": [
+        {
+          "position": 1,
+          "text": "Bật xác thực đa yếu tố"
+        },
+        {
+          "position": 2,
+          "text": "Dùng chung tài khoản quản trị"
+        },
+        {
+          "position": 3,
+          "text": "Cấp quyền tối thiểu cần thiết"
+        },
+        {
+          "position": 4,
+          "text": "Tắt ghi nhật ký truy cập"
+        }
+      ]
+    },
+    {
+      "clientRef": "cloud-003",
+      "type": "TRUE_FALSE",
+      "prompt": "Mã hóa dữ liệu khi truyền giúp giảm nguy cơ bị đọc trộm.",
+      "correctOptionPositions": [
+        1
+      ],
+      "points": 10,
+      "explanation": "Mã hóa đường truyền bảo vệ nội dung trước việc đọc trộm trên mạng.",
+      "options": [
+        {
+          "position": 1,
+          "text": "Đúng"
+        },
+        {
+          "position": 2,
+          "text": "Sai"
+        }
+      ]
+    }
+  ]
+}

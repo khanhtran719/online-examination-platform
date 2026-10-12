@@ -1,0 +1,63 @@
+{
+  "projectId": "18257628123124303955",
+  "reviewedOn": "2026-10-12",
+  "sourceType": "Browser canvas screenshots and DOM; no source PNG/HTML export confirmed",
+  "screenIds": [
+    "bef67930ab4e4b5e93f17f82d06d7193",
+    "8bdb6a1a0a4c4814a9017994e6f05355",
+    "3a591de37dfc4248b3151e7ffe17725d"
+  ],
+  "templateSelected": false,
+  "files": [
+    {
+      "file": "confirmation-centered-capture-metadata.json",
+      "bytes": 297,
+      "sha256": "74d2e60dfbd29a81535059421e3bdc243f72f881caf6e228e8ab23292526ea0f"
+    },
+    {
+      "file": "fit-capture-metadata.json",
+      "bytes": 804,
+      "sha256": "88d36aaa5956d0633fd0b5610b350f6a76c14387e3894f8b70cda532dae5a10d"
+    },
+    {
+      "file": "preflight-ready-dom.json",
+      "bytes": 3288,
+      "sha256": "07130800a7e9867ed8eba8ac3130a3532978ff9551df9e197f49802f8f744a9b"
+    },
+    {
+      "file": "preflight-ready-fit-canvas.jpg",
+      "bytes": 59846,
+      "sha256": "fb282b2e879332867378c6247c7a48b20569d20fea2de2974fcae650517a2424"
+    },
+    {
+      "file": "publish-confirmation-centered-canvas.jpg",
+      "bytes": 45403,
+      "sha256": "9df6786425fb5195d39c9ac6df50cf9a1434f42549406ff602db5681b1f69efc"
+    },
+    {
+      "file": "publish-confirmation-dom.json",
+      "bytes": 3267,
+      "sha256": "f70101fbb7950d4423228fd04db00f66cfbe9be2fd11d4ef0f2047dbed03067f"
+    },
+    {
+      "file": "review-canvas-context.jpg",
+      "bytes": 11352,
+      "sha256": "537877c7db1a83c2c0854660080f957762d795aed7039f70c9e1a110ccf3c50f"
+    },
+    {
+      "file": "validation-blocked-dom.json",
+      "bytes": 3776,
+      "sha256": "99a3064e41e4ddc41e986f33538c4305ad78afc9a3ea17e1df0af78a2ce3a828"
+    },
+    {
+      "file": "validation-blocked-fit-canvas.jpg",
+      "bytes": 62492,
+      "sha256": "804069ba45c62fc6bdb424b868613c9c57359c791c04469d64bd3afe9e97b4b1"
+    },
+    {
+      "file": "visual-metrics-visible-frames.json",
+      "bytes": 420,
+      "sha256": "0cc604244e6cc78352533a363cd45ff50604153e15e9c8a0c70e58dd44285a42"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "route": "/history",
+  "state": "loaded",
+  "timezone": "UTC+7",
+  "loadedCount": 6,
+  "hasNextPage": true,
+  "metadataIsVisualFixture": true,
+  "rowOrderIsOriginalVisualFixture": true,
+  "rows": [
+    {"title":"AWS Certified Solutions Architect Associate SAA-C03","version":"v2.3","attemptCode":"#ATT-9842","startedAtDisplay":"15/11/2024 21:30","status":"COMPLETED","expired":false,"earned":772,"possible":1000,"action":"Xem kết quả"},
+    {"title":"TOEIC Full Practice Test – Format 2024 (Đề số 04)","version":"v1.0","attemptCode":"#ATT-9904","startedAtDisplay":"16/11/2024 14:15","status":"IN_PROGRESS","expired":false,"earned":null,"possible":null,"scoreLabel":"Chưa có điểm","action":"Tiếp tục"},
+    {"title":"Kiểm tra kiến thức Cơ sở Dữ liệu SQL & NoSQL Cao cấp","version":"v1.2","attemptCode":"#ATT-9861","startedAtDisplay":"16/11/2024 10:05","status":"PROCESSING","expired":false,"earned":null,"possible":null,"scoreLabel":"Chưa có điểm","action":"Xem trạng thái"},
+    {"title":"Khảo sát Năng lực Giải tích & Đại số Tuyến tính Sinh viên Kỹ thuật","version":"v2.0","attemptCode":"#ATT-9712","startedAtDisplay":"14/11/2024 08:30","status":"COMPLETED","expired":true,"secondaryStatus":"Nộp khi hết giờ","earned":640,"possible":1000,"action":"Xem kết quả"},
+    {"title":"Đánh giá năng lực Tư duy Logic & Phân tích Dữ liệu Tuyển dụng (Aptitude Test)","version":"v1.4","attemptCode":"#ATT-9620","startedAtDisplay":"12/11/2024 16:20","status":"FAILED","expired":false,"earned":null,"possible":null,"scoreLabel":"Chưa có điểm","action":"Xem trạng thái"},
+    {"title":"Chương trình Đánh giá Toàn diện Kiến thức Mạng Máy tính, Hệ điều hành và Giao thức Bảo mật Tầng Ứng dụng Phân tán Doanh nghiệp","version":"v1.1","attemptCode":"#ATT-9401","startedAtDisplay":"05/11/2024 09:00","status":"COMPLETED","expired":false,"earned":810,"possible":1000,"action":"Xem kết quả"}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "generatedOn": "2026-10-12",
+  "mode": "built-in image_gen",
+  "screen": "EP-20 / Admin preflight ready",
+  "status": "concept_preview_not_selected",
+  "file": "preflight-ready-v1.png",
+  "width": 1195,
+  "height": 1316,
+  "bytes": 1372248,
+  "sha256": "38639680282bc95b6c71640c907a5be22f486a0879279e94a5312a99a491d38f",
+  "prompt": "preflight-ready-v1.prompt.md",
+  "basis": [
+    "../../templates/dashboard-v2/tokens.json",
+    "../../stitch-page-prompts-v3/05b-admin-preflight-dialogs-desktop.md",
+    "../../stitch-05b1-review-2026-10-12.md"
+  ],
+  "applicationChanged": false,
+  "registryStatusChanged": false
+}

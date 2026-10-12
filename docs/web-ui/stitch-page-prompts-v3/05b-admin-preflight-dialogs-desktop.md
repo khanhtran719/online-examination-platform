@@ -1,5 +1,9 @@
 # Prompt 05B — Kiểm tra, phát hành và dialog Admin desktop
 
+**Review đã hoàn tất2026-10-12:** [05B-1 review/findings](../stitch-05b1-review-2026-10-12.md) xác nhận đủ3 frame; chưa chọn template. Giữ hướng thị giác nhưng sửa nền dialog sai fixture, capability tự thêm, counter và metadata trước khi port. Không gửi lại05B-1;05B-2 là nhóm tiếp theo sau khi giữ/chọn hướng này. Các đoạn observed-only và chuẩn bị prompt bên dưới là lịch sử.
+
+**Checkpoint trước review, 2026-10-12:** đã quan sát ba preview desktop 05B-1 trên Stitch: preflight `bef67930ab4e4b5e93f17f82d06d7193`, publish confirmation `8bdb6a1a0a4c4814a9017994e6f05355`, validation `3a591de37dfc4248b3151e7ffe17725d`. [Inventory/evidence](../screen-inventory-2026-10-12.md) ghi xác nhận DOM và screenshot overview. Kết quả review hiện hành ở thông báo trên; các đoạn chuẩn bị bên dưới giữ làm lịch sử, không phải lệnh gửi lại generation.
+
 Chuẩn bị ngày **2026-10-09**. Dùng trong chat [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955), project `18257628123124303955`. **Gửi khối 05B-1 trước; sau khi kiểm tra frame thật mới gửi 05B-2 rồi 05B-3. Không paste cả file một lần.** Tổng 8 frame desktop, chia 3 + 3 + 2. [05A đã review](../stitch-05a-review-2026-10-08.md); giữ các frame cũ, không yêu cầu dựng lại chúng.
 
 Đối chiếu [design spec AD-02/AD-03](../design-spec.md), [OpenAPI](../../contracts/openapi.yaml), [editor](../../../apps/web/src/features/admin/exam-editor-page.tsx), [save/action](../../../apps/web/src/features/admin/use-exam-draft.ts) và [test workflow hiện có](../../../apps/web/src/features/admin/__tests__/admin-workflows.unit.spec.ts). Đây là thiết kế UI cho Catalog/Admin; chưa gửi generation/refinement, chưa tạo frame 05B hoặc sửa ứng dụng. Các dialog rời editor/đối chiếu/bỏ phần là yêu cầu UX khi port, không khẳng định frontend hiện tại đã có đầy đủ.

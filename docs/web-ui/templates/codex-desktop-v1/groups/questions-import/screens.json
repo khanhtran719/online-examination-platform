@@ -1,0 +1,1423 @@
+{
+  "group": "questions-import",
+  "version": "codex-desktop-v1",
+  "date": "2026-10-12",
+  "stage": "retained_with_port_findings",
+  "count": 13,
+  "scope": "desktop and Admin dialogs only",
+  "designContract": "../../design-contract.md",
+  "sources": [
+    "AGENTS.md",
+    "docs/project-profile.md",
+    "docs/web-ui/stitch-page-prompts-v3/06-admin-questions-import.md",
+    "docs/web-ui/templates/codex-desktop-v1/design-contract.md"
+  ],
+  "imageGeneration": "Built-in imagegen only.13 requested frames +5 targeted corrections =18 calls/18 PNG outputs retained;13 selected +5 superseded originals.",
+  "screens": [
+    {
+      "id": "ep21-question-bank",
+      "title": "EP-21 — Ngân hàng câu hỏi",
+      "route": "/admin/questions",
+      "kind": "page",
+      "fixture": "bank",
+      "actions": [
+        "Tạo câu hỏi",
+        "Nhập JSON",
+        "Tải lại",
+        "Tìm trong phần đã tải",
+        "Loại câu hỏi",
+        "Sửa câu qua link",
+        "Menu hàng",
+        "Tải thêm"
+      ],
+      "pending": "Khóa action tải đang chạy; giữ hàng đã tải khi append; không gửi trùng.",
+      "errors": [
+        "Lỗi tải khác empty",
+        "Thiếu quyền ẩn dữ liệu",
+        "Search chỉ trong items đã tải"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/question-list-page.tsx",
+        "docs/contracts/openapi.yaml#/paths/~1v1~1admin~1questions/get"
+      ],
+      "implementationDelta": "Local search/filter, refresh và menu hàng là presentation target của prompt gốc; current source chưa có các controls đó. Key column hiện có được bỏ theo shared contract.",
+      "parentImageId": null,
+      "promptFile": "prompts/ep21-question-bank.txt",
+      "briefFile": "briefs/ep21-question-bank.md",
+      "promptWordCount": 1326,
+      "promptSha256": "bf7736b405175f80461b18e2ae8d80cc18c82b91158b30288d45599273fa2063",
+      "imageFile": "images/ep21-question-bank.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "b0431e75949e19a692639fe589dc7602d7b37d98ead551b0ea2a8e5dddbfa872",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Local search/filter, refresh và menu hàng là presentation target của prompt gốc; current source chưa có các controls đó. Key column hiện có được bỏ theo shared contract."
+        ],
+        "visualFindings": [
+          "Dữ liệu bốn hàng, loại/điểm/bản sửa và privacy đúng; không lộ đáp án.",
+          "Chip Nhiều lựa chọn hơi tím; rail khoảng86px quy đổi1280, cần về72px khi port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "bank",
+        "mode": "page",
+        "route": "/admin/questions",
+        "parentImageId": null
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-930eec18-e7dd-4487-bea3-064e73ea29a7.png",
+      "generatedAt": "2026-10-12T07:21:00.648935+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "generationHistory": [
+        {
+          "localId": "ep21-question-bank",
+          "selected": true,
+          "imageFile": "images/ep21-question-bank.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "b0431e75949e19a692639fe589dc7602d7b37d98ead551b0ea2a8e5dddbfa872",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-930eec18-e7dd-4487-bea3-064e73ea29a7.png",
+          "promptFile": "prompts/ep21-question-bank.txt",
+          "mode": "new-image",
+          "referenceImagePaths": [],
+          "promptSha256": "bf7736b405175f80461b18e2ae8d80cc18c82b91158b30288d45599273fa2063"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep22-edit-single",
+      "title": "EP-22 — Sửa câu một lựa chọn",
+      "route": "/admin/questions/019b18a0-0000-7000-8000-000000000012/edit",
+      "kind": "page",
+      "fixture": "bank[0]",
+      "actions": [
+        "Đổi loại",
+        "Sửa đề bài",
+        "Sửa điểm",
+        "Sửa options/key",
+        "Thêm/Bớt lựa chọn",
+        "Xem như thí sinh",
+        "Lưu câu hỏi",
+        "Lưu trữ"
+      ],
+      "pending": "Lưu: Đang lưu…; controls gửi khóa; giữ draft tới receipt.",
+      "errors": [
+        "Field validation",
+        "Lỗi mạng/timeout chưa xác nhận",
+        "Conflict giữ draft",
+        "Thiếu quyền giấu key"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/question-form.tsx",
+        "apps/web/src/features/admin/use-question-draft.ts",
+        "apps/web/src/features/admin/question-editor-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest"
+      ],
+      "implementationDelta": "Row Lên/Xuống/xóa, counters và overlay preview là target từ prompt gốc; current source có add/remove cuối và sidebar preview. Đúng–Sai mẫu được chuẩn hóa hai nhãn Đúng/Sai theo shared contract.",
+      "parentImageId": null,
+      "promptFile": "prompts/ep22-edit-single.txt",
+      "briefFile": "briefs/ep22-edit-single.md",
+      "promptWordCount": 1473,
+      "promptSha256": "7c351bf48361ff92e3781879d775b7a6feb2726804cb68c65961871da142f8a3",
+      "imageFile": "images/ep22-edit-single.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "63777b142138448719e01a68d434b6334d4fd36507a733493c3f97f08c40ecf8",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Row Lên/Xuống/xóa, counters và overlay preview là target từ prompt gốc; current source có add/remove cuối và sidebar preview. Đúng–Sai mẫu được chuẩn hóa hai nhãn Đúng/Sai theo shared contract."
+        ],
+        "visualFindings": [
+          "Q-012/SINGLE_CHOICE, radio key2,10điểm,bản3,counters54/91 và Candidate preview không key đúng.",
+          "Action bar dạt dưới sidebar, header thấp hơn tỷ lệ chung; chuẩn hóa lúc port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "bank[0]",
+        "mode": "page",
+        "route": "/admin/questions/019b18a0-0000-7000-8000-000000000012/edit",
+        "parentImageId": null
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-fd9a61fd-ea88-4bcd-8af3-960f89f69f26.png",
+      "generatedAt": "2026-10-12T07:25:50.076550+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "generationHistory": [
+        {
+          "localId": "ep22-edit-single",
+          "selected": true,
+          "imageFile": "images/ep22-edit-single.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "63777b142138448719e01a68d434b6334d4fd36507a733493c3f97f08c40ecf8",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-fd9a61fd-ea88-4bcd-8af3-960f89f69f26.png",
+          "promptFile": "prompts/ep22-edit-single.txt",
+          "mode": "new-image",
+          "referenceImagePaths": [],
+          "promptSha256": "7c351bf48361ff92e3781879d775b7a6feb2726804cb68c65961871da142f8a3"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep22-edit-multiple",
+      "title": "EP-22 — Sửa câu nhiều lựa chọn",
+      "route": "/admin/questions/019b18a0-0000-7000-8000-000000000013/edit",
+      "kind": "page",
+      "fixture": "bank[1]",
+      "actions": [
+        "Đổi loại",
+        "Sửa đề bài",
+        "Sửa điểm",
+        "Sửa options/key",
+        "Thêm/Bớt lựa chọn",
+        "Xem như thí sinh",
+        "Lưu câu hỏi",
+        "Lưu trữ"
+      ],
+      "pending": "Lưu: Đang lưu…; controls gửi khóa; giữ draft tới receipt.",
+      "errors": [
+        "Field validation",
+        "Lỗi mạng/timeout chưa xác nhận",
+        "Conflict giữ draft",
+        "Thiếu quyền giấu key"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/question-form.tsx",
+        "apps/web/src/features/admin/use-question-draft.ts",
+        "apps/web/src/features/admin/question-editor-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest"
+      ],
+      "implementationDelta": "Row Lên/Xuống/xóa, counters và overlay preview là target từ prompt gốc; current source có add/remove cuối và sidebar preview. Đúng–Sai mẫu được chuẩn hóa hai nhãn Đúng/Sai theo shared contract.",
+      "parentImageId": null,
+      "promptFile": "prompts/ep22-edit-multiple.txt",
+      "briefFile": "briefs/ep22-edit-multiple.md",
+      "promptWordCount": 1472,
+      "promptSha256": "02b56b6eaeba277cfa005254e210a7855cd7f237ecfb412039bea2545d2203b8",
+      "imageFile": "images/ep22-edit-multiple.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "ea7ddae409aafc96237223f3324a13614772bb8da53d38b50ae9920ff3cafad0",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Row Lên/Xuống/xóa, counters và overlay preview là target từ prompt gốc; current source có add/remove cuối và sidebar preview. Đúng–Sai mẫu được chuẩn hóa hai nhãn Đúng/Sai theo shared contract."
+        ],
+        "visualFindings": [
+          "Đã sửa preview thành4checkbox rỗng và iconupload; Admin key1+3,15điểm,bản2,counters51/75 giữ đúng.",
+          "Footer sát counter75, header thấp; cần spacing khi port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "bank[1]",
+        "mode": "page",
+        "route": "/admin/questions/019b18a0-0000-7000-8000-000000000013/edit",
+        "parentImageId": null
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-9733f654-60ca-4990-9841-b4aabeb102a7.png",
+      "generatedAt": "2026-10-12T07:35:42.014021+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "correctionPromptFile": "prompts/ep22-edit-multiple-correction.txt",
+      "correctionPromptWordCount": 131,
+      "generationHistory": [
+        {
+          "localId": "ep22-edit-multiple-initial",
+          "selected": false,
+          "imageFile": "images/versions/ep22-edit-multiple-initial.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "d4d9f990d6276bff55a64777616640edc1308298b83d94a3e0f2034ebf6eb38e",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-5b2be6b4-c67a-493d-a249-33f9bc36eea8.png",
+          "promptFile": "prompts/ep22-edit-multiple.txt",
+          "mode": "new-image",
+          "referenceImagePaths": [],
+          "reviewStatus": "superseded-after-correction",
+          "promptSha256": "02b56b6eaeba277cfa005254e210a7855cd7f237ecfb412039bea2545d2203b8"
+        },
+        {
+          "localId": "ep22-edit-multiple",
+          "selected": true,
+          "imageFile": "images/ep22-edit-multiple.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "ea7ddae409aafc96237223f3324a13614772bb8da53d38b50ae9920ff3cafad0",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-9733f654-60ca-4990-9841-b4aabeb102a7.png",
+          "promptFile": "prompts/ep22-edit-multiple-correction.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep22-edit-multiple-initial.png"
+          ],
+          "referencePathAtCall": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-multiple.png",
+          "promptSha256": "58f2f3702838a0ad9fce054709f47de4090d4d875d8699d1b0cba7307bb7eb5d"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep22-edit-true-false",
+      "title": "EP-22 — Sửa câu Đúng–Sai",
+      "route": "/admin/questions/019b18a0-0000-7000-8000-000000000014/edit",
+      "kind": "page",
+      "fixture": "bank[2]",
+      "actions": [
+        "Đổi loại",
+        "Sửa đề bài",
+        "Sửa điểm",
+        "Sửa options/key",
+        "Thêm/Bớt lựa chọn",
+        "Xem như thí sinh",
+        "Lưu câu hỏi",
+        "Lưu trữ"
+      ],
+      "pending": "Lưu: Đang lưu…; controls gửi khóa; giữ draft tới receipt.",
+      "errors": [
+        "Field validation",
+        "Lỗi mạng/timeout chưa xác nhận",
+        "Conflict giữ draft",
+        "Thiếu quyền giấu key"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/question-form.tsx",
+        "apps/web/src/features/admin/use-question-draft.ts",
+        "apps/web/src/features/admin/question-editor-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest"
+      ],
+      "implementationDelta": "Row Lên/Xuống/xóa, counters và overlay preview là target từ prompt gốc; current source có add/remove cuối và sidebar preview. Đúng–Sai mẫu được chuẩn hóa hai nhãn Đúng/Sai theo shared contract.",
+      "parentImageId": null,
+      "promptFile": "prompts/ep22-edit-true-false.txt",
+      "briefFile": "briefs/ep22-edit-true-false.md",
+      "promptWordCount": 1396,
+      "promptSha256": "2676667feadf31e10ca85f51b119113cfdab5ed4b9a93e9dedf6eec37d86dd30",
+      "imageFile": "images/ep22-edit-true-false.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "53e41cb4045d6f7365c1daf0c0b62b7af412702142a2669ba1f4a14766f841cb",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Row Lên/Xuống/xóa, counters và overlay preview là target từ prompt gốc; current source có add/remove cuối và sidebar preview. Đúng–Sai mẫu được chuẩn hóa hai nhãn Đúng/Sai theo shared contract."
+        ],
+        "visualFindings": [
+          "Q-014/TRUE_FALSE,radio key1,10điểm,bản1,counters56/66 đúng; đúng2options và thêm/bớt disabled.",
+          "Header hơi thấp; không xác nhận font thật từ raster."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "bank[2]",
+        "mode": "page",
+        "route": "/admin/questions/019b18a0-0000-7000-8000-000000000014/edit",
+        "parentImageId": null
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-c62446e9-5a16-46c1-9f1c-735fb33b8405.png",
+      "generatedAt": "2026-10-12T07:29:30.420267+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "generationHistory": [
+        {
+          "localId": "ep22-edit-true-false",
+          "selected": true,
+          "imageFile": "images/ep22-edit-true-false.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "53e41cb4045d6f7365c1daf0c0b62b7af412702142a2669ba1f4a14766f841cb",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-c62446e9-5a16-46c1-9f1c-735fb33b8405.png",
+          "promptFile": "prompts/ep22-edit-true-false.txt",
+          "mode": "new-image",
+          "referenceImagePaths": [],
+          "promptSha256": "2676667feadf31e10ca85f51b119113cfdab5ed4b9a93e9dedf6eec37d86dd30"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep22-create-single",
+      "title": "EP-22 — Tạo câu một lựa chọn",
+      "route": "/admin/questions/new",
+      "kind": "page",
+      "fixture": "createDraft",
+      "actions": [
+        "Điền loại/nội dung/điểm",
+        "Chọn key",
+        "Thêm lựa chọn",
+        "Xem như thí sinh",
+        "Lưu câu hỏi",
+        "Quay lại ngân hàng"
+      ],
+      "pending": "Chặn gửi trùng tạo; không cấp mã/bản sửa trước receipt.",
+      "errors": [
+        "Field validation",
+        "Timeout giữ intent và draft",
+        "Thiếu quyền"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/question-form.tsx",
+        "apps/web/src/features/admin/use-question-draft.ts",
+        "apps/web/src/features/admin/question-editor-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest"
+      ],
+      "implementationDelta": "Chưa lưu là copy thay Revision 0 của source; chỉ thay trình bày, không đổi API.",
+      "parentImageId": null,
+      "promptFile": "prompts/ep22-create-single.txt",
+      "briefFile": "briefs/ep22-create-single.md",
+      "promptWordCount": 1401,
+      "promptSha256": "dda5bc661bb94b8e173809c2be9a1aef3a870bbedb69e3e3a4f40420bb3cee2d",
+      "imageFile": "images/ep22-create-single.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "a3319743b784700644aa65f183880503e64b95dee287ba73b39c85a587934bb8",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Chưa lưu là copy thay Revision 0 của source; chỉ thay trình bày, không đổi API."
+        ],
+        "visualFindings": [
+          "Đã sửa counter60, Lên hàng2 enabled và iconupload; create chưa mã/bản sửa,radio key1,5điểm và2options đúng.",
+          "Card lồng và header thấp; chuẩn hóa spacing khi port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "createDraft",
+        "mode": "page",
+        "route": "/admin/questions/new",
+        "parentImageId": null
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-8190a233-8f62-4267-9b2b-31b277924ceb.png",
+      "generatedAt": "2026-10-12T07:36:44.831225+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "correctionPromptFile": "prompts/ep22-create-single-correction.txt",
+      "correctionPromptWordCount": 149,
+      "generationHistory": [
+        {
+          "localId": "ep22-create-single-initial",
+          "selected": false,
+          "imageFile": "images/versions/ep22-create-single-initial.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "f6acafb9a61209f323e3bb766ba7f948979d138ef0fabd628406340d50a72c87",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-2d39d7b0-e0cf-430a-b4c2-a26ab2a9d880.png",
+          "promptFile": "prompts/ep22-create-single.txt",
+          "mode": "new-image",
+          "referenceImagePaths": [],
+          "reviewStatus": "superseded-after-correction",
+          "promptSha256": "dda5bc661bb94b8e173809c2be9a1aef3a870bbedb69e3e3a4f40420bb3cee2d"
+        },
+        {
+          "localId": "ep22-create-single",
+          "selected": true,
+          "imageFile": "images/ep22-create-single.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "a3319743b784700644aa65f183880503e64b95dee287ba73b39c85a587934bb8",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-8190a233-8f62-4267-9b2b-31b277924ceb.png",
+          "promptFile": "prompts/ep22-create-single-correction.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep22-create-single-initial.png"
+          ],
+          "referencePathAtCall": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-create-single.png",
+          "promptSha256": "e7db40fb5f8e93acdd68b8c37c531983965edb8aef4d54be9f68fa89a16f8f68"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep23-json-input",
+      "title": "EP-23 — Chọn hoặc dán JSON",
+      "route": "/admin/imports/new",
+      "kind": "page",
+      "fixture": "import",
+      "actions": [
+        "Chọn tệp JSON",
+        "Chọn tệp khác",
+        "Dán JSON",
+        "Tải mẫu JSON",
+        "Kiểm tra dữ liệu",
+        "Nhập câu hỏi disabled"
+      ],
+      "pending": "Đang kiểm tra…; chặn lặp; giữ JSON.",
+      "errors": [
+        "Sai cú pháp",
+        "Quá 1 MiB",
+        "Thiếu fields",
+        "Dry-run lỗi",
+        "Timeout chưa xác nhận"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/import-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/paths/~1v1~1admin~1question-imports/post",
+        "docs/contracts/openapi.yaml#/components/schemas/ImportRequest",
+        "docs/contracts/openapi.yaml#/components/schemas/ImportReport"
+      ],
+      "implementationDelta": "Stepper, download mẫu và preview số entries là presentation target; source có file input/paste + dry-run/commit nhưng chưa stepper/download.",
+      "parentImageId": null,
+      "promptFile": "prompts/ep23-json-input.txt",
+      "briefFile": "briefs/ep23-json-input.md",
+      "promptWordCount": 1399,
+      "promptSha256": "d13aae81a58f230eb18da09014c2efaaadab56fea2cd2ebed0fed4964f7acdb5",
+      "imageFile": "images/ep23-json-input.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "f2f855eac74dfd11b9bf7f6cb65b2a0aae6d9cbfda5eac84919e0dd6b3e79937",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Stepper, download mẫu và preview số entries là presentation target; source có file input/paste + dry-run/commit nhưng chưa stepper/download."
+        ],
+        "visualFindings": [
+          "Đã sửa JSON theo literal sample: cloud-001/IaaS/key2/10điểm/explanation/option1; upload active đúng.",
+          "Code ngoài vùng cuộn không thể xác minh từ raster; sample-import.json là nguồn đầy đủ khi port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "import",
+        "mode": "page",
+        "route": "/admin/imports/new",
+        "parentImageId": null
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-d961bf86-0229-4a85-8bb7-921d94640ebd.png",
+      "generatedAt": "2026-10-12T07:38:11.700490+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "correctionPromptFile": "prompts/ep23-json-input-correction.txt",
+      "correctionPromptWordCount": 387,
+      "generationHistory": [
+        {
+          "localId": "ep23-json-input-initial",
+          "selected": false,
+          "imageFile": "images/versions/ep23-json-input-initial.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "c7958c6fcf267bdcf73652abaac283ae4890ffc8aa882d4c3422716e586a64dd",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-85b1b0db-420c-40e2-8454-e72c0b280e38.png",
+          "promptFile": "prompts/ep23-json-input.txt",
+          "mode": "new-image",
+          "referenceImagePaths": [],
+          "reviewStatus": "superseded-after-correction",
+          "promptSha256": "d13aae81a58f230eb18da09014c2efaaadab56fea2cd2ebed0fed4964f7acdb5"
+        },
+        {
+          "localId": "ep23-json-input",
+          "selected": true,
+          "imageFile": "images/ep23-json-input.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "f2f855eac74dfd11b9bf7f6cb65b2a0aae6d9cbfda5eac84919e0dd6b3e79937",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-d961bf86-0229-4a85-8bb7-921d94640ebd.png",
+          "promptFile": "prompts/ep23-json-input-correction.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep23-json-input-initial.png"
+          ],
+          "referencePathAtCall": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep23-json-input.png",
+          "promptSha256": "5f2a4028aaf3c9dc46785caa4c9cd200b4f9363e241e562b78cf581644fd30d3"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep23-dry-run-valid",
+      "title": "EP-23 — Kiểm tra hợp lệ, chưa nhập",
+      "route": "/admin/imports/new",
+      "kind": "page",
+      "fixture": "import + dryReport",
+      "actions": [
+        "Nhập câu hỏi mở confirm",
+        "Kiểm tra lại",
+        "Sửa dữ liệu JSON"
+      ],
+      "pending": "Chặn dry/commit lặp; đổi JSON bắt kiểm tra lại.",
+      "errors": [
+        "Invalid báo issues",
+        "Timeout không kết luận",
+        "Nội dung đổi invalidates dry-run"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/import-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/paths/~1v1~1admin~1question-imports/post",
+        "docs/contracts/openapi.yaml#/components/schemas/ImportRequest",
+        "docs/contracts/openapi.yaml#/components/schemas/ImportReport"
+      ],
+      "implementationDelta": "Bảng preview/breakdown lấy từ local inspected input, không từ ImportReport.questions rỗng.",
+      "parentImageId": null,
+      "promptFile": "prompts/ep23-dry-run-valid.txt",
+      "briefFile": "briefs/ep23-dry-run-valid.md",
+      "promptWordCount": 1376,
+      "promptSha256": "c6c54777257621722f934c4e666a3722459dc4afe5a199bad4e72d64e5e6001f",
+      "imageFile": "images/ep23-dry-run-valid.png",
+      "actualDimensions": {
+        "width": 1486,
+        "height": 1059
+      },
+      "imageSha256": "acbcec8bfa6535a9a7d9fceb57b1faf6aa5a9ab922f195c06df9def03693751d",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Bảng preview/breakdown lấy từ local inspected input, không từ ImportReport.questions rỗng."
+        ],
+        "visualFindings": [
+          "Đã sửa upload active/chấm TRUE_FALSE muted; valid nhưng chưa commit,3rows/3types/10–15–10điểm/09:15/BC-0101 đúng.",
+          "Status green hơi lớn; tiết chế khi port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "import + dryReport",
+        "mode": "page",
+        "route": "/admin/imports/new",
+        "parentImageId": null
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-58d6e428-8078-49d4-b32a-5f61715b589a.png",
+      "generatedAt": "2026-10-12T07:39:25.968908+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "correctionPromptFile": "prompts/ep23-dry-run-valid-correction.txt",
+      "correctionPromptWordCount": 128,
+      "generationHistory": [
+        {
+          "localId": "ep23-dry-run-valid-initial",
+          "selected": false,
+          "imageFile": "images/versions/ep23-dry-run-valid-initial.png",
+          "dimensions": {
+            "width": 1487,
+            "height": 1058
+          },
+          "sha256": "9ec672c0093dc19677e01c87b5dff0fbd627d39247d8a784d8864181e25de3f9",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-2d0744bb-8b4c-4bfa-b8c1-ac4d2a8c573d.png",
+          "promptFile": "prompts/ep23-dry-run-valid.txt",
+          "mode": "new-image",
+          "referenceImagePaths": [],
+          "reviewStatus": "superseded-after-correction",
+          "promptSha256": "c6c54777257621722f934c4e666a3722459dc4afe5a199bad4e72d64e5e6001f"
+        },
+        {
+          "localId": "ep23-dry-run-valid",
+          "selected": true,
+          "imageFile": "images/ep23-dry-run-valid.png",
+          "dimensions": {
+            "width": 1486,
+            "height": 1059
+          },
+          "sha256": "acbcec8bfa6535a9a7d9fceb57b1faf6aa5a9ab922f195c06df9def03693751d",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-58d6e428-8078-49d4-b32a-5f61715b589a.png",
+          "promptFile": "prompts/ep23-dry-run-valid-correction.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep23-dry-run-valid-initial.png"
+          ],
+          "referencePathAtCall": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep23-dry-run-valid.png",
+          "promptSha256": "2808500f3a9599b7011ff402d876eabcd27b8f10681d195c17e6a882eb8c2d99"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep23-import-confirm",
+      "title": "EP-23 — Xác nhận nhập câu hỏi",
+      "route": "/admin/imports/new",
+      "kind": "dialog",
+      "fixture": "import + dryReport",
+      "actions": [
+        "Hủy",
+        "Đóng",
+        "Nhập vào ngân hàng"
+      ],
+      "pending": "Commit chặn gửi lặp; timeout giữ frozen intent; receipt mới chuyển report.",
+      "errors": [
+        "JSON đổi disable commit",
+        "Dry invalid không mở modal",
+        "Unknown không báo thành công"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/import-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/paths/~1v1~1admin~1question-imports/post",
+        "docs/contracts/openapi.yaml#/components/schemas/ImportRequest",
+        "docs/contracts/openapi.yaml#/components/schemas/ImportReport"
+      ],
+      "implementationDelta": "Đối ứng dialog hiện có trong ImportPage; copy/visual được làm rõ.",
+      "parentImageId": "ep23-dry-run-valid",
+      "promptFile": "prompts/ep23-import-confirm.txt",
+      "briefFile": "briefs/ep23-import-confirm.md",
+      "promptWordCount": 1353,
+      "promptSha256": "c1348e497864f1a2b63a65b07cc53e6a50e5dcc68b9e5d14e1a3c9e79cdf68d4",
+      "imageFile": "images/ep23-import-confirm.png",
+      "actualDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "imageSha256": "76c78e8b94b4f425830f3ab1569fbb5b17647ca28267b1d47ab6b7ae62f0e491",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Đối ứng dialog hiện có trong ImportPage; copy/visual được làm rõ."
+        ],
+        "visualFindings": [
+          "Modal đúng file/3câu/valid/atomic copy; nền dry-run chưa commit và3rows giữ đúng.",
+          "Dòng cơ cấu type sát mép phải; cần wrap/spacing khi port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "import + dryReport",
+        "mode": "dialog",
+        "route": "/admin/imports/new",
+        "parentImageId": "ep23-dry-run-valid"
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-ec3e4930-1306-4fd6-9ee4-7e36f5863616.png",
+      "generatedAt": "2026-10-12T07:42:04.463291+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "backgroundFixtureReview": "Same own-page fixture retained; tools may resample/reflow dimensions. Conflict intentionally changes local points10->12 before overlay.",
+      "generationHistory": [
+        {
+          "localId": "ep23-import-confirm",
+          "selected": true,
+          "imageFile": "images/ep23-import-confirm.png",
+          "dimensions": {
+            "width": 1487,
+            "height": 1058
+          },
+          "sha256": "76c78e8b94b4f425830f3ab1569fbb5b17647ca28267b1d47ab6b7ae62f0e491",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-ec3e4930-1306-4fd6-9ee4-7e36f5863616.png",
+          "promptFile": "prompts/ep23-import-confirm.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep23-dry-run-valid.png"
+          ],
+          "promptSha256": "c1348e497864f1a2b63a65b07cc53e6a50e5dcc68b9e5d14e1a3c9e79cdf68d4"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep24-committed-report",
+      "title": "EP-24 — Báo cáo nhập đã ghi ngân hàng",
+      "route": "/admin/imports/019b18a0-1000-7000-8000-000000000102",
+      "kind": "page",
+      "fixture": "committedReport",
+      "actions": [
+        "Nhập tệp khác",
+        "Ngân hàng câu hỏi",
+        "Mở từng câu theo mapping"
+      ],
+      "pending": "Loading/refresh chỉ GET report, không commit lại.",
+      "errors": [
+        "Lỗi đọc khác invalid report",
+        "Unknown cần refresh",
+        "Không partial import"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/import-report-page.tsx",
+        "docs/contracts/openapi.yaml#/components/schemas/ImportReport",
+        "docs/contracts/openapi.yaml#/paths/~1v1~1admin~1question-imports~1{importId}/get"
+      ],
+      "implementationDelta": "Mã Q/BC là label fixture, UUID mapping được giữ trong fixtures; không thêm prompt/key vào report.",
+      "parentImageId": null,
+      "promptFile": "prompts/ep24-committed-report.txt",
+      "briefFile": "briefs/ep24-committed-report.md",
+      "promptWordCount": 1386,
+      "promptSha256": "800b8f0576061071ca258a12ab6701abd211340a12d6369482fef7bbe5642760",
+      "imageFile": "images/ep24-committed-report.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "ff57e189fb069b379cbfbebcaef97bbcb0044e6f8f942e00b1f9b3bd6888f364",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Mã Q/BC là label fixture, UUID mapping được giữ trong fixtures; không thêm prompt/key vào report."
+        ],
+        "visualFindings": [
+          "Đã sửa upload active; committed thật/3mappings mới Q-016–018/BC-0102/09:16, không keys/prompt payload report đúng.",
+          "Nhập tệp khác lặp header/footer; có thể gọn khi port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "committedReport",
+        "mode": "page",
+        "route": "/admin/imports/019b18a0-1000-7000-8000-000000000102",
+        "parentImageId": null
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-c352be2d-73fe-4079-ad2c-e46a91bd8587.png",
+      "generatedAt": "2026-10-12T07:40:39.495723+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "correctionPromptFile": "prompts/ep24-committed-report-correction.txt",
+      "correctionPromptWordCount": 94,
+      "generationHistory": [
+        {
+          "localId": "ep24-committed-report-initial",
+          "selected": false,
+          "imageFile": "images/versions/ep24-committed-report-initial.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "2070edd2017ad1eb4412ee59beeb5ddadb643b09cdf498e4b756a67a928dfadf",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-88e4e29d-a509-49ce-a82f-a4ef40cff0fe.png",
+          "promptFile": "prompts/ep24-committed-report.txt",
+          "mode": "new-image",
+          "referenceImagePaths": [],
+          "reviewStatus": "superseded-after-correction",
+          "promptSha256": "800b8f0576061071ca258a12ab6701abd211340a12d6369482fef7bbe5642760"
+        },
+        {
+          "localId": "ep24-committed-report",
+          "selected": true,
+          "imageFile": "images/ep24-committed-report.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "ff57e189fb069b379cbfbebcaef97bbcb0044e6f8f942e00b1f9b3bd6888f364",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-c352be2d-73fe-4079-ad2c-e46a91bd8587.png",
+          "promptFile": "prompts/ep24-committed-report-correction.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/versions/ep24-committed-report-initial.png"
+          ],
+          "referencePathAtCall": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep24-committed-report.png",
+          "promptSha256": "2c96d0501bbdb516001ad9dc47610eb8933d2804352a4780eaa2656ce6e44c02"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep22-type-change-confirm",
+      "title": "EP-22 — Xác nhận đổi loại câu hỏi",
+      "route": "/admin/questions/019b18a0-0000-7000-8000-000000000013/edit",
+      "kind": "dialog",
+      "fixture": "bank[1] pending MULTIPLE_CHOICE -> SINGLE_CHOICE",
+      "actions": [
+        "Hủy",
+        "Đóng",
+        "Đổi loại draft"
+      ],
+      "pending": "Không mutation khi mở/hủy; save inflight không đổi draft.",
+      "errors": [
+        "Chỉ giữ key đầu khi confirm",
+        "Không xóa options khi MULTIPLE->SINGLE"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/question-form.tsx",
+        "apps/web/src/features/admin/use-question-draft.ts",
+        "apps/web/src/features/admin/question-editor-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+        "apps/web/src/features/admin/question-dialogs.tsx"
+      ],
+      "implementationDelta": "Copy được specialization đúng chuyển MULTIPLE->SINGLE thay thông báo generic source.",
+      "parentImageId": "ep22-edit-multiple",
+      "promptFile": "prompts/ep22-type-change-confirm.txt",
+      "briefFile": "briefs/ep22-type-change-confirm.md",
+      "promptWordCount": 1340,
+      "promptSha256": "06fcb61cbe6505012eeb59648a12532b7193128180306ef1d0dd36e3013a41c6",
+      "imageFile": "images/ep22-type-change-confirm.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "bde026fa949d363c1b3dde692d2141855dd090c39c6793e24cd656f5a20bfb10",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Copy được specialization đúng chuyển MULTIPLE->SINGLE thay thông báo generic source."
+        ],
+        "visualFindings": [
+          "Q-013/multiple/15điểm/bản2/key1+3 trên nền giữ trước confirm; copy2keys→1key/4options giữ lại đúng.",
+          "Modal khoảng417px quy đổi1280 nhỏ hơn520–600 target; tăng width khi port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "bank[1] pending MULTIPLE_CHOICE -> SINGLE_CHOICE",
+        "mode": "dialog",
+        "route": "/admin/questions/019b18a0-0000-7000-8000-000000000013/edit",
+        "parentImageId": "ep22-edit-multiple"
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-45bb3c3a-b5d7-4eb0-8e98-e7ff14146615.png",
+      "generatedAt": "2026-10-12T07:43:09.816260+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "backgroundFixtureReview": "Same own-page fixture retained; tools may resample/reflow dimensions. Conflict intentionally changes local points10->12 before overlay.",
+      "generationHistory": [
+        {
+          "localId": "ep22-type-change-confirm",
+          "selected": true,
+          "imageFile": "images/ep22-type-change-confirm.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "bde026fa949d363c1b3dde692d2141855dd090c39c6793e24cd656f5a20bfb10",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-45bb3c3a-b5d7-4eb0-8e98-e7ff14146615.png",
+          "promptFile": "prompts/ep22-type-change-confirm.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-multiple.png"
+          ],
+          "promptSha256": "06fcb61cbe6505012eeb59648a12532b7193128180306ef1d0dd36e3013a41c6"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep22-archive-confirm",
+      "title": "EP-22 — Xác nhận lưu trữ câu hỏi",
+      "route": "/admin/questions/019b18a0-0000-7000-8000-000000000012/edit",
+      "kind": "dialog",
+      "fixture": "bank[0] not archived",
+      "actions": [
+        "Hủy",
+        "Đóng",
+        "Lưu trữ câu hỏi"
+      ],
+      "pending": "Chặn lặp archive; receipt mới đổi archived; unknown giữ intent.",
+      "errors": [
+        "Conflict revision",
+        "Timeout chưa xác nhận",
+        "Không ảnh hưởng frozen snapshots"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/question-form.tsx",
+        "apps/web/src/features/admin/use-question-draft.ts",
+        "apps/web/src/features/admin/question-editor-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+        "apps/web/src/features/admin/question-dialogs.tsx",
+        "docs/contracts/openapi.yaml#/paths/~1v1~1admin~1questions~1{questionId}/delete"
+      ],
+      "implementationDelta": "Button label cụ thể hơn Xác nhận hiện tại; không thay hành vi archive.",
+      "parentImageId": "ep22-edit-single",
+      "promptFile": "prompts/ep22-archive-confirm.txt",
+      "briefFile": "briefs/ep22-archive-confirm.md",
+      "promptWordCount": 1330,
+      "promptSha256": "65f129ce6d23f9f012eba60b5789f09f04278fbd6b320a8dcf8fe3dc42731afd",
+      "imageFile": "images/ep22-archive-confirm.png",
+      "actualDimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "imageSha256": "82e693859dc7e44e492c8c16d919e6e26952bb07f5cf388e2f12c849e040fb26",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Button label cụ thể hơn Xác nhận hiện tại; không thay hành vi archive."
+        ],
+        "visualFindings": [
+          "Archive trước confirm Q-012/bản3/10điểm và frozen snapshot copy đúng; nền key2/câu IaaS vẫn giữ.",
+          "Tool đổi kích thước/tỷ lệ nền so với base: fixture giữ nhưng không pixel-identical; modal cần về520–600 khi port."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "bank[0] not archived",
+        "mode": "dialog",
+        "route": "/admin/questions/019b18a0-0000-7000-8000-000000000012/edit",
+        "parentImageId": "ep22-edit-single"
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-e493d309-410f-48d8-9c19-68e92b85029f.png",
+      "generatedAt": "2026-10-12T07:44:36.771333+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "backgroundFixtureReview": "Same own-page fixture retained; tools may resample/reflow dimensions. Conflict intentionally changes local points10->12 before overlay.",
+      "generationHistory": [
+        {
+          "localId": "ep22-archive-confirm",
+          "selected": true,
+          "imageFile": "images/ep22-archive-confirm.png",
+          "dimensions": {
+            "width": 1448,
+            "height": 1086
+          },
+          "sha256": "82e693859dc7e44e492c8c16d919e6e26952bb07f5cf388e2f12c849e040fb26",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-e493d309-410f-48d8-9c19-68e92b85029f.png",
+          "promptFile": "prompts/ep22-archive-confirm.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-single.png"
+          ],
+          "promptSha256": "65f129ce6d23f9f012eba60b5789f09f04278fbd6b320a8dcf8fe3dc42731afd"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep22-question-conflict",
+      "title": "EP-22 — Xung đột khi lưu câu hỏi",
+      "route": "/admin/questions/019b18a0-0000-7000-8000-000000000012/edit",
+      "kind": "dialog",
+      "fixture": "conflictLocal: Q-012 baseRevision3 local points12",
+      "actions": [
+        "Giữ bản đang sửa",
+        "Đóng",
+        "Xem bản mới read-only"
+      ],
+      "pending": "Read mới giữ local draft; không retry write hoặc force-save.",
+      "errors": [
+        "GET mới lỗi giữ draft",
+        "Không remote facts nếu chưa đọc",
+        "Conflict xác định khác timeout unknown"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/question-form.tsx",
+        "apps/web/src/features/admin/use-question-draft.ts",
+        "apps/web/src/features/admin/question-editor-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+        "docs/contracts/openapi.yaml#/paths/~1v1~1admin~1questions~1{questionId}/get"
+      ],
+      "implementationDelta": "Current implementation có inline API error và giữ draft; conflict modal/read-only inspection preservation là presentation target, chưa runtime proof.",
+      "parentImageId": "ep22-edit-single",
+      "promptFile": "prompts/ep22-question-conflict.txt",
+      "briefFile": "briefs/ep22-question-conflict.md",
+      "promptWordCount": 1366,
+      "promptSha256": "3e10644b4d38a714be34cd914ec61ec0a4905f6e01561276d5a5dc7971e1d678",
+      "imageFile": "images/ep22-question-conflict.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "f14513252efc4cfce4a8a70baa24f02f5ba5813e5c282826a02fdbe786050a3c",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Current implementation có inline API error và giữ draft; conflict modal/read-only inspection preservation là presentation target, chưa runtime proof."
+        ],
+        "visualFindings": [
+          "Local điểm12/basebản3/Q-012 đồng bộ nền/modal; giữ draft; không bịa remote revision/compare/force-save.",
+          "Modal khoảng452px quy đổi1280 nhỏ hơn target600; handler read mới giữ draft là target chưa code."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "conflictLocal: Q-012 baseRevision3 local points12",
+        "mode": "dialog",
+        "route": "/admin/questions/019b18a0-0000-7000-8000-000000000012/edit",
+        "parentImageId": "ep22-edit-single"
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-1e1ea66a-0526-4e1e-869e-ff83c2807cc3.png",
+      "generatedAt": "2026-10-12T07:45:48.002968+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "backgroundFixtureReview": "Same own-page fixture retained; tools may resample/reflow dimensions. Conflict intentionally changes local points10->12 before overlay.",
+      "generationHistory": [
+        {
+          "localId": "ep22-question-conflict",
+          "selected": true,
+          "imageFile": "images/ep22-question-conflict.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "f14513252efc4cfce4a8a70baa24f02f5ba5813e5c282826a02fdbe786050a3c",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-1e1ea66a-0526-4e1e-869e-ff83c2807cc3.png",
+          "promptFile": "prompts/ep22-question-conflict.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-single.png"
+          ],
+          "promptSha256": "3e10644b4d38a714be34cd914ec61ec0a4905f6e01561276d5a5dc7971e1d678"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    },
+    {
+      "id": "ep22-candidate-preview",
+      "title": "EP-22 — Xem câu hỏi như thí sinh",
+      "route": "/admin/questions/019b18a0-0000-7000-8000-000000000012/edit",
+      "kind": "dialog",
+      "fixture": "bank[0] draft Candidate view no keys",
+      "actions": [
+        "Đóng",
+        "Đóng xem trước"
+      ],
+      "pending": "Không mutation hoặc attempt; mở/đóng giữ draft.",
+      "errors": [
+        "Không key/explanation",
+        "Không submit/score/timer giả",
+        "Preview cùng draft"
+      ],
+      "sources": [
+        "apps/web/src/features/admin/question-form.tsx",
+        "apps/web/src/features/admin/use-question-draft.ts",
+        "apps/web/src/features/admin/question-editor-page.tsx",
+        "apps/web/src/shared/validation.ts",
+        "docs/contracts/openapi.yaml#/components/schemas/QuestionWriteRequest",
+        "apps/web/src/features/admin/question-preview.tsx"
+      ],
+      "implementationDelta": "Modal/drawer là target, current source preview inline; projection không key/explanation đã phù hợp.",
+      "parentImageId": "ep22-edit-single",
+      "promptFile": "prompts/ep22-candidate-preview.txt",
+      "briefFile": "briefs/ep22-candidate-preview.md",
+      "promptWordCount": 1358,
+      "promptSha256": "3cccde64a94184d9b05803685dd588f02a3033e960854f1d46e54d08ba5a0aa5",
+      "imageFile": "images/ep22-candidate-preview.png",
+      "actualDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "imageSha256": "70e51a7bb3bcec74838f3ee01de926ced3484d35e7aaa5dedb9060c508f55ee2",
+      "generationMode": "built-in-imagegen-only",
+      "generationStatus": "generated",
+      "review": {
+        "promptSourceReview": "root-reviewed; internal generation go-ahead received",
+        "visualStatus": "reviewed_with_findings",
+        "findings": [
+          "Modal/drawer là target, current source preview inline; projection không key/explanation đã phù hợp."
+        ],
+        "visualFindings": [
+          "Foreground đúng IaaS/4options/radio rỗng/10điểm; không key/explanation/submit/timer; nền Admin đúng Q-012.",
+          "Modal khoảng490px quy đổi1280 nhỏ hơn target600; đây không phải runtime Candidate."
+        ]
+      },
+      "reviewCriteria": [
+        "Nhãn tiếng Việt đúng dấu và fixture đúng câu/state",
+        "Radio/checkbox/key đúng loại; không key/explanation trên list/report/Candidate",
+        "Rail72px icon-only và palette Cobalt–Apricot",
+        "CTA/pending/error đúng intent; không success trước receipt",
+        "Dialog giữ đúng page nền và dữ liệu trước thao tác",
+        "Không claim interaction/mobile/production từ raster"
+      ],
+      "inputState": {
+        "actor": "Minh Anh / Admin với capabilities liên quan",
+        "fixtureRef": "bank[0] draft Candidate view no keys",
+        "mode": "dialog",
+        "route": "/admin/questions/019b18a0-0000-7000-8000-000000000012/edit",
+        "parentImageId": "ep22-edit-single"
+      },
+      "generatedSourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-da7d71c6-84fa-4f59-8746-0351797f6ec2.png",
+      "generatedAt": "2026-10-12T07:50:36.877284+00:00",
+      "rootAcceptance": "retained_with_port_findings",
+      "retainedFor": "visual specification with documented porting findings, not runtime acceptance",
+      "backgroundFixtureReview": "Same own-page fixture retained; tools may resample/reflow dimensions. Conflict intentionally changes local points10->12 before overlay.",
+      "generationHistory": [
+        {
+          "localId": "ep22-candidate-preview",
+          "selected": true,
+          "imageFile": "images/ep22-candidate-preview.png",
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          },
+          "sha256": "70e51a7bb3bcec74838f3ee01de926ced3484d35e7aaa5dedb9060c508f55ee2",
+          "sourcePath": "/Users/trankhanh/.codex/generated_images/01a12ee4-a58f-7420-908c-6df1ea666bf8/exec-da7d71c6-84fa-4f59-8746-0351797f6ec2.png",
+          "promptFile": "prompts/ep22-candidate-preview.txt",
+          "mode": "edit",
+          "referenceImagePaths": [
+            "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/docs/web-ui/templates/codex-desktop-v1/groups/questions-import/images/ep22-edit-single.png"
+          ],
+          "promptSha256": "3cccde64a94184d9b05803685dd588f02a3033e960854f1d46e54d08ba5a0aa5"
+        }
+      ],
+      "rootReview": {
+        "status": "retained_with_port_findings",
+        "date": "2026-10-12",
+        "visualInspection": true,
+        "materialBlockers": 0,
+        "runtime": false,
+        "mobile": false,
+        "production": false
+      }
+    }
+  ],
+  "counts": {
+    "requestedFrames": 13,
+    "selectedImages": 13,
+    "supersededOriginals": 5,
+    "builtInCalls": 18,
+    "visualReviewed": 13,
+    "selectedBusinessDefectsFlagged": 0,
+    "rootAcceptance": "pending",
+    "mobileGenerated": 0
+  },
+  "qualityLimits": [
+    "Minor palette/rail/header/modal-size/spacing findings remain for porting.",
+    "Some overlays resampled/reflowed actual dimensions: no pixel-identical claim.",
+    "No runtime interaction/a11y/mobile/production acceptance.",
+    "Current-vs-target handler gaps documented per frame."
+  ],
+  "rootReview": {
+    "status": "complete_visual_reference_only",
+    "date": "2026-10-12",
+    "inspectedCount": 13
+  }
+}

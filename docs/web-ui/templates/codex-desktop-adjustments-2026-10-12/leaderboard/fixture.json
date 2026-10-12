@@ -1,0 +1,83 @@
+{
+  "examTitle": "AWS Certified Solutions Architect Associate SAA-C03",
+  "displayVersion": "v2.3",
+  "displayVersionMeaning": "Legacy visual fixture from original image; not a publishedVersionId, draft revision or API-provided semantic version.",
+  "scope": "one exact frozen enabled exam version",
+  "timezone": "GMT+7",
+  "completionDate": "15/11/2024",
+  "rows": [
+    {
+      "rank": 1,
+      "pseudonym": "Thí sinh K8P2",
+      "earned": 985,
+      "possible": 1000,
+      "completedAtDisplay": "14:22:15 · 15/11/2024 (GMT+7)"
+    },
+    {
+      "rank": 2,
+      "pseudonym": "Thí sinh M3X9",
+      "earned": 960,
+      "possible": 1000,
+      "completedAtDisplay": "16:45:30 · 15/11/2024 (GMT+7)"
+    },
+    {
+      "rank": 3,
+      "pseudonym": "Thí sinh B4T1",
+      "earned": 945,
+      "possible": 1000,
+      "completedAtDisplay": "11:10:48 · 15/11/2024 (GMT+7)"
+    },
+    {
+      "rank": 4,
+      "pseudonym": "Thí sinh V9N5",
+      "earned": 920,
+      "possible": 1000,
+      "completedAtDisplay": "18:05:12 · 15/11/2024 (GMT+7)"
+    },
+    {
+      "rank": 5,
+      "pseudonym": "Thí sinh C2L8",
+      "earned": 895,
+      "possible": 1000,
+      "completedAtDisplay": "09:30:22 · 15/11/2024 (GMT+7)"
+    },
+    {
+      "rank": 6,
+      "pseudonym": "Thí sinh H7Y4",
+      "earned": 880,
+      "possible": 1000,
+      "completedAtDisplay": "20:15:40 · 15/11/2024 (GMT+7)"
+    },
+    {
+      "rank": 7,
+      "pseudonym": "Thí sinh D1Q6",
+      "earned": 855,
+      "possible": 1000,
+      "completedAtDisplay": "15:50:05 · 15/11/2024 (GMT+7)"
+    },
+    {
+      "rank": 8,
+      "pseudonym": "Thí sinh R5W3",
+      "earned": 840,
+      "possible": 1000,
+      "completedAtDisplay": "13:40:18 · 15/11/2024 (GMT+7)"
+    },
+    {
+      "rank": 9,
+      "pseudonym": "Thí sinh T8J2",
+      "earned": 815,
+      "possible": 1000,
+      "completedAtDisplay": "17:25:55 · 15/11/2024 (GMT+7)"
+    },
+    {
+      "rank": 10,
+      "pseudonym": "Thí sinh E6Z7",
+      "earned": 790,
+      "possible": 1000,
+      "completedAtDisplay": "21:05:42 · 15/11/2024 (GMT+7)"
+    }
+  ],
+  "loadedCount": 10,
+  "hasNextPage": true,
+  "identity": "pseudonym-only rows; generic account outline in shell"
+}
