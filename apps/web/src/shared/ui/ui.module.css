@@ -24,6 +24,10 @@
   color: var(--color-surface);
 }
 
+.actionLink {
+  text-decoration: none;
+}
+
 .button:hover:not(:disabled) {
   background: var(--color-primary-hover);
 }
@@ -158,9 +162,21 @@
   padding: 0 var(--space-3);
   border-radius: var(--radius-pill);
   background: var(--color-primary-subtle);
-  color: var(--color-text);
+  color: var(--color-primary-hover);
   font-size: 14px;
   line-height: 20px;
+}
+.badge[data-tone="neutral"] {
+  background: var(--color-surface-low);
+  color: var(--color-text-muted);
+}
+.badge[data-tone="success"] {
+  background: var(--color-success-surface);
+  color: var(--color-success-text);
+}
+.badge[data-tone="warning"] {
+  background: var(--color-warning-surface);
+  color: var(--color-warning-text);
 }
 
 .empty,
@@ -248,7 +264,8 @@
   background: var(--color-canvas);
 }
 
-.table tbody tr:last-child td {
+.table tbody tr:last-child td,
+.table tbody tr:last-child th {
   border-bottom: 0;
 }
 .table tbody tr:hover {

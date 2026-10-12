@@ -28,22 +28,48 @@ export function WorkspaceFrame({
         Đi tới nội dung
       </a>
       <aside className={styles.rail} aria-label="Không gian làm việc">
-        <Brand />
-        <p className={styles.railLabel}>{section}</p>
+        <Brand variant="mark" />
         <Navigation items={items} label={navLabel} variant="rail" />
         <div className={styles.railFooter}>
-          <span>Vào nhịp thi.</span>
-          <Link to="/help">
-            Trợ giúp <span aria-hidden="true">↗</span>
+          <Link to="/help" aria-label="Trợ giúp" title="Trợ giúp">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
+              <path
+                d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 4m0 3h.01"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
           </Link>
         </div>
       </aside>
       <div className={styles.workspace}>
         <header className={styles.topbar}>
-          <span className={styles.context}>{section}</span>
+          <div className={styles.identity}>
+            <Brand variant="wordmark" />
+            <span className={styles.context}>
+              {section === "Quản trị" ? "Quản trị" : "Thí sinh"}
+            </span>
+          </div>
           <div className={styles.account}>
             {session.profile ? (
-              <span className={styles.name}>{session.profile.displayName}</span>
+              <Link
+                to="/profile"
+                className={styles.profile}
+                aria-label={`Hồ sơ: ${session.profile.displayName}`}
+              >
+                <span className={styles.avatar} aria-hidden="true">
+                  {session.profile.displayName
+                    .trim()
+                    .split(/\s+/)
+                    .slice(0, 2)
+                    .map((word) => word[0])
+                    .join("")
+                    .toLocaleUpperCase("vi-VN")}
+                </span>
+                <span className={styles.name}>{session.profile.displayName}</span>
+              </Link>
             ) : null}
             <Button
               variant="secondary"

@@ -36,7 +36,12 @@ export default defineConfig(({ mode }) => {
     },
     test: {
       environment: "jsdom",
-      include: ["src/**/*.test.ts", "src/**/*.test.tsx", "src/**/__tests__/*.unit.spec.ts"],
+      include: [
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
+        "src/**/__tests__/*.unit.spec.ts",
+        "src/**/__tests__/*.unit.spec.tsx",
+      ],
     },
   };
 });

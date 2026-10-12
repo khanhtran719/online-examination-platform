@@ -1,5 +1,22 @@
 # Implementation plan
 
+## Active increment — PORT-01 frontend foundation, 2026-10-12 (COMPLETE locally)
+
+User authorizes the shared foundation/Dashboard/Admin list pilot and explicitly
+requests a maintainable frontend architecture. [Bounded plan and checklist](web-ui/port-01-2026-10-12.md)
+owns this increment: enforce feature/shared/adapter imports, separate query state
+from presentation in both pilots, apply the selected Cobalt–Apricot references,
+then verify behavior/accessibility/screenshots. No backend/schema/AWS change;
+other page ports/live integration/mobile/production remain separate gates.
+
+P1–P5 complete: [frontend architecture](web-ui/frontend-architecture.md), lint
+boundaries, shared Cobalt–Apricot shell/controls and two pilot controller/page
+ports.663 root/26 Chromium PASS, both builds/lint/format/quality/contracts48/445;
+final six loaded pilot captures at1280/1440/320 with no axe violations or body
+overflow. [Evidence/review](web-ui/evidence/port-01-2026-10-12/README.md) retains
+initial failures/fixes and acceptance limits. Roadmap remains89/217 and FE7/32;
+no API/schema/AWS/production gate changes. Next proposed PORT-02 Editor/dialogs.
+
 ## Active increment — Desktop UI baseline selection, 2026-10-12 (COMPLETE)
 
 User temporarily accepts the current three adjusted UI references and allows

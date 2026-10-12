@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { Link, type LinkProps } from "react-router";
 
 import { isApiError } from "../api/errors";
 
@@ -31,6 +32,25 @@ export function Button({ variant = "primary", className, type = "button", ...pro
     <button
       type={type}
       className={[variantClass, className].filter(Boolean).join(" ")}
+      {...props}
+    />
+  );
+}
+
+export function ActionLink({
+  variant = "primary",
+  className,
+  ...props
+}: LinkProps & { variant?: "primary" | "secondary" }) {
+  return (
+    <Link
+      className={[
+        variant === "primary" ? styles.button : styles.buttonSecondary,
+        styles.actionLink,
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       {...props}
     />
   );
@@ -164,8 +184,18 @@ export function Alert({
   );
 }
 
-export function Badge({ children }: { children: ReactNode }) {
-  return <span className={styles.badge}>{children}</span>;
+export function Badge({
+  children,
+  tone = "primary",
+}: {
+  children: ReactNode;
+  tone?: "primary" | "neutral" | "success" | "warning";
+}) {
+  return (
+    <span className={styles.badge} data-tone={tone}>
+      {children}
+    </span>
+  );
 }
 
 export function EmptyState({

@@ -65,8 +65,9 @@ export function formatDateTime(iso: string, timeZone = "Asia/Ho_Chi_Minh"): stri
 }
 
 export function formatDuration(seconds: number): string {
-  const minutes = Math.round(seconds / 60);
-  return `${minutes} phút`;
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return remainder ? `${minutes} phút ${remainder} giây` : `${minutes} phút`;
 }
 
 export function shortId(value: string): string {
@@ -88,4 +89,9 @@ export function safeReturnPath(value: unknown): string {
     return "/dashboard";
   }
   return value;
+}
+
+export function rateLabel(part: number, whole: number): string {
+  if (whole <= 0) return "Chưa có mẫu";
+  return `${((part / whole) * 100).toFixed(2)}%`;
 }

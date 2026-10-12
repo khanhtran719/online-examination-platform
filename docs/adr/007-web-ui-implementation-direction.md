@@ -20,6 +20,17 @@ User-approved visual increment, 2026-10-07: the public homepage uses the “Vào
 
 ## Consequences and gates
 
+### Approved frontend increment, 2026-10-12
+
+The selected Cobalt–Apricot workspace references replace the original navy/teal
+workspace direction incrementally, beginning with PORT-01 Dashboard/Admin list.
+Be Vietnam Pro and JetBrains Mono are self-hosted; public marketing retains its
+separate palette. [Frontend architecture](../web-ui/frontend-architecture.md)
+specializes the existing feature/app/shared/live/demo layout, finite app facades,
+lint-enforced boundaries and controller/view separation. This adds no backend
+layer, UI framework, global state library or AWS resource. Earlier acceptance
+and source-status statements above describe their original increments.
+
 The original documentation increment introduced no AWS resource or runtime dependency. The approved public visual implementation adds pinned Three.js0.180.0 in the browser; its lazy-loaded chunk size and local validation are recorded in the [implementation review](../web-ui/vao-nhip-thi-implementation-2026-10-07.md). No AWS resource is added. Further implementation must select compatible pinned dependency versions, preserve API build/test scripts, measure startup/render cost and connect same-origin HTTPS safely. Query retry/refetch defaults must be configured per capability; an autosave coordinator owns one-in-flight batches, immutable retry payloads, monotonic versions and conflict reconciliation. [TanStack Query defaults](https://tanstack.com/query/latest/docs/framework/react/guides/important-defaults).
 
 Live Admin navigation is blocked until an authoritative permissions capability is documented/implemented; current Profile DTO does not contain it. Other dependencies include frozen attempt presentation metadata and browse/history/version selectors. These are explicit [handoff dependencies](../web-ui/api-and-state-contract.md), not frontend authorization workarounds.

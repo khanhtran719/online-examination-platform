@@ -4,10 +4,9 @@ import { Link, useParams } from "react-router";
 
 import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
+import { rateLabel } from "@web/shared/format";
 import { useProtectedAccess } from "@web/shared/protected-access";
 import { EmptyState, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
-
-import { rateLabel } from "../assessment/progress";
 
 import styles from "./admin.module.css";
 import { AdminHeading, adminId as shortId, PageEnd } from "./admin-ui";

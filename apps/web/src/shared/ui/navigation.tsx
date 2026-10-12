@@ -98,6 +98,7 @@ function NavigationMenu({
             key={item.to}
             to={item.to}
             end={item.end}
+            title={item.label}
             className={`${styles.link} ${item.emphasis ? styles.emphasis : ""}`}
             onClick={() => setOpen(false)}
           >

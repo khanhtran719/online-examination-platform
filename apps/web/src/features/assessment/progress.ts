@@ -9,8 +9,3 @@ export function progressCopy(input: {
   }
   return `${loadedLine} Phiên bản này có ${input.versionTotal} câu; câu chưa tải không tính là bỏ trống.`;
 }
-
-export function rateLabel(part: number, whole: number): string {
-  if (whole <= 0) return "Chưa có mẫu";
-  return `${((part / whole) * 100).toFixed(2)}%`;
-}

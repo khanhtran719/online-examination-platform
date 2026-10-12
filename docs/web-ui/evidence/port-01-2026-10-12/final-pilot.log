@@ -1,0 +1,13 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test e2e/port-01.e2e-spec.ts
+
+
+Running 2 tests using 1 worker
+
+(node:93787) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/port-01.e2e-spec.ts:58:1 › PORT-01 desktop pilots match shared tokens, keep loaded-only filters and keyboard links (4.8s)
+  ✓  2 [chromium] › e2e/port-01.e2e-spec.ts:121:1 › PORT-01 pilots preserve body width and accessible navigation on narrow screens (2.6s)
+
+  2 passed (8.0s)

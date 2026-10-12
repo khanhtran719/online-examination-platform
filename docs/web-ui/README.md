@@ -1,5 +1,13 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
+**PORT-01 hoàn thành cục bộ, 2026-10-12:** [Kiến trúc frontend](frontend-architecture.md)
+và lint kiểm tra ranh giới feature/shared/adapter; controller/page tách dữ liệu và
+hiển thị. Shared Cobalt–Apricot shell/controls và hai pilot Dashboard/Admin exam
+list đã port. [Checklist/review](port-01-2026-10-12.md), [ảnh và kiểm tra](evidence/port-01-2026-10-12/README.md):
+663 root/26 Chromium PASS; six loaded1280/1440/320 captures. Public marketing giữ
+palette riêng; FE7/32, WEB-03/live/matrix/mobile/production vẫn mở. PORT-02 là bước
+tiếp theo được đề xuất; các checkpoint dưới đây giữ phạm vi lịch sử của chúng.
+
 **Trạng thái mới nhất — UI tạm chốt:** người dùng đã chọn [ba bản điều chỉnh History/Leaderboard/Admin list](templates/codex-desktop-adjustments-2026-10-12/selection.md) làm main reference desktop Loaded; có thể sửa thêm sau. Registry hiện **33/33 page families có named visual reference, 0 main references chờ chọn, 0 prompt-only**. Mobile/full variants/states, findings khi port và application implementation vẫn mở. Các đoạn counts/chờ chọn phía dưới là checkpoint lịch sử.
 
 **Ba bản điều chỉnh mới 2026-10-12:** [Lịch sử, Bảng xếp hạng và Danh sách đề Admin](templates/codex-desktop-adjustments-2026-10-12/README.md) đã có PNG, brief/prompt nguyên văn và root review. [So sánh trước/sau](templates/codex-desktop-adjustments-2026-10-12/gallery.html), [findings](templates/codex-desktop-adjustments-2026-10-12/review.md). Đây là ba đề xuất chờ chọn main reference, chưa port; registry vẫn30 giữ/3 chờ chọn/0 prompt-only. Bộ35 references bên dưới giữ nguyên.

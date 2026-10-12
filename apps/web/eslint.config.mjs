@@ -4,6 +4,8 @@ import ts from "typescript-eslint";
 
 import { importRules } from "../../scripts/eslint-imports.mjs";
 
+import { webBoundaries } from "./eslint-boundaries.mjs";
+
 export default ts.config(
   {
     ignores: [
@@ -16,9 +18,14 @@ export default ts.config(
   },
   ...ts.configs.recommended,
   {
-    plugins: { "react-hooks": reactHooks, "simple-import-sort": simpleImportSort },
+    plugins: {
+      "react-hooks": reactHooks,
+      "simple-import-sort": simpleImportSort,
+      "web-boundaries": webBoundaries,
+    },
     rules: {
       ...importRules,
+      "web-boundaries/imports": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "react-hooks/rules-of-hooks": "error",

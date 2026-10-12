@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router";
 import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
 import { formatDateTime, statusLabel } from "@web/shared/format";
+import { canRestartPoll, monitorDelayMs } from "@web/shared/polling";
 import { useProtectedAccess } from "@web/shared/protected-access";
 import {
   Button,
@@ -14,8 +15,6 @@ import {
   tableClass,
   TableScroll,
 } from "@web/shared/ui/ui";
-
-import { canRestartPoll, monitorDelayMs } from "../assessment/polling";
 
 import styles from "./admin.module.css";
 import { AdminBadge, AdminHeading, adminId as shortId, PageEnd } from "./admin-ui";

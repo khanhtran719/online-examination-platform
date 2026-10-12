@@ -1,7 +1,3 @@
-import type { Attempt } from "@web/shared/api/dto";
-
-export const POLL_CAP_MS = 5 * 60 * 1000;
-
 export function nextPollDelayMs(input: {
   attemptIndex: number;
   pollAfterSeconds: number;
@@ -16,12 +12,6 @@ export function nextPollDelayMs(input: {
   );
   const capped = Math.min(10_000, Math.max(2_000, hinted));
   return Math.round(capped * (0.8 + 0.4 * clamp01(input.random)));
-}
-
-export function shouldStopPolling(attempt: Attempt, elapsedMs: number): boolean {
-  if (attempt.status === "COMPLETED") return true;
-  if (attempt.status === "FAILED" && !attempt.replayPending) return true;
-  return elapsedMs >= POLL_CAP_MS;
 }
 
 export function canRestartPoll(input: {

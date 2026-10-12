@@ -60,6 +60,8 @@ For SQL authoring or formatting, also read rules R-77 and conventions §102.1. F
 
 For import/alias changes, also read conventions §§82–85 and the [import normalization review](docs/import-normalization-2026-10-12.md). API aliases are owned by `tsconfig.paths.json`, resolved by the architecture guard and emitted through the existing TypeScript compiler; Web uses its separate `@web/*`. `npm run lint` checks both applications/tooling. Preserve decorator value imports, CSS side-effect order and Reporting source/migration review receipts.
 
+For frontend work, also read [frontend architecture](docs/web-ui/frontend-architecture.md), [ADR-007](docs/adr/007-web-ui-implementation-direction.md), the owning feature/tests and the selected [design contract](docs/web-ui/templates/codex-desktop-v1/design-contract.md). Web lint enforces feature/shared/adapter boundaries; keep remote state in controllers and reusable UI independent of runtime/session/transport implementations. Visual references do not authorize unsupported API capabilities or close live/mobile/production gates.
+
 For examination lifecycle work, also read architecture §§77–79 and rules R-64–R-65. For AWS/performance/FinOps work, read architecture §§80–85, rules R-66–R-75 and [performance protocol](docs/performance.md). For any production acceptance task, read [acceptance ledger](docs/production-acceptance.md). Existing Invoice/POS snippets are historical teaching examples; use [examination module guide](docs/examination-module-guide.md) for this project.
 
 ## Work loop

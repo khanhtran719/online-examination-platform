@@ -1,0 +1,65 @@
+{
+  "viewport": {
+    "width": 320,
+    "height": 720
+  },
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#f1f8f5",
+                "bgColor": "#ffffff",
+                "contrastRatio": 1.07,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<aside class=\"_rail_1tcg7_6\" aria-label=\"Không gian làm việc\">",
+                  "target": [
+                    "._rail_1tcg7_6"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 1.07 (foreground color: #f1f8f5, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<button type=\"button\" class=\"_toggle_1ji82_31 _railToggle_1ji82_63\" aria-expanded=\"false\" aria-controls=\"_r_3_\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 6h16M4 12h16M4 18h16\"></path></svg>Menu</button>",
+          "target": [
+            "._toggle_1ji82_31"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.07 (foreground color: #f1f8f5, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    }
+  ],
+  "url": "http://127.0.0.1:4173/dashboard",
+  "fonts": "\"Be Vietnam Pro\", \"Segoe UI\", sans-serif"
+}

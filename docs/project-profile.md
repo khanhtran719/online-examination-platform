@@ -1,5 +1,17 @@
 # Project profile
 
+PORT-01 update2026-10-12: [Frontend architecture](web-ui/frontend-architecture.md)
+and [pilot review](web-ui/port-01-2026-10-12.md) COMPLETE locally. Finite Web
+feature/shared/adapter lint boundaries, query-controller/page separation, shared
+Cobalt–Apricot shell/controls and Dashboard/Admin list pilot.663 root tests
+(492 API/66 tooling/105 Web),26 Chromium PASS; both builds/lint/format/quality/
+contracts48/445. Six loaded1280/1440/320 pilot scans/screenshots with confirmed
+self-hosted font, no axe violations/body overflow. Existing generic helpers/tests
+move to correct owners without changing polling behavior; display duration retains
+seconds. No API/schema/AWS change. Roadmap89/217 and FE7/32 unchanged; full mobile/
+states, live Admin discovery/WEB-03 and production remain open. Next proposed
+PORT-02 Editor/dialogs. Earlier paragraphs keep their historical scopes/statuses.
+
 Import normalization update2026-10-12: [IMP-01–06](import-normalization-2026-10-12.md)
 COMPLETE locally; BOOT-11 added/closed, **89/217 checked,128 pending**. Shared
 ESLint import/type/duplicate policy, bounded API aliases and separate Web alias,

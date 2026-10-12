@@ -59,7 +59,7 @@ describe("dashboard history scope", () => {
     );
     fireEvent.click(screen.getByRole("button", { name: "IELTS" }));
     await waitFor(() =>
-      expect(state.browse).toHaveBeenCalledWith({ pageSize: 4, category: "IELTS" }),
+      expect(state.browse).toHaveBeenCalledWith({ pageSize: 3, category: "IELTS" }),
     );
     expect(screen.getByRole("link", { name: /Xem tất cả đề thi/ })).toHaveAttribute(
       "href",
