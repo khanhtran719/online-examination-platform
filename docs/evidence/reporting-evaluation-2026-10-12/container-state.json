@@ -1,0 +1,9 @@
+{
+  "context": "desktop-linux",
+  "containerStopLog": "container-stop.txt",
+  "disposableDatabaseRoleConnectionCheck": "cleanup.json",
+  "testPostgresVolumePresent": true,
+  "developmentPostgresVolumePresent": true,
+  "namedTestContainers": [],
+  "note": "Our scoped stop commands succeeded. At final read-only inventory the named containers were absent; removal cause is not attributed. PostgreSQL volumes remain. No development-container or unrelated-container mutation was issued."
+}

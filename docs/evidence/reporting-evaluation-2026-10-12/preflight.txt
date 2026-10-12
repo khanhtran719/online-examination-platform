@@ -1,0 +1,1 @@
+PASS: fresh directory initialization, duplicate-run refusal and nonfixture endpoint refusal; no network access.

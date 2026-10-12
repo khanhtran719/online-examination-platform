@@ -1,0 +1,32 @@
+(node:8218) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"2a4e8bd7-b993-4f83-a36b-c7920acc097a"}
+{"event":"unhandled_exception","correlationId":"394e6e44-ac7f-4b76-bbbe-9f339eb8958d"}
+{"event":"unhandled_exception","correlationId":"5589e1f1-8c6c-4e87-89ee-f30185a179ca"}
+{"event":"unhandled_exception","correlationId":"2638794b-9b85-4632-99b9-384de8c733ee"}
+{"event":"unhandled_exception","correlationId":"de054b31-41f6-49b5-8e65-c6af36dc7ce8"}
+{"event":"unhandled_exception","correlationId":"41c5ea1d-2aef-452f-82ff-b3f3f3d7f24c"}
+{"event":"unhandled_exception","correlationId":"a845d45a-cc27-47b7-a38c-dfd0a0b863f5"}
+FAIL apps/api/tests/integration/admin-candidate-results.spec.ts (8.025 s)
+  ● REP-08 cross-report scope and commit boundaries › reads only old committed projections while grading waits after its writes at COMMIT, then fresh completion
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+      1724 |       expect(await reportData(paths.result)).toMatchObject({ earned: 1, review: null });
+      1725 |       const after = await reportData<MetricsSnapshot>(paths.metrics);
+    > 1726 |       expect(after.counts.completedAttempts).toBe(before.counts.completedAttempts + 1);
+           |                                              ^
+      1727 |       expect(after.backlog.pendingAttempts).toBe(before.backlog.pendingAttempts - 1);
+      1728 |       expect(Date.parse(after.asOf)).toBeGreaterThanOrEqual(Date.parse(during.asOf));
+      1729 |     } finally {
+
+      at Object.<anonymous> (apps/api/tests/integration/admin-candidate-results.spec.ts:1726:46)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 18 skipped, 8 passed, 27 total
+Snapshots:   0 total
+Time:        8.066 s, estimated 10 s
+Ran all test suites within paths "apps/api/tests/integration/admin-candidate-results.spec.ts".

@@ -1,0 +1,102 @@
+
+> online-examination-platform@0.1.0 test
+> npm run test:api && npm run test:tooling && npm run web:test
+
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand
+
+(node:9468) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Test Suites: 53 passed, 53 total
+Tests:       492 passed, 492 total
+Snapshots:   0 total
+Time:        5.631 s
+Ran all test suites.
+
+> online-examination-platform@0.1.0 test:tooling
+> node --test scripts/__tests__/*.unit.spec.mjs
+
+✔ generates latency summary from its own raw run rather than a previous run (0.691458ms)
+✔ absent transaction samples remain not measured and zero-valued evidence is rejected (1.315875ms)
+✔ freezing an existing evidence directory cannot replace its raw sample or summary (10.173ms)
+✔ validates the complete OpenAPI contract and its payload examples (202.053375ms)
+✔ verification is an explicit public POST with a bounded one-use token and final password (1.594917ms)
+✔ signed token contract keeps access and refresh separate and PostgreSQL authoritative (3.377542ms)
+✔ contract checks reject a refresh audience reused for access (1.30425ms)
+✔ email login rejects alternate usernames and Session rejects raw credential fields (0.313041ms)
+✔ email schemas reject non-ASCII identifiers consistently with the PostgreSQL identity policy (0.247125ms)
+✔ accepts a submitted event and rejects answer data anywhere in it (0.419875ms)
+✔ rejects an event for another aggregate, schema version or invalid timestamp (0.115459ms)
+✔ candidate question schema rejects keys and explanation leaks (0.132625ms)
+✔ rejects non-finite timestamps rather than treating them as a manual submission (0.095542ms)
+✔ save contract accepts clearing and rejects duplicate options and oversized batches (0.121875ms)
+✔ rejects an admin operation made public even when the document remains valid OpenAPI (1.234333ms)
+✔ does not allow an admin route to inherit a public operation name (1.098417ms)
+✔ rejects a critical mutation without an idempotency header (1.472292ms)
+✔ rejects unsafe browser operations without Origin or CSRF contract (1.0505ms)
+✔ rejects undocumented owners, acceptance cases and unbounded list pagination (1.193125ms)
+✔ calibrates database UTC to local wall clock with a round-trip uncertainty bound (2.206083ms)
+✔ commit acknowledgement includes persistence delay separately from acceptance lag (0.204625ms)
+✔ does not turn absent observations into zero latency (0.088917ms)
+✔ packages immutable SQL bytes and ordered filenames independently of process cwd (9.9895ms)
+✔ fails build rather than silently packaging missing or symlinked migrations (3.110792ms)
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (4.443917ms)
+✔ detects module-private and same-module infrastructure access from application (0.694291ms)
+✔ permits a public application capability and infrastructure driver adapter (0.649708ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.339291ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (0.524791ms)
+✔ checks TypeScript import types and import-equals dependencies (0.587791ms)
+✔ rejects Node network imports with or without node prefix (0.188416ms)
+✔ checks technical folder barrel imports without a trailing slash (0.17575ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.391583ms)
+✔ keeps domain independent of application orchestration (0.224792ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.332417ms)
+✔ keeps all global technical roots independent from business modules (0.301791ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.286833ms)
+✔ requires module composition to use explicit public capabilities of another module (0.311334ms)
+✔ permits only reviewed Reporting ranking entry points and preserves private boundaries (0.346458ms)
+✔ rejects legacy placement after normalization closes (0.151084ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (1.154958ms)
+✔ allows only the reviewed Catalog worker composition boundary (0.264292ms)
+✔ accepts a fully inventoried reviewed query and physical schema (8.330208ms)
+✔ rejects missing, duplicate and removed query consumers (4.785833ms)
+✔ requires renewed review for a changed query or private port (4.915375ms)
+✔ rejects a query adapter hidden in a nested persistence folder (5.184833ms)
+✔ detects an undeclared physical join even after the source hash is renewed (4.3665ms)
+✔ does not invent physical dependencies from source comments or aliases (3.933334ms)
+✔ rejects a new unreviewed migration and altered or omitted migration receipts (4.437458ms)
+✔ rejects path-like IDs, missing source signatures and malformed schema columns (5.275208ms)
+✔ detects missing, added, renamed, nullable or differently typed physical columns (10.83975ms)
+✔ reports malformed manifest data as a failed check (5.476708ms)
+✔ keeps repository query receipts and source schemas in the checked inventory (15.561209ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 53
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 337.745167
+
+> online-examination-platform@0.1.0 web:test
+> npm --prefix apps/web test
+
+
+> @exam/web@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+
+ Test Files  24 passed (24)
+      Tests  99 passed (99)
+   Start at  10:19:00
+   Duration  4.71s (environment 61%, tests 20%, import 10%, transform 9%, worker 1%)
+
+Environment  jsdom was created 24 times · 17.62s total, 61% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

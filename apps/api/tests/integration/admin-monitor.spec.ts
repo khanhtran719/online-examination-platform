@@ -878,6 +878,7 @@ it("compares natural plans and local query/HTTP diagnostics on 100k attempts wit
       await measured.query("diagnostic", `EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) ${sql}`, bindings)
     ).rows[0]!["QUERY PLAN"];
     return {
+      rawLatencyMs: samples,
       latencyMs: metrics(samples),
       successfulRps: 40000 / elapsed,
       elapsedMs: elapsed,
@@ -957,10 +958,15 @@ it("compares natural plans and local query/HTTP diagnostics on 100k attempts wit
       withIndex,
       afterRemoval,
       http: {
+        rawLatencyMs: httpSamples,
         latencyMs: metrics(httpSamples),
+        rawPayloadBytes: bytes,
         payloadBytes: metrics(bytes),
+        rawSqlCalls: httpSql,
         sqlCalls: 8,
+        rawTransactionMs: tx,
         transactionMs: metrics(tx),
+        rawAcquireMs: wait,
         acquireMs: metrics(wait),
         pollingPaceMs: 110,
         achievedSuccessfulRps: (httpSamples.length * 1000) / httpElapsedMs,

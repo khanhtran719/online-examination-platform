@@ -1,0 +1,15 @@
+{
+  "scope": "Disposable local fixtures; no AWS image/deployment or capacity evidence",
+  "node": "v24.17.0",
+  "host": "macOS-26.5.2-arm64-arm-64bit",
+  "hostArchitecture": "arm64",
+  "baselineCommit": "3d8022b6994300f58f624e95b1d3c1f3eec63977",
+  "branch": "codex/rep08-reporting-evaluation",
+  "postgresContainer": {
+    "configuredImage": "postgres:17-alpine",
+    "localImageDigest": "sha256:25a89970a83255ae96484d709005bb35aa71f7455f941bc1634514f31c5d5c62",
+    "containerMemoryLimitBytes": 0,
+    "containerNanoCpuLimit": 0,
+    "limitNote": "Zero means no explicit container limit; Docker VM/host capacity is not inferred."
+  }
+}

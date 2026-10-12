@@ -1,5 +1,20 @@
 # Roadmap triển khai có đánh dấu
 
+REP-08 update2026-10-12: [Reporting evaluation](reporting-evaluation-2026-10-12.md)
+RE-01–06 COMPLETE locally; **88/216 checked,128 pending**. Shared exact scope/
+committed freshness,7 deferred access-audit COMMIT failures/recovery,8 mixed-scope
+natural plans beside100k foreign attempts and fresh route diagnostics.644 root/
+427 integration24 suites/27 complete candidate/18 final monitor PASS; static/build/
+contracts48/445 PASS. Monitor evidence-only raw-array addition reran its affected
+suite/static checks.633 historical files and all API runtime sources/7 SQL adapters
+unchanged;19 migration bundles match. Cleanup0; test containers stopped with
+volumes retained. Global metrics/unversioned submissions/large ranking scan risks
+require real concurrent-load evidence; no optimization/capacity/cost winner.
+REP-04 privacy lifecycle and Web/AWS acceptance remain open; production NOT ACCEPTED.
+Next proposed WEB-03 real Catalog browse/detail integration.
+[Evidence](evidence/reporting-evaluation-2026-10-12/README.md). Previous entries
+below retain their historical source/test/next-step states.
+
 REP-07 update2026-10-12: [Report limits/source contracts](reporting-limits-2026-10-12.md)
 RL-01–05 COMPLETE locally; **87/216 checked,129 pending**. Explicit private DTO
 allowlists/nested review redaction, max100 JSON/20 sections/10 options and source
@@ -308,7 +323,7 @@ Phụ thuộc: 04–07.
 - [x] **REP-05** Business metrics: start-time cohort/current starts/submissions/completions/expired/failed/active và global durable pending/replay backlog. [BM-01–06](admin-business-metrics-2026-10-10.md)/[evidence](evidence/admin-business-metrics-2026-10-10/README.md) nghiệm thu local với current permission/audit,18 PG cases và100k/1M baseline. Combined telemetry/Web/AWS/capacity vẫn mở; không suy ra queue depth hoặc performance/cost winner.
 - [x] **REP-06** Append-only audit trong admin transaction; action/actor/target/time/minimal metadata, retention/access control. Local AU-01–06 complete: [evidence](evidence/admin-audit-2026-10-10/README.md); default-off fixed365day job, production backup/privacy/capacity gates remain open.
 - [x] **REP-07** V1 bounded JSON report/extraction limits, safe explicit nested DTOs và executable query/migration consumer contracts. [RL-01–05 closure](reporting-limits-2026-10-12.md)/[evidence](evidence/reporting-limits-2026-10-12/README.md):644 root/418 integration PASS;7 consumers/15 tables/134 columns,19 migration receipts. CSV/XLSX/consistent bulk export require a future contract; no AWS/capacity claim.
-- [ ] **REP-08** Test data scope, projection freshness, query/index plans và audit rollback.
+- [x] **REP-08** Test data scope, projection freshness, query/index plans và audit rollback. [RE-01–06 closure](reporting-evaluation-2026-10-12.md)/[evidence](evidence/reporting-evaluation-2026-10-12/README.md):427 full integration/24 suites,7 audit COMMIT failures/recovery,8 mixed-scope natural plans; no runtime/SQL/index/resource change or production capacity/cost claim.
 
 ## 09. Browser application Candidate/Admin
 

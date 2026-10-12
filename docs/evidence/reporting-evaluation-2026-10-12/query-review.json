@@ -1,0 +1,573 @@
+{
+  "localOnly": true,
+  "notCapacityEvidence": true,
+  "percentileNote": "Nearest rank for20\u201340 observations; p99 is the maximum at these sample counts. Independent route populations; no matched performance comparison.",
+  "httpDiagnostics": [
+    {
+      "label": "active-candidates",
+      "artifact": "active-candidates-final.json",
+      "selector": "http",
+      "scope": "20-row page;100k attempts/20 exams/2k active; maximum page also checked",
+      "latencyMs": {
+        "n": 30,
+        "p50": 18.12904200000048,
+        "p95": 37.37554200000159,
+        "p99": 37.39808300000004
+      },
+      "payloadBytes": {
+        "n": 30,
+        "p50": 4626,
+        "p95": 4626,
+        "p99": 4626
+      },
+      "sqlCalls": 8
+    },
+    {
+      "label": "submissions",
+      "artifact": "submissions.json",
+      "selector": "http",
+      "scope": "20-row first page;100k attempts/20 exams/2k active",
+      "latencyMs": {
+        "n": 30,
+        "p50": 45.38500000000931,
+        "p95": 54.009625000006054,
+        "p99": 65.68837500002701
+      },
+      "payloadBytes": {
+        "n": 30,
+        "p50": 5910,
+        "p95": 5910,
+        "p99": 5910
+      },
+      "sqlCalls": 8
+    },
+    {
+      "label": "question-statistics",
+      "artifact": "question-statistics.json",
+      "selector": "http",
+      "scope": "100-row/10-option page;10k frozen questions/100k options",
+      "latencyMs": {
+        "n": 30,
+        "p50": 37.723958000016864,
+        "p95": 46.702083999989554,
+        "p99": 51.69812500005355
+      },
+      "payloadBytes": {
+        "n": 30,
+        "p50": 92313,
+        "p95": 92313,
+        "p99": 92313
+      },
+      "sqlCalls": 8
+    },
+    {
+      "label": "candidate-results",
+      "artifact": "candidate-results-full.json",
+      "selector": "http",
+      "scope": "100-candidate page;100k attempts/10k candidates/10 attempts each",
+      "latencyMs": {
+        "n": 30,
+        "p50": 23.071583000011742,
+        "p95": 38.762582999974256,
+        "p99": 153.32645900000352
+      },
+      "payloadBytes": {
+        "n": 30,
+        "p50": 44604,
+        "p95": 44604,
+        "p99": 44604
+      },
+      "sqlCalls": 8
+    },
+    {
+      "label": "admin-result",
+      "artifact": "submissions.json",
+      "selector": "scoreHttp",
+      "scope": "One real graded score/section, alongside100k synthetic attempts",
+      "latencyMs": {
+        "n": 30,
+        "p50": 30.01612500002375,
+        "p95": 43.67845900001703,
+        "p99": 50.50687499996275
+      },
+      "payloadBytes": {
+        "n": 30,
+        "p50": 521,
+        "p95": 521,
+        "p99": 521
+      },
+      "sqlCalls": 8
+    },
+    {
+      "label": "business-metrics-100000",
+      "artifact": "business-metrics.json",
+      "selector": "datasets/0/http",
+      "scope": "100000 global synthetic attempts; default24h cohort and durable backlog",
+      "latencyMs": {
+        "n": 20,
+        "p50": 74.16558300000179,
+        "p95": 83.8902909999997,
+        "p99": 92.27750000000015
+      },
+      "payloadBytes": {
+        "n": 20,
+        "p50": 507,
+        "p95": 507,
+        "p99": 507
+      },
+      "sqlCalls": 8
+    },
+    {
+      "label": "business-metrics-1000000",
+      "artifact": "business-metrics.json",
+      "selector": "datasets/1/http",
+      "scope": "1000000 global synthetic attempts; default24h cohort and durable backlog",
+      "latencyMs": {
+        "n": 20,
+        "p50": 636.7828750000044,
+        "p95": 899.8247499999998,
+        "p99": 978.3176669999957
+      },
+      "payloadBytes": {
+        "n": 20,
+        "p50": 511,
+        "p95": 511,
+        "p99": 511
+      },
+      "sqlCalls": 8
+    },
+    {
+      "label": "audit-first",
+      "artifact": "audit-query.json",
+      "selector": "populations/0/http",
+      "scope": "100-row first page;100k synthetic audit records",
+      "latencyMs": {
+        "n": 20,
+        "p50": 26.12333299999591,
+        "p95": 37.35233299998799,
+        "p99": 37.49808300001314
+      },
+      "payloadBytes": {
+        "n": 20,
+        "p50": 37797,
+        "p95": 37806,
+        "p99": 37807
+      },
+      "sqlCalls": 8
+    },
+    {
+      "label": "audit-deep",
+      "artifact": "audit-query.json",
+      "selector": "populations/1/http",
+      "scope": "100-row deep page;100k synthetic audit records",
+      "latencyMs": {
+        "n": 20,
+        "p50": 32.96633299998939,
+        "p95": 40.25070899998536,
+        "p99": 52.320375000010245
+      },
+      "payloadBytes": {
+        "n": 20,
+        "p50": 37810,
+        "p95": 37810,
+        "p99": 37810
+      },
+      "sqlCalls": 8
+    },
+    {
+      "label": "ranking",
+      "artifact": "ranking.json",
+      "selector": "root",
+      "scope": "20-row page;100k candidates/results/rankings, all tied scores/submission times",
+      "latencyMs": {
+        "n": 40,
+        "p50": 264.1070409999811,
+        "p95": 332.3573749999923,
+        "p99": 350.6023339999956
+      },
+      "payloadBytes": {
+        "min": 3131,
+        "max": 3131
+      },
+      "sqlCalls": 3
+    }
+  ],
+  "mixedScope": {
+    "artifact": "candidate-results-full.json",
+    "counts": {
+      "assessment.attempts": 100027,
+      "assessment.results": 100014,
+      "assessment.result_sections": 100014,
+      "assessment.result_questions": 100018,
+      "assessment.question_statistics": 11,
+      "assessment.option_statistics": 12,
+      "assessment.leaderboard_entries": 10,
+      "assessment.leaderboard_epochs": 2,
+      "catalog.exams": 21,
+      "catalog.published_versions": 22,
+      "catalog.published_sections": 22,
+      "catalog.published_questions": 28,
+      "catalog.published_options": 56,
+      "identity.users": 10029,
+      "platform.audit_logs": 64
+    },
+    "plans": [
+      {
+        "label": "active-candidates",
+        "sqlCalls": 1,
+        "sqlSha256": "87e784f4e5136e114e7b3ee2a056e97695e57a7b4abaee37ae2cf166ee5a58d1",
+        "executionMs": 0.081,
+        "planningMs": 0.171,
+        "scans": [
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "exams",
+            "Index Name": null,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 20
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "attempts",
+            "Index Name": "attempts_deadline",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 1
+          }
+        ]
+      },
+      {
+        "label": "submissions",
+        "sqlCalls": 1,
+        "sqlSha256": "0c0e81589b13217e74557d9ba4874e72ed7af90fef9fc804f52c29f84f3baa50",
+        "executionMs": 0.143,
+        "planningMs": 0.271,
+        "scans": [
+          {
+            "Node Type": "Index Only Scan",
+            "Relation Name": "exams",
+            "Index Name": "exams_pkey",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 0
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "published_versions",
+            "Index Name": null,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 21
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "attempts",
+            "Index Name": "attempts_admin",
+            "Actual Rows": 3,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 0
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "results",
+            "Index Name": "results_attempt_id_version_id_user_id_key",
+            "Actual Rows": 0,
+            "Actual Loops": 3,
+            "Rows Removed by Filter": null
+          }
+        ]
+      },
+      {
+        "label": "result",
+        "sqlCalls": 1,
+        "sqlSha256": "1ecf5b533bf831507cb4dc5cccd5ca96026c24524dfcfe71bfecfaf2db112d6c",
+        "executionMs": 0.168,
+        "planningMs": 0.585,
+        "scans": [
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "published_versions",
+            "Index Name": null,
+            "Actual Rows": 22,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": null
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "attempts",
+            "Index Name": "attempts_id_version_id_user_id_key",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 0
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "results",
+            "Index Name": "results_attempt_id_version_id_user_id_key",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": null
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "result_sections",
+            "Index Name": "result_sections_pkey",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": null
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "published_questions",
+            "Index Name": null,
+            "Actual Rows": 28,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": null
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "result_questions",
+            "Index Name": "result_questions_pkey",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": null
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "published_sections",
+            "Index Name": "published_sections_version_id_position_key",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 0
+          }
+        ]
+      },
+      {
+        "label": "question-statistics",
+        "sqlCalls": 1,
+        "sqlSha256": "682a0b523cc461085470eb58069608d68190647a63612566175ddac6ef965777",
+        "executionMs": 0.19,
+        "planningMs": 0.429,
+        "scans": [
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "published_versions",
+            "Index Name": null,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 21
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "published_questions",
+            "Index Name": null,
+            "Actual Rows": 28,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": null
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "published_sections",
+            "Index Name": "published_sections_version_id_position_key",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 0
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "question_statistics",
+            "Index Name": null,
+            "Actual Rows": 11,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": null
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "published_options",
+            "Index Name": null,
+            "Actual Rows": 2,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 54
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "option_statistics",
+            "Index Name": null,
+            "Actual Rows": 1,
+            "Actual Loops": 2,
+            "Rows Removed by Filter": 11
+          }
+        ]
+      },
+      {
+        "label": "candidate-results",
+        "sqlCalls": 1,
+        "sqlSha256": "5abb127f0846b55d827a73c45c9a681b58ee9ab09d70b39092da497186a2fe8a",
+        "executionMs": 0.744,
+        "planningMs": 0.604,
+        "scans": [
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "published_versions",
+            "Index Name": null,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 21
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "attempts",
+            "Index Name": "attempts_limit",
+            "Actual Rows": 2,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 1
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "attempts",
+            "Index Name": "attempts_admin",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 2
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "results",
+            "Index Name": "results_attempt_id_version_id_user_id_key",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": null
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "attempts",
+            "Index Name": "attempts_admin",
+            "Actual Rows": 2,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 1
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "results",
+            "Index Name": "results_attempt_id_version_id_user_id_key",
+            "Actual Rows": 0,
+            "Actual Loops": 2,
+            "Rows Removed by Filter": null
+          }
+        ]
+      },
+      {
+        "label": "business-metrics",
+        "sqlCalls": 1,
+        "sqlSha256": "378cb85ce5eb5cc82f2a63de35768779f4021368b8226ad99a8f1b619b071970",
+        "executionMs": 63.344,
+        "planningMs": 0.183,
+        "scans": [
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "attempts",
+            "Index Name": null,
+            "Actual Rows": 100027,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": null
+          }
+        ]
+      },
+      {
+        "label": "audit",
+        "sqlCalls": 1,
+        "sqlSha256": "5ce0da7b624fa3b0525628acafb804235e11df9c612294c933a311e1025d9d4b",
+        "executionMs": 0.114,
+        "planningMs": 0.075,
+        "scans": [
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "audit_logs",
+            "Index Name": null,
+            "Actual Rows": 64,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 0
+          }
+        ]
+      },
+      {
+        "label": "ranking",
+        "sqlCalls": 1,
+        "sqlSha256": "d0620ba5b773c47d620dd2e31cc2217fe2b26c4501f709f03948fd72447d1d6b",
+        "executionMs": 0.308,
+        "planningMs": 4.831,
+        "scans": [
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "published_versions",
+            "Index Name": null,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 21
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "leaderboard_epochs",
+            "Index Name": null,
+            "Actual Rows": 0,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 2
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "leaderboard_entries",
+            "Index Name": null,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 9
+          },
+          {
+            "Node Type": "Seq Scan",
+            "Relation Name": "leaderboard_entries",
+            "Index Name": null,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 9
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "attempts",
+            "Index Name": "attempts_retention_due",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 0
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "results",
+            "Index Name": "results_completion_sequence_key",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 0
+          },
+          {
+            "Node Type": "Index Scan",
+            "Relation Name": "users",
+            "Index Name": "users_pkey",
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Rows Removed by Filter": 0
+          }
+        ]
+      }
+    ]
+  },
+  "decision": "Keep existing runtime/queries/indexes; record global metrics, unversioned submissions and large ranking scan risks for measured concurrent-load investigation.",
+  "unmeasured": [
+    "sustainableRps",
+    "concurrentCapacity",
+    "dbSaturation",
+    "dbCpu",
+    "iops",
+    "allocationPerRequest",
+    "headroom",
+    "awsCost",
+    "performanceCostCurve"
+  ]
+}

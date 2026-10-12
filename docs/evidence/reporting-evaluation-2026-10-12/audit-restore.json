@@ -1,0 +1,15 @@
+{
+  "localOnly": true,
+  "dumpBytes": 186929,
+  "dumpMs": 162.21308399998816,
+  "restoreMs": 293.35733300005086,
+  "originalOldRowResurrected": true,
+  "oldRowRemovedAgain": true,
+  "youngRowPreserved": true,
+  "runtimeDeleteDenied": true,
+  "ownershipAndGrantsRestored": true,
+  "productionPitr": false,
+  "rpo": null,
+  "rto": null,
+  "privacyLedgerReconciled": false
+}

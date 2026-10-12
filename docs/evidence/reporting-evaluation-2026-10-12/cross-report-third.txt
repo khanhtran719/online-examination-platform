@@ -1,0 +1,14 @@
+(node:8389) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"770e1ad2-1f6b-4e66-8c3c-4b6d9d72727a"}
+{"event":"unhandled_exception","correlationId":"d4588fcf-8a1d-4af3-8ed2-b358e92dd3b5"}
+{"event":"unhandled_exception","correlationId":"f4526e98-b960-4bec-bb2a-7ed2d5c11e9f"}
+{"event":"unhandled_exception","correlationId":"a33f8be2-d7bb-47a4-b375-9f1b66b8a016"}
+{"event":"unhandled_exception","correlationId":"8746f678-485c-43df-9e79-4a37b2ac1f8b"}
+{"event":"unhandled_exception","correlationId":"ac9be8d7-81f7-486f-b166-4298acdf65ed"}
+{"event":"unhandled_exception","correlationId":"320fb78d-94bc-4488-af2c-775e76eff24e"}
+Test Suites: 1 passed, 1 total
+Tests:       18 skipped, 9 passed, 27 total
+Snapshots:   0 total
+Time:        8.862 s, estimated 9 s
+Ran all test suites within paths "apps/api/tests/integration/admin-candidate-results.spec.ts".

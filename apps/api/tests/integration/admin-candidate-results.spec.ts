@@ -37,6 +37,30 @@ import { CandidateResultsService } from "../../src/modules/reporting/application
 import { CandidateResultsPage } from "../../src/modules/reporting/application/dto/candidate-results.dto";
 import { PostgresCandidateResultsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-candidate-results.query";
 import { CandidateResultsCrypto } from "../../src/modules/reporting/infrastructure/security/candidate-results-cursor";
+import { ActiveCandidatesController } from "../../src/modules/reporting/presentation/http/active-candidates.controller";
+import { ActiveCandidatesService } from "../../src/modules/reporting/application/services/active-candidates.service";
+import { PostgresActiveCandidatesQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-active-candidates.query";
+import { ActiveCandidatesCrypto } from "../../src/modules/reporting/infrastructure/security/active-candidates-cursor";
+import { SubmissionsController } from "../../src/modules/reporting/presentation/http/submissions.controller";
+import { SubmissionsService } from "../../src/modules/reporting/application/services/submissions.service";
+import { PostgresSubmissionsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-submissions.query";
+import { SubmissionsCrypto } from "../../src/modules/reporting/infrastructure/security/submissions-cursor";
+import { QuestionStatisticsController } from "../../src/modules/reporting/presentation/http/question-statistics.controller";
+import { QuestionStatisticsService } from "../../src/modules/reporting/application/services/question-statistics.service";
+import { PostgresQuestionStatisticsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-question-statistics.query";
+import { QuestionStatisticsCrypto } from "../../src/modules/reporting/infrastructure/security/question-statistics-cursor";
+import { BusinessMetricsController } from "../../src/modules/reporting/presentation/http/business-metrics.controller";
+import { BusinessMetricsService } from "../../src/modules/reporting/application/services/business-metrics.service";
+import { PostgresBusinessMetricsQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-business-metrics.query";
+import { AuditController } from "../../src/modules/reporting/presentation/http/audit.controller";
+import { AuditService } from "../../src/modules/reporting/application/services/audit.service";
+import { PostgresAuditQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-audit.query";
+import { AuditCrypto } from "../../src/modules/reporting/infrastructure/security/audit-cursor";
+import { LeaderboardController } from "../../src/modules/assessment/presentation/http/leaderboard.controller";
+import { RankingService } from "../../src/modules/reporting/application/services/ranking.service";
+import { PostgresRankingQuery } from "../../src/modules/reporting/infrastructure/persistence/postgres-ranking.query";
+import { RankingCrypto } from "../../src/modules/reporting/infrastructure/security/ranking-crypto";
+import { RANKING_PROJECTION } from "../../src/modules/reporting/application/facades/ranking.facade";
 import {
   createGradingConsumer,
   createGradingRecovery,
@@ -171,13 +195,76 @@ beforeAll(async () => {
     new PostgresAuthenticatedWriteAdmission(db),
   );
   const transport = new HttpSession(identity, security, "http://127.0.0.1:3000", randomBytes(32));
+  const cursorRoot = randomBytes(32),
+    rankingCrypto = new RankingCrypto(randomBytes(32));
   @Module({
-    controllers: [CandidateResultsController],
+    controllers: [
+      CandidateResultsController,
+      ActiveCandidatesController,
+      SubmissionsController,
+      QuestionStatisticsController,
+      BusinessMetricsController,
+      AuditController,
+      LeaderboardController,
+    ],
     providers: [
       ShutdownGate,
       { provide: IDENTITY_ACCESS, useValue: identity },
       { provide: REQUEST_GUARD, useValue: transport },
       { provide: CandidateResultsService, useValue: reader() },
+      {
+        provide: ActiveCandidatesService,
+        useValue: new ActiveCandidatesService(
+          identity,
+          new PostgresActiveCandidatesQuery(db),
+          new ActiveCandidatesCrypto(cursorRoot),
+          security,
+          db,
+        ),
+      },
+      {
+        provide: SubmissionsService,
+        useValue: new SubmissionsService(
+          identity,
+          new PostgresSubmissionsQuery(db),
+          new SubmissionsCrypto(cursorRoot),
+          security,
+          db,
+        ),
+      },
+      {
+        provide: QuestionStatisticsService,
+        useValue: new QuestionStatisticsService(
+          identity,
+          new PostgresQuestionStatisticsQuery(db),
+          new QuestionStatisticsCrypto(cursorRoot),
+          security,
+          db,
+        ),
+      },
+      {
+        provide: BusinessMetricsService,
+        useValue: new BusinessMetricsService(
+          identity,
+          new PostgresBusinessMetricsQuery(db),
+          security,
+          db,
+        ),
+      },
+      {
+        provide: AuditService,
+        useValue: new AuditService(
+          identity,
+          new PostgresAuditQuery(db),
+          new AuditCrypto(cursorRoot),
+          security,
+          db,
+        ),
+      },
+      {
+        provide: RANKING_PROJECTION,
+        useValue: new RankingService(new PostgresRankingQuery(db), rankingCrypto, rankingCrypto),
+      },
     ],
   })
   class RankingHttpModule {}
@@ -234,7 +321,7 @@ afterAll(async () => {
   );
   await admin.end();
 });
-async function universe(size = 3, optionsCount = 2, examId?: string) {
+async function universe(size = 3, optionsCount = 2, examId?: string, leaderboardEnabled = false) {
   const user = randomUUID(),
     exam = examId ?? randomUUID(),
     version = randomUUID(),
@@ -305,7 +392,8 @@ async function universe(size = 3, optionsCount = 2, examId?: string) {
           display_timezone,
           explanation_policy,
           category,
-          published_by
+          published_by,
+          leaderboard_enabled
         )
         VALUES (
           $1,
@@ -320,10 +408,11 @@ async function universe(size = 3, optionsCount = 2, examId?: string) {
           'Asia/Ho_Chi_Minh',
           'AFTER_COMPLETION',
           'IT_CERTIFICATION',
-          $3
+          $3,
+          $5
         )
       `,
-      [version, exam, user, examId ? 2 : 1],
+      [version, exam, user, examId ? 2 : 1, leaderboardEnabled],
     );
     await c.query(
       `
@@ -1297,11 +1386,14 @@ it("records natural best/latest plans and local diagnostics on100k constrained a
         "Baseline only; no matched index/resource comparison or optimization/capacity/cost winner.",
     };
     const directory = process.env.ADMIN_CANDIDATE_RESULTS_EVIDENCE_DIR;
+    // Reuse this test's own large fixture, independent of test ordering. The
+    // small exam exercises selectivity in the presence of100k foreign attempts.
+    const mixedScope = await mixedScopePlans(target);
     if (directory) {
       await mkdir(directory, { recursive: true });
       await writeFile(
         `${directory}/diagnostic-${randomUUID()}.json`,
-        JSON.stringify(evidence, null, 2) + "\n",
+        JSON.stringify({ ...evidence, mixedScope }, null, 2) + "\n",
         { flag: "wx" },
       );
     }
@@ -1309,6 +1401,248 @@ it("records natural best/latest plans and local diagnostics on100k constrained a
     await measured.close();
   }
 }, 120000);
+
+async function mixedScopePlans(foreign: Universe) {
+  const v = { ...(await universe(1, 2, undefined, true)), user: await user() },
+    completed = await attempt(v, 0, [[0]]);
+  expect((await grade(completed)).outcome).toBe("completed");
+  const pending = await attempt(v, 0, []),
+    active = await activeAttempt(v);
+  const tables = [
+    "assessment.attempts",
+    "assessment.results",
+    "assessment.result_sections",
+    "assessment.result_questions",
+    "assessment.question_statistics",
+    "assessment.option_statistics",
+    "assessment.leaderboard_entries",
+    "assessment.leaderboard_epochs",
+    "catalog.exams",
+    "catalog.published_versions",
+    "catalog.published_sections",
+    "catalog.published_questions",
+    "catalog.published_options",
+    "identity.users",
+    "platform.audit_logs",
+  ] as const;
+  const counts: Record<string, number> = {};
+  for (const table of tables) {
+    // Fixed fixture-owned identifiers; no request-derived table names.
+    await fixture.query(`ANALYZE ${table}`);
+    counts[table] = (
+      await fixture.query(`
+        SELECT
+          count(*)::int AS n
+        FROM
+          ${table}
+      `)
+    ).rows[0]!.n;
+  }
+  expect(
+    (
+      await fixture.query(
+        `
+        SELECT
+          count(*)::int AS n
+        FROM
+          assessment.attempts
+        WHERE
+          version_id = $1
+      `,
+        [foreign.version],
+      )
+    ).rows[0]!.n,
+  ).toBe(100000);
+  let capturedSql = "",
+    capturedParameters: unknown[] = [],
+    calls = 0;
+  class CapturingDatabase extends PostgresDatabase {
+    override async query<T extends QueryResultRow = QueryResultRow>(
+      operation: DatabaseOperation,
+      statement: string,
+      parameters: unknown[] = [],
+    ) {
+      if (operation === "reporting.read") {
+        calls += 1;
+        capturedSql = statement;
+        capturedParameters = parameters;
+      }
+      return super.query<T>(operation, statement, parameters);
+    }
+  }
+  const measured = new CapturingDatabase(
+    databaseConfig({ NODE_ENV: "test", DATABASE_URL: url(runtimeRole), DB_POOL_MAX: "2" }),
+  );
+  const versionInput = { examId: v.exam, versionId: v.version, limit: 101, position: null };
+  const probes: [string, () => Promise<unknown>][] = [
+    [
+      "active-candidates",
+      async () => {
+        const result = await new PostgresActiveCandidatesQuery(measured).page({
+          examId: v.exam,
+          limit: 101,
+          watermark: null,
+          position: null,
+        });
+        expect(result.rows.map((r) => r.attemptId)).toEqual([active]);
+        return result;
+      },
+    ],
+    [
+      "submissions",
+      async () => {
+        const result = await new PostgresSubmissionsQuery(measured).page({
+          examId: v.exam,
+          publishedVersionId: v.version,
+          limit: 101,
+          watermark: null,
+          position: null,
+        });
+        expect(result.rows.map((r) => r.attemptId).sort()).toEqual(
+          [completed.id, pending.id, active].sort(),
+        );
+        return result;
+      },
+    ],
+    [
+      "result",
+      async () => {
+        const result = await new PostgresSubmissionsQuery(measured).result(completed.id);
+        expect(result).toMatchObject({ status: "COMPLETED", result: { earned: 1, review: null } });
+        return result;
+      },
+    ],
+    [
+      "question-statistics",
+      async () => {
+        const result = await new PostgresQuestionStatisticsQuery(measured).page(versionInput);
+        expect(result.rows).toHaveLength(1);
+        expect(result.rows[0]!.questionId).toBe(v.questions[0]!.id);
+        return result;
+      },
+    ],
+    [
+      "candidate-results",
+      async () => {
+        const result = await new PostgresCandidateResultsQuery(measured).page({
+          ...versionInput,
+          watermark: null,
+        });
+        expect(result.rows).toEqual([
+          expect.objectContaining({
+            candidateId: v.user,
+            best: expect.objectContaining({ attemptId: completed.id, earned: 1 }),
+            latest: expect.objectContaining({ attemptId: pending.id, earned: null }),
+          }),
+        ]);
+        return result;
+      },
+    ],
+    [
+      "business-metrics",
+      () => new PostgresBusinessMetricsQuery(measured).snapshot({ from: null, to: null }),
+    ],
+    [
+      "audit",
+      () => new PostgresAuditQuery(measured).page({ limit: 101, watermark: null, position: null }),
+    ],
+    [
+      "ranking",
+      async () => {
+        const result = await new PostgresRankingQuery(measured).page({
+          ...versionInput,
+          watermark: null,
+          epoch: null,
+        });
+        expect(result.rows).toEqual([
+          expect.objectContaining({ userId: v.user, attemptId: completed.id, earned: 1 }),
+        ]);
+        return result;
+      },
+    ],
+  ];
+  const plans: Record<string, unknown> = {};
+  try {
+    for (const [label, probe] of probes) {
+      calls = 0;
+      const value = await probe();
+      expect(calls).toBe(1);
+      const plan = (
+        await measured.query(
+          "diagnostic",
+          `EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) ${capturedSql}`,
+          capturedParameters,
+        )
+      ).rows[0]!["QUERY PLAN"];
+      plans[label] = {
+        sqlCalls: calls,
+        sqlSha256: createHash("sha256").update(capturedSql).digest("hex"),
+        parameterCount: capturedParameters.length,
+        projectionJsonBytes: Buffer.byteLength(JSON.stringify(value)),
+        plan,
+      };
+    }
+    return {
+      localOnly: true,
+      notCapacityEvidence: true,
+      postgres: (await fixture.query("SELECT version() AS version")).rows[0]!.version,
+      indexes: (
+        await fixture.query(
+          `
+          SELECT
+            schemaname,
+            tablename,
+            indexname,
+            indexdef
+          FROM
+            pg_indexes
+          WHERE
+            schemaname = ANY($1::text[])
+          ORDER BY
+            schemaname,
+            tablename,
+            indexname
+        `,
+          [["assessment", "catalog", "identity", "platform"]],
+        )
+      ).rows,
+      plannerSettings: (
+        await fixture.query(
+          `
+          SELECT
+            name,
+            setting,
+            unit
+          FROM
+            pg_settings
+          WHERE
+            name = ANY($1::text[])
+          ORDER BY
+            name
+        `,
+          [
+            [
+              "work_mem",
+              "shared_buffers",
+              "random_page_cost",
+              "effective_cache_size",
+              "max_parallel_workers_per_gather",
+              "jit",
+            ],
+          ],
+        )
+      ).rows,
+      counts,
+      smallTarget: { completed: 1, submitted: 1, active: 1, candidates: 1, questions: 1 },
+      foreign: { attempts: 100000, syntheticCardinality: true, producerProjectionsSeeded: false },
+      plans,
+      decision:
+        "Natural planner, existing indexes and constrained primary sources. Global metrics/audit intentionally span exams. No index/resource/optimization/capacity/cost winner.",
+    };
+  } finally {
+    await measured.close();
+  }
+}
 
 it("revalidates permission inside UoW after prior successful authentication", async () => {
   const v = await universe(),
@@ -1388,4 +1722,350 @@ it("bounds actor-lock wait without returning a report, then recovers", async () 
     holder.release();
   }
   expect((await get(v)).statusCode).toBe(200);
+});
+
+// REP-08 shares real constrained source data across report boundaries. The
+// existing per-report suites retain detailed cursor/retention/permission cases.
+async function reportRequest(path: string) {
+  await new Promise((resolve) => setTimeout(resolve, 110));
+  return http.inject({ method: "GET", url: path, headers });
+}
+async function reportData<T>(path: string): Promise<T> {
+  const response = await reportRequest(path);
+  expect(response.statusCode).toBe(200);
+  expect(response.headers["cache-control"]).toBe("no-store");
+  expect(response.payload).not.toMatch(
+    /PRIVATE_QUESTION_TEXT|PRIVATE_EXPLANATION|PRIVATE_DISPLAY_NAME|password_hash|correctOptionIds/,
+  );
+  return response.json<{ data: T }>().data;
+}
+function reportPaths(v: Universe, attemptId: string) {
+  return {
+    active: `/v1/admin/exams/${v.exam}/active-candidates`,
+    submissions: `/v1/admin/exams/${v.exam}/submissions?publishedVersionId=${v.version}`,
+    result: `/v1/admin/attempts/${attemptId}/result`,
+    statistics: `/v1/admin/exams/${v.exam}/versions/${v.version}/question-statistics`,
+    candidates: `/v1/admin/exams/${v.exam}/versions/${v.version}/candidate-results`,
+    metrics: "/v1/admin/business-metrics",
+    audit: "/v1/admin/audit",
+    ranking: `/v1/exams/${v.exam}/versions/${v.version}/leaderboard`,
+  };
+}
+async function activeAttempt(v: Universe) {
+  const id = randomUUID();
+  await fixture.query(
+    `
+    INSERT INTO assessment.attempts (
+      id,
+      user_id,
+      exam_id,
+      version_id,
+      status,
+      started_at,
+      deadline,
+      revision
+    )
+    VALUES (
+      $1,
+      $2,
+      $3,
+      $4,
+      'IN_PROGRESS',
+      clock_timestamp(),
+      clock_timestamp() + interval '1 hour',
+      1
+    )
+  `,
+    [id, v.user, v.exam, v.version],
+  );
+  return id;
+}
+interface MetricsSnapshot {
+  asOf: string;
+  counts: { completedAttempts: number };
+  backlog: { pendingAttempts: number };
+}
+describe("REP-08 cross-report scope and commit boundaries", () => {
+  it("keeps exact exam/version data isolated and applies deliberate Admin versus public visibility", async () => {
+    const primary = await universe(1, 2, undefined, true);
+    const v = { ...primary, user: await user() };
+    const second = { ...(await universe(1, 2, v.exam, true)), user: v.user };
+    const foreign = { ...(await universe(1, 2, undefined, true)), user: v.user };
+    const a = await attempt(v, 1, [[0]]),
+      otherVersion = await attempt(second, 1, []),
+      otherExam = await attempt(foreign, 1, [[0]]);
+    for (const record of [a, otherVersion, otherExam])
+      expect((await grade(record)).outcome).toBe("completed");
+    const active = await activeAttempt(v),
+      paths = reportPaths(v, a.id);
+    expect(await reportData(paths.active)).toEqual([
+      expect.objectContaining({ candidateId: v.user, attemptId: active }),
+    ]);
+    const submissions = await reportData<{ attemptId: string; publishedVersionId: string }[]>(
+      paths.submissions,
+    );
+    expect(submissions.map((row) => row.attemptId).sort()).toEqual([a.id, active].sort());
+    expect(submissions.every((row) => row.publishedVersionId === v.version)).toBe(true);
+    expect(await reportData(paths.candidates)).toEqual([
+      expect.objectContaining({
+        candidateId: v.user,
+        publishedVersionId: v.version,
+        best: expect.objectContaining({ attemptId: a.id, earned: 1 }),
+        latest: expect.objectContaining({ attemptId: a.id, earned: 1 }),
+      }),
+    ]);
+    expect(await reportData(paths.statistics)).toEqual([
+      expect.objectContaining({
+        questionId: v.questions[0]!.id,
+        completedAttempts: 1,
+        correct: 1,
+        incorrect: 0,
+      }),
+    ]);
+    expect(await reportData(reportPaths(second, otherVersion.id).candidates)).toEqual([
+      expect.objectContaining({
+        publishedVersionId: second.version,
+        best: expect.objectContaining({ attemptId: otherVersion.id, earned: 0 }),
+      }),
+    ]);
+    expect(
+      (
+        await reportRequest(
+          `/v1/admin/exams/${foreign.exam}/versions/${v.version}/candidate-results`,
+        )
+      ).statusCode,
+    ).toBe(404);
+    expect(
+      (
+        await reportRequest(
+          `/v1/admin/exams/${foreign.exam}/versions/${v.version}/question-statistics`,
+        )
+      ).statusCode,
+    ).toBe(404);
+    expect(await reportData(paths.result)).toMatchObject({
+      attemptId: a.id,
+      earned: 1,
+      possible: 1,
+      review: null,
+    });
+    expect(await reportData(paths.ranking)).toEqual([
+      expect.objectContaining({ earned: 1, rank: 1, pseudonym: expect.any(String) }),
+    ]);
+    await fixture.query(
+      `
+      UPDATE identity.users
+      SET
+        leaderboard_opt_in = false,
+        enabled = false
+      WHERE
+        id = $1
+    `,
+      [v.user],
+    );
+    expect(await reportData(paths.ranking)).toEqual([]);
+    // Administrative ledger/statistics intentionally include retained opted-out
+    // or disabled candidates; ranking consent is never authorization authority.
+    expect(await reportData(paths.candidates)).toHaveLength(1);
+    expect(await reportData(paths.statistics)).toEqual([
+      expect.objectContaining({ completedAttempts: 1 }),
+    ]);
+  });
+
+  it("reads only old committed projections while grading waits after its writes at COMMIT, then fresh completion", async () => {
+    const v = { ...(await universe(1, 2, undefined, true)), user: await user() };
+    // Keep start time inside the metrics endpoint's default last24h cohort.
+    const a = await attempt(v, 0, [[0]]),
+      paths = reportPaths(v, a.id);
+    const before = await reportData<MetricsSnapshot>(paths.metrics);
+    await fixture.query(`
+      CREATE FUNCTION public.rep08_grade_commit_gate()
+      RETURNS trigger
+      LANGUAGE plpgsql
+      AS $$
+      BEGIN
+        PERFORM pg_advisory_xact_lock(716088, 1);
+        RETURN NEW;
+      END
+      $$
+    `);
+    await fixture.query(`
+      CREATE CONSTRAINT TRIGGER rep08_grade_commit_gate
+      AFTER INSERT ON assessment.results
+      DEFERRABLE INITIALLY DEFERRED
+      FOR EACH ROW
+      EXECUTE FUNCTION public.rep08_grade_commit_gate()
+    `);
+    const holder = await fixture.connect();
+    let grading: ReturnType<typeof grade> | undefined;
+    try {
+      await holder.query("BEGIN");
+      await holder.query("SELECT pg_advisory_xact_lock(716088, 1)");
+      grading = grade(a);
+      // Observe rejection immediately; the original promise still rejects below.
+      void grading.catch(() => undefined);
+      let blocked = false;
+      const until = performance.now() + 5000;
+      while (performance.now() < until) {
+        blocked = (
+          await fixture.query(
+            `
+          SELECT
+            EXISTS (
+              SELECT
+                1
+              FROM
+                pg_stat_activity
+              WHERE
+                usename = $1
+                AND query = 'COMMIT'
+                AND wait_event_type = 'Lock'
+            ) AS blocked
+        `,
+            [graderRole],
+          )
+        ).rows[0]!.blocked;
+        if (blocked) break;
+        await new Promise((resolve) => setTimeout(resolve, 25));
+      }
+      expect(blocked).toBe(true);
+      // Read independently while the native 500ms lock timeout stays enabled.
+      // Serial 110ms admission pacing across six routes would exhaust that gate.
+      const [submissions, candidates, statistics, ranking, result, during] = await Promise.all([
+        reportData(paths.submissions),
+        reportData(paths.candidates),
+        reportData(paths.statistics),
+        reportData(paths.ranking),
+        reportRequest(paths.result),
+        reportData<MetricsSnapshot>(paths.metrics),
+      ]);
+      expect(submissions).toEqual([
+        expect.objectContaining({ status: "SUBMITTED", earned: null, possible: null }),
+      ]);
+      expect(candidates).toEqual([
+        expect.objectContaining({
+          best: null,
+          latest: expect.objectContaining({ status: "SUBMITTED", earned: null }),
+        }),
+      ]);
+      expect(statistics).toEqual([expect.objectContaining({ completedAttempts: 0, correct: 0 })]);
+      expect(ranking).toEqual([]);
+      expect(result.statusCode).toBe(409);
+      expect(during.counts.completedAttempts).toBe(before.counts.completedAttempts);
+      expect(during.backlog.pendingAttempts).toBe(before.backlog.pendingAttempts);
+      await holder.query("COMMIT");
+      expect((await grading).outcome).toBe("completed");
+      expect(await reportData(paths.submissions)).toEqual([
+        expect.objectContaining({ status: "COMPLETED", earned: 1, possible: 1 }),
+      ]);
+      expect(await reportData(paths.candidates)).toEqual([
+        expect.objectContaining({
+          best: expect.objectContaining({ attemptId: a.id, earned: 1 }),
+          latest: expect.objectContaining({ status: "COMPLETED", earned: 1 }),
+        }),
+      ]);
+      expect(await reportData(paths.statistics)).toEqual([
+        expect.objectContaining({ completedAttempts: 1, correct: 1 }),
+      ]);
+      expect(await reportData(paths.ranking)).toHaveLength(1);
+      expect(await reportData(paths.result)).toMatchObject({ earned: 1, review: null });
+      const after = await reportData<MetricsSnapshot>(paths.metrics);
+      expect(after.counts.completedAttempts).toBe(before.counts.completedAttempts + 1);
+      expect(after.backlog.pendingAttempts).toBe(before.backlog.pendingAttempts - 1);
+      expect(Date.parse(after.asOf)).toBeGreaterThanOrEqual(Date.parse(during.asOf));
+    } finally {
+      await holder.query("ROLLBACK");
+      holder.release();
+      if (grading) await grading.catch(() => undefined);
+      await fixture.query("DROP TRIGGER rep08_grade_commit_gate ON assessment.results");
+      await fixture.query("DROP FUNCTION public.rep08_grade_commit_gate()");
+    }
+  });
+
+  it.each([
+    ["active", "reporting.active-candidates.read"],
+    ["submissions", "reporting.submissions.read"],
+    ["result", "reporting.result.read"],
+    ["statistics", "reporting.question-statistics.read"],
+    ["candidates", "reporting.candidate-results.read"],
+    ["metrics", "reporting.business-metrics.read"],
+    ["audit", "reporting.audit.read"],
+  ] as const)(
+    "releases no %s report when an already inserted access audit fails at COMMIT, then recovers",
+    async (key, action) => {
+      const v = { ...(await universe(1)), user: await user() },
+        a = await attempt(v, 1, [[0]]);
+      await grade(a);
+      const paths = reportPaths(v, a.id);
+      const count = async () =>
+        (
+          await fixture.query(
+            `
+      SELECT
+        count(*)::int AS n
+      FROM
+        platform.audit_logs
+      WHERE
+        actor_id = $1
+        AND action = $2
+    `,
+            [viewer, action],
+          )
+        ).rows[0]!.n as number;
+      const before = await count();
+      await fixture.query(`
+      CREATE FUNCTION public.rep08_audit_commit_failure()
+      RETURNS trigger
+      LANGUAGE plpgsql
+      AS $$
+      BEGIN
+        IF NEW.action = TG_ARGV[0] THEN
+          RAISE EXCEPTION 'deferred report audit fixture' USING ERRCODE = '23514';
+        END IF;
+        RETURN NEW;
+      END
+      $$
+    `);
+      // The action is one of the fixed test-owned strings above, never HTTP input.
+      await fixture.query(`
+      CREATE CONSTRAINT TRIGGER rep08_audit_commit_failure
+      AFTER INSERT ON platform.audit_logs
+      DEFERRABLE INITIALLY DEFERRED
+      FOR EACH ROW
+      EXECUTE FUNCTION public.rep08_audit_commit_failure('${action}')
+    `);
+      try {
+        observations.length = 0;
+        const response = await reportRequest(paths[key]);
+        expect(response.statusCode).toBe(503);
+        expect(response.headers["cache-control"]).toBe("no-store");
+        expect(response.json()).toEqual({
+          data: null,
+          errorCode: "Service unavailable",
+          message: "Service unavailable",
+          status: false,
+        });
+        const calls = observations.filter((entry) => entry.kind === "query");
+        expect(calls.find((entry) => entry.operation === "audit.write")?.code).toBeUndefined();
+        expect(calls.map((entry) => entry.operation)).toEqual([
+          "identity.read",
+          "security.rate",
+          "transaction.begin",
+          "lock.acquire",
+          "identity.read",
+          "reporting.read",
+          "audit.write",
+          "transaction.commit",
+          "transaction.rollback",
+        ]);
+        expect(calls.find((entry) => entry.operation === "transaction.commit")?.code).toBe("23514");
+        expect(await count()).toBe(before);
+        expect(db.stats().waiting).toBe(0);
+      } finally {
+        await fixture.query("DROP TRIGGER rep08_audit_commit_failure ON platform.audit_logs");
+        await fixture.query("DROP FUNCTION public.rep08_audit_commit_failure()");
+      }
+      expect((await reportRequest(paths[key])).statusCode).toBe(200);
+      expect(await count()).toBe(before + 1);
+    },
+  );
 });

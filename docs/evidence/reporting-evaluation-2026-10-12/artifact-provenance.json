@@ -1,0 +1,72 @@
+[
+  {
+    "artifact": "candidate-results-focused.json",
+    "originalLocalPath": ".local/rep08/candidate-results/diagnostic-592b6a8c-ff94-4804-8a22-c400f9c3a398.json",
+    "sha256": "10bdfdda3a970f12123df9142ca9513c8aeabeea3da8475ae327daa2aeac8063"
+  },
+  {
+    "artifact": "candidate-results-full.json",
+    "originalLocalPath": ".local/rep08/full/candidate-results/diagnostic-285ac30f-40bd-435e-b014-c41bc2966128.json",
+    "sha256": "2cfdddd1fb3f8c794e2914869f002d5719a1f63c57ac520805cd8c1a884e4441"
+  },
+  {
+    "artifact": "active-candidates-full.json",
+    "originalLocalPath": ".local/rep08/full/active-candidates/diagnostic-1a2a8b84-1d33-44d2-878f-0b9ef6b705ad.json",
+    "sha256": "f06cfd64356131b0c3082f1afaedd0614de8c05c6ba11999bbc11ed68e7e4efc"
+  },
+  {
+    "artifact": "submissions.json",
+    "originalLocalPath": ".local/rep08/full/submissions/diagnostic-213991f6-f696-49ec-80a7-471f90f05dad.json",
+    "sha256": "58ca0debeee5c0a4c916040847480161ed36403c7d52012aee1e364310735c67"
+  },
+  {
+    "artifact": "question-statistics.json",
+    "originalLocalPath": ".local/rep08/full/question-statistics/diagnostic-ba8408c9-58af-4d04-893c-2863b63bb320.json",
+    "sha256": "4598f61f67849d493ef309de113b6dfb2911f7f4ad6a7b92a444252a4377cc09"
+  },
+  {
+    "artifact": "business-metrics.json",
+    "originalLocalPath": ".local/rep08/full/business-metrics/diagnostic-213ad7cb-43f2-4538-a728-92f51b3e0ca0.json",
+    "sha256": "dab379aca33a17d935e26c7bcfd4af6342c74f20f8ae0c466fe066ea615e95bb"
+  },
+  {
+    "artifact": "audit-query.json",
+    "originalLocalPath": ".local/rep08/full/audit/diagnostic-34347b5b-9218-40cf-bb87-a51c1078e288.json",
+    "sha256": "f527ee6347070020967a54819621c86c9d433e8f381e0f7a70b3774156377283"
+  },
+  {
+    "artifact": "audit-retention.json",
+    "originalLocalPath": ".local/rep08/full/audit/retention-9a0dd45b-14da-41d8-967b-ae94294dc773.json",
+    "sha256": "731932b3186bbc0f0ce511fa185cbacee0c41d4359b5ae93b5644cfa4684c86b"
+  },
+  {
+    "artifact": "audit-restore.json",
+    "originalLocalPath": ".local/rep08/full/audit/restore-14848067-a148-4f0e-978b-29849495c772.json",
+    "sha256": "2c6e131695fb711dc8b2db64dadf62a6a135d04d0b7b0657f193095f610d39bf"
+  },
+  {
+    "artifact": "assessment.json",
+    "originalLocalPath": ".local/rep08/full/assessment/17526b9e-1eea-4bfe-b398-2316038be6b2.json",
+    "sha256": "8b78d0afb24393340f55dc9c26c22ea0ccd8010b8fa4ece18337b6777f7a9513"
+  },
+  {
+    "artifact": "ranking.json",
+    "originalLocalPath": ".local/rep08/full/ranking.json",
+    "sha256": "a672477fec539d37e7d70481102e6c9d82077d0cf16d2db1d06d76831c1e8c0f"
+  },
+  {
+    "artifact": "reporting-schema.json",
+    "originalLocalPath": ".local/rep08/full/reporting-schema.json",
+    "sha256": "3f0ca5a0f0477d7d5d41d5c08522b7d95f9c7d665daa11ba51dba8e11d6696a5"
+  },
+  {
+    "artifact": "compiled-http.json",
+    "originalLocalPath": ".local/rep08/full/compiled-http.json",
+    "sha256": "7124e351e653dc7ae9bc5d07d34ab65c83061190d78fefb714bb42a45545d0fb"
+  },
+  {
+    "artifact": "active-candidates-final.json",
+    "originalLocalPath": ".local/rep08/full/active-candidates/diagnostic-1a2a8b84-1d33-44d2-878f-0b9ef6b705ad.json",
+    "sha256": "f06cfd64356131b0c3082f1afaedd0614de8c05c6ba11999bbc11ed68e7e4efc"
+  }
+]

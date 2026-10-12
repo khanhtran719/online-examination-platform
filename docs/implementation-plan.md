@@ -1,6 +1,26 @@
 # Implementation plan
 
-## Latest increment — REP-07 Reporting limits, 2026-10-12 (COMPLETE locally)
+## Active increment — REP-08 Reporting evaluation, 2026-10-12 (COMPLETE locally)
+
+[RE-01–06 plan/review](reporting-evaluation-2026-10-12.md),
+[experiment](../experiments/reporting-evaluation/README.md),
+[evidence](evidence/reporting-evaluation-2026-10-12/README.md).
+Shared exact scope/primary committed freshness, deferred access-audit COMMIT
+failure on7 Admin reads,8 mixed-scope plans beside100k foreign attempts and fresh
+per-route diagnostics.644 root/427 full integration24 suites/27 complete candidate/
+18 final monitor PASS; lint/typecheck/build/quality/contracts48/445 PASS. Monitor
+raw-array capture only followed the full run; affected suite/static checks reran.
+633 historical files unchanged,19 migration bundles match, all API runtime source
+and7 SQL adapters unchanged. Fixtures clean, test containers stopped/volumes retained.
+No Web/browser change or deployment/commit/PR/background work. No performance/cost
+winner; global metrics/large ranking/unversioned scan risks documented.
+
+Roadmap88/216 checked,128 pending; production NOT ACCEPTED. Next proposed bounded
+increment: WEB-03 real Catalog browse/detail integration, typed loading/error/empty
+states and authenticated HTTPS checks. REP-04 privacy lifecycle and wider Web/AWS/
+capacity/SLO/FinOps/restore gates remain open.
+
+## Previous increment — REP-07 Reporting limits, 2026-10-12 (COMPLETE locally)
 
 [RL-01–05 plan/review](reporting-limits-2026-10-12.md),
 [ADR-016](adr/016-bounded-report-responses-and-source-review.md),

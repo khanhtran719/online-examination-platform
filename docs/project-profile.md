@@ -1,5 +1,20 @@
 # Project profile
 
+REP-08 update2026-10-12: [Reporting evaluation](reporting-evaluation-2026-10-12.md)
+RE-01–06 COMPLETE locally; **88/216 checked,128 pending**. Shared source scope/
+committed freshness,7 deferred access-audit COMMIT failures/recovery and8 natural
+mixed-scope plans beside100k foreign attempts verified.644 root/427 full integration
+24 suites/27 complete candidate/18 final monitor PASS; static/build/contracts48/445.
+Final monitor raw samples added to test artifacts only; its suite/static checks
+reran after the full checkpoint.633 historical files and all API runtime sources/
+7 SQL adapters unchanged;19 migration bundles match. Cleanup0; test containers
+stopped/volumes retained. Global metrics/unversioned submissions/large ranking
+scans remain concurrent-load risks; no optimization/capacity/AWS savings claim.
+REP-04 privacy ledger/deletion/restore and wider Web/AWS gates remain open.
+Production NOT ACCEPTED. Next proposed WEB-03 real Catalog browse/detail integration.
+[Evidence](evidence/reporting-evaluation-2026-10-12/README.md). Previous entries
+below retain their historical source/test/next-step states.
+
 REP-07 update2026-10-12: [Report limits/source contracts](reporting-limits-2026-10-12.md)
 RL-01–05 COMPLETE locally; **87/216 checked,129 pending**. Explicit private DTO
 allowlists/nested review redaction, max100 JSON/20 sections/10 options and source

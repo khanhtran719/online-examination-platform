@@ -1,0 +1,41 @@
+{
+  "checks": [
+    {
+      "scope": "http",
+      "observations": 30,
+      "summaryRecomputed": true
+    },
+    {
+      "scope": "before/first",
+      "observations": 40,
+      "summaryRecomputed": true
+    },
+    {
+      "scope": "before/deep",
+      "observations": 40,
+      "summaryRecomputed": true
+    },
+    {
+      "scope": "withIndex/first",
+      "observations": 40,
+      "summaryRecomputed": true
+    },
+    {
+      "scope": "withIndex/deep",
+      "observations": 40,
+      "summaryRecomputed": true
+    },
+    {
+      "scope": "afterRemoval/first",
+      "observations": 40,
+      "summaryRecomputed": true
+    },
+    {
+      "scope": "afterRemoval/deep",
+      "observations": 40,
+      "summaryRecomputed": true
+    }
+  ],
+  "sqlCalls": 8,
+  "noChangedRuntime": true
+}

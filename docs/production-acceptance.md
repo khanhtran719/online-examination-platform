@@ -1,5 +1,23 @@
 # Production acceptance ledger
 
+REP-08 update2026-10-12: [Reporting evaluation](reporting-evaluation-2026-10-12.md)
+RE-01–06 COMPLETE locally; **88/216 checked,128 pending**. Exact scope/current
+visibility, committed producer freshness and7 deferred access-audit COMMIT
+failures/recovery verified;8 natural mixed-scope plans plus fresh route diagnostics.
+644 root/427 full integration24 suites/27 complete candidate/18 final monitor PASS;
+static/build/contracts48/445. Final monitor artifact-only raw capture reran its
+affected suite/static checks.633 historical files and all API runtime source/
+7 SQL adapters unchanged,19 migration bundles match; fixture cleanup0 and test
+containers stopped/volumes retained. Retains REP-07 bounded DTO/source consumer
+gates; no runtime/SQL/index/resource/Web/deploy change. Global metrics, unversioned
+submissions and large ranking scan risks are not a measured production bottleneck.
+Local latency excludes TCP/TLS/ALB; no sustainable capacity, DB saturation/headroom,
+AWS cost/performance curve, SLO or RDS PITR acceptance. REP-04 independent privacy
+ledger/deletion/restore and live Web/AWS gates stay open. Production NOT ACCEPTED.
+Next proposed WEB-03 real Catalog browse/detail integration.
+[Evidence](evidence/reporting-evaluation-2026-10-12/README.md). Previous entries
+below retain their historical source/test/next-step states.
+
 REP-06 update2026-10-10: [Audit lifecycle](admin-audit-2026-10-10.md)
 AU-01–06 COMPLETE locally; **86/216 checked,130 pending**. Reporting audit.read
 primary redacted live keyset and mandatory access audit; separate function-only

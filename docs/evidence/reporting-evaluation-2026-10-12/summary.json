@@ -1,0 +1,75 @@
+{
+  "scope": "REP-08 local Reporting evaluation",
+  "status": "COMPLETE locally",
+  "productionAccepted": false,
+  "baselineCommit": "3d8022b6994300f58f624e95b1d3c1f3eec63977",
+  "branch": "codex/rep08-reporting-evaluation",
+  "recordedAt": "2026-10-12T03:38:17.094919+00:00",
+  "roadmap": {
+    "checked": 88,
+    "pending": 128,
+    "total": 216
+  },
+  "rootTests": {
+    "api": 492,
+    "tooling": 53,
+    "web": 99,
+    "total": 644,
+    "skipped": 0
+  },
+  "fullIntegration": {
+    "passed": 427,
+    "suites": 24,
+    "skipped": 0,
+    "seconds": 375.875
+  },
+  "completeCandidateSuite": {
+    "passed": 27,
+    "skipped": 0
+  },
+  "postFullEvidenceOnlyMonitorSuite": {
+    "passed": 18,
+    "skipped": 0,
+    "seconds": 21.747
+  },
+  "newIntegrationCases": 9,
+  "mixedScopeProjections": 8,
+  "newDiagnosticArtifacts": 14,
+  "finalSourceFingerprints": 305,
+  "artifactOnlyFollowup": "Monitor raw query/HTTP/payload/query-count/transaction/acquire arrays; affected suite and final static checks repeated. Full integration covers preceding source state; no runtime source changed.",
+  "sourceSnapshotNote": "Early fixture corrections/earlier focused diagnostic precede final formatting/index metadata; final full candidate source is unchanged since the full run.",
+  "runtimeChanged": false,
+  "queryAdapterChanged": false,
+  "migrationChanged": false,
+  "resourceChanged": false,
+  "webChanged": false,
+  "cleanup": {
+    "databases": [],
+    "roles": [],
+    "connections": 0
+  },
+  "deployed": false,
+  "committed": false,
+  "pullRequestCreated": false,
+  "sustainableRps": null,
+  "concurrentCapacity": null,
+  "saturation": null,
+  "headroom": null,
+  "awsCost": null,
+  "performanceCostCurve": null,
+  "nextProposed": "WEB-03 real Catalog browse/detail integration",
+  "validation": {
+    "lintQualityContracts": "PASS after final docs/artifacts",
+    "typecheck": "PASS after monitor raw capture",
+    "apiBuild": "PASS; API source unchanged thereafter",
+    "rootTests": "PASS644",
+    "fullIntegration": "PASS427/24; before test-only monitor raw-array follow-up",
+    "finalAffectedSuite": "PASS18/18 monitor",
+    "rawSummaryRecomputation": "PASS7/7 monitor latency summaries",
+    "reproductionSetupPreflight": "PASS; no network calls",
+    "historicalIntegrity": "PASS633 unchanged",
+    "finalSourceFingerprints": "PASS305 unchanged",
+    "copiedDiagnosticReceipts": "PASS14",
+    "cleanup": "PASS0/0/0; named containers absent and PostgreSQL volumes present"
+  }
+}

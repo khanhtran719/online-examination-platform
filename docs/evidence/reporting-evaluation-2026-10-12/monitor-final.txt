@@ -1,0 +1,9 @@
+(node:11579) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"36b6981e-9611-458c-ab4c-21278432a3c2"}
+{"event":"unhandled_exception","correlationId":"4c2311b1-bc53-4dfe-90a9-76e2f0f48d7a"}
+Test Suites: 1 passed, 1 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        21.747 s
+Ran all test suites within paths "apps/api/tests/integration/admin-monitor.spec.ts".

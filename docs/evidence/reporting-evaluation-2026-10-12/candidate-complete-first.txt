@@ -1,0 +1,16 @@
+(node:8702) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"event":"unhandled_exception","correlationId":"f22759f0-91b0-4733-b4cd-0c919c70e4a5"}
+{"event":"unhandled_exception","correlationId":"2503792d-e36d-4b7f-9389-f0e7f213425e"}
+{"event":"unhandled_exception","correlationId":"0f4377c9-9680-4fdb-9a41-fe4aedadc19b"}
+{"event":"unhandled_exception","correlationId":"0780554e-4809-4523-8766-a34c7f2ee580"}
+{"event":"unhandled_exception","correlationId":"f71d5573-b92a-4348-a96e-81109dff8807"}
+{"event":"unhandled_exception","correlationId":"f3b673d0-7f39-4293-aa3c-fecd8d69b3c3"}
+{"event":"unhandled_exception","correlationId":"585fd7ce-0ebf-46a8-8fef-1f41a378b2d4"}
+{"event":"unhandled_exception","correlationId":"f28b7a48-34fa-4f99-ba4b-512280258325"}
+{"event":"unhandled_exception","correlationId":"68dcb930-1451-49ed-ba2c-5bcba5900828"}
+Test Suites: 1 passed, 1 total
+Tests:       27 passed, 27 total
+Snapshots:   0 total
+Time:        43.867 s
+Ran all test suites within paths "apps/api/tests/integration/admin-candidate-results.spec.ts".

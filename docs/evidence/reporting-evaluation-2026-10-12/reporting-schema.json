@@ -1,0 +1,706 @@
+{
+  "kind": "disposable-postgresql-schema-contract",
+  "tables": {
+    "assessment.attempts": [
+      {
+        "name": "deadline",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "exam_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "expired",
+        "type": "boolean",
+        "nullable": false
+      },
+      {
+        "name": "expiry_retry_after",
+        "type": "timestamp(3) with time zone",
+        "nullable": true
+      },
+      {
+        "name": "expiry_retry_count",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "failure_code",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "grading_generation",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "purged_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": true
+      },
+      {
+        "name": "replay_pending",
+        "type": "boolean",
+        "nullable": false
+      },
+      {
+        "name": "revision",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "submission_event_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "name": "submission_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "name": "submission_kind",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "submitted_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": true
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "assessment.leaderboard_entries": [
+      {
+        "name": "attempt_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "completion_sequence",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "earned_points",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "submitted_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "assessment.leaderboard_epochs": [
+      {
+        "name": "epoch",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "assessment.option_statistics": [
+      {
+        "name": "option_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "question_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "selected_count",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "assessment.question_statistics": [
+      {
+        "name": "completed_count",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "correct_count",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "incorrect_count",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "question_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "unanswered_count",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "assessment.result_questions": [
+      {
+        "name": "answered",
+        "type": "boolean",
+        "nullable": false
+      },
+      {
+        "name": "attempt_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "correct",
+        "type": "boolean",
+        "nullable": false
+      },
+      {
+        "name": "earned_points",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "question_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "assessment.result_sections": [
+      {
+        "name": "attempt_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "earned_points",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "possible_points",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "section_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "assessment.results": [
+      {
+        "name": "attempt_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "completion_sequence",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "correct_count",
+        "type": "smallint",
+        "nullable": false
+      },
+      {
+        "name": "earned_points",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "percentage_basis_points",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "possible_points",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "question_count",
+        "type": "smallint",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "catalog.exams": [
+      {
+        "name": "archived_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": true
+      },
+      {
+        "name": "attempt_limit",
+        "type": "smallint",
+        "nullable": false
+      },
+      {
+        "name": "category",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "closes_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "current_version_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "display_timezone",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "duration_seconds",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "explanation_policy",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "leaderboard_enabled",
+        "type": "boolean",
+        "nullable": false
+      },
+      {
+        "name": "opens_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "published",
+        "type": "boolean",
+        "nullable": false
+      },
+      {
+        "name": "revision",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      }
+    ],
+    "catalog.published_options": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "position",
+        "type": "smallint",
+        "nullable": false
+      },
+      {
+        "name": "question_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "text",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "catalog.published_questions": [
+      {
+        "name": "explanation",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "points",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "position",
+        "type": "smallint",
+        "nullable": false
+      },
+      {
+        "name": "prompt",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "section_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "source_question_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "source_revision",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "type",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "catalog.published_sections": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "position",
+        "type": "smallint",
+        "nullable": false
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "version_id",
+        "type": "uuid",
+        "nullable": false
+      }
+    ],
+    "catalog.published_versions": [
+      {
+        "name": "attempt_limit",
+        "type": "smallint",
+        "nullable": false
+      },
+      {
+        "name": "category",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "closes_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "display_timezone",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "duration_seconds",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "exam_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "explanation_policy",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "leaderboard_enabled",
+        "type": "boolean",
+        "nullable": false
+      },
+      {
+        "name": "opens_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "publication_xid",
+        "type": "xid8",
+        "nullable": false
+      },
+      {
+        "name": "published_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "published_by",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "scoring_policy",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "version",
+        "type": "integer",
+        "nullable": false
+      }
+    ],
+    "identity.users": [
+      {
+        "name": "created_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "credential_version",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "display_name",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "email",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "email_verified_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": true
+      },
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "nullable": false
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "leaderboard_opt_in",
+        "type": "boolean",
+        "nullable": false
+      },
+      {
+        "name": "password_hash",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "privacy_requested_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": true
+      },
+      {
+        "name": "revision",
+        "type": "integer",
+        "nullable": false
+      }
+    ],
+    "platform.audit_logs": [
+      {
+        "name": "action",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "actor_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "name": "actor_type",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "changed_fields",
+        "type": "jsonb",
+        "nullable": false
+      },
+      {
+        "name": "correlation_id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": false
+      },
+      {
+        "name": "occurred_at",
+        "type": "timestamp(3) with time zone",
+        "nullable": false
+      },
+      {
+        "name": "operator_identity",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "outcome",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "resource_id",
+        "type": "uuid",
+        "nullable": true
+      },
+      {
+        "name": "resource_type",
+        "type": "text",
+        "nullable": false
+      }
+    ]
+  },
+  "assertions": "column names, PostgreSQL types/typmods and nullability; no AWS or semantic correctness claim"
+}

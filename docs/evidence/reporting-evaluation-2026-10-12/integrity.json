@@ -1,0 +1,9 @@
+{
+  "baselineCommit": "3d8022b6994300f58f624e95b1d3c1f3eec63977",
+  "protected_files": 633,
+  "changed_protected_files": [],
+  "migrations": 19,
+  "build_mismatches": [],
+  "query_adapters": 7,
+  "runtime_sources_changed": []
+}
