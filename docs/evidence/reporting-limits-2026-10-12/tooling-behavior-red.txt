@@ -1,0 +1,184 @@
+✔ accepts a fully inventoried reviewed query and physical schema (6.771625ms)
+✖ rejects missing, duplicate and removed query consumers (3.973708ms)
+✖ requires renewed review for a changed query or private port (4.040833ms)
+✖ detects an undeclared physical join even after the source hash is renewed (5.167375ms)
+✔ does not invent physical dependencies from source comments or aliases (3.72925ms)
+✖ rejects a new unreviewed migration and altered or omitted migration receipts (3.552125ms)
+✖ rejects path-like IDs, missing source signatures and malformed schema columns (3.711791ms)
+✖ detects missing, added, renamed, nullable or differently typed physical columns (3.233125ms)
+✖ reports malformed manifest data as a failed check (5.324583ms)
+✖ keeps repository query receipts and source schemas in the checked inventory (0.204375ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 2
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 123.829292
+
+✖ failing tests:
+
+test at scripts/__tests__/reporting-dependencies.unit.spec.mjs:39:1
+✖ rejects missing, duplicate and removed query consumers (3.973708ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /query inventory/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/reporting-dependencies.unit.spec.mjs:42:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /query inventory/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/reporting-dependencies.unit.spec.mjs:47:1
+✖ requires renewed review for a changed query or private port (4.040833ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /port review required/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/reporting-dependencies.unit.spec.mjs:50:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /port review required/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/reporting-dependencies.unit.spec.mjs:54:1
+✖ detects an undeclared physical join even after the source hash is renewed (5.167375ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /source inventory/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/reporting-dependencies.unit.spec.mjs:60:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /source inventory/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/reporting-dependencies.unit.spec.mjs:70:1
+✖ rejects a new unreviewed migration and altered or omitted migration receipts (3.552125ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /migration review required/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/reporting-dependencies.unit.spec.mjs:73:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /migration review required/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/reporting-dependencies.unit.spec.mjs:80:1
+✖ rejects path-like IDs, missing source signatures and malformed schema columns (3.711791ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /query id/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/reporting-dependencies.unit.spec.mjs:84:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /query id/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/reporting-dependencies.unit.spec.mjs:93:1
+✖ detects missing, added, renamed, nullable or differently typed physical columns (3.233125ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /assessment.attempts/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/reporting-dependencies.unit.spec.mjs:100:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /assessment.attempts/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/reporting-dependencies.unit.spec.mjs:103:1
+✖ reports malformed manifest data as a failed check (5.324583ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /manifest/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/reporting-dependencies.unit.spec.mjs:106:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /manifest/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/__tests__/reporting-dependencies.unit.spec.mjs:108:1
+✖ keeps repository query receipts and source schemas in the checked inventory (0.204375ms)
+  Error: ENOENT: no such file or directory, open 'docs/contracts/reporting-dependencies.json'
+      at readFileSync (node:fs:441:20)
+      at TestContext.<anonymous> (file:///Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/scripts/__tests__/reporting-dependencies.unit.spec.mjs:110:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'docs/contracts/reporting-dependencies.json'
+  }

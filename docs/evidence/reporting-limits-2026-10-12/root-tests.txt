@@ -1,0 +1,102 @@
+
+> online-examination-platform@0.1.0 test
+> npm run test:api && npm run test:tooling && npm run web:test
+
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand
+
+(node:1528) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Test Suites: 53 passed, 53 total
+Tests:       492 passed, 492 total
+Snapshots:   0 total
+Time:        4.955 s, estimated 6 s
+Ran all test suites.
+
+> online-examination-platform@0.1.0 test:tooling
+> node --test scripts/__tests__/*.unit.spec.mjs
+
+✔ generates latency summary from its own raw run rather than a previous run (0.72675ms)
+✔ absent transaction samples remain not measured and zero-valued evidence is rejected (1.678ms)
+✔ freezing an existing evidence directory cannot replace its raw sample or summary (15.935209ms)
+✔ validates the complete OpenAPI contract and its payload examples (202.926584ms)
+✔ verification is an explicit public POST with a bounded one-use token and final password (1.583042ms)
+✔ signed token contract keeps access and refresh separate and PostgreSQL authoritative (3.54825ms)
+✔ contract checks reject a refresh audience reused for access (1.223583ms)
+✔ email login rejects alternate usernames and Session rejects raw credential fields (0.302708ms)
+✔ email schemas reject non-ASCII identifiers consistently with the PostgreSQL identity policy (0.268292ms)
+✔ accepts a submitted event and rejects answer data anywhere in it (0.433167ms)
+✔ rejects an event for another aggregate, schema version or invalid timestamp (0.118791ms)
+✔ candidate question schema rejects keys and explanation leaks (0.124459ms)
+✔ rejects non-finite timestamps rather than treating them as a manual submission (0.094084ms)
+✔ save contract accepts clearing and rejects duplicate options and oversized batches (0.116834ms)
+✔ rejects an admin operation made public even when the document remains valid OpenAPI (1.390833ms)
+✔ does not allow an admin route to inherit a public operation name (1.239792ms)
+✔ rejects a critical mutation without an idempotency header (1.242666ms)
+✔ rejects unsafe browser operations without Origin or CSRF contract (1.096875ms)
+✔ rejects undocumented owners, acceptance cases and unbounded list pagination (1.317708ms)
+✔ calibrates database UTC to local wall clock with a round-trip uncertainty bound (2.208083ms)
+✔ commit acknowledgement includes persistence delay separately from acceptance lag (0.188667ms)
+✔ does not turn absent observations into zero latency (0.08175ms)
+✔ packages immutable SQL bytes and ordered filenames independently of process cwd (16.714416ms)
+✔ fails build rather than silently packaging missing or symlinked migrations (4.855958ms)
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (4.285917ms)
+✔ detects module-private and same-module infrastructure access from application (0.685584ms)
+✔ permits a public application capability and infrastructure driver adapter (0.626875ms)
+✔ extracts real local links but excludes fenced examples and external URLs (0.41125ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (0.663959ms)
+✔ checks TypeScript import types and import-equals dependencies (0.652042ms)
+✔ rejects Node network imports with or without node prefix (0.189083ms)
+✔ checks technical folder barrel imports without a trailing slash (0.187666ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.372083ms)
+✔ keeps domain independent of application orchestration (0.236042ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.343375ms)
+✔ keeps all global technical roots independent from business modules (0.272333ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.265375ms)
+✔ requires module composition to use explicit public capabilities of another module (0.410958ms)
+✔ permits only reviewed Reporting ranking entry points and preserves private boundaries (0.354792ms)
+✔ rejects legacy placement after normalization closes (0.13325ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (0.955334ms)
+✔ allows only the reviewed Catalog worker composition boundary (0.303542ms)
+✔ accepts a fully inventoried reviewed query and physical schema (9.456417ms)
+✔ rejects missing, duplicate and removed query consumers (6.049ms)
+✔ requires renewed review for a changed query or private port (5.590417ms)
+✔ rejects a query adapter hidden in a nested persistence folder (4.703875ms)
+✔ detects an undeclared physical join even after the source hash is renewed (3.988833ms)
+✔ does not invent physical dependencies from source comments or aliases (4.264708ms)
+✔ rejects a new unreviewed migration and altered or omitted migration receipts (4.297167ms)
+✔ rejects path-like IDs, missing source signatures and malformed schema columns (5.4125ms)
+✔ detects missing, added, renamed, nullable or differently typed physical columns (11.216209ms)
+✔ reports malformed manifest data as a failed check (7.69675ms)
+✔ keeps repository query receipts and source schemas in the checked inventory (12.203542ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 53
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 338.914791
+
+> online-examination-platform@0.1.0 web:test
+> npm --prefix apps/web test
+
+
+> @exam/web@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+
+ Test Files  24 passed (24)
+      Tests  99 passed (99)
+   Start at  09:54:26
+   Duration  4.70s (environment 56%, tests 22%, import 11%, transform 10%)
+
+Environment  jsdom was created 24 times · 16.35s total, 56% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

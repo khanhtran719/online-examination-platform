@@ -1,0 +1,35 @@
+{
+  "kind": "REP-07-local-correctness-review",
+  "branch": "codex/rep07-reporting-limits",
+  "baseline_commit": "e07b5f99ad5e259459bb5985cdfd5d9724e352ba",
+  "runtime": "v24.17.0",
+  "source_files": 100,
+  "unchanged_sql_adapters": [
+    "apps/api/src/modules/reporting/infrastructure/persistence/postgres-active-candidates.query.ts",
+    "apps/api/src/modules/reporting/infrastructure/persistence/postgres-submissions.query.ts",
+    "apps/api/src/modules/reporting/infrastructure/persistence/postgres-business-metrics.query.ts",
+    "apps/api/src/modules/reporting/infrastructure/persistence/postgres-audit.query.ts",
+    "apps/api/src/modules/reporting/infrastructure/persistence/postgres-candidate-results.query.ts",
+    "apps/api/src/modules/reporting/infrastructure/persistence/postgres-question-statistics.query.ts",
+    "apps/api/src/modules/reporting/infrastructure/persistence/postgres-ranking.query.ts"
+  ],
+  "root": {
+    "api": 492,
+    "tooling": 53,
+    "web": 99,
+    "total": 644
+  },
+  "integration": {
+    "tests": 418,
+    "suites": 24,
+    "skipped": 0
+  },
+  "new_cases": {
+    "api": 17,
+    "tooling": 11,
+    "postgres_schema": 7,
+    "compiled_http": 1
+  },
+  "production_accepted": false,
+  "aws_measured": false
+}

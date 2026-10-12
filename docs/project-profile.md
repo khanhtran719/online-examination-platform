@@ -1,5 +1,20 @@
 # Project profile
 
+REP-07 update2026-10-12: [Report limits/source contracts](reporting-limits-2026-10-12.md)
+RL-01–05 COMPLETE locally; **87/216 checked,129 pending**. Explicit private DTO
+allowlists/nested review redaction, max100 JSON/20 sections/10 options and source
+lookahead failure;7 consumers/15 physical tables/134 columns and reviewed19
+migration receipts are gated.644 root/418 integration24 suites/0 skipped PASS;
+lint/typecheck/build/quality/contracts48 operations/445 examples.7 SQL adapters,
+19 source/build migration bytes and609 protected old files unchanged; fixture
+cleanup0, test containers stopped/volumes retained. No new endpoint/resource/schema
+or Web change. Paged live JSON is the v1 extraction contract; CSV/XLSX/consistent
+bulk export require a future separate contract. REP-08 wider read evaluation,
+REP-04 privacy lifecycle and Web/AWS acceptance remain open. Production NOT ACCEPTED.
+Next proposed REP-08 scope/freshness/plans/audit evaluation.
+[Evidence](evidence/reporting-limits-2026-10-12/README.md); [ADR-016](adr/016-bounded-report-responses-and-source-review.md).
+Previous entries below retain their historical source/test/next-step states.
+
 REP-06 update2026-10-10: [Audit lifecycle](admin-audit-2026-10-10.md)
 AU-01–06 COMPLETE locally; **86/216 checked,130 pending**. Reporting audit.read
 primary redacted live keyset and mandatory access audit; separate function-only

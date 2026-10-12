@@ -9,6 +9,7 @@ import {
   QuestionStatisticsCursorState,
 } from "../ports/question-statistics-cursor.port";
 import { statisticCounts, selectedCount } from "../../domain/question-statistics";
+import { assertReportRows } from "../dto/reporting-response";
 const ttlMs = 900000;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 function time(value: string): number {
@@ -58,9 +59,24 @@ export class QuestionStatisticsService {
         position: opened?.position ?? null,
       });
       if (!page.present) throw reportNotFound();
+      assertReportRows(page.rows, pageSize + 1);
       const now = time(page.serverNow);
       if (input.cursor) this.cursors.read(input.cursor, claims, now);
       if (watermarkTime !== null && watermarkTime > now) throw invalidReport();
+      const kept = page.rows.slice(0, pageSize),
+        last = kept.at(-1);
+      const items = kept.map((row) => {
+        assertReportRows(row.options, 10);
+        const counts = statisticCounts(row.counters);
+        return {
+          questionId: row.questionId,
+          ...counts,
+          options: row.options.map((option) => ({
+            optionId: option.optionId,
+            selectedCount: selectedCount(option.selectedCount, counts.answered),
+          })),
+        };
+      });
       await this.security.audit({
         actorId: current.userId,
         action: "reporting.question-statistics.read",
@@ -68,20 +84,8 @@ export class QuestionStatisticsService {
         resourceId: versionId,
         correlationId: input.correlationId,
       });
-      const kept = page.rows.slice(0, pageSize),
-        last = kept.at(-1);
       return {
-        items: kept.map((row) => {
-          const counts = statisticCounts(row.counters);
-          return {
-            questionId: row.questionId,
-            ...counts,
-            options: row.options.map((option) => ({
-              optionId: option.optionId,
-              selectedCount: selectedCount(option.selectedCount, counts.answered),
-            })),
-          };
-        }),
+        items,
         metadata: {
           pageSize,
           next:

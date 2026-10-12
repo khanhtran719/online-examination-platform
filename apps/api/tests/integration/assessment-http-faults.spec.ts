@@ -893,6 +893,61 @@ it("serves leaderboard, Admin monitor, submissions/result, question statistics a
   });
 });
 
+it("rejects bulk export and PII expansion on every compiled Admin report while preserving permissions and bounded JSON", async () => {
+  const f = await prepare("start", true);
+  const versionId = (
+    await fixture.query(
+      `
+      SELECT
+        current_version_id
+      FROM
+        catalog.exams
+      WHERE
+        id = $1
+    `,
+      [f.examId],
+    )
+  ).rows[0]!.current_version_id as string;
+  const paths = [
+    `/v1/admin/exams/${f.examId}/active-candidates`,
+    `/v1/admin/exams/${f.examId}/submissions`,
+    `/v1/admin/exams/${f.examId}/versions/${versionId}/question-statistics`,
+    `/v1/admin/exams/${f.examId}/versions/${versionId}/candidate-results`,
+    "/v1/admin/audit",
+    "/v1/admin/business-metrics",
+    `/v1/admin/attempts/${randomUUID()}/result`,
+  ];
+  for (const path of paths) {
+    // Independent actors keep assertions below the real production admission
+    // burst; the rate limit is neither bypassed nor raised for this test.
+    const actor = await seedUser("ADMIN");
+    const authorized = await session(api.port, actor.email, actor.id);
+    for (const query of ["format=csv", "export=all", "includePii=true", "offset=1000000"]) {
+      const response = await http(api.port, "GET", `${path}?${query}`, authorized.headers);
+      expect(response.status).toBe(400);
+      expect(response.headers["cache-control"]).toBe("no-store");
+      expect(envelope(response)).toMatchObject({ data: null, status: false });
+    }
+    expect((await http(api.port, "GET", path + "?format=csv", f.actor.headers)).status).toBe(403);
+    expect((await http(api.port, "GET", path + "?format=csv")).status).toBe(401);
+    if (path !== "/v1/admin/business-metrics" && !path.endsWith("/result")) {
+      expect((await http(api.port, "GET", path + "?pageSize=101", authorized.headers)).status).toBe(
+        400,
+      );
+      expect(
+        (await http(api.port, "GET", path + "?pageSize=1&pageSize=2", authorized.headers)).status,
+      ).toBe(400);
+      const bounded = await http(api.port, "GET", path + "?pageSize=100", authorized.headers);
+      expect(bounded.status).toBe(200);
+      const page = envelope<unknown[]>(bounded);
+      expect(page.data.length).toBeLessThanOrEqual(100);
+      expect(JSON.stringify(page)).not.toMatch(
+        /password_hash|correctOptionIds|PRIVATE_KEY|operator_identity/,
+      );
+    }
+  }
+});
+
 describe.each<Operation>(["start", "save", "submit"])(
   "Compiled Assessment %s HTTP faults",
   (operation) => {

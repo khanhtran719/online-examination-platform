@@ -2,6 +2,7 @@ import { RankingInput, RankingPage, RankingProjection } from "../facades/ranking
 import { RankingQuery } from "../ports/ranking.query";
 import { RankingAlias, RankingCursor, RankingCursorState } from "../ports/ranking-cursor.port";
 import { invalidRanking, rankingDenied, rankingNotFound } from "../../domain/ranking.error";
+import { assertReportRows } from "../dto/reporting-response";
 const ttl = 900000;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 function integer(value: string) {
@@ -47,6 +48,7 @@ export class RankingService implements RankingProjection {
     });
     if (!page.present) throw rankingNotFound();
     if (!page.enabled) throw rankingDenied();
+    assertReportRows(page.rows, pageSize + 1);
     const now = time(page.serverNow);
     if (input.cursor) this.cursors.read(input.cursor, claims, now);
     if (

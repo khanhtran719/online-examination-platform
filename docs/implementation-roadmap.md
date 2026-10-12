@@ -1,5 +1,20 @@
 # Roadmap triển khai có đánh dấu
 
+REP-07 update2026-10-12: [Report limits/source contracts](reporting-limits-2026-10-12.md)
+RL-01–05 COMPLETE locally; **87/216 checked,129 pending**. Explicit private DTO
+allowlists/nested review redaction, max100 JSON/20 sections/10 options and source
+lookahead failure;7 consumers/15 physical tables/134 columns and reviewed19
+migration receipts are gated.644 root/418 integration24 suites/0 skipped PASS;
+lint/typecheck/build/quality/contracts48 operations/445 examples.7 SQL adapters,
+19 source/build migration bytes and609 protected old files unchanged; fixture
+cleanup0, test containers stopped/volumes retained. No new endpoint/resource/schema
+or Web change. Paged live JSON is the v1 extraction contract; CSV/XLSX/consistent
+bulk export require a future separate contract. REP-08 wider read evaluation,
+REP-04 privacy lifecycle and Web/AWS acceptance remain open. Production NOT ACCEPTED.
+Next proposed REP-08 scope/freshness/plans/audit evaluation.
+[Evidence](evidence/reporting-limits-2026-10-12/README.md); [ADR-016](adr/016-bounded-report-responses-and-source-review.md).
+Previous entries below retain their historical source/test/next-step states.
+
 REP-06 update2026-10-10: [Audit lifecycle](admin-audit-2026-10-10.md)
 AU-01–06 COMPLETE locally; **86/216 checked,130 pending**. Reporting audit.read
 primary redacted live keyset and mandatory access audit; separate function-only
@@ -292,7 +307,7 @@ Phụ thuộc: 04–07.
 - [ ] **REP-04 — SUBSET** Candidate history/result/review tại ATT-08 và public leaderboard/privacy reads/best-rank semantics tại [LB-01–05](public-leaderboard-2026-10-09.md) đã nghiệm thu local. Admin best/latest exact-version/current-permission/audit/paging tại [BL-01–06](admin-candidate-results-2026-10-10.md)/[evidence](evidence/admin-candidate-results-2026-10-10/README.md) đã nghiệm thu local. Independent privacy ledger/deletion/restore và production còn mở. Giữ unchecked, không đóng đầu mục.
 - [x] **REP-05** Business metrics: start-time cohort/current starts/submissions/completions/expired/failed/active và global durable pending/replay backlog. [BM-01–06](admin-business-metrics-2026-10-10.md)/[evidence](evidence/admin-business-metrics-2026-10-10/README.md) nghiệm thu local với current permission/audit,18 PG cases và100k/1M baseline. Combined telemetry/Web/AWS/capacity vẫn mở; không suy ra queue depth hoặc performance/cost winner.
 - [x] **REP-06** Append-only audit trong admin transaction; action/actor/target/time/minimal metadata, retention/access control. Local AU-01–06 complete: [evidence](evidence/admin-audit-2026-10-10/README.md); default-off fixed365day job, production backup/privacy/capacity gates remain open.
-- [ ] **REP-07** Export/report limits, safe PII exposure và query dependency contracts với migration.
+- [x] **REP-07** V1 bounded JSON report/extraction limits, safe explicit nested DTOs và executable query/migration consumer contracts. [RL-01–05 closure](reporting-limits-2026-10-12.md)/[evidence](evidence/reporting-limits-2026-10-12/README.md):644 root/418 integration PASS;7 consumers/15 tables/134 columns,19 migration receipts. CSV/XLSX/consistent bulk export require a future contract; no AWS/capacity claim.
 - [ ] **REP-08** Test data scope, projection freshness, query/index plans và audit rollback.
 
 ## 09. Browser application Candidate/Admin

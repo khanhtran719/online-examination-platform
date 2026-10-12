@@ -1,0 +1,2 @@
+ Container examination-platform-mailpit-1 Stopping 
+ Container examination-platform-mailpit-1 Stopped 

@@ -1,6 +1,29 @@
 # Implementation plan
 
-## Latest increment — REP-06 Audit lifecycle, 2026-10-10 (COMPLETE locally)
+## Latest increment — REP-07 Reporting limits, 2026-10-12 (COMPLETE locally)
+
+[RL-01–05 plan/review](reporting-limits-2026-10-12.md),
+[ADR-016](adr/016-bounded-report-responses-and-source-review.md),
+[runbook](runbooks/reporting-limits.md),
+[evidence](evidence/reporting-limits-2026-10-12/README.md).
+
+Explicit private response fields, nested PII/key/review redaction and bounded
+projection failure before successful access audit. V1 paged live JSON remains
+max100; score20 sections/statistics10 options. CSV/XLSX/consistent bulk export have
+no current contract. All7 private SQL/Port consumers,15 table signatures/134 columns
+and19 reviewed migration receipts are checked; real PG drift/rollback and compiled
+HTTP input/permission limits PASS.644 root (492 API/53 tooling/99 Web),418 full
+integration24 suites/0 skipped; lint/typecheck/build/quality/contracts48/445 PASS.
+All7 SQL adapters and609 historical files unchanged,19 migration bundles match;
+cleanup0, test containers stopped/volumes retained. No endpoint/resource/schema/
+dependency/Web/deploy/commit/PR change. No performance/cost or production claim.
+
+Roadmap87/216 checked,129 pending. Next proposed REP-08 scope/freshness/query plans/
+audit rollback evaluation. REP-04 privacy lifecycle stays SUBSET/unchecked; Web,
+AWS/capacity/SLO/FinOps/restore gates remain open. Production NOT ACCEPTED.
+No background work remains after local closure.
+
+## Previous increment — REP-06 Audit lifecycle, 2026-10-10 (COMPLETE locally)
 
 [AU-01–06 plan/review](admin-audit-2026-10-10.md),
 [ADR-015](adr/015-audit-browse-and-fixed-retention.md),

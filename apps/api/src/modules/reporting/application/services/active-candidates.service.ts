@@ -3,6 +3,7 @@ import { SecurityControls } from "../../../../shared/application/ports/security"
 import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-work.port";
 import { invalidReport, reportDenied, reportNotFound } from "../../domain/reporting.error";
 import { ActiveCandidatesInput, ActiveCandidatesPage } from "../dto/active-candidates.dto";
+import { activeCandidateResponse, assertReportRows } from "../dto/reporting-response";
 import { ActiveCandidatesQuery } from "../ports/active-candidates.query";
 import { ActiveCandidatesCursor, ActiveCursorState } from "../ports/active-candidates-cursor.port";
 const ttlMs = 60000;
@@ -49,6 +50,7 @@ export class ActiveCandidatesService {
         position: opened?.position ?? null,
       });
       if (!page.present) throw reportNotFound();
+      assertReportRows(page.rows, pageSize + 1);
       const now = time(page.serverNow);
       if (input.cursor) this.cursors.read(input.cursor, claims, now);
       if (watermarkTime !== null && watermarkTime > now) throw invalidReport();
@@ -62,7 +64,7 @@ export class ActiveCandidatesService {
       const kept = page.rows.slice(0, pageSize),
         last = kept.at(-1);
       return {
-        items: kept,
+        items: kept.map(activeCandidateResponse),
         metadata: {
           pageSize,
           asOf: page.serverNow,

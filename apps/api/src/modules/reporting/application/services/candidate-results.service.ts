@@ -4,6 +4,7 @@ import { UnitOfWork } from "../../../../shared/application/unit-of-work/unit-of-
 import { invalidReport, reportDenied, reportNotFound } from "../../domain/reporting.error";
 import { assertCandidateSelections } from "../../domain/candidate-results";
 import { CandidateResultsInput, CandidateResultsPage } from "../dto/candidate-results.dto";
+import { assertReportRows, candidateResultResponse } from "../dto/reporting-response";
 import { CandidateResultsQuery } from "../ports/candidate-results.query";
 import {
   CandidateResultsCursor,
@@ -52,6 +53,7 @@ export class CandidateResultsService {
         position: opened?.position ?? null,
       });
       if (!page.present) throw reportNotFound();
+      assertReportRows(page.rows, pageSize + 1);
       const now = time(page.serverNow);
       if (input.cursor) this.cursors.read(input.cursor, claims, now);
       if (watermarkTime !== null && watermarkTime > now) throw invalidReport();
@@ -66,7 +68,7 @@ export class CandidateResultsService {
         correlationId: input.correlationId,
       });
       return {
-        items: kept,
+        items: kept.map(candidateResultResponse),
         metadata: {
           pageSize,
           next:

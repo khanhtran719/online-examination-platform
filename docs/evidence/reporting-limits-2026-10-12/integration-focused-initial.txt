@@ -1,0 +1,31 @@
+(node:348) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/reporting-dependencies.spec.ts
+  ● detects ALTER TABLE identity.users ALTER COLUMN display_name DROP NOT NULL and recovers after rollback
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 1
+
+    - Array [
+    -   "Reporting physical schema review required: identity.users",
+    - ]
+    + Array []
+
+      151 |     await client.query("BEGIN");
+      152 |     await client.query(sql);
+    > 153 |     expect(compare(manifest, await schema(client))).toEqual([
+          |                                                     ^
+      154 |       `Reporting physical schema review required: ${table}`,
+      155 |     ]);
+      156 |   } finally {
+
+      at apps/api/tests/integration/reporting-dependencies.spec.ts:153:53
+
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       1 failed, 34 passed, 35 total
+Snapshots:   0 total
+Time:        35.249 s
+Ran all test suites within paths "apps/api/tests/integration/reporting-dependencies.spec.ts", "apps/api/tests/integration/assessment-http-faults.spec.ts".

@@ -14,6 +14,7 @@ import {
   AdminScore,
 } from "../dto/submissions.dto";
 import { SubmissionsQuery } from "../ports/submissions.query";
+import { assertReportRows, scoreResponse, submissionResponse } from "../dto/reporting-response";
 import { SubmissionsCursor, SubmissionCursorState } from "../ports/submissions-cursor.port";
 const ttlMs = 900000;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
@@ -60,6 +61,7 @@ export class SubmissionsService {
         position: opened?.position ?? null,
       });
       if (!page.present) throw reportNotFound();
+      assertReportRows(page.rows, pageSize + 1);
       const now = time(page.serverNow);
       if (input.cursor) this.cursors.read(input.cursor, claims, now);
       if (watermarkTime !== null && watermarkTime > now) throw invalidReport();
@@ -73,7 +75,7 @@ export class SubmissionsService {
       const kept = page.rows.slice(0, pageSize),
         last = kept.at(-1);
       return {
-        items: kept.map(({ startedAt: _at, ...row }) => row),
+        items: kept.map(submissionResponse),
         metadata: {
           pageSize,
           next:
@@ -96,6 +98,7 @@ export class SubmissionsService {
       if (!row) throw reportNotFound();
       if (row.status !== "COMPLETED") throw reportNotReady();
       if (!row.result || !row.result.sections?.length) throw new Error("RESULT_STATE_UNAVAILABLE");
+      const result = scoreResponse(row.result);
       await this.security.audit({
         actorId: current.userId,
         action: "reporting.result.read",
@@ -103,7 +106,7 @@ export class SubmissionsService {
         resourceId: input.attemptId,
         correlationId: input.correlationId,
       });
-      return row.result;
+      return result;
     });
   }
 }

@@ -1,0 +1,649 @@
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts
+
+(node:98734) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts
+  ● Reporting output limits and accidental projection expansion › exposes only declared active candidate fields
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 7
+
+      Array [
+        Object {
+    +     "answers": Array [
+    +       "PRIVATE_ANSWER",
+    +     ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "candidateId": "00000000-0000-4000-8000-000000000001",
+          "deadline": "2026-10-12T00:00:00.000Z",
+    +     "displayName": "PRIVATE_NAME",
+    +     "email": "PRIVATE_EMAIL",
+    +     "passwordHash": "PRIVATE_HASH",
+    +     "scoringKey": "PRIVATE_KEY",
+          "startedAt": "2026-10-12T00:00:00.000Z",
+          "status": "IN_PROGRESS",
+        },
+      ]
+
+      80 |   it("exposes only declared active candidate fields", async () => {
+      81 |     const f = fixture();
+    > 82 |     expect((await f.activeService.page(input)).items).toEqual([f.active]);
+         |                                                       ^
+      83 |   });
+      84 |   it("exposes only declared submission fields while retaining null pending scores", async () => {
+      85 |     const f = fixture();
+
+      at Object.<anonymous> (apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:82:55)
+
+  ● Reporting output limits and accidental projection expansion › exposes only declared submission fields while retaining null pending scores
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 7
+
+      Array [
+        Object {
+    +     "answers": Array [
+    +       "PRIVATE_ANSWER",
+    +     ],
+          "attemptId": "00000000-0000-4000-8000-000000000001",
+          "candidateId": "00000000-0000-4000-8000-000000000001",
+    +     "displayName": "PRIVATE_NAME",
+          "earned": null,
+    +     "email": "PRIVATE_EMAIL",
+          "expired": false,
+    +     "passwordHash": "PRIVATE_HASH",
+          "possible": null,
+          "publishedVersionId": "00000000-0000-4000-8000-000000000001",
+    +     "scoringKey": "PRIVATE_KEY",
+          "status": "IN_PROGRESS",
+          "submittedAt": null,
+        },
+      ]
+
+      84 |   it("exposes only declared submission fields while retaining null pending scores", async () => {
+      85 |     const f = fixture();
+    > 86 |     expect((await f.submissions.page(input)).items).toEqual([f.submission]);
+         |                                                     ^
+      87 |   });
+      88 |   it("redacts unexpected fields from both candidate selections", async () => {
+      89 |     const f = fixture();
+
+      at Object.<anonymous> (apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:86:53)
+
+  ● Reporting output limits and accidental projection expansion › redacts unexpected fields from both candidate selections
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  0
+    + Received  + 21
+
+      Array [
+        Object {
+    +     "answers": Array [
+    +       "PRIVATE_ANSWER",
+    +     ],
+          "best": Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "attemptId": "00000000-0000-4000-8000-000000000001",
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+            "expired": false,
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "status": "COMPLETED",
+            "submittedAt": "2026-10-12T00:00:00.000Z",
+          },
+          "candidateId": "00000000-0000-4000-8000-000000000001",
+    +     "displayName": "PRIVATE_NAME",
+    +     "email": "PRIVATE_EMAIL",
+          "latest": Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "attemptId": "00000000-0000-4000-8000-000000000001",
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+            "expired": false,
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "status": "COMPLETED",
+            "submittedAt": "2026-10-12T00:00:00.000Z",
+          },
+    +     "passwordHash": "PRIVATE_HASH",
+          "publishedVersionId": "00000000-0000-4000-8000-000000000001",
+    +     "scoringKey": "PRIVATE_KEY",
+        },
+      ]
+
+      88 |   it("redacts unexpected fields from both candidate selections", async () => {
+      89 |     const f = fixture();
+    > 90 |     expect((await f.candidates.page(input)).items).toEqual([f.candidate]);
+         |                                                    ^
+      91 |   });
+      92 |   it("redacts unexpected detail/section fields and never enables answer review", async () => {
+      93 |     const f = fixture();
+
+      at Object.<anonymous> (apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:90:52)
+
+  ● Reporting output limits and accidental projection expansion › redacts unexpected detail/section fields and never enables answer review
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    @@ -1,21 +1,39 @@
+      Object {
+    +   "answers": Array [
+    +     "PRIVATE_ANSWER",
+    +   ],
+        "attemptId": "00000000-0000-4000-8000-000000000001",
+        "completedAt": "2026-10-12T00:00:00.000Z",
+        "correct": 0,
+    +   "displayName": "PRIVATE_NAME",
+        "earned": 0,
+    +   "email": "PRIVATE_EMAIL",
+        "expired": false,
+    +   "passwordHash": "PRIVATE_HASH",
+        "percentageBasisPoints": 0,
+        "possible": 100,
+        "publishedVersionId": "00000000-0000-4000-8000-000000000001",
+    -   "review": null,
+    +   "review": Object {
+    +     "correctOptionIds": Array [
+    +       "PRIVATE_KEY",
+    +     ],
+    +   },
+    +   "scoringKey": "PRIVATE_KEY",
+        "scoringPolicy": "EXACT_MATCH_V1",
+        "sections": Array [
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+        ],
+        "submissionId": "00000000-0000-4000-8000-000000000001",
+
+      93 |     const f = fixture();
+      94 |     Object.assign(f.detail, { review: { correctOptionIds: ["PRIVATE_KEY"] } });
+    > 95 |     expect(await f.submissions.result({ ...input, attemptId: id })).toEqual(score);
+         |                                                                     ^
+      96 |     expect(f.audits).toHaveLength(1);
+      97 |   });
+      98 |   it.each(["activeRows", "submissionRows", "candidateRows", "statisticRows"] as const)(
+
+      at Object.<anonymous> (apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:95:69)
+
+  ● Reporting output limits and accidental projection expansion › fails before successful audit when activeRows exceeds the requested lookahead
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: {"items": [{"answers": ["PRIVATE_ANSWER"], "attemptId": "00000000-0000-4000-8000-000000000001", "candidateId": "00000000-0000-4000-8000-000000000001", "deadline": "2026-10-12T00:00:00.000Z", "displayName": "PRIVATE_NAME", "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "scoringKey": "PRIVATE_KEY", "startedAt": "2026-10-12T00:00:00.000Z", "status": "IN_PROGRESS"}], "metadata": {"asOf": "2026-10-12T00:00:00.000Z", "next": "opaque", "pageSize": 1}}
+
+      106 |         candidateRows: f.candidates, statisticRows: f.statistics,
+      107 |       }[key];
+    > 108 |       await expect(service.page(input)).rejects.toThrow("REPORT_PROJECTION_UNAVAILABLE");
+          |             ^
+      109 |       expect(f.audits).toEqual([]);
+      110 |     },
+      111 |   );
+
+      at expect (node_modules/expect/build/index.js:2116:15)
+      at apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:108:13
+
+  ● Reporting output limits and accidental projection expansion › fails before successful audit when submissionRows exceeds the requested lookahead
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: {"items": [{"answers": ["PRIVATE_ANSWER"], "attemptId": "00000000-0000-4000-8000-000000000001", "candidateId": "00000000-0000-4000-8000-000000000001", "displayName": "PRIVATE_NAME", "earned": null, "email": "PRIVATE_EMAIL", "expired": false, "passwordHash": "PRIVATE_HASH", "possible": null, "publishedVersionId": "00000000-0000-4000-8000-000000000001", "scoringKey": "PRIVATE_KEY", "status": "IN_PROGRESS", "submittedAt": null}], "metadata": {"next": "opaque", "pageSize": 1}}
+
+      106 |         candidateRows: f.candidates, statisticRows: f.statistics,
+      107 |       }[key];
+    > 108 |       await expect(service.page(input)).rejects.toThrow("REPORT_PROJECTION_UNAVAILABLE");
+          |             ^
+      109 |       expect(f.audits).toEqual([]);
+      110 |     },
+      111 |   );
+
+      at expect (node_modules/expect/build/index.js:2116:15)
+      at apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:108:13
+
+  ● Reporting output limits and accidental projection expansion › fails before successful audit when candidateRows exceeds the requested lookahead
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: {"items": [{"answers": ["PRIVATE_ANSWER"], "best": {"answers": ["PRIVATE_ANSWER"], "attemptId": "00000000-0000-4000-8000-000000000001", "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "expired": false, "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "status": "COMPLETED", "submittedAt": "2026-10-12T00:00:00.000Z"}, "candidateId": "00000000-0000-4000-8000-000000000001", "displayName": "PRIVATE_NAME", "email": "PRIVATE_EMAIL", "latest": {"answers": ["PRIVATE_ANSWER"], "attemptId": "00000000-0000-4000-8000-000000000001", "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "expired": false, "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "status": "COMPLETED", "submittedAt": "2026-10-12T00:00:00.000Z"}, "passwordHash": "PRIVATE_HASH", "publishedVersionId": "00000000-0000-4000-8000-000000000001", "scoringKey": "PRIVATE_KEY"}], "metadata": {"next": "opaque", "pageSize": 1}}
+
+      106 |         candidateRows: f.candidates, statisticRows: f.statistics,
+      107 |       }[key];
+    > 108 |       await expect(service.page(input)).rejects.toThrow("REPORT_PROJECTION_UNAVAILABLE");
+          |             ^
+      109 |       expect(f.audits).toEqual([]);
+      110 |     },
+      111 |   );
+
+      at expect (node_modules/expect/build/index.js:2116:15)
+      at apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:108:13
+
+  ● Reporting output limits and accidental projection expansion › fails before successful audit when statisticRows exceeds the requested lookahead
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: {"items": [{"answered": 0, "completedAttempts": 0, "correct": 0, "incorrect": 0, "options": [{"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}], "questionId": "00000000-0000-4000-8000-000000000001", "unanswered": 0}], "metadata": {"next": "opaque", "pageSize": 1}}
+
+      106 |         candidateRows: f.candidates, statisticRows: f.statistics,
+      107 |       }[key];
+    > 108 |       await expect(service.page(input)).rejects.toThrow("REPORT_PROJECTION_UNAVAILABLE");
+          |             ^
+      109 |       expect(f.audits).toEqual([]);
+      110 |     },
+      111 |   );
+
+      at expect (node_modules/expect/build/index.js:2116:15)
+      at apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:108:13
+
+  ● Reporting output limits and accidental projection expansion › rejects more than20 score sections before access audit
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: {"answers": ["PRIVATE_ANSWER"], "attemptId": "00000000-0000-4000-8000-000000000001", "completedAt": "2026-10-12T00:00:00.000Z", "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "expired": false, "passwordHash": "PRIVATE_HASH", "percentageBasisPoints": 0, "possible": 100, "publishedVersionId": "00000000-0000-4000-8000-000000000001", "review": null, "scoringKey": "PRIVATE_KEY", "scoringPolicy": "EXACT_MATCH_V1", "sections": [{"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, {"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, {"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, {"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, {"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, {"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, {"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, {"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, {"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, {"answers": ["PRIVATE_ANSWER"], "correct": 0, "displayName": "PRIVATE_NAME", "earned": 0, "email": "PRIVATE_EMAIL", "passwordHash": "PRIVATE_HASH", "possible": 100, "scoringKey": "PRIVATE_KEY", "sectionId": "00000000-0000-4000-8000-000000000001", "total": 1}, …], "submissionId": "00000000-0000-4000-8000-000000000001", "total": 1}
+
+      113 |     const f = fixture();
+      114 |     f.detail.sections = Array.from({ length: 21 }, () => ({ ...section, ...privateFields }));
+    > 115 |     await expect(f.submissions.result({ ...input, attemptId: id })).rejects.toThrow("RESULT_STATE_UNAVAILABLE");
+          |           ^
+      116 |     expect(f.audits).toEqual([]);
+      117 |   });
+      118 |   it("allows the maximum20 score sections without forwarding private fields", async () => {
+
+      at expect (node_modules/expect/build/index.js:2116:15)
+      at Object.<anonymous> (apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:115:11)
+
+  ● Reporting output limits and accidental projection expansion › allows the maximum20 score sections without forwarding private fields
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -   0
+    + Received  + 147
+
+    @@ -1,154 +1,301 @@
+      Object {
+    +   "answers": Array [
+    +     "PRIVATE_ANSWER",
+    +   ],
+        "attemptId": "00000000-0000-4000-8000-000000000001",
+        "completedAt": "2026-10-12T00:00:00.000Z",
+        "correct": 0,
+    +   "displayName": "PRIVATE_NAME",
+        "earned": 0,
+    +   "email": "PRIVATE_EMAIL",
+        "expired": false,
+    +   "passwordHash": "PRIVATE_HASH",
+        "percentageBasisPoints": 0,
+        "possible": 100,
+        "publishedVersionId": "00000000-0000-4000-8000-000000000001",
+        "review": null,
+    +   "scoringKey": "PRIVATE_KEY",
+        "scoringPolicy": "EXACT_MATCH_V1",
+        "sections": Array [
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+          Object {
+    +       "answers": Array [
+    +         "PRIVATE_ANSWER",
+    +       ],
+            "correct": 0,
+    +       "displayName": "PRIVATE_NAME",
+            "earned": 0,
+    +       "email": "PRIVATE_EMAIL",
+    +       "passwordHash": "PRIVATE_HASH",
+            "possible": 100,
+    +       "scoringKey": "PRIVATE_KEY",
+            "sectionId": "00000000-0000-4000-8000-000000000001",
+            "total": 1,
+          },
+        ],
+        "submissionId": "00000000-0000-4000-8000-000000000001",
+
+      119 |     const f = fixture();
+      120 |     f.detail.sections = Array.from({ length: 20 }, () => ({ ...section, ...privateFields }));
+    > 121 |     expect(await f.submissions.result({ ...input, attemptId: id })).toEqual({
+          |                                                                     ^
+      122 |       ...score, sections: Array.from({ length: 20 }, () => section),
+      123 |     });
+      124 |   });
+
+      at Object.<anonymous> (apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:121:69)
+
+  ● Reporting output limits and accidental projection expansion › rejects more than10 option counters before access audit
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: {"items": [{"answered": 0, "completedAttempts": 0, "correct": 0, "incorrect": 0, "options": [{"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, {"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, {"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, {"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, {"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, {"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, {"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, {"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, {"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, {"optionId": "00000000-0000-4000-8000-000000000001", "selectedCount": 0}, …], "questionId": "00000000-0000-4000-8000-000000000001", "unanswered": 0}], "metadata": {"next": null, "pageSize": 1}}
+
+      127 |     const row = f.statisticRows[0]!;
+      128 |     row.options = Array.from({ length: 11 }, () => row.options[0]!);
+    > 129 |     await expect(f.statistics.page(input)).rejects.toThrow("REPORT_PROJECTION_UNAVAILABLE");
+          |           ^
+      130 |     expect(f.audits).toEqual([]);
+      131 |   });
+      132 |   it("allows10 options and strips internal counters, ordering and private fields", async () => {
+
+      at expect (node_modules/expect/build/index.js:2116:15)
+      at Object.<anonymous> (apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:129:11)
+
+  ● Reporting output limits and accidental projection expansion › fails closed on an oversized public ranking projection
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: {"items": [{"completedAt": "2026-10-12T00:00:00.000Z", "earned": 0, "possible": 100, "pseudonym": "Candidate", "rank": 1}], "metadata": {"next": "opaque", "pageSize": 1}}
+
+      146 |       })),
+      147 |     }) }, { read: () => { throw new Error("unexpected"); }, sign: () => "opaque" }, { alias: () => "Candidate" });
+    > 148 |     await expect(service.page(input)).rejects.toThrow("REPORT_PROJECTION_UNAVAILABLE");
+          |           ^
+      149 |   });
+      150 | });
+      151 |
+
+      at expect (node_modules/expect/build/index.js:2116:15)
+      at Object.<anonymous> (apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts:148:11)
+
+Test Suites: 1 failed, 1 total
+Tests:       12 failed, 1 passed, 13 total
+Snapshots:   0 total
+Time:        1.861 s
+Ran all test suites within paths "apps/api/src/modules/reporting/application/services/__tests__/reporting-limits.unit.spec.ts".

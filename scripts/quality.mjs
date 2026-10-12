@@ -2,6 +2,7 @@ import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { dirname, resolve, relative, posix } from "node:path";
 import { fileURLToPath } from "node:url";
 import ts from "typescript";
+import { checkReportingDependencies } from "./reporting-dependencies.mjs";
 
 function withoutFences(markdown) {
   let fence = null;
@@ -227,6 +228,7 @@ export function checkRepository(root) {
     if (/\.unit\.spec\.(?:ts|mjs)$/.test(name) && !name.includes("/__tests__/"))
       errors.push(`${name}: unit test must be in __tests__`);
   }
+  errors.push(...checkReportingDependencies(root));
   return errors;
 }
 
@@ -237,7 +239,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     process.exitCode = 1;
   } else {
     process.stdout.write(
-      "Quality passed: local Markdown links/anchors, project context/section IDs, source import boundaries and unit-test placement. Static checks do not prove runtime consistency.\n",
+      "Quality passed: local Markdown links/anchors, project context/section IDs, source import boundaries, unit-test placement and reviewed Reporting query/migration dependencies. Static checks do not prove runtime consistency.\n",
     );
   }
 }
