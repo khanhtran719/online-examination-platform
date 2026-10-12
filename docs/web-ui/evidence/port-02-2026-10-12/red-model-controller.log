@@ -1,0 +1,218 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/admin/__tests__/use-exam-draft.unit.spec.tsx src/features/admin/__tests__/exam-draft-model.unit.spec.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/exam-draft-model.unit.spec.ts (0 test)
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx (7 tests | 7 failed) 2487ms
+   × maps minutes to integer seconds without losing second-precision schedule fields 101ms
+   × retries only the unconfirmed publication after an acknowledged save 58ms
+   × blocks a competing operation during an unknown save and retries its exact key/body 58ms
+   × guards duplicate calls throughout save then publication 1076ms
+   × preserves local edits on conflict and adopts fresh fields/revision only by explicit choice 60ms
+   × hides cached private content after a forbidden write 1069ms
+   × does not mutate an archived exam 65ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/exam-draft-model.unit.spec.ts [ src/features/admin/__tests__/exam-draft-model.unit.spec.ts ]
+Error: Failed to resolve import "../exam-draft-model" from "src/features/admin/__tests__/exam-draft-model.unit.spec.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/src/features/admin/__tests__/exam-draft-model.unit.spec.ts:3:46
+  1  |  import { expect, it } from "vitest";
+  2  |  import { buildExamDraft, newExamFields } from "../exam-draft-model";
+     |                                                 ^
+  3  |  function valid() {
+  4  |  	return {
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/node.js:8766:39
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/node.js:8763:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/node.js:26593:18
+ ❯ node_modules/vite/dist/node/chunks/node.js:26663:30
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/node.js:26629:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/node.js:8545:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/node.js:20157:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/use-exam-draft.unit.spec.tsx > maps minutes to integer seconds without losing second-precision schedule fields
+AssertionError: expected '90' to be '1.5' // Object.is equality
+
+Expected: "1.5"
+Received: "90"
+
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx:39:35
+     37| it("maps minutes to integer seconds without losing second-precision sc…
+     38|   const { result } = await mount();
+     39|   expect(result.current.duration).toBe("1.5");
+       |                                   ^
+     40|   await act(() => result.current.save(false));
+     41|   expect(api.replaceExamDraft.mock.calls[0]?.[2]).toMatchObject({ dura…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  src/features/admin/__tests__/use-exam-draft.unit.spec.tsx > retries only the unconfirmed publication after an acknowledged save
+AssertionError: expected undefined to be true // Object.is equality
+
+- Expected:
+true
+
++ Received:
+undefined
+
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx:49:34
+     47|   api.publishExam.mockRejectedValueOnce(unknown());
+     48|   await act(() => result.current.save(true));
+     49|   expect(result.current.unknown).toBe(true);
+       |                                  ^
+     50|   expect(result.current.notice).toContain("Đã lưu bản nháp");
+     51|   await act(() => result.current.retry());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  src/features/admin/__tests__/use-exam-draft.unit.spec.tsx > blocks a competing operation during an unknown save and retries its exact key/body
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "exam",
+      "01a13025-5ae6-74f6-a8bb-6f559fe0f24c",
+      Object {
+        "expectedRevision": 4,
+      },
+    ]
+
+
+Number of calls: 1
+
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx:64:31
+     62|   await act(() => result.current.save(false));
+     63|   await act(() => result.current.mutate("archive"));
+     64|   expect(api.archiveExam).not.toHaveBeenCalled();
+       |                               ^
+     65|   await act(() => result.current.retry());
+     66|   expect(api.replaceExamDraft.mock.calls[1]).toEqual(api.replaceExamDr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  src/features/admin/__tests__/use-exam-draft.unit.spec.tsx > guards duplicate calls throughout save then publication
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head>[39m
+    [36m<title>[39m
+      [0mSửa đề · Phòng thi[0m
+    [36m</title>[39m
+  [36m</head>[39m
+  [36m<body>[39m
+    [36m<div />[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx:75:47
+     73|   let running!: Promise<void>;
+     74|   act(() => { running = result.current.save(true); });
+     75|   await waitFor(() => expect(api.publishExam).toHaveBeenCalledTimes(1)…
+       |                                               ^
+     76|   await act(() => result.current.save(false));
+     77|   await act(() => result.current.mutate("archive"));
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  src/features/admin/__tests__/use-exam-draft.unit.spec.tsx > preserves local edits on conflict and adopts fresh fields/revision only by explicit choice
+AssertionError: expected undefined to be true // Object.is equality
+
+- Expected:
+true
+
++ Received:
+undefined
+
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx:91:35
+     89|   expect(result.current.title).toBe("Local");
+     90|   expect(result.current.revision).toBe(4);
+     91|   expect(result.current.conflict).toBe(true);
+       |                                   ^
+     92|   act(() => result.current.useLatest());
+     93|   expect(result.current.title).toBe("Latest");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  src/features/admin/__tests__/use-exam-draft.unit.spec.tsx > hides cached private content after a forbidden write
+AssertionError: expected false to be true // Object.is equality
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head>[39m
+    [36m<title>[39m
+      [0mSửa đề · Phòng thi[0m
+    [36m</title>[39m
+  [36m</head>[39m
+  [36m<body>[39m
+    [36m<div />[39m
+  [36m</body>[39m
+[36m</html>[39m
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx:105:53
+    103|   api.replaceExamDraft.mockRejectedValueOnce(new ApiError({ kind: "htt…
+    104|   await act(() => result.current.save(false));
+    105|   await waitFor(() => expect(result.current.hidden).toBe(true));
+       |                                                     ^
+    106|   expect(client.getQueryData(["admin-exam", "exam"])).toBeUndefined();
+    107|   await act(() => result.current.mutate("archive"));
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  src/features/admin/__tests__/use-exam-draft.unit.spec.tsx > does not mutate an archived exam
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "exam",
+      "01a13025-63c4-74e6-b89e-1b364f7bb596",
+      Object {
+        "expectedRevision": 4,
+      },
+    ]
+
+
+Number of calls: 1
+
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx:116:31
+    114|   await act(() => result.current.mutate("publish"));
+    115|   expect(api.replaceExamDraft).not.toHaveBeenCalled();
+    116|   expect(api.publishExam).not.toHaveBeenCalled();
+       |                               ^
+    117| });
+    118|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  7 failed (7)
+   Start at  19:45:15
+   Duration  3.56s (tests 60%, environment 32%, import 5%, transform 3%)
+

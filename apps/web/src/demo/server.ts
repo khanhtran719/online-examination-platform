@@ -255,6 +255,31 @@ export function createDemoServer(options: DemoServerOptions = {}): {
     return response;
   }
 
+  // Synthetic Catalog faults exercise browser recovery; never present in the live adapter.
+  async function catalogWrite<T>(
+    key: string,
+    body: unknown,
+    produce: () => T,
+    onConflict?: () => void,
+  ): Promise<T> {
+    requirePermission("catalog.manage");
+    if (receipts.has(key)) return remember(key, body, produce);
+    const activeFault = fault;
+    if (
+      ["delay-ack", "lose-ack", "save-429", "save-503"].includes(activeFault) ||
+      (activeFault === "conflict-save" && onConflict)
+    )
+      fault = "none";
+    if (activeFault === "delay-ack") await sleep(5000);
+    if (activeFault === "save-429") fail(429, "Rate limit exceeded", "Rate limit exceeded", 2);
+    if (activeFault === "save-503") fail(503, "Service unavailable", "Service unavailable", 2);
+    if (activeFault === "conflict-save") onConflict?.();
+    const response = remember(key, body, produce);
+    if (activeFault === "lose-ack")
+      throw new ApiError({ kind: "network", status: 0, errorCode: "Network", message: "timeout" });
+    return response;
+  }
+
   function pageOf<T>(items: readonly T[], query: PageQuery, filter: string): Page<T> {
     const pageSize = Math.min(100, Math.max(1, query.pageSize ?? 20));
     let offset = 0;
@@ -1363,7 +1388,7 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       return ok(pageOf(exams, query, "admin-exams"));
     },
     async createExam(key, body) {
-      return remember(key, body, () => {
+      return catalogWrite(key, body, () => {
         requirePermission("catalog.manage");
         if (body.expectedRevision !== 0) fail(400, "Invalid request");
         validateExam(body);
@@ -1396,26 +1421,38 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       return ok(exam);
     },
     async replaceExamDraft(examId, key, body) {
-      return remember(key, body, () => {
-        requirePermission("catalog.manage");
-        const exam = exams.find((item) => item.id === examId);
-        if (!exam || exam.archived) fail(404, "Not found");
-        if (body.expectedRevision !== exam.revision) fail(409, "Version conflict");
-        validateExam(body);
-        exam.title = body.title;
-        exam.category = body.category;
-        exam.durationSeconds = body.durationSeconds;
-        exam.openAt = body.openAt;
-        exam.closeAt = body.closeAt;
-        exam.displayTimezone = body.displayTimezone;
-        exam.attemptLimit = body.attemptLimit;
-        exam.explanationPolicy = body.explanationPolicy;
-        exam.leaderboardEnabled = body.leaderboardEnabled;
-        exam.sections = body.sections;
-        exam.revision += 1;
-        audit("exam.replace", "exam", exam.id, "SUCCESS", ["title", "sections"]);
-        return ok({ resourceId: exam.id, revision: exam.revision, acceptedAt: iso() });
-      });
+      return catalogWrite(
+        key,
+        body,
+        () => {
+          requirePermission("catalog.manage");
+          const exam = exams.find((item) => item.id === examId);
+          if (!exam || exam.archived) fail(404, "Not found");
+          if (body.expectedRevision !== exam.revision) fail(409, "Version conflict");
+          validateExam(body);
+          exam.title = body.title;
+          exam.category = body.category;
+          exam.durationSeconds = body.durationSeconds;
+          exam.openAt = body.openAt;
+          exam.closeAt = body.closeAt;
+          exam.displayTimezone = body.displayTimezone;
+          exam.attemptLimit = body.attemptLimit;
+          exam.explanationPolicy = body.explanationPolicy;
+          exam.leaderboardEnabled = body.leaderboardEnabled;
+          exam.sections = body.sections;
+          exam.revision += 1;
+          audit("exam.replace", "exam", exam.id, "SUCCESS", ["title", "sections"]);
+          return ok({ resourceId: exam.id, revision: exam.revision, acceptedAt: iso() });
+        },
+        () => {
+          const current = exams.find((item) => item.id === examId);
+          if (current && !current.archived) {
+            current.revision += 1;
+            current.durationSeconds =
+              current.durationSeconds > 60 ? current.durationSeconds - 60 : 120;
+          }
+        },
+      );
     },
     async archiveExam(examId, key, body) {
       return remember(key, body, () => {
@@ -1431,7 +1468,7 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       });
     },
     async publishExam(examId, key, body) {
-      return remember(key, body, () => {
+      return catalogWrite(key, body, () => {
         requirePermission("catalog.manage");
         const exam = exams.find((item) => item.id === examId && !item.archived);
         if (!exam) fail(404, "Not found");

@@ -127,3 +127,38 @@ Commands: `npm run web:lint`, `web:typecheck`, `web:test`, `web:build`,
 `web:build:demo`; `npm run test:tooling`; `npm run quality`.
 Preview demo `npm --prefix apps/web run preview:demo`, rồi
 `npm --prefix apps/web run test:e2e`. Bản live không được fallback demo.
+
+## Editor write controller — PORT-02
+
+Admin owns `exam-draft-model` (local fields/validation/DTO mapping),
+`use-exam-draft` (protected reads, operation and receipts) and
+`use-exam-navigation` (route/native unload guard). Information/structure/picker,
+preflight/summary, actions and dialogs are feature views. Shared Dialog handles
+stable focus containment/restoration without importing runtime or feature state.
+When an asynchronous warning overlays another dialog, only the upper dialog
+contains focus and handles Escape/Tab; lower dialog listeners remain inactive.
+
+A single pending operation spans save and optional publication. Capture stage,
+resource ID, UUIDv7 key, body and field snapshot once. After save acknowledgement,
+record its revision/clean snapshot and create the distinct publication intent.
+An ambiguous publication resumes that stage; it never replaces the draft again.
+Pending/unknown operations block competitors and editing. Definite rejection
+releases the operation; publication failure retains the acknowledged save notice.
+A success receipt is separate from the refreshed current projection.
+
+Conflict reads retain local fields/base revision. Only explicit adoption replaces
+both with the fresh read. Stale/error/loading reads cannot be adopted. Protected
+403/capability loss clears private queries/local fields, disables navigation
+warnings for hidden content and prevents an in-flight save from continuing into
+publication. Server permission/idempotency/revision checks remain authoritative.
+
+Minute inputs map to integer seconds. Local `sourceSchedule` metadata preserves
+untouched exact UTC instants (milliseconds/DST occurrence included), and changing
+timezone updates display fields atomically. The metadata never enters the API
+body. Local completeness validation retains the editor's existing stricter UX;
+it does not change the backend's ability to persist incomplete drafts.
+
+Local drafts/retry intents remain in memory. Internal navigation needs explicit
+discard; reload/close uses the native beforeunload warning. Auth/session clearing
+wins over recovery. This does not promise reload durability, offline storage,
+force-save, auto-merge or complete live Admin integration.

@@ -1,0 +1,39 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/admin/__tests__/exam-editor-page.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/exam-editor-page.unit.spec.tsx (5 tests | 1 failed) 759ms
+   × describes a lost publication acknowledgement as unknown rather than a definitive failure 75ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/exam-editor-page.unit.spec.tsx > describes a lost publication acknowledgement as unknown rather than a definitive failure
+AssertionError: expected <strong></strong> to be null
+
+- Expected:
+null
+
++ Received:
+<strong>
+  Không thực hiện được
+</strong>
+
+ ❯ src/features/admin/__tests__/exam-editor-page.unit.spec.tsx:134:82
+    132|   await userEvent.click(within(screen.getByRole("dialog")).getByRole("…
+    133|   await screen.findByText(/Chưa biết kết quả lần gửi/);
+    134|   expect(within(screen.getByRole("dialog")).queryByText("Không thực hi…
+       |                                                                                  ^
+    135| });
+    136|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  20:05:51
+   Duration  1.76s (tests 45%, environment 33%, import 12%, transform 9%)
+

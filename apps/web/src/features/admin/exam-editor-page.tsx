@@ -1,15 +1,24 @@
 import { useState } from "react";
 import { Link, useMatch, useParams } from "react-router";
 
-import { categoryLabel, policyLabel } from "@web/shared/format";
-import { Button, Dialog, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+import { isApiError } from "@web/shared/api/errors";
+import { categoryLabel } from "@web/shared/format";
+import { Alert, Badge, Button, Dialog, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
 
-import styles from "./admin.module.css";
-import { AdminBadge, AdminHeading } from "./admin-ui";
+import type { DraftIssue } from "./exam-draft-model";
+import styles from "./exam-editor.module.css";
+import { ExamEditorActions } from "./exam-editor-actions";
+import {
+  type ExamConfirmation,
+  ExamConfirmDialog,
+  ExamConflictDialog,
+} from "./exam-editor-dialogs";
 import { ExamInformation } from "./exam-information";
+import { ExamPreflight, ExamSummary } from "./exam-preflight";
 import { ExamStructure } from "./exam-structure";
-import { CapabilityGate } from "./gate";
+import { CapabilityGate, useCapability } from "./gate";
 import { useExamDraft } from "./use-exam-draft";
+import { useExamNavigation } from "./use-exam-navigation";
 
 export function AdminExamEditorPage() {
   const isNew = Boolean(useMatch("/admin/exams/new"));
@@ -19,205 +28,140 @@ export function AdminExamEditorPage() {
 function ExamEditor({ isNew, examId }: { isNew: boolean; examId: string }) {
   const draft = useExamDraft(isNew, examId);
   const [step, setStep] = useState(0);
-  const [confirm, setConfirm] = useState<"publish" | "publish-saved" | "archive" | null>(null);
+  const [confirm, setConfirm] = useState<ExamConfirmation | null>(null);
+  const blocker = useExamNavigation(draft);
+  const canMonitor = useCapability("reporting.read") === "allowed";
+  const canStatistics = useCapability("reporting.read") === "allowed";
   const { seed } = draft;
-  const slots = draft.sections.flatMap((section) => section.questions);
-  const points = slots.reduce((sum, slot) => sum + slot.points, 0);
-  const ready = !draft.hidden && !draft.hideBank && (isNew || Boolean(seed));
+  const ready = !draft.unavailable && (isNew || Boolean(seed));
+  function correct(issue: DraftIssue) {
+    setStep(issue.step);
+    requestAnimationFrame(() => document.getElementById(`exam-${issue.field}`)?.focus());
+  }
   return (
     <CapabilityGate permission="catalog.manage">
-      <AdminHeading
-        title={isNew ? "Tạo bản nháp" : (seed?.title ?? "Sửa đề")}
-        eyebrow="SOẠN ĐỀ THI"
-        description="Lưu bản nháp trước. Phát hành tạo một phiên bản cố định cho lượt thi mới."
-      >
-        {seed ? (
-          <AdminBadge tone={seed.archived ? "neutral" : seed.published ? "success" : "warning"}>
-            {seed.archived ? "Đã lưu trữ" : seed.published ? "✓ Đang phát hành" : "Bản nháp"}
-          </AdminBadge>
-        ) : null}
-        <Link to="/admin/exams">← Danh sách đề</Link>
-      </AdminHeading>
-      {!isNew && draft.existing.isLoading ? <SkeletonLines /> : null}
-      {draft.existing.error ? (
-        <ErrorPanel
-          error={draft.existing.error}
-          onRetry={draft.hidden ? undefined : () => void draft.existing.refetch()}
-        />
-      ) : null}
-      {draft.hideBank ? <ErrorPanel error={draft.bank.error} /> : null}
-      {draft.error ? <ErrorPanel error={draft.error} /> : null}
-      {ready ? (
-        <>
-          <nav className={styles.steps} aria-label="Các bước soạn đề">
-            {["Thông tin", "Các phần & câu hỏi", "Kiểm tra & phát hành"].map((label, index) => (
-              <Button
-                key={label}
-                variant="ghost"
-                aria-current={step === index ? "step" : undefined}
-                onClick={() => setStep(index)}
-              >
-                {label}
-              </Button>
-            ))}
-          </nav>
-          <div className={styles.editorGrid}>
-            <div>
-              <div hidden={step !== 0}>
-                <ExamInformation draft={draft} />
-              </div>
-              <div hidden={step !== 1}>
-                <ExamStructure draft={draft} />
-              </div>
-              <section hidden={step !== 2} className={styles.panel}>
-                <h2>Kiểm tra bản nháp</h2>
-                <dl className={styles.facts}>
-                  <div>
-                    <dt>Tiêu đề</dt>
-                    <dd>{draft.title || "Chưa nhập"}</dd>
-                  </div>
-                  <div>
-                    <dt>Danh mục</dt>
-                    <dd>{categoryLabel(draft.category)}</dd>
-                  </div>
-                  <div>
-                    <dt>Thời lượng</dt>
-                    <dd>{draft.duration} giây</dd>
-                  </div>
-                  <div>
-                    <dt>Giải thích</dt>
-                    <dd>{policyLabel(draft.policy)}</dd>
-                  </div>
-                  <div>
-                    <dt>Bảng xếp hạng bí danh</dt>
-                    <dd>{draft.board ? "Bật" : "Tắt"}</dd>
-                  </div>
-                </dl>
-                <ul className={styles.checklist}>
-                  <li>Mỗi phần có ít nhất một câu, tối đa 500 câu không trùng trong đề.</li>
-                  <li>Kiểm tra giờ mở/đóng theo múi giờ {draft.zone}.</li>
-                  <li>Phát hành chỉ hoàn tất sau xác nhận của máy chủ.</li>
-                </ul>
-                <p className={styles.caption}>
-                  Sửa ngân hàng hoặc bản nháp không sửa nội dung các lượt thi đã bắt đầu.
-                </p>
-              </section>
+      <div className={styles.page}>
+        <p className={styles.breadcrumb}>
+          Quản trị / <Link to="/admin/exams">Đề thi</Link> / {isNew ? "Tạo đề" : "Sửa bản nháp"}
+        </p>
+        <header className={styles.heading}>
+          <div>
+            <div className={styles.title}>
+              <h1>{isNew ? "Tạo bản nháp" : (seed?.title ?? "Sửa đề")}</h1>
+              <Badge tone={seed?.archived ? "neutral" : seed?.published ? "success" : "warning"}>
+                {seed?.archived ? "Đã lưu trữ" : seed?.published ? "✓ Đang phát hành" : "Bản nháp"}
+              </Badge>
             </div>
-            <aside className={`${styles.panel} ${styles.summary}`} aria-label="Tóm tắt bản nháp">
-              <p className={styles.eyebrow}>TÓM TẮT BẢN NHÁP</p>
-              <h2>Kiểm tra trước khi phát hành.</h2>
-              <dl className={styles.facts}>
-                <div>
-                  <dt>Các phần</dt>
-                  <dd>{draft.sections.length}</dd>
-                </div>
-                <div>
-                  <dt>Câu hỏi</dt>
-                  <dd>{slots.length}</dd>
-                </div>
-                <div>
-                  <dt>Điểm tối đa</dt>
-                  <dd>{Number.isFinite(points) ? points : "Chưa hợp lệ"}</dd>
-                </div>
-                <div>
-                  <dt>Revision hiện tại</dt>
-                  <dd>{draft.revision}</dd>
-                </div>
-              </dl>
-              <p className={styles.caption}>
-                Số liệu của bản nháp đang sửa, không phải số bài hoặc kết quả thi.
-              </p>
-              <div className={styles.notice}>
-                <span aria-hidden="true">✓</span>
-                <p>
-                  <strong>Lưu và phát hành tách biệt.</strong>
-                  <br />
-                  Máy chủ kiểm tra nội dung khi phát hành.
-                </p>
-              </div>
-            </aside>
-          </div>
-          <div className={styles.actionBar}>
             <p className={styles.caption}>
-              Bản nháp đang sửa được giữ khi chuyển bước hoặc cần đối chiếu.
+              {categoryLabel(draft.category)} ·{" "}
+              {draft.revision ? `Bản sửa ${draft.revision}` : "Chưa lưu trên máy chủ"}
+              {draft.dirty ? " · Có thay đổi chưa lưu" : ""}
+            </p>
+          </div>
+          <Link to="/admin/exams">← Danh sách đề</Link>
+        </header>
+        {!isNew && draft.existing.isLoading ? <SkeletonLines /> : null}
+        {draft.existing.error && !draft.conflict ? (
+          <ErrorPanel
+            error={draft.existing.error}
+            onRetry={draft.hidden ? undefined : () => void draft.existing.refetch()}
+          />
+        ) : null}
+        {draft.hideBank ? <ErrorPanel error={draft.bank.error} /> : null}
+        {draft.error && !draft.unknown && !draft.conflict && !confirm ? (
+          isApiError(draft.error) ? (
+            <ErrorPanel error={draft.error} />
+          ) : (
+            <Alert
+              title={draft.error instanceof Error ? draft.error.message : "Không thực hiện được"}
+            />
+          )
+        ) : null}
+        {ready ? (
+          <>
+            {seed?.archived ? (
+              <Alert tone="warning" title="Đề đã được lưu trữ">
+                Nội dung chỉ để xem. Các lượt đã bắt đầu và kết quả được giữ nguyên.
+              </Alert>
+            ) : null}
+            {draft.notice && !confirm ? (
+              <Alert
+                tone={draft.error || draft.unknown ? "warning" : "success"}
+                title={draft.notice}
+              />
+            ) : null}
+            {draft.unknown && !confirm ? (
+              <Alert tone="warning" title="Chưa xác nhận được kết quả">
+                <p>Giữ nguyên yêu cầu để thử lại. Các thao tác khác đang được khóa.</p>
+                <Button disabled={draft.pending} onClick={() => void draft.retry()}>
+                  Thử lại yêu cầu
+                </Button>
+              </Alert>
+            ) : null}
+            <nav className={styles.steps} aria-label="Các bước soạn đề">
+              {["Thông tin", "Các phần & câu hỏi", "Kiểm tra & phát hành"].map((label, index) => (
+                <Button
+                  key={label}
+                  variant="ghost"
+                  aria-label={label}
+                  aria-current={step === index ? "step" : undefined}
+                  onClick={() => setStep(index)}
+                >
+                  <span className={styles.stepNumber} aria-hidden="true">
+                    {index + 1}
+                  </span>
+                  {label}
+                </Button>
+              ))}
+            </nav>
+            <div className={styles.grid}>
+              <div>
+                <fieldset className={styles.fields} disabled={draft.locked} hidden={step !== 0}>
+                  <ExamInformation draft={draft} />
+                </fieldset>
+                <div hidden={step !== 1}>
+                  <ExamStructure draft={draft} />
+                </div>
+                <div hidden={step !== 2}>
+                  <ExamPreflight draft={draft} onStep={setStep} />
+                </div>
+              </div>
+              <ExamSummary draft={draft} preflight={step === 2} onIssue={correct} />
+            </div>
+            <ExamEditorActions
+              draft={draft}
+              step={step}
+              onStep={setStep}
+              onConfirm={setConfirm}
+              canMonitor={canMonitor}
+              canStatistics={canStatistics}
+            />
+            {confirm && !draft.conflict ? (
+              <ExamConfirmDialog kind={confirm} draft={draft} onClose={() => setConfirm(null)} />
+            ) : null}
+            <ExamConflictDialog draft={draft} />
+          </>
+        ) : null}
+        {blocker.state === "blocked" && ready ? (
+          <Dialog title="Rời bản nháp chưa lưu?" onClose={() => blocker.reset()}>
+            <p>
+              {draft.pending || draft.unknown
+                ? "Một yêu cầu còn chờ xác nhận. Rời trang có thể mất thông tin để thử lại; máy chủ vẫn có thể đã ghi nhận yêu cầu."
+                : "Các thay đổi trên màn hình chưa được lưu. Rời trang sẽ bỏ những thay đổi này; bản nháp đã lưu được giữ nguyên."}
             </p>
             <div className={styles.actions}>
-              <Button disabled={draft.pending} onClick={() => void draft.save(false)}>
-                {draft.pending ? "Đang lưu…" : "Lưu nháp"}
-              </Button>
               <Button
                 variant="secondary"
                 disabled={draft.pending}
-                onClick={() => setConfirm("publish")}
+                onClick={() => blocker.proceed()}
               >
-                Lưu và phát hành
+                Rời và bỏ thay đổi
               </Button>
-              {!isNew && seed && !seed.archived ? (
-                <>
-                  <Button
-                    variant="secondary"
-                    disabled={draft.pending}
-                    onClick={() =>
-                      seed.published ? void draft.mutate("unpublish") : setConfirm("publish-saved")
-                    }
-                  >
-                    {seed.published ? "Gỡ phát hành" : "Phát hành"}
-                  </Button>
-                  <Button
-                    variant="danger"
-                    disabled={draft.pending}
-                    onClick={() => setConfirm("archive")}
-                  >
-                    Lưu trữ
-                  </Button>
-                </>
-              ) : null}
+              <Button onClick={() => blocker.reset()}>Ở lại chỉnh sửa</Button>
             </div>
-          </div>
-          {seed ? (
-            <div className={styles.actions}>
-              <Link to={`/exams/${seed.id}`}>Xem như thí sinh</Link>
-              <Link to={`/admin/exams/${seed.id}/monitor`}>Giám sát đề này</Link>
-              {seed.publishedVersionId ? (
-                <Link to={`/admin/exams/${seed.id}/versions/${seed.publishedVersionId}/statistics`}>
-                  Thống kê phiên bản đang phát hành
-                </Link>
-              ) : null}
-            </div>
-          ) : null}
-        </>
-      ) : null}
-      {confirm && ready ? (
-        <Dialog
-          title={confirm === "archive" ? "Lưu trữ đề" : "Phát hành phiên bản"}
-          onClose={() => setConfirm(null)}
-        >
-          <p>
-            {confirm === "archive"
-              ? "Lưu trữ chỉ ngăn mở lượt mới. Các lượt đã làm không bị xóa."
-              : confirm === "publish-saved"
-                ? "Phát hành bản nháp đã lưu trên máy chủ. Các chỉnh sửa chưa lưu trong màn hình này sẽ không được phát hành."
-                : "Bản nháp được lưu trước khi phát hành thành phiên bản cố định. Thí sinh mới sẽ nhận phiên bản này."}
-          </p>
-          <div className={styles.actions}>
-            <Button variant="secondary" onClick={() => setConfirm(null)}>
-              Hủy
-            </Button>
-            <Button
-              disabled={draft.pending}
-              onClick={() => {
-                const kind = confirm;
-                setConfirm(null);
-                if (kind === "archive") void draft.mutate("archive");
-                else if (kind === "publish-saved") void draft.mutate("publish");
-                else void draft.save(true);
-              }}
-            >
-              Xác nhận
-            </Button>
-          </div>
-        </Dialog>
-      ) : null}
+          </Dialog>
+        ) : null}
+      </div>
     </CapabilityGate>
   );
 }

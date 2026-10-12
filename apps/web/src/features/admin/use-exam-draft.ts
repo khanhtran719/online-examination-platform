@@ -1,36 +1,41 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRef, useState } from "react";
+import { type SetStateAction, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 
 import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
-import type { Category, ExamWriteRequest, ExplanationPolicy } from "@web/shared/api/dto";
+import type { ExamWriteRequest } from "@web/shared/api/dto";
 import { isApiError } from "@web/shared/api/errors";
 import { uuidV7 } from "@web/shared/api/uuid";
 import { useProtectedAccess } from "@web/shared/protected-access";
-import { utcToZonedInput, zonedInputToUtc } from "@web/shared/timezone";
 
+import {
+  buildExamDraft,
+  type ExamFields,
+  examFieldsOf,
+  newExamFields,
+  rezoneExamFields,
+} from "./exam-draft-model";
 import { useCapability } from "./gate";
-import { idleIntent, type IntentMachine, settleIntent, startIntent } from "./mutation-intent";
 
-interface Membership {
-  bankQuestionId: string;
-  points: number;
+type Action = "publish" | "unpublish" | "archive";
+interface Operation {
+  kind: "save" | "save-publish" | Action;
+  stage: "save" | "action";
+  id: string | null;
+  key: string;
+  body: ExamWriteRequest | { expectedRevision: number };
+  fields: ExamFields;
+  saved: boolean;
 }
-
-function membershipsOf(seed: {
-  sections: { title: string; questions: { bankQuestionId: string; points: number }[] }[];
-}): {
-  title: string;
-  questions: Membership[];
-}[] {
-  return seed.sections.map((section) => ({
-    title: section.title,
-    questions: section.questions.map((question) => ({
-      bankQuestionId: question.bankQuestionId,
-      points: question.points,
-    })),
-  }));
+function unconfirmed(error: unknown) {
+  return (
+    isApiError(error) &&
+    (error.kind === "network" ||
+      error.kind === "timeout" ||
+      error.kind === "malformed" ||
+      error.status >= 500)
+  );
 }
 
 export function useExamDraft(isNew: boolean, examId: string) {
@@ -39,249 +44,237 @@ export function useExamDraft(isNew: boolean, examId: string) {
   const { api } = useRuntime();
   const client = useQueryClient();
   const navigate = useNavigate();
-  const [blocked, setBlocked] = useState(false);
-  const [bankBlocked, setBankBlocked] = useState(false);
+  const [blocked, setBlocked] = useState(false),
+    [bankBlocked, setBankBlocked] = useState(false);
+  const [savedId, setSavedId] = useState<string | null>(null);
+  const readId = savedId ?? examId;
+  const [error, setError] = useState<unknown>(null);
   const existing = useQuery({
-    queryKey: ["admin-exam", examId],
-    enabled: gate === "allowed" && !isNew && !blocked,
-    queryFn: () => api.getAdminExam(examId).then((response) => response.data),
+    queryKey: ["admin-exam", readId],
+    enabled: gate === "allowed" && (!isNew || Boolean(savedId)) && !blocked && !bankBlocked,
+    retry: false,
+    refetchOnWindowFocus: false,
+    queryFn: () => api.getAdminExam(readId).then((response) => response.data),
   });
   const bank = useInfiniteQuery({
     queryKey: ["bank", "picker"],
-    enabled: gate === "allowed" && !bankBlocked,
+    enabled: gate === "allowed" && !blocked && !bankBlocked,
+    retry: false,
+    refetchOnWindowFocus: false,
     initialPageParam: undefined as string | undefined,
     queryFn: ({ pageParam }) =>
       api.listBankQuestions({ pageSize: 20, cursor: pageParam }).then((response) => response.data),
     getNextPageParam: (last) => last.next ?? undefined,
   });
-  const hidden = useProtectedAccess(existing.error, [["admin-exam", examId]], blocked, () =>
-    setBlocked(true),
+  const hidden = useProtectedAccess(
+    isApiError(existing.error) && existing.error.status === 403
+      ? existing.error
+      : (error ?? existing.error),
+    [
+      ["admin-exam", readId],
+      ["bank", "picker"],
+    ],
+    blocked,
+    () => setBlocked(true),
   );
   const hideBank = useProtectedAccess(bank.error, [["bank", "picker"]], bankBlocked, () =>
     setBankBlocked(true),
   );
-  const seed = hidden ? undefined : existing.data;
-  const [title, setTitle] = useState(seed?.title ?? "");
-  const [category, setCategory] = useState<Category>(seed?.category ?? "IT_CERTIFICATION");
-  const [duration, setDuration] = useState(String(seed?.durationSeconds ?? 2700));
-  const [zone, setZone] = useState(seed?.displayTimezone ?? "Asia/Ho_Chi_Minh");
-  const [openAt, setOpenAt] = useState(
-    seed
-      ? utcToZonedInput(seed.openAt, seed.displayTimezone)
-      : utcToZonedInput(new Date().toISOString(), "Asia/Ho_Chi_Minh"),
-  );
-  const [closeAt, setCloseAt] = useState(
-    seed
-      ? utcToZonedInput(seed.closeAt, seed.displayTimezone)
-      : utcToZonedInput(new Date(Date.now() + 7 * 86400000).toISOString(), "Asia/Ho_Chi_Minh"),
-  );
-  const [limit, setLimit] = useState(String(seed?.attemptLimit ?? 1));
-  const [policy, setPolicy] = useState<ExplanationPolicy>(seed?.explanationPolicy ?? "NEVER");
-  const [board, setBoard] = useState(seed?.leaderboardEnabled ?? false);
-  const [sections, setSections] = useState<{ title: string; questions: Membership[] }[]>(
-    seed ? membershipsOf(seed) : [{ title: "Phần 1", questions: [] }],
+  const unavailable = hidden || hideBank || gate !== "allowed";
+  const authorityBlocked = useRef(unavailable);
+  authorityBlocked.current = unavailable;
+  const seed = unavailable ? undefined : existing.data;
+  const [fields, setFields] = useState<ExamFields>(() =>
+    seed ? examFieldsOf(seed) : newExamFields(),
   );
   const [revision, setRevision] = useState(seed?.revision ?? 0);
-  const [error, setError] = useState<unknown>(null);
-  const [pending, setPending] = useState(false);
-  const seeded = useRef(false);
+  const seeded = useRef(Boolean(seed));
+  const baseline = useRef(fields);
   const createdId = useRef<string | null>(null);
-  const draftIntent = useRef<IntentMachine<ExamWriteRequest>>(idleIntent());
-  const actionIntent = useRef<IntentMachine<{ expectedRevision: number }>>(idleIntent());
+  const operation = useRef<Operation | null>(null);
+  const busy = useRef(false);
+  const allowNavigation = useRef(false);
+  const [pending, setPending] = useState(false),
+    [unknown, setUnknown] = useState(false),
+    [conflict, setConflict] = useState(false);
+  const [notice, setNotice] = useState("");
   if (seed && !seeded.current) {
     seeded.current = true;
-    setTitle(seed.title);
-    setCategory(seed.category);
-    setDuration(String(seed.durationSeconds));
-    setZone(seed.displayTimezone);
-    setOpenAt(utcToZonedInput(seed.openAt, seed.displayTimezone));
-    setCloseAt(utcToZonedInput(seed.closeAt, seed.displayTimezone));
-    setLimit(String(seed.attemptLimit));
-    setPolicy(seed.explanationPolicy);
-    setBoard(seed.leaderboardEnabled);
-    setSections(membershipsOf(seed));
+    const loaded = examFieldsOf(seed);
+    baseline.current = loaded;
+    setFields(loaded);
     setRevision(seed.revision);
   }
-  const questions = hideBank ? [] : (bank.data?.pages.flatMap((page) => page.items) ?? []);
-  function unknownOutcome(caught: unknown): boolean {
-    return isApiError(caught) && (caught.kind === "network" || caught.kind === "timeout");
+  useEffect(() => {
+    if (!unavailable) return;
+    seeded.current = false;
+    createdId.current = null;
+    setSavedId(null);
+    for (const queryKey of [
+      ["admin-exam", readId],
+      ["bank", "picker"],
+    ]) {
+      void client.cancelQueries({ queryKey });
+      client.removeQueries({ queryKey });
+    }
+    const cleared = newExamFields();
+    baseline.current = cleared;
+    operation.current = null;
+    setFields(cleared);
+    setRevision(0);
+    setUnknown(false);
+    setConflict(false);
+    setNotice("");
+  }, [unavailable, client, readId]);
+  const locked =
+    pending ||
+    unknown ||
+    conflict ||
+    Boolean(seed?.archived) ||
+    hidden ||
+    hideBank ||
+    gate !== "allowed";
+  const validation = buildExamDraft(fields, revision);
+  const dirty = JSON.stringify(fields) !== JSON.stringify(baseline.current);
+  function update<K extends keyof ExamFields>(key: K, value: SetStateAction<ExamFields[K]>) {
+    if (locked || busy.current) return;
+    setFields((current) => ({
+      ...current,
+      [key]:
+        typeof value === "function"
+          ? (value as (previous: ExamFields[K]) => ExamFields[K])(current[key])
+          : value,
+    }));
+    setNotice("");
   }
-  function buildBody(): ExamWriteRequest | null {
-    let openUtc = "";
-    let closeUtc = "";
-    try {
-      openUtc = zonedInputToUtc(openAt, zone);
-      closeUtc = zonedInputToUtc(closeAt, zone);
-    } catch {
-      setError(new Error("Giờ mở và giờ đóng cần đúng định dạng."));
-      return null;
-    }
-    const body: ExamWriteRequest = {
-      title: title.trim(),
-      category,
-      durationSeconds: Number(duration),
-      openAt: openUtc,
-      closeAt: closeUtc,
-      displayTimezone: zone,
-      attemptLimit: Number(limit),
-      explanationPolicy: policy,
-      leaderboardEnabled: board,
-      sections: sections.map((section, index) => ({
-        title: section.title.trim(),
-        position: index + 1,
-        questions: section.questions.map((question, questionIndex) => ({
-          bankQuestionId: question.bankQuestionId,
-          position: questionIndex + 1,
-          points: question.points,
-        })),
-      })),
-      expectedRevision: revision,
-    };
-    const ids = body.sections.flatMap((section) =>
-      section.questions.map((question) => question.bankQuestionId),
-    );
-    const minutes = body.durationSeconds / 60;
-    if (!body.title || body.sections.length < 1 || body.sections.length > 20) {
-      setError(new Error("Cần tiêu đề và từ 1 đến 20 phần."));
-      return null;
-    }
-    if (body.sections.some((section) => section.questions.length === 0)) {
-      setError(new Error("Mỗi phần cần ít nhất một câu."));
-      return null;
-    }
-    if (ids.length > 500 || new Set(ids).size !== ids.length) {
-      setError(new Error("Mỗi đề có tối đa 500 câu và không được chọn trùng."));
-      return null;
-    }
-    if (!Number.isInteger(minutes) || minutes < 1 || minutes > 240) {
-      setError(new Error("Thời lượng từ 1 đến 240 phút."));
-      return null;
-    }
-    if (!Number.isInteger(body.attemptLimit) || body.attemptLimit < 1 || body.attemptLimit > 10) {
-      setError(new Error("Giới hạn lượt từ 1 đến 10."));
-      return null;
-    }
-    if (!(Date.parse(openUtc) < Date.parse(closeUtc))) {
-      setError(new Error("Giờ mở phải sớm hơn giờ đóng."));
-      return null;
-    }
-    if (
-      body.sections.some((section) =>
-        section.questions.some((question) => question.points < 1 || question.points > 1000),
-      )
-    ) {
-      setError(
-        new Error("Điểm mỗi câu trong đề từ 1 đến 1000. Không lấy điểm mặc định của ngân hàng."),
-      );
-      return null;
-    }
-    return body;
-  }
-  async function saveDraft(): Promise<{ id: string; revision: number } | null> {
-    const body = buildBody();
-    if (!body) return null;
-    const started = startIntent(draftIntent.current, {
-      action: createdId.current || !isNew ? "replace-exam" : "create-exam",
-      body,
-      expectedRevision: revision,
-      keyFactory: uuidV7,
-    });
-    if (!started.send) {
-      setError(
-        new Error(
-          started.blocked === "changed"
-            ? "Nội dung đã đổi so với lần lưu chưa xác nhận."
-            : "Đang lưu lần này.",
-        ),
-      );
-      return null;
-    }
-    draftIntent.current = started.machine;
-    setPending(true);
-    setError(null);
-    try {
-      const target = createdId.current ?? (isNew ? null : examId);
-      const saved = target
-        ? await api.replaceExamDraft(target, started.send.key, started.send.body)
-        : await api.createExam(started.send.key, started.send.body);
-      draftIntent.current = settleIntent(draftIntent.current, "acked");
-      createdId.current = saved.data.resourceId;
-      setRevision(saved.data.revision);
-      await client.invalidateQueries({ queryKey: ["admin-exams"] });
-      await client.invalidateQueries({ queryKey: ["admin-exam", saved.data.resourceId] });
-      return { id: saved.data.resourceId, revision: saved.data.revision };
-    } catch (caught) {
-      draftIntent.current = settleIntent(
-        draftIntent.current,
-        unknownOutcome(caught) ? "unknown" : "rejected",
-      );
-      if (isApiError(caught) && caught.status === 409) await existing.refetch();
-      setError(caught);
-      return null;
-    } finally {
-      setPending(false);
-    }
-  }
-  async function runAction(
-    kind: "publish" | "unpublish" | "archive",
-    resourceId: string,
-    expectedRevision: number,
-  ) {
-    const started = startIntent(actionIntent.current, {
-      action: kind,
-      body: { expectedRevision },
-      expectedRevision,
-      keyFactory: uuidV7,
-    });
-    if (!started.send) {
-      setError(
-        new Error(
-          started.blocked === "changed"
-            ? "Revision đã đổi so với lần gửi chưa xác nhận."
-            : "Đang gửi lần này.",
-        ),
-      );
+  function useLatest() {
+    if (!conflict || !seed || existing.isFetching || existing.isError || hidden || busy.current)
       return;
-    }
-    actionIntent.current = started.machine;
-    setPending(true);
+    const fresh = examFieldsOf(seed);
+    baseline.current = fresh;
+    setFields(fresh);
+    setRevision(seed.revision);
+    setConflict(false);
     setError(null);
+    setNotice("Đã dùng bản nháp mới nhất. Các thay đổi cũ trên màn hình đã được bỏ.");
+  }
+  async function execute(op: Operation) {
+    if (busy.current || authorityBlocked.current || seed?.archived) return;
+    busy.current = true;
+    setPending(true);
+    setUnknown(false);
+    setError(null);
+    setNotice(op.saved ? "Đã lưu bản nháp." : "");
     try {
-      const body = started.send.body;
-      const saved =
-        kind === "publish"
-          ? await api.publishExam(resourceId, started.send.key, body)
-          : kind === "unpublish"
-            ? await api.unpublishExam(resourceId, started.send.key, body)
-            : await api.archiveExam(resourceId, started.send.key, body);
-      actionIntent.current = settleIntent(actionIntent.current, "acked");
-      setRevision(saved.data.revision);
-      await client.invalidateQueries({ queryKey: ["admin-exam", resourceId] });
-      if (isNew) navigate(`/admin/exams/${resourceId}/edit`, { replace: true });
+      if (op.stage === "save") {
+        const body = op.body as ExamWriteRequest;
+        const response = op.id
+          ? await api.replaceExamDraft(op.id, op.key, body)
+          : await api.createExam(op.key, body);
+        if (authorityBlocked.current) return;
+        op.id = response.data.resourceId;
+        createdId.current = op.id;
+        seeded.current = true;
+        setSavedId(op.id);
+        baseline.current = op.fields;
+        setRevision(response.data.revision);
+        setNotice("Đã lưu bản nháp.");
+        op.saved = true;
+        if (op.kind === "save-publish") {
+          op.stage = "action";
+          op.key = uuidV7();
+          op.body = { expectedRevision: response.data.revision };
+        }
+      }
+      if (op.stage === "action" && op.id) {
+        const body = op.body as { expectedRevision: number };
+        const response =
+          op.kind === "unpublish"
+            ? await api.unpublishExam(op.id, op.key, body)
+            : op.kind === "archive"
+              ? await api.archiveExam(op.id, op.key, body)
+              : await api.publishExam(op.id, op.key, body);
+        if (authorityBlocked.current) return;
+        setRevision(response.data.revision);
+        setNotice(
+          op.kind === "unpublish"
+            ? "Đã gỡ phát hành. Các lượt đã bắt đầu được giữ nguyên."
+            : op.kind === "archive"
+              ? "Đã lưu trữ đề. Các lượt đã làm được giữ nguyên."
+              : "Đã phát hành phiên bản.",
+        );
+      }
+      operation.current = null;
+      if (op.id) {
+        await Promise.all([
+          client.invalidateQueries({ queryKey: ["admin-exams"] }),
+          client.invalidateQueries({ queryKey: ["admin-exam", op.id] }),
+        ]);
+        if (isNew) {
+          allowNavigation.current = true;
+          navigate(`/admin/exams/${op.id}/edit`, { replace: true });
+        }
+      }
     } catch (caught) {
-      actionIntent.current = settleIntent(
-        actionIntent.current,
-        unknownOutcome(caught) ? "unknown" : "rejected",
-      );
-      if (isApiError(caught) && caught.status === 409) await existing.refetch();
+      if (authorityBlocked.current) return;
+      const ambiguous = unconfirmed(caught);
+      setUnknown(ambiguous);
       setError(caught);
+      if (!ambiguous) operation.current = null;
+      if (op.saved) setNotice("Đã lưu bản nháp. Phát hành chưa được xác nhận.");
+      if (isApiError(caught) && caught.status === 409 && caught.errorCode === "Version conflict") {
+        setConflict(true);
+        if (op.id) {
+          try {
+            await client.fetchQuery({
+              queryKey: ["admin-exam", op.id],
+              queryFn: () => api.getAdminExam(op.id!).then((response) => response.data),
+              staleTime: 0,
+            });
+          } catch {
+            /* The protected read observer renders its error; local edits stay intact. */
+          }
+        }
+      }
     } finally {
+      busy.current = false;
       setPending(false);
     }
   }
   async function save(publishAfter: boolean) {
-    const saved = await saveDraft();
-    if (!saved) return;
-    if (publishAfter) {
-      await runAction("publish", saved.id, saved.revision);
-      return;
-    }
-    if (isNew) navigate(`/admin/exams/${saved.id}/edit`, { replace: true });
+    if (locked || busy.current || operation.current) return;
+    const body = buildExamDraft(fields, revision).body;
+    if (!body) return;
+    const op: Operation = {
+      kind: publishAfter ? "save-publish" : "save",
+      stage: "save",
+      id: createdId.current ?? (isNew ? null : examId),
+      key: uuidV7(),
+      body,
+      fields,
+      saved: false,
+    };
+    operation.current = op;
+    await execute(op);
   }
-  async function mutate(kind: "publish" | "unpublish" | "archive") {
-    const resourceId = createdId.current ?? (isNew ? null : examId);
-    if (!resourceId) return;
-    await runAction(kind, resourceId, revision);
+  async function mutate(kind: Action) {
+    if (locked || busy.current || operation.current) return;
+    const id = createdId.current ?? (isNew ? null : examId);
+    if (!id) return;
+    const op: Operation = {
+      kind,
+      stage: "action",
+      id,
+      key: uuidV7(),
+      body: { expectedRevision: revision },
+      fields,
+      saved: false,
+    };
+    operation.current = op;
+    await execute(op);
+  }
+  async function retry() {
+    if (operation.current && unknown) await execute(operation.current);
   }
   return {
     existing,
@@ -289,33 +282,44 @@ export function useExamDraft(isNew: boolean, examId: string) {
     seed,
     hidden,
     hideBank,
-    questions,
-    title,
-    setTitle,
-    category,
-    setCategory,
-    duration,
-    setDuration,
-    zone,
-    setZone,
-    openAt,
-    setOpenAt,
-    closeAt,
-    setCloseAt,
-    limit,
-    setLimit,
-    policy,
-    setPolicy,
-    board,
-    setBoard,
-    sections,
-    setSections,
+    unavailable,
+    questions: hidden || hideBank ? [] : (bank.data?.pages.flatMap((page) => page.items) ?? []),
+    ...fields,
+    fields,
+    setTitle: (value: string) => update("title", value),
+    setCategory: (value: ExamFields["category"]) => update("category", value),
+    setDuration: (value: string) => update("duration", value),
+    setZone: (value: string) => {
+      if (locked || busy.current) return;
+      try {
+        setFields(rezoneExamFields(fields, value));
+        setError(null);
+        setNotice("");
+      } catch {
+        setError(new Error("Chưa đổi được múi giờ vì ngày giờ đang nhập chưa hợp lệ."));
+      }
+    },
+    setOpenAt: (value: string) => update("openAt", value),
+    setCloseAt: (value: string) => update("closeAt", value),
+    setLimit: (value: string) => update("limit", value),
+    setPolicy: (value: ExamFields["policy"]) => update("policy", value),
+    setBoard: (value: boolean) => update("board", value),
+    setSections: (value: SetStateAction<ExamFields["sections"]>) => update("sections", value),
     revision,
     error,
     setError,
     pending,
+    locked,
+    unknown,
+    conflict,
+    dirty,
+    notice,
+    validation,
+    allowNavigation,
     save,
     mutate,
+    retry,
+    useLatest,
   };
 }
 export type ExamDraft = ReturnType<typeof useExamDraft>;

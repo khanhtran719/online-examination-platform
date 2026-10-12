@@ -241,25 +241,52 @@ export function Dialog({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const titleId = useId();
+  const closeRef = useRef(onClose);
+  useEffect(() => {
+    closeRef.current = onClose;
+  }, [onClose]);
   useEffect(() => {
     const previously =
       document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const node = ref.current;
-    const focusable = node?.querySelectorAll<HTMLElement>(
-      "button, a, input, select, textarea, [tabindex='0']",
-    );
-    focusable?.[0]?.focus();
+    function isUpperDialog() {
+      const dialogs = document.querySelectorAll("[role='dialog']");
+      return dialogs[dialogs.length - 1] === node;
+    }
+    function items() {
+      return [
+        ...(node?.querySelectorAll<HTMLElement>(
+          "button, a[href], input, select, textarea, [tabindex='0']",
+        ) ?? []),
+      ].filter(
+        (item) =>
+          !item.matches(":disabled, [hidden], input[type='hidden']") && !item.closest("[hidden]"),
+      );
+    }
+    function containFocus() {
+      if (isUpperDialog() && node && !node.contains(document.activeElement))
+        (items()[0] ?? node).focus();
+    }
+    if (isUpperDialog()) (items()[0] ?? node)?.focus();
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape" && onClose) onClose();
+      if (!isUpperDialog() || event.defaultPrevented) return;
+      if (event.key === "Escape" && closeRef.current) {
+        event.preventDefault();
+        closeRef.current();
+      }
       if (event.key !== "Tab" || !node) return;
-      const items = [
-        ...node.querySelectorAll<HTMLElement>("button, a, input, select, textarea, [tabindex='0']"),
-      ].filter((item) => !item.hasAttribute("disabled"));
-      if (items.length === 0) return;
-      const first = items[0];
-      const last = items[items.length - 1];
-      if (!first || !last) return;
-      if (event.shiftKey && document.activeElement === first) {
+      const controls = items();
+      const first = controls[0],
+        last = controls[controls.length - 1];
+      if (!first || !last) {
+        event.preventDefault();
+        node.focus();
+        return;
+      }
+      if (!node.contains(document.activeElement) || document.activeElement === node) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      } else if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
         last.focus();
       } else if (!event.shiftKey && document.activeElement === last) {
@@ -267,12 +294,14 @@ export function Dialog({
         first.focus();
       }
     }
+    document.addEventListener("focusin", containFocus);
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
+      document.removeEventListener("focusin", containFocus);
       previously?.focus();
     };
-  }, [onClose]);
+  }, []);
   return (
     <div
       className={[styles.dialogBackdrop, className].filter(Boolean).join(" ")}
@@ -282,11 +311,22 @@ export function Dialog({
         ref={ref}
         className={styles.dialog}
         role="dialog"
+        tabIndex={-1}
         aria-modal="true"
         aria-labelledby={labelledBy ?? titleId}
       >
         <h2 id={titleId}>{title}</h2>
         {children}
+        {onClose ? (
+          <Button
+            className={styles.dialogClose}
+            variant="ghost"
+            aria-label="Đóng hộp thoại"
+            onClick={onClose}
+          >
+            ×
+          </Button>
+        ) : null}
       </div>
     </div>
   );

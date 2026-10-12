@@ -1,0 +1,13 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test e2e/public-experience.e2e-spec.ts -g fallback and keyboard
+
+
+Running 2 tests using 1 worker
+
+(node:7241) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience demo › fallback and keyboard navigation remain useful (705ms)
+  ✓  2 [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience live › fallback and keyboard navigation remain useful (413ms)
+
+  2 passed (1.8s)

@@ -1,0 +1,103 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test port-02.e2e-spec.ts admin-workflows.e2e-spec.ts
+
+
+Running 6 tests using 1 worker
+
+(node:3264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/admin-workflows.e2e-spec.ts:14:1 › exam draft keeps editor state, prevents duplicate slots and distinguishes saved publication from local edits (1.5s)
+  ✓  2 [chromium] › e2e/admin-workflows.e2e-spec.ts:57:1 › question keys use the keyboard and confirm destructive type changes before saving (1.1s)
+  ✘  3 [chromium] › e2e/admin-workflows.e2e-spec.ts:94:1 › import validates first, invalidates a changed file and asks before committing (10.1m)
+(node:3309) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 [chromium] › e2e/admin-workflows.e2e-spec.ts:123:1 › audit restores focus, failed replay stays pending and reviewer capabilities filter the page (1.3s)
+  ✘  5 [chromium] › e2e/port-02.e2e-spec.ts:62:1 › PORT-02 creates a structured draft, validates locally and confirms publication/removal/exit (14.9m)
+(node:3463) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 [chromium] › e2e/port-02.e2e-spec.ts:140:1 › PORT-02 compares conflicts, guards reload and retries an unknown write (5.4s)
+
+
+  1) [chromium] › e2e/admin-workflows.e2e-spec.ts:94:1 › import validates first, invalidates a changed file and asks before committing 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Báo cáo nhập', exact: true })
+    Expected: visible
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Báo cáo nhập', exact: true }) with timeout 12000ms
+      - waiting for getByRole('heading', { name: 'Báo cáo nhập', exact: true })
+      - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.
+
+
+      116 |   await commit.click();
+      117 |   await dialog.getByRole("button", { name: "Nhập vào ngân hàng" }).click();
+    > 118 |   await expect(page.getByRole("heading", { name: "Báo cáo nhập", exact: true })).toBeVisible();
+          |                                                                                  ^
+      119 |   await expect(page.getByText("Đã ghi vào ngân hàng", { exact: true })).toBeVisible();
+      120 |   await expect(page.getByRole("region", { name: "Các câu đã nhập" })).toContainText("q1");
+      121 | });
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:118:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e/port-02.e2e-spec.ts:62:1 › PORT-02 creates a structured draft, validates locally and confirms publication/removal/exit 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('✓ Đang phát hành', { exact: true })
+    Expected: visible
+    Timeout: 12000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('✓ Đang phát hành', { exact: true }) with timeout 12000ms
+      - waiting for getByText('✓ Đang phát hành', { exact: true })
+
+
+      126 |   await capture(page, "publication-pending-1440");
+      127 |   await expect(page).toHaveURL(/\/admin\/exams\/[^/]+\/edit$/);
+    > 128 |   await expect(page.getByText("✓ Đang phát hành", { exact: true })).toBeVisible();
+          |                                                                     ^
+      129 |   await page.getByRole("button", { name: "Gỡ phát hành", exact: true }).click();
+      130 |   await capture(page, "unpublish-confirm-1440");
+      131 |   await page.getByRole("dialog").getByRole("button", { name: "Xác nhận", exact: true }).click();
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-02.e2e-spec.ts:128:69
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › e2e/admin-workflows.e2e-spec.ts:94:1 › import validates first, invalidates a changed file and asks before committing 
+    [chromium] › e2e/port-02.e2e-spec.ts:62:1 › PORT-02 creates a structured draft, validates locally and confirms publication/removal/exit 
+  4 passed (25.1m)

@@ -1,18 +1,19 @@
 import { useState } from "react";
 
-import { Button, Dialog, ErrorPanel, SkeletonLines, TextField } from "@web/shared/ui/ui";
+import { Button, Dialog, TextField } from "@web/shared/ui/ui";
 
-import styles from "./admin.module.css";
 import { questionTypeLabel } from "./admin-ui";
+import { draftTotals } from "./exam-draft-model";
+import styles from "./exam-editor.module.css";
+import { ExamQuestionPicker } from "./exam-question-picker";
 import type { ExamDraft } from "./use-exam-draft";
 
 export function ExamStructure({ draft }: { draft: ExamDraft }) {
   const [picker, setPicker] = useState<number | null>(null);
-  const used = new Set(
-    draft.sections.flatMap((section) =>
-      section.questions.map((question) => question.bankQuestionId),
-    ),
-  );
+  const [remove, setRemove] = useState<number | null>(null);
+  const questionMap = new Map(draft.questions.map((question) => [question.id, question]));
+  const removed = remove === null ? null : draft.sections[remove];
+  const after = draftTotals(draft.sections.filter((_, index) => index !== remove));
   function move(sectionIndex: number, slotIndex: number, offset: number) {
     draft.setSections((current) =>
       current.map((section, index) => {
@@ -29,30 +30,54 @@ export function ExamStructure({ draft }: { draft: ExamDraft }) {
     );
   }
   return (
-    <div className={styles.picker}>
+    <div className={styles.structure}>
+      <div className={styles.sectionHeader}>
+        <h2>Cấu trúc đề thi</h2>
+        <span className={styles.caption}>Tối đa 20 phần · 500 câu</span>
+      </div>
       {draft.sections.map((section, index) => (
-        <fieldset key={index} className={styles.section}>
+        <fieldset
+          key={index}
+          className={`${styles.panel} ${styles.section}`}
+          disabled={draft.locked}
+        >
           <legend>Phần {index + 1}</legend>
-          <TextField
-            label="Tên phần"
-            value={section.title}
-            onChange={(event) =>
-              draft.setSections((current) =>
-                current.map((item, itemIndex) =>
-                  itemIndex === index ? { ...item, title: event.target.value } : item,
-                ),
-              )
-            }
-          />
+          <div className={styles.sectionHeader}>
+            <TextField
+              label="Tên phần"
+              id={`exam-sectionTitle.${index}`}
+              value={section.title}
+              error={
+                draft.validation.issues.find((issue) => issue.field === `sectionTitle.${index}`)
+                  ?.message
+              }
+              onChange={(event) =>
+                draft.setSections((current) =>
+                  current.map((item, itemIndex) =>
+                    itemIndex === index ? { ...item, title: event.target.value } : item,
+                  ),
+                )
+              }
+            />
+            <Button
+              variant="ghost"
+              disabled={draft.sections.length <= 1}
+              aria-label={`Bỏ phần ${index + 1}`}
+              onClick={() => setRemove(index)}
+            >
+              Bỏ phần
+            </Button>
+          </div>
           {section.questions.length === 0 ? (
-            <p className={styles.caption}>
-              Phần này chưa có câu. Chọn câu từ ngân hàng trước khi lưu.
-            </p>
+            <div className={styles.empty}>
+              <strong>Phần này chưa có câu hỏi</strong>
+              <p>Chọn câu từ ngân hàng để xây dựng nội dung đề.</p>
+            </div>
           ) : null}
           {section.questions.map((slot, slotIndex) => {
-            const question = draft.questions.find((item) => item.id === slot.bankQuestionId);
+            const question = questionMap.get(slot.bankQuestionId);
             return (
-              <div key={slot.bankQuestionId} className={styles.membership}>
+              <div className={styles.membership} key={slot.bankQuestionId}>
                 <div>
                   <p className={styles.caption}>
                     Câu {slotIndex + 1}
@@ -62,10 +87,17 @@ export function ExamStructure({ draft }: { draft: ExamDraft }) {
                 </div>
                 <TextField
                   label={`Điểm câu ${slotIndex + 1}`}
+                  id={`exam-points.${index}.${slotIndex}`}
                   type="number"
                   min={1}
                   max={1000}
-                  value={String(slot.points)}
+                  step={1}
+                  value={Number.isFinite(slot.points) ? String(slot.points) : ""}
+                  error={
+                    draft.validation.issues.find(
+                      (issue) => issue.field === `points.${index}.${slotIndex}`,
+                    )?.message
+                  }
                   onChange={(event) =>
                     draft.setSections((current) =>
                       current.map((item, itemIndex) =>
@@ -128,7 +160,7 @@ export function ExamStructure({ draft }: { draft: ExamDraft }) {
       ))}
       <Button
         variant="secondary"
-        disabled={draft.sections.length >= 20}
+        disabled={draft.locked || draft.sections.length >= 20}
         onClick={() =>
           draft.setSections((current) => [
             ...current,
@@ -139,76 +171,33 @@ export function ExamStructure({ draft }: { draft: ExamDraft }) {
         Thêm phần
       </Button>
       {picker !== null ? (
-        <Dialog title="Chọn câu từ ngân hàng" onClose={() => setPicker(null)}>
-          <p className={styles.caption}>
-            Thêm vào phần {picker + 1}. Chỉ các câu đã tải; mỗi câu xuất hiện một lần trong đề.
+        <ExamQuestionPicker draft={draft} sectionIndex={picker} onClose={() => setPicker(null)} />
+      ) : null}
+      {removed ? (
+        <Dialog title="Bỏ phần thi" onClose={() => setRemove(null)}>
+          <p>
+            Bỏ “{removed.title}” khỏi bản đang sửa? Câu hỏi gốc trong ngân hàng và nội dung các lượt
+            thi đã bắt đầu được giữ nguyên.
           </p>
-          {draft.bank.isLoading ? <SkeletonLines /> : null}
+          <div className={styles.notice}>
+            Sau khi bỏ: {after.sections} phần · {after.questions} câu · {after.points} điểm. Cần lưu
+            nháp để ghi lại thay đổi.
+          </div>
           <div className={styles.actions}>
-            <Button variant="secondary" onClick={() => setPicker(null)}>
-              Đóng bộ chọn
+            <Button variant="secondary" onClick={() => setRemove(null)}>
+              Giữ phần
             </Button>
-          </div>
-          {draft.bank.error ? (
-            <ErrorPanel
-              error={draft.bank.error}
-              onRetry={draft.hideBank ? undefined : () => void draft.bank.refetch()}
-            />
-          ) : null}
-          <div className={styles.picker}>
-            {draft.questions
-              .filter((question) => !question.archived)
-              .map((question) => (
-                <div key={question.id} className={styles.pickerRow}>
-                  <div>
-                    <p>{question.prompt.slice(0, 180)}</p>
-                    <p className={styles.caption}>
-                      {questionTypeLabel[question.type]} · {question.points} điểm ngân hàng
-                    </p>
-                  </div>
-                  <Button
-                    variant="secondary"
-                    disabled={used.has(question.id) || used.size >= 500}
-                    aria-label={`${used.has(question.id) ? "Đã có" : "Thêm"}: ${question.prompt.slice(0, 80)}`}
-                    onClick={() =>
-                      draft.setSections((current) => {
-                        if (
-                          current.some((section) =>
-                            section.questions.some((slot) => slot.bankQuestionId === question.id),
-                          )
-                        )
-                          return current;
-                        return current.map((item, index) =>
-                          index === picker
-                            ? {
-                                ...item,
-                                questions: [
-                                  ...item.questions,
-                                  { bankQuestionId: question.id, points: question.points },
-                                ],
-                              }
-                            : item,
-                        );
-                      })
-                    }
-                  >
-                    {used.has(question.id) ? "✓ Đã có trong đề" : "+ Thêm câu"}
-                  </Button>
-                </div>
-              ))}
-          </div>
-          {draft.bank.hasNextPage && !draft.hideBank ? (
             <Button
-              variant="secondary"
-              disabled={draft.bank.isFetchingNextPage}
-              onClick={() => void draft.bank.fetchNextPage()}
+              variant="danger"
+              disabled={draft.locked}
+              onClick={() => {
+                draft.setSections((current) => current.filter((_, index) => index !== remove));
+                setRemove(null);
+              }}
             >
-              Tải thêm câu trong ngân hàng
+              Bỏ phần
             </Button>
-          ) : null}
-          <Button variant="secondary" onClick={() => setPicker(null)}>
-            Xong
-          </Button>
+          </div>
         </Dialog>
       ) : null}
     </div>

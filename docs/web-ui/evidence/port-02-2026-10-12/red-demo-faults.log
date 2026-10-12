@@ -1,0 +1,78 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/demo/__tests__/editor-faults.unit.spec.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/demo/__tests__/editor-faults.unit.spec.ts (2 tests | 2 failed) 9ms
+   × keeps one publication receipt after a synthetic lost acknowledgement and exact retry 8ms
+   × exposes an actual changed synthetic projection for conflict comparison without overwriting with local edits 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/demo/__tests__/editor-faults.unit.spec.ts > keeps one publication receipt after a synthetic lost acknowledgement and exact retry
+AssertionError: promise resolved "{ data: { …(3) }, meta: { …(4) } }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "data": {
++     "acceptedAt": "2026-10-12T00:00:00.000Z",
++     "resourceId": "00000000-0000-4000-8000-000000000101",
++     "revision": 2,
++   },
++   "meta": {
++     "correlationId": "01a12d68-b800-79f6-b33d-a73b5113b4b1",
++     "httpStatus": 200,
++     "idempotencyReplayed": false,
++     "retryAfterSeconds": null,
++   },
+  }
+
+ ❯ src/demo/__tests__/editor-faults.unit.spec.ts:16:63
+     14|   extras.setFault("lose-ack");
+     15|   const body = { expectedRevision: exam.revision };
+     16|   await expect(api.publishExam(exam.id, "publish-test", body)).rejects…
+       |                                                               ^
+     17|   const replay = await api.publishExam(exam.id, "publish-test", body);
+     18|   expect(replay.data.revision).toBe(exam.revision + 1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/demo/__tests__/editor-faults.unit.spec.ts > exposes an actual changed synthetic projection for conflict comparison without overwriting with local edits
+AssertionError: promise resolved "{ data: { …(3) }, meta: { …(4) } }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "data": {
++     "acceptedAt": "2026-10-12T00:00:00.000Z",
++     "resourceId": "00000000-0000-4000-8000-000000000101",
++     "revision": 2,
++   },
++   "meta": {
++     "correlationId": "01a12d68-b800-7bf6-b82e-f4e77386bbbd",
++     "httpStatus": 200,
++     "idempotencyReplayed": false,
++     "retryAfterSeconds": null,
++   },
+  }
+
+ ❯ src/demo/__tests__/editor-faults.unit.spec.ts:25:239
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  19:58:35
+   Duration  669ms (environment 88%, transform 8%, tests 2%, import 2%)
+

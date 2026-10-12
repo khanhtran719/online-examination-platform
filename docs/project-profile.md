@@ -1,5 +1,20 @@
 # Project profile
 
+PORT-02 update2026-10-12: [Editor/dialog review](web-ui/port-02-2026-10-12.md)
+E1–E5 COMPLETE locally. Three-step Information/Structure/Preflight, confirmation,
+fresh/local conflict comparison and unsaved navigation follow the selected
+Cobalt–Apricot references. Pure model/controller/views preserve exact save/publish
+receipts, duration/schedule instants and protected-data clearing; permission loss
+blocks publication continuation.697 root tests (492 API/66 tooling/139 Web),28
+Chromium PASS; lint/format/quality/contracts48/445 and strict live/demo builds PASS.
+Fourteen final captures: zero automated axe violations, font loaded, no body overflow.
+596 protected baseline files checked; only the current PORT-02 checklist receipt
+changes. API/migrations/template images/prompts/PORT-01 evidence unchanged.
+[Evidence](web-ui/evidence/port-02-2026-10-12/README.md) retains intermediate browser
+failures with unconfirmed causes. Roadmap89/217 and FE7/32 unchanged; full mobile/
+states, live Admin/WEB-03 and production stay open. Next proposed PORT-03 bank/
+three-type question form/import. Earlier paragraphs retain historical scope/status.
+
 PORT-01 update2026-10-12: [Frontend architecture](web-ui/frontend-architecture.md)
 and [pilot review](web-ui/port-01-2026-10-12.md) COMPLETE locally. Finite Web
 feature/shared/adapter lint boundaries, query-controller/page separation, shared

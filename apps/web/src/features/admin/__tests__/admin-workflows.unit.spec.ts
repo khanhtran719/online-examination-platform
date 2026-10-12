@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { type ComponentType, createElement as h } from "react";
-import { Link, MemoryRouter, Route, Routes } from "react-router";
+import { createMemoryRouter, Link, Outlet, RouterProvider } from "react-router";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 
 import { ApiError } from "@web/shared/api/errors";
@@ -95,30 +95,31 @@ afterEach(() => {
 });
 function mount(Component: ComponentType, route: string, pattern: string) {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
-  render(
-    h(
-      QueryClientProvider,
-      { client },
-      h(
-        MemoryRouter,
-        { initialEntries: [route] },
-        h(Link, { to: "/admin/exams/second/edit" }, "Đề tiếp theo"),
-        h(
-          "button",
-          { onClick: () => void client.invalidateQueries({ queryKey: ["admin-exam"] }) },
-          "Cập nhật quyền",
-        ),
-        h(
-          Routes,
+  const router = createMemoryRouter(
+    [
+      {
+        element: h(
+          "div",
           null,
-          h(Route, { path: pattern, element: h(Component) }),
-          h(Route, { path: "/admin/questions/saved/edit", element: h("p", null, "Đã lưu câu") }),
-          h(Route, { path: "/admin/exams/saved/edit", element: h("p", null, "Đã lưu đề") }),
-          h(Route, { path: "/admin/imports/report", element: h("p", null, "Đã nhập") }),
+          h(Link, { to: "/admin/exams/second/edit" }, "Đề tiếp theo"),
+          h(
+            "button",
+            { onClick: () => void client.invalidateQueries({ queryKey: ["admin-exam"] }) },
+            "Cập nhật quyền",
+          ),
+          h(Outlet),
         ),
-      ),
-    ),
+        children: [
+          { path: pattern, element: h(Component) },
+          { path: "/admin/questions/saved/edit", element: h("p", null, "Đã lưu câu") },
+          { path: "/admin/exams/saved/edit", element: h("p", null, "Đã lưu đề") },
+          { path: "/admin/imports/report", element: h("p", null, "Đã nhập") },
+        ],
+      },
+    ],
+    { initialEntries: [route] },
   );
+  render(h(QueryClientProvider, { client }, h(RouterProvider, { router })));
   return client;
 }
 

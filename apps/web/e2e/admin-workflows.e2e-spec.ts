@@ -44,6 +44,10 @@ test("exam draft keeps editor state, prevents duplicate slots and distinguishes 
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Kỳ thi thử tháng 10");
   await expect(page.getByLabel("Tiêu đề", { exact: true })).toHaveValue("Chỉnh sửa chưa lưu");
   await page.getByRole("button", { name: "Gỡ phát hành", exact: true }).click();
+  await page
+    .getByRole("dialog", { name: "Gỡ phát hành đề" })
+    .getByRole("button", { name: "Xác nhận", exact: true })
+    .click();
   await expect(page.getByText("Bản nháp", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Lưu trữ", exact: true }).click();
   await page.getByRole("dialog").getByRole("button", { name: "Xác nhận", exact: true }).click();

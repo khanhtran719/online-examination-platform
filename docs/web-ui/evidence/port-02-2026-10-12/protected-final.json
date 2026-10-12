@@ -1,0 +1,13 @@
+{
+  "files": 596,
+  "unchanged": 595,
+  "allowedStatusOnlyChange": [
+    {
+      "path": "docs/web-ui/templates/codex-desktop-v1/review-2026-10-12.md",
+      "before": "65203c128694d14a723df6ebed2cee57840f88ff231a135e9aac41132a2011f3",
+      "after": "3a9205f0ab278ab060d61e1732fdaacd22517c6fdb4000dacbdf767d3914624f"
+    }
+  ],
+  "unexpected": [],
+  "status": "PASS"
+}

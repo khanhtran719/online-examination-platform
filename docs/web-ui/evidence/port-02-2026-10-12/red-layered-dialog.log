@@ -1,0 +1,39 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/shared/__tests__/dialog.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/shared/__tests__/dialog.unit.spec.tsx (4 tests | 1 failed) 142ms
+   × lets only the upper dialog contain focus and handle Escape when an async warning overlays a sheet 22ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/shared/__tests__/dialog.unit.spec.tsx > lets only the upper dialog contain focus and handle Escape when an async warning overlays a sheet
+AssertionError: expected <button></button> to be <button></button> // Object.is equality
+
+- Expected
++ Received
+
+  <button>
+-   Dùng bản máy chủ
++   Câu 1
+  </button>
+
+ ❯ src/shared/__tests__/dialog.unit.spec.tsx:79:34
+     77|   );
+     78|   const server = screen.getByRole("button", { name: "Dùng bản máy chủ"…
+     79|   expect(document.activeElement).toBe(server);
+       |                                  ^
+     80|   question.focus();
+     81|   expect(document.activeElement).toBe(server);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  20:51:39
+   Duration  1.04s (environment 60%, import 18%, tests 15%, transform 7%)
+

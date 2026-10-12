@@ -5,19 +5,22 @@ import {
   type ExplanationPolicy,
 } from "@web/shared/api/dto";
 import { categoryLabel, policyLabel } from "@web/shared/format";
-import { timezoneChoices, utcToZonedInput, zonedInputToUtc } from "@web/shared/timezone";
+import { timezoneChoices } from "@web/shared/timezone";
 import { SelectField, TextField } from "@web/shared/ui/ui";
 
-import styles from "./admin.module.css";
+import styles from "./exam-editor.module.css";
 import type { ExamDraft } from "./use-exam-draft";
 
 export function ExamInformation({ draft }: { draft: ExamDraft }) {
   return (
     <section className={styles.panel}>
-      <h2>Thông tin đề</h2>
-      <div className={styles.formGrid}>
-        <div className={styles.fullWidth}>
+      <h2>Thông tin đề thi</h2>
+      <p className={styles.caption}>Nhập thông tin cơ bản, lịch thi và quyền xem kết quả.</p>
+      <div className={styles.form}>
+        <div className={styles.full}>
           <TextField
+            id="exam-title"
+            error={draft.validation.issues.find((issue) => issue.field === "title")?.message}
             label="Tiêu đề"
             value={draft.title}
             onChange={(event) => draft.setTitle(event.target.value)}
@@ -35,35 +38,30 @@ export function ExamInformation({ draft }: { draft: ExamDraft }) {
           ))}
         </SelectField>
         <TextField
-          label="Thời lượng (giây)"
+          id="exam-duration"
+          error={draft.validation.issues.find((issue) => issue.field === "duration")?.message}
+          label="Thời lượng (phút)"
           type="number"
-          min={60}
-          max={14400}
-          step={60}
+          min={1}
+          max={240}
+          step="any"
           value={draft.duration}
           onChange={(event) => draft.setDuration(event.target.value)}
         />
         <SelectField
           label="Múi giờ hiển thị"
           value={draft.zone}
-          onChange={(event) => {
-            const next = event.target.value;
-            try {
-              draft.setOpenAt(utcToZonedInput(zonedInputToUtc(draft.openAt, draft.zone), next));
-              draft.setCloseAt(utcToZonedInput(zonedInputToUtc(draft.closeAt, draft.zone), next));
-            } catch {
-              draft.setError(new Error("Chưa đổi được múi giờ vì giờ đang nhập chưa hợp lệ."));
-            }
-            draft.setZone(next);
-          }}
+          onChange={(event) => draft.setZone(event.target.value)}
         >
           {timezoneChoices(draft.zone).map((item) => (
             <option key={item} value={item}>
-              {item}
+              {item === "Asia/Ho_Chi_Minh" ? "Giờ Việt Nam · UTC+7" : item}
             </option>
           ))}
         </SelectField>
         <TextField
+          id="exam-limit"
+          error={draft.validation.issues.find((issue) => issue.field === "limit")?.message}
           label="Giới hạn lượt"
           type="number"
           min={1}
@@ -72,21 +70,27 @@ export function ExamInformation({ draft }: { draft: ExamDraft }) {
           onChange={(event) => draft.setLimit(event.target.value)}
         />
         <TextField
+          id="exam-openAt"
+          error={draft.validation.issues.find((issue) => issue.field === "openAt")?.message}
           label="Mở"
+          step={1}
           type="datetime-local"
           value={draft.openAt}
           onChange={(event) => draft.setOpenAt(event.target.value)}
         />
         <TextField
+          id="exam-closeAt"
+          error={draft.validation.issues.find((issue) => issue.field === "closeAt")?.message}
           label="Đóng"
+          step={1}
           type="datetime-local"
           value={draft.closeAt}
           onChange={(event) => draft.setCloseAt(event.target.value)}
         />
-        <div className={styles.fullWidth}>
+        <div className={`${styles.full} ${styles.divider}`}>
           <h3>Kết quả và quyền xem</h3>
         </div>
-        <div className={styles.fullWidth}>
+        <div className={styles.full}>
           <SelectField
             label="Khi mở giải thích"
             value={draft.policy}
@@ -99,7 +103,7 @@ export function ExamInformation({ draft }: { draft: ExamDraft }) {
             ))}
           </SelectField>
         </div>
-        <label className={`${styles.toggle} ${styles.fullWidth}`}>
+        <label className={`${styles.toggle} ${styles.full}`}>
           <input
             type="checkbox"
             checked={draft.board}

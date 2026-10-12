@@ -1,5 +1,16 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
+**PORT-02 hoàn thành cục bộ, 2026-10-12:** Editor ba bước Thông tin/Cấu trúc/
+Kiểm tra, xác nhận phát hành/gỡ phát hành/lưu trữ, bỏ phần, rời bản nháp và đối
+chiếu xung đột theo mẫu đã chốt. Model/controller/UI tách trách nhiệm; retry giữ
+đúng yêu cầu và revision, không lưu lại khi chỉ retry phát hành; giữ chính xác
+seconds/UTC và xóa dữ liệu khi mất quyền. [Checklist/review](port-02-2026-10-12.md),
+[bằng chứng](evidence/port-02-2026-10-12/README.md):697 root/28 Chromium PASS,
+lint/types/builds/format/contracts đạt;14 captures không axe violations/body
+overflow, font đã tải. Roadmap89/217 và FE7/32 giữ nguyên; live Admin, mobile/state
+matrix và production còn mở. Bước kế tiếp PORT-03 bank/form ba loại/import.
+Các checkpoint dưới đây giữ phạm vi lịch sử của chúng.
+
 **PORT-01 hoàn thành cục bộ, 2026-10-12:** [Kiến trúc frontend](frontend-architecture.md)
 và lint kiểm tra ranh giới feature/shared/adapter; controller/page tách dữ liệu và
 hiển thị. Shared Cobalt–Apricot shell/controls và hai pilot Dashboard/Admin exam

@@ -1,0 +1,77 @@
+
+> online-examination-platform@0.1.0 web:build
+> npm --prefix apps/web run build
+
+
+> @exam/web@0.1.0 build
+> tsc -p tsconfig.json --noEmit && vite build --mode live
+
+vite v8.3.3 building client environment for live...
+transforming...
+✓ 271 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                    0.88 kB │ gzip:   0.49 kB
+dist/assets/noto-sans-vietnamese-400-normal-D2wP-Vm-.woff2         5.31 kB
+dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff     5.37 kB
+dist/assets/jetbrains-mono-vietnamese-700-normal-BDLVIk2r.woff     5.45 kB
+dist/assets/noto-sans-vietnamese-500-normal-B_DgfjT4.woff2         5.72 kB
+dist/assets/noto-sans-vietnamese-600-normal-mhyQDSzg.woff2         5.83 kB
+dist/assets/source-sans-3-vietnamese-700-normal-Bgamivog.woff2     6.13 kB
+dist/assets/source-sans-3-vietnamese-600-normal-B2sTNYey.woff2     6.22 kB
+dist/assets/be-vietnam-pro-vietnamese-400-normal-BuGn0gnm.woff     6.56 kB
+dist/assets/be-vietnam-pro-vietnamese-600-normal-DkpCIyan.woff     6.88 kB
+dist/assets/be-vietnam-pro-vietnamese-500-normal-CfdwVo8-.woff     6.88 kB
+dist/assets/be-vietnam-pro-vietnamese-700-normal-By_5yT39.woff     6.89 kB
+dist/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2   11.53 kB
+dist/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2   12.17 kB
+dist/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2   12.17 kB
+dist/assets/be-vietnam-pro-vietnamese-700-normal-Csr0PCuG.woff2   12.46 kB
+dist/assets/noto-sans-latin-400-normal-BTkUljjl.woff2             13.12 kB
+dist/assets/noto-sans-latin-500-normal-DCA2Z9Cj.woff2             13.49 kB
+dist/assets/noto-sans-latin-600-normal-Dkgu5AE5.woff2             13.49 kB
+dist/assets/source-sans-3-latin-700-normal-CkzU-mV9.woff2         15.59 kB
+dist/assets/source-sans-3-latin-600-normal-DeckBYAU.woff2         15.66 kB
+dist/assets/be-vietnam-pro-latin-400-normal-bXgqVju9.woff         16.43 kB
+dist/assets/be-vietnam-pro-latin-700-normal-C2EtzaOi.woff         16.90 kB
+dist/assets/be-vietnam-pro-latin-500-normal-BJkVuMHw.woff         16.99 kB
+dist/assets/be-vietnam-pro-latin-600-normal-5IO4e7bK.woff         17.01 kB
+dist/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2        21.16 kB
+dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2        21.16 kB
+dist/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2        21.89 kB
+dist/assets/jetbrains-mono-latin-700-normal-BYuf6tUa.woff2        21.90 kB
+dist/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2        22.03 kB
+dist/assets/be-vietnam-pro-latin-700-normal-DlW1Zbsh.woff2        22.15 kB
+dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff         27.49 kB
+dist/assets/jetbrains-mono-latin-700-normal-D3wTyLJW.woff         28.20 kB
+dist/assets/brand-DoDVISWT.css                                     0.72 kB │ gzip:   0.40 kB
+dist/assets/memory-BgSLLubf.css                                    4.31 kB │ gzip:   1.31 kB
+dist/assets/use-title-DodihUay.css                                 5.76 kB │ gzip:   1.43 kB
+dist/assets/exam-room-tduVSi4b.css                                 6.24 kB │ gzip:   1.75 kB
+dist/assets/result-pages-lcSmu8t1.css                              8.12 kB │ gzip:   1.92 kB
+dist/assets/admin-ui-BmXzeSbx.css                                  9.27 kB │ gzip:   2.07 kB
+dist/assets/admin-exams-DVgwx95i.css                               9.83 kB │ gzip:   2.25 kB
+dist/assets/index-B9Tz1Kxy.css                                    20.58 kB │ gzip:  10.42 kB
+dist/assets/mount-BtlOknlb.css                                    50.29 kB │ gzip:   9.38 kB
+dist/assets/protected-access-DtSCK6ua.js                           0.31 kB │ gzip:   0.24 kB
+dist/assets/polling-BB4InEX_.js                                    0.39 kB │ gzip:   0.24 kB
+dist/assets/mutation-intent-DIWikAAn.js                            0.69 kB │ gzip:   0.33 kB
+dist/assets/gate-D5p0PZmV.js                                       0.81 kB │ gzip:   0.54 kB
+dist/assets/brand-dlYoHEzZ.js                                      0.83 kB │ gzip:   0.47 kB
+dist/assets/memory-BOGKMED7.js                                     1.55 kB │ gzip:   0.73 kB
+dist/assets/admin-ui-Dl52ZA4N.js                                   2.38 kB │ gzip:   1.08 kB
+dist/assets/index-I_YWslrx.js                                      2.74 kB │ gzip:   1.36 kB
+dist/assets/admin-layout-DlJEqnoq.js                               4.25 kB │ gzip:   1.73 kB
+dist/assets/admin-import-Co3hb5yp.js                               7.11 kB │ gzip:   2.65 kB
+dist/assets/admin-insights-I6eFwgtG.js                             8.03 kB │ gzip:   2.80 kB
+dist/assets/admin-questions-oukt65Lx.js                           11.84 kB │ gzip:   4.23 kB
+dist/assets/admin-monitor-CVdbi9sb.js                             13.69 kB │ gzip:   4.53 kB
+dist/assets/result-pages-WpC9qSMg.js                              20.10 kB │ gzip:   5.77 kB
+dist/assets/useQuery-CFEKZKjr.js                                  24.03 kB │ gzip:   8.30 kB
+dist/assets/exam-room-FdvLkTjJ.js                                 32.54 kB │ gzip:  10.01 kB
+dist/assets/admin-exams-C_Tat_es.js                               40.36 kB │ gzip:  11.86 kB
+dist/assets/use-title-Bot0wiye.js                                110.04 kB │ gzip:  36.21 kB
+dist/assets/mount-DDdy_Uye.js                                    321.69 kB │ gzip:  96.68 kB
+dist/assets/mount-scene-DL16NffI.js                              520.18 kB │ gzip: 132.21 kB
+
+✓ built in 321ms

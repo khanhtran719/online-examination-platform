@@ -134,6 +134,8 @@ test("shared controls support keyboard entry, table scrolling and dialog focus",
     .getByRole("button", { name: "Đóng", exact: true });
   await expect(close).toBeFocused();
   await page.keyboard.press("Tab");
+  await expect(page.getByRole("button", { name: "Đóng hộp thoại", exact: true })).toBeFocused();
+  await page.keyboard.press("Tab");
   await expect(close).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).toHaveCount(0);

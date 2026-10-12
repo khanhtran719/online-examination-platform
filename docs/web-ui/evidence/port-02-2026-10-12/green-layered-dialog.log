@@ -1,0 +1,13 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/shared/__tests__/dialog.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  20:52:25
+   Duration  687ms (environment 53%, tests 23%, import 16%, transform 9%)
+

@@ -1,0 +1,366 @@
+{
+  "config": {
+    "argv": [
+      "/Users/trankhanh/.nvm/versions/node/v24.17.0/bin/node",
+      "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/node_modules/.bin/playwright",
+      "test",
+      "port-02.e2e-spec.ts",
+      "admin-workflows.e2e-spec.ts"
+    ],
+    "configFile": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/playwright.config.ts",
+    "rootDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e",
+        "testIgnore": [
+          "**/identity-https/**"
+        ],
+        "testMatch": [
+          "**/*.spec.ts",
+          "**/*.e2e-spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "admin-workflows.e2e-spec.ts",
+      "file": "admin-workflows.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "exam draft keeps editor state, prevents duplicate slots and distinguishes saved publication from local edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T13:13:46.138Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c7895a398129aed42af2-6930e55ffac31de60a25",
+          "file": "admin-workflows.e2e-spec.ts",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "question keys use the keyboard and confirm destructive type changes before saving",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1069,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T13:13:47.918Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c7895a398129aed42af2-e17653755934693fd6ac",
+          "file": "admin-workflows.e2e-spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "import validates first, invalidates a changed file and asks before committing",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 603350,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts",
+                        "column": 82,
+                        "line": 118
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Báo cáo nhập', exact: true })\nExpected: visible\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Báo cáo nhập', exact: true }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Báo cáo nhập', exact: true })\u001b[22m\n\u001b[2m  - Protocol error (Runtime.callFunctionOn): Internal server error, session closed.\u001b[22m\n\n\n  116 |   await commit.click();\n  117 |   await dialog.getByRole(\"button\", { name: \"Nhập vào ngân hàng\" }).click();\n> 118 |   await expect(page.getByRole(\"heading\", { name: \"Báo cáo nhập\", exact: true })).toBeVisible();\n      |                                                                                  ^\n  119 |   await expect(page.getByText(\"Đã ghi vào ngân hàng\", { exact: true })).toBeVisible();\n  120 |   await expect(page.getByRole(\"region\", { name: \"Các câu đã nhập\" })).toContainText(\"q1\");\n  121 | });\n    at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:118:82"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T13:13:48.992Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c7895a398129aed42af2-c5cff596826fe711e5c9",
+          "file": "admin-workflows.e2e-spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "audit restores focus, failed replay stays pending and reviewer capabilities filter the page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1297,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T13:23:52.773Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c7895a398129aed42af2-19b493d7516f34d40e3d",
+          "file": "admin-workflows.e2e-spec.ts",
+          "line": 123,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "port-02.e2e-spec.ts",
+      "file": "port-02.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "PORT-02 creates a structured draft, validates locally and confirms publication/removal/exit",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 893743,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-02.e2e-spec.ts",
+                        "column": 69,
+                        "line": 128
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('✓ Đang phát hành', { exact: true })\nExpected: visible\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('✓ Đang phát hành', { exact: true }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByText('✓ Đang phát hành', { exact: true })\u001b[22m\n\n\n  126 |   await capture(page, \"publication-pending-1440\");\n  127 |   await expect(page).toHaveURL(/\\/admin\\/exams\\/[^/]+\\/edit$/);\n> 128 |   await expect(page.getByText(\"✓ Đang phát hành\", { exact: true })).toBeVisible();\n      |                                                                     ^\n  129 |   await page.getByRole(\"button\", { name: \"Gỡ phát hành\", exact: true }).click();\n  130 |   await capture(page, \"unpublish-confirm-1440\");\n  131 |   await page.getByRole(\"dialog\").getByRole(\"button\", { name: \"Xác nhận\", exact: true }).click();\n    at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-02.e2e-spec.ts:128:69"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T13:23:54.223Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a303bd2fc3fe62c0f417-602e83d42133974d7ea2",
+          "file": "port-02.e2e-spec.ts",
+          "line": 62,
+          "column": 1
+        },
+        {
+          "title": "PORT-02 compares conflicts, guards reload and retries an unknown write",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5364,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T13:38:49.011Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a303bd2fc3fe62c0f417-1d2507df4abd2a788458",
+          "file": "port-02.e2e-spec.ts",
+          "line": 140,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T13:13:45.801Z",
+    "duration": 1508709.554,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

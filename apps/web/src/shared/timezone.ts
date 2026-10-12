@@ -27,10 +27,10 @@ function zoneParts(instant: Date, timeZone: string): Record<string, string> {
   return map;
 }
 
-export function utcToZonedInput(iso: string, timeZone: string): string {
+export function utcToZonedInput(iso: string, timeZone: string, includeSeconds = false): string {
   const map = zoneParts(new Date(iso), timeZone);
   const hour = map.hour === "24" ? "00" : map.hour;
-  return `${map.year}-${map.month}-${map.day}T${hour}:${map.minute}`;
+  return `${map.year}-${map.month}-${map.day}T${hour}:${map.minute}${includeSeconds ? `:${map.second}` : ""}`;
 }
 
 export function zonedInputToUtc(local: string, timeZone: string): string {

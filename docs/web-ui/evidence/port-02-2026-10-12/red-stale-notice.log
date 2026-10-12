@@ -1,0 +1,36 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/admin/__tests__/use-exam-draft.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx (11 tests | 1 failed) 647ms
+   × clears an older success notice when a new operation has no acknowledgement 63ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/use-exam-draft.unit.spec.tsx > clears an older success notice when a new operation has no acknowledgement
+AssertionError: expected 'Đã phát hành phiên bản.' to be '' // Object.is equality
+
+- Expected
++ Received
+
++ Đã phát hành phiên bản.
+
+ ❯ src/features/admin/__tests__/use-exam-draft.unit.spec.tsx:252:33
+    250|   await act(() => result.current.save(true));
+    251|   expect(result.current.unknown).toBe(true);
+    252|   expect(result.current.notice).toBe("");
+       |                                 ^
+    253| });
+    254|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 10 passed (11)
+   Start at  20:43:53
+   Duration  1.75s (environment 41%, tests 39%, import 12%, transform 8%)
+
