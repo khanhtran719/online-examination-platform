@@ -1,6 +1,30 @@
 # Implementation plan
 
-## Latest increment — REP-05 Business metrics, 2026-10-10 (COMPLETE locally)
+## Latest increment — REP-06 Audit lifecycle, 2026-10-10 (COMPLETE locally)
+
+[AU-01–06 plan/review](admin-audit-2026-10-10.md),
+[ADR-015](adr/015-audit-browse-and-fixed-retention.md),
+[runbook](runbooks/admin-audit.md),
+[evidence](evidence/admin-audit-2026-10-10/README.md).
+
+Reporting-owned audited primary browse, safe actorType/nullable targets and live
+keyset; shared pure technical retention invocation, function-only oldest fixed365day
+purge and default-off finite scheduler.616 root/410 full integration23 suites,
+58 final audit/compiled TCP/31 final audit,0 skipped;1 focused Chromium demo,
+API/live/demo builds, lint/typecheck/quality/contracts48/445 pass.19 source/build
+migrations match,556 protected files unchanged, runtime scans0 advisories; fixtures
+clean and test containers stopped. New54 API/3 Web unit and31 PG cases. SQL-only
+format proof40 queries/768 tokens; no optimization claim. Existing labels/demo
+compatibility and a test-only role typo were corrected with retained evidence.
+
+Roadmap86/216 checked,130 pending. Scope AU-01–06 is closed locally; no deployment/
+commit/PR or background work remains. Next proposed bounded increment: REP-07
+export/report limits, safe PII exposure and migration/query source contracts.
+REP-04 independent privacy ledger/deletion/restore stays SUBSET/unchecked; REP-08,
+live Admin capability discovery, wider Web/HTTPS integration and AWS/FinOps/
+RDS recovery/capacity/SLO remain open. Production NOT ACCEPTED.
+
+## Previous increment — REP-05 Business metrics, 2026-10-10 (COMPLETE locally)
 
 REP-05 update2026-10-10: [Business metrics](admin-business-metrics-2026-10-10.md)
 BM-01–06 COMPLETE locally; **85/216 checked,131 pending**. Additive Reporting

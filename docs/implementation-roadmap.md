@@ -1,5 +1,22 @@
 # Roadmap triển khai có đánh dấu
 
+REP-06 update2026-10-10: [Audit lifecycle](admin-audit-2026-10-10.md)
+AU-01–06 COMPLETE locally; **86/216 checked,130 pending**. Reporting audit.read
+primary redacted live keyset and mandatory access audit; separate function-only
+fixed365day retention, forward0019 and default-off finite worker.616 root tests,
+410 integration/23 suites,58 final audit/compiled TCP and31 final audit cases,
+0 skipped in accepted suites;1 focused Chromium demo case, both Web builds,
+lint/typecheck/build/quality/contracts48 operations/445 examples pass.19 migration
+source/build bytes match;556 prior files unchanged; fixture cleanup0, test containers
+stopped/volumes retained. Local100k natural indexed plans and bounded purge/real
+dump-restore evidence establish behavior only, with no sustainable capacity/cost/
+RDS PITR acceptance. Live Admin capability discovery/HTTPS/business integration,
+REP-04 privacy ledger and wider Web/AWS gates remain open. Production NOT ACCEPTED.
+Next proposed REP-07 bounded exports/query dependency contracts.
+[Evidence](evidence/admin-audit-2026-10-10/README.md). Previous entries below are
+historical and retain their earlier source/test/next-step states.
+
+
 REP-05 update2026-10-10: [Business metrics](admin-business-metrics-2026-10-10.md)
 BM-01–06 COMPLETE locally; **85/216 checked,131 pending**. Additive Reporting
 start-time cohort/current durable counts plus global pending/replay backlog,
@@ -100,7 +117,7 @@ Prior ATT-08 update2026-10-09. [Candidate results](assessment-results-2026-10-09
 
 [Chuẩn hóa kiến trúc](architecture-normalization-plan.md) theo §5 mới đã hoàn tất **12/12 normalization deliverables**, với152 tests và actual entry-point checks; [diagnostic trước/sau](../experiments/architecture-normalization/README.md) ghi đủ kết quả và giới hạn. Persistence evaluation đã hoàn thành4/4 local theo [ADR-008](adr/008-persistence-evaluation.md), tách khỏi refactor; [raw comparison](../experiments/persistence-comparison/README.md) giữ pg hiện tại, chưa chọn AWS/TCO winner. Checklist này theo dõi riêng, không cộng vào216 product items. [API review](api-architecture-review.md) đóng RV-01–06 local; RV-07 và production acceptance còn pending. [Review Catalog độc lập](catalog-review-2026-10-07.md) đã mở lại sáu items; [fix closure](catalog-fixes-2026-10-07.md) nghiệm thu lại BOOT-01 và CAT-01/03/04/06/08. [Diagnostic mới](evidence/catalog-fixes-2026-10-07/diagnostic/README.md) ghi exact SQL/publish/provenance, giữ nguyên evidence cũ. Review đã mở lại CAT-09/10 vì snapshot JOIN cũ; [closure mới](assessment-fixes-2026-10-08.md) chứng minh fresh post-lock publication và hai observed HTTP races PASS. Evidence GR-01–06 bên dưới giữ nguyên như lịch sử. Increment Assessment không đóng Phase04.
 
-Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product85/216 không đồng nghĩa production acceptance.
+Đã bàn giao [Web UI specification/task/prompt cho Grok](web-ui/README.md): 5/5 document deliverables. Checklist FE7/32 checked, WEB-02 local hoàn tất. Các WEB khác vẫn mở; phát hành asset/TLS AWS, live business APIs và budget chưa nghiệm thu. [ADR-007](adr/007-web-ui-implementation-direction.md) chọn static SPA; public visual work có trạng thái riêng. Product86/216 không đồng nghĩa production acceptance.
 
 Quy ước: `[x]` = named deliverable đã hoàn tất với artifact/checks, không có nghĩa production acceptance. `[ ]` = chưa hoàn tất; PARTIAL ghi rõ phần đã có/còn thiếu. “Có script” không đồng nghĩa “đã đo”. Evidence: [bootstrap](completed-checklist-review.md), [contracts](phase-02-review.md), [auth amendment](phase-04-contract-review.md), [DB](phase-03-review.md), [Identity runtime](phase-04-review.md), [raw local benchmark](../experiments/identity-local/README.md). Không có background implementation. Git và origin remote hiện đã có, BOOT-09 branch/PR workflow chưa kiểm chứng; DB-12 chưa chạy images. Cập nhật checklist/evidence/acceptance cùng nhau; AWS costs giữ chưa đo.
 
@@ -274,7 +291,7 @@ Phụ thuộc: 04–07.
 - [x] **REP-03** Exact frozen-version question/option statistics: retained-completed denominator, answered/correct/incorrect/unanswered, duplicate/replay/purge atomicity, current permission and exact-version audit, opaque keyset. [QS-01–06 closure](admin-question-statistics-2026-10-10.md)/[evidence](evidence/admin-question-statistics-2026-10-10/README.md):34 units/22 PG cases, full486 root/342 integration PASS; natural10k/100k plans,8 SQL/128KiB bound. No AWS/capacity or privacy-ledger acceptance.
 - [ ] **REP-04 — SUBSET** Candidate history/result/review tại ATT-08 và public leaderboard/privacy reads/best-rank semantics tại [LB-01–05](public-leaderboard-2026-10-09.md) đã nghiệm thu local. Admin best/latest exact-version/current-permission/audit/paging tại [BL-01–06](admin-candidate-results-2026-10-10.md)/[evidence](evidence/admin-candidate-results-2026-10-10/README.md) đã nghiệm thu local. Independent privacy ledger/deletion/restore và production còn mở. Giữ unchecked, không đóng đầu mục.
 - [x] **REP-05** Business metrics: start-time cohort/current starts/submissions/completions/expired/failed/active và global durable pending/replay backlog. [BM-01–06](admin-business-metrics-2026-10-10.md)/[evidence](evidence/admin-business-metrics-2026-10-10/README.md) nghiệm thu local với current permission/audit,18 PG cases và100k/1M baseline. Combined telemetry/Web/AWS/capacity vẫn mở; không suy ra queue depth hoặc performance/cost winner.
-- [ ] **REP-06** Append-only audit trong admin transaction; action/actor/target/time/minimal metadata, retention/access control.
+- [x] **REP-06** Append-only audit trong admin transaction; action/actor/target/time/minimal metadata, retention/access control. Local AU-01–06 complete: [evidence](evidence/admin-audit-2026-10-10/README.md); default-off fixed365day job, production backup/privacy/capacity gates remain open.
 - [ ] **REP-07** Export/report limits, safe PII exposure và query dependency contracts với migration.
 - [ ] **REP-08** Test data scope, projection freshness, query/index plans và audit rollback.
 

@@ -831,6 +831,24 @@ it("serves leaderboard, Admin monitor, submissions/result, question statistics a
     status: true,
   });
   expect((await http(api.port, "GET", candidatesPath, f.actor.headers)).status).toBe(403);
+  const auditPath = "/v1/admin/audit";
+  const auditPage = await http(api.port, "GET", auditPath, adminSession.headers);
+  expect(auditPage.status).toBe(200);
+  expect(auditPage.headers["cache-control"]).toBe("no-store");
+  expect(envelope(auditPage)).toMatchObject({
+    data: expect.any(Array),
+    metadata: { pageSize: 20 },
+    status: true,
+  });
+  const auditItems = (envelope(auditPage) as { data: { actorType: string; reason: null }[] }).data;
+  expect(auditItems.length).toBeGreaterThan(0);
+  expect(
+    auditItems.every(
+      (row) => ["USER", "OPERATOR", "SYSTEM"].includes(row.actorType) && row.reason === null,
+    ),
+  ).toBe(true);
+  expect((await http(api.port, "GET", auditPath, f.actor.headers)).status).toBe(403);
+  expect((await http(api.port, "GET", auditPath)).status).toBe(401);
   const metricsPath = "/v1/admin/business-metrics";
   const metrics = await http(api.port, "GET", metricsPath, adminSession.headers);
   expect(metrics.status).toBe(200);

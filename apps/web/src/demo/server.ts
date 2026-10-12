@@ -217,6 +217,7 @@ export function createDemoServer(options: DemoServerOptions = {}): {
     changed: string[],
   ): void {
     audits.unshift({
+      actorType: "USER",
       id: uuidV7(clock()),
       occurredAt: iso(),
       actorId: session?.userId ?? null,
@@ -729,6 +730,7 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       id: id(0xc01),
       occurredAt: iso(origin - 120_000),
       actorId: candidate.id,
+      actorType: "USER",
       action: "profile.opt_in",
       resourceType: "profile",
       resourceId: candidate.id,
@@ -736,6 +738,19 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       reason: null,
       correlationId: id(0xc02),
       changedFields: ["leaderboardOptIn"],
+    });
+    audits.push({
+      id: id(0xc03),
+      occurredAt: iso(origin - 60_000),
+      actorId: null,
+      actorType: "SYSTEM",
+      action: "platform.audit.prune",
+      resourceType: "AUDIT_LOG",
+      resourceId: null,
+      outcome: "SUCCESS",
+      reason: null,
+      correlationId: id(0xc04),
+      changedFields: ["purgedRows"],
     });
   }
 

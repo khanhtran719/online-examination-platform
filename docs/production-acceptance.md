@@ -1,5 +1,22 @@
 # Production acceptance ledger
 
+REP-06 update2026-10-10: [Audit lifecycle](admin-audit-2026-10-10.md)
+AU-01–06 COMPLETE locally; **86/216 checked,130 pending**. Reporting audit.read
+primary redacted live keyset and mandatory access audit; separate function-only
+fixed365day retention, forward0019 and default-off finite worker.616 root tests,
+410 integration/23 suites,58 final audit/compiled TCP and31 final audit cases,
+0 skipped in accepted suites;1 focused Chromium demo case, both Web builds,
+lint/typecheck/build/quality/contracts48 operations/445 examples pass.19 migration
+source/build bytes match;556 prior files unchanged; fixture cleanup0, test containers
+stopped/volumes retained. Local100k natural indexed plans and bounded purge/real
+dump-restore evidence establish behavior only, with no sustainable capacity/cost/
+RDS PITR acceptance. Live Admin capability discovery/HTTPS/business integration,
+REP-04 privacy ledger and wider Web/AWS gates remain open. Production NOT ACCEPTED.
+Next proposed REP-07 bounded exports/query dependency contracts.
+[Evidence](evidence/admin-audit-2026-10-10/README.md). Previous entries below are
+historical and retain their earlier source/test/next-step states.
+
+
 REP-05 update2026-10-10: [Business metrics](admin-business-metrics-2026-10-10.md)
 BM-01–06 COMPLETE locally; **85/216 checked,131 pending**. Additive Reporting
 start-time cohort/current durable counts plus global pending/replay backlog,

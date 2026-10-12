@@ -9,6 +9,18 @@ function server() {
 }
 
 describe("demo server", () => {
+  it("keeps user/system audit samples compatible with actor type and nullable targets", async () => {
+    const { api, extras } = server();
+    await api.login({ email: "candidate@example.test", password: "fixture-password-ok" });
+    extras.setPermissions("admin");
+    const rows = (await api.getAudit({ pageSize: 20 })).data.items;
+    expect(rows.find((row) => row.actorId !== null)).toMatchObject({ actorType: "USER" });
+    expect(rows.find((row) => row.actorType === "SYSTEM")).toMatchObject({
+      actorId: null,
+      resourceId: null,
+      reason: null,
+    });
+  });
   it("accepts duplicate registration without promising delivery or a session", async () => {
     const { api, extras } = server();
     const created = await api.register({
@@ -23,7 +35,9 @@ describe("demo server", () => {
       displayName: "Khác",
       password: "different-password-1",
     });
-    expect(extras.mailbox().filter((item) => item.email === "new.user@example.test")).toHaveLength(1);
+    expect(extras.mailbox().filter((item) => item.email === "new.user@example.test")).toHaveLength(
+      1,
+    );
     await expect(api.getProfile()).rejects.toMatchObject({ status: 401 });
   });
 
@@ -53,10 +67,16 @@ describe("demo server", () => {
         },
       ],
     };
-    await expect(api.saveAnswers(first.data.id, "018f4a3c-8c2e-7c3a-8f2a-222222222222", body)).rejects.toMatchObject({
+    await expect(
+      api.saveAnswers(first.data.id, "018f4a3c-8c2e-7c3a-8f2a-222222222222", body),
+    ).rejects.toMatchObject({
       kind: "network",
     });
-    const replay = await api.saveAnswers(first.data.id, "018f4a3c-8c2e-7c3a-8f2a-222222222222", body);
+    const replay = await api.saveAnswers(
+      first.data.id,
+      "018f4a3c-8c2e-7c3a-8f2a-222222222222",
+      body,
+    );
     expect(replay.data.answers[0]?.version).toBe(1);
     extras.setFault("conflict-save");
     await expect(
@@ -81,8 +101,14 @@ describe("demo server", () => {
     const profile = await api.getProfile();
     expect("permissions" in profile.data).toBe(false);
     expect(profile.data.leaderboardOptIn).toBe(false);
-    const missing = await api.login({ email: "nobody@example.test", password: "fixture-password-ok" }).catch((error: unknown) => error);
-    const disabled = await api.login({ email: "disabled@example.test", password: "fixture-password-ok" }).catch((error: unknown) => error);
-    expect(isApiError(missing) && isApiError(disabled) && missing.message === disabled.message).toBe(true);
+    const missing = await api
+      .login({ email: "nobody@example.test", password: "fixture-password-ok" })
+      .catch((error: unknown) => error);
+    const disabled = await api
+      .login({ email: "disabled@example.test", password: "fixture-password-ok" })
+      .catch((error: unknown) => error);
+    expect(
+      isApiError(missing) && isApiError(disabled) && missing.message === disabled.message,
+    ).toBe(true);
   });
 });

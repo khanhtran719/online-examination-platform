@@ -16,6 +16,7 @@ export type DatabaseOperation =
   | "assessment.write"
   | "security.rate"
   | "audit.write"
+  | "audit.prune"
   | "idempotency.read"
   | "idempotency.write"
   | "email.claim"

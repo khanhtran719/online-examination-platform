@@ -1,0 +1,40 @@
+
+> online-examination-platform@0.1.0 web:test
+> npm --prefix apps/web test --run src/shared/api/__tests__/http-parse.test.ts
+
+npm warn "src/shared/api/__tests__/http-parse.test.ts" is being parsed as a normal command line argument.
+npm warn Unknown cli config "--run". This will stop working in the next major version of npm.
+
+> @exam/web@0.1.0 test
+> vitest run src/shared/api/__tests__/http-parse.test.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/shared/api/__tests__/http-parse.test.ts (9 tests | 1 failed) 13ms
+   ❯ Audit response compatibility (2)
+     × keeps system actor and absent resource null 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/shared/api/__tests__/http-parse.test.ts > Audit response compatibility > keeps system actor and absent resource null
+ApiError: Phản hồi không đúng định dạng.
+ ❯ malformed src/shared/api/parse.ts:45:10
+     43|
+     44| export function malformed(): ApiError {
+     45|   return new ApiError({
+       |          ^
+     46|     kind: "malformed",
+     47|     status: 0,
+ ❯ exact src/shared/api/parse.ts:63:11
+ ❯ parseAuditEntry src/shared/api/parse.ts:686:16
+ ❯ src/shared/api/__tests__/http-parse.test.ts:222:63
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  18:31:14
+   Duration  843ms (environment 91%, transform 5%, tests 2%, import 1%)
+

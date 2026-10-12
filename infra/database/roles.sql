@@ -120,3 +120,16 @@ BEGIN
   END IF;
 END
 $$;
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT FROM pg_roles
+    WHERE
+      rolname = 'examination_audit_maintenance'
+  ) THEN
+    CREATE ROLE examination_audit_maintenance
+      NOLOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS;
+  END IF;
+END
+$$;

@@ -79,7 +79,8 @@ export function AuditPage() {
                     <td>
                       <span className={styles.rowTitle}>{row.action}</span>
                       <span className={styles.rowSub}>
-                        {row.resourceType} · {shortId(row.resourceId)}
+                        {row.resourceType} ·{" "}
+                        {row.resourceId ? shortId(row.resourceId) : "Không có mã"}
                       </span>
                     </td>
                     <td>
@@ -115,7 +116,10 @@ export function AuditPage() {
           <dl className={styles.facts}>
             <div>
               <dt>Người thực hiện</dt>
-              <dd>{selected.actorId ? shortId(selected.actorId) : "Không có mã"}</dd>
+              <dd>
+                {selected.actorType} ·{" "}
+                {selected.actorId ? shortId(selected.actorId) : "Không có mã"}
+              </dd>
             </div>
             <div>
               <dt>Lý do</dt>

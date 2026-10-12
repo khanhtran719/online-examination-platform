@@ -1,0 +1,9 @@
+{
+  "file": "apps/api/tests/integration/admin-audit.spec.ts",
+  "queries": 40,
+  "formatted": 32,
+  "tokensUnchanged": true,
+  "quotedLiteralsAndBindingOrderUnchanged": true,
+  "beforeSha256": "65c42fc5069ef83208ba9621f6658c6bca8869c767da188166e053fe5b3c9d68",
+  "afterSha256": "266eceac0c535d23fdf5ab8947ead72198eb56d6009aab733b2e13a9d7b765c2"
+}

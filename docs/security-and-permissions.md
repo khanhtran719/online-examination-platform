@@ -131,7 +131,7 @@ Audit records: eventId, occurredAt, actor opaque ID/type, action, resource type/
 | Delivered outbox / import report | 30days diagnostic retention; stable submission/result identifiers remain with attempt. Unsent/parked/outstanding DLQ work never age-purged as success. |
 | Session/token rows | Expired/revoked metadata 30days, token hashes removed after absolute expiry/revocation diagnostics; privacy/security review permits earlier cleanup without permitting revoked tokens. |
 | Verification challenge / email intent | Token validity30min; erase encrypted delivery material on consume/cancel/expiry, including parked jobs. Hash/terminal diagnostic metadata≤24h; redacted delivery metadata≤7days. Unverified accounts with no authorized activity expire after7days in bounded audited cleanup; resend cannot extend reservation forever. Privacy cleanup cancels mail before PII deletion. Backups follow their separate expiry, and restore cancels pre-restore challenges/mail intents. |
-| Admin/operator/privacy audit | 365days online baseline; deletion protection, access control and purge role required. Extend only for documented organizational requirement. |
+| Admin/operator/privacy audit | Fixed365days online minimum; migration0019 function-only maintenance, oldest-first bounded transactional count audit. Default-off; no arbitrary cutoff/target, exact-boundary/young/nonfinite rows protected. Append-only normal runtime. Backup/holds/privacy reconciliation remain separate; [ADR-015](adr/015-audit-browse-and-fixed-retention.md). |
 | Diagnostics / traces | Logs 14days; traces 5% baseline sampled, no high-cardinality metric IDs; budgets measured later. |
 | Backup copies | Planned PITR 7days as baseline operational restore window; extension needs documented recovery requirement/cost evidence. Deleted data may remain until backup expiry. Restore procedure reapplies durable deletion/opt-out ledger before reopening public access. No regulatory compliance claim. |
 
@@ -166,3 +166,21 @@ no counts/window/PII in audit payload. Future multi-tenant scope requires a sepa
 contract review; this platform has one authorized Admin scope. Cost of the global
 scan is bounded by pool/admission/timeouts, not an assumed indexed time window.
 Manual/slow polling guidance is operational, not a newly enforced30s server limit.
+
+
+REP-06 audit browse requires audit.read twice (HTTP and locked current Identity
+revalidation), separately from reporting.read. No unaudited page on fault; action
+reporting.audit.read, AUDIT_LOG/fixed single-platform UUID, actor/correlation only.
+Raw reason/operator_identity are excluded from SQL; safe allowlisted metadata,
+actorType and nullable opaque IDs only. No UI-based permission inference: live
+Admin pages retain their capability gate pending that separate contract.
+
+Audit maintenance uses only the private fixed-policy function via dedicated
+examination_audit_maintenance membership. API/operator/mail/grading/Assessment
+maintenance cannot execute it; normal maintenance cannot directly read/forge/delete
+audit rows or impersonate the owner. Trusted owners/superusers are administrative
+principals, not runtime append-only protection. One bounded SYSTEM purge audit
+shares deletion COMMIT; no-op adds none. Local dump/restore demonstrates policy
+reapplication and restored grants, not compliance, legal holds, RDS PITR or an
+independent deletion ledger. Restore remains closed until those separate gates pass.
+[Audit operations](runbooks/admin-audit.md), AC-38 and local evidence own this scope.

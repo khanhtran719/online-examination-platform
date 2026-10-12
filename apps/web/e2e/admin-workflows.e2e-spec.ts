@@ -79,7 +79,10 @@ test("question keys use the keyboard and confirm destructive type changes before
   await page.keyboard.press("Escape");
   await expect(archive).toBeFocused();
   await archive.click();
-  await page.getByRole("dialog", { name: "Lưu trữ câu hỏi" }).getByRole("button", { name: "Xác nhận", exact: true }).click();
+  await page
+    .getByRole("dialog", { name: "Lưu trữ câu hỏi" })
+    .getByRole("button", { name: "Xác nhận", exact: true })
+    .click();
   await expect(page.getByText("Đã lưu trữ", { exact: true })).toBeVisible();
   await expect(archive).toBeDisabled();
 });
@@ -125,8 +128,14 @@ test("audit restores focus, failed replay stays pending and reviewer capabilitie
   const detail = page.getByRole("button", { name: "Chi tiết", exact: true }).first();
   await detail.click();
   await expect(page.getByRole("dialog", { name: "Chi tiết nhật ký" })).toBeVisible();
+  await expect(page.getByRole("dialog", { name: "Chi tiết nhật ký" })).toContainText("USER");
   await page.keyboard.press("Escape");
   await expect(detail).toBeFocused();
+  const systemRow = page.getByRole("row").filter({ hasText: "platform.audit.prune" });
+  await expect(systemRow).toContainText("Không có mã");
+  await systemRow.getByRole("button", { name: "Chi tiết", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "Chi tiết nhật ký" })).toContainText("SYSTEM");
+  await page.keyboard.press("Escape");
   // Use client navigation to preserve the in-memory demo session.
   await page.evaluate(() => {
     history.pushState(null, "", "/admin/attempts/00000000-0000-4000-8000-000000000403");

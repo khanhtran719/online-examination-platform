@@ -1,0 +1,27 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/.local/rep06/setup.cjs --runTestsByPath apps/api/tests/integration/admin-audit.spec.ts --testNamePattern preserves API append-only
+
+(node:36189) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL apps/api/tests/integration/admin-audit.spec.ts
+  ● Primary audit browse and append-only capability › preserves API append-only privileges and isolates maintenance authority
+
+    error: role "examination_maintenance" does not exist
+
+      526 |       for (const role of ["examination_mail_worker", "examination_maintenance"]) {
+      527 |         // Reviewed static role names, never caller-supplied identifiers.
+    > 528 |         await restricted.query(`SET ROLE ${role}`);
+          |         ^
+      529 |         await expect(
+      530 |           restricted.query(
+      531 |             `
+
+      at node_modules/pg/lib/client.js:694:17
+      at Object.<anonymous> (apps/api/tests/integration/admin-audit.spec.ts:528:9)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 30 skipped, 31 total
+Snapshots:   0 total
+Time:        2.395 s, estimated 12 s
+Ran all test suites within paths "apps/api/tests/integration/admin-audit.spec.ts".

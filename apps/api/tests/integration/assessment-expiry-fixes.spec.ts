@@ -416,6 +416,7 @@ beforeAll(async () => {
     "0016_grading_recovery.sql",
     "0017_assessment_retention.sql",
     "0018_leaderboard_cursor_epochs.sql",
+    "0019_audit_retention.sql",
   ]);
   expect(await migrate(config(loginUrl(owner), 1), migrations)).toEqual([]);
   migrationUpgradeVerified = true;

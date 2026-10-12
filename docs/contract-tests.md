@@ -43,6 +43,7 @@ Phase 02 case IDs below are public-contract traceability, not assertions of exec
 | AC-35 | Verification email intent/crash/retry/privacy | Account/challenge/intent atomic, fenced lease, no transaction during sends, duplicate mail safe, expiry/consume ciphertext cleanup, no credential leaks; SES failure/backlog visible | ID-11, PostgreSQL + loopback mailbox, AWS SES operations later |
 | AC-36 | Admin best/latest selection and stable candidate pages | Exact frozen version; retained best COMPLETED by score/submit/UUID, latest submitted including pending/FAILED with null scores; current permission/version audit; grading/replay/purge and cursor preserve semantics | [REP-04 Admin subset](admin-candidate-results-2026-10-10.md), restricted PostgreSQL + compiled HTTP; AWS/privacy ledger remain separate |
 | AC-37 | Admin business cohort and global durable backlog | Started-at [from,to) current state, compact purged completion counts, replay-pending/global oldest age, explicit null empty backlog; current permission/audit and atomic grading/replay/purge visibility; no fabricated SQS/HTTP telemetry | [REP-05](admin-business-metrics-2026-10-10.md), restricted PostgreSQL + compiled HTTP; load/AWS remain separate |
+| AC-38 | Primary audit browse / fixed365day retention | Redacted live keyset, current audit.read and atomic access audit; restricted bounded purge, rollback, concurrent jobs, one-shot drain and local restore reapplication | Reporting / restricted PostgreSQL / worker / Web parser |
 
 The older scenario-oriented matrix below remains an evidence-environment map; IDs above supply operation traceability. Treat each scenario as pending unless the owning phase records its executed checks and evidence; local and AWS acceptance remain separate.
 
@@ -68,3 +69,13 @@ The older scenario-oriented matrix below remains an evidence-environment map; ID
 | Redis, if added | failed post-commit invalidation/stale refill/cache outage | declared freshness bound, correct invariants, bounded DB fallback | PostgreSQL + Redis |
 | Scaling/shutdown | task interrupted while serving/receiving | defined drain; uncommitted work recoverable | staging ECS |
 | Recovery | failover/PITR/new endpoint | measured RPO/RTO, verified acknowledged outcomes | isolated AWS |
+
+## AC-38 Audit browse and fixed retention
+
+Primary live keyset, strict actor/page-size cursor, current audit.read/locked
+revalidation, no-store and mandatory access audit; safe actorType/null resource,
+FAILURE→FAILED, reason/operator identity/unknown field redaction. API append-only
+privileges; separate fixed365day oldest-first bounded SKIP LOCKED function-only
+maintenance, audit rollback/concurrency/no-op/boundary/nonfinite protection.
+Default-off one-shot worker and local dump/restore reapplication preserve grants
+and young records. This is not immutable export/live RDS PITR/production acceptance.

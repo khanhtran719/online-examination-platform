@@ -1,0 +1,13 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/demo/__tests__/server.test.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  20:39:32
+   Duration  661ms (environment 88%, transform 9%, import 2%, tests 1%)
+

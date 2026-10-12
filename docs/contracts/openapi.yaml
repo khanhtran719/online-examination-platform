@@ -3346,7 +3346,16 @@ paths:
   /v1/admin/audit:
     get:
       operationId: getAudit
-      summary: getAudit
+      summary: Browse redacted retained audit records
+      description: >-
+        Current audit.read and fail-closed transactional access audit. Primary live
+        keyset occurredAt DESC/id DESC, default20/max100, opaque actor/page-size bound
+        cursor with15min expiry and timestamp watermark. Late/backdated commits may
+        be omitted; this is not an immutable export. Raw reason/operator identity are
+        redacted; reason is null. Unknown source labels/field names are redacted.
+        actorType preserves USER/OPERATOR/SYSTEM; resourceId may be null. Database
+        FAILURE maps to DTO FAILED. No filter/offset/query parameters beyond paging.
+        Each successful read writes exactly one access audit, including an empty page.
       tags:
         - Reporting
       security:
@@ -3395,12 +3404,13 @@ paths:
       x-flow: read
       x-permissions:
         - audit.read
-      x-transaction: none
+      x-transaction: audit-read
       x-idempotency: false
       x-cases:
         - AC-22
         - AC-24
         - AC-27
+        - AC-38
       x-paginated: true
   /live:
     get:
@@ -5319,6 +5329,7 @@ components:
         - id
         - occurredAt
         - actorId
+        - actorType
         - action
         - resourceType
         - resourceId
@@ -5338,6 +5349,9 @@ components:
           type: string
           format: uuid
           nullable: true
+        actorType:
+          type: string
+          enum: [USER, OPERATOR, SYSTEM]
         action:
           type: string
           minLength: 1
@@ -5349,6 +5363,7 @@ components:
         resourceId:
           type: string
           format: uuid
+          nullable: true
         outcome:
           type: string
           enum:

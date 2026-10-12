@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { ApiError } from "../errors";
 import { requestJson } from "../http";
-import { parseData, parseProfile, parseResult, parseSession } from "../parse";
+import { parseAuditEntry, parseData, parseProfile, parseResult, parseSession } from "../parse";
 import { isUuidV7, uuidV7 } from "../uuid";
 
 function jsonResponse(status: number, body: unknown, headers?: HeadersInit): Response {
@@ -215,4 +215,24 @@ describe("HTTP envelope", () => {
       vi.useRealTimers();
     }
   });
+});
+
+describe("Audit response compatibility", () => {
+  const entry = {
+    id: "00000000-0000-4000-8000-000000000001",
+    occurredAt: "2026-10-10T00:00:00.000Z",
+    actorId: null,
+    actorType: "SYSTEM",
+    action: "platform.audit.prune",
+    resourceType: "AUDIT_LOG",
+    resourceId: null,
+    outcome: "SUCCESS",
+    reason: null,
+    correlationId: "00000000-0000-4000-8000-000000000001",
+    changedFields: ["purgedRows"],
+  };
+  it("keeps system actor and absent resource null", () =>
+    expect(parseAuditEntry(entry)).toEqual(entry));
+  it("rejects unknown actor types", () =>
+    expect(() => parseAuditEntry({ ...entry, actorType: "PRIVATE" })).toThrow());
 });

@@ -1,0 +1,12 @@
+
+> online-examination-platform@0.1.0 test:integration
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.integration.cjs --runInBand --globalSetup .local/rep06/setup.cjs
+
+● Validation Error:
+
+  Module .local/rep06/setup.cjs in the globalSetup option was not found.
+         <rootDir> is: /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform
+
+  Configuration Documentation:
+  https://jestjs.io/docs/configuration
+

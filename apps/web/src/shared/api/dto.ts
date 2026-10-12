@@ -351,12 +351,13 @@ export interface Metrics {
   oldestJobSeconds: number;
 }
 export interface AuditEntry {
+  actorType: "USER" | "OPERATOR" | "SYSTEM";
   id: string;
   occurredAt: string;
   actorId: string | null;
   action: string;
   resourceType: string;
-  resourceId: string;
+  resourceId: string | null;
   outcome: "SUCCESS" | "DENIED" | "FAILED";
   reason: string | null;
   correlationId: string;

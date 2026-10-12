@@ -1,0 +1,52 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/demo/__tests__/server.test.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/demo/__tests__/server.test.ts (4 tests | 1 failed) 11ms
+   ❯ demo server (4)
+     × keeps user/system audit samples compatible with actor type and nullable targets 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/demo/__tests__/server.test.ts > demo server > keeps user/system audit samples compatible with actor type and nullable targets
+AssertionError: expected { …(10) } to match object { actorType: 'USER' }
+(10 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "actorType": "USER",
++   "action": "profile.opt_in",
++   "actorId": "00000000-0000-4000-8000-0000000000a1",
++   "changedFields": [
++     "leaderboardOptIn",
++   ],
++   "correlationId": "00000000-0000-4000-8000-000000000c02",
++   "id": "00000000-0000-4000-8000-000000000c01",
++   "occurredAt": "2026-10-06T12:58:00.000Z",
++   "outcome": "SUCCESS",
++   "reason": null,
++   "resourceId": "00000000-0000-4000-8000-0000000000a1",
++   "resourceType": "profile",
+  }
+
+ ❯ src/demo/__tests__/server.test.ts:17:54
+     15|     extras.setPermissions("admin");
+     16|     const rows = (await api.getAudit({ pageSize: 20 })).data.items;
+     17|     expect(rows.find((row) => row.actorId !== null)).toMatchObject({ a…
+       |                                                      ^
+     18|     expect(rows.find((row) => row.actorType === "SYSTEM")).toMatchObje…
+     19|       actorId: null, resourceId: null, reason: null,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  20:38:40
+   Duration  734ms (environment 88%, transform 8%, tests 2%, import 1%)
+

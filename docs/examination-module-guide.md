@@ -1,5 +1,17 @@
 # Examination module guide
 
+Reporting audit browse owns private Application DTO/query/cursor/service, pure safe
+projection validation, pg/crypto adapters and thin HTTP. It uses only Identity's
+public current-access capability, existing technical SecurityControls/UnitOfWork
+and declared platform.audit_logs columns; no private source repository or global
+business import. Mandatory safe access audit commits before response. Shared pure
+AuditRetention/Port owns bounded cross-cutting invocation, global observability/
+audit implements it and workers/scheduler composes it. No table-named business
+module or Reporting delete API. Actor type/nullable IDs are intentional v1 DTO
+changes; Web parser/demo compatibility is separate from live Admin permissions.
+See [ADR-015](adr/015-audit-browse-and-fixed-retention.md) and
+[REP-06 plan](admin-audit-2026-10-10.md).
+
 Reporting business-metrics uses a private Application snapshot/query port and
 read-only Assessment attempt columns, with pure count/window/subset validation.
 Current Identity access and safe global access audit commit before response. Cohort

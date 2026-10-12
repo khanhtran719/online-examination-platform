@@ -27,6 +27,10 @@ import { CandidateResultsController } from "./presentation/http/candidate-result
 import { BusinessMetricsService } from "./application/services/business-metrics.service";
 import { PostgresBusinessMetricsQuery } from "./infrastructure/persistence/postgres-business-metrics.query";
 import { BusinessMetricsController } from "./presentation/http/business-metrics.controller";
+import { AuditService } from "./application/services/audit.service";
+import { PostgresAuditQuery } from "./infrastructure/persistence/postgres-audit.query";
+import { AuditCrypto } from "./infrastructure/security/audit-cursor";
+import { AuditController } from "./presentation/http/audit.controller";
 @Module({})
 export class ReportingModule {
   static forRoot(config: ApiConfig): DynamicModule {
@@ -35,6 +39,7 @@ export class ReportingModule {
       imports: [DatabaseModule],
       exports: [RANKING_PROJECTION],
       controllers: [
+        AuditController,
         BusinessMetricsController,
         ActiveCandidatesController,
         SubmissionsController,
@@ -42,6 +47,18 @@ export class ReportingModule {
         CandidateResultsController,
       ],
       providers: [
+        {
+          provide: AuditService,
+          inject: [IDENTITY_ACCESS, PostgresDatabase],
+          useFactory: (access: IdentityAccess, db: PostgresDatabase) =>
+            new AuditService(
+              access,
+              new PostgresAuditQuery(db),
+              new AuditCrypto(config.csrfKey),
+              new PostgresSecurity(db, config.rateKey),
+              db,
+            ),
+        },
         {
           provide: BusinessMetricsService,
           inject: [IDENTITY_ACCESS, PostgresDatabase],
