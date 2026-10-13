@@ -20,6 +20,7 @@ export function SampleSummary({
 }) {
   const result = state.stage === "result";
   const Heading = embedded ? "h3" : "h1";
+  const RowHeading = embedded ? "h4" : "h2";
   return (
     <section className={styles.summary} aria-labelledby="sample-summary-title">
       <div className={styles.summaryIntro}>
@@ -62,9 +63,9 @@ export function SampleSummary({
           return (
             <section className={styles.reviewRow} key={question.prompt}>
               <div className={styles.reviewHeading}>
-                <h2>
+                <RowHeading>
                   Câu {index + 1} · {question.type}
-                </h2>
+                </RowHeading>
                 {result ? (
                   <span className={correct ? styles.correct : styles.incorrect}>
                     {correct ? "Đúng" : chosen.length ? "Chưa đúng" : "Chưa trả lời"}
@@ -95,7 +96,7 @@ export function SampleSummary({
         {result ? (
           <>
             <Link className={styles.primary} to="/register">
-              Tạo tài khoản <span aria-hidden="true">↗</span>
+              Tạo tài khoản <span aria-hidden="true">→</span>
             </Link>
             <button
               type="button"

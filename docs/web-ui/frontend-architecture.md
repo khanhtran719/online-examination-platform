@@ -1,5 +1,15 @@
 # Kiến trúc frontend
 
+PORT-06A 2026-10-13: PublicFrame sở hữu capsule chrome/light footer và session-aware
+destinations; shared Navigation chỉ nhận optional CSS slots, không đọc session,
+runtime hoặc transport. SampleNavigator là pure view trong experience, dispatch
+reducer action có sẵn. Câu hỏi đứng trước navigator trong DOM, desktop 2:1 và
+tablet stack; heading embedded theo H2 → H3 → H4. Skip link là phần tử đầu trong
+header landmark thật, offscreen khi không focus và trỏ tới main focusable. Không
+đổi Sample reducer/data/scoring hoặc official Assessment. Green 3D artwork giữ
+approved exception; Home section convergence và Admin typography là increments
+riêng. [Plan/review và giới hạn](port-06a-2026-10-13.md).
+
 PORT-05H2026-10-13: Public How/Help/404 thuộc `features/experience`, tách khỏi
 Auth barrel; router lazy-load từng page. Nội dung tác giả và topic state local,
 FAQ dùng native details/summary; count lấy từ danh sách thực. Không remote query,

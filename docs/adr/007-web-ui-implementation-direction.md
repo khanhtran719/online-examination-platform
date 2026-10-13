@@ -20,6 +20,18 @@ User-approved visual increment, 2026-10-07: the public homepage uses the “Vào
 
 ## Consequences and gates
 
+### Public convergence, 2026-10-13
+
+PORT-06A aligns Public chrome with the selected Cobalt–Apricot references:
+white capsule header, light footer/final CTA and legible helper typography.
+The approved green 3D scene and its fallback retain their separate artwork palette;
+the earlier “public marketing retains its separate palette” decision applies to
+that artwork, not to all Public navigation/surfaces. Sample uses question-first
+DOM order and a presentation-only navigator with the existing local reducer.
+No new framework, store, API capability, backend layer or AWS resource is added.
+Home section reconciliation remains PORT-06C; Admin typography is PORT-06B.
+[Implementation and measured local checks](../web-ui/port-06a-2026-10-13.md).
+
 ### Approved frontend increment, 2026-10-12
 
 The selected Cobalt–Apricot workspace references replace the original navy/teal

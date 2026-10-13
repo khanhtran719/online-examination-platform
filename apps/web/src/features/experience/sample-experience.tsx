@@ -1,10 +1,10 @@
 import { useEffect, useReducer, useRef } from "react";
-import { Link } from "react-router";
 
 import { useTitle } from "@web/app/use-title";
 
 import styles from "./experience.module.css";
 import { initialSample, SAMPLE_QUESTIONS, sampleReducer } from "./sample";
+import { SampleNavigator } from "./sample-navigator";
 import { SampleSummary } from "./sample-summary";
 
 export function SampleExperience() {
@@ -16,12 +16,12 @@ export function SampleExperiencePanel({ embedded = false }: { embedded?: boolean
   const [state, dispatch] = useReducer(sampleReducer, undefined, initialSample);
   const content = useRef<HTMLDivElement>(null);
   const question = SAMPLE_QUESTIONS[state.current] ?? SAMPLE_QUESTIONS[0];
-  const answered = state.choices.filter((choice) => choice.length).length;
   const marked = state.marked[state.current] ?? false;
   const currentQuestion = state.current;
   const currentStage = state.stage;
   const previous = useRef({ question: currentQuestion, stage: currentStage });
   const Heading = embedded ? "h3" : "h1";
+  const QuestionHeading = embedded ? "h3" : "h2";
   useEffect(() => {
     if (previous.current.question === currentQuestion && previous.current.stage === currentStage)
       return;
@@ -42,46 +42,6 @@ export function SampleExperiencePanel({ embedded = false }: { embedded?: boolean
             <span className={styles.sampleLabel}>Trải nghiệm minh họa</span>
           </div>
           <div className={styles.roomGrid}>
-            <aside className={styles.sidebar} aria-label="Tiến độ làm bài">
-              <div className={styles.sideTitle}>
-                <span>Tiến độ của bạn</span>
-                <b>{answered} / 3</b>
-              </div>
-              <progress
-                className={styles.progress}
-                value={answered}
-                max={3}
-                aria-label="Số câu đã trả lời"
-              />
-              <nav className={styles.questionNav} aria-label="Chuyển câu hỏi">
-                {SAMPLE_QUESTIONS.map((_question, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    className={state.choices[index]?.length ? styles.answered : ""}
-                    aria-current={index === state.current ? "step" : undefined}
-                    aria-label={`Câu ${index + 1}, ${state.choices[index]?.length ? "đã trả lời" : "chưa trả lời"}${state.marked[index] ? ", đã đánh dấu" : ""}`}
-                    onClick={() => dispatch({ type: "jump", index })}
-                  >
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    {state.marked[index] ? (
-                      <span className={styles.markDot} aria-hidden="true">
-                        •
-                      </span>
-                    ) : null}
-                  </button>
-                ))}
-              </nav>
-              <p className={styles.legend}>✓ Đã trả lời · ● Đánh dấu</p>
-              <div className={styles.reminder}>
-                <span aria-hidden="true">◷</span>
-                <h3>Cứ bình tĩnh.</h3>
-                <p>Đây là bài mẫu, không giới hạn thời gian. Bạn có thể quay lại bất kỳ câu nào.</p>
-              </div>
-              <Link className={styles.backLink} to="/">
-                ← Về trang giới thiệu
-              </Link>
-            </aside>
             <section className={styles.questionPanel} aria-labelledby="sample-question-title">
               <div className={styles.questionTop}>
                 <span>{question.type}</span>
@@ -98,9 +58,9 @@ export function SampleExperiencePanel({ embedded = false }: { embedded?: boolean
               <p className={styles.questionNumber}>
                 Câu {String(state.current + 1).padStart(2, "0")} / 03
               </p>
-              <h2 id="sample-question-title" tabIndex={-1}>
+              <QuestionHeading id="sample-question-title" tabIndex={-1}>
                 {question.prompt}
-              </h2>
+              </QuestionHeading>
               <p className={styles.hint}>{question.hint}</p>
               <fieldset className={styles.answers} key={state.current}>
                 <legend className={styles.visuallyHidden}>{question.hint}</legend>
@@ -156,6 +116,7 @@ export function SampleExperiencePanel({ embedded = false }: { embedded?: boolean
                 </button>
               </div>
             </section>
+            <SampleNavigator state={state} dispatch={dispatch} embedded={embedded} />
           </div>
         </>
       )}

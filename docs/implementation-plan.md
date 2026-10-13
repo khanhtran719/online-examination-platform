@@ -1,4 +1,14 @@
-# Active increment2026-10-13: Web/tablet coverage review
+# Active increment2026-10-13: PORT-06A Public convergence
+
+COMPLETE locally: [A1–A5](web-ui/port-06a-2026-10-13.md). Capsule/light Public
+chrome, question-first Sample 2:1, review navigator, heading/helper typography và
+skip link. 938 root/75 Chromium PASS; 42 new font/full-axe/overflow observations.
+1.458 protected files unchanged; 634 raw artifacts removed sau review, templates
+retained. Web/tablet only, no API/dependency/AWS change hoặc actual HTTPS/PG gate.
+Next bounded PORT-06B Admin typography; E5/Q5 chưa tick lại. Home layout/PORT-06C,
+parent PORT-05/FE7/32/roadmap89/217/full live/production mở; mobile/app deferred.
+
+# Previous increment2026-10-13: Web/tablet coverage review
 
 REVIEW COMPLETE locally: [REV-01–05](web-ui/web-tablet-coverage-review-2026-10-13.md).
 Đối chiếu33 page families/route/state với current source và selected templates;
@@ -6,7 +16,7 @@ Public Home/Sample/chrome runtime review, stale integration-status corrections
 và ordered backlog. Không sửa application/API/template hoặc mở full deployment.
 33/33 main families/39 routes,82 observations,3 final review cases PASS,
 source/template830 hashes unchanged. E5/Q5 visual reopened vì helper typography;
-RV-01–06 và next PORT-06A còn mở. Raw artifacts dọn sau inspection, summary
+Findings RV-01–06 là trạng thái trước PORT-06A; closure mới ghi riêng trong review. Raw artifacts dọn sau inspection, summary
 Markdown; parent PORT-05/FE7/32/roadmap89/217/
 full live/production giữ mở, mobile/app deferred.
 

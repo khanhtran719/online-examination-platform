@@ -21,6 +21,7 @@ export interface NavItem {
   end?: boolean;
   emphasis?: boolean;
   icon?: NavIcon;
+  className?: string;
 }
 
 const paths: Record<NavIcon, string> = {
@@ -41,23 +42,35 @@ export function Navigation({
   items,
   label = "Chính",
   variant = "header",
+  className,
 }: {
   items: readonly NavItem[];
   label?: string;
   variant?: "header" | "rail";
+  className?: string;
 }) {
   const location = useLocation();
-  return <NavigationMenu key={location.key} items={items} label={label} variant={variant} />;
+  return (
+    <NavigationMenu
+      key={location.key}
+      items={items}
+      label={label}
+      variant={variant}
+      className={className}
+    />
+  );
 }
 
 function NavigationMenu({
   items,
   label,
   variant,
+  className,
 }: {
   items: readonly NavItem[];
   label: string;
   variant: "header" | "rail";
+  className?: string;
 }) {
   const id = useId();
   const trigger = useRef<HTMLButtonElement>(null);
@@ -90,7 +103,7 @@ function NavigationMenu({
       </button>
       <nav
         id={id}
-        className={`${styles.nav} ${variant === "rail" ? styles.rail : styles.header} ${open ? styles.open : ""}`}
+        className={`${styles.nav} ${variant === "rail" ? styles.rail : styles.header} ${open ? styles.open : ""} ${className ?? ""}`}
         aria-label={label}
       >
         {items.map((item) => (
@@ -99,7 +112,7 @@ function NavigationMenu({
             to={item.to}
             end={item.end}
             title={item.label}
-            className={`${styles.link} ${item.emphasis ? styles.emphasis : ""}`}
+            className={`${styles.link} ${item.emphasis ? styles.emphasis : ""} ${item.className ?? ""}`}
             onClick={() => setOpen(false)}
           >
             {variant === "rail" && item.icon ? (
@@ -108,7 +121,6 @@ function NavigationMenu({
               </svg>
             ) : null}
             <span>{item.label}</span>
-            {item.emphasis ? <span aria-hidden="true">↗</span> : null}
           </NavLink>
         ))}
       </nav>

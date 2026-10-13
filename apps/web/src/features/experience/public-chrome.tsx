@@ -27,14 +27,24 @@ export function PublicFrame({ children }: { children: ReactNode }) {
   ];
   return (
     <div className={styles.frame}>
-      <a className="skip-link" href="#content">
-        Đi tới nội dung
-      </a>
       <header className={styles.header}>
+        <a className={`skip-link ${styles.skipLink}`} href="#content">
+          Đi tới nội dung
+        </a>
         <div className={styles.headerInner}>
           <Brand />
           <Navigation
-            items={links.map((link, index) => ({ ...link, emphasis: index === links.length - 1 }))}
+            className={styles.publicNav}
+            items={links.map((link, index) => ({
+              ...link,
+              emphasis: index === links.length - 1,
+              className:
+                index < 3
+                  ? styles.primaryNavLink
+                  : index === 3
+                    ? `${styles.accountNavLink} ${styles.accountNavStart}`
+                    : styles.primaryNavAction,
+            }))}
           />
         </div>
       </header>

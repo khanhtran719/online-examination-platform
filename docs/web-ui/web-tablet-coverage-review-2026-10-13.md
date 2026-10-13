@@ -1,5 +1,13 @@
 # Review coverage Web/tablet — 2026-10-13
 
+Remediation update 2026-10-13: [PORT-06A A1–A5](port-06a-2026-10-13.md) COMPLETE
+locally; 938 root/75 Chromium PASS, 42 new full-axe/font/overflow observations.
+RV-01/02, phần Public RV-03 và local RV-05 triage/fix đã đóng. RV-03 Admin/E5/Q5
+vẫn PORT-06B; RV-04 vẫn PORT-06C; RV-06 chưa triển khai. Findings/inventory bên
+dưới giữ nguyên trạng thái lúc review gốc, không phải danh sách defect vẫn mở.
+Auth shared chrome có additional full-axe checks trên 4 routes ở 1440px;
+manual AT/multiple engines/full state acceptance không đóng bằng axe.
+
 REVIEW COMPLETE locally; remediation/integration backlog còn mở. Scope: đối chiếu routes/source/tests với33 page families đã chọn;
 kiểm tra lại Public Home/Sample/chrome trên768/1024/1280/1440px và chỉnh tài liệu
 status bị cũ. Không đổi application/API/template bytes hoặc triển khai phase mới.
@@ -114,13 +122,12 @@ RV-06 files: `exam-preflight`269, `admin-attempt-page`209, `import-page`214,
 
 ## Checklist triển khai tiếp theo có thứ tự
 
-1. [ ] **PORT-06A — NEXT (backlog đã xác định, chưa sửa code): Public
-   chrome + Sample convergence.** Owner experience/shared Navigation. Làm RV-01/02,
-   phần Public RV-03 và triage RV-05. Giữ Home3D approved exception; không tạo API.
-   DoD: routes/auth-aware nav, capsule/spacing, light public footer, native keyboard,
-   heading outline,20+ Public state/width probes và source business-request budget0;
-   preserve sample score only for3 authored questions, reload resets, no official keys.
-2. [ ] **PORT-06B — Typography closure.** Owner shared fields/Admin presentation.
+1. [x] **PORT-06A — COMPLETE locally 2026-10-13: Public chrome + Sample
+   convergence.** [Implementation/checks](port-06a-2026-10-13.md): RV-01/02,
+   Public RV-03 và local RV-05 fix; 42 new observations, 938 root/75 Chromium PASS.
+   Auth-aware destinations/native keyboard, sample score/reload/request budget
+   giữ đúng; green 3D exception không đổi. Không API hoặc full production gate.
+2. [ ] **PORT-06B — NEXT: Typography closure.** Owner shared fields/Admin presentation.
    Sửa RV-03 còn lại; error/helper/section totals/PageEnd/import report≥14px trên
    768/1024/1280/1440. Regression forms/dialogs/long Vietnamese content; không
    tăng kích thước icon trang trí như thể là helper text hoặc nới design requirement. Restore PORT-02 E5/PORT-03 Q5
