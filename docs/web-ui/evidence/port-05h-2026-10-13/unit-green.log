@@ -1,0 +1,13 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run public-guides.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  14:32:10
+   Duration  1.10s (environment 56%, import 18%, tests 18%, transform 8%)
+

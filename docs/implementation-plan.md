@@ -1,4 +1,16 @@
-# Active increment 2026-10-13: PORT-05G Candidate Dashboard
+# Active increment 2026-10-13: PORT-05H Public How / Help / 404
+
+COMPLETE locally: [H1–H5 review](web-ui/port-05h-2026-10-13.md). Web/tablet
+768/1024/1280/1440px.933 root/70 Chromium PASS;28 captures font/axe/overflow/
+gutter/control checks đạt. Public pages đúng owner experience; static5-step guide,
+13 local FAQ và safe404 recovery.7.680 protected files unchanged, Auth/router
+placement exceptions preserve7 Auth exports/route definitions. No API/dependency/
+AWS change, no actual business/HTTPS/SLO/cost acceptance. [Evidence](web-ui/evidence/port-05h-2026-10-13/README.md).
+Next bounded Web/tablet coverage review, Public Home/Sample/chrome findings và
+live integration gaps. Parent PORT-05/FE7/32/roadmap89/217/full live/production
+còn mở; mobile/app deferred. Prior checkpoints below retain historical scope.
+
+# Previous increment 2026-10-13: PORT-05G Candidate Dashboard
 
 COMPLETE locally: [G1–G5 review](web-ui/port-05g-2026-10-13.md). Web/tablet
 768/1024/1280/1440px.930 root/66 Chromium PASS;24 final captures font/axe/

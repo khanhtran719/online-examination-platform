@@ -1,0 +1,10 @@
+{
+  "authExportsUnchanged": true,
+  "authExports": 7,
+  "publicFunctionsRemoved": [
+    "HowPage",
+    "HelpPage",
+    "NotFoundPage"
+  ],
+  "routerRoutesUnchanged": true
+}

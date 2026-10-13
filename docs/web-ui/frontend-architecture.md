@@ -1,5 +1,12 @@
 # Kiến trúc frontend
 
+PORT-05H2026-10-13: Public How/Help/404 thuộc `features/experience`, tách khỏi
+Auth barrel; router lazy-load từng page. Nội dung tác giả và topic state local,
+FAQ dùng native details/summary; count lấy từ danh sách thực. Không remote query,
+session/transport import trong các page hoặc global FAQ/navigation store. 404
+không phản chiếu unknown URL; recovery links dùng public destinations cố định
+vì chưa có safe-history contract. [Plan/review](port-05h-2026-10-13.md).
+
 PORT-05G2026-10-13: Dashboard compose `dashboard-attempts`/`dashboard-catalog`,
 controller chọn bounded first20 history/first3 category catalog. Feature-owned
 snapshot helper scopes resource/actor/epoch/filter; signals reject late reads,
@@ -82,7 +89,7 @@ src/
     results/       status/result/review/history/leaderboard
     profile/       user profile
     admin/         authorized authoring/import/operations/reporting workflows
-    experience/    public homepage and authored sample experience
+    experience/    public homepage, sample experience, guides/help/recovery
   shared/
     api/           PlatformApi port, DTOs, safe errors, HTTP parser/transport
     ui/            domain-neutral accessible primitives

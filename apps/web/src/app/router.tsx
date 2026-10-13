@@ -1,15 +1,7 @@
 import { type ComponentType, lazy, Suspense } from "react";
 import { createBrowserRouter, Navigate } from "react-router";
 
-import {
-  CheckEmailPage,
-  HelpPage,
-  HowPage,
-  LoginPage,
-  NotFoundPage,
-  RegisterPage,
-  VerifyPage,
-} from "../features/auth/auth-pages";
+import { CheckEmailPage, LoginPage, RegisterPage, VerifyPage } from "../features/auth/auth-pages";
 import { BrowsePage, DashboardPage, ExamDetailPage } from "../features/catalog/catalog-pages";
 import { HomePage } from "../features/experience/home-page";
 import { SampleExperience as SampleExperiencePage } from "../features/experience/sample-experience";
@@ -30,6 +22,15 @@ function load(factory: () => Promise<{ default: ComponentType }>) {
   };
 }
 
+const HowPage = load(() =>
+  import("../features/experience/how-page").then((mod) => ({ default: mod.HowPage })),
+);
+const HelpPage = load(() =>
+  import("../features/experience/help-page").then((mod) => ({ default: mod.HelpPage })),
+);
+const NotFoundPage = load(() =>
+  import("../features/experience/not-found-page").then((mod) => ({ default: mod.NotFoundPage })),
+);
 const ExamRoomPage = load(() =>
   import("../features/assessment/exam-room").then((mod) => ({ default: mod.ExamRoomPage })),
 );

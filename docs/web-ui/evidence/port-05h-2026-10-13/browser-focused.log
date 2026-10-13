@@ -1,0 +1,20 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test --config playwright.port-05h.config.ts --grep PORT-05H
+
+[WebServer] (node:52439) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:52480) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:52481) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/port-05h.e2e-spec.ts:71:1 › PORT-05H public guide, four FAQ topics and 404 Web/tablet matrix (19.1s)
+  ✓  2 [chromium] › e2e/port-05h.e2e-spec.ts:99:1 › PORT-05H FAQ native keyboard disclosure, topic reset and reduced motion (3.0s)
+  ✓  3 [chromium] › e2e/port-05h.e2e-spec.ts:144:1 › PORT-05H public links preserve route guards and recover unknown routes (4.4s)
+  ✓  4 [chromium] › e2e/port-05h.e2e-spec.ts:169:1 › PORT-05H live public pages remain usable when session API is unavailable without business reads (2.6s)
+
+  4 passed (30.7s)
+

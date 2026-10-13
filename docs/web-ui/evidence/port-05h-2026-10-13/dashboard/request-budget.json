@@ -1,0 +1,40 @@
+{
+  "interpretation": "synthetic browser requests, not performance or live business acceptance",
+  "requests": [
+    {
+      "path": "/v1/me",
+      "pageSize": null,
+      "category": null
+    },
+    {
+      "path": "/v1/me/attempts",
+      "pageSize": "20",
+      "category": null
+    },
+    {
+      "path": "/v1/exams",
+      "pageSize": "3",
+      "category": null
+    },
+    {
+      "path": "/v1/exams/019a7450-0000-7000-8000-000000000002",
+      "pageSize": null,
+      "category": null
+    },
+    {
+      "path": "/v1/me/attempts",
+      "pageSize": "20",
+      "category": null
+    },
+    {
+      "path": "/v1/exams",
+      "pageSize": "3",
+      "category": null
+    },
+    {
+      "path": "/v1/exams",
+      "pageSize": "3",
+      "category": "IELTS"
+    }
+  ]
+}

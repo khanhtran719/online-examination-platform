@@ -1,0 +1,23 @@
+{
+  "documentWidth": 1440,
+  "left": 188,
+  "right": 1252,
+  "fontLoaded": true,
+  "passwordInputs": [
+    {
+      "masked": true,
+      "empty": true
+    },
+    {
+      "masked": true,
+      "empty": true
+    }
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 1100
+  },
+  "route": "/register",
+  "violations": [],
+  "evidenceMode": "demo"
+}

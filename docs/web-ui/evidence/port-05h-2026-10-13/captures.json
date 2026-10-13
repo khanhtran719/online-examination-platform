@@ -1,0 +1,506 @@
+[
+  {
+    "file": "public-guides/404-1024.png",
+    "sha256": "f0819503ca6447ab6ee067177202af720df4e4172ef6a8e65c4f959c0397cb39",
+    "documentWidth": 1024,
+    "outerLeft": 0,
+    "outerRight": 1024,
+    "left": 32,
+    "right": 992,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/404-1280.png",
+    "sha256": "4f71a3536393fcfc7bdcb834a28d561ccde9aec6cba81e977c511a10a96724a8",
+    "documentWidth": 1280,
+    "outerLeft": 0,
+    "outerRight": 1280,
+    "left": 32,
+    "right": 1248,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/404-1440.png",
+    "sha256": "48bb0081744fbcce5ef7ae46bde8383afed3239e2d5743c821a76525f6194ff6",
+    "documentWidth": 1440,
+    "outerLeft": 80,
+    "outerRight": 1360,
+    "left": 112,
+    "right": 1328,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/404-768.png",
+    "sha256": "2dc89d86d5e3f9305612fab688f1c91d79e5148c175cea2abdf6e8d16084f135",
+    "documentWidth": 768,
+    "outerLeft": 0,
+    "outerRight": 768,
+    "left": 24,
+    "right": 744,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 768,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-account-1024.png",
+    "sha256": "6d8143f38ffdf5aed17c1d533868f1affe0bb553f60a9d30d5497970d400c70f",
+    "documentWidth": 1024,
+    "outerLeft": 0,
+    "outerRight": 1024,
+    "left": 32,
+    "right": 992,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-account-1280.png",
+    "sha256": "89a916d932347c007c778fde2361413e9040c67d265598b996f8102cfe301bb5",
+    "documentWidth": 1280,
+    "outerLeft": 0,
+    "outerRight": 1280,
+    "left": 32,
+    "right": 1248,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-account-1440.png",
+    "sha256": "3204a2b86a6db1b71ea811a81f9881f79502c821b36165d9c95a53dc031a93f0",
+    "documentWidth": 1440,
+    "outerLeft": 80,
+    "outerRight": 1360,
+    "left": 112,
+    "right": 1328,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-account-768.png",
+    "sha256": "2d865d3512caceb7961e08ab473fe8dcffdea30d59c4583328df3c435fc17d92",
+    "documentWidth": 768,
+    "outerLeft": 0,
+    "outerRight": 768,
+    "left": 24,
+    "right": 744,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 768,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-all-room-open-768.png",
+    "sha256": "3fe00185235bfd7634b168d2f40f88ede138bec9f4ecceda4f74472beb4cb4fd",
+    "documentWidth": 768,
+    "outerLeft": 0,
+    "outerRight": 768,
+    "left": 24,
+    "right": 744,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 768,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-catalog-1024.png",
+    "sha256": "8c311e5d153a08dad7c36b926469e0a37b4d78ad0198de9c9ab80cbbe036fa82",
+    "documentWidth": 1024,
+    "outerLeft": 0,
+    "outerRight": 1024,
+    "left": 32,
+    "right": 992,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-catalog-1280.png",
+    "sha256": "f5dd0c2be66b204a7bba2581af29921445026939022a4998655dd3d9379098c9",
+    "documentWidth": 1280,
+    "outerLeft": 0,
+    "outerRight": 1280,
+    "left": 32,
+    "right": 1248,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-catalog-1440.png",
+    "sha256": "138d465be03de3fdedc18535c6e3de730d33409ec58e2b279f1bafd3e139110a",
+    "documentWidth": 1440,
+    "outerLeft": 80,
+    "outerRight": 1360,
+    "left": 112,
+    "right": 1328,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-catalog-768.png",
+    "sha256": "1d7d3da3427b854c7a7cad8076fdc52e2ab31345eb4faf8db6b08cb4b6914094",
+    "documentWidth": 768,
+    "outerLeft": 0,
+    "outerRight": 768,
+    "left": 24,
+    "right": 744,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 768,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-keyboard-768.png",
+    "sha256": "9cf261e64bf06a1527a475595588cca68795c494a71a826f6bd9e1ffda9e0bd6",
+    "documentWidth": 768,
+    "outerLeft": 0,
+    "outerRight": 768,
+    "left": 24,
+    "right": 744,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 768,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-result-1024.png",
+    "sha256": "a3d10b4c3bb03c53b91e782f0d5e92c0ff1d14079d0f0ac94415a2059a71527b",
+    "documentWidth": 1024,
+    "outerLeft": 0,
+    "outerRight": 1024,
+    "left": 32,
+    "right": 992,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-result-1280.png",
+    "sha256": "f4f0c785b6b738017b75b29b6db4652b27ae62c499128cd7ee54d9db01758728",
+    "documentWidth": 1280,
+    "outerLeft": 0,
+    "outerRight": 1280,
+    "left": 32,
+    "right": 1248,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-result-1440.png",
+    "sha256": "68ec50242f07da7f91dbd536808cdd30ae5d3a2caafd2644c1e693a5b499ff81",
+    "documentWidth": 1440,
+    "outerLeft": 80,
+    "outerRight": 1360,
+    "left": 112,
+    "right": 1328,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-result-768.png",
+    "sha256": "57214f70b0f327a1db2b3593181eb4051c170636b8ddcdfcab5e4d65db63a34f",
+    "documentWidth": 768,
+    "outerLeft": 0,
+    "outerRight": 768,
+    "left": 24,
+    "right": 744,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 768,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-room-1024.png",
+    "sha256": "f47bb22714902b69409cdf0f7bcd9e57ebc2cd256b28634acaf96c751d7d11f2",
+    "documentWidth": 1024,
+    "outerLeft": 0,
+    "outerRight": 1024,
+    "left": 32,
+    "right": 992,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-room-1280.png",
+    "sha256": "9908376178edd80304876ca85d7602e9973254491ffef45b44f6cdc95c8cbe83",
+    "documentWidth": 1280,
+    "outerLeft": 0,
+    "outerRight": 1280,
+    "left": 32,
+    "right": 1248,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-room-1440.png",
+    "sha256": "d33daa09b27c62e971a93182c984cd4d37fe64b1cde5c55bfc25677dd512f13e",
+    "documentWidth": 1440,
+    "outerLeft": 80,
+    "outerRight": 1360,
+    "left": 112,
+    "right": 1328,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/help-room-768.png",
+    "sha256": "9cf261e64bf06a1527a475595588cca68795c494a71a826f6bd9e1ffda9e0bd6",
+    "documentWidth": 768,
+    "outerLeft": 0,
+    "outerRight": 768,
+    "left": 24,
+    "right": 744,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 768,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/how-1024.png",
+    "sha256": "0ab3616a5e432377a2c0eebe50598eb5d47260da1fe360a05996fe867f85a9ce",
+    "documentWidth": 1024,
+    "outerLeft": 0,
+    "outerRight": 1024,
+    "left": 32,
+    "right": 992,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/how-1280.png",
+    "sha256": "aa9bd1932ef600f42f89e6248077c4820647571d1b02eef83f523d7dd012b500",
+    "documentWidth": 1280,
+    "outerLeft": 0,
+    "outerRight": 1280,
+    "left": 32,
+    "right": 1248,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/how-1440.png",
+    "sha256": "2065d243fb2925887203cecf3dae7ae99d468bc02560d2d13e7ba40ba666e234",
+    "documentWidth": 1440,
+    "outerLeft": 80,
+    "outerRight": 1360,
+    "left": 112,
+    "right": 1328,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/how-768.png",
+    "sha256": "f9e040f5f786b23efd169df191559f771e6758787331da33667eab4c6b4677ed",
+    "documentWidth": 768,
+    "outerLeft": 0,
+    "outerRight": 768,
+    "left": 24,
+    "right": 744,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 768,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "demo"
+  },
+  {
+    "file": "public-guides/live-dev-404-1280.png",
+    "sha256": "eab178dc1282c99539f78f3a02ac279dae7f44ded86d0e92c0e12e92805a8c40",
+    "documentWidth": 1280,
+    "outerLeft": 0,
+    "outerRight": 1280,
+    "left": 32,
+    "right": 1248,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "synthetic unavailable HTTP; not actual business/HTTPS acceptance"
+  },
+  {
+    "file": "public-guides/live-help-unavailable-1280.png",
+    "sha256": "4982776bfadadab41c346a4b2905bb1caab7828d538b9c8e7cb2fec182020a35",
+    "documentWidth": 1280,
+    "outerLeft": 0,
+    "outerRight": 1280,
+    "left": 32,
+    "right": 1248,
+    "fontLoaded": true,
+    "headingCount": 1,
+    "minControlHeight": 44,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "violations": [],
+    "mode": "synthetic unavailable HTTP; not actual business/HTTPS acceptance"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "documentWidth": 1280,
+  "left": 340,
+  "right": 940,
+  "fontLoaded": true,
+  "passwordInputs": [
+    {
+      "masked": true,
+      "empty": true
+    },
+    {
+      "masked": true,
+      "empty": true
+    }
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 1100
+  },
+  "route": "/verify-email",
+  "violations": [],
+  "evidenceMode": "demo"
+}

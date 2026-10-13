@@ -1,5 +1,15 @@
 # Production acceptance ledger
 
+PORT-05H2026-10-13 UI checkpoint: [Public How/Help/404](web-ui/port-05h-2026-10-13.md)
+H1–H5 COMPLETE locally;933 root/70 Chromium PASS,28 Web/tablet captures.
+Guide5 bước/13 FAQ theo4 chủ đề/safe404; Public pages thuộc experience,
+Auth exports/routes retained.7.680 protected files unchanged, no API/dependency/
+AWS change. Synthetic session-unavailable probe0 page-owned business requests;
+không actual exam business/HTTPS/capacity/cost acceptance. Roadmap89/217,
+FE7/32/parent PORT-05 giữ mở, production NOT ACCEPTED; mobile/app deferred.
+Next bounded review route/state/template coverage Web/tablet, Public Home/Sample/
+chrome findings và các live integration gates còn thiếu. Prior checkpoints follow.
+
 PORT-05G2026-10-13 UI checkpoint: [Candidate Dashboard](web-ui/port-05g-2026-10-13.md)
 G1–G5 COMPLETE locally;930 root/66 Chromium PASS,24 Web/tablet captures.
 6.960 API/template/prior evidence/PORT-05F files unchanged. No API/schema/

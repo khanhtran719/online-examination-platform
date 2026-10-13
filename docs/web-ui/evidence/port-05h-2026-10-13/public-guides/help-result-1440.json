@@ -1,0 +1,16 @@
+{
+  "documentWidth": 1440,
+  "outerLeft": 80,
+  "outerRight": 1360,
+  "left": 112,
+  "right": 1328,
+  "fontLoaded": true,
+  "headingCount": 1,
+  "minControlHeight": 44,
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "violations": [],
+  "mode": "demo"
+}
