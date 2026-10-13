@@ -1,0 +1,51 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test e2e/port-03.e2e-spec.ts
+
+
+Running 3 tests using 1 worker
+
+(node:17280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/port-03.e2e-spec.ts:60:1 › PORT-03 bank filters loaded questions without keys and fits Web/tablet (3.3s)
+  ✘  2 [chromium] › e2e/port-03.e2e-spec.ts:74:1 › PORT-03 option identity, candidate projection, type conversion and archive remain correct (45.2s)
+(node:18113) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [chromium] › e2e/port-03.e2e-spec.ts:140:1 › PORT-03 validates exact import snapshot and recovers an unknown atomic commit (5.6s)
+
+
+  1) [chromium] › e2e/port-03.e2e-spec.ts:74:1 › PORT-03 option identity, candidate projection, type conversion and archive remain correct 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Loại', { exact: true })
+
+
+      88 |   await page.getByLabel("Giải thích", { exact: true }).fill("PRIVATE_EXPLANATION_SENTINEL");
+      89 |   await capture(page, "create-single-1440");
+    > 90 |   await page.getByLabel("Loại", { exact: true }).selectOption("MULTIPLE_CHOICE");
+         |                                                  ^
+      91 |   await page.getByRole("checkbox", { name: "Đáp án đúng 3" }).check();
+      92 |   await page.getByRole("button", { name: "Lên lựa chọn 3", exact: true }).click();
+      93 |   await expect(page.getByRole("checkbox", { name: "Đáp án đúng 2" })).toBeChecked();
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-03.e2e-spec.ts:90:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-03.e2e-spec.ts-PORT-0-56db0--and-archive-remain-correct-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-03.e2e-spec.ts-PORT-0-56db0--and-archive-remain-correct-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-03.e2e-spec.ts-PORT-0-56db0--and-archive-remain-correct-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-03.e2e-spec.ts-PORT-0-56db0--and-archive-remain-correct-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/port-03.e2e-spec.ts:74:1 › PORT-03 option identity, candidate projection, type conversion and archive remain correct 
+  2 passed (55.3s)

@@ -1,0 +1,14 @@
+{
+  "checked": "live production JavaScript excludes exact synthetic demo chrome/account/fault-control markers",
+  "markers": [
+    "Dữ liệu mẫu. Đây không phải dữ liệu vận hành và không chứng minh bản live.",
+    "candidate@example.test",
+    "fixture-password-ok",
+    "Kịch bản mẫu",
+    "Lỗi lưu tiếp theo"
+  ],
+  "matches": [],
+  "pass": true,
+  "initialCheck": "Generic phrase Dữ liệu mẫu also occurs in an existing live unavailable explanation; first check retained separately. No source change was made for this false positive.",
+  "limit": "Static marker scan is not full live business integration or security acceptance."
+}

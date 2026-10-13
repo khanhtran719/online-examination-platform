@@ -1,0 +1,274 @@
+.page {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+.page h1 {
+  font-size: var(--type-title);
+  line-height: var(--type-title-line);
+  overflow-wrap: anywhere;
+}
+.page h2 {
+  font-size: 22px;
+  line-height: 30px;
+  overflow-wrap: anywhere;
+}
+.page h3 {
+  font-size: 18px;
+  line-height: 26px;
+  overflow-wrap: anywhere;
+}
+.page p,
+.page dd {
+  font-size: 16px;
+  line-height: 26px;
+  overflow-wrap: anywhere;
+}
+.page .muted,
+.page dt {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 22px;
+}
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.heading > div {
+  display: grid;
+  gap: 8px;
+}
+.page .eyebrow {
+  font-size: 14px;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.filters {
+  display: grid;
+  gap: 16px;
+}
+.filterTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 16px;
+}
+.filterTop > div:first-child {
+  flex: 1;
+  min-width: min(320px, 100%);
+}
+.filterTop > div:nth-child(2) {
+  min-width: 160px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chips > button {
+  /* Switch text and fill together so selection never crosses a low-contrast tint. */
+  transition:
+    border-color var(--motion-control),
+    box-shadow var(--motion-control);
+}
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.card,
+.panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-container);
+  background: var(--color-surface);
+  padding: 24px;
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  min-width: 0;
+  box-shadow: var(--shadow-surface);
+}
+.card {
+  grid-template-rows: auto auto auto auto auto 1fr auto;
+}
+.cardTop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 8px;
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.policy,
+.confirmSummary {
+  background: var(--color-primary-subtle);
+  border-radius: 16px;
+  padding: 16px;
+}
+.page .policy {
+  font-size: 14px;
+  line-height: 22px;
+}
+.primaryLink {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 20px;
+  border-radius: var(--radius-control);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  text-decoration: none;
+  font-weight: 600;
+}
+.primaryLink:hover {
+  background: var(--color-primary-hover);
+}
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.stack {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  gap: 16px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+}
+.facts > div {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+}
+.page .facts dd {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 30px;
+}
+.sections {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+.sections li {
+  display: flex;
+  align-items: start;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--color-primary-subtle);
+}
+.sections li > div {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+}
+.number {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border-radius: 12px;
+  font-family: var(--font-mono);
+}
+.schedule {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+.schedule > div {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: 16px;
+}
+.schedule dd {
+  margin: 0;
+}
+.rules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.rules > div {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--color-primary-subtle);
+}
+.notice {
+  background: var(--color-accent-subtle);
+  color: var(--color-warning-text);
+  border-radius: 16px;
+  padding: 20px;
+}
+.startPanel > button {
+  width: 100%;
+}
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.confirmSummary {
+  display: grid;
+  gap: 12px;
+}
+.instructions {
+  padding-left: 24px;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+@media (max-width: 1100px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 850px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .facts,
+  .rules {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .panel,
+  .card {
+    padding: 20px;
+  }
+}

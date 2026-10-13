@@ -1,7 +1,7 @@
 import type { QuestionType } from "@web/shared/api/dto";
 
-import styles from "./admin.module.css";
 import { questionTypeLabel } from "./admin-ui";
+import styles from "./authoring.module.css";
 
 // The preview accepts only candidate-visible text; keys and explanations cannot be passed here.
 export function QuestionPreview({
@@ -15,9 +15,9 @@ export function QuestionPreview({
 }) {
   return (
     <div className={styles.preview}>
-      <p className={styles.caption}>{questionTypeLabel[type]}</p>
-      <p className={styles.previewPrompt}>{prompt || "Nội dung câu hỏi hiện ở đây."}</p>
-      <ul className={styles.previewOptions}>
+      <p className={styles.scope}>{questionTypeLabel[type]}</p>
+      <p>{prompt || "Nội dung câu hỏi hiện ở đây."}</p>
+      <ul>
         {options.map((option, index) => (
           <li key={index}>
             <span aria-hidden="true">{String.fromCharCode(65 + index)}</span>

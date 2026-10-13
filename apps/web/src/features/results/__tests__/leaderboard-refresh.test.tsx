@@ -12,7 +12,10 @@ const readBoard = vi.hoisted(() => vi.fn());
 vi.mock("@web/app/runtime", () => ({
   useRuntime: () => ({ api: { getLeaderboard: readBoard } }),
 }));
-vi.mock("@web/app/memory", () => ({ useMemory: () => ({ lookup: () => null }) }));
+vi.mock("@web/app/memory", () => ({ useMemory: () => ({ lookup: () => null, clear: () => {} }) }));
+vi.mock("@web/app/session", () => ({
+  useSession: () => ({ status: "authenticated", profile: { id: "candidate" } }),
+}));
 afterEach(() => {
   cleanup();
   vi.resetAllMocks();
@@ -96,5 +99,5 @@ it("removes a previously loaded board when the server denies access", async () =
   await userEvent.click(screen.getByRole("button", { name: "Cập nhật quyền" }));
   await screen.findByRole("heading", { name: "Bảng xếp hạng không mở" });
   expect(screen.queryByText(/private-board/)).toBeNull();
-  expect(client.getQueryData(["leaderboard", "exam", "version"])).toBeUndefined();
+  expect(client.getQueryData(["leaderboard", "candidate", "exam", "version"])).toBeUndefined();
 });

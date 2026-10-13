@@ -1,0 +1,319 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/results/__tests__/result-review.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/results/__tests__/result-review.unit.spec.tsx (16 tests | 1 failed) 1480ms
+   × serializes load-more and starts a fresh cursor chain after checking release again 1076ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/results/__tests__/result-review.unit.spec.tsx > serializes load-more and starts a fresh cursor chain after checking release again
+AssertionError: expected "vi.fn()" to be called 3 times, but got 2 times
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head>[39m
+    [36m<title>[39m
+      [0mGiải thích · Phòng thi[0m
+    [36m</title>[39m
+  [36m</head>[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_wrap_24c302"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"_heading_93a6f8"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"_eyebrow_93a6f8"[39m
+            [36m>[39m
+              [0mXEM LẠI BÀI LÀM[0m
+            [36m</p>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"_title_24c302"[39m
+            [36m>[39m
+              [0mGiải thích[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"_muted_24c302"[39m
+            [36m>[39m
+              [0mLựa chọn của bạn và đáp án đã được công bố cho lượt thi này.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"_buttonSecondary_f905bc _actionLink_f905bc"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/attempts/first/result"[39m
+          [36m>[39m
+            [0m← Về kết quả[0m
+          [36m</a>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_reviewBanner_93a6f8"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"_badge_93a6f8"[39m
+          [36m>[39m
+            [0m✓ Đáp án đã công bố[0m
+          [36m</span>[39m
+          [36m<p>[39m
+            [0mChế độ xem lại · Không thay đổi bài đã nộp[0m
+          [36m</p>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mLàm mới quyền xem[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_reviewGrid_93a6f8"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"_reviewMain_93a6f8"[39m
+          [36m>[39m
+            [36m<section[39m
+              [33maria-label[39m=[32m"Câu đang xem"[39m
+              [33mclass[39m=[32m"_panel_93a6f8"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_heading_93a6f8"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"_badge_93a6f8"[39m
+                [36m>[39m
+                  [0mCâu [0m
+                  [0m1[0m
+                  [0m trong [0m
+                  [0m2[0m
+                  [0m câu đã tải[0m
+                [36m</span>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"_caption_93a6f8"[39m
+                [36m>[39m
+                  [0mMột lựa chọn[0m
+                  [0m · [0m
+                  [0m1[0m
+                  [0m điểm[0m
+                [36m</span>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_actions_93a6f8"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+                  [33mdisabled[39m=[32m""[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mCâu trước[0m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mCâu sau[0m
+                [36m</button>[39m
+              [36m</div>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"_prompt_93a6f8"[39m
+                [33mtabindex[39m=[32m"-1"[39m
+              [36m>[39m
+                [0mReleased prompt[0m
+              [36m</h2>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_options_93a6f8"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_option_93a6f8"[39m
+                  [33mdata-correct[39m=[32m"true"[39m
+                  [33mdata-selected[39m=[32m"true"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"_letter_93a6f8"[39m
+                  [36m>[39m
+                    [0mA[0m
+                  [36m</span>[39m
+                  [36m<p>[39m
+                    [0mReleased key[0m
+                  [36m</p>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"_optionNote_93a6f8"[39m
+                  [36m>[39m
+                    [0mBạn đã chọn[0m
+                    [0m · ✓ Đáp án của đề[0m
+                  [36m</span>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"_option_93a6f8"[39m
+                  [33mdata-correct[39m=[32m"false"[39m
+                  [33mdata-selected[39m=[32m"false"[39m
+                [36m>[39m
+                  [36m<span[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                    [33mclass[39m=[32m"_letter_93a6f8"[39m
+                  [36m>[39m
+                    [0mB[0m
+                  [36m</span>[39m
+                  [36m<p>[39m
+                    [0mOther option[0m
+                  [36m</p>[39m
+                  [36m<span[39m
+                    [33mclass[39m=[32m"_optionNote_93a6f8"[39m
+                  [36m>[39m
+                    [0mBạn không chọn[0m
+                  [36m</span>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"_verdict_93a6f8"[39m
+                [33mdata-correct[39m=[32m"true"[39m
+              [36m>[39m
+                [36m<strong>[39m
+                  [0m✓ Đúng[0m
+                [36m</strong>[39m
+                [36m<span>[39m
+                  [0mBộ lựa chọn khớp chính xác với đề.[0m
+                [36m</span>[39m
+              [36m</div>[39m
+            [36m</section>[39m
+            [36m<section[39m
+              [33maria-label[39m=[32m"Lời giải câu đang xem"[39m
+              [33mclass[39m=[32m"_panel_93a6f8"[39m
+            [36m>[39m
+              [36m<h2>[39m
+                [0mPhân tích & Lời giải chi tiết[0m
+              [36m</h2>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"_explanation_93a6f8"[39m
+              [36m>[39m
+                [0mReleased explanation[0m
+              [36m</p>[39m
+            [36m</section>[39m
+          [36m</div>[39m
+          [36m<aside[39m
+            [33maria-label[39m=[32m"Danh sách câu hỏi đã tải"[39m
+            [33mclass[39m=[32m"_navigator_93a6f8"[39m
+          [36m>[39m
+            [36m<h2>[39m
+              [0mDanh sách câu hỏi[0m
+            [36m</h2>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"_caption_93a6f8"[39m
+            [36m>[39m
+              [0m2[0m
+              [0m câu đã tải ·[0m
+              [0m [0m
+              [0mCòn trang tiếp theo[0m
+            [36m</p>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"_legend_93a6f8"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0m✓ Đúng[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0m! Chưa đúng[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mViền đậm: đang xem[0m
+              [36m</span>[39m
+            [36m</p>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Lọc trong các câu đã tải"[39m
+              [33mclass[39m=[32m"_filters_93a6f8"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-pressed[39m=[32m"true"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mTất cả (2)[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mĐúng (2)[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mChưa đúng (0)[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"_caption_93a6f8"[39m
+            [36m>[39m
+              [0mChỉ lọc trong các câu đã tải.[0m
+            [36m</p>[39m
+            [36m<nav[39m
+              [33maria-label[39m=[32m"Chọn câu để xem"[39m
+              [33mclass[39m=[32m"_numbers_93a6f8"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-current[39m=[32m"true"[39m
+                [33maria-label[39m=[32m"Câu 1, Đúng"[39m
+                [33mdata-correct[39m=[32m"true"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span>[39m
+                  [0m1[0m
+                [36m</span>[39m
+                [36m<small[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m✓[0m
+                [36m</small>[39m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Câu 2, Đúng"[39m
+                [33mdata-correct[39m=[32m"true"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [36m<span>[39m
+                  [0m2[0m
+                [36m</span>[39m
+                [36m<small[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m✓[0m
+                [36m</small>[39m
+              [36m</button>[39m
+            [36m</nav>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"_buttonSecondary_f905bc"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mTải thêm câu hỏi[0m
+            [36m</button>[39m
+          [36m</aside>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/features/results/__tests__/result-review.unit.spec.tsx:234:59
+    232|   await waitFor(() => expect(screen.getByRole("button", { name: "Làm m…
+    233|   await userEvent.click(screen.getByRole("button", { name: "Làm mới qu…
+    234|   await waitFor(() => expect(state.api.getReleasedReview).toHaveBeenCa…
+       |                                                           ^
+    235|   expect(state.api.getReleasedReview.mock.calls.map((args) => args[1].…
+    236|     undefined,
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 passed (16)
+   Start at  08:59:50
+   Duration  2.50s (tests 61%, environment 23%, import 9%, transform 6%)
+

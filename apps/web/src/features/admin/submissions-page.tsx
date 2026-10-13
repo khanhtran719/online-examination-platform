@@ -1,12 +1,7 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { Link, useParams } from "react-router";
 
-import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
-import { isUuidV7 } from "@web/shared/api/uuid";
 import { formatDateTime, statusLabel } from "@web/shared/format";
-import { useProtectedAccess } from "@web/shared/protected-access";
 import {
   Button,
   EmptyState,
@@ -17,131 +12,141 @@ import {
   TextField,
 } from "@web/shared/ui/ui";
 
-import styles from "./admin.module.css";
-import { AdminBadge, AdminHeading, adminId as shortId, PageEnd } from "./admin-ui";
-import { CapabilityGate, useCapability } from "./gate";
+import admin from "./admin.module.css";
+import { AdminBadge, AdminHeading, adminId, PageEnd } from "./admin-ui";
+import { CapabilityGate } from "./gate";
+import styles from "./operations.module.css";
+import { useSubmissions } from "./use-operations";
 
 export function SubmissionsPage() {
   const { examId = "" } = useParams();
+  return <Submissions key={examId} examId={examId} />;
+}
+function Submissions({ examId }: { examId: string }) {
   useTitle("Bài đã nộp");
-  const gate = useCapability("reporting.read");
-  const { api } = useRuntime();
-  const [blocked, setBlocked] = useState(false);
-  const [versionDraft, setVersionDraft] = useState("");
-  const [version, setVersion] = useState<string | undefined>();
-  const [versionError, setVersionError] = useState<string | null>(null);
-  const rows = useInfiniteQuery({
-    queryKey: ["submissions", examId, version ?? "*"],
-    enabled: gate === "allowed" && !blocked,
-    initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) =>
-      api
-        .listSubmissions(examId, {
-          pageSize: 20,
-          cursor: pageParam,
-          ...(version ? { publishedVersionId: version } : {}),
-        })
-        .then((response) => response.data),
-    getNextPageParam: (last) => last.next ?? undefined,
-  });
-  const hidden = useProtectedAccess(
-    rows.error,
-    [["submissions", examId, version ?? "*"]],
-    blocked,
-    () => setBlocked(true),
-  );
-  const items = hidden ? [] : (rows.data?.pages.flatMap((page) => page.items) ?? []);
+  const c = useSubmissions(examId),
+    { query, items, hidden, refresh, more } = c;
   return (
     <CapabilityGate permission="reporting.read">
-      <AdminHeading title="Bài đã nộp" eyebrow="BÁO CÁO THEO ĐỀ">
-        <Link to={`/admin/exams/${examId}/monitor`}>← Giám sát</Link>
-      </AdminHeading>
-      <form
-        className={styles.panel}
-        onSubmit={(event) => {
-          event.preventDefault();
-          const value = versionDraft.trim();
-          if (!value) {
-            setVersion(undefined);
-            setVersionError(null);
-            setBlocked(false);
-            return;
-          }
-          if (!isUuidV7(value)) {
-            setVersionError("Mã phiên bản không đúng định dạng.");
-            return;
-          }
-          setVersion(value);
-          setVersionError(null);
-          setBlocked(false);
-        }}
-      >
-        <TextField
-          label="Lọc theo phiên bản đã phát hành"
-          value={versionDraft}
-          onChange={(event) => setVersionDraft(event.target.value)}
-        />
-        <Button type="submit" variant="secondary">
-          Áp dụng bộ lọc
-        </Button>
-        {versionError ? <p role="alert">{versionError}</p> : null}
-        <p className={styles.muted}>
-          {version ? `Đang lọc phiên bản ${shortId(version)}.` : "Đang hiện mọi phiên bản đã tải."}
-        </p>
-      </form>
-      {rows.isLoading ? <SkeletonLines /> : null}
-      {rows.error ? (
-        <ErrorPanel error={rows.error} onRetry={hidden ? undefined : () => void rows.refetch()} />
-      ) : null}
-      {rows.isSuccess && !hidden && items.length === 0 ? (
-        <EmptyState title="Chưa có bài nộp">Danh sách chỉ có các lượt của đề này.</EmptyState>
-      ) : null}
-      {!hidden && rows.isSuccess && items.length > 0 ? (
-        <section className={styles.panel}>
-          <TableScroll label="Bài đã nộp theo phiên bản">
-            <table className={tableClass}>
-              <thead>
-                <tr>
-                  <th scope="col">Mã thí sinh</th>
-                  <th scope="col">Trạng thái</th>
-                  <th scope="col">Phiên bản</th>
-                  <th scope="col">Nộp lúc</th>
-                  <th scope="col">Điểm</th>
-                  <th scope="col">Chi tiết</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item) => (
-                  <tr key={item.attemptId}>
-                    <td className={styles.code}>{shortId(item.candidateId)}</td>
-                    <td>
-                      <AdminBadge>{statusLabel(item.status)}</AdminBadge>
-                      {item.expired ? <span className={styles.rowSub}>Nộp khi hết giờ</span> : null}
-                    </td>
-                    <td className={styles.code}>{shortId(item.publishedVersionId)}</td>
-                    <td>
-                      {item.submittedAt ? formatDateTime(item.submittedAt) : "Chưa có giờ nộp"}
-                    </td>
-                    <td>
-                      {item.earned === null || item.possible === null
-                        ? "Chưa có điểm"
-                        : `${item.earned}/${item.possible}`}
-                    </td>
-                    <td>
-                      <Link to={`/admin/attempts/${item.attemptId}`}>Xem lượt →</Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </TableScroll>
-          <PageEnd
-            next={Boolean(rows.hasNextPage)}
-            loading={rows.isFetchingNextPage}
-            onMore={() => void rows.fetchNextPage()}
-          />
+      <div className={styles.page}>
+        <AdminHeading
+          title="Bài đã nộp"
+          eyebrow="QUẢN TRỊ / GIÁM SÁT / LƯỢT THI"
+          description={`Đề ${adminId(examId)} · Danh sách lượt của đề; có thể gồm lượt chưa nộp.`}
+        >
+          <Link to={`/admin/exams/${examId}/monitor`}>← Giám sát</Link>
+          <Button
+            variant="secondary"
+            disabled={hidden || query.isFetching}
+            onClick={() => void refresh()}
+          >
+            Tải lại
+          </Button>
+        </AdminHeading>
+        <section className={admin.panel}>
+          <form
+            className={styles.filter}
+            onSubmit={(e) => {
+              e.preventDefault();
+              c.apply();
+            }}
+          >
+            <TextField
+              label="Lọc theo phiên bản đã phát hành"
+              value={c.draft}
+              disabled={hidden}
+              onChange={(e) => c.setDraft(e.target.value)}
+            />
+            <Button type="submit" disabled={hidden || query.isFetching}>
+              Áp dụng bộ lọc
+            </Button>
+          </form>
+          {c.error ? <p role="alert">{c.error}</p> : null}
+          {!hidden ? (
+            <p>
+              {c.version
+                ? `Đang lọc phiên bản ${adminId(c.version)}.`
+                : "Đang đọc mọi phiên bản của đề."}
+            </p>
+          ) : null}
         </section>
-      ) : null}
+        {query.isLoading ? <SkeletonLines /> : null}
+        {query.error ? (
+          <ErrorPanel error={query.error} onRetry={hidden ? undefined : () => void refresh()} />
+        ) : null}
+        {!hidden && query.data ? (
+          <section className={admin.panel}>
+            <div className={styles.scope}>
+              <p>{items.length} lượt đã tải</p>
+              <p>Tải lúc {formatDateTime(new Date(query.dataUpdatedAt).toISOString())} · UTC+7</p>
+            </div>
+            {items.length === 0 ? (
+              <EmptyState title="Chưa có lượt thi">
+                Không có lượt trong phạm vi đang đọc.
+              </EmptyState>
+            ) : (
+              <TableScroll label="Bài đã nộp theo phiên bản">
+                <table className={tableClass}>
+                  <thead>
+                    <tr>
+                      {[
+                        "Mã thí sinh",
+                        "Mã lượt",
+                        "Trạng thái",
+                        "Phiên bản",
+                        "Nộp lúc",
+                        "Điểm",
+                        "Chi tiết",
+                      ].map((t) => (
+                        <th key={t} scope="col">
+                          {t}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {items.map((r) => (
+                      <tr key={r.attemptId}>
+                        <td className={styles.code}>{adminId(r.candidateId)}</td>
+                        <td className={styles.code}>{adminId(r.attemptId)}</td>
+                        <td>
+                          <AdminBadge
+                            tone={
+                              r.status === "FAILED" || r.expired
+                                ? "warning"
+                                : r.status === "COMPLETED"
+                                  ? "success"
+                                  : "neutral"
+                            }
+                          >
+                            {statusLabel(r.status)}
+                          </AdminBadge>
+                          {r.expired ? <span className={admin.rowSub}>Nộp khi hết giờ</span> : null}
+                        </td>
+                        <td className={styles.code}>{adminId(r.publishedVersionId)}</td>
+                        <td>{r.submittedAt ? formatDateTime(r.submittedAt) : "Chưa có giờ nộp"}</td>
+                        <td>
+                          {r.earned === null || r.possible === null
+                            ? "Chưa có điểm"
+                            : `${r.earned}/${r.possible}`}
+                        </td>
+                        <td>
+                          <Link to={`/admin/attempts/${r.attemptId}`}>Xem lượt →</Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </TableScroll>
+            )}
+            <PageEnd
+              next={Boolean(query.hasNextPage)}
+              loading={query.isFetching}
+              onMore={() => void more()}
+            />
+          </section>
+        ) : null}
+      </div>
     </CapabilityGate>
   );
 }

@@ -1,0 +1,31 @@
+  ➜  Local:   http://127.0.0.1:4174/
+11:53:32 PM [vite] http proxy error: /v1/me
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+11:53:33 PM [vite] http proxy error: /v1/me
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+11:53:33 PM [vite] http proxy error: /v1/me
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+11:53:33 PM [vite] http proxy error: /v1/auth/csrf
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+11:55:10 PM [vite] http proxy error: /v1/me
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+11:55:12 PM [vite] http proxy error: /v1/me
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+11:55:14 PM [vite] http proxy error: /v1/me
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+11:55:14 PM [vite] http proxy error: /v1/me
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+11:55:14 PM [vite] http proxy error: /v1/me
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+11:55:14 PM [vite] http proxy error: /v1/me
+Error: connect ECONNREFUSED 127.0.0.1:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)

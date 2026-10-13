@@ -1,4 +1,71 @@
+# Active increment2026-10-13: PORT-05C Candidate Status / Result / Released Review
+
+COMPLETE locally: [S1–S5 review](web-ui/port-05c-2026-10-13.md), EP-11/12/13 trên
+Web/tablet768/1024/1280/1440px. Read controllers, bounded polling/server wait,
+protected release/cache lifecycle, frozen metadata và read-only navigator.
+827 root/44 Chromium PASS; sau final review, full root và full Chromium chạy
+lại trong [evidence](web-ui/evidence/port-05c-2026-10-13/README.md).20 captures,
+font/axe/overflow/gutters đạt;2,499 protected API/template/prior evidence unchanged.
+Parent PORT-05, FE7/32, roadmap89/217/full live/mobile/production giữ mở.
+Next bounded PORT-05D Exam Room / Autosave / Submit Web/tablet, chưa triển khai.
+
+# Previous increment2026-10-13: PORT-05B Candidate History / Leaderboard
+
+COMPLETE locally: [H1–H5 review](web-ui/port-05b-2026-10-13.md), adjusted EP-14/15
+Web/tablet768/1024/1280/1440px. Feature controller, actor/version cursor cache,
+protected clearing/late response fences, truthful frozen metadata and privacy.
+799 root/41 Chromium PASS; lint/format/quality/contracts48/445, strict live/demo
+builds/typecheck and11 font/axe/overflow/gutter captures PASS.2,171 protected
+API/template/PORT-01–05A evidence files unchanged. [Evidence](web-ui/evidence/port-05b-2026-10-13/README.md)
+retains red/fix receipts. No backend/schema/AWS change; prior work preserved.
+Roadmap89/217/FE7/32, parent PORT-05 and live/mobile/production remain open.
+Next bounded PORT-05C Status/Result/Released Review, not started.
+
+# Previous increment2026-10-12: PORT-05A Candidate Catalog
+
+COMPLETE locally: [C1–C5 review](web-ui/port-05a-2026-10-12.md), selected EP-08/09
+and start confirmation on Web/tablet768/1024/1280/1440px. Feature controllers,
+loaded-only search/cursor restart, protected cache/memory clearing and exact
+unknown-start retry.779 root/39 Chromium PASS; lint/format/contracts48/445,
+strict live/demo builds and17 font/axe/overflow/gutter captures PASS.
+[Evidence](web-ui/evidence/port-05a-2026-10-12/README.md) retains red/fix receipts,
+including gutter and transient category contrast findings. All1,862 protected
+API/template/PORT-01–04 evidence files unchanged. Existing PORT-03/04 work remains;
+no backend/schema/AWS changes. Roadmap89/217 and FE7/32 unchanged. Next bounded
+History/Leaderboard Web/tablet. Parent PORT-05/live/mobile/production remain open.
+
+# Previous increment2026-10-12: PORT-04 Operations/Reporting
+
+COMPLETE locally: [O1–O5 review](web-ui/port-04-2026-10-12.md), selected EP-25–32
+and replay/audit overlays on Web/tablet768/1024/1280/1440px. Feature controllers,
+strict existing reporting DTOs, protected cache clearing, first-page refresh and
+frozen replay retries.760 root/36 Chromium PASS; lint/format/contracts48/445,
+strict live/demo builds and45 font/axe/overflow captures PASS.
+[Evidence](web-ui/evidence/port-04-2026-10-12/README.md) retains intermediate failures
+and1.371-file protection; only the current PORT-04 template checklist receipt
+changes. Existing PORT-03 work preserved; API source/migrations unchanged.
+Roadmap89/217 and FE7/32 unchanged. Next bounded Candidate/Public Web/tablet;
+mobile/app, full live Admin/WEB-03, AWS/performance/cost/production remain open.
+
 # Implementation plan
+
+## Active increment — PORT-03 Question bank/editor/import,2026-10-12 (COMPLETE locally)
+
+[Q1–Q5 plan](web-ui/port-03-2026-10-12.md). User prioritizes desktop Web and tablet
+(768/1024/1280/1440px); mobile design/acceptance is deferred to the future app
+phase. Keep existing checks without adding a new mobile matrix. Q1–Q5 complete:
+bank loaded-only filters, three-type editor with stable option/key identity,
+immutable write retries/explicit conflict adoption and bounded atomic import.
+Protected fields/cache clear on permission loss; old responses cannot restore
+them. Self-review fixes stale conflict adoption and post-save archive display.
+729 root (492 API/66 tooling/171 Web),31 Chromium PASS; lint/format/quality/
+contracts48/445 and strict live/demo builds PASS.23 final Web/tablet captures
+have zero automated axe violations, loaded font and no body overflow.
+[Evidence](web-ui/evidence/port-03-2026-10-12/README.md) retains intermediate
+failures and959-file protection checks; only the current template checklist
+receipt/preference changes. No backend/schema/dependency/AWS change; prior
+PORT-02 work/evidence preserved. Roadmap89/217 and FE7/32 unchanged. Next bounded
+PORT-04 Operations/Reporting Web/tablet, not started; live/production remain open.
 
 ## Active increment — PORT-02 Exam Editor/dialogs, 2026-10-12 (COMPLETE locally)
 

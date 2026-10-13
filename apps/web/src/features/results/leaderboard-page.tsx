@@ -1,135 +1,145 @@
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
 import { Link, useParams } from "react-router";
 
 import { useMemory } from "@web/app/memory";
-import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
-import { isApiError } from "@web/shared/api/errors";
-import { formatDateTime } from "@web/shared/format";
-import { useProtectedAccess } from "@web/shared/protected-access";
 import layout from "@web/shared/styles/layout.module.css";
 import {
+  ActionLink,
   Button,
   EmptyState,
   ErrorPanel,
   SkeletonLines,
-  tableClass,
   TableScroll,
 } from "@web/shared/ui/ui";
 
-import styles from "./results.module.css";
+import { TableScore, TableTime } from "./result-table-elements";
+import styles from "./result-tables.module.css";
+import { useLeaderboard } from "./use-result-pages";
 
 export function LeaderboardPage() {
   const { examId = "", versionId = "" } = useParams();
   return <VersionBoard key={`${examId}/${versionId}`} examId={examId} versionId={versionId} />;
 }
+
 function VersionBoard({ examId, versionId }: { examId: string; versionId: string }) {
   useTitle("Bảng xếp hạng");
-  const { api } = useRuntime();
-  const memory = useMemory();
-  const frozen = memory.lookup(versionId);
-  const client = useQueryClient();
-  const [blocked, setBlocked] = useState(false);
-  const key = ["leaderboard", examId, versionId];
-  const board = useInfiniteQuery({
-    queryKey: key,
-    enabled: !blocked,
-    initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) =>
-      api
-        .getLeaderboard(examId, versionId, { pageSize: 20, cursor: pageParam })
-        .then((response) => response.data),
-    getNextPageParam: (last) => last.next ?? undefined,
-  });
-  const hidden = useProtectedAccess(board.error, [key], blocked, () => setBlocked(true));
-  const denied = hidden || (isApiError(board.error) && board.error.status === 404);
-  const rows = denied ? [] : (board.data?.pages.flatMap((page) => page.items) ?? []);
+  const memory = useMemory(),
+    c = useLeaderboard(examId, versionId),
+    { query, items, hidden } = c;
+  const meta = hidden ? null : memory.lookup(versionId);
+  const frozen = meta?.examId === examId && meta.publishedVersionId === versionId ? meta : null;
   return (
-    <div className={layout.wrap}>
-      <header className={styles.pageHeader}>
-        <div className={styles.heading}>
-          <p className={styles.eyebrow}>XẾP HẠNG THEO PHIÊN BẢN</p>
-          <h1 className={layout.title}>Bảng xếp hạng</h1>
-          <p className={layout.muted}>
-            {frozen && frozen.examId === examId && frozen.publishedVersionId === versionId
-              ? frozen.title
-              : `Phiên bản …${versionId.slice(-6)}`}
-          </p>
+    <div className={`${layout.wrap} ${styles.page}`}>
+      <Link className={styles.back} to={`/exams/${examId}`}>
+        ← Quay lại Chi tiết đề
+      </Link>
+      <header className={styles.header}>
+        <div>
+          <h1>Bảng xếp hạng</h1>
+          {!hidden ? (
+            <p>
+              {frozen?.title ?? `Phiên bản …${versionId.slice(-6)}`}{" "}
+              {frozen ? <span className={styles.version}>Bản {frozen.version}</span> : null}
+            </p>
+          ) : null}
         </div>
         <Button
           variant="secondary"
-          disabled={blocked || board.isFetching}
-          onClick={() => void client.resetQueries({ queryKey: key, exact: true })}
+          disabled={hidden || query.isFetching}
+          onClick={() => void c.refresh()}
         >
-          Làm mới
+          <span aria-hidden="true">↻</span> Làm mới
         </Button>
       </header>
-      <p className={styles.caption}>
-        Chỉ bí danh của người đã bật tham gia. Điểm thuộc phiên bản này; danh sách không đánh dấu
-        dòng của bạn.
-      </p>
-      {board.isLoading ? <SkeletonLines /> : null}
-      {denied ? (
+      <aside className={styles.privacy} aria-label="Quyền riêng tư bảng xếp hạng">
+        <span className={styles.privacyIcon} aria-hidden="true">
+          i
+        </span>
+        <p>
+          Khi tham gia, kết quả tốt nhất của bạn có thể xuất hiện với bí danh. Xem trang không đồng
+          nghĩa với tự động ghi danh.
+        </p>
+        <ActionLink variant="secondary" to="/profile">
+          Quản lý tham gia →
+        </ActionLink>
+      </aside>
+      {query.isLoading && !hidden ? <SkeletonLines /> : null}
+      {hidden ? (
         <EmptyState
           title="Bảng xếp hạng không mở"
           action={
-            <Link className={layout.chip} to="/history">
+            <ActionLink variant="secondary" to="/history">
               Về lịch sử
-            </Link>
+            </ActionLink>
           }
         >
           Phiên bản này không công bố bảng, hoặc bạn không có quyền xem.
         </EmptyState>
       ) : null}
-      {board.error && !denied ? (
-        <ErrorPanel error={board.error} onRetry={() => void board.refetch()} />
+      {query.error && !hidden ? (
+        <ErrorPanel error={query.error} onRetry={() => void c.refresh()} />
       ) : null}
-      {board.isSuccess && !denied && rows.length === 0 ? (
+      {query.error && items.length ? (
+        <p role="status">Đang giữ các kết quả đã tải trước; bảng có thể đã thay đổi.</p>
+      ) : null}
+      {query.isSuccess && !hidden && items.length === 0 ? (
         <EmptyState title="Chưa có dòng nào">
           Chưa có bài hoàn thành nào được đưa vào bảng.
         </EmptyState>
       ) : null}
-      {rows.length > 0 ? (
-        <TableScroll label="Xếp hạng bằng bí danh">
-          <table className={tableClass}>
-            <thead>
-              <tr>
-                <th scope="col">Hạng</th>
-                <th scope="col">Bí danh</th>
-                <th scope="col">Điểm</th>
-                <th scope="col">Hoàn thành</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={`${row.rank}-${row.pseudonym}`}>
-                  <td>
-                    <span className={styles.rank}>{row.rank}</span>
-                  </td>
-                  <th scope="row">{row.pseudonym}</th>
-                  <td className={styles.tableScore}>
-                    {row.earned}/{row.possible}
-                  </td>
-                  <td>{formatDateTime(row.completedAt)}</td>
+      {items.length ? (
+        <section className={styles.card} aria-label="Kết quả xếp hạng đã tải">
+          <TableScroll label="Xếp hạng bằng bí danh">
+            <table className={`${styles.table} ${styles.board}`}>
+              <thead>
+                <tr>
+                  <th scope="col">Hạng</th>
+                  <th scope="col">Bí danh</th>
+                  <th scope="col">Điểm đạt / tối đa</th>
+                  <th scope="col">
+                    Hoàn thành lúc<small>Giờ Việt Nam · UTC+7</small>
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </TableScroll>
+              </thead>
+              <tbody>
+                {items.map((row) => (
+                  <tr key={`${row.rank}-${row.pseudonym}`}>
+                    <td>
+                      <span className={styles.rank} data-rank={row.rank}>
+                        {String(row.rank).padStart(2, "0")}
+                      </span>
+                    </td>
+                    <th scope="row">
+                      <span className={styles.alias}>{row.pseudonym}</span>
+                    </th>
+                    <td>
+                      <TableScore earned={row.earned} possible={row.possible} />
+                    </td>
+                    <td>
+                      <TableTime value={row.completedAt} seconds />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </TableScroll>
+          <footer className={styles.footer}>
+            <p role="status">
+              Đã tải {items.length} kết quả{query.hasNextPage ? "" : " · Đã hết danh sách"}
+            </p>
+            {query.hasNextPage ? (
+              <Button variant="secondary" disabled={query.isFetching} onClick={() => void c.more()}>
+                {query.isFetchingNextPage ? "Đang tải…" : "Tải thêm"}
+              </Button>
+            ) : null}
+          </footer>
+        </section>
       ) : null}
-      {board.hasNextPage && !denied ? (
-        <Button disabled={board.isFetchingNextPage} onClick={() => void board.fetchNextPage()}>
-          {board.isFetchingNextPage ? "Đang tải…" : "Tải thêm"}
-        </Button>
-      ) : null}
-      <div className={styles.privacyNote}>
-        <span aria-hidden="true">◈</span>
-        <p>
-          Bạn có thể chọn tham gia các bảng được mở bằng bí danh trong{" "}
-          <Link to="/profile">hồ sơ</Link>.
+      {!hidden ? (
+        <p className={styles.caption}>
+          Điểm và thứ hạng thuộc phiên bản này. Chỉ hiển thị bí danh; không đánh dấu dòng của bạn.
         </p>
-      </div>
+      ) : null}
     </div>
   );
 }

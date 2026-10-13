@@ -1,153 +1,185 @@
-import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 
-import { useMemory } from "@web/app/memory";
-import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
 import { formatBasisPoints, formatDateTime } from "@web/shared/format";
 import { isReleasedReviewHref } from "@web/shared/review-href";
 import layout from "@web/shared/styles/layout.module.css";
-import { Alert, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+import { ActionLink, Alert, Button, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
 
-import styles from "./results.module.css";
+import styles from "./result-detail.module.css";
+import { useAttemptResult } from "./use-attempt-result";
 
 export function ResultPage() {
   const { attemptId = "" } = useParams();
   useTitle("Kết quả");
-  const { api } = useRuntime();
-  const memory = useMemory();
-  const result = useQuery({
-    queryKey: ["result", attemptId],
-    queryFn: () => api.getResult(attemptId).then((response) => response.data),
-  });
-  const status = useQuery({
-    queryKey: ["attempt", attemptId],
-    queryFn: () => api.resumeAttempt(attemptId).then((response) => response.data),
-    enabled: result.isSuccess,
-  });
-  if (result.isLoading)
-    return (
-      <div className={layout.wrap}>
-        <SkeletonLines />
-      </div>
-    );
-  if (result.error || !result.data)
-    return (
-      <div className={layout.wrap}>
-        <ErrorPanel error={result.error} onRetry={() => void result.refetch()} />
-      </div>
-    );
-  if (result.data.pending || !result.data.result)
-    return (
-      <div className={layout.wrap}>
-        <h1 className={layout.title}>Kết quả chưa sẵn sàng</h1>
-        <Alert tone="warning" title="Máy chủ đã nhận yêu cầu">
-          Bài còn chờ xử lý. Điểm sẽ xuất hiện sau khi có kết quả.
-        </Alert>
-        <Link className={styles.primaryLink} to={`/attempts/${attemptId}/status`}>
-          Theo dõi trạng thái
-        </Link>
-      </div>
-    );
-  const score = result.data.result;
-  const frozen = memory.lookup(score.publishedVersionId);
-  const href = score.review?.href ?? "";
-  const reviewAllowed = score.review !== null && isReleasedReviewHref(attemptId, href);
+  const read = useAttemptResult(attemptId);
+  const score = read.score;
+  const reviewAllowed = !!score?.review && isReleasedReviewHref(attemptId, score.review.href);
+  const sections = new Map(read.frozen?.sections.map((section) => [section.id, section.title]));
   return (
     <div className={layout.wrap}>
       <header className={styles.heading}>
-        <p className={styles.eyebrow}>KẾT QUẢ CỦA BẠN</p>
-        <h1 className={layout.title}>Kết quả</h1>
-        <p className={layout.muted}>
-          {frozen?.title ?? `Phiên bản …${score.publishedVersionId.slice(-6)}`} · Hoàn tất{" "}
-          {formatDateTime(score.completedAt)}
-        </p>
-      </header>
-      <div className={styles.resultGrid}>
-        <section className={styles.scorePanel} aria-label="Điểm bài thi">
-          <p className={styles.eyebrow}>ĐIỂM BÀI TRẮC NGHIỆM</p>
-          <span className={styles.resultCheck} aria-hidden="true">
-            ✓
-          </span>
-          <p className={styles.scoreNumber}>
-            {score.earned}
-            <small>/{score.possible} điểm</small>
+        <div>
+          <p className={styles.eyebrow}>LỊCH SỬ THI / CHI TIẾT LƯỢT THI</p>
+          <h1 className={layout.title}>
+            {read.data?.pending ? "Kết quả chưa sẵn sàng" : "Kết quả"}
+          </h1>
+          <p className={layout.muted}>
+            {read.frozen?.title ??
+              (score
+                ? `Phiên bản …${score.publishedVersionId.slice(-6)}`
+                : "Điểm và kết quả của lượt thi của bạn.")}
           </p>
-          <p className={styles.percentage}>{formatBasisPoints(score.percentageBasisPoints)}</p>
-          <p>Theo thang điểm cơ sở của bài này.</p>
-          <dl className={styles.scoreFacts}>
-            <div>
-              <dt>Câu khớp chính xác</dt>
-              <dd>
-                {score.correct}/{score.total}
-              </dd>
-            </div>
-            <div>
-              <dt>Trạng thái nộp</dt>
-              <dd>{score.expired ? "Hết giờ" : "Trong hạn"}</dd>
-            </div>
-          </dl>
-          <p className={styles.scoreNote}>Không quy đổi sang IELTS band hoặc TOEIC.</p>
-        </section>
+        </div>
+        {score ? (
+          <div className={styles.completed}>
+            <span>HOÀN TẤT CHẤM ĐIỂM</span>
+            <time dateTime={score.completedAt}>{formatDateTime(score.completedAt)}</time>
+            <small>Giờ Việt Nam · UTC+7</small>
+          </div>
+        ) : null}
+      </header>
+      {read.query.isLoading && !read.hidden ? <SkeletonLines /> : null}
+      {read.query.error ? (
+        <ErrorPanel
+          error={read.query.error}
+          onRetry={read.hidden ? undefined : () => void read.refresh()}
+        />
+      ) : null}
+      {read.hidden ? (
+        <Alert title="Không thể xem kết quả">
+          Mở lại lượt thi từ lịch sử sau khi kiểm tra phiên đăng nhập và quyền xem.
+        </Alert>
+      ) : null}
+      {read.data?.pending ? (
         <section className={styles.panel}>
-          <h2>Theo phần</h2>
-          {!frozen ? (
-            <p className={styles.caption}>Tên phần chỉ hiện khi có thông tin đúng phiên bản.</p>
-          ) : null}
-          <ul className={styles.sectionScores}>
-            {score.sections.map((section) => {
-              const known = frozen?.sections.find((item) => item.id === section.sectionId);
-              return (
+          <Alert tone="warning" title="Chưa có kết quả để hiển thị">
+            Theo dõi trạng thái để biết lượt thi còn đang mở, chờ xử lý hay đã hoàn tất. Chỉ những
+            đáp án có xác nhận lưu mới thuộc bài đã nộp.
+          </Alert>
+          <ActionLink to={`/attempts/${attemptId}/status`}>Theo dõi trạng thái</ActionLink>
+        </section>
+      ) : null}
+      {score ? (
+        <>
+          <div className={styles.scoreGrid}>
+            <section className={styles.scoreCard} aria-label="Điểm bài thi">
+              <span className={styles.badge}>✓ Hoàn thành chấm điểm</span>
+              <div>
+                <p className={styles.eyebrow}>ĐIỂM BÀI TRẮC NGHIỆM</p>
+                <p className={styles.score}>
+                  {score.earned}
+                  <small>/{score.possible} điểm</small>
+                </p>
+              </div>
+              <p className={styles.caption}>
+                Theo thang điểm cơ sở của đề. Không quy đổi sang IELTS band hoặc TOEIC.
+              </p>
+            </section>
+            <section className={styles.metric} aria-label="Số câu đúng">
+              <span className={styles.metricIcon} aria-hidden="true">
+                ✓
+              </span>
+              <h2>Câu khớp chính xác</h2>
+              <strong>
+                {score.correct}
+                <small> / {score.total} câu</small>
+              </strong>
+              <p className={styles.caption}>Khớp trọn bộ lựa chọn của đề.</p>
+            </section>
+            <section className={styles.metric} aria-label="Tỷ lệ điểm">
+              <span className={styles.metricIcon} aria-hidden="true">
+                %
+              </span>
+              <h2>Tỷ lệ điểm đạt</h2>
+              <strong className={styles.percent}>
+                {formatBasisPoints(score.percentageBasisPoints)}
+              </strong>
+              <p className={styles.caption}>Tỷ lệ điểm do máy chủ cung cấp.</p>
+            </section>
+          </div>
+          <section className={styles.panel}>
+            <div className={styles.heading}>
+              <div>
+                <h2>Kết quả từng phần thi</h2>
+                <p className={styles.caption}>
+                  Điểm và số câu khớp chính xác theo phiên bản đã làm.
+                </p>
+              </div>
+              <span className={styles.badge}>{score.expired ? "◷ Hết giờ" : "✓ Trong hạn"}</span>
+            </div>
+            {!read.frozen ? (
+              <p className={styles.caption}>
+                Tên phần chỉ hiện khi có thông tin đúng đề và phiên bản.
+              </p>
+            ) : null}
+            <ul className={styles.sections}>
+              {score.sections.map((section, index) => (
                 <li key={section.sectionId}>
                   <div>
-                    <h3>{known?.title ?? `Phần …${section.sectionId.slice(-6)}`}</h3>
-                    <p className={styles.caption}>
-                      {section.correct}/{section.total} câu khớp chính xác
-                    </p>
+                    <p className={styles.eyebrow}>PHẦN {String(index + 1).padStart(2, "0")}</p>
+                    <h3>
+                      {sections.get(section.sectionId) ?? `Phần …${section.sectionId.slice(-6)}`}
+                    </h3>
                   </div>
                   <strong>
                     {section.earned}/{section.possible} điểm
                   </strong>
+                  <span>
+                    {section.correct}/{section.total} câu khớp chính xác
+                  </span>
                 </li>
-              );
-            })}
-          </ul>
-          <p className={styles.caption}>
-            Chấm theo bộ lựa chọn khớp chính xác; không tính điểm từng lựa chọn.
-          </p>
-          {score.review === null ? (
-            <p className={styles.releaseNote}>Đề này chưa mở phần giải thích.</p>
-          ) : null}
-          {score.review && !reviewAllowed ? (
-            <Alert title="Không tải giải thích">Liên kết không nằm trong danh sách cho phép.</Alert>
-          ) : null}
-          {reviewAllowed ? (
-            <>
-              <p className={styles.releaseNote}>Giải thích đã mở cho lượt thi này.</p>
-              <Link className={styles.primaryLink} to={`/attempts/${attemptId}/review`}>
-                Xem giải thích đã mở
-              </Link>
-            </>
-          ) : null}
-          {status.data ? (
-            <Link
-              className={layout.chip}
-              to={`/exams/${status.data.examId}/versions/${score.publishedVersionId}/leaderboard`}
+              ))}
+            </ul>
+            <p className={styles.caption}>
+              Chấm theo bộ lựa chọn khớp chính xác; không tính điểm từng lựa chọn.
+            </p>
+          </section>
+          <section className={styles.panel} aria-label="Hành động sau kết quả">
+            <div className={styles.actions}>
+              {reviewAllowed ? (
+                <ActionLink to={`/attempts/${attemptId}/review`}>Xem giải thích đã mở</ActionLink>
+              ) : null}
+              <ActionLink variant="secondary" to="/history">
+                Về lịch sử
+              </ActionLink>
+              {read.attempt ? (
+                <ActionLink
+                  variant="secondary"
+                  to={`/exams/${read.attempt.examId}/versions/${score.publishedVersionId}/leaderboard`}
+                >
+                  Bảng xếp hạng của phiên bản này
+                </ActionLink>
+              ) : null}
+              <ActionLink variant="secondary" to="/exams">
+                Chọn đề khác
+              </ActionLink>
+            </div>
+            <p className={styles.caption}>
+              {reviewAllowed
+                ? "Giải thích đã mở cho lượt thi này."
+                : "Đề này chưa mở phần giải thích."}{" "}
+              Bảng xếp hạng chỉ hiện khi phiên bản cho phép công bố.
+            </p>
+            {score.review && !reviewAllowed ? (
+              <Alert title="Không tải giải thích">
+                Liên kết không nằm trong danh sách cho phép.
+              </Alert>
+            ) : null}
+            <Button
+              variant="ghost"
+              disabled={read.query.isFetching}
+              onClick={() => void read.refresh()}
             >
-              Bảng xếp hạng của phiên bản này
-            </Link>
-          ) : null}
-          <p className={styles.caption}>Bảng xếp hạng chỉ hiện khi phiên bản cho phép công bố.</p>
-        </section>
-      </div>
-      <div className={styles.actions}>
-        <Link className={layout.chip} to="/history">
-          ← Về lịch sử
-        </Link>
-        <Link className={layout.chip} to="/exams">
-          Chọn đề khác →
-        </Link>
-      </div>
+              {read.query.isFetching ? "Đang kiểm tra…" : "Kiểm tra lại kết quả"}
+            </Button>
+          </section>
+        </>
+      ) : (
+        <ActionLink variant="secondary" to="/history">
+          Về lịch sử
+        </ActionLink>
+      )}
     </div>
   );
 }

@@ -2,11 +2,18 @@ import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router";
 
 import { useTitle } from "@web/app/use-title";
-import { statusLabel } from "@web/shared/format";
+import { formatDateTime, statusLabel } from "@web/shared/format";
 import layout from "@web/shared/styles/layout.module.css";
-import { Alert, Button, EmptyState, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+import {
+  ActionLink,
+  Alert,
+  Button,
+  EmptyState,
+  ErrorPanel,
+  SkeletonLines,
+} from "@web/shared/ui/ui";
 
-import styles from "./results.module.css";
+import styles from "./result-detail.module.css";
 import { useAttemptPolling } from "./use-attempt-polling";
 
 export function StatusPage() {
@@ -41,7 +48,7 @@ function AttemptStatus({
   const failed = attempt?.status === "FAILED" && !attempt.replayPending;
   return (
     <div className={layout.wrap}>
-      <header className={styles.heading}>
+      <header className={styles.statusHeading}>
         <p className={styles.eyebrow}>SAU KHI LÀM BÀI</p>
         <h1 className={layout.title}>Trạng thái bài</h1>
         <p className={layout.muted}>Theo dõi lượt thi và mở kết quả khi đã sẵn sàng.</p>
@@ -52,9 +59,30 @@ function AttemptStatus({
           bài.
         </Alert>
       ) : null}
-      {!attempt && !poll.error ? <SkeletonLines /> : null}
+      {!attempt && !poll.error && !poll.stopped && !poll.blocked ? <SkeletonLines /> : null}
+      {!attempt && !poll.error && (poll.stopped || poll.blocked) ? (
+        <EmptyState
+          title={poll.blocked ? "Không thể xem trạng thái" : "Đã dừng kiểm tra tự động"}
+          action={
+            poll.blocked ? (
+              <Link className={layout.chip} to="/history">
+                Về lịch sử
+              </Link>
+            ) : (
+              <Button onClick={onCheckAgain}>Kiểm tra lại</Button>
+            )
+          }
+        >
+          {poll.blocked
+            ? "Kiểm tra phiên đăng nhập và mở lại lượt thi từ lịch sử."
+            : "Chưa tải được trạng thái trong thời gian kiểm tra. Bạn có thể kiểm tra lại khi sẵn sàng."}
+        </EmptyState>
+      ) : null}
       {poll.error ? (
-        <ErrorPanel error={poll.error} onRetry={poll.stopped ? onCheckAgain : undefined} />
+        <ErrorPanel
+          error={poll.error}
+          onRetry={poll.stopped && !poll.blocked ? onCheckAgain : undefined}
+        />
       ) : null}
       {attempt ? (
         <section className={styles.statusPanel} data-failed={failed}>
@@ -84,6 +112,25 @@ function AttemptStatus({
                   ? "Quay lại phòng thi để tiếp tục và xem thời gian còn lại."
                   : "Điểm sẽ hiện khi máy chủ hoàn tất xử lý. Bạn có thể rời trang và quay lại từ lịch sử."}
           </p>
+          <dl className={styles.facts}>
+            <div>
+              <dt>Lượt thi</dt>
+              <dd>…{attempt.id.slice(-6)}</dd>
+            </div>
+            <div>
+              <dt>Phiên bản</dt>
+              <dd>…{attempt.publishedVersionId?.slice(-6)}</dd>
+            </div>
+            {attempt.submittedAt ? (
+              <div>
+                <dt>Thời điểm nộp</dt>
+                <dd>
+                  <time dateTime={attempt.submittedAt}>{formatDateTime(attempt.submittedAt)}</time>{" "}
+                  · UTC+7
+                </dd>
+              </div>
+            ) : null}
+          </dl>
           {!active ? (
             <ol className={styles.steps} aria-label="Các bước xử lý bài">
               <li data-done="true">
@@ -107,13 +154,9 @@ function AttemptStatus({
               </Button>
             ) : null}
             {finished ? (
-              <Link className={styles.primaryLink} to={`/attempts/${attempt.id}/result`}>
-                Xem kết quả
-              </Link>
+              <ActionLink to={`/attempts/${attempt.id}/result`}>Xem kết quả</ActionLink>
             ) : active ? (
-              <Link className={styles.primaryLink} to={`/attempts/${attempt.id}`}>
-                Vào phòng thi
-              </Link>
+              <ActionLink to={`/attempts/${attempt.id}`}>Vào phòng thi</ActionLink>
             ) : (
               <p className={layout.muted}>Kết quả chưa sẵn sàng.</p>
             )}

@@ -1,0 +1,322 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/admin/__tests__/operations-regressions.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/operations-regressions.unit.spec.tsx (3 tests | 3 failed) 1316ms
+   × purges cached review when the owning result read is forbidden 1043ms
+   × does not unlock a forbidden ledger by applying another version filter 186ms
+   × requires replay confirmation and reuses the exact intent after a 503 86ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/operations-regressions.unit.spec.tsx > purges cached review when the owning result read is forbidden
+AssertionError: expected { Object (pages, pageParams) } to be undefined
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head>[39m
+    [36m<title>[39m
+      [0mLượt thi quản trị · Phòng thi[0m
+    [36m</title>[39m
+  [36m</head>[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"_heading_5714fc"[39m
+      [36m>[39m
+        [36m<div>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"_eyebrow_5714fc"[39m
+          [36m>[39m
+            [0mCHI TIẾT LƯỢT THI[0m
+          [36m</p>[39m
+          [36m<h1>[39m
+            [0mLượt 019a82d0…000001[0m
+          [36m</h1>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"_muted_5714fc"[39m
+          [36m>[39m
+            [0mKết quả và bài làm của đúng lượt, theo phiên bản đã khóa.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_alert_f905bc"[39m
+        [33mrole[39m=[32m"alert"[39m
+      [36m>[39m
+        [36m<strong>[39m
+          [0mBạn không có quyền thực hiện việc này[0m
+        [36m</strong>[39m
+        [36m<div>[39m
+          [36m<p>[39m
+            [0mKhông đủ quyền.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_pageEnd_5714fc"[39m
+      [36m>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_caption_5714fc"[39m
+        [36m>[39m
+          [0mĐã hết danh sách đã tải.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"_panel_5714fc"[39m
+      [36m>[39m
+        [36m<h2>[39m
+          [0mXử lý lại lượt thất bại[0m
+        [36m</h2>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_muted_5714fc"[39m
+        [36m>[39m
+          [0mBản live chưa có revision quản trị cho thao tác này. Dữ liệu mẫu chỉ dùng số trong bộ nhớ demo và không đăng nhập thay thí sinh.[0m
+        [36m</p>[39m
+        [36m<p>[39m
+          [0mRevision quản trị hiện tại: [0m
+          [0m3[0m
+        [36m</p>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_field_f905bc"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m"_r_0_"[39m
+          [36m>[39m
+            [0mLý do[0m
+          [36m</label>[39m
+          [36m<textarea[39m
+            [33mid[39m=[32m"_r_0_"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_actions_5714fc"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"_button_f905bc"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mGửi xử lý lại[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+
+- Expected:
+undefined
+
++ Received:
+{
+  "pageParams": [
+    undefined,
+  ],
+  "pages": [
+    {
+      "items": [],
+      "next": null,
+      "pageSize": 20,
+    },
+  ],
+}
+
+ ❯ src/features/admin/__tests__/operations-regressions.unit.spec.tsx:35:85
+     33|   runtime.api.getAdminResult.mockRejectedValue(forbidden());
+     34|   await act(async () => { await view.client.invalidateQueries({ queryK…
+     35|   await waitFor(() => expect(view.client.getQueryData(["admin-review",…
+       |                                                                                     ^
+     36| });
+     37| it("does not unlock a forbidden ledger by applying another version fil…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/features/admin/__tests__/operations-regressions.unit.spec.tsx > does not unlock a forbidden ledger by applying another version filter
+AssertionError: expected "vi.fn()" to be called 1 times, but got 2 times
+ ❯ src/features/admin/__tests__/operations-regressions.unit.spec.tsx:42:39
+     40|   await userEvent.type(screen.getByLabelText("Lọc theo phiên bản đã ph…
+     41|   await userEvent.click(screen.getByRole("button", { name: "Áp dụng bộ…
+     42|   expect(runtime.api.listSubmissions).toHaveBeenCalledTimes(1);
+       |                                       ^
+     43| });
+     44| it("requires replay confirmation and reuses the exact intent after a 5…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/features/admin/__tests__/operations-regressions.unit.spec.tsx > requires replay confirmation and reuses the exact intent after a 503
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Yêu cầu xử lý lại"
+
+Here are the accessible roles:
+
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"_heading_5714fc"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_eyebrow_5714fc"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_muted_5714fc"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_muted_5714fc"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Lượt 019a82d0…000001":
+  [36m<h1 />[39m
+
+  Name "Xử lý lại lượt thất bại":
+  [36m<h2 />[39m
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  [36m<div[39m
+    [33mclass[39m=[32m"_warning_f905bc"[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  strong:
+
+  Name "":
+  [36m<strong />[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Lý do":
+  [36m<textarea[39m
+    [33mid[39m=[32m"_r_2_"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Gửi xử lý lại":
+  [36m<button[39m
+    [33mclass[39m=[32m"_button_f905bc"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<header[39m
+      [33mclass[39m=[32m"_heading_5714fc"[39m
+    [36m>[39m
+      [36m<div>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_eyebrow_5714fc"[39m
+        [36m>[39m
+          [0mCHI TIẾT LƯỢT THI[0m
+        [36m</p>[39m
+        [36m<h1>[39m
+          [0mLượt 019a82d0…000001[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_muted_5714fc"[39m
+        [36m>[39m
+          [0mKết quả và bài làm của đúng lượt, theo phiên bản đã khóa.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+    [36m</header>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_warning_f905bc"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [36m<strong>[39m
+        [0mChưa có điểm[0m
+      [36m</strong>[39m
+      [36m<div>[39m
+        [0mMáy chủ chưa trả kết quả. Không có tiến độ giả.[0m
+      [36m</div>[39m
+    [36m</div>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"_panel_5714fc"[39m
+    [36m>[39m
+      [36m<h2>[39m
+        [0mXử lý lại lượt thất bại[0m
+      [36m</h2>[39m
+      [36m<p[39m
+        [33mclass[39m=[32m"_muted_5714fc"[39m
+      [36m>[39m
+        [0mBản live chưa có revision quản trị cho thao tác này. Dữ liệu mẫu chỉ dùng số trong bộ nhớ demo và không đăng nhập thay thí sinh.[0m
+      [36m</p>[39m
+      [36m<p>[39m
+        [0mRevision quản trị hiện tại: [0m
+        [0m3[0m
+      [36m</p>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_field_f905bc"[39m
+      [36m>[39m
+        [36m<label[39m
+          [33mfor[39m=[32m"_r_2_"[39m
+        [36m>[39m
+          [0mLý do[0m
+        [36m</label>[39m
+        [36m<textarea[39m
+          [33mid[39m=[32m"_r_2_"[39m
+        [36m>[39m
+          [0mPhụ thuộc đã được khôi phục.[0m
+        [36m</textarea>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"_actions_5714fc"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"_button_f905bc"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mGửi xử lý lại[0m
+        [36m</button>[39m
+      [36m</div>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/admin/__tests__/operations-regressions.unit.spec.tsx:50:32
+     48|   await screen.findByText("Chưa có điểm");
+     49|   await userEvent.type(screen.getByLabelText("Lý do"), "Phụ thuộc đã đ…
+     50|   await userEvent.click(screen.getByRole("button", { name: "Yêu cầu xử…
+       |                                ^
+     51|   expect(runtime.api.replayFailedAttempt).not.toHaveBeenCalled();
+     52|   await userEvent.click(screen.getByRole("button", { name: "Gửi yêu cầ…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  22:24:13
+   Duration  2.32s (tests 59%, environment 27%, import 9%, transform 5%)
+

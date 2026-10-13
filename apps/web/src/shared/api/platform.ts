@@ -1,6 +1,6 @@
 import type {
   Accepted,
-  ActiveCandidate,
+  ActiveCandidatesPage,
   AdminExam,
   AdminQuestion,
   AdminSubmission,
@@ -8,6 +8,7 @@ import type {
   ApiSuccess,
   Attempt,
   AuditEntry,
+  BusinessMetrics,
   CandidateQuestion,
   Category,
   Csrf,
@@ -119,10 +120,7 @@ export interface PlatformApi {
   ): Promise<ApiSuccess<MutationReceipt>>;
   importQuestions(key: string, body: ImportRequest): Promise<ApiSuccess<ImportReport>>;
   getImportReport(importId: string): Promise<ApiSuccess<ImportReport>>;
-  listActiveCandidates(
-    examId: string,
-    query: PageQuery,
-  ): Promise<ApiSuccess<Page<ActiveCandidate>>>;
+  listActiveCandidates(examId: string, query: PageQuery): Promise<ApiSuccess<ActiveCandidatesPage>>;
   listSubmissions(
     examId: string,
     query: PageQuery & { publishedVersionId?: string },
@@ -139,6 +137,7 @@ export interface PlatformApi {
     versionId: string,
     query: PageQuery,
   ): Promise<ApiSuccess<Page<QuestionStatistic>>>;
+  getBusinessMetrics(): Promise<ApiSuccess<BusinessMetrics>>;
   getSystemBusinessMetrics(): Promise<ApiSuccess<Metrics>>;
   getAudit(query: PageQuery): Promise<ApiSuccess<Page<AuditEntry>>>;
 }

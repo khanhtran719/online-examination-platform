@@ -1,102 +1,171 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { Link, useParams } from "react-router";
 
-import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
 import { rateLabel } from "@web/shared/format";
-import { useProtectedAccess } from "@web/shared/protected-access";
-import { EmptyState, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+import {
+  Button,
+  EmptyState,
+  ErrorPanel,
+  SkeletonLines,
+  tableClass,
+  TableScroll,
+} from "@web/shared/ui/ui";
 
-import styles from "./admin.module.css";
-import { AdminHeading, adminId as shortId, PageEnd } from "./admin-ui";
-import { CapabilityGate, useCapability } from "./gate";
+import admin from "./admin.module.css";
+import { AdminHeading, adminId, PageEnd } from "./admin-ui";
+import { CapabilityGate } from "./gate";
+import styles from "./operations.module.css";
+import { useQuestionStatistics } from "./use-report-insights";
 
 export function StatisticsPage() {
   const { examId = "", versionId = "" } = useParams();
-  useTitle("Thống kê câu");
-  const gate = useCapability("reporting.read");
-  const { api } = useRuntime();
-  const [blocked, setBlocked] = useState(false);
-  const stats = useInfiniteQuery({
-    queryKey: ["stats", examId, versionId],
-    enabled: gate === "allowed" && !blocked,
-    initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) =>
-      api
-        .getQuestionStatistics(examId, versionId, { pageSize: 20, cursor: pageParam })
-        .then((response) => response.data),
-    getNextPageParam: (last) => last.next ?? undefined,
-  });
-  const hidden = useProtectedAccess(stats.error, [["stats", examId, versionId]], blocked, () =>
-    setBlocked(true),
-  );
-  const rows = hidden ? [] : (stats.data?.pages.flatMap((page) => page.items) ?? []);
+  return <Statistics key={`${examId}:${versionId}`} examId={examId} versionId={versionId} />;
+}
+function Statistics({ examId, versionId }: { examId: string; versionId: string }) {
+  useTitle("Thống kê câu hỏi");
+  const c = useQuestionStatistics(examId, versionId),
+    { query, items, hidden, refresh, more, selected } = c;
   return (
     <CapabilityGate permission="reporting.read">
-      <AdminHeading
-        title={`Thống kê phiên bản ${shortId(versionId)}`}
-        eyebrow="BÁO CÁO CÂU HỎI"
-        description="Số liệu theo đúng phiên bản đã khóa. Mỗi câu dùng số lượt hoàn thành làm mẫu tính tỷ lệ."
-      >
-        <Link to={`/admin/exams/${examId}`}>← Về đề</Link>
-      </AdminHeading>
-      {stats.isLoading ? <SkeletonLines /> : null}
-      {stats.error ? (
-        <ErrorPanel error={stats.error} onRetry={hidden ? undefined : () => void stats.refetch()} />
-      ) : null}
-      {stats.isSuccess && !hidden && rows.length === 0 ? (
-        <EmptyState title="Chưa có thống kê">Phiên bản này chưa có câu để thống kê.</EmptyState>
-      ) : null}
-      {rows.map((row) => (
-        <article key={row.questionId} className={styles.panel}>
-          <h2>Câu {shortId(row.questionId)}</h2>
-          <dl className={styles.statGrid}>
-            {[
-              ["Hoàn thành", row.completedAttempts],
-              ["Đúng", row.correct],
-              ["Sai", row.incorrect],
-              ["Chưa chọn", row.unanswered],
-            ].map(([label, count]) => (
-              <div className={styles.stat} key={label}>
-                <dt>{label}</dt>
-                <dd>{count}</dd>
-              </div>
-            ))}
-          </dl>
-          <p>
-            Tỷ lệ đúng: <strong>{rateLabel(row.correct, row.completedAttempts)}</strong>
-          </p>
-          {row.completedAttempts > 0 ? (
-            <meter
-              aria-label={`Tỷ lệ đúng câu ${shortId(row.questionId)}`}
-              min={0}
-              max={row.completedAttempts}
-              value={row.correct}
-            >
-              {rateLabel(row.correct, row.completedAttempts)}
-            </meter>
-          ) : null}
-          <h3>Lượt lựa chọn</h3>
-          <p className={styles.caption}>
-            Câu nhiều lựa chọn có thể có nhiều lượt chọn trong cùng một bài.
-          </p>
-          <ul>
-            {row.options.map((option) => (
-              <li key={option.optionId}>
-                {shortId(option.optionId)} · {option.selectedCount}
-              </li>
-            ))}
-          </ul>
-        </article>
-      ))}
-      {!hidden && stats.data ? (
-        <PageEnd
-          next={Boolean(stats.hasNextPage)}
-          loading={stats.isFetchingNextPage}
-          onMore={() => void stats.fetchNextPage()}
-        />
-      ) : null}
+      <div className={styles.page}>
+        <AdminHeading
+          title="Thống kê câu hỏi"
+          eyebrow="QUẢN TRỊ / BÁO CÁO"
+          description={`Đúng phiên bản đã khóa · ${adminId(versionId)}`}
+        >
+          <Link to={`/admin/exams/${examId}`}>Về đề →</Link>
+          <Button
+            variant="secondary"
+            disabled={hidden || query.isFetching}
+            onClick={() => void refresh()}
+          >
+            Tải lại
+          </Button>
+        </AdminHeading>
+        {query.isLoading ? <SkeletonLines /> : null}
+        {query.error ? (
+          <ErrorPanel error={query.error} onRetry={hidden ? undefined : () => void refresh()} />
+        ) : null}
+        {!hidden && query.data ? (
+          <section className={admin.panel}>
+            <div className={styles.scope}>
+              <p>{items.length} câu đã tải</p>
+              <p>Tỷ lệ mỗi câu dùng số lượt hoàn thành của chính câu đó.</p>
+            </div>
+            {items.length === 0 ? (
+              <EmptyState title="Chưa có thống kê">
+                Phiên bản này chưa có câu để thống kê.
+              </EmptyState>
+            ) : (
+              <TableScroll label="Thống kê câu hỏi theo phiên bản">
+                <table className={tableClass}>
+                  <thead>
+                    <tr>
+                      {[
+                        "Mã câu",
+                        "Hoàn thành",
+                        "Đúng",
+                        "Sai",
+                        "Chưa chọn",
+                        "Tỷ lệ đúng",
+                        "Chi tiết",
+                      ].map((t) => (
+                        <th key={t} scope="col">
+                          {t}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {items.map((r) => (
+                      <tr
+                        key={r.questionId}
+                        className={
+                          selected?.questionId === r.questionId ? styles.selected : undefined
+                        }
+                      >
+                        <td className={styles.code}>{adminId(r.questionId)}</td>
+                        <td>{r.completedAttempts}</td>
+                        <td>{r.correct}</td>
+                        <td>{r.incorrect}</td>
+                        <td>{r.unanswered}</td>
+                        <td>
+                          {r.completedAttempts
+                            ? `${r.correct} / ${r.completedAttempts} lượt · ${rateLabel(r.correct, r.completedAttempts)}`
+                            : "Chưa có mẫu"}
+                        </td>
+                        <td>
+                          <Button
+                            variant="secondary"
+                            aria-pressed={selected?.questionId === r.questionId}
+                            onClick={() => c.setSelectedId(r.questionId)}
+                          >
+                            Xem lựa chọn
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </TableScroll>
+            )}
+            <PageEnd
+              next={Boolean(query.hasNextPage)}
+              loading={query.isFetching}
+              onMore={() => void more()}
+            />
+          </section>
+        ) : null}
+        {selected ? (
+          <section className={admin.panel}>
+            <div className={styles.scope}>
+              <h2>Lượt lựa chọn · Câu {adminId(selected.questionId)}</h2>
+              <p>Tổng lượt lựa chọn: {selected.options.reduce((n, o) => n + o.selectedCount, 0)}</p>
+            </div>
+            <p>
+              Một bài có thể chọn nhiều lựa chọn; tổng lượt chọn có thể vượt số bài. Mỗi thanh có
+              trục từ 0 đến {selected.completedAttempts} lượt hoàn thành.
+            </p>
+            {selected.completedAttempts === 0 ? <p>Chưa có mẫu</p> : null}
+            <TableScroll label="Lượt lựa chọn của câu đã chọn">
+              <table className={tableClass}>
+                <thead>
+                  <tr>
+                    <th scope="col">Mã lựa chọn</th>
+                    <th scope="col">Số lần chọn</th>
+                    <th scope="col">Theo số lượt hoàn thành</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {selected.options.map((o) => (
+                    <tr key={o.optionId}>
+                      <td className={styles.code}>{adminId(o.optionId)}</td>
+                      <td>{o.selectedCount}</td>
+                      <td>
+                        {selected.completedAttempts > 0 ? (
+                          <span
+                            className={styles.bar}
+                            role="img"
+                            aria-label={`${o.selectedCount} trên ${selected.completedAttempts} lượt`}
+                          >
+                            <span
+                              style={{
+                                width: `${(o.selectedCount / selected.completedAttempts) * 100}%`,
+                              }}
+                            />
+                          </span>
+                        ) : (
+                          "Chưa có mẫu"
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableScroll>
+          </section>
+        ) : null}
+      </div>
     </CapabilityGate>
   );
 }

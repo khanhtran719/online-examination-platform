@@ -359,7 +359,7 @@ export function errorCopy(error: unknown): {
     if (error.status === 404)
       return {
         title: "Không tìm thấy nội dung",
-        detail: "Nội dung không tồn tại hoặc capability này chưa được backend triển khai.",
+        detail: "Nội dung không tồn tại hoặc bạn không có quyền truy cập.",
         retryAfter: null,
         correlationId: error.correlationId,
         status: 404,

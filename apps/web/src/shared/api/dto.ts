@@ -334,6 +334,7 @@ export interface OptionStatistic {
 export interface QuestionStatistic {
   questionId: string;
   completedAttempts: number;
+  answered: number;
   correct: number;
   incorrect: number;
   unanswered: number;
@@ -367,6 +368,28 @@ export interface Page<T> {
   items: T[];
   next: string | null;
   pageSize: number;
+}
+export interface ActiveCandidatesPage extends Page<ActiveCandidate> {
+  asOf: string;
+}
+export interface BusinessMetrics {
+  asOf: string;
+  window: { from: string; to: string; basis: "ATTEMPT_STARTED_AT" };
+  counts: {
+    startedAttempts: number;
+    activeAttempts: number;
+    submittedAttempts: number;
+    completedAttempts: number;
+    failedAttempts: number;
+    expiredSubmissions: number;
+    expiredCompletedAttempts: number;
+  };
+  backlog: {
+    pendingAttempts: number;
+    replayPendingAttempts: number;
+    oldestSubmittedAt: string | null;
+    oldestAgeSeconds: number | null;
+  };
 }
 export interface PageQuery {
   pageSize?: number;

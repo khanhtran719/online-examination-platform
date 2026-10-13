@@ -1,115 +1,146 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { Link } from "react-router";
 
-import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
-import { useProtectedAccess } from "@web/shared/protected-access";
-import { EmptyState, ErrorPanel, SkeletonLines, tableClass, TableScroll } from "@web/shared/ui/ui";
-
-import styles from "./admin.module.css";
+import { QUESTION_TYPES, type QuestionType } from "@web/shared/api/dto";
 import {
-  AdminBadge,
-  AdminHeading,
-  adminId as shortId,
-  PageEnd,
-  questionTypeLabel,
-} from "./admin-ui";
-import { CapabilityGate, useCapability } from "./gate";
+  ActionLink,
+  Badge,
+  Button,
+  EmptyState,
+  ErrorPanel,
+  SelectField,
+  SkeletonLines,
+  tableClass,
+  TableScroll,
+  TextField,
+} from "@web/shared/ui/ui";
+
+import { adminId, PageEnd, questionTypeLabel } from "./admin-ui";
+import styles from "./authoring.module.css";
+import { CapabilityGate } from "./gate";
+import { useQuestionList } from "./use-question-list";
 
 export function QuestionListPage() {
-  useTitle("Ngân hàng câu");
-  const gate = useCapability("catalog.manage");
-  const { api, demo } = useRuntime();
-  const canKeys = demo?.permissions.includes("catalog.keys.read") ?? false;
-  const [blocked, setBlocked] = useState(false);
-  const questions = useInfiniteQuery({
-    queryKey: ["bank"],
-    enabled: gate === "allowed" && !blocked,
-    initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) =>
-      api.listBankQuestions({ pageSize: 20, cursor: pageParam }).then((response) => response.data),
-    getNextPageParam: (last) => last.next ?? undefined,
-  });
-  const hidden = useProtectedAccess(questions.error, [["bank"]], blocked, () => setBlocked(true));
-  const rows = hidden ? [] : (questions.data?.pages.flatMap((page) => page.items) ?? []);
+  useTitle("Ngân hàng câu hỏi");
+  const list = useQuestionList();
   return (
     <CapabilityGate permission="catalog.manage">
-      <AdminHeading
-        title="Ngân hàng câu"
-        eyebrow="QUẢN LÝ NỘI DUNG"
-        description="Soạn, kiểm tra và sử dụng câu hỏi trong các bản nháp."
-      >
-        <Link className={styles.primaryLink} to="/admin/questions/new">
-          + Tạo câu
-        </Link>
-      </AdminHeading>
-      {!canKeys ? (
-        <p className={styles.caption}>Không có catalog.keys.read nên đáp án không được hiển thị.</p>
-      ) : null}
-      {questions.isLoading ? <SkeletonLines /> : null}
-      {questions.error ? (
-        <ErrorPanel
-          error={questions.error}
-          onRetry={hidden ? undefined : () => void questions.refetch()}
-        />
-      ) : null}
-      {questions.isSuccess && !hidden && rows.length === 0 ? (
-        <EmptyState title="Ngân hàng trống">Tạo câu hoặc nhập JSON.</EmptyState>
-      ) : null}
-      {rows.length > 0 ? (
-        <>
-          <p className={styles.tableHint}>
-            Cuộn ngang trong bảng để xem đủ các cột trên màn hình nhỏ.
-          </p>
-          <TableScroll label="Ngân hàng câu hỏi">
-            <table className={tableClass}>
-              <thead>
-                <tr>
-                  <th scope="col">Câu hỏi</th>
-                  <th scope="col">Loại</th>
-                  <th scope="col">Điểm</th>
-                  <th scope="col">Trạng thái</th>
-                  <th scope="col">Revision</th>
-                  <th scope="col">Đáp án</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((question) => (
-                  <tr key={question.id}>
-                    <th scope="row">
-                      <Link className={styles.rowTitle} to={`/admin/questions/${question.id}/edit`}>
-                        {question.prompt.slice(0, 180)}
-                      </Link>
-                      <span className={styles.rowSub}>Câu {shortId(question.id)}</span>
-                    </th>
-                    <td>{questionTypeLabel[question.type]}</td>
-                    <td>{question.points}</td>
-                    <td>
-                      <AdminBadge tone={question.archived ? "neutral" : "success"}>
-                        {question.archived ? "Đã lưu trữ" : "Đang dùng"}
-                      </AdminBadge>
-                    </td>
-                    <td>{question.revision}</td>
-                    <td>
-                      {canKeys
-                        ? `Vị trí ${question.correctOptionPositions.join(", ")}`
-                        : "Đáp án đã ẩn"}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </TableScroll>
-        </>
-      ) : null}
-      {!hidden && questions.isSuccess ? (
-        <PageEnd
-          next={Boolean(questions.hasNextPage)}
-          loading={questions.isFetchingNextPage}
-          onMore={() => void questions.fetchNextPage()}
-        />
-      ) : null}
+      <CapabilityGate permission="catalog.keys.read">
+        <div className={styles.page}>
+          <p className={styles.breadcrumb}>Quản trị / Ngân hàng câu hỏi</p>
+          <header className={styles.heading}>
+            <div>
+              <h1>Ngân hàng câu hỏi</h1>
+              <p>Soạn và sử dụng câu hỏi trong các bản nháp.</p>
+            </div>
+            <div className={styles.actions}>
+              <ActionLink to="/admin/questions/new">+ Tạo câu</ActionLink>
+              {list.canImport ? (
+                <ActionLink variant="secondary" to="/admin/imports/new">
+                  Nhập JSON
+                </ActionLink>
+              ) : null}
+              <Button
+                variant="secondary"
+                disabled={list.unavailable || list.questions.isFetching}
+                onClick={() => void list.questions.refetch()}
+              >
+                Tải lại
+              </Button>
+            </div>
+          </header>
+          {list.questions.error ? (
+            <ErrorPanel
+              error={list.questions.error}
+              onRetry={list.hidden ? undefined : () => void list.questions.refetch()}
+            />
+          ) : null}
+          {list.questions.isLoading ? <SkeletonLines /> : null}
+          {!list.unavailable ? (
+            <section className={styles.panel}>
+              <div className={styles.filters}>
+                <TextField
+                  label="Tìm trong phần đã tải"
+                  type="search"
+                  value={list.search}
+                  onChange={(e) => list.setSearch(e.target.value)}
+                />
+                <SelectField
+                  label="Loại câu hỏi"
+                  value={list.type}
+                  onChange={(e) => list.setType(e.target.value as QuestionType | "")}
+                >
+                  <option value="">Tất cả</option>
+                  {QUESTION_TYPES.map((type) => (
+                    <option key={type} value={type}>
+                      {questionTypeLabel[type]}
+                    </option>
+                  ))}
+                </SelectField>
+              </div>
+              <p className={styles.scope}>
+                Đang hiển thị {list.filtered.length} trên {list.rows.length} câu đã tải. Đáp án và
+                giải thích không hiển thị trong danh sách.
+              </p>
+              {list.questions.isSuccess && !list.rows.length ? (
+                <EmptyState title="Ngân hàng trống">Tạo câu hoặc nhập JSON.</EmptyState>
+              ) : list.rows.length && !list.filtered.length ? (
+                <EmptyState title="Không khớp bộ lọc">
+                  Chỉ tìm trong phần đã tải; thử đổi bộ lọc hoặc tải thêm.
+                </EmptyState>
+              ) : null}
+              {list.filtered.length ? (
+                <>
+                  <p className={styles.scope}>Cuộn ngang trong bảng nếu cần để xem đủ các cột.</p>
+                  <TableScroll label="Ngân hàng câu hỏi">
+                    <table className={`${tableClass} ${styles.table}`}>
+                      <thead>
+                        <tr>
+                          <th scope="col">Câu hỏi</th>
+                          <th scope="col">Loại</th>
+                          <th scope="col">Điểm</th>
+                          <th scope="col">Trạng thái</th>
+                          <th scope="col">Bản sửa</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {list.filtered.map((q) => (
+                          <tr key={q.id}>
+                            <th scope="row">
+                              <Link
+                                className={styles.rowTitle}
+                                to={`/admin/questions/${q.id}/edit`}
+                              >
+                                {q.prompt.slice(0, 180)}
+                              </Link>
+                              <span className={styles.rowSub}>Câu {adminId(q.id)}</span>
+                            </th>
+                            <td>{questionTypeLabel[q.type]}</td>
+                            <td>{q.points}</td>
+                            <td>
+                              <Badge tone={q.archived ? "neutral" : "success"}>
+                                {q.archived ? "Đã lưu trữ" : "Đang dùng"}
+                              </Badge>
+                            </td>
+                            <td>{q.revision}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </TableScroll>
+                </>
+              ) : null}
+              {list.questions.isSuccess ? (
+                <PageEnd
+                  next={Boolean(list.questions.hasNextPage)}
+                  loading={list.questions.isFetchingNextPage}
+                  onMore={() => void list.questions.fetchNextPage()}
+                />
+              ) : null}
+            </section>
+          ) : null}
+        </div>
+      </CapabilityGate>
     </CapabilityGate>
   );
 }

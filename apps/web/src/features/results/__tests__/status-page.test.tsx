@@ -10,6 +10,11 @@ const readStatus = statusApi.getAttemptStatus;
 vi.mock("@web/app/runtime", () => ({
   useRuntime: () => ({ api: statusApi }),
 }));
+vi.mock("@web/app/session", () => ({
+  useSession: () => ({ status: "authenticated", needsReauth: false, profile: { id: "actor" } }),
+}));
+vi.mock("@web/app/memory", () => ({ useMemory: () => memory }));
+const memory = { clear: vi.fn() };
 afterEach(() => {
   cleanup();
   vi.resetAllMocks();

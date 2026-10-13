@@ -1,0 +1,1256 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test
+
+
+Running 36 tests using 1 worker
+
+(node:36696) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [chromium] › e2e/admin-workflows.e2e-spec.ts:14:1 › exam draft keeps editor state, prevents duplicate slots and distinguishes saved publication from local edits (252ms)
+(node:36713) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 [chromium] › e2e/admin-workflows.e2e-spec.ts:57:1 › question keys use the keyboard and confirm destructive type changes before saving (159ms)
+(node:36721) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 [chromium] › e2e/admin-workflows.e2e-spec.ts:94:1 › import validates first, invalidates a changed file and asks before committing (149ms)
+(node:36731) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 [chromium] › e2e/admin-workflows.e2e-spec.ts:123:1 › audit restores focus, failed replay stays pending and reviewer capabilities filter the page (145ms)
+(node:36739) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   5 [chromium] › e2e/assessment-results.e2e-spec.ts:11:1 › mobile room saves three native question types before submitting and opening released review (145ms)
+(node:36748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   6 [chromium] › e2e/assessment-results.e2e-spec.ts:58:1 › history and pseudonymous leaderboard remain keyboard scrollable on narrow screens (147ms)
+(node:36756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 [chromium] › e2e/browser.spec.ts:58:3 › demo › public pages at five widths (148ms)
+(node:36763) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   8 [chromium] › e2e/browser.spec.ts:87:3 › demo › exam save, conflict, frozen attempt and result (177ms)
+(node:36770) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 [chromium] › e2e/browser.spec.ts:140:3 › demo › admin permission boundary and honest metrics (151ms)
+(node:36777) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 [chromium] › e2e/browser.spec.ts:171:3 › live › does not fall back to demo data (161ms)
+(node:36785) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  11 [chromium] › e2e/foundation.e2e-spec.ts:11:1 › public mobile menu closes on Escape and restores trigger focus (145ms)
+(node:36792) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  12 [chromium] › e2e/foundation.e2e-spec.ts:31:1 › candidate mobile navigation closes after choosing a route and shows its active link (182ms)
+(node:36799) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  13 [chromium] › e2e/foundation.e2e-spec.ts:66:1 › admin mobile menu preserves capability filtering and logout (146ms)
+(node:36806) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  14 [chromium] › e2e/foundation.e2e-spec.ts:95:1 › shared controls support keyboard entry, table scrolling and dialog focus (167ms)
+(node:36815) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  15 [chromium] › e2e/onboarding-catalog.e2e-spec.ts:3:1 › verification recovery and explicit confirmation remain usable on mobile (159ms)
+(node:36822) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  16 [chromium] › e2e/onboarding-catalog.e2e-spec.ts:26:1 › catalog filters, browser Back and detail cancellation preserve navigation (161ms)
+(node:36829) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  17 [chromium] › e2e/port-01.e2e-spec.ts:58:1 › PORT-01 desktop pilots match shared tokens, keep loaded-only filters and keyboard links (161ms)
+(node:36836) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  18 [chromium] › e2e/port-01.e2e-spec.ts:121:1 › PORT-01 pilots preserve body width and accessible navigation on narrow screens (149ms)
+(node:36843) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  19 [chromium] › e2e/port-02.e2e-spec.ts:62:1 › PORT-02 creates a structured draft, validates locally and confirms publication/removal/exit (160ms)
+(node:36850) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  20 [chromium] › e2e/port-02.e2e-spec.ts:140:1 › PORT-02 compares conflicts, guards reload and retries an unknown write (158ms)
+(node:36857) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  21 [chromium] › e2e/port-03.e2e-spec.ts:62:1 › PORT-03 bank filters loaded questions without keys and fits Web/tablet (148ms)
+(node:36864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  22 [chromium] › e2e/port-03.e2e-spec.ts:76:1 › PORT-03 option identity, candidate projection, type conversion and archive remain correct (189ms)
+(node:36871) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  23 [chromium] › e2e/port-03.e2e-spec.ts:142:1 › PORT-03 validates exact import snapshot and recovers an unknown atomic commit (162ms)
+(node:36879) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  24 [chromium] › e2e/port-04.e2e-spec.ts:60:1 › PORT-04 overview, scoped business metrics and unavailable technical providers fit Web/tablet (152ms)
+(node:36886) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  25 [chromium] › e2e/port-04.e2e-spec.ts:79:1 › PORT-04 monitor and nullable ledger retain their actual scope at four widths (150ms)
+(node:36893) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  26 [chromium] › e2e/port-04.e2e-spec.ts:100:1 › PORT-04 statistics, audit drawer and failed detail match selected layouts (151ms)
+(node:36900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  27 [chromium] › e2e/port-04.e2e-spec.ts:130:1 › PORT-04 replay confirmation restores focus, retries a frozen request and clears on permission loss (156ms)
+(node:36907) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  28 [chromium] › e2e/port-04.e2e-spec.ts:172:1 › PORT-04 counts multiple selections independently against completed attempts (154ms)
+(node:36914) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  29 [chromium] › e2e/public-experience.e2e-spec.ts:32:5 › public experience demo › homepage renders 3D, fits five widths and supports motion pause (153ms)
+(node:36921) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  30 [chromium] › e2e/public-experience.e2e-spec.ts:66:5 › public experience demo › public sample works without business requests and leads to registration (150ms)
+(node:36928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  31 [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience demo › fallback and keyboard navigation remain useful (148ms)
+(node:36935) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  32 [chromium] › e2e/public-experience.e2e-spec.ts:162:5 › public experience demo › 3D stops when paused or offscreen and recovers after context loss (154ms)
+(node:36942) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [chromium] › e2e/public-experience.e2e-spec.ts:32:5 › public experience live › homepage renders 3D, fits five widths and supports motion pause (147ms)
+(node:36949) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  34 [chromium] › e2e/public-experience.e2e-spec.ts:66:5 › public experience live › public sample works without business requests and leads to registration (143ms)
+(node:36956) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  35 [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience live › fallback and keyboard navigation remain useful (147ms)
+(node:36963) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  36 [chromium] › e2e/public-experience.e2e-spec.ts:162:5 › public experience live › 3D stops when paused or offscreen and recovers after context loss (154ms)
+
+
+  1) [chromium] › e2e/admin-workflows.e2e-spec.ts:14:1 › exam draft keeps editor state, prevents duplicate slots and distinguishes saved publication from local edits 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fexams%2Fnew
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fexams%2Fnew", waiting until "load"
+
+
+      2 |
+      3 | async function admin(page: Page, route: string) {
+    > 4 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+        |              ^
+      5 |   await page.getByLabel("Email").fill("candidate@example.test");
+      6 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      7 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:4:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:18:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-f96e8-ublication-from-local-edits-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-workflows.e2e-spec.t-f96e8-ublication-from-local-edits-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-f96e8-ublication-from-local-edits-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-workflows.e2e-spec.t-f96e8-ublication-from-local-edits-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e/admin-workflows.e2e-spec.ts:57:1 › question keys use the keyboard and confirm destructive type changes before saving 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fquestions%2Fnew
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fquestions%2Fnew", waiting until "load"
+
+
+      2 |
+      3 | async function admin(page: Page, route: string) {
+    > 4 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+        |              ^
+      5 |   await page.getByLabel("Email").fill("candidate@example.test");
+      6 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      7 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:4:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:60:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-96454--type-changes-before-saving-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-workflows.e2e-spec.t-96454--type-changes-before-saving-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-96454--type-changes-before-saving-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-workflows.e2e-spec.t-96454--type-changes-before-saving-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › e2e/admin-workflows.e2e-spec.ts:94:1 › import validates first, invalidates a changed file and asks before committing 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fimports%2Fnew
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fimports%2Fnew", waiting until "load"
+
+
+      2 |
+      3 | async function admin(page: Page, route: string) {
+    > 4 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+        |              ^
+      5 |   await page.getByLabel("Email").fill("candidate@example.test");
+      6 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      7 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:4:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:98:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-workflows.e2e-spec.t-03bb8--and-asks-before-committing-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › e2e/admin-workflows.e2e-spec.ts:123:1 › audit restores focus, failed replay stays pending and reviewer capabilities filter the page 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Faudit
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Faudit", waiting until "load"
+
+
+      2 |
+      3 | async function admin(page: Page, route: string) {
+    > 4 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+        |              ^
+      5 |   await page.getByLabel("Email").fill("candidate@example.test");
+      6 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      7 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:4:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/admin-workflows.e2e-spec.ts:127:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-94c52-apabilities-filter-the-page-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/admin-workflows.e2e-spec.t-94c52-apabilities-filter-the-page-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/admin-workflows.e2e-spec.t-94c52-apabilities-filter-the-page-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/admin-workflows.e2e-spec.t-94c52-apabilities-filter-the-page-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › e2e/assessment-results.e2e-spec.ts:11:1 › mobile room saves three native question types before submitting and opening released review 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fexams%2F00000000-0000-4000-8000-000000000102
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fexams%2F00000000-0000-4000-8000-000000000102", waiting until "load"
+
+
+      2 |
+      3 | async function login(page: Page, returnPath: string) {
+    > 4 |   await page.goto(`/login?return=${encodeURIComponent(returnPath)}`);
+        |              ^
+      5 |   await page.getByLabel("Email").fill("candidate@example.test");
+      6 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      7 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at login (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/assessment-results.e2e-spec.ts:4:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/assessment-results.e2e-spec.ts:15:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/assessment-results.e2e-spe-858aa-and-opening-released-review-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/assessment-results.e2e-spe-858aa-and-opening-released-review-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/assessment-results.e2e-spe-858aa-and-opening-released-review-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/assessment-results.e2e-spe-858aa-and-opening-released-review-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › e2e/assessment-results.e2e-spec.ts:58:1 › history and pseudonymous leaderboard remain keyboard scrollable on narrow screens 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fhistory
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fhistory", waiting until "load"
+
+
+      2 |
+      3 | async function login(page: Page, returnPath: string) {
+    > 4 |   await page.goto(`/login?return=${encodeURIComponent(returnPath)}`);
+        |              ^
+      5 |   await page.getByLabel("Email").fill("candidate@example.test");
+      6 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      7 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at login (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/assessment-results.e2e-spec.ts:4:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/assessment-results.e2e-spec.ts:62:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/assessment-results.e2e-spe-d0d68-crollable-on-narrow-screens-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/assessment-results.e2e-spe-d0d68-crollable-on-narrow-screens-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/assessment-results.e2e-spe-d0d68-crollable-on-narrow-screens-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/assessment-results.e2e-spe-d0d68-crollable-on-narrow-screens-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › e2e/browser.spec.ts:58:3 › demo › public pages at five widths ────────────────────
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/
+    Call log:
+      - navigating to "http://127.0.0.1:4173/", waiting until "load"
+
+
+      59 |     for (const width of widths) {
+      60 |       await page.setViewportSize({ width, height: width < 768 ? 720 : 900 });
+    > 61 |       await page.goto("/");
+         |                  ^
+      62 |       await expect(page.getByRole("status").filter({ hasText: "Dữ liệu mẫu" })).toBeVisible();
+      63 |       await expect(page.getByRole("heading", { name: /Vào nhịp thi/ })).toBeVisible();
+      64 |       await shot(page, `home-${width}`);
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/browser.spec.ts:61:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/browser-demo-public-pages-at-five-widths-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/browser-demo-public-pages-at-five-widths-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser-demo-public-pages-at-five-widths-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser-demo-public-pages-at-five-widths-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › e2e/browser.spec.ts:87:3 › demo › exam save, conflict, frozen attempt and result ─
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fdashboard
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fdashboard", waiting until "load"
+
+
+      27 |
+      28 | async function login(page: Page, returnPath = "/dashboard"): Promise<void> {
+    > 29 |   await page.goto(`/login?return=${encodeURIComponent(returnPath)}`);
+         |              ^
+      30 |   await page.getByLabel("Email").fill("candidate@example.test");
+      31 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      32 |   await page.getByRole("button", { name: "Đăng nhập" }).click();
+        at login (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/browser.spec.ts:29:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/browser.spec.ts:89:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/browser-demo-exam-save-conflict-frozen-attempt-and-result-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/browser-demo-exam-save-conflict-frozen-attempt-and-result-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser-demo-exam-save-conflict-frozen-attempt-and-result-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser-demo-exam-save-conflict-frozen-attempt-and-result-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium] › e2e/browser.spec.ts:140:3 › demo › admin permission boundary and honest metrics ──
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin", waiting until "load"
+
+
+      27 |
+      28 | async function login(page: Page, returnPath = "/dashboard"): Promise<void> {
+    > 29 |   await page.goto(`/login?return=${encodeURIComponent(returnPath)}`);
+         |              ^
+      30 |   await page.getByLabel("Email").fill("candidate@example.test");
+      31 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      32 |   await page.getByRole("button", { name: "Đăng nhập" }).click();
+        at login (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/browser.spec.ts:29:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/browser.spec.ts:142:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/browser-demo-admin-permission-boundary-and-honest-metrics-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/browser-demo-admin-permission-boundary-and-honest-metrics-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser-demo-admin-permission-boundary-and-honest-metrics-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser-demo-admin-permission-boundary-and-honest-metrics-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium] › e2e/browser.spec.ts:171:3 › live › does not fall back to demo data ──────────────
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4174/
+    Call log:
+      - navigating to "http://127.0.0.1:4174/", waiting until "load"
+
+
+      171 |   test("does not fall back to demo data", async ({ page }) => {
+      172 |     await page.setViewportSize({ width: 1440, height: 900 });
+    > 173 |     await page.goto("/");
+          |                ^
+      174 |     await expect(page.getByText("Dữ liệu mẫu")).toHaveCount(0);
+      175 |     await expect(page.getByText("candidate@example.test")).toHaveCount(0);
+      176 |     await shot(page, "live-home-1440");
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/browser.spec.ts:173:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/browser-live-does-not-fall-back-to-demo-data-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/browser-live-does-not-fall-back-to-demo-data-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser-live-does-not-fall-back-to-demo-data-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser-live-does-not-fall-back-to-demo-data-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [chromium] › e2e/foundation.e2e-spec.ts:11:1 › public mobile menu closes on Escape and restores trigger focus 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login", waiting until "load"
+
+
+      11 | test("public mobile menu closes on Escape and restores trigger focus", async ({ page }) => {
+      12 |   await page.setViewportSize({ width: 390, height: 844 });
+    > 13 |   await page.goto("/login");
+         |              ^
+      14 |   const trigger = page.getByRole("button", { name: "Menu", exact: true });
+      15 |   await trigger.click();
+      16 |   await expect(page.getByRole("button", { name: "Đóng menu", exact: true })).toHaveAttribute(
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:13:14
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-pub-2a3bd--and-restores-trigger-focus-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/foundation.e2e-spec.ts-pub-2a3bd--and-restores-trigger-focus-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-pub-2a3bd--and-restores-trigger-focus-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/foundation.e2e-spec.ts-pub-2a3bd--and-restores-trigger-focus-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [chromium] › e2e/foundation.e2e-spec.ts:31:1 › candidate mobile navigation closes after choosing a route and shows its active link 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fdashboard
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fdashboard", waiting until "load"
+
+
+      2 |
+      3 | async function login(page: Page, returnPath = "/dashboard") {
+    > 4 |   await page.goto(`/login?return=${encodeURIComponent(returnPath)}`);
+        |              ^
+      5 |   await page.getByLabel("Email").fill("candidate@example.test");
+      6 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      7 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at login (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:4:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:35:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-can-92d39-e-and-shows-its-active-link-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/foundation.e2e-spec.ts-can-92d39-e-and-shows-its-active-link-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-can-92d39-e-and-shows-its-active-link-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/foundation.e2e-spec.ts-can-92d39-e-and-shows-its-active-link-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [chromium] › e2e/foundation.e2e-spec.ts:66:1 › admin mobile menu preserves capability filtering and logout 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin", waiting until "load"
+
+
+      2 |
+      3 | async function login(page: Page, returnPath = "/dashboard") {
+    > 4 |   await page.goto(`/login?return=${encodeURIComponent(returnPath)}`);
+        |              ^
+      5 |   await page.getByLabel("Email").fill("candidate@example.test");
+      6 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      7 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at login (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:4:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:68:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-adm-b639b-bility-filtering-and-logout-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/foundation.e2e-spec.ts-adm-b639b-bility-filtering-and-logout-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-adm-b639b-bility-filtering-and-logout-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/foundation.e2e-spec.ts-adm-b639b-bility-filtering-and-logout-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [chromium] › e2e/foundation.e2e-spec.ts:95:1 › shared controls support keyboard entry, table scrolling and dialog focus 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/dev/ui
+    Call log:
+      - navigating to "http://127.0.0.1:4173/dev/ui", waiting until "load"
+
+
+       97 | }) => {
+       98 |   await page.setViewportSize({ width: 320, height: 720 });
+    >  99 |   await page.goto("/dev/ui");
+          |              ^
+      100 |   await expect(
+      101 |     page.getByRole("heading", { name: "Thư viện giao diện", exact: true }),
+      102 |   ).toBeVisible();
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:99:14
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-sha-61e34--scrolling-and-dialog-focus-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/foundation.e2e-spec.ts-sha-61e34--scrolling-and-dialog-focus-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/foundation.e2e-spec.ts-sha-61e34--scrolling-and-dialog-focus-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/foundation.e2e-spec.ts-sha-61e34--scrolling-and-dialog-focus-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [chromium] › e2e/onboarding-catalog.e2e-spec.ts:3:1 › verification recovery and explicit confirmation remain usable on mobile 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/verify-email
+    Call log:
+      - navigating to "http://127.0.0.1:4173/verify-email", waiting until "load"
+
+
+       5 | }) => {
+       6 |   await page.setViewportSize({ width: 320, height: 844 });
+    >  7 |   await page.goto("/verify-email");
+         |              ^
+       8 |   await expect(page.getByText("Liên kết không có mã", { exact: true })).toBeVisible();
+       9 |   await expect(page.getByLabel("Mật khẩu mới")).toHaveCount(0);
+      10 |   await page.getByRole("link", { name: "Gửi lại email xác nhận", exact: true }).click();
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/onboarding-catalog.e2e-spec.ts:7:14
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/onboarding-catalog.e2e-spe-36b73-ion-remain-usable-on-mobile-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/onboarding-catalog.e2e-spe-36b73-ion-remain-usable-on-mobile-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/onboarding-catalog.e2e-spe-36b73-ion-remain-usable-on-mobile-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/onboarding-catalog.e2e-spe-36b73-ion-remain-usable-on-mobile-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [chromium] › e2e/onboarding-catalog.e2e-spec.ts:26:1 › catalog filters, browser Back and detail cancellation preserve navigation 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login", waiting until "load"
+
+
+      27 |   page,
+      28 | }) => {
+    > 29 |   await page.goto("/login");
+         |              ^
+      30 |   await page.getByLabel("Email").fill("candidate@example.test");
+      31 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      32 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/onboarding-catalog.e2e-spec.ts:29:14
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/onboarding-catalog.e2e-spe-32fe7-llation-preserve-navigation-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/onboarding-catalog.e2e-spe-32fe7-llation-preserve-navigation-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/onboarding-catalog.e2e-spe-32fe7-llation-preserve-navigation-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/onboarding-catalog.e2e-spe-32fe7-llation-preserve-navigation-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [chromium] › e2e/port-01.e2e-spec.ts:58:1 › PORT-01 desktop pilots match shared tokens, keep loaded-only filters and keyboard links 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login", waiting until "load"
+
+
+      10 | );
+      11 | async function login(page: Page) {
+    > 12 |   await page.goto("/login");
+         |              ^
+      13 |   await page.getByLabel("Email").fill("candidate@example.test");
+      14 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      15 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at login (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-01.e2e-spec.ts:12:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-01.e2e-spec.ts:64:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-01.e2e-spec.ts-PORT-0-a71f4--filters-and-keyboard-links-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-01.e2e-spec.ts-PORT-0-a71f4--filters-and-keyboard-links-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-01.e2e-spec.ts-PORT-0-a71f4--filters-and-keyboard-links-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-01.e2e-spec.ts-PORT-0-a71f4--filters-and-keyboard-links-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [chromium] › e2e/port-01.e2e-spec.ts:121:1 › PORT-01 pilots preserve body width and accessible navigation on narrow screens 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login", waiting until "load"
+
+
+      10 | );
+      11 | async function login(page: Page) {
+    > 12 |   await page.goto("/login");
+         |              ^
+      13 |   await page.getByLabel("Email").fill("candidate@example.test");
+      14 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      15 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at login (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-01.e2e-spec.ts:12:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-01.e2e-spec.ts:125:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-01.e2e-spec.ts-PORT-0-53b9e-avigation-on-narrow-screens-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-01.e2e-spec.ts-PORT-0-53b9e-avigation-on-narrow-screens-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-01.e2e-spec.ts-PORT-0-53b9e-avigation-on-narrow-screens-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-01.e2e-spec.ts-PORT-0-53b9e-avigation-on-narrow-screens-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  19) [chromium] › e2e/port-02.e2e-spec.ts:62:1 › PORT-02 creates a structured draft, validates locally and confirms publication/removal/exit 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fexams%2Fnew
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fexams%2Fnew", waiting until "load"
+
+
+      10 | );
+      11 | async function admin(page: Page, route: string) {
+    > 12 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      13 |   await page.getByLabel("Email").fill("candidate@example.test");
+      14 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      15 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-02.e2e-spec.ts:12:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-02.e2e-spec.ts:68:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-02.e2e-spec.ts-PORT-0-67aaa-ms-publication-removal-exit-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  20) [chromium] › e2e/port-02.e2e-spec.ts:140:1 › PORT-02 compares conflicts, guards reload and retries an unknown write 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fexams%2F00000000-0000-4000-8000-000000000101%2Fedit
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fexams%2F00000000-0000-4000-8000-000000000101%2Fedit", waiting until "load"
+
+
+      10 | );
+      11 | async function admin(page: Page, route: string) {
+    > 12 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      13 |   await page.getByLabel("Email").fill("candidate@example.test");
+      14 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      15 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-02.e2e-spec.ts:12:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-02.e2e-spec.ts:142:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-02.e2e-spec.ts-PORT-0-40150-nd-retries-an-unknown-write-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-02.e2e-spec.ts-PORT-0-40150-nd-retries-an-unknown-write-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-02.e2e-spec.ts-PORT-0-40150-nd-retries-an-unknown-write-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-02.e2e-spec.ts-PORT-0-40150-nd-retries-an-unknown-write-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  21) [chromium] › e2e/port-03.e2e-spec.ts:62:1 › PORT-03 bank filters loaded questions without keys and fits Web/tablet 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fquestions
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fquestions", waiting until "load"
+
+
+      10 | );
+      11 | async function admin(page: Page, route: string) {
+    > 12 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      13 |   await page.getByLabel("Email").fill("candidate@example.test");
+      14 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      15 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-03.e2e-spec.ts:12:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-03.e2e-spec.ts:63:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-03.e2e-spec.ts-PORT-0-e924e-ut-keys-and-fits-Web-tablet-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-03.e2e-spec.ts-PORT-0-e924e-ut-keys-and-fits-Web-tablet-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-03.e2e-spec.ts-PORT-0-e924e-ut-keys-and-fits-Web-tablet-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-03.e2e-spec.ts-PORT-0-e924e-ut-keys-and-fits-Web-tablet-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  22) [chromium] › e2e/port-03.e2e-spec.ts:76:1 › PORT-03 option identity, candidate projection, type conversion and archive remain correct 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fquestions%2Fnew
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fquestions%2Fnew", waiting until "load"
+
+
+      10 | );
+      11 | async function admin(page: Page, route: string) {
+    > 12 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      13 |   await page.getByLabel("Email").fill("candidate@example.test");
+      14 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      15 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-03.e2e-spec.ts:12:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-03.e2e-spec.ts:82:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-03.e2e-spec.ts-PORT-0-56db0--and-archive-remain-correct-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-03.e2e-spec.ts-PORT-0-56db0--and-archive-remain-correct-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-03.e2e-spec.ts-PORT-0-56db0--and-archive-remain-correct-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-03.e2e-spec.ts-PORT-0-56db0--and-archive-remain-correct-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  23) [chromium] › e2e/port-03.e2e-spec.ts:142:1 › PORT-03 validates exact import snapshot and recovers an unknown atomic commit 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fimports%2Fnew
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fimports%2Fnew", waiting until "load"
+
+
+      10 | );
+      11 | async function admin(page: Page, route: string) {
+    > 12 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      13 |   await page.getByLabel("Email").fill("candidate@example.test");
+      14 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      15 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-03.e2e-spec.ts:12:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-03.e2e-spec.ts:146:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-03.e2e-spec.ts-PORT-0-631c9-rs-an-unknown-atomic-commit-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-03.e2e-spec.ts-PORT-0-631c9-rs-an-unknown-atomic-commit-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-03.e2e-spec.ts-PORT-0-631c9-rs-an-unknown-atomic-commit-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-03.e2e-spec.ts-PORT-0-631c9-rs-an-unknown-atomic-commit-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  24) [chromium] › e2e/port-04.e2e-spec.ts:60:1 › PORT-04 overview, scoped business metrics and unavailable technical providers fit Web/tablet 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin", waiting until "load"
+
+
+      12 | const failed = "00000000-0000-4000-8000-000000000403";
+      13 | async function admin(page: Page, route = "/admin") {
+    > 14 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      15 |   await page.getByLabel("Email").fill("candidate@example.test");
+      16 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      17 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:14:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:63:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-1cb93-al-providers-fit-Web-tablet-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-04.e2e-spec.ts-PORT-0-1cb93-al-providers-fit-Web-tablet-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-1cb93-al-providers-fit-Web-tablet-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-04.e2e-spec.ts-PORT-0-1cb93-al-providers-fit-Web-tablet-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  25) [chromium] › e2e/port-04.e2e-spec.ts:79:1 › PORT-04 monitor and nullable ledger retain their actual scope at four widths 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fmonitor
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fmonitor", waiting until "load"
+
+
+      12 | const failed = "00000000-0000-4000-8000-000000000403";
+      13 | async function admin(page: Page, route = "/admin") {
+    > 14 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      15 |   await page.getByLabel("Email").fill("candidate@example.test");
+      16 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      17 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:14:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:82:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-f9b67-actual-scope-at-four-widths-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-04.e2e-spec.ts-PORT-0-f9b67-actual-scope-at-four-widths-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-f9b67-actual-scope-at-four-widths-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-04.e2e-spec.ts-PORT-0-f9b67-actual-scope-at-four-widths-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  26) [chromium] › e2e/port-04.e2e-spec.ts:100:1 › PORT-04 statistics, audit drawer and failed detail match selected layouts 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Faudit
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Faudit", waiting until "load"
+
+
+      12 | const failed = "00000000-0000-4000-8000-000000000403";
+      13 | async function admin(page: Page, route = "/admin") {
+    > 14 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      15 |   await page.getByLabel("Email").fill("candidate@example.test");
+      16 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      17 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:14:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:103:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-7bd12-tail-match-selected-layouts-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-04.e2e-spec.ts-PORT-0-7bd12-tail-match-selected-layouts-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-7bd12-tail-match-selected-layouts-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-04.e2e-spec.ts-PORT-0-7bd12-tail-match-selected-layouts-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  27) [chromium] › e2e/port-04.e2e-spec.ts:130:1 › PORT-04 replay confirmation restores focus, retries a frozen request and clears on permission loss 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin%2Fattempts%2F00000000-0000-4000-8000-000000000403
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin%2Fattempts%2F00000000-0000-4000-8000-000000000403", waiting until "load"
+
+
+      12 | const failed = "00000000-0000-4000-8000-000000000403";
+      13 | async function admin(page: Page, route = "/admin") {
+    > 14 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      15 |   await page.getByLabel("Email").fill("candidate@example.test");
+      16 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      17 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:14:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:133:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-d078d-d-clears-on-permission-loss-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-04.e2e-spec.ts-PORT-0-d078d-d-clears-on-permission-loss-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-d078d-d-clears-on-permission-loss-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-04.e2e-spec.ts-PORT-0-d078d-d-clears-on-permission-loss-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  28) [chromium] › e2e/port-04.e2e-spec.ts:172:1 › PORT-04 counts multiple selections independently against completed attempts 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?return=%2Fadmin
+    Call log:
+      - navigating to "http://127.0.0.1:4173/login?return=%2Fadmin", waiting until "load"
+
+
+      12 | const failed = "00000000-0000-4000-8000-000000000403";
+      13 | async function admin(page: Page, route = "/admin") {
+    > 14 |   await page.goto(`/login?return=${encodeURIComponent(route)}`);
+         |              ^
+      15 |   await page.getByLabel("Email").fill("candidate@example.test");
+      16 |   await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
+      17 |   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
+        at admin (/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:14:14)
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-04.e2e-spec.ts:176:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-b8944--against-completed-attempts-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/port-04.e2e-spec.ts-PORT-0-b8944--against-completed-attempts-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/port-04.e2e-spec.ts-PORT-0-b8944--against-completed-attempts-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/port-04.e2e-spec.ts-PORT-0-b8944--against-completed-attempts-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  29) [chromium] › e2e/public-experience.e2e-spec.ts:32:5 › public experience demo › homepage renders 3D, fits five widths and supports motion pause 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/
+    Call log:
+      - navigating to "http://127.0.0.1:4173/", waiting until "load"
+
+
+      38 |           external.push(request.url());
+      39 |       });
+    > 40 |       await page.goto("/");
+         |                  ^
+      41 |       await expect(page.getByRole("heading", { name: /Vào nhịp thi/ })).toBeVisible();
+      42 |       await expect(page.locator('[data-renderer="webgl"] canvas')).toBeVisible();
+      43 |       await page.getByRole("button", { name: "Dừng hiệu ứng" }).click();
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/public-experience.e2e-spec.ts:40:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-61e0c-s-and-supports-motion-pause-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/public-experience.e2e-spec-61e0c-s-and-supports-motion-pause-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-61e0c-s-and-supports-motion-pause-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/public-experience.e2e-spec-61e0c-s-and-supports-motion-pause-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  30) [chromium] › e2e/public-experience.e2e-spec.ts:66:5 › public experience demo › public sample works without business requests and leads to registration 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/
+    Call log:
+      - navigating to "http://127.0.0.1:4173/", waiting until "load"
+
+
+      71 |       page.on("pageerror", (error) => errors.push(error.message));
+      72 |       await page.setViewportSize({ width: 390, height: 840 });
+    > 73 |       await page.goto("/");
+         |                  ^
+      74 |       await page.getByRole("link", { name: "Trải nghiệm 3 câu mẫu" }).first().click();
+      75 |       await expect(page.getByRole("heading", { name: "Vào nhịp với 3 câu hỏi" })).toBeVisible();
+      76 |       page.on("request", (request) => {
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/public-experience.e2e-spec.ts:73:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-9f009-s-and-leads-to-registration-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/public-experience.e2e-spec-9f009-s-and-leads-to-registration-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-9f009-s-and-leads-to-registration-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/public-experience.e2e-spec-9f009-s-and-leads-to-registration-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  31) [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience demo › fallback and keyboard navigation remain useful 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/
+    Call log:
+      - navigating to "http://127.0.0.1:4173/", waiting until "load"
+
+
+      138 |         };
+      139 |       });
+    > 140 |       await page.goto("/");
+          |                  ^
+      141 |       await expect(page.locator('[data-renderer="fallback"]')).toBeVisible();
+      142 |       await page.getByRole("link", { name: "Trải nghiệm 3 câu mẫu" }).first().focus();
+      143 |       await page.keyboard.press("Enter");
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/public-experience.e2e-spec.ts:140:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-69e13-rd-navigation-remain-useful-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/public-experience.e2e-spec-69e13-rd-navigation-remain-useful-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-69e13-rd-navigation-remain-useful-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/public-experience.e2e-spec-69e13-rd-navigation-remain-useful-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  32) [chromium] › e2e/public-experience.e2e-spec.ts:162:5 › public experience demo › 3D stops when paused or offscreen and recovers after context loss 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/
+    Call log:
+      - navigating to "http://127.0.0.1:4173/", waiting until "load"
+
+
+      172 |       const draws = () =>
+      173 |         page.evaluate(() => (window as Window & { sampleDraws?: number }).sampleDraws ?? 0);
+    > 174 |       await page.goto("/");
+          |                  ^
+      175 |       const canvas = page.locator('[data-renderer="webgl"] canvas');
+      176 |       await expect(canvas).toBeVisible();
+      177 |       await page.getByRole("button", { name: "Dừng hiệu ứng" }).click();
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/public-experience.e2e-spec.ts:174:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-a3d8c-recovers-after-context-loss-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/public-experience.e2e-spec-a3d8c-recovers-after-context-loss-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-a3d8c-recovers-after-context-loss-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/public-experience.e2e-spec-a3d8c-recovers-after-context-loss-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  33) [chromium] › e2e/public-experience.e2e-spec.ts:32:5 › public experience live › homepage renders 3D, fits five widths and supports motion pause 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4174/
+    Call log:
+      - navigating to "http://127.0.0.1:4174/", waiting until "load"
+
+
+      38 |           external.push(request.url());
+      39 |       });
+    > 40 |       await page.goto("/");
+         |                  ^
+      41 |       await expect(page.getByRole("heading", { name: /Vào nhịp thi/ })).toBeVisible();
+      42 |       await expect(page.locator('[data-renderer="webgl"] canvas')).toBeVisible();
+      43 |       await page.getByRole("button", { name: "Dừng hiệu ứng" }).click();
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/public-experience.e2e-spec.ts:40:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-22f18-s-and-supports-motion-pause-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/public-experience.e2e-spec-22f18-s-and-supports-motion-pause-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-22f18-s-and-supports-motion-pause-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/public-experience.e2e-spec-22f18-s-and-supports-motion-pause-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  34) [chromium] › e2e/public-experience.e2e-spec.ts:66:5 › public experience live › public sample works without business requests and leads to registration 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4174/
+    Call log:
+      - navigating to "http://127.0.0.1:4174/", waiting until "load"
+
+
+      71 |       page.on("pageerror", (error) => errors.push(error.message));
+      72 |       await page.setViewportSize({ width: 390, height: 840 });
+    > 73 |       await page.goto("/");
+         |                  ^
+      74 |       await page.getByRole("link", { name: "Trải nghiệm 3 câu mẫu" }).first().click();
+      75 |       await expect(page.getByRole("heading", { name: "Vào nhịp với 3 câu hỏi" })).toBeVisible();
+      76 |       page.on("request", (request) => {
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/public-experience.e2e-spec.ts:73:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-174eb-s-and-leads-to-registration-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/public-experience.e2e-spec-174eb-s-and-leads-to-registration-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-174eb-s-and-leads-to-registration-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/public-experience.e2e-spec-174eb-s-and-leads-to-registration-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  35) [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience live › fallback and keyboard navigation remain useful 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4174/
+    Call log:
+      - navigating to "http://127.0.0.1:4174/", waiting until "load"
+
+
+      138 |         };
+      139 |       });
+    > 140 |       await page.goto("/");
+          |                  ^
+      141 |       await expect(page.locator('[data-renderer="fallback"]')).toBeVisible();
+      142 |       await page.getByRole("link", { name: "Trải nghiệm 3 câu mẫu" }).first().focus();
+      143 |       await page.keyboard.press("Enter");
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/public-experience.e2e-spec.ts:140:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-5d92e-rd-navigation-remain-useful-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/public-experience.e2e-spec-5d92e-rd-navigation-remain-useful-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-5d92e-rd-navigation-remain-useful-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/public-experience.e2e-spec-5d92e-rd-navigation-remain-useful-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  36) [chromium] › e2e/public-experience.e2e-spec.ts:162:5 › public experience live › 3D stops when paused or offscreen and recovers after context loss 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4174/
+    Call log:
+      - navigating to "http://127.0.0.1:4174/", waiting until "load"
+
+
+      172 |       const draws = () =>
+      173 |         page.evaluate(() => (window as Window & { sampleDraws?: number }).sampleDraws ?? 0);
+    > 174 |       await page.goto("/");
+          |                  ^
+      175 |       const canvas = page.locator('[data-renderer="webgl"] canvas');
+      176 |       await expect(canvas).toBeVisible();
+      177 |       await page.getByRole("button", { name: "Dừng hiệu ứng" }).click();
+        at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/public-experience.e2e-spec.ts:174:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-3a22d-recovers-after-context-loss-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/public-experience.e2e-spec-3a22d-recovers-after-context-loss-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/public-experience.e2e-spec-3a22d-recovers-after-context-loss-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/public-experience.e2e-spec-3a22d-recovers-after-context-loss-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  36 failed
+    [chromium] › e2e/admin-workflows.e2e-spec.ts:14:1 › exam draft keeps editor state, prevents duplicate slots and distinguishes saved publication from local edits 
+    [chromium] › e2e/admin-workflows.e2e-spec.ts:57:1 › question keys use the keyboard and confirm destructive type changes before saving 
+    [chromium] › e2e/admin-workflows.e2e-spec.ts:94:1 › import validates first, invalidates a changed file and asks before committing 
+    [chromium] › e2e/admin-workflows.e2e-spec.ts:123:1 › audit restores focus, failed replay stays pending and reviewer capabilities filter the page 
+    [chromium] › e2e/assessment-results.e2e-spec.ts:11:1 › mobile room saves three native question types before submitting and opening released review 
+    [chromium] › e2e/assessment-results.e2e-spec.ts:58:1 › history and pseudonymous leaderboard remain keyboard scrollable on narrow screens 
+    [chromium] › e2e/browser.spec.ts:58:3 › demo › public pages at five widths ─────────────────────
+    [chromium] › e2e/browser.spec.ts:87:3 › demo › exam save, conflict, frozen attempt and result ──
+    [chromium] › e2e/browser.spec.ts:140:3 › demo › admin permission boundary and honest metrics ───
+    [chromium] › e2e/browser.spec.ts:171:3 › live › does not fall back to demo data ────────────────
+    [chromium] › e2e/foundation.e2e-spec.ts:11:1 › public mobile menu closes on Escape and restores trigger focus 
+    [chromium] › e2e/foundation.e2e-spec.ts:31:1 › candidate mobile navigation closes after choosing a route and shows its active link 
+    [chromium] › e2e/foundation.e2e-spec.ts:66:1 › admin mobile menu preserves capability filtering and logout 
+    [chromium] › e2e/foundation.e2e-spec.ts:95:1 › shared controls support keyboard entry, table scrolling and dialog focus 
+    [chromium] › e2e/onboarding-catalog.e2e-spec.ts:3:1 › verification recovery and explicit confirmation remain usable on mobile 
+    [chromium] › e2e/onboarding-catalog.e2e-spec.ts:26:1 › catalog filters, browser Back and detail cancellation preserve navigation 
+    [chromium] › e2e/port-01.e2e-spec.ts:58:1 › PORT-01 desktop pilots match shared tokens, keep loaded-only filters and keyboard links 
+    [chromium] › e2e/port-01.e2e-spec.ts:121:1 › PORT-01 pilots preserve body width and accessible navigation on narrow screens 
+    [chromium] › e2e/port-02.e2e-spec.ts:62:1 › PORT-02 creates a structured draft, validates locally and confirms publication/removal/exit 
+    [chromium] › e2e/port-02.e2e-spec.ts:140:1 › PORT-02 compares conflicts, guards reload and retries an unknown write 
+    [chromium] › e2e/port-03.e2e-spec.ts:62:1 › PORT-03 bank filters loaded questions without keys and fits Web/tablet 
+    [chromium] › e2e/port-03.e2e-spec.ts:76:1 › PORT-03 option identity, candidate projection, type conversion and archive remain correct 
+    [chromium] › e2e/port-03.e2e-spec.ts:142:1 › PORT-03 validates exact import snapshot and recovers an unknown atomic commit 
+    [chromium] › e2e/port-04.e2e-spec.ts:60:1 › PORT-04 overview, scoped business metrics and unavailable technical providers fit Web/tablet 
+    [chromium] › e2e/port-04.e2e-spec.ts:79:1 › PORT-04 monitor and nullable ledger retain their actual scope at four widths 
+    [chromium] › e2e/port-04.e2e-spec.ts:100:1 › PORT-04 statistics, audit drawer and failed detail match selected layouts 
+    [chromium] › e2e/port-04.e2e-spec.ts:130:1 › PORT-04 replay confirmation restores focus, retries a frozen request and clears on permission loss 
+    [chromium] › e2e/port-04.e2e-spec.ts:172:1 › PORT-04 counts multiple selections independently against completed attempts 
+    [chromium] › e2e/public-experience.e2e-spec.ts:32:5 › public experience demo › homepage renders 3D, fits five widths and supports motion pause 
+    [chromium] › e2e/public-experience.e2e-spec.ts:66:5 › public experience demo › public sample works without business requests and leads to registration 
+    [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience demo › fallback and keyboard navigation remain useful 
+    [chromium] › e2e/public-experience.e2e-spec.ts:162:5 › public experience demo › 3D stops when paused or offscreen and recovers after context loss 
+    [chromium] › e2e/public-experience.e2e-spec.ts:32:5 › public experience live › homepage renders 3D, fits five widths and supports motion pause 
+    [chromium] › e2e/public-experience.e2e-spec.ts:66:5 › public experience live › public sample works without business requests and leads to registration 
+    [chromium] › e2e/public-experience.e2e-spec.ts:132:5 › public experience live › fallback and keyboard navigation remain useful 
+    [chromium] › e2e/public-experience.e2e-spec.ts:162:5 › public experience live › 3D stops when paused or offscreen and recovers after context loss 

@@ -1,6 +1,7 @@
 import type {
   Accepted,
   ActiveCandidate,
+  ActiveCandidatesPage,
   AdminExam,
   AdminQuestion,
   AdminSubmission,
@@ -8,6 +9,7 @@ import type {
   Attempt,
   AttemptStatus,
   AuditEntry,
+  BusinessMetrics,
   CandidateOption,
   CandidateQuestion,
   Category,
@@ -639,22 +641,134 @@ export function parseQuestionStatistic(value: unknown): QuestionStatistic {
   const data = exact(value, [
     "questionId",
     "completedAttempts",
+    "answered",
     "correct",
     "incorrect",
     "unanswered",
     "options",
   ]);
-  return {
+  const result = {
     questionId: uuid(data.questionId),
-    completedAttempts: int(data.completedAttempts),
-    correct: int(data.correct),
-    incorrect: int(data.incorrect),
-    unanswered: int(data.unanswered),
+    completedAttempts: count(data.completedAttempts),
+    answered: count(data.answered),
+    correct: count(data.correct),
+    incorrect: count(data.incorrect),
+    unanswered: count(data.unanswered),
     options: list(data.options, (item) => {
       const row = exact(item, ["optionId", "selectedCount"]);
-      return { optionId: uuid(row.optionId), selectedCount: int(row.selectedCount) };
+      return { optionId: uuid(row.optionId), selectedCount: count(row.selectedCount) };
     }),
   };
+  if (
+    result.correct + result.incorrect !== result.answered ||
+    result.answered + result.unanswered !== result.completedAttempts ||
+    result.options.some((o) => o.selectedCount > result.answered)
+  )
+    throw malformed();
+  return result;
+}
+
+function count(value: unknown, max = 2147483647): number {
+  const n = int(value);
+  if (n < 0 || n > max) throw malformed();
+  return n;
+}
+function canonicalTime(value: unknown): string {
+  const s = text(value),
+    ms = Date.parse(s);
+  if (
+    !Number.isFinite(ms) ||
+    !/^\d{4}-/.test(s) ||
+    s.startsWith("0000") ||
+    new Date(ms).toISOString() !== s
+  )
+    throw malformed();
+  return s;
+}
+export function parseActiveCandidatesPage(payload: unknown): ActiveCandidatesPage {
+  const data = successRecord(payload, true);
+  const meta = exact(data.metadata, ["next", "pageSize", "asOf"]);
+  const asOf = canonicalTime(meta.asOf);
+  const items = list(data.data, parseActiveCandidate);
+  if (
+    items.some(
+      (row) =>
+        row.status !== "IN_PROGRESS" ||
+        Date.parse(canonicalTime(row.startedAt)) > Date.parse(asOf) ||
+        Date.parse(canonicalTime(row.deadline)) <= Date.parse(asOf),
+    )
+  )
+    throw malformed();
+  const pageSize = count(meta.pageSize, 100);
+  if (pageSize < 1 || items.length > pageSize) throw malformed();
+  return { items, next: nullable(meta.next, text), pageSize, asOf };
+}
+export function parseBusinessMetrics(value: unknown): BusinessMetrics {
+  const d = exact(value, ["asOf", "window", "counts", "backlog"]);
+  const w = exact(d.window, ["from", "to", "basis"]);
+  const c = exact(d.counts, [
+    "startedAttempts",
+    "activeAttempts",
+    "submittedAttempts",
+    "completedAttempts",
+    "failedAttempts",
+    "expiredSubmissions",
+    "expiredCompletedAttempts",
+  ]);
+  const b = exact(d.backlog, [
+    "pendingAttempts",
+    "replayPendingAttempts",
+    "oldestSubmittedAt",
+    "oldestAgeSeconds",
+  ]);
+  const result: BusinessMetrics = {
+    asOf: canonicalTime(d.asOf),
+    window: {
+      from: canonicalTime(w.from),
+      to: canonicalTime(w.to),
+      basis: oneOf(w.basis, ["ATTEMPT_STARTED_AT"] as const),
+    },
+    counts: {
+      startedAttempts: count(c.startedAttempts),
+      activeAttempts: count(c.activeAttempts),
+      submittedAttempts: count(c.submittedAttempts),
+      completedAttempts: count(c.completedAttempts),
+      failedAttempts: count(c.failedAttempts),
+      expiredSubmissions: count(c.expiredSubmissions),
+      expiredCompletedAttempts: count(c.expiredCompletedAttempts),
+    },
+    backlog: {
+      pendingAttempts: count(b.pendingAttempts),
+      replayPendingAttempts: count(b.replayPendingAttempts),
+      oldestSubmittedAt: nullable(b.oldestSubmittedAt, canonicalTime),
+      oldestAgeSeconds: nullable(b.oldestAgeSeconds, (n) => count(n, Number.MAX_SAFE_INTEGER)),
+    },
+  };
+  const span = Date.parse(result.window.to) - Date.parse(result.window.from);
+  const x = result.counts,
+    y = result.backlog;
+  if (
+    span <= 0 ||
+    span > 7 * 86400000 ||
+    Date.parse(result.window.to) > Date.parse(result.asOf) ||
+    x.activeAttempts + x.submittedAttempts > x.startedAttempts ||
+    x.completedAttempts + x.failedAttempts > x.submittedAttempts ||
+    x.expiredSubmissions > x.submittedAttempts ||
+    x.expiredCompletedAttempts > Math.min(x.completedAttempts, x.expiredSubmissions) ||
+    y.replayPendingAttempts > y.pendingAttempts
+  )
+    throw malformed();
+  if (y.pendingAttempts === 0) {
+    if (y.oldestSubmittedAt !== null || y.oldestAgeSeconds !== null) throw malformed();
+  } else if (
+    y.oldestSubmittedAt === null ||
+    y.oldestAgeSeconds === null ||
+    Date.parse(y.oldestSubmittedAt) > Date.parse(result.asOf) ||
+    y.oldestAgeSeconds !==
+      Math.floor((Date.parse(result.asOf) - Date.parse(y.oldestSubmittedAt)) / 1000)
+  )
+    throw malformed();
+  return result;
 }
 
 export function parseMetrics(value: unknown): Metrics {

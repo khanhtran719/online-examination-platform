@@ -1,0 +1,13 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test port-05c.e2e-spec.ts
+
+
+Running 2 tests using 1 worker
+
+(node:82331) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/port-05c.e2e-spec.ts:59:1 › PORT-05C status, score and readonly released workspace fit Web/tablet (14.5s)
+  ✓  2 [chromium] › e2e/port-05c.e2e-spec.ts:119:1 › PORT-05C pending, failed, active, denied and unreleased states remain truthful (4.6s)
+
+  2 passed (19.8s)

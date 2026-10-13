@@ -1,10 +1,48 @@
 # Frontend implementation tasks — senior hướng dẫn junior
 
+**Checkpoint PORT-05C2026-10-13:** [S1–S5 Status/Result/Released Review](port-05c-2026-10-13.md)
+COMPLETE locally trên768/1024/1280/1440px.827 root/44 Chromium PASS; final review
+có full root/full Chromium receipts.20 captures đạt font/axe/overflow/
+gutters. [Evidence](evidence/port-05c-2026-10-13/README.md). FE7/32, roadmap89/217
+và parent PORT-05/full live/mobile/production giữ mở. Tiếp theo PORT-05D Exam
+Room/Autosave/Submit Web/tablet; seed401 inconsistency còn follow-up demo riêng.
+Checkpoint bên dưới là lịch sử. FE-19/20 vẫn PARTIAL theo live/state matrix.
+
+**Checkpoint PORT-05B2026-10-13:** [H1–H5 History/Leaderboard](port-05b-2026-10-13.md)
+COMPLETE locally cho EP-14/15 Web/tablet.799 root/41 Chromium PASS;
+lint/format/quality/types/builds,11 captures và protected baseline2,171 files đạt. Actor/session/route/denial,
+cursor restart, nullable score và metadata regressions có evidence. FE7/32 và
+parent PORT-05 giữ nguyên; full live business/mobile/production chưa đóng.
+Kế tiếp PORT-05C Status/Result/Released Review Web/tablet, chưa triển khai.
+
+**Ưu tiên theo người dùng, 2026-10-12:** triển khai Web desktop và tablet trước,
+kiểm bố cục mới ở768/1024/1280/1440px theo [kiến trúc frontend](frontend-architecture.md).
+Mobile design/matrix tạm hoãn cho giai đoạn app; các đầu mục mobile chưa hoàn
+thành giữ unchecked/deferred, không xóa và không tính vào acceptance hiện tại.
+Giữ các regression narrow-screen đã có. PORT-01–05A là các increment riêng;
+không tự đóng toàn FE task hoặc production bằng demo/screenshot.
+
+**Checkpoint PORT-05A:** [C1–C5 Candidate Catalog](port-05a-2026-10-12.md)
+COMPLETE locally: EP-08/09 và xác nhận bắt đầu,779 root/39 Chromium PASS;17
+Web/tablet captures, lint/format/contracts và strict builds đạt. Có regression
+cho nhấn đúp, retry không rõ kết quả, route/session race, cursor/loaded search và
+xóa dữ liệu khi401/403. [Evidence](evidence/port-05a-2026-10-12/README.md). Parent
+PORT-05, full live Catalog/Assessment/Reporting và FE7/32 giữ trạng thái cũ; không
+đóng FE-12/13 từ demo. Tiếp theo History/Leaderboard Web/tablet. Các checkpoint
+bên dưới giữ phạm vi lịch sử.
+
+**Checkpoint PORT-04:** [O1–O5 Operations/Reporting](port-04-2026-10-12.md) hoàn
+thành cục bộ:760 root/36 Chromium,45 Web/tablet captures, lint/format/contracts
+và strict builds PASS. Controllers/permission/cursor/frozen retry bám contract;
+technical chưa có provider và live Admin thiếu discovery/revision vẫn chặn.
+[Evidence](evidence/port-04-2026-10-12/README.md). FE7/32 giữ nguyên; bước đề xuất
+kế tiếp là Candidate/Public Web/tablet, mobile app hoãn theo người dùng.
+
 **App `apps/web` đã có.** Checklist không phải production acceptance. **7/32 checked: FE-01/03/04/07–10**; FE-32 còn IN PROGRESS. [HTTPS Identity evidence](../evidence/identity-https-2026-10-07/README.md) đóng named local ID-07/WEB-02 với API/PG/SMTP thật và10 Chromium cases, sau [fix evidence](evidence/fix-2026-10-07/README.md). Live Catalog/Assessment/Reporting, permissions UI-GAP-01 và public PKI/SES/AWS vẫn mở. API boundary fixes enforce existing security contract; không đổi ORM/schema. Public visual work có scope riêng. Xem [runbook](runbook.md), [UI-GAP](ui-gap.md), [review](review-2026-10-07.md) và [roadmap](../implementation-roadmap.md).
 
 ## 1. Cách làm một task
 
-Trước task, mở đúng input/schema, xác định component và data mode; viết acceptance thành test/scenario khi logic quan trọng. Làm lát cắt nhỏ, chạy focused checks, tự xem browser ở desktop/mobile, rồi mới tick. Không tick vì file đã tồn tại. Với tính năng chưa có API, giao demo có tương tác + Http adapter theo schema + live unavailable state; ghi riêng live dependency. FE task không tự đóng ID/CAT/ATT/REP/WEB production gates.
+Trước task, mở đúng input/schema, xác định component và data mode; viết acceptance thành test/scenario khi logic quan trọng. Làm lát cắt nhỏ, chạy focused checks, tự xem browser ở Web/tablet theo scope hiện hành, rồi mới tick. Không tick vì file đã tồn tại. Với tính năng chưa có API, giao demo có tương tác + Http adapter theo schema + live unavailable state; ghi riêng live dependency. FE task không tự đóng ID/CAT/ATT/REP/WEB production gates.
 
 Mỗi task để lại: files đổi, behavior, tests/checks đã chạy, screenshot nếu đổi layout, mode đã kiểm chứng và gap còn lại. Nếu không có tool browser, ghi visual/E2E NOT RUN và không claim đã nghiệm thu các gate đó. Không hứa một command chạy khi chưa thêm package script thật.
 

@@ -141,6 +141,11 @@ for (const [mode, baseURL] of [
       await expect(page.locator('[data-renderer="fallback"]')).toBeVisible();
       await page.getByRole("link", { name: "Trải nghiệm 3 câu mẫu" }).first().focus();
       await page.keyboard.press("Enter");
+      // The homepage embeds the same sample: wait for navigation before targeting its radios.
+      await expect(page).toHaveURL(/\/experience$/);
+      await expect(
+        page.getByRole("heading", { name: "Vào nhịp với 3 câu hỏi", level: 1 }),
+      ).toBeVisible();
       await expect(page.getByRole("radio", { name: "C 32" })).toBeVisible();
       await page.getByRole("radio", { name: "C 32" }).focus();
       await page.keyboard.press("Space");

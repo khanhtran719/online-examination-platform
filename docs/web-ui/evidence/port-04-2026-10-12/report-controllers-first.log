@@ -1,0 +1,59 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/admin/__tests__/report-pages.unit.spec.tsx src/demo/__tests__/reporting-contract.unit.spec.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/report-pages.unit.spec.tsx (4 tests | 2 failed) 235ms
+   × restarts at the first page instead of replaying old cursor chains 69ms
+   × serializes refresh/load-more and preserves prior rows on a transient refresh error 54ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/report-pages.unit.spec.tsx > restarts at the first page instead of replaying old cursor chains
+AssertionError: expected [ 'first' ] to deeply equal [ 'first', 'opaque-next' ]
+
+- Expected
++ Received
+
+  [
+    "first",
+-   "opaque-next",
+  ]
+
+ ❯ src/features/admin/__tests__/report-pages.unit.spec.tsx:23:37
+     21|   await waitFor(() => expect(view.result.current.items).toEqual(["firs…
+     22|   await act(() => view.result.current.more());
+     23|   expect(view.result.current.items).toEqual(["first", "opaque-next"]);
+       |                                     ^
+     24|   await act(() => view.result.current.refresh());
+     25|   expect(read.mock.calls.map(([c]) => c)).toEqual([undefined, "opaque-…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/features/admin/__tests__/report-pages.unit.spec.tsx > serializes refresh/load-more and preserves prior rows on a transient refresh error
+AssertionError: expected null to be truthy
+
+- Expected:
+true
+
++ Received:
+null
+
+ ❯ src/features/admin/__tests__/report-pages.unit.spec.tsx:38:43
+     36|   await act(async () => { reject(new Error("transient")); await first;…
+     37|   expect(view.result.current.items).toEqual(["old"]);
+     38|   expect(view.result.current.query.error).toBeTruthy();
+       |                                           ^
+     39| });
+     40| it("cancels private data on permission loss and discards an old respon…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  2 failed | 4 passed (6)
+   Start at  22:35:07
+   Duration  1.12s (environment 72%, tests 14%, import 8%, transform 6%)
+

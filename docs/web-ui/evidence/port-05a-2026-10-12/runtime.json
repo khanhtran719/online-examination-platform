@@ -1,0 +1,8 @@
+{
+  "node": "v24.17.0",
+  "playwright": "1.63.0",
+  "chromium": "153.0.8010.12",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "dataMode": "demo (business flows); live (unavailable capability gate only)"
+}

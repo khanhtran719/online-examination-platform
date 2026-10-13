@@ -1,0 +1,37 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/admin/__tests__/use-question-draft.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx (8 tests | 1 failed) 281ms
+   × cannot adopt a cached pre-conflict revision as if it were the freshly changed draft 148ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/use-question-draft.unit.spec.tsx > cannot adopt a cached pre-conflict revision as if it were the freshly changed draft
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx:143:40
+    141|   await waitFor(() => expect(view.result.current.conflict).toBe(true));
+    142|   act(() => view.result.current.adoptLatest());
+    143|   expect(view.result.current.conflict).toBe(true);
+       |                                        ^
+    144|   expect(view.result.current.prompt).toBe("Local edit");
+    145| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 passed (8)
+   Start at  21:54:05
+   Duration  1.13s (environment 57%, tests 27%, import 11%, transform 5%)
+

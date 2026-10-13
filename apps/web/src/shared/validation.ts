@@ -48,22 +48,40 @@ export function validateFinalPassword(password: string, confirmPassword: string)
 
 export function questionIssues(input: QuestionWriteRequest): string[] {
   const issues: string[] = [];
-  if (input.prompt.length < 1 || input.prompt.length > 8000)
+  if ([...input.prompt].length < 1 || [...input.prompt].length > 8000)
     issues.push("Đề bài từ 1 đến 8000 ký tự.");
   if (input.options.length < 2 || input.options.length > 10)
     issues.push("Cần từ 2 đến 10 lựa chọn.");
   if (input.type === "TRUE_FALSE" && input.options.length !== 2)
     issues.push("Đúng/Sai cần đúng hai lựa chọn.");
-  if (input.type === "SINGLE_CHOICE" && input.correctOptionPositions.length !== 1) {
-    issues.push("Câu một lựa chọn cần đúng một đáp án.");
+  if (input.type !== "MULTIPLE_CHOICE" && input.correctOptionPositions.length !== 1) {
+    issues.push(
+      input.type === "TRUE_FALSE"
+        ? "Đúng/Sai cần đúng một đáp án."
+        : "Câu một lựa chọn cần đúng một đáp án.",
+    );
   }
   if (input.type === "MULTIPLE_CHOICE" && input.correctOptionPositions.length < 1) {
     issues.push("Câu nhiều lựa chọn cần ít nhất một đáp án đúng.");
   }
-  if (input.options.some((option) => option.text.length < 1 || option.text.length > 2000)) {
+  if (
+    input.options.some((option) => [...option.text].length < 1 || [...option.text].length > 2000)
+  ) {
     issues.push("Mỗi lựa chọn từ 1 đến 2000 ký tự.");
   }
-  if (input.points < 1 || input.points > 1000) issues.push("Điểm từ 1 đến 1000.");
+  if (!Number.isInteger(input.points) || input.points < 1 || input.points > 1000)
+    issues.push("Điểm nguyên từ 1 đến 1000.");
+  if (input.options.some((option, index) => option.position !== index + 1))
+    issues.push("Vị trí lựa chọn phải liên tiếp từ 1.");
+  if (
+    new Set(input.correctOptionPositions).size !== input.correctOptionPositions.length ||
+    input.correctOptionPositions.some(
+      (position) => !Number.isInteger(position) || position < 1 || position > input.options.length,
+    )
+  )
+    issues.push("Vị trí đáp án phải hợp lệ và không trùng.");
+  if (input.explanation !== null && [...input.explanation].length > 8000)
+    issues.push("Giải thích tối đa 8000 ký tự.");
   return issues;
 }
 
@@ -87,7 +105,12 @@ export function inspectImportText(text: string): {
     return { bytes, structural: "JSON phải là một object.", request: null, issues: [] };
   }
   const record = parsed as Record<string, unknown>;
-  if (record.schemaVersion !== 1 || !Array.isArray(record.questions)) {
+  if (
+    record.schemaVersion !== 1 ||
+    typeof record.dryRun !== "boolean" ||
+    Object.keys(record).length !== 3 ||
+    !Array.isArray(record.questions)
+  ) {
     return {
       bytes,
       structural: "Cần schemaVersion 1 và mảng questions.",
@@ -99,21 +122,45 @@ export function inspectImportText(text: string): {
   const questions: ImportEntry[] = [];
   const seen = new Set<string>();
   if (record.questions.length < 1 || record.questions.length > 100) {
-    issues.push({ clientRef: "import", field: "questions", message: "Số câu phải từ 1 đến 100." });
+    return { bytes, structural: "Số câu phải từ 1 đến 100.", request: null, issues: [] };
   }
   for (const entry of record.questions) {
-    if (!entry || typeof entry !== "object") {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
       issues.push({ clientRef: "import", field: "questions", message: "Mỗi dòng phải là object." });
       continue;
     }
     const row = entry as Record<string, unknown>;
     const clientRef = typeof row.clientRef === "string" ? row.clientRef : "import";
-    if (!/^[A-Za-z0-9_-]{1,64}$/.test(clientRef)) {
+    const fields = [
+      "clientRef",
+      "type",
+      "prompt",
+      "options",
+      "correctOptionPositions",
+      "points",
+      "explanation",
+    ];
+    if (
+      Object.keys(row).length !== fields.length ||
+      !fields.every((field) => Object.hasOwn(row, field))
+    )
+      issues.push({
+        clientRef,
+        field: "entry",
+        message: "Dòng phải có đúng các trường trong mẫu JSON.",
+      });
+    if (typeof row.clientRef !== "string" || !/^[A-Za-z0-9_-]{1,64}$/.test(clientRef)) {
       issues.push({ clientRef, field: "clientRef", message: "clientRef không hợp lệ." });
     }
     if (seen.has(clientRef))
       issues.push({ clientRef, field: "clientRef", message: "clientRef bị trùng." });
     seen.add(clientRef);
+    if (row.explanation !== null && typeof row.explanation !== "string")
+      issues.push({
+        clientRef,
+        field: "explanation",
+        message: "Giải thích phải là chuỗi hoặc null.",
+      });
     const type = row.type;
     if (type !== "SINGLE_CHOICE" && type !== "MULTIPLE_CHOICE" && type !== "TRUE_FALSE") {
       issues.push({ clientRef, field: "type", message: "Loại câu không hợp lệ." });
@@ -122,12 +169,33 @@ export function inspectImportText(text: string): {
     const options = Array.isArray(row.options)
       ? row.options
           .filter((option): option is { position: number; text: string } => {
-            return Boolean(option) && typeof option === "object";
+            const valid =
+              Boolean(option) &&
+              typeof option === "object" &&
+              !Array.isArray(option) &&
+              Object.keys(option).length === 2 &&
+              typeof (option as Record<string, unknown>).position === "number" &&
+              typeof (option as Record<string, unknown>).text === "string";
+            if (!valid)
+              issues.push({
+                clientRef,
+                field: "options",
+                message: "Lựa chọn cần position kiểu số và text kiểu chuỗi.",
+              });
+            return valid;
           })
-          .map((option) => ({ position: Number(option.position), text: String(option.text) }))
+          .map((option) => ({ position: option.position, text: option.text }))
       : [];
     const correct = Array.isArray(row.correctOptionPositions)
-      ? row.correctOptionPositions.filter((item): item is number => typeof item === "number")
+      ? row.correctOptionPositions.filter((item): item is number => {
+          if (typeof item !== "number")
+            issues.push({
+              clientRef,
+              field: "correctOptionPositions",
+              message: "Vị trí đáp án phải là số.",
+            });
+          return typeof item === "number";
+        })
       : [];
     const request: QuestionWriteRequest = {
       type: type as QuestionType,

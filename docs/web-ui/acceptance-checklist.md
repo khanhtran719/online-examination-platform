@@ -1,5 +1,44 @@
 # Web UI acceptance và scenario catalog
 
+Current checkpoint2026-10-13: [PORT-05C S1–S5](port-05c-2026-10-13.md) COMPLETE
+locally cho EP-11/12/13 Web/tablet.827 root/44 Chromium PASS; final review
+có full root/full Chromium receipts.20 final captures: font loaded, zero
+automated axe violations, no document overflow/gutters>=16px. Unit chứng minh
+server minimum/cap/hidden/actor fencing, gate denial/closed/pending purge và late
+response. Demo browser cùng một attempt start/save/submit→4/6→review2/3; riêng
+seed401 không được dùng làm scoring consistency evidence. Full live/release-
+policy/multi-tab/hidden-cap browser matrix và parent PORT-05 còn mở; FE7/32 giữ
+nguyên. [Evidence](evidence/port-05c-2026-10-13/README.md). Phần dưới là checkpoint cũ.
+
+Current bounded visual increment2026-10-13: [PORT-05B H1–H5](port-05b-2026-10-13.md),
+History/Leaderboard Web/tablet.799 root/41 Chromium PASS;11 final captures có font,
+zero automated axe violations, không tràn body/gutter>=16px. H1–H5 COMPLETE locally;
+lint/format/quality/types/builds PASS. [Evidence](evidence/port-05b-2026-10-13/README.md).20 tests mới kiểm lifecycle,
+null/zero, cursor, actor/session/late response và denial. Browser kiểm metadata,
+privacy/consent, closed board và keyboard. Đây là bounded demo/local proof,
+không tự đóng FE7/32, parent PORT-05, full live business/mobile/production gates.
+
+Ưu tiên hiện hành theo người dùng,2026-10-12: Web desktop/tablet ở768/1024/1280/
+1440px. Mobile design và matrix mới được hoãn sang giai đoạn app; giữ regression
+cũ, không tick mobile từ việc chúng vẫn chạy. [Kiến trúc frontend](frontend-architecture.md)
+và từng PORT report ghi phạm vi kiểm thực tế. Các scenario chức năng/security/
+correctness vẫn áp dụng; acceptance live/AWS/production không bị hạ yêu cầu.
+
+Latest visual increment: [PORT-05A C1–C5](port-05a-2026-10-12.md) COMPLETE
+locally;779 root/39 Chromium PASS,17 Catalog captures ở768/1024/1280/1440 với
+font loaded, zero automated axe violations/document overflow và content gutters
+>=16px. [Evidence/review](evidence/port-05a-2026-10-12/README.md) giữ red/fix và
+phạm vi từng kiểm tra. Start unknown key chỉ trong mounted view, full live
+reload/multi-tab reconciliation chưa đóng. Parent PORT-05, full live business,
+mobile/app, wider device matrix và production gate vẫn mở; FE7/32 không đổi.
+
+Previous visual increment: [PORT-04 O1–O5](port-04-2026-10-12.md) COMPLETE locally;
+760 root/36 Chromium PASS,45 Operations/Reporting captures ở768/1024/1280/1440
+với font loaded, zero automated axe violations/document overflow. Permission/
+cursor/replay/statistics/keyboard regressions và trace failures được giữ trong
+[evidence](evidence/port-04-2026-10-12/README.md). Đây là demo/adapter/local proof;
+không đóng full live business, mobile/app, device matrix hoặc production gate.
+
 Latest increment: [Identity HTTPS](../evidence/identity-https-2026-10-07/README.md) —10 Chromium cases PASS với actual API/PG/SMTP, W-02–06 và phần profile W-07 có live local proof. ID-07/WEB-02 và FE-07–10 closed locally. Các paragraph review bên dưới là historical evidence; full Web/performance/production gate vẫn mở.
 
 Status: **spec giữ nguyên; một phần scenario đã chạy ngày 2026-10-07**. [Review mới](review-2026-10-07.md) tái hiện FAIL ở W-06/14 reauth, W-14 answer scope, W-16 deadline và W-18 review sau403. Bốn browser smoke hiện có vẫn PASS; xem [raw review evidence](evidence/review-2026-10-07/README.md). Kết quả trước review ở [evidence](evidence/README.md). Đây không phải bộ tick production. FE task checklist ở [implementation-tasks](implementation-tasks.md); baseline business policies ở [product](../product-specification.md) và [contract cases](../contract-tests.md).
@@ -99,7 +138,7 @@ Deadline với offline/in-flight save:stop new edits/saves,best-effort submit pe
 
 ### W-17 — Processing/polling
 
-202 pending không error;SUBMITTED/EXPIRED text processing giữ durable state. Poll2→10s+jitter/hints,pause hidden,one refresh khi visible,stop terminal/5min. FAILED false stop,replay true pending bounded. Không ETA/%fake/duplicate pollers/timer leak. Map FE-19.
+202 pending không error;SUBMITTED/EXPIRED text processing giữ durable state. Poll base2→10s+jitter;server hints là lower bound có thể dài hơn10s. Pause hidden;visible chỉ kiểm khi hết cooldown,stop terminal/5min kể cả hidden/in-flight. FAILED false stop,replay true pending bounded. Không ETA/%fake/duplicate pollers/timer leak. Map FE-19.
 
 ### W-18 — Result/review
 

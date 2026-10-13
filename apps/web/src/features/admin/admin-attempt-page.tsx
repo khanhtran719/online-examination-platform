@@ -1,194 +1,209 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 
-import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
-import { isApiError } from "@web/shared/api/errors";
-import { uuidV7 } from "@web/shared/api/uuid";
-import { formatBasisPoints } from "@web/shared/format";
-import { useProtectedAccess } from "@web/shared/protected-access";
-import { Alert, Button, ErrorPanel, SkeletonLines, TextArea } from "@web/shared/ui/ui";
+import { formatBasisPoints, formatDateTime, statusLabel } from "@web/shared/format";
+import { Alert, Button, Dialog, ErrorPanel, SkeletonLines, TextArea } from "@web/shared/ui/ui";
 
-import styles from "./admin.module.css";
+import admin from "./admin.module.css";
 import { AdminReviewCard } from "./admin-review-card";
-import { AdminHeading, adminId as shortId, PageEnd } from "./admin-ui";
-import { CapabilityGate, useCapability } from "./gate";
-import { idleIntent, type IntentMachine, settleIntent, startIntent } from "./mutation-intent";
-
-function unknownTransport(error: unknown): boolean {
-  return isApiError(error) && (error.kind === "network" || error.kind === "timeout");
-}
+import { AdminBadge, AdminHeading, adminId, PageEnd } from "./admin-ui";
+import { CapabilityGate } from "./gate";
+import styles from "./operations.module.css";
+import { useAdminAttempt } from "./use-admin-attempt";
 
 export function AdminAttemptPage() {
   const { attemptId = "" } = useParams();
-  useTitle("Lượt thi quản trị");
-  const { api, demo } = useRuntime();
-  const reporting = useCapability("reporting.read");
-  const reviewGate = useCapability("assessment.review.admin");
-  const [resultBlocked, setResultBlocked] = useState(false);
-  const [reviewBlocked, setReviewBlocked] = useState(false);
-  const result = useQuery({
-    queryKey: ["admin-result", attemptId],
-    enabled: reporting === "allowed" && !resultBlocked,
-    queryFn: () => api.getAdminResult(attemptId).then((response) => response.data),
-  });
-  const review = useInfiniteQuery({
-    queryKey: ["admin-review", attemptId],
-    enabled:
-      reviewGate === "allowed" && !reviewBlocked && Boolean(result.data && !result.data.pending),
-    initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) =>
-      api
-        .getAdminReview(attemptId, { pageSize: 20, cursor: pageParam })
-        .then((response) => response.data),
-    getNextPageParam: (last) => last.next ?? undefined,
-  });
-  const hideResult = useProtectedAccess(
-    result.error,
-    [["admin-result", attemptId]],
-    resultBlocked,
-    () => setResultBlocked(true),
-  );
-  const hideReview = useProtectedAccess(
-    review.error,
-    [["admin-review", attemptId]],
-    reviewBlocked,
-    () => setReviewBlocked(true),
-  );
-  const [reason, setReason] = useState("");
-  const [message, setMessage] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [machine, setMachine] =
-    useState<IntentMachine<{ expectedRevision: number; reason: string }>>(idleIntent);
-  const revision = demo?.replayRevision(attemptId) ?? null;
-  const reviewRows = hideReview ? [] : (review.data?.pages.flatMap((page) => page.items) ?? []);
-  async function replay(retryFrozen: boolean) {
-    const body =
-      retryFrozen && machine.frozen
-        ? machine.frozen.body
-        : revision === null
-          ? null
-          : { expectedRevision: revision, reason: reason.trim() };
-    if (!body || body.reason.length < 8) {
-      setError(
-        "Cần lý do ít nhất 8 ký tự và revision quản trị hiện tại. Không dùng revision của thí sinh.",
-      );
-      return;
-    }
-    const started = startIntent(machine, {
-      action: "replay",
-      body,
-      expectedRevision: body.expectedRevision,
-      keyFactory: uuidV7,
-    });
-    if (started.blocked || !started.send) {
-      setError(
-        started.blocked === "changed"
-          ? "Lý do đã đổi so với lần gửi chưa xác nhận. Khôi phục nội dung đã gửi trước khi thử lại."
-          : "Đang gửi lần này.",
-      );
-      return;
-    }
-    setMachine(started.machine);
-    setError(null);
-    try {
-      await api.replayFailedAttempt(attemptId, started.send.key, started.send.body);
-      setMachine(settleIntent(started.machine, "acked"));
-      setMessage("Đã nhận yêu cầu xử lý lại. Kết quả chưa được tính là xong.");
-      await result.refetch();
-    } catch (caught) {
-      setMachine(settleIntent(started.machine, unknownTransport(caught) ? "unknown" : "rejected"));
-      setError(isApiError(caught) ? caught.message : "Không gửi được.");
-    }
-  }
+  return <AdminAttempt key={attemptId} attemptId={attemptId} />;
+}
+function AdminAttempt({ attemptId }: { attemptId: string }) {
+  useTitle("Chi tiết lượt thi");
+  const c = useAdminAttempt(attemptId),
+    { result, data, hidden, review, replay } = c;
+  const attempt = data?.attempt,
+    score = data?.result;
   return (
     <CapabilityGate permission="reporting.read">
-      <AdminHeading
-        title={`Lượt ${shortId(attemptId)}`}
-        eyebrow="CHI TIẾT LƯỢT THI"
-        description="Kết quả và bài làm của đúng lượt, theo phiên bản đã khóa."
-      />
-      {result.isLoading ? <SkeletonLines /> : null}
-      {result.error ? (
-        <ErrorPanel
-          error={result.error}
-          onRetry={hideResult ? undefined : () => void result.refetch()}
-        />
-      ) : null}
-      {!hideResult && result.data?.pending ? (
-        <Alert tone="warning" title="Chưa có điểm">
-          Máy chủ chưa trả kết quả. Không có tiến độ giả.
-        </Alert>
-      ) : null}
-      {!hideResult && result.data?.result ? (
-        <section className={styles.panel}>
-          <p className={styles.eyebrow}>KẾT QUẢ ĐÃ TRẢ</p>
-          <h2>
-            {result.data.result.earned}/{result.data.result.possible} điểm
-          </h2>
-          <p>{formatBasisPoints(result.data.result.percentageBasisPoints)}</p>
-        </section>
-      ) : null}
-      {reviewGate !== "allowed" ? (
-        <p>Thiếu quyền xem bài làm nên không tải chi tiết đáp án.</p>
-      ) : null}
-      {review.error ? (
-        <ErrorPanel
-          error={review.error}
-          onRetry={hideReview ? undefined : () => void review.refetch()}
-        />
-      ) : null}
-      {hideReview
-        ? null
-        : reviewRows.map((row) => <AdminReviewCard key={row.question.id} row={row} />)}
-      {!hideReview && review.data ? (
-        <PageEnd
-          next={Boolean(review.hasNextPage)}
-          loading={review.isFetchingNextPage}
-          onMore={() => void review.fetchNextPage()}
-        />
-      ) : null}
-      <CapabilityGate permission="assessment.replay">
-        <section className={styles.panel}>
-          <h2>Xử lý lại lượt thất bại</h2>
-          <p className={styles.muted}>
-            Bản live chưa có revision quản trị cho thao tác này. Dữ liệu mẫu chỉ dùng số trong bộ
-            nhớ demo và không đăng nhập thay thí sinh.
-          </p>
-          {revision === null ? (
-            <Alert title="Không có revision quản trị">
-              Chỉ lượt thất bại trong dữ liệu mẫu mới có số này.
-            </Alert>
-          ) : (
-            <p>Revision quản trị hiện tại: {revision}</p>
-          )}
-          {message ? (
-            <Alert tone="success" title="Đã gửi">
-              {message}
-            </Alert>
+      <div className={styles.page}>
+        <AdminHeading
+          title="Chi tiết lượt thi"
+          eyebrow="QUẢN TRỊ / LƯỢT THI"
+          description={`Lượt ${adminId(attemptId)} · Theo phiên bản đã khóa`}
+        >
+          {attempt ? (
+            <Link to={`/admin/exams/${attempt.examId}/submissions`}>← Về bài nộp</Link>
           ) : null}
-          {error ? <Alert title="Chưa gửi được">{error}</Alert> : null}
-          <TextArea
-            label="Lý do"
-            value={reason}
-            onChange={(event) => setReason(event.target.value)}
+          <Button
+            variant="secondary"
+            disabled={hidden || result.isFetching}
+            onClick={() => void result.refetch()}
+          >
+            Tải lại
+          </Button>
+        </AdminHeading>
+        {result.isLoading ? <SkeletonLines /> : null}
+        {result.error ? (
+          <ErrorPanel
+            error={result.error}
+            onRetry={hidden ? undefined : () => void result.refetch()}
           />
-          <div className={styles.actions}>
-            <Button
-              disabled={revision === null || machine.phase === "inflight"}
-              onClick={() => void replay(false)}
-            >
-              Gửi xử lý lại
-            </Button>
-            {machine.phase === "unknown" ? (
-              <Button variant="secondary" onClick={() => void replay(true)}>
-                Thử gửi lại cùng nội dung
-              </Button>
+        ) : null}
+        {data ? (
+          <div className={styles.asymmetric}>
+            <div className={styles.stack}>
+              <section className={admin.panel}>
+                <h2>Thông tin lượt thi</h2>
+                <p>
+                  Phiên bản đã khóa ·{" "}
+                  <span className={styles.code}>
+                    {adminId((attempt?.publishedVersionId ?? score?.publishedVersionId) || "")}
+                  </span>
+                </p>
+                {attempt ? (
+                  <>
+                    <AdminBadge tone={attempt.status === "FAILED" ? "warning" : "neutral"}>
+                      {statusLabel(attempt.status)}
+                      {attempt.replayPending ? " · Đã yêu cầu xử lý lại" : ""}
+                    </AdminBadge>
+                    <dl className={styles.facts}>
+                      {[
+                        ["Mã lượt thi", adminId(attemptId)],
+                        ["Mã đề", adminId(attempt.examId)],
+                        [
+                          "Bắt đầu",
+                          attempt.startedAt
+                            ? formatDateTime(attempt.startedAt)
+                            : "Chưa được cung cấp",
+                        ],
+                        [
+                          "Hạn nộp",
+                          attempt.deadline
+                            ? formatDateTime(attempt.deadline)
+                            : "Chưa được cung cấp",
+                        ],
+                        [
+                          "Đã nộp",
+                          attempt.submittedAt
+                            ? formatDateTime(attempt.submittedAt)
+                            : "Chưa có giờ nộp",
+                        ],
+                        ["Hết hạn", attempt.expired ? "Có" : "Không"],
+                      ].map(([label, value]) => (
+                        <div key={label}>
+                          <dt>{label}</dt>
+                          <dd>{value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                    <p>Giờ Việt Nam · UTC+7</p>
+                  </>
+                ) : null}
+              </section>
+              <section className={admin.panel}>
+                <h2>Kết quả</h2>
+                {score ? (
+                  <>
+                    <h3>
+                      {score.earned}/{score.possible} điểm
+                    </h3>
+                    <p>{formatBasisPoints(score.percentageBasisPoints)}</p>
+                  </>
+                ) : (
+                  <Alert tone="warning" title="Chưa có điểm">
+                    Lượt thi chưa có kết quả chấm hoàn tất. Tải lại để đọc trạng thái mới.
+                  </Alert>
+                )}
+                {data.pending ? (
+                  <p>Bài làm và đáp án chưa khả dụng khi chưa có kết quả.</p>
+                ) : c.reviewGate !== "allowed" ? (
+                  <p>Thiếu quyền xem bài làm nên không tải chi tiết đáp án.</p>
+                ) : null}
+              </section>
+            </div>
+            {replay.allowed && (attempt?.status === "FAILED" || replay.phase !== "idle") ? (
+              <section className={admin.panel}>
+                <h2>Xử lý lại lượt thất bại</h2>
+                <p>Gửi lại bài nộp gốc để hệ thống xử lý.</p>
+                <p>Giữ nguyên câu trả lời và mã lượt thi.</p>
+                {replay.message ? (
+                  <Alert tone="success" title="Đã gửi">
+                    {replay.message}
+                  </Alert>
+                ) : null}
+                {replay.error ? <ErrorPanel error={replay.error} /> : null}
+                {replay.phase === "unknown" ? (
+                  <Alert tone="warning" title="Chưa nhận được xác nhận">
+                    Giữ nguyên nội dung đã gửi. Thử lại cùng yêu cầu để đối chiếu kết quả.
+                  </Alert>
+                ) : null}
+                <TextArea
+                  label="Lý do"
+                  value={replay.reason}
+                  disabled={!replay.editable || !replay.eligible}
+                  onChange={(e) => replay.setReason(e.target.value)}
+                />
+                <p>Từ 8 đến 500 ký tự sau khi bỏ khoảng trắng ở hai đầu.</p>
+                <Button disabled={!replay.canOpen} onClick={replay.open}>
+                  Yêu cầu xử lý lại
+                </Button>
+                {replay.phase === "unknown" ? (
+                  <Button variant="secondary" onClick={() => void replay.send(true)}>
+                    Thử gửi lại cùng nội dung
+                  </Button>
+                ) : null}
+                {!replay.eligible && replay.phase === "idle" ? (
+                  <p>Chưa thể yêu cầu xử lý lại ở trạng thái hoặc phiên bản này.</p>
+                ) : null}
+                <p>Yêu cầu được nhận không có nghĩa là đã chấm xong; không tạo lượt thi mới.</p>
+              </section>
             ) : null}
           </div>
-        </section>
-      </CapabilityGate>
+        ) : null}
+        {review.query.error && !hidden ? (
+          <ErrorPanel
+            error={review.query.error}
+            onRetry={review.hidden ? undefined : () => void review.refresh()}
+          />
+        ) : null}
+        {review.items.map((row) => (
+          <AdminReviewCard key={row.question.id} row={row} />
+        ))}
+        {!review.hidden && review.query.data ? (
+          <PageEnd
+            next={Boolean(review.query.hasNextPage)}
+            loading={review.query.isFetching}
+            onMore={() => void review.more()}
+          />
+        ) : null}
+        {replay.confirm ? (
+          <Dialog title="Yêu cầu xử lý lại" onClose={replay.close}>
+            <p>Gửi lại bài nộp gốc để hệ thống xử lý.</p>
+            <p>
+              Lượt {adminId(attemptId)} · Phiên bản {adminId(attempt?.publishedVersionId ?? "")}
+            </p>
+            <TextArea
+              label="Lý do xác nhận"
+              value={replay.reason}
+              onChange={(e) => replay.setReason(e.target.value)}
+            />
+            <p>Từ 8 đến 500 ký tự.</p>
+            <div className={styles.scopeBox}>
+              <strong>Giữ nguyên bài nộp gốc</strong>
+              <p>
+                Giữ nguyên câu trả lời và mã lượt thi. Yêu cầu được nhận không có nghĩa là đã chấm
+                xong.
+              </p>
+            </div>
+            <div className={admin.actions}>
+              <Button variant="secondary" onClick={replay.close}>
+                Hủy
+              </Button>
+              <Button disabled={!replay.canOpen} onClick={() => void replay.send()}>
+                Gửi yêu cầu
+              </Button>
+            </div>
+          </Dialog>
+        ) : null}
+      </div>
     </CapabilityGate>
   );
 }

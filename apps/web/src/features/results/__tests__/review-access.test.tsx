@@ -8,8 +8,17 @@ import { ApiError } from "@web/shared/api/errors";
 
 import { ReviewPage } from "../result-pages";
 
-const api = vi.hoisted(() => ({ getResult: vi.fn(), getReleasedReview: vi.fn() }));
+const api = vi.hoisted(() => ({
+  getResult: vi.fn(),
+  getReleasedReview: vi.fn(),
+  getAttemptStatus: vi.fn(),
+}));
 vi.mock("@web/app/runtime", () => ({ useRuntime: () => ({ api }) }));
+vi.mock("@web/app/session", () => ({
+  useSession: () => ({ status: "authenticated", needsReauth: false, profile: { id: "actor" } }),
+}));
+const memory = { clear: vi.fn(), lookup: vi.fn() };
+vi.mock("@web/app/memory", () => ({ useMemory: () => memory }));
 afterEach(() => {
   cleanup();
   vi.resetAllMocks();
@@ -17,7 +26,17 @@ afterEach(() => {
 
 it("removes released answer keys and explanations from the page and cache after access is revoked", async () => {
   api.getResult.mockResolvedValue({
-    data: { pending: false, result: { review: { href: "/v1/attempts/first/review" } } },
+    data: {
+      pending: false,
+      result: {
+        attemptId: "first",
+        publishedVersionId: "version",
+        review: { href: "/v1/attempts/first/review" },
+      },
+    },
+  });
+  api.getAttemptStatus.mockResolvedValue({
+    data: { id: "first", publishedVersionId: "version", examId: "exam" },
   });
   api.getReleasedReview.mockResolvedValueOnce({
     data: {
@@ -48,7 +67,9 @@ it("removes released answer keys and explanations from the page and cache after 
   render(
     <MemoryRouter initialEntries={["/attempts/first/review"]}>
       <QueryClientProvider client={client}>
-        <button onClick={() => void client.invalidateQueries({ queryKey: ["review", "first"] })}>
+        <button
+          onClick={() => void client.invalidateQueries({ queryKey: ["review", "actor", "first"] })}
+        >
           Kiểm tra quyền
         </button>
         <Routes>
@@ -62,9 +83,12 @@ it("removes released answer keys and explanations from the page and cache after 
   await waitFor(() => {
     expect(screen.queryByText("Released explanation")).toBeNull();
     expect(screen.queryByText("Released key")).toBeNull();
-    expect(client.getQueryData(["review", "first"])).toBeUndefined();
+    expect(client.getQueryData(["review", "actor", "first"])).toBeUndefined();
   });
   expect(screen.queryByRole("button", { name: "Thử lại" })).toBeNull();
+  expect(screen.getByRole("button", { name: "Làm mới quyền xem" }).hasAttribute("disabled")).toBe(
+    true,
+  );
   expect(api.getReleasedReview).toHaveBeenCalledTimes(2);
   client.clear();
 });

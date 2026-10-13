@@ -50,7 +50,12 @@ test("mobile room saves three native question types before submitting and openin
   await expect(
     page.getByRole("heading", { name: "Giải thích", exact: true, level: 1 }),
   ).toBeVisible();
-  await expect(page.getByText(/Bạn đã chọn · ✓ Đáp án của đề/)).toHaveCount(4);
+  await expect(page.getByText(/Bạn đã chọn · ✓ Đáp án của đề/)).toHaveCount(1);
+  await page.getByRole("button", { name: "Câu sau", exact: true }).click();
+  await expect(page.getByText(/Bạn đã chọn · ✓ Đáp án của đề/)).toHaveCount(1);
+  await page.getByRole("button", { name: "Câu sau", exact: true }).click();
+  await expect(page.getByText(/Bạn đã chọn · ✓ Đáp án của đề/)).toHaveCount(2);
+  await expect(page.getByRole("button", { name: "Câu sau", exact: true })).toBeDisabled();
   await expect(page.getByRole("radio")).toHaveCount(0);
   await expect(page.getByRole("checkbox")).toHaveCount(0);
 });
@@ -66,8 +71,8 @@ test("history and pseudonymous leaderboard remain keyboard scrollable on narrow 
   await expect.poll(() => history.evaluate((node) => node.scrollLeft)).toBeGreaterThan(0);
   await expect(page.getByText("Chưa có điểm", { exact: true })).toHaveCount(2);
   await page.getByRole("button", { name: "Làm mới", exact: true }).click();
-  await expect(page.getByRole("link", { name: "Kết quả", exact: true })).toBeVisible();
-  await page.getByRole("link", { name: "Kết quả", exact: true }).click();
+  await expect(page.getByRole("link", { name: "Xem kết quả", exact: true })).toBeVisible();
+  await page.getByRole("link", { name: "Xem kết quả", exact: true }).click();
   await page.getByRole("link", { name: "Bảng xếp hạng của phiên bản này" }).click();
   const board = page.getByRole("region", { name: "Xếp hạng bằng bí danh" });
   await board.focus();

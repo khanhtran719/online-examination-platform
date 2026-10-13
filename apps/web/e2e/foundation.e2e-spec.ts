@@ -69,7 +69,7 @@ test("admin mobile menu preserves capability filtering and logout", async ({ pag
   await page.locator("summary").filter({ hasText: "Kịch bản mẫu" }).click();
   await page.getByLabel("Quyền mẫu").selectOption("admin");
   await expect(
-    page.getByRole("heading", { name: "Quản trị đề và kết quả", exact: true }),
+    page.getByRole("heading", { name: "Tổng quan quản trị", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Menu", exact: true }).click();
   await page
@@ -86,6 +86,7 @@ test("admin mobile menu preserves capability filtering and logout", async ({ pag
   const nav = page.getByRole("navigation", { name: "Quản trị", exact: true });
   await expect(nav.getByRole("link", { name: "Ngân hàng câu", exact: true })).toHaveCount(0);
   await expect(nav.getByRole("link", { name: "Giám sát", exact: true })).toBeVisible();
+  await expect(nav.getByRole("link", { name: "Số liệu", exact: true })).toBeVisible();
   await page.keyboard.press("Escape");
   await page.getByRole("button", { name: "Đăng xuất", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Đăng nhập", exact: true })).toBeVisible();

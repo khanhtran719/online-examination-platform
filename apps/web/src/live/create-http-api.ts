@@ -32,13 +32,14 @@ import { isApiError } from "../shared/api/errors";
 import { requestJson, withMeta } from "../shared/api/http";
 import {
   parseAccepted,
-  parseActiveCandidate,
+  parseActiveCandidatesPage,
   parseAdminExam,
   parseAdminQuestion,
   parseAdminSubmission,
   parseAnswer,
   parseAttempt,
   parseAuditEntry,
+  parseBusinessMetrics,
   parseCandidateQuestion,
   parseCsrf,
   parseData,
@@ -451,7 +452,7 @@ export function createHttpApi(fetchImpl: typeof fetch = fetch): LiveHandle {
         path: queryString(`/v1/admin/exams/${examId}/active-candidates`, query),
         method: "GET",
         retryAuth: true,
-        parse: (payload) => parsePage(payload, parseActiveCandidate),
+        parse: parseActiveCandidatesPage,
       }),
     listSubmissions: (examId, query) =>
       call({
@@ -506,6 +507,13 @@ export function createHttpApi(fetchImpl: typeof fetch = fetch): LiveHandle {
         method: "GET",
         retryAuth: true,
         parse: (payload) => parsePage(payload, parseQuestionStatistic),
+      }),
+    getBusinessMetrics: () =>
+      call({
+        path: "/v1/admin/business-metrics",
+        method: "GET",
+        retryAuth: true,
+        parse: (payload) => parseData(payload, parseBusinessMetrics),
       }),
     getSystemBusinessMetrics: () =>
       call<Metrics>({

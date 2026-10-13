@@ -1,0 +1,40 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/demo/__tests__/reporting-contract.unit.spec.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/demo/__tests__/reporting-contract.unit.spec.ts (3 tests | 1 failed) 19ms
+   × orders synthetic audit rows by occurredAt/id descending like the read contract 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/demo/__tests__/reporting-contract.unit.spec.ts > orders synthetic audit rows by occurredAt/id descending like the read contract
+AssertionError: expected [ …(2) ] to deeply equal [ …(2) ]
+
+- Expected
++ Received
+
+  [
+-   "00000000-0000-4000-8000-000000000c03",
+    "00000000-0000-4000-8000-000000000c01",
++   "00000000-0000-4000-8000-000000000c03",
+  ]
+
+ ❯ src/demo/__tests__/reporting-contract.unit.spec.ts:11:33
+      9|   server.extras.setPermissions("admin");
+     10|   const rows = (await server.api.getAudit({})).data.items;
+     11|   expect(rows.map((r) => r.id)).toEqual([...rows].sort((a, b) => b.occ…
+       |                                 ^
+     12| });
+     13|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  22:47:42
+   Duration  710ms (environment 85%, transform 9%, tests 3%, import 2%, worker 1%)
+

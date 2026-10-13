@@ -1,0 +1,472 @@
+{
+  "captureCount": 45,
+  "widths": [
+    768,
+    1024,
+    1280,
+    1440
+  ],
+  "automatedAxeViolations": 0,
+  "allFontsLoaded": true,
+  "documentOverflowCount": 0,
+  "rootVisualReview": [
+    "overview1440: compact snapshot and task tiles",
+    "submissions768: readable IDs/internal scrolling",
+    "statistics-counts1440: three options at 1/2 each",
+    "audit/drawer: redacted fields/right anchor",
+    "failed detail/replay-confirm1280: neutral info panel, explicit confirmation"
+  ],
+  "limits": "Chromium demo/Web-tablet only; not complete WCAG/device/mobile/live-business acceptance.",
+  "scans": [
+    {
+      "file": "audit-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "audit-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "audit-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "audit-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "audit-drawer-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "audit-drawer-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "audit-drawer-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "audit-drawer-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "failed-detail-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "failed-detail-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "failed-detail-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "failed-detail-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "metrics-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "metrics-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "metrics-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "metrics-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "monitor-exam-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "monitor-exam-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "monitor-exam-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "monitor-exam-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "monitor-index-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "monitor-index-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "monitor-index-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "monitor-index-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "overview-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "overview-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "overview-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "overview-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "replay-confirm-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "replay-confirm-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "replay-confirm-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "replay-confirm-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "replay-unknown-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "statistics-counts-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "statistics-counts-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "statistics-counts-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "statistics-counts-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "statistics-zero-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "statistics-zero-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "statistics-zero-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "statistics-zero-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    },
+    {
+      "file": "submissions-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1024,
+      "violations": 0
+    },
+    {
+      "file": "submissions-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1280,
+      "violations": 0
+    },
+    {
+      "file": "submissions-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 1440,
+      "violations": 0
+    },
+    {
+      "file": "submissions-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "fontLoaded": true,
+      "documentWidth": 768,
+      "violations": 0
+    }
+  ]
+}

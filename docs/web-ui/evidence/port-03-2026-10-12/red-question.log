@@ -1,0 +1,136 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/admin/__tests__/use-question-draft.unit.spec.tsx src/features/admin/__tests__/question-draft-model.unit.spec.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/question-draft-model.unit.spec.ts (0 test)
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx (5 tests | 5 failed) 73ms
+   × does not adopt a refreshed revision while keeping the local draft 13ms
+   × marks archive pending and blocks a competing save until acknowledgement 3ms
+   × blocks archive while a save is in flight 2ms
+   × keeps an ambiguous server write frozen and retries the same key/body 53ms
+   × rejects non-finite points before any request 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/question-draft-model.unit.spec.ts [ src/features/admin/__tests__/question-draft-model.unit.spec.ts ]
+Error: Failed to resolve import "../question-draft-model" from "src/features/admin/__tests__/question-draft-model.unit.spec.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/src/features/admin/__tests__/question-draft-model.unit.spec.ts:3:89
+  1  |  import { expect, it } from "vitest";
+  2  |  import { fieldsOfQuestion, moveQuestionOption, removeQuestionOption, questionBody } from "../question-draft-model";
+     |                                                                                            ^
+  3  |  it("moves/removes options while their answer identity follows the same content", () => {
+  4  |  	const fields = fieldsOfQuestion(null);
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/node.js:8766:39
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/node.js:8763:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/node.js:26593:18
+ ❯ node_modules/vite/dist/node/chunks/node.js:26663:30
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/node.js:26629:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/node.js:8545:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/node.js:20157:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/use-question-draft.unit.spec.tsx > does not adopt a refreshed revision while keeping the local draft
+AssertionError: expected 2 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx:23:40
+     21|   view.rerender({ initial: { ...question, prompt: "Remote", revision: …
+     22|   expect(view.result.current.prompt).toBe("Local");
+     23|   expect(view.result.current.revision).toBe(1);
+       |                                        ^
+     24| });
+     25| it("marks archive pending and blocks a competing save until acknowledg…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/features/admin/__tests__/use-question-draft.unit.spec.tsx > marks archive pending and blocks a competing save until acknowledgement
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx:31:39
+     29|   const view = renderHook(() => useQuestionDraft({ initial: question, …
+     30|   act(() => view.result.current.archive());
+     31|   expect(view.result.current.pending).toBe(true);
+       |                                       ^
+     32|   act(() => view.result.current.submit(event()));
+     33|   expect(onSave).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/features/admin/__tests__/use-question-draft.unit.spec.tsx > blocks archive while a save is in flight
+TypeError: Cannot read properties of undefined (reading 'then')
+ ❯ Object.archive src/features/admin/use-question-draft.ts:112:68
+    110|     if (!started.send) return;
+    111|     archiveIntent.current = started.machine;
+    112|     void onArchive(started.send.key, started.send.expectedRevision)
+       |                                                                    ^
+    113|       .then((nextRevision) => {
+    114|         archiveIntent.current = settleIntent(archiveIntent.current, "a…
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx:42:72
+ ❯ node_modules/@testing-library/react/dist/act-compat.js:47:24
+ ❯ process.env.NODE_ENV.exports.act node_modules/react/cjs/react.development.js:890:22
+ ❯ node_modules/@testing-library/react/dist/act-compat.js:46:25
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx:42:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/features/admin/__tests__/use-question-draft.unit.spec.tsx > keeps an ambiguous server write frozen and retries the same key/body
+AssertionError: expected undefined to be true // Object.is equality
+
+- Expected:
+true
+
++ Received:
+undefined
+
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx:52:39
+     50|   act(() => view.result.current.submit(event()));
+     51|   await waitFor(() => expect(view.result.current.pending).toBe(false));
+     52|   expect(view.result.current.unknown).toBe(true);
+       |                                       ^
+     53|   act(() => view.result.current.archive());
+     54|   expect(onArchive).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  src/features/admin/__tests__/use-question-draft.unit.spec.tsx > rejects non-finite points before any request
+TypeError: Cannot read properties of undefined (reading 'then')
+ ❯ Object.submit src/features/admin/use-question-draft.ts:88:53
+     86|     setPending(true);
+     87|     setError(null);
+     88|     void onSave(started.send.key, started.send.body)
+       |                                                     ^
+     89|       .then((receipt) => {
+     90|         saveIntent.current = settleIntent(saveIntent.current, "acked");
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx:62:33
+ ❯ node_modules/@testing-library/react/dist/act-compat.js:47:24
+ ❯ process.env.NODE_ENV.exports.act node_modules/react/cjs/react.development.js:890:22
+ ❯ node_modules/@testing-library/react/dist/act-compat.js:46:25
+ ❯ src/features/admin/__tests__/use-question-draft.unit.spec.tsx:62:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  5 failed (5)
+   Start at  21:11:21
+   Duration  1.08s (environment 84%, import 6%, transform 5%, tests 4%)
+

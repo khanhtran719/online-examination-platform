@@ -1,5 +1,58 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
+**PORT-05C2026-10-13:** Đã hoàn thiện Trạng thái bài/Kết quả/Giải thích trên
+Web/tablet. Controller tách khỏi page; polling tôn trọng thời gian chờ máy chủ,
+dừng khi mất quyền; result/review cache xoá đúng scope. Xem lại từng câu, lọc các
+câu đã tải, trước/sau và keyboard focus.827 root/44 Chromium PASS; final review
+có full root/full Chromium receipts;20 captures font/axe/overflow/gutter đạt.
+[Checklist/review](port-05c-2026-10-13.md), [evidence](evidence/port-05c-2026-10-13/README.md),
+[gallery](evidence/port-05c-2026-10-13/gallery.html). S1–S5 COMPLETE locally.
+Next PORT-05D Exam Room/Autosave/Submit Web/tablet. Parent PORT-05/full live/mobile/
+production giữ mở; các checkpoint dưới giữ scope lịch sử.
+
+**PORT-05B2026-10-13:** Lịch sử thi/Bảng xếp hạng đã port theo hai mẫu điều chỉnh
+đã chốt cho Web/tablet. Controller tách khỏi page, cache theo tài khoản/phiên bản,
+refresh từ đầu, dữ liệu ẩn/xóa khi mất quyền và bỏ phản hồi đến muộn.799 root/
+41 Chromium PASS;11 ảnh font/axe/overflow/gutter đạt. [Checklist/review](port-05b-2026-10-13.md),
+[evidence](evidence/port-05b-2026-10-13/README.md), [gallery](evidence/port-05b-2026-10-13/gallery.html).
+H1–H5 COMPLETE locally; lint/format/quality/types/builds PASS. Parent PORT-05/full live/mobile/production còn mở.
+Tiếp theo Status/Result/Released Review. Các checkpoint dưới giữ scope lịch sử.
+
+**Ưu tiên hiện hành,2026-10-12:** Web desktop và tablet ở768/1024/1280/1440px;
+mobile design/matrix tạm hoãn cho giai đoạn app theo người dùng. Giữ regression
+cũ; không tự mở phạm vi mobile hoặc coi demo là live acceptance.
+
+**PORT-05A hoàn thành cục bộ:** danh sách đề, chi tiết đề và xác nhận bắt đầu
+trên Web/tablet; controller tách khỏi UI, tìm trong các đề đã tải, cursor tải lại
+từ đầu và dữ liệu xóa khi mất quyền/phiên. Chặn nhấn đúp; mất xác nhận giữ nguyên
+yêu cầu, phản hồi cũ không điều hướng. [Checklist/review](port-05a-2026-10-12.md),
+[bằng chứng](evidence/port-05a-2026-10-12/README.md),
+[17 ảnh](evidence/port-05a-2026-10-12/gallery.html):779 root/39 Chromium PASS;
+lint/types/builds/format/contracts đạt; font/axe/overflow/gutter đạt ở bốn target
+widths. API/template/bằng chứng PORT-01–04 giữ nguyên. Roadmap89/217, FE7/32 không
+đổi; parent PORT-05/live/production còn mở. Tiếp theo History/Leaderboard theo
+mẫu điều chỉnh đã chọn, mobile/app hoãn. Các checkpoint dưới giữ phạm vi lịch sử.
+
+**PORT-04 hoàn thành cục bộ:** tổng quan Admin, giám sát/danh sách lượt, chi tiết
+lượt thi, thống kê câu hỏi, số liệu nghiệp vụ/kỹ thuật chưa có nguồn và audit;
+dialog xử lý lại/drawer dùng đúng quyền và dữ liệu. Controller tách khỏi UI,
+cache xóa khi mất quyền; retry giữ nguyên yêu cầu, số liệu ghi rõ scope/mốc đọc.
+[Checklist/review](port-04-2026-10-12.md), [bằng chứng](evidence/port-04-2026-10-12/README.md):
+760 root/36 Chromium PASS; lint/types/builds/format/contracts đạt;45 Web/tablet
+captures không axe violations/body overflow, font đã tải. Roadmap89/217 và FE7/32
+giữ nguyên; live Admin/WEB-03, AWS và production còn mở. Bước tiếp theo đề xuất:
+Candidate/Public Web/tablet. Các checkpoint bên dưới giữ phạm vi lịch sử.
+
+**PORT-03 hoàn thành cục bộ:** ngân hàng câu, editor ba loại và preview, dialog
+đổi loại/lưu trữ/đối chiếu/rời trang, import JSON → kiểm tra → xác nhận → báo cáo.
+Controller tách khỏi UI; đáp án đi cùng lựa chọn khi sắp xếp; retry giữ đúng yêu
+cầu, xung đột chỉ nhận bản mới có xác nhận, dữ liệu ẩn/xóa khi mất quyền.
+[Checklist/review](port-03-2026-10-12.md), [bằng chứng](evidence/port-03-2026-10-12/README.md):
+729 root/31 Chromium PASS; lint/types/builds/format/contracts đạt;23 Web/tablet
+captures không axe violations/body overflow, font đã tải. Roadmap89/217 và FE7/32
+giữ nguyên; live Admin/WEB-03 và production còn mở. Bước kế tiếp PORT-04
+Operations/Reporting Web/tablet. Các checkpoint dưới giữ phạm vi lịch sử.
+
 **PORT-02 hoàn thành cục bộ, 2026-10-12:** Editor ba bước Thông tin/Cấu trúc/
 Kiểm tra, xác nhận phát hành/gỡ phát hành/lưu trữ, bỏ phần, rời bản nháp và đối
 chiếu xung đột theo mẫu đã chốt. Model/controller/UI tách trách nhiệm; retry giữ

@@ -1,0 +1,15 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test port-04.e2e-spec.ts
+
+
+Running 4 tests using 1 worker
+
+(node:30202) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/port-04.e2e-spec.ts:38:1 › PORT-04 overview, scoped business metrics and unavailable technical providers fit Web/tablet (4.8s)
+  ✓  2 [chromium] › e2e/port-04.e2e-spec.ts:53:1 › PORT-04 monitor and nullable ledger retain their actual scope at four widths (6.2s)
+  ✓  3 [chromium] › e2e/port-04.e2e-spec.ts:72:1 › PORT-04 statistics, audit drawer and failed detail match selected layouts (7.7s)
+  ✓  4 [chromium] › e2e/port-04.e2e-spec.ts:95:1 › PORT-04 replay confirmation restores focus, retries a frozen request and clears on permission loss (3.0s)
+
+  4 passed (22.5s)

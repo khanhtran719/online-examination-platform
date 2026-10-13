@@ -149,8 +149,9 @@ test.describe("demo", () => {
     await expect(page.getByRole("heading", { name: "Đề thi" })).toBeVisible();
     await shot(page, "admin-exams-1024");
     await page.getByRole("link", { name: "Số liệu", exact: true }).click();
-    await expect(page.getByText("HTTP p99: Chưa có dữ liệu")).toBeVisible();
-    await expect(page.getByText("Chi phí: Chưa có dữ liệu")).toBeVisible();
+    await expect(page.getByText("Chưa có nguồn đo HTTP.")).toBeVisible();
+    await expect(page.getByText("Chưa có nguồn đo Hàng đợi.")).toBeVisible();
+    await expect(page.getByText("Chưa có dữ liệu", { exact: true })).toHaveCount(4);
     await shot(page, "admin-metrics-missing-1024");
     await page.getByRole("link", { name: "Nhật ký", exact: true }).click();
     await expect(page.getByRole("heading", { name: "Nhật ký" })).toBeVisible();

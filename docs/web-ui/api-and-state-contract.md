@@ -1,6 +1,35 @@
 # Web API integration và state contract
 
+PORT-05C2026-10-13: existing status/result/review reads, không endpoint/DTO mới.
+Pending result không phải submit ACK. IDs phải đúng route; status metadata phải
+khớp published version trước khi dùng exam ID cho board/frozen memory. Memory
+khớp cả exam/version, không N+1.401/403/404/malformed đóng scope; gate pending/
+closed/error purge review + cancel; late response không phục hồi. Optional status
+failure chỉ ẩn labels/board, không tự thu hồi authorized score. Review href
+allowlist, riêng page20 sau gate; explicit recheck từ page1. Retry-After/pollAfter
+là lower bound, client jitter/cap10s không được rút ngắn; visibility không bypass
+cooldown, budget5 phút kể cả hidden/in-flight. [Review](port-05c-2026-10-13.md).
+
+PORT-05B2026-10-13: [History/Leaderboard](port-05b-2026-10-13.md) dùng existing
+PlatformApi reads/DTOs, không đổi endpoint/schema. History không có exam title
+hay semantic version; metadata memory phải khớp cả exam/frozen version, fallback
+bằng ID và không gọi Catalog từng dòng. Rank/scale earned/possible giữ từ server;
+zero khác null. Xem bảng không thay consent, Profile giữ explicit opt-in flow.
+Controller sở hữu actor/version cursor cache, refresh từ đầu, denial clearing và
+late response fences. Demo/local chưa đóng full live integration. Demo board
+permission preset hiện dùng `catalog.read`; actual endpoint dùng `leaderboard.read`.
+Client không suy grant từ display role; không sửa backend/quyền trong port này.
+
 Document này là hướng dẫn nối frontend, không sửa [OpenAPI](../contracts/openapi.yaml). Thông tin DTO lấy từ contract và chín Identity routes hiện có. Xem [security](../security-and-permissions.md), [product](../product-specification.md), [ADR-003](../adr/003-idempotency-retention.md), [ADR-005](../adr/005-email-verification-and-signed-tokens.md).
+
+PORT-04 update2026-10-12: Web adapter đã nối `getBusinessMetrics` tới existing
+GET `/v1/admin/business-metrics`, strict cohort/backlog DTO, `reporting.read`.
+Overview và Metrics dùng cùng query key, không gọi legacy combined `/admin/metrics`.
+`system.metrics.read` chỉ gate technical sections đang unavailable. Active pages
+được parse riêng với metadata `asOf`; không nới metadata generic. Statistics nhận
+`answered`, kiểm count consistency và không lấy tổng selections làm denominator.
+Đây là adapter/unit/demo evidence, chưa phải full live Admin integration; live
+capability discovery vẫn chặn. [Increment/review](port-04-2026-10-12.md) sở hữu scope.
 
 ## 1. Tách DTO, view model, UI state
 
@@ -60,8 +89,8 @@ The original handoff listed44 business plus2 health operations. Current contract
 | getAdminReview — GET `/v1/admin/attempts/{attemptId}/review`                                    | audited answer review                                       | Specified              |
 | replayFailedAttempt — POST `/v1/admin/attempts/{attemptId}/replay`                              | reason/revision replay                                      | Specified              |
 | getQuestionStatistics — GET `/v1/admin/exams/{examId}/versions/{versionId}/question-statistics` | per-version question stats                                  | Specified              |
-| getAdminBusinessMetrics — GET `/v1/admin/business-metrics` | distinct cohort/backlog snapshot; new DTO, Web not wired | Backend increment BM-01–06; see roadmap |
-| getSystemBusinessMetrics — GET `/v1/admin/metrics`                                              | overview/metrics                                            | Specified              |
+| getAdminBusinessMetrics — GET `/v1/admin/business-metrics` | distinct cohort/backlog snapshot; Web port `getBusinessMetrics` | Backend BM-01–06; PORT-04 adapter/demo, live capability gate open |
+| getSystemBusinessMetrics — GET `/v1/admin/metrics` | legacy combined specification; no current UI caller | Specified; providers unavailable |
 | getAudit — GET `/v1/admin/audit`                                                                | audit                                                       | Specified              |
 | liveness/readiness — GET `/live`, `/ready`                                                      | operational checks, not browser availability banner polling | Technical local        |
 
@@ -119,6 +148,16 @@ Use a maintained UUIDv7 generator compatible with the implementation environment
 Important authenticated mutations require idempotency per OpenAPI: profile/start/save/submit/admin create/edit/archive/publish/import/replay. Registration/login/refresh and verification obey their separate auth contracts, not an invented generic receipt mechanism. Changed dryRun→real import body is a new logical mutation/new key; retry of each action keeps that action's key/body. Pruned/stale keys can return Idempotency key expired; prompt re-read/reconciliation before a new action.
 
 Admin edits use expectedRevision and full replacement request. A successful receipt is not a full current aggregate; refetch projection, reconcile newer local editing and accepted revision.409 Version conflict shows compare/reload choices. Queue/replay accepted202 does not mean grading done.
+
+PORT-05A start implementation keeps the immutable examId/UUIDv7 key in the
+mounted detail controller. Double clicks send once. Unknown timeout/network/
+malformed/5xx outcomes retain that exact key for explicit retry; pending/unknown
+cannot be dismissed as a cancelled request. ACKs are ignored after route/actor/
+session/access changes and a response for a different exam remains unknown.
+The POST body is still absent: current preview does not lock publication version.
+Navigation follows the actual accepted attempt, including an existing attempt.
+This local key does not survive reload/unmount; server receipt/resume authority
+and full live multi-tab/reload reconciliation remain separate gates.
 
 ## 8. Autosave coordinator — implement before polishing exam UI
 

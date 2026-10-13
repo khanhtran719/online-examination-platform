@@ -1,0 +1,44 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/admin/__tests__/use-question-import.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/admin/__tests__/use-question-import.unit.spec.tsx (5 tests | 1 failed) 32ms
+   × does not resurrect a cleared report when an old request resolves after permissions are restored 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/use-question-import.unit.spec.tsx > does not resurrect a cleared report when an old request resolves after permissions are restored
+AssertionError: expected { id: 'report', valid: true, …(4) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "committed": false,
+  "createdAt": "2026-10-12T00:00:00Z",
+  "id": "report",
+  "issues": [],
+  "questions": [],
+  "valid": true,
+}
+
+ ❯ src/features/admin/__tests__/use-question-import.unit.spec.tsx:99:38
+     97|   view.rerender();
+     98|   await act(async () => resolve({ data: report }));
+     99|   expect(view.result.current.report).toBeNull();
+       |                                      ^
+    100|   expect(done).not.toHaveBeenCalled();
+    101| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  21:28:58
+   Duration  847ms (environment 67%, import 18%, transform 11%, tests 4%)
+

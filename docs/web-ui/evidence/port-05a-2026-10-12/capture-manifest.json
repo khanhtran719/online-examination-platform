@@ -1,0 +1,175 @@
+{
+  "dataMode": "demo",
+  "captures": [
+    {
+      "image": "verified-browser/catalog-start/browse-1024.png",
+      "sha256": "4818be9b3c71e861ee20133a78a659a0c0185fd42cc6f0895da6c0e6928815f2",
+      "scan": "verified-browser/catalog-start/browse-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams"
+    },
+    {
+      "image": "verified-browser/catalog-start/browse-1280.png",
+      "sha256": "40e58e9fabceada3b17d3d3c75098220b96e6139669c2a310b5438dcb64504bb",
+      "scan": "verified-browser/catalog-start/browse-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams"
+    },
+    {
+      "image": "verified-browser/catalog-start/browse-1440.png",
+      "sha256": "a1de5c9591f801e22340c98f0471bc25b326bd9d9ad8ae1fbdb1b9ed33465a9c",
+      "scan": "verified-browser/catalog-start/browse-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams"
+    },
+    {
+      "image": "verified-browser/catalog-start/browse-768.png",
+      "sha256": "08bfc10fc8514c8ac7eeb7ffac31d4c4a8252cdfc2842d27c2a936db6beaee58",
+      "scan": "verified-browser/catalog-start/browse-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams"
+    },
+    {
+      "image": "verified-browser/catalog-start/category-empty-768.png",
+      "sha256": "0f3dbb9089e082b3a07f8237045587603e24a914ed7a303a8530703626381576",
+      "scan": "verified-browser/catalog-start/category-empty-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams?category=IELTS"
+    },
+    {
+      "image": "verified-browser/catalog-start/category-invalid-768.png",
+      "sha256": "5d00dbfc2c92175059561fcdfd3423ae820c7acfef987f4349dfeaaf75bc8a4a",
+      "scan": "verified-browser/catalog-start/category-invalid-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams?category=invalid&keep=1"
+    },
+    {
+      "image": "verified-browser/catalog-start/confirmation-1024.png",
+      "sha256": "6e8ee0bd1f7e7304b94f3b4b69e9bb25e6bccbe86958ab73b57c42da632a7b89",
+      "scan": "verified-browser/catalog-start/confirmation-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "image": "verified-browser/catalog-start/confirmation-1280.png",
+      "sha256": "034cfb592ac487d3b30e0f17e7dab778d36e5c7544bd9fbe43829eda8ced25e6",
+      "scan": "verified-browser/catalog-start/confirmation-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "image": "verified-browser/catalog-start/confirmation-1440.png",
+      "sha256": "5e66844ddb183a89e41160051fe78eb1314dd231e3dcbecc2b4a82fb9e597804",
+      "scan": "verified-browser/catalog-start/confirmation-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "image": "verified-browser/catalog-start/confirmation-768.png",
+      "sha256": "9ce2205c8baf5f8d7936d250b81d3ec59bbeec934de7b24683cd8c38e162d4b1",
+      "scan": "verified-browser/catalog-start/confirmation-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "image": "verified-browser/catalog-start/detail-1024.png",
+      "sha256": "60a3283a98a9426f8c80ad394ff4cc98ec69908aa53adc90a67c3a18524752bf",
+      "scan": "verified-browser/catalog-start/detail-1024.json",
+      "viewport": {
+        "width": 1024,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "image": "verified-browser/catalog-start/detail-1280.png",
+      "sha256": "8162f8e36822fdabde421a910f722a04e04ede211ef2f21d8317143239973693",
+      "scan": "verified-browser/catalog-start/detail-1280.json",
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "image": "verified-browser/catalog-start/detail-1440.png",
+      "sha256": "b962cb9eb8fd80c36c2686472305cd1045e53e41432190280609a05871caf8f4",
+      "scan": "verified-browser/catalog-start/detail-1440.json",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "image": "verified-browser/catalog-start/detail-768.png",
+      "sha256": "74a33ee9a05e8126cece53336a13a6cd70b7acf1be147e91403f64ebd937d860",
+      "scan": "verified-browser/catalog-start/detail-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "image": "verified-browser/catalog-start/loaded-search-empty-768.png",
+      "sha256": "d5ffce9c78c23d893ce3f0462be8bde2a416bc17d6438049f52df359cc36d16d",
+      "scan": "verified-browser/catalog-start/loaded-search-empty-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams"
+    },
+    {
+      "image": "verified-browser/catalog-start/start-pending-768.png",
+      "sha256": "1d935be558d114a07411d53326fb0390bcda7a03f197a23fe187a62ae7e7dcb5",
+      "scan": "verified-browser/catalog-start/start-pending-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "image": "verified-browser/catalog-start/start-unknown-768.png",
+      "sha256": "8acff70d8023f9f54fb9bd19855b9fb0eb6bb0d6be354b8fda4ba87a09ecbea3",
+      "scan": "verified-browser/catalog-start/start-unknown-768.json",
+      "viewport": {
+        "width": 768,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/exams/00000000-0000-4000-8000-000000000102"
+    }
+  ]
+}

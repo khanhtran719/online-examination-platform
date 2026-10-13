@@ -59,10 +59,10 @@ test("question keys use the keyboard and confirm destructive type changes before
 }) => {
   await admin(page, "/admin/questions/new");
   await page.getByLabel("Đề bài", { exact: true }).fill("Chọn các từ đúng.");
-  await page.getByLabel("Lựa chọn 1").fill("Một");
-  await page.getByLabel("Lựa chọn 2").fill("Hai");
+  await page.getByRole("textbox", { name: "Lựa chọn 1", exact: true }).fill("Một");
+  await page.getByRole("textbox", { name: "Lựa chọn 2", exact: true }).fill("Hai");
   await page.getByRole("button", { name: "Thêm lựa chọn" }).click();
-  await page.getByLabel("Lựa chọn 3").fill("Ba");
+  await page.getByRole("textbox", { name: "Lựa chọn 3", exact: true }).fill("Ba");
   await page.getByRole("combobox", { name: "Loại", exact: true }).selectOption("MULTIPLE_CHOICE");
   const key = page.getByRole("checkbox", { name: "Đáp án đúng 3" });
   await key.focus();
@@ -129,7 +129,10 @@ test("audit restores focus, failed replay stays pending and reviewer capabilitie
   await table.focus();
   await page.keyboard.press("ArrowRight");
   await expect.poll(() => table.evaluate((node) => node.scrollLeft)).toBeGreaterThan(0);
-  const detail = page.getByRole("button", { name: "Chi tiết", exact: true }).first();
+  const detail = page
+    .getByRole("row")
+    .filter({ hasText: "profile.opt_in" })
+    .getByRole("button", { name: "Chi tiết", exact: true });
   await detail.click();
   await expect(page.getByRole("dialog", { name: "Chi tiết nhật ký" })).toBeVisible();
   await expect(page.getByRole("dialog", { name: "Chi tiết nhật ký" })).toContainText("USER");
@@ -145,16 +148,17 @@ test("audit restores focus, failed replay stays pending and reviewer capabilitie
     history.pushState(null, "", "/admin/attempts/00000000-0000-4000-8000-000000000403");
     dispatchEvent(new PopStateEvent("popstate"));
   });
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Lượt 00000000…000403");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Chi tiết lượt thi");
   await page.getByLabel("Lý do", { exact: true }).fill("Kiểm tra lại lỗi chấm bài");
-  await page.getByRole("button", { name: "Gửi xử lý lại", exact: true }).click();
+  await page.getByRole("button", { name: "Yêu cầu xử lý lại", exact: true }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Gửi yêu cầu", exact: true }).click();
   await expect(
     page.getByText("Đã nhận yêu cầu xử lý lại. Kết quả chưa được tính là xong.", { exact: true }),
   ).toBeVisible();
   await expect(page.getByText("Chưa có điểm", { exact: true })).toBeVisible();
   await page.locator("summary").filter({ hasText: "Kịch bản mẫu" }).click();
   await page.getByLabel("Quyền mẫu").selectOption("reviewer");
-  await expect(page.getByRole("button", { name: "Gửi xử lý lại", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Yêu cầu xử lý lại", exact: true })).toHaveCount(0);
   await expect(
     page
       .getByRole("navigation", { name: "Quản trị", exact: true })

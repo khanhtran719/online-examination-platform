@@ -1,38 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { Link, useParams } from "react-router";
 
-import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
 import { formatDateTime } from "@web/shared/format";
-import { useProtectedAccess } from "@web/shared/protected-access";
 import { ErrorPanel, SkeletonLines, tableClass, TableScroll } from "@web/shared/ui/ui";
 
-import styles from "./admin.module.css";
 import { AdminBadge, AdminHeading } from "./admin-ui";
-import { CapabilityGate, useCapability } from "./gate";
+import styles from "./authoring.module.css";
+import { CapabilityGate } from "./gate";
+import { useImportReport } from "./use-import-report";
 
 export function ImportReportPage() {
   const { importId = "" } = useParams();
   useTitle("Báo cáo nhập");
-  const gate = useCapability("catalog.import");
-  const { api } = useRuntime();
-  const [blocked, setBlocked] = useState(false);
-  const report = useQuery({
-    queryKey: ["import-report", importId],
-    enabled: gate === "allowed" && !blocked,
-    queryFn: () => api.getImportReport(importId).then((response) => response.data),
-  });
-  const hidden = useProtectedAccess(report.error, [["import-report", importId]], blocked, () =>
-    setBlocked(true),
-  );
-  const data = hidden ? null : report.data;
+  const { report, hidden, data, canEdit } = useImportReport(importId);
   return (
     <CapabilityGate permission="catalog.import">
       <AdminHeading title="Báo cáo nhập" eyebrow="NGÂN HÀNG CÂU">
-        <Link className={styles.primaryLink} to="/admin/imports/new">
-          Nhập tệp khác
-        </Link>
+        <Link to="/admin/imports/new">Nhập tệp khác</Link>
       </AdminHeading>
       {report.isLoading ? <SkeletonLines /> : null}
       {report.error ? (
@@ -49,7 +33,7 @@ export function ImportReportPage() {
           <dl className={styles.facts}>
             <div>
               <dt>Mã báo cáo</dt>
-              <dd className={styles.code}>{data.id}</dd>
+              <dd className={styles.scope}>{data.id}</dd>
             </div>
             <div>
               <dt>Dữ liệu hợp lệ</dt>
@@ -90,12 +74,16 @@ export function ImportReportPage() {
                     <tr key={question.questionId}>
                       <td>{question.clientRef}</td>
                       <td>
-                        <Link
-                          className={styles.code}
-                          to={`/admin/questions/${question.questionId}/edit`}
-                        >
-                          {question.questionId}
-                        </Link>
+                        {canEdit ? (
+                          <Link
+                            className={styles.scope}
+                            to={`/admin/questions/${question.questionId}/edit`}
+                          >
+                            {question.questionId}
+                          </Link>
+                        ) : (
+                          <span>{question.questionId}</span>
+                        )}
                       </td>
                     </tr>
                   ))}

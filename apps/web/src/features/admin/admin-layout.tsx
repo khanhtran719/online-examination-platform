@@ -1,15 +1,13 @@
-import { Link, NavLink, Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
 
 import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
 import { WorkspaceFrame } from "@web/app/workspace-frame";
 import type { Permission } from "@web/shared/api/dto";
 import styles from "@web/shared/styles/layout.module.css";
-import { PaperArt } from "@web/shared/ui/paper-art";
 import { Alert } from "@web/shared/ui/ui";
 
-import adminStyles from "./admin.module.css";
-import { AdminHeading } from "./admin-ui";
+export { AdminHomePage } from "./admin-home-page";
 
 const links = [
   ["/admin", "Tổng quan", "grid"],
@@ -76,7 +74,11 @@ export function AdminLayout() {
         return demo.permissions.includes("catalog.manage");
       if (to === "/admin/imports/new") return demo.permissions.includes("catalog.import");
       if (to === "/admin/monitor") return demo.permissions.includes("reporting.read");
-      if (to === "/admin/metrics") return demo.permissions.includes("system.metrics.read");
+      if (to === "/admin/metrics")
+        return (
+          demo.permissions.includes("reporting.read") ||
+          demo.permissions.includes("system.metrics.read")
+        );
       if (to === "/admin/audit") return demo.permissions.includes("audit.read");
       return false;
     })
@@ -93,75 +95,5 @@ export function AdminLayout() {
         </div>
       </div>
     </WorkspaceFrame>
-  );
-}
-
-export function AdminHomePage() {
-  useTitle("Tổng quan quản trị");
-  const { demo } = useRuntime();
-  const tasks: { to: string; title: string; copy: string; permission: Permission }[] = [
-    {
-      to: "/admin/exams",
-      title: "Soạn và phát hành đề",
-      copy: "Tổ chức các phần, chọn câu và kiểm tra bản nháp trước khi mở thi.",
-      permission: "catalog.manage",
-    },
-    {
-      to: "/admin/questions",
-      title: "Ngân hàng câu hỏi",
-      copy: "Biên soạn lựa chọn, điểm và đáp án trong một không gian rõ ràng.",
-      permission: "catalog.manage",
-    },
-    {
-      to: "/admin/monitor",
-      title: "Theo dõi các lượt thi",
-      copy: "Xem lượt đang làm, bài đã nộp và kết quả theo từng phiên bản.",
-      permission: "reporting.read",
-    },
-    {
-      to: "/admin/imports/new",
-      title: "Nhập câu từ JSON",
-      copy: "Kiểm tra tệp, đọc lỗi từng dòng rồi xác nhận ghi vào ngân hàng.",
-      permission: "catalog.import",
-    },
-  ];
-  return (
-    <>
-      <AdminHeading
-        title="Quản trị đề và kết quả"
-        eyebrow="KHÔNG GIAN QUẢN TRỊ"
-        description="Từ câu hỏi đầu tiên đến phiên bản sẵn sàng cho kỳ thi."
-      />
-      <section className={adminStyles.welcome}>
-        <div>
-          <p className={adminStyles.eyebrow}>MỘT KỲ THI TỐT BẮT ĐẦU TỪ ĐÂY</p>
-          <h2>
-            Chuẩn bị rõ ràng.
-            <br />
-            Phát hành tự tin.
-          </h2>
-          <p>
-            Giữ bản nháp linh hoạt, khóa nội dung khi phát hành và theo dõi từng lượt thi từ một
-            nơi.
-          </p>
-        </div>
-        <div>
-          <PaperArt compact />
-        </div>
-      </section>
-      <nav className={adminStyles.shortcuts} aria-label="Công việc quản trị">
-        {tasks
-          .filter((task) => demo?.permissions.includes(task.permission))
-          .map((task) => (
-            <Link key={task.to} className={adminStyles.shortcut} to={task.to}>
-              <span className={adminStyles.shortcutTitle}>
-                {task.title}
-                <span aria-hidden="true">↗</span>
-              </span>
-              <p>{task.copy}</p>
-            </Link>
-          ))}
-      </nav>
-    </>
   );
 }

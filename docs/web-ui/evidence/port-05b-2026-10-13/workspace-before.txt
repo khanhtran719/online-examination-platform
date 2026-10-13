@@ -1,0 +1,85 @@
+ M apps/web/e2e/admin-workflows.e2e-spec.ts
+ M apps/web/e2e/browser.spec.ts
+ M apps/web/e2e/foundation.e2e-spec.ts
+ M apps/web/e2e/public-experience.e2e-spec.ts
+ M apps/web/src/demo/server.ts
+ M apps/web/src/features/admin/__tests__/admin-workflows.unit.spec.ts
+ M apps/web/src/features/admin/admin-attempt-page.tsx
+ M apps/web/src/features/admin/admin-layout.tsx
+ M apps/web/src/features/admin/audit-page.tsx
+ M apps/web/src/features/admin/import-page.tsx
+ M apps/web/src/features/admin/import-report-page.tsx
+ M apps/web/src/features/admin/metrics-page.tsx
+ M apps/web/src/features/admin/monitor-exam-page.tsx
+ M apps/web/src/features/admin/monitor-index-page.tsx
+ M apps/web/src/features/admin/question-dialogs.tsx
+ M apps/web/src/features/admin/question-editor-page.tsx
+ M apps/web/src/features/admin/question-form.tsx
+ M apps/web/src/features/admin/question-list-page.tsx
+ M apps/web/src/features/admin/question-preview.tsx
+ M apps/web/src/features/admin/statistics-page.tsx
+ M apps/web/src/features/admin/submissions-page.tsx
+ M apps/web/src/features/admin/use-question-draft.ts
+ M apps/web/src/features/catalog/browse-page.tsx
+ M apps/web/src/features/catalog/exam-detail-page.tsx
+ M apps/web/src/live/create-http-api.ts
+ M apps/web/src/shared/api/dto.ts
+ M apps/web/src/shared/api/parse.ts
+ M apps/web/src/shared/api/platform.ts
+ M apps/web/src/shared/validation.ts
+ M docs/implementation-plan.md
+ M docs/project-profile.md
+ M docs/web-ui/README.md
+ M docs/web-ui/acceptance-checklist.md
+ M docs/web-ui/api-and-state-contract.md
+ M docs/web-ui/design-spec.md
+ M docs/web-ui/frontend-architecture.md
+ M docs/web-ui/implementation-tasks.md
+ M docs/web-ui/templates/codex-desktop-v1/review-2026-10-12.md
+?? apps/web/e2e/port-03.e2e-spec.ts
+?? apps/web/e2e/port-04.e2e-spec.ts
+?? apps/web/e2e/port-05a.e2e-spec.ts
+?? apps/web/src/demo/__tests__/question-faults.unit.spec.ts
+?? apps/web/src/demo/__tests__/reporting-contract.unit.spec.ts
+?? apps/web/src/demo/__tests__/start-faults.unit.spec.ts
+?? apps/web/src/features/admin/__tests__/attempt-replay.unit.spec.tsx
+?? apps/web/src/features/admin/__tests__/operations-regressions.unit.spec.tsx
+?? apps/web/src/features/admin/__tests__/question-draft-model.unit.spec.ts
+?? apps/web/src/features/admin/__tests__/report-pages.unit.spec.tsx
+?? apps/web/src/features/admin/__tests__/reporting-access.unit.spec.tsx
+?? apps/web/src/features/admin/__tests__/use-question-draft.unit.spec.tsx
+?? apps/web/src/features/admin/__tests__/use-question-import.unit.spec.tsx
+?? apps/web/src/features/admin/__tests__/use-question-list.unit.spec.tsx
+?? apps/web/src/features/admin/admin-home-page.tsx
+?? apps/web/src/features/admin/authoring.module.css
+?? apps/web/src/features/admin/business-snapshot.tsx
+?? apps/web/src/features/admin/import-validation.tsx
+?? apps/web/src/features/admin/operations.module.css
+?? apps/web/src/features/admin/question-draft-model.ts
+?? apps/web/src/features/admin/question-options.tsx
+?? apps/web/src/features/admin/use-admin-attempt.ts
+?? apps/web/src/features/admin/use-attempt-replay.ts
+?? apps/web/src/features/admin/use-authoring-navigation.ts
+?? apps/web/src/features/admin/use-business-metrics.ts
+?? apps/web/src/features/admin/use-import-report.ts
+?? apps/web/src/features/admin/use-operations.ts
+?? apps/web/src/features/admin/use-question-editor.ts
+?? apps/web/src/features/admin/use-question-import.ts
+?? apps/web/src/features/admin/use-question-list.ts
+?? apps/web/src/features/admin/use-report-insights.ts
+?? apps/web/src/features/admin/use-report-pages.ts
+?? apps/web/src/features/catalog/__tests__/exam-start.unit.spec.tsx
+?? apps/web/src/features/catalog/__tests__/use-browse.unit.spec.tsx
+?? apps/web/src/features/catalog/catalog-port.module.css
+?? apps/web/src/features/catalog/start-confirmation.tsx
+?? apps/web/src/features/catalog/use-catalog.ts
+?? apps/web/src/features/catalog/use-exam-start.ts
+?? apps/web/src/live/__tests__/reporting-contract.unit.spec.ts
+?? apps/web/src/shared/__tests__/import-validation.unit.spec.ts
+?? docs/web-ui/evidence/port-03-2026-10-12/
+?? docs/web-ui/evidence/port-04-2026-10-12/
+?? docs/web-ui/evidence/port-05a-2026-10-12/
+?? docs/web-ui/evidence/port-05b-2026-10-13/
+?? docs/web-ui/port-03-2026-10-12.md
+?? docs/web-ui/port-04-2026-10-12.md
+?? docs/web-ui/port-05a-2026-10-12.md

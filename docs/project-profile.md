@@ -1,5 +1,72 @@
 # Project profile
 
+PORT-05C update2026-10-13: [Status/Result/Released Review](web-ui/port-05c-2026-10-13.md)
+S1–S5 COMPLETE locally. EP-11/12/13 Web/tablet768/1024/1280/1440px; feature read
+controllers, cooldown/cap/actor fences, release/cache clearing và read-only
+navigator.827 root (492 API/66 tooling/269 Web),44 Chromium PASS; final review
+được kiểm lại full root/full Chromium.20 captures: loaded font, zero automated
+axe violations, no body overflow/gutters>=16px.2,499 protected API/template/prior
+evidence files unchanged. [Evidence](web-ui/evidence/port-05c-2026-10-13/README.md).
+Roadmap89/217, FE7/32 và parent PORT-05/live/mobile/production mở. Next PORT-05D
+Exam Room/Autosave/Submit; known demo seed401 mismatch giữ follow-up riêng.
+Các checkpoint bên dưới là lịch sử, không phải current task status.
+
+PORT-05B update2026-10-13: [History/Leaderboard](web-ui/port-05b-2026-10-13.md)
+H1–H5 COMPLETE locally. Adjusted EP-14/15 trên Web/tablet
+768/1024/1280/1440px; feature-owned cursor controller, actor/version cache,
+protected clearing, exact frozen metadata, null/zero distinction và privacy.
+799 root (492 API/66 tooling/241 Web),41 Chromium PASS; lint/format/quality/
+contracts48/445/typecheck và strict live/demo builds PASS.11 final captures có font,
+zero automated axe violations/no document overflow/gutters>=16px.2,171 protected
+API/templates/PORT-01–05A evidence files unchanged; không backend/schema/AWS đổi.
+[Evidence](web-ui/evidence/port-05b-2026-10-13/README.md). Roadmap89/217/FE7/32 giữ
+nguyên, parent PORT-05/full live/mobile/production mở. Next PORT-05C Status/
+Result/Released Review. Previous checkpoints retain historical scope.
+
+PORT-05A update2026-10-12: [Candidate Catalog](web-ui/port-05a-2026-10-12.md)
+C1–C5 COMPLETE locally. EP-08/09 and start confirmation on Web/tablet768/1024/
+1280/1440px. Feature controllers, actor-scoped reads, cursor restart, loaded-only
+search, protected cache/memory clearing and immutable unknown-start retry.
+779 root (492 API/66 tooling/221 Web),39 Chromium PASS; lint/format/quality/
+contracts48/445 and strict live/demo builds PASS.17 final captures: zero automated
+axe violations/document overflow, loaded fonts and content gutters>=16px.
+All1,862 protected API source/template/PORT-01–04 evidence files byte-identical.
+[Evidence](web-ui/evidence/port-05a-2026-10-12/README.md) retains actual red/fix
+results; no API/schema/AWS changes. Roadmap89/217 and FE7/32 unchanged; parent
+PORT-05, full live business/WEB-03 and production stay open. Mounted start key
+is not persisted across reload; wider live reconciliation remains acceptance work.
+Next bounded scope History/Leaderboard Web/tablet, mobile/app deferred. Earlier
+entries retain historical scope.
+
+PORT-04 update2026-10-12: [Operations/Reporting](web-ui/port-04-2026-10-12.md)
+O1–O5 COMPLETE locally. Selected EP-25–32 plus replay confirmation/audit drawer
+on Web/tablet768/1024/1280/1440px. Feature-owned query controllers, actual reporting
+DTOs/endpoint, protected cache clearing, visible-only polling/first-page refresh
+and immutable replay retry.760 root (492 API/66 tooling/202 Web),36 Chromium PASS;
+lint/format/quality/contracts48/445 and strict live/demo builds PASS.45 final
+captures have zero automated axe violations, loaded fonts and no body overflow.
+1.371 protected files checked; only one current template checklist receipt line
+changes,1.370 unchanged. API/migrations/old images/prompts/PORT-01–03 evidence
+intact. [Evidence](web-ui/evidence/port-04-2026-10-12/README.md) retains failures and
+keyboard navigation trace diagnosis. Roadmap89/217 and FE7/32 unchanged; live
+Admin/WEB-03, AWS/performance/cost/production stay open. Next bounded scope:
+Candidate/Public Web/tablet; mobile app deferred. Earlier entries are historical.
+
+PORT-03 update2026-10-12: [Question bank/editor/import](web-ui/port-03-2026-10-12.md)
+Q1–Q5 COMPLETE locally. User prioritizes Web/tablet768/1024/1280/1440px;
+mobile design/matrix is deferred to the future app phase. Feature controllers,
+stable option/key identity, exact unknown-write retry, fresh conflict adoption,
+permission-cleared state and bounded dry-run/atomic import follow selected
+Cobalt–Apricot references.729 root (492 API/66 tooling/171 Web),31 Chromium PASS;
+lint/format/quality/contracts48/445 and strict live/demo builds PASS.23 final
+captures have zero automated axe violations, font loaded and no body overflow.
+959 protected baseline files checked; only current template checklist closure/
+user preference changes,958 unchanged. API/migrations/old PNGs/prompts/PORT-01–02
+evidence intact. [Evidence](web-ui/evidence/port-03-2026-10-12/README.md) retains
+red/green checks and intermediate failures. Roadmap89/217 and FE7/32 unchanged;
+live Admin/WEB-03, performance/cost and production stay open. Next bounded
+PORT-04 Operations/Reporting Web/tablet. Earlier entries retain historical scope.
+
 PORT-02 update2026-10-12: [Editor/dialog review](web-ui/port-02-2026-10-12.md)
 E1–E5 COMPLETE locally. Three-step Information/Structure/Preflight, confirmation,
 fresh/local conflict comparison and unsaved navigation follow the selected

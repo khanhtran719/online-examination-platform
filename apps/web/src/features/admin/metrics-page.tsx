@@ -1,92 +1,127 @@
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-
-import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
 import { formatDateTime } from "@web/shared/format";
-import { useProtectedAccess } from "@web/shared/protected-access";
-import { ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
+import { Alert, Button, ErrorPanel, SkeletonLines } from "@web/shared/ui/ui";
 
-import styles from "./admin.module.css";
+import admin from "./admin.module.css";
 import { AdminHeading } from "./admin-ui";
-import { CapabilityGate, useCapability } from "./gate";
+import { BusinessKpis, BusinessScope } from "./business-snapshot";
+import { useCapability } from "./gate";
+import styles from "./operations.module.css";
+import { useBusinessMetrics } from "./use-business-metrics";
 
 export function MetricsPage() {
-  useTitle("Số liệu hệ thống");
-  const gate = useCapability("system.metrics.read");
-  const { api } = useRuntime();
-  const [blocked, setBlocked] = useState(false);
-  const metrics = useQuery({
-    queryKey: ["metrics"],
-    enabled: gate === "allowed" && !blocked,
-    queryFn: () => api.getSystemBusinessMetrics().then((response) => response.data),
-  });
-  const hidden = useProtectedAccess(metrics.error, [["metrics"]], blocked, () => setBlocked(true));
+  useTitle("Số liệu");
+  const { query, hidden, data, gate } = useBusinessMetrics(),
+    technical = useCapability("system.metrics.read");
   return (
-    <CapabilityGate permission="system.metrics.read">
+    <div className={styles.page}>
       <AdminHeading
         title="Số liệu"
-        eyebrow="SNAPSHOT HỆ THỐNG"
-        description="Một mốc dữ liệu máy chủ trả về. Các chỉ số chưa có được ghi rõ bên dưới."
-      />
-      {metrics.isLoading ? <SkeletonLines /> : null}
-      {metrics.error ? (
-        <ErrorPanel
-          error={metrics.error}
-          onRetry={hidden ? undefined : () => void metrics.refetch()}
-        />
+        eyebrow="QUẢN TRỊ / SỐ LIỆU"
+        description="Snapshot nghiệp vụ và trạng thái nguồn đo"
+      >
+        {gate === "allowed" ? (
+          <Button
+            variant="secondary"
+            disabled={hidden || query.isFetching}
+            onClick={() => void query.refetch()}
+          >
+            Tải lại
+          </Button>
+        ) : null}
+      </AdminHeading>
+      {gate !== "allowed" ? (
+        <Alert title="Chưa có quyền đọc báo cáo">
+          Cần quyền đọc báo cáo để xem số liệu nghiệp vụ.
+        </Alert>
       ) : null}
-      {!hidden && metrics.data ? (
+      {query.isLoading ? <SkeletonLines /> : null}
+      {query.error ? (
+        <ErrorPanel error={query.error} onRetry={hidden ? undefined : () => void query.refetch()} />
+      ) : null}
+      {query.error && data ? (
+        <p role="status">Đang hiển thị snapshot lần tải thành công trước.</p>
+      ) : null}
+      {data ? (
         <>
-          <p className={styles.caption}>
-            Mốc snapshot mẫu: {formatDateTime(metrics.data.asOf)}. Đây không phải số đo production.
-          </p>
-          <dl className={styles.statGrid}>
-            {[
-              ["Đang làm", metrics.data.activeCandidates],
-              ["Đã nộp", metrics.data.submitted],
-              ["Hoàn thành", metrics.data.completed],
-              ["Thất bại", metrics.data.failed],
-            ].map(([label, count]) => (
-              <div key={label} className={styles.stat} data-warning={label === "Thất bại"}>
-                <dt>{label}</dt>
-                <dd>{count}</dd>
-              </div>
-            ))}
-          </dl>
-          <div className={styles.split}>
-            <section className={styles.panel}>
-              <h2>Vận hành</h2>
+          <BusinessScope data={data} />
+          <BusinessKpis data={data} />
+          <div className={styles.grid}>
+            <section className={admin.panel}>
+              <h2>Lượt trong cửa sổ đã chọn</h2>
+              <p>Trạng thái hiện tại của lượt bắt đầu trong phạm vi trên.</p>
               <dl className={styles.facts}>
-                <div>
-                  <dt>Yêu cầu mỗi giây</dt>
-                  <dd>{metrics.data.httpRps}</dd>
-                </div>
-                <div>
-                  <dt>HTTP p95</dt>
-                  <dd>{metrics.data.httpP95Ms} ms</dd>
-                </div>
-                <div>
-                  <dt>Hàng đợi</dt>
-                  <dd>{metrics.data.queueDepth}</dd>
-                </div>
-                <div>
-                  <dt>Job cũ nhất</dt>
-                  <dd>{metrics.data.oldestJobSeconds} giây</dd>
-                </div>
+                {[
+                  ["Đã bắt đầu", data.counts.startedAttempts],
+                  ["Đang làm", data.counts.activeAttempts],
+                  ["Đã nộp", data.counts.submittedAttempts],
+                  ["Hoàn thành", data.counts.completedAttempts],
+                  ["Thất bại", data.counts.failedAttempts],
+                  ["Đã nộp khi hết hạn", data.counts.expiredSubmissions],
+                  ["Hoàn thành khi hết hạn", data.counts.expiredCompletedAttempts],
+                ].map(([label, n]) => (
+                  <div key={label}>
+                    <dt>{label}</dt>
+                    <dd>{n}</dd>
+                  </div>
+                ))}
               </dl>
             </section>
-            <section className={styles.panel}>
-              <h2>Chưa có dữ liệu</h2>
-              <p>HTTP p99: Chưa có dữ liệu</p>
-              <p>CPU: Chưa có dữ liệu</p>
-              <p>RDS: Chưa có dữ liệu</p>
-              <p>Redis: Chưa có dữ liệu</p>
-              <p>Chi phí: Chưa có dữ liệu</p>
+            <section className={admin.panel}>
+              <h2>Chờ xử lý toàn hệ thống</h2>
+              <p>
+                Không giới hạn cửa sổ bên trái. Đây là các lượt thi, không phải độ sâu hàng đợi.
+              </p>
+              <dl className={styles.facts}>
+                {[
+                  ["Đang chờ", `${data.backlog.pendingAttempts} lượt`],
+                  ["Yêu cầu xử lý lại", `${data.backlog.replayPendingAttempts} lượt`],
+                  [
+                    "Bài nộp cũ nhất",
+                    data.backlog.oldestSubmittedAt
+                      ? formatDateTime(data.backlog.oldestSubmittedAt)
+                      : "Không có bài chờ",
+                  ],
+                  [
+                    "Tuổi bài nộp cũ nhất",
+                    data.backlog.oldestAgeSeconds === null
+                      ? "Không có bài chờ"
+                      : `${data.backlog.oldestAgeSeconds.toLocaleString("vi-VN")} giây`,
+                  ],
+                ].map(([label, n]) => (
+                  <div key={label}>
+                    <dt>{label}</dt>
+                    <dd>{n}</dd>
+                  </div>
+                ))}
+              </dl>
             </section>
           </div>
         </>
       ) : null}
-    </CapabilityGate>
+      {technical === "allowed" ? (
+        <div className={styles.grid}>
+          {[
+            ["HTTP", "Yêu cầu mỗi giây", "HTTP p95"],
+            ["Hàng đợi", "Độ sâu hàng đợi", "Tuổi job cũ nhất"],
+          ].map(([title, ...labels]) => (
+            <section className={admin.panel} key={title}>
+              <h2>{title}</h2>
+              <dl className={styles.facts}>
+                {labels.map((label) => (
+                  <div key={label}>
+                    <dt>{label}</dt>
+                    <dd>Chưa có dữ liệu</dd>
+                  </div>
+                ))}
+              </dl>
+              <p>Chưa có nguồn đo {title}.</p>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <Alert title="Chưa có quyền xem số liệu kỹ thuật">Số liệu kỹ thuật cần quyền riêng.</Alert>
+      )}
+    </div>
   );
 }

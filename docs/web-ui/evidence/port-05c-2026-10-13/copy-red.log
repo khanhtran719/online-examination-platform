@@ -1,0 +1,38 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/results/__tests__/result-review.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/results/__tests__/result-review.unit.spec.tsx (18 tests | 2 failed) 502ms
+   × does not fetch keys without a safe released review link: null 16ms
+   × does not fetch keys without a safe released review link: { href: 'https://foreign.test/review' } 11ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/results/__tests__/result-review.unit.spec.tsx > does not fetch keys without a safe released review link: null
+ FAIL  src/features/results/__tests__/result-review.unit.spec.tsx > does not fetch keys without a safe released review link: { href: 'https://foreign.test/review' }
+Error: expect(element).not.toBeInTheDocument()
+
+expected document not to contain element, found <p
+  class="_muted_24c302"
+>
+  Lựa chọn của bạn và đáp án đã được công bố cho lượt thi này.
+</p> instead
+ ❯ src/features/results/__tests__/result-review.unit.spec.tsx:221:100
+    219|     mount(true);
+    220|     await screen.findByRole("heading", { name: "Chưa mở giải thích" });
+    221|     expect(screen.queryByText("Lựa chọn của bạn và đáp án đã được công…
+       |                                                                                                    ^
+    222|     expect(state.api.getReleasedReview).not.toHaveBeenCalled();
+    223|   },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 16 passed (18)
+   Start at  09:09:38
+   Duration  1.57s (environment 40%, tests 34%, import 16%, transform 10%)
+

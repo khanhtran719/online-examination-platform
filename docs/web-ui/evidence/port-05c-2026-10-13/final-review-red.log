@@ -1,0 +1,130 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/results/__tests__/review-access.test.tsx src/features/results/__tests__/attempt-polling.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/results/__tests__/attempt-polling.unit.spec.tsx (10 tests | 1 failed) 124ms
+   × offers an explicit check when the budget expires before any status was loaded 81ms
+ ❯ src/features/results/__tests__/review-access.test.tsx (1 test | 1 failed) 130ms
+   × removes released answer keys and explanations from the page and cache after access is revoked 130ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/results/__tests__/attempt-polling.unit.spec.tsx > offers an explicit check when the budget expires before any status was loaded
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Kiểm tra lại"
+
+Here are the accessible roles:
+
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"_statusHeading_93a6f8"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_eyebrow_93a6f8"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"_muted_24c302"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Trạng thái bài":
+  [36m<h1[39m
+    [33mclass[39m=[32m"_title_24c302"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"_wrap_24c302"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"_statusHeading_93a6f8"[39m
+      [36m>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_eyebrow_93a6f8"[39m
+        [36m>[39m
+          [0mSAU KHI LÀM BÀI[0m
+        [36m</p>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"_title_24c302"[39m
+        [36m>[39m
+          [0mTrạng thái bài[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"_muted_24c302"[39m
+        [36m>[39m
+          [0mTheo dõi lượt thi và mở kết quả khi đã sẵn sàng.[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33maria-hidden[39m=[32m"true"[39m
+        [33mclass[39m=[32m"_skeletonCard_f905bc"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_skeleton_f905bc"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_skeleton_f905bc"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"_skeleton_f905bc"[39m
+        [36m/>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/results/__tests__/attempt-polling.unit.spec.tsx:112:17
+    110|   render(<MemoryRouter initialEntries={["/attempts/first/status"]}><Ro…
+    111|   await advance(300_000);
+    112|   expect(screen.getByRole("button", { name: "Kiểm tra lại" })).toBeTru…
+       |                 ^
+    113|   expect(state.api.getAttemptStatus).not.toHaveBeenCalled();
+    114| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/features/results/__tests__/review-access.test.tsx > removes released answer keys and explanations from the page and cache after access is revoked
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/results/__tests__/review-access.test.tsx:89:94
+     87|   });
+     88|   expect(screen.queryByRole("button", { name: "Thử lại" })).toBeNull();
+     89|   expect(screen.getByRole("button", { name: "Làm mới quyền xem" }).has…
+       |                                                                                              ^
+     90|   expect(api.getReleasedReview).toHaveBeenCalledTimes(2);
+     91|   client.clear();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  2 failed | 9 passed (11)
+   Start at  09:15:59
+   Duration  1.14s (environment 60%, import 16%, tests 13%, transform 11%)
+

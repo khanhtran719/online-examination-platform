@@ -2,64 +2,84 @@ import { useState } from "react";
 import { Link } from "react-router";
 
 import { QUESTION_TYPES, type QuestionType } from "@web/shared/api/dto";
-import { Button, SelectField, TextArea, TextField } from "@web/shared/ui/ui";
+import {
+  Alert,
+  Badge,
+  Button,
+  Dialog,
+  ErrorPanel,
+  SelectField,
+  TextArea,
+  TextField,
+} from "@web/shared/ui/ui";
 
-import styles from "./admin.module.css";
-import { AdminBadge, AdminHeading, questionTypeLabel } from "./admin-ui";
+import { questionTypeLabel } from "./admin-ui";
+import styles from "./authoring.module.css";
 import { QuestionDialogs } from "./question-dialogs";
+import { QuestionOptions } from "./question-options";
 import { QuestionPreview } from "./question-preview";
+import { useAuthoringNavigation } from "./use-authoring-navigation";
 import { type QuestionFormProps, useQuestionDraft } from "./use-question-draft";
 
 export function QuestionForm(props: QuestionFormProps) {
-  const { initial, onArchive } = props;
-  const [archiveConfirm, setArchiveConfirm] = useState(false);
   const draft = useQuestionDraft(props);
-  const {
-    type,
-    prompt,
-    options,
-    correct,
-    points,
-    explanation,
-    nextType,
-    error,
-    pending,
-    revision,
-    setPrompt,
-    setOptions,
-    setCorrect,
-    setPoints,
-    setExplanation,
-    setNextType,
-    applyType,
-    changeType,
-  } = draft;
+  const [archiveConfirm, setArchiveConfirm] = useState(false),
+    [preview, setPreview] = useState(false);
+  const blocker = useAuthoringNavigation(draft);
   return (
-    <form className={styles.preview} onSubmit={draft.submit}>
-      <AdminHeading
-        title={initial ? "Sửa câu" : "Tạo câu"}
-        eyebrow="NGÂN HÀNG CÂU HỎI"
-        description="Soạn nội dung, lựa chọn và đáp án. Câu đã phát hành vẫn giữ bản đã khóa."
-      >
-        <AdminBadge tone={initial?.archived ? "neutral" : "success"}>
-          {initial?.archived ? "Đã lưu trữ" : `Revision ${revision}`}
-        </AdminBadge>
+    <form className={styles.page} onSubmit={draft.submit} noValidate>
+      <p className={styles.breadcrumb}>
+        Quản trị / Ngân hàng câu hỏi / {props.initial ? "Sửa câu" : "Tạo câu"}
+      </p>
+      <header className={styles.heading}>
+        <div>
+          <div className={styles.title}>
+            <h1>{props.initial ? "Sửa câu" : "Tạo câu"}</h1>
+            <Badge tone={draft.archived ? "neutral" : "warning"}>
+              {draft.archived
+                ? "Đã lưu trữ"
+                : draft.revision
+                  ? `Bản sửa ${draft.revision}`
+                  : "Chưa lưu"}
+            </Badge>
+          </div>
+          <p>Thay đổi câu trong ngân hàng không sửa các đề đã phát hành.</p>
+        </div>
         <Link to="/admin/questions">← Ngân hàng câu</Link>
-      </AdminHeading>
-      {error ? <p role="alert">{error}</p> : null}
-      <div className={styles.editorGrid}>
-        <div className={styles.preview}>
+      </header>
+      {draft.archived ? <Alert tone="warning" title="Câu đã lưu trữ, chỉ để xem" /> : null}
+      {draft.issues.length ? (
+        <Alert title="Kiểm tra lại câu hỏi">
+          <ul>
+            {draft.issues.map((issue) => (
+              <li key={issue}>{issue}</li>
+            ))}
+          </ul>
+        </Alert>
+      ) : null}
+      {draft.error && !draft.unknown && !draft.conflict ? <ErrorPanel error={draft.error} /> : null}
+      {draft.notice ? <Alert tone="success" title={draft.notice} /> : null}
+      {draft.unknown ? (
+        <Alert tone="warning" title="Chưa xác nhận được kết quả">
+          <p>Giữ nguyên yêu cầu để thử lại. Các thao tác khác đang được khóa.</p>
+          <Button disabled={draft.pending} onClick={() => void draft.retry()}>
+            Thử lại yêu cầu
+          </Button>
+        </Alert>
+      ) : null}
+      <div className={styles.grid}>
+        <fieldset className={`${styles.fields} ${styles.stack}`} disabled={draft.locked}>
           <section className={styles.panel}>
             <h2>Nội dung câu hỏi</h2>
             <div className={styles.formGrid}>
               <SelectField
                 label="Loại"
-                value={type}
-                onChange={(event) => changeType(event.target.value as QuestionType)}
+                value={draft.type}
+                onChange={(event) => draft.changeType(event.target.value as QuestionType)}
               >
-                {QUESTION_TYPES.map((item) => (
-                  <option key={item} value={item}>
-                    {questionTypeLabel[item]}
+                {QUESTION_TYPES.map((type) => (
+                  <option key={type} value={type}>
+                    {questionTypeLabel[type]}
                   </option>
                 ))}
               </SelectField>
@@ -68,109 +88,49 @@ export function QuestionForm(props: QuestionFormProps) {
                 type="number"
                 min={1}
                 max={1000}
-                value={points}
-                onChange={(event) => setPoints(event.target.value)}
+                step={1}
+                value={draft.points}
+                onChange={(event) => draft.setPoints(event.target.value)}
               />
             </div>
             <TextArea
               label="Đề bài"
-              value={prompt}
-              onChange={(event) => setPrompt(event.target.value)}
+              value={draft.prompt}
+              onChange={(event) => draft.setPrompt(event.target.value)}
             />
+            <p className={styles.counter}>{[...draft.prompt].length}/8000 ký tự</p>
           </section>
-          <section className={styles.panel}>
-            <h2>Lựa chọn và đáp án</h2>
-            <p className={styles.caption}>
-              Chọn ô bên trái để đặt đáp án đúng. Câu nhiều lựa chọn cho phép chọn nhiều ô.
-            </p>
-            <fieldset className={styles.keyGroup}>
-              <legend>Đáp án đúng</legend>
-              {options.map((option, index) => (
-                <div key={index} className={styles.optionEditor}>
-                  <label className={styles.keyToggle}>
-                    <input
-                      aria-label={`Đáp án đúng ${index + 1}`}
-                      type={type === "MULTIPLE_CHOICE" ? "checkbox" : "radio"}
-                      name="question-keys"
-                      checked={correct.includes(index + 1)}
-                      onChange={() =>
-                        setCorrect((current) =>
-                          type === "MULTIPLE_CHOICE"
-                            ? current.includes(index + 1)
-                              ? current.filter((position) => position !== index + 1)
-                              : [...current, index + 1].sort((a, b) => a - b)
-                            : [index + 1],
-                        )
-                      }
-                    />
-                  </label>
-                  <TextField
-                    label={`Lựa chọn ${index + 1}`}
-                    value={option}
-                    onChange={(event) =>
-                      setOptions((current) =>
-                        current.map((item, itemIndex) =>
-                          itemIndex === index ? event.target.value : item,
-                        ),
-                      )
-                    }
-                  />
-                </div>
-              ))}
-            </fieldset>
-            <div className={styles.actions}>
-              <Button
-                type="button"
-                variant="secondary"
-                disabled={options.length >= 10 || type === "TRUE_FALSE"}
-                onClick={() => setOptions((current) => [...current, ""])}
-              >
-                Thêm lựa chọn
-              </Button>
-              <Button
-                type="button"
-                variant="secondary"
-                disabled={options.length <= 2 || type === "TRUE_FALSE"}
-                onClick={() => {
-                  setOptions((current) => current.slice(0, -1));
-                  setCorrect((current) => current.filter((position) => position < options.length));
-                }}
-              >
-                Bớt lựa chọn
-              </Button>
-            </div>
-          </section>
-          <section className={styles.panel}>
-            <h2>Giải thích</h2>
-            <TextArea
-              label="Giải thích"
-              value={explanation}
-              onChange={(event) => setExplanation(event.target.value)}
-            />
-          </section>
-        </div>
-        <aside className={`${styles.panel} ${styles.summary}`}>
+          <QuestionOptions draft={draft} />
+        </fieldset>
+        <aside className={styles.panel}>
           <h2>Xem trước nội dung</h2>
-          <p className={styles.caption}>
-            Bản xem trước nội dung thí sinh sẽ thấy. Đáp án và giải thích được quản lý ở phần soạn
-            câu.
+          <p className={styles.scope}>
+            Chỉ nội dung thí sinh được thấy; không kèm đáp án đúng hoặc giải thích.
           </p>
-          <QuestionPreview prompt={prompt} options={options} type={type} />
+          <QuestionPreview prompt={draft.prompt} options={draft.options} type={draft.type} />
+          <Button variant="secondary" onClick={() => setPreview(true)}>
+            Xem như thí sinh
+          </Button>
         </aside>
       </div>
       <div className={styles.actionBar}>
-        <p className={styles.caption}>
-          Lưu câu vào ngân hàng. Thay đổi này không sửa phiên bản đề đã phát hành.
+        <p className={styles.scope}>
+          {draft.pending
+            ? "Đang chờ máy chủ xác nhận…"
+            : draft.unknown
+              ? "Có yêu cầu chưa được xác nhận"
+              : draft.dirty
+                ? "Có thay đổi chưa lưu"
+                : "Lưu câu vào ngân hàng"}
         </p>
         <div className={styles.actions}>
-          <Button type="submit" disabled={pending}>
-            {pending ? "Đang lưu…" : "Lưu câu"}
+          <Button type="submit" disabled={draft.locked}>
+            {draft.pending ? "Đang lưu…" : "Lưu câu"}
           </Button>
-          {onArchive ? (
+          {props.onArchive ? (
             <Button
-              type="button"
               variant="danger"
-              disabled={pending || Boolean(initial?.archived)}
+              disabled={draft.locked}
               onClick={() => setArchiveConfirm(true)}
             >
               Lưu trữ
@@ -179,20 +139,36 @@ export function QuestionForm(props: QuestionFormProps) {
         </div>
       </div>
       <QuestionDialogs
-        nextType={nextType}
-        cancelType={() => setNextType(null)}
-        changeType={() => {
-          if (nextType) applyType(nextType);
-          setNextType(null);
-        }}
+        draft={draft}
+        initial={props.initial}
+        fetching={props.fetching}
+        readError={props.readError}
+        onReload={props.onConflict}
         archiveConfirm={archiveConfirm}
         cancelArchive={() => setArchiveConfirm(false)}
-        archive={() => {
-          setArchiveConfirm(false);
-          draft.archive();
-        }}
-        pending={pending}
       />
+      {preview ? (
+        <Dialog title="Xem câu hỏi như thí sinh" onClose={() => setPreview(false)}>
+          <QuestionPreview prompt={draft.prompt} options={draft.options} type={draft.type} />
+        </Dialog>
+      ) : null}
+      {blocker.state === "blocked" ? (
+        <Dialog title="Rời câu hỏi chưa lưu?" onClose={() => blocker.reset()}>
+          <p>
+            {draft.unknown || draft.pending
+              ? "Yêu cầu có thể đã được máy chủ ghi nhận. Rời trang sẽ mất thông tin thử lại."
+              : "Các thay đổi chưa lưu sẽ bị bỏ."}
+          </p>
+          <div className={styles.actions}>
+            <Button variant="secondary" onClick={() => blocker.reset()}>
+              Ở lại chỉnh sửa
+            </Button>
+            <Button variant="danger" disabled={draft.pending} onClick={() => blocker.proceed()}>
+              Rời trang
+            </Button>
+          </div>
+        </Dialog>
+      ) : null}
     </form>
   );
 }

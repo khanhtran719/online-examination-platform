@@ -1,0 +1,80 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/admin/__tests__/operations-regressions.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+stderr | src/features/admin/__tests__/operations-regressions.unit.spec.tsx > requires replay confirmation and reuses the exact intent after a 503
+An error occurred in the <AdminAttempt> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+
+ ❯ src/features/admin/__tests__/operations-regressions.unit.spec.tsx (3 tests | 1 failed) 1135ms
+   × requires replay confirmation and reuses the exact intent after a 503 1008ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/admin/__tests__/operations-regressions.unit.spec.tsx > requires replay confirmation and reuses the exact intent after a 503
+TestingLibraryElementError: Unable to find an element with the text: Chưa có điểm. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/admin/__tests__/operations-regressions.unit.spec.tsx:48:16
+     46|   runtime.api.replayFailedAttempt.mockRejectedValueOnce(new ApiError({…
+     47|   setup("attempt");
+     48|   await screen.findByText("Chưa có điểm");
+       |                ^
+     49|   await userEvent.type(screen.getByLabelText("Lý do"), "Phụ thuộc đã đ…
+     50|   await userEvent.click(screen.getByRole("button", { name: "Yêu cầu xử…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: Cannot read properties of undefined (reading 'slice')
+ ❯ adminId src/features/admin/admin-ui.tsx:9:19
+      7|
+      8| export function adminId(value: string): string {
+      9|   return `${value.slice(0, 8)}…${value.slice(-6)}`;
+       |                   ^
+     10| }
+     11|
+ ❯ AdminAttempt src/features/admin/admin-attempt-page.tsx:28:89
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:20
+ ❯ renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:22
+ ❯ updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:19
+ ❯ beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:18
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:22
+ ❯ workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:41
+ ❯ renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:11
+
+This error originated in "src/features/admin/__tests__/operations-regressions.unit.spec.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "requires replay confirmation and reuses the exact intent after a 503". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+     Errors  1 error
+   Start at  22:30:27
+   Duration  2.19s (tests 54%, environment 30%, import 9%, transform 6%)
+

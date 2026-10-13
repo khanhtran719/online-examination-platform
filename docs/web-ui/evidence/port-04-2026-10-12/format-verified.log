@@ -1,0 +1,6 @@
+
+> online-examination-platform@0.1.0 format:check
+> prettier --check "apps/api/**/*.ts" "apps/web/src/**/*.{ts,tsx}" "scripts/**/*.mjs" "*.{json,cjs,mjs}" "apps/web/*.{ts,mjs,json}"
+
+Checking formatting...
+All matched files use Prettier code style!

@@ -1,0 +1,80 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/results
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+stderr | src/features/results/__tests__/leaderboard-refresh.test.tsx > removes a previously loaded board when the server denies access
+An error occurred in the <VersionBoard> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+
+ ❯ src/features/results/__tests__/leaderboard-refresh.test.tsx (2 tests | 1 failed) 1193ms
+   × removes a previously loaded board when the server denies access 1030ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/results/__tests__/leaderboard-refresh.test.tsx > removes a previously loaded board when the server denies access
+TestingLibraryElementError: Unable to find role="heading" and name "Bảng xếp hạng không mở"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/results/__tests__/leaderboard-refresh.test.tsx:100:16
+     98|   await screen.findByText(/private-board/);
+     99|   await userEvent.click(screen.getByRole("button", { name: "Cập nhật q…
+    100|   await screen.findByRole("heading", { name: "Bảng xếp hạng không mở" …
+       |                ^
+    101|   expect(screen.queryByText(/private-board/)).toBeNull();
+    102|   expect(client.getQueryData(["leaderboard", "candidate", "exam", "ver…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯ Uncaught Exception ⎯⎯⎯⎯⎯
+TypeError: memory.clear is not a function
+ ❯ src/features/results/use-result-pages.ts:52:12
+     50|     void client.cancelQueries({ queryKey, exact: true });
+     51|     client.removeQueries({ queryKey, exact: true });
+     52|     memory.clear();
+       |            ^
+     53|   }, [hidden, name, client, memory]);
+     54|   useEffect(
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28656:20
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ commitHookEffectListMount node_modules/react-dom/cjs/react-dom-client.development.js:13748:29
+ ❯ commitHookPassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:13835:11
+ ❯ commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:16906:13
+ ❯ recursivelyTraversePassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:16851:13
+ ❯ commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:16898:11
+ ❯ recursivelyTraversePassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:16851:13
+ ❯ commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:17183:11
+
+This error originated in "src/features/results/__tests__/leaderboard-refresh.test.tsx" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The last test to run before this error was "removes a previously loaded board when the server denies access". This means either:
+- the error was thrown while Vitest was running this test, or
+- the error was thrown after the test completed, and this was the most recent test at that point.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 17 passed (18)
+     Errors  1 error
+   Start at  00:07:44
+   Duration  2.40s (environment 54%, tests 25%, import 12%, transform 9%)
+

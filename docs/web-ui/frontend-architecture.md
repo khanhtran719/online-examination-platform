@@ -1,5 +1,33 @@
 # Kiến trúc frontend
 
+PORT-05C2026-10-13: Status/Result/Released Review thuộc `features/results`; page
+compose controller hooks, shared UI không đọc runtime/session. Poll local state
+có actor/attempt fence; result/review query keys có actor/attempt và cleanup.
+Optional status metadata không grant score access. Query signal kiểm sau response
+vì PlatformApi chưa có abort parameter. Gate pending/closed/error purge review;
+explicit release check bỏ chain và tải page1, không dựa isFetching transition có
+thể bị batch. Selection/filter local, loaded-only; immutable review staleTimeInfinity
+không thay server authorization và mỗi release check bỏ cache. Không hứa real-time
+revocation giữa các reads. [Implementation/limits](port-05c-2026-10-13.md).
+
+PORT-05B2026-10-13: Candidate History/Leaderboard dùng controller riêng trong
+`features/results/use-result-pages.ts` qua hai hook hữu hạn `useHistory` và
+`useLeaderboard`. Page compose shared controls, `result-table-elements` và CSS
+colocated. Actor/exam/version nằm trong query key. Refresh bỏ cursor chain cũ;
+guard đồng bộ serialize refresh/load-more. Retry/focus refetch tắt.401/403 và
+board404 ẩn/purge query, xóa metadata, latch denial trong mounted scope. Session
+invalidation ẩn ngay; cleanup hủy/xóa scope cũ và query signal loại late response.
+Transient error giữ loaded snapshot có cảnh báo, retry từ trang đầu. Không có
+permission discovery tự động hay cam kết cross-tab/live acceptance từ controller.
+Metadata phải khớp exam/version, không lookup Catalog từng dòng. Null khác0;
+rank/score/pseudonym do server sở hữu. Không thêm store/repository/transport hoặc
+dependency. [Review và giới hạn](port-05b-2026-10-13.md).
+
+Ưu tiên cập nhật2026-10-12 theo người dùng: triển khai/nghiệm thu Web desktop và
+tablet trước, target768/1024/1280/1440px. Mobile design/matrix tạm hoãn cho giai
+đoạn phát triển app; không mở rộng scope mobile chỉ vì ảnh hoặc guideline chung.
+Giữ các regression hiện có; không coi chúng là nghiệm thu mobile đầy đủ.
+
 Áp dụng cho `apps/web`, bổ sung [ADR-007](../adr/007-web-ui-implementation-direction.md)
 và [quy ước import](../../.ai/conventions.md#83-path-aliases). Backend Architecture
 Contract vẫn giữ nguyên. Frontend tổ chức theo tính năng và composition, không
@@ -105,7 +133,7 @@ khiển mọi screen bằng flags. Desktop pilot không đồng nghĩa mọi mà
 
 Semantic headings, label thật, accessible name, focus-visible, control 44px,
 keyboard navigation và không dùng màu làm tín hiệu duy nhất. Dialog giữ focus/
-restore; bảng cuộn trong region có nhãn, không làm tràn body mobile. Trạng thái
+restore; bảng cuộn trong region có nhãn, không làm tràn body Web/tablet. Trạng thái
 pending chặn click lặp. Mọi icon trang trí aria-hidden. Lỗi, font và focus phải
 kiểm tra trong browser; axe chỉ là một phần kiểm tra, không chứng nhận WCAG.
 
@@ -119,7 +147,9 @@ kiểm tra trong browser; axe chỉ là một phần kiểm tra, không chứng 
 4. Sửa trong owner nhỏ nhất. Không copy private helper từ feature khác sang shared
    chỉ để vượt lint. Nếu cần dùng chung thật, xác định contract và owner trước.
 5. Chạy focused tests rồi Web tests/lint/types/builds. Với shared shell/control,
-   chạy browser regression cả Candidate/Admin/public/exam và keyboard/mobile.
+   chạy browser regression cả Candidate/Admin/public/exam và keyboard/Web/tablet.
+   Giữ narrow-screen regressions hiện có, không mở mobile matrix mới khi chưa
+   có scope giai đoạn app.
 6. So sánh screenshot template, ghi sai khác có chủ đích, cập nhật checklist cùng
    bằng chứng. Không tick live/AWS/production từ demo hoặc ảnh.
 
@@ -162,3 +192,91 @@ Local drafts/retry intents remain in memory. Internal navigation needs explicit
 discard; reload/close uses the native beforeunload warning. Auth/session clearing
 wins over recovery. This does not promise reload durability, offline storage,
 force-save, auto-merge or complete live Admin integration.
+
+## Question authoring/import controllers — PORT-03
+
+Admin `use-question-list`, `use-question-editor`, `use-question-draft`,
+`use-question-import` and `use-import-report` own remote reads and operation state.
+`question-draft-model` maps stable local option IDs to transport positions; key
+membership follows the same option during reorder/remove. Views compose shared
+controls with `authoring.module.css`; option rows and import validation are focused
+feature views. Bank/preview omit keys/explanations; key-sensitive reads require
+the explicit read permission. Live capability discovery remains blocked.
+
+One pending/unknown operation guards each authoring flow. Retry freezes the action,
+body/key and base revision. Conflicts retain local fields/base revision until fresh
+explicit adoption; a background refresh cannot advance just the local revision.
+Protected read/write errors or capability loss hide/purge data and unmount private
+question drafts. Import also invalidates file-read/request tickets on permission
+loss; an old response cannot restore a cleared report after permission returns.
+
+Dry-run stores the exact input text snapshot and report. Editing invalidates both;
+only that snapshot can be committed with a distinct key and explicit confirmation.
+Import parsing checks bounded UTF-8 size/count, exact fields and primitive types,
+positions/keys/points and Unicode code-point lengths without silent coercion.
+Report DTOs contain actual mappings, not invented prompt/score/answer data.
+`use-authoring-navigation` is a small feature-owned navigation/unload helper used
+by question and import views; drafts/intents remain memory-only. No new runtime
+framework, transport, backend layer or storage is introduced.
+
+New port visual checks target desktop Web/tablet768/1024/1280/1440px per the latest
+user preference. Existing narrow-screen regressions remain useful maintenance;
+mobile implementation/acceptance is deferred to the future app phase.
+
+## Operations / Reporting controllers — PORT-04
+
+Admin `use-operations`, `use-admin-attempt`, `use-attempt-replay`,
+`use-report-insights` và `use-business-metrics` sở hữu query/interaction state.
+`use-report-pages` là helper hữu hạn cho các cursor reports trong Admin: serialize
+refresh/load-more, restart trang đầu, disable implicit retry/window-focus, hủy và
+purge protected scope khi403/mất quyền. Query signal được kiểm sau response để
+late read không khôi phục dữ liệu sau khi access đổi. Route owner remount theo
+exam/version/attempt; version filter không được reset forbidden latch.
+
+Monitor poll10–15s có jitter, visible-only và không overlap. Refresh bỏ cursor
+chain cũ, đọc lại trang đầu vì active cursor60s. Active DTO có server `asOf` theo
+page riêng; không gọi đó là presence/frozen snapshot nhiều trang. Submissions,
+audit, statistics không có source asOf và không bịa total. Business query dùng
+key riêng, staleTime30s và manual refresh; error có thể giữ snapshot cũ khi quyền
+còn, với mốc/source scope rõ. Business `reporting.read` độc lập technical
+`system.metrics.read`; technical provider hiện chưa có, UI không gọi combined
+specification-only endpoint hay biến unavailable thành0.
+
+Replay controller chỉ mở confirm khi FAILED/quyền/admin revision/reason8–500
+code points hợp lệ. In-flight ref chặn lặp trước render; unknown network/timeout/
+malformed/5xx giữ nguyên key/body. Permission epoch loại completion cũ sau revoke/
+regrant. ACK khác completed; source result vẫn quyết định score. Admin revision
+chỉ có trong demo hiện tại, không dùng candidate revision. Review cần cả result
+read hợp lệ và quyền review riêng; result403 phải purge cả review.
+
+Views dùng `operations.module.css` và shared controls. Statistics mỗi thanh dùng
+completedAttempts riêng, không chia theo tổng selections. Audit drawer đọc row
+đã tải, copy đúng correlation và loại thông báo copy đến muộn của row khác.
+Không thêm store, frontend repository/UoW, API endpoint, dependency hoặc AWS
+resource. Đây là chuẩn tổ chức Web, không mở live Admin capability gate.
+
+## Candidate Catalog controllers — PORT-05A
+
+`features/catalog/use-catalog.ts` owns browse/detail queries, actor-scoped keys,
+URL category, page size/cursors, loaded-only search and denial handling. Refresh
+keeps only the first cursor page before refetch; synchronous busy guards serialize
+load-more/refresh. Aborted reads check cancellation before/after the injected port
+so a late old-category/detail response cannot restore stale data or metadata.
+401/403 latch denial and purge owned query data plus frozen presentation memory;
+changing filters does not unlock the denial. Session coordinator remains the
+owner of auth recovery and global logout cleanup.
+
+`use-exam-start.ts` owns confirmation and the idle/pending/unknown/accepted
+interaction. One immutable exam/key intent survives timeout/network/malformed/5xx
+inside the mounted view. Synchronous in-flight guard prevents duplicate clicks;
+route/actor/session/access epoch checks fence late ACKs. Successful response must
+match the requested exam, then navigation uses its actual attempt ID. The current
+preview version is not promised as the started version; frozen attempt projection
+and deadline remain authoritative. No new request fields or client scoring.
+
+Browse/detail pages and `start-confirmation.tsx` compose shared controls and
+semantic CSS. Shared UI has no Catalog/session/transport dependency. Pending or
+unknown confirmation removes close/Escape cancellation; unknown allows explicit
+same-intent retry. Intent is not persisted across reload/unmount and does not
+claim cross-tab coordination. Live Catalog/Assessment integration and those wider
+recovery scenarios remain acceptance work, independent of local demo evidence.

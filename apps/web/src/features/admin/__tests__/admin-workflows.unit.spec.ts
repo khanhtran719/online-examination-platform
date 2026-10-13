@@ -17,6 +17,7 @@ const api = vi.hoisted(() => ({
   createExam: vi.fn(),
   replaceExamDraft: vi.fn(),
   createBankQuestion: vi.fn(),
+  replaceBankQuestion: vi.fn(),
   getBankQuestion: vi.fn(),
   archiveBankQuestion: vi.fn(),
   importQuestions: vi.fn(),
@@ -243,4 +244,21 @@ it("requires an explicit commit confirmation after a successful dry run and uses
   await waitFor(() => expect(api.importQuestions).toHaveBeenCalledTimes(2));
   expect(api.importQuestions.mock.calls[0]?.[0]).not.toBe(api.importQuestions.mock.calls[1]?.[0]);
   expect(api.importQuestions.mock.calls[1]?.[1]).toMatchObject({ dryRun: false, schemaVersion: 1 });
+});
+
+it("clears question fields and cached keys after a forbidden mutation", async () => {
+  api.replaceBankQuestion.mockRejectedValue(
+    new ApiError({ kind: "http", status: 403, errorCode: "Forbidden", message: "Không có quyền" }),
+  );
+  const client = mount(
+    QuestionEditorPage,
+    "/admin/questions/bank-0/edit",
+    "/admin/questions/:questionId/edit",
+  );
+  await screen.findByLabelText("Đề bài");
+  await userEvent.click(screen.getByRole("button", { name: "Lưu câu" }));
+  await waitFor(() => {
+    expect(screen.queryByLabelText("Đề bài")).toBeNull();
+    expect(client.getQueryData(["bank-question", "bank-0"])).toBeUndefined();
+  });
 });

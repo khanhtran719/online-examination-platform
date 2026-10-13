@@ -1,0 +1,197 @@
+{
+  "config": {
+    "argv": [
+      "/Users/trankhanh/.nvm/versions/node/v24.17.0/bin/node",
+      "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/node_modules/.bin/playwright",
+      "test",
+      "port-05b.e2e-spec.ts"
+    ],
+    "configFile": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/playwright.config.ts",
+    "rootDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e",
+        "testIgnore": [
+          "**/identity-https/**"
+        ],
+        "testMatch": [
+          "**/*.spec.ts",
+          "**/*.e2e-spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "port-05b.e2e-spec.ts",
+      "file": "port-05b.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "PORT-05B History and version board fit Web/tablet with truthful metadata and scores",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5081,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T17:11:43.291Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "533ab002b9687d10de04-b28419c757f800ed364d",
+          "file": "port-05b.e2e-spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "PORT-05B fallback and closed boards do not invent titles or unlock on refresh",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 14757,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeChecked\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox', { name: /Tham gia bảng xếp hạng/ })\nExpected: not checked\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"not toBeChecked\" getByRole('checkbox', { name: /Tham gia bảng xếp hạng/ }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox', { name: /Tham gia bảng xếp hạng/ })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeChecked\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox', { name: /Tham gia bảng xếp hạng/ })\nExpected: not checked\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"not toBeChecked\" getByRole('checkbox', { name: /Tham gia bảng xếp hạng/ }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox', { name: /Tham gia bảng xếp hạng/ })\u001b[22m\n\n    at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-05b.e2e-spec.ts:120:84",
+                    "location": {
+                      "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-05b.e2e-spec.ts",
+                      "column": 84,
+                      "line": 120
+                    },
+                    "snippet": "  118 |   await capture(page, \"leaderboard-fallback-768\");\n  119 |   await page.getByRole(\"link\", { name: \"Quản lý tham gia →\", exact: true }).click();\n> 120 |   await expect(page.getByRole(\"checkbox\", { name: /Tham gia bảng xếp hạng/ })).not.toBeChecked();\n      |                                                                                    ^\n  121 |   await navigate(page, `/exams/${exam}/versions/00000000-0000-4000-8000-000000000999/leaderboard`);\n  122 |   await expect(page.getByRole(\"heading\", { name: \"Bảng xếp hạng không mở\" })).toBeVisible();\n  123 |   await expect(page.getByRole(\"button\", { name: \"Làm mới\", exact: true })).toBeDisabled();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-05b.e2e-spec.ts",
+                        "column": 84,
+                        "line": 120
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeChecked\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox', { name: /Tham gia bảng xếp hạng/ })\nExpected: not checked\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"not toBeChecked\" getByRole('checkbox', { name: /Tham gia bảng xếp hạng/ }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox', { name: /Tham gia bảng xếp hạng/ })\u001b[22m\n\n\n  118 |   await capture(page, \"leaderboard-fallback-768\");\n  119 |   await page.getByRole(\"link\", { name: \"Quản lý tham gia →\", exact: true }).click();\n> 120 |   await expect(page.getByRole(\"checkbox\", { name: /Tham gia bảng xếp hạng/ })).not.toBeChecked();\n      |                                                                                    ^\n  121 |   await navigate(page, `/exams/${exam}/versions/00000000-0000-4000-8000-000000000999/leaderboard`);\n  122 |   await expect(page.getByRole(\"heading\", { name: \"Bảng xếp hạng không mở\" })).toBeVisible();\n  123 |   await expect(page.getByRole(\"button\", { name: \"Làm mới\", exact: true })).toBeDisabled();\n    at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-05b.e2e-spec.ts:120:84"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T17:11:48.603Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/port-05b.e2e-spec.ts-PORT--2783e-titles-or-unlock-on-refresh-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/port-05b.e2e-spec.ts-PORT--2783e-titles-or-unlock-on-refresh-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/port-05b.e2e-spec.ts-PORT--2783e-titles-or-unlock-on-refresh-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/port-05b.e2e-spec.ts",
+                    "column": 84,
+                    "line": 120
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "533ab002b9687d10de04-bec09b9dda2cf39dfd8b",
+          "file": "port-05b.e2e-spec.ts",
+          "line": 107,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T17:11:42.952Z",
+    "duration": 20582.448999999997,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

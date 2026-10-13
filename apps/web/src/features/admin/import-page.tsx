@@ -1,225 +1,214 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-import { useRuntime } from "@web/app/runtime";
 import { useTitle } from "@web/app/use-title";
-import type { ImportReport, ImportRequest } from "@web/shared/api/dto";
-import { isApiError } from "@web/shared/api/errors";
-import { uuidV7 } from "@web/shared/api/uuid";
-import { Alert, Button, Dialog, TextArea } from "@web/shared/ui/ui";
-import { IMPORT_TEMPLATE, inspectImportText } from "@web/shared/validation";
+import { Alert, Button, Dialog, ErrorPanel, TextArea } from "@web/shared/ui/ui";
+import { IMPORT_TEMPLATE } from "@web/shared/validation";
 
-import styles from "./admin.module.css";
-import { AdminHeading } from "./admin-ui";
+import styles from "./authoring.module.css";
 import { CapabilityGate } from "./gate";
-import { idleIntent, type IntentMachine, settleIntent, startIntent } from "./mutation-intent";
-
-function unknownTransport(error: unknown): boolean {
-  return isApiError(error) && (error.kind === "network" || error.kind === "timeout");
-}
-
-function blockCopy(blocked: "duplicate" | "changed"): string {
-  if (blocked === "duplicate") return "Đang gửi lần này.";
-  return "Nội dung đã đổi so với lần gửi chưa xác nhận. Khôi phục đúng nội dung đó rồi thử lại. Không tạo khóa mới.";
-}
+import { ImportValidation } from "./import-validation";
+import { useAuthoringNavigation } from "./use-authoring-navigation";
+import { useQuestionImport } from "./use-question-import";
 
 export function ImportPage() {
   useTitle("Nhập câu hỏi");
-  const { api } = useRuntime();
   const navigate = useNavigate();
-  const [confirmImport, setConfirmImport] = useState(false);
-  const [text, setText] = useState(IMPORT_TEMPLATE);
-  const [report, setReport] = useState<ImportReport | null>(null);
-  const [snapshot, setSnapshot] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [dry, setDry] = useState<IntentMachine<ImportRequest>>(idleIntent);
-  const [commitMachine, setCommitMachine] = useState<IntentMachine<ImportRequest>>(idleIntent);
-  const inspected = inspectImportText(text);
-  const busy = dry.phase === "inflight" || commitMachine.phase === "inflight";
-  function edit(next: string) {
-    setText(next);
-    if (dry.phase === "idle" && commitMachine.phase === "idle") {
-      setReport(null);
-      setSnapshot(null);
-    }
-  }
-  async function dryRun(retryFrozen: boolean) {
-    const body =
-      retryFrozen && dry.frozen
-        ? dry.frozen.body
-        : inspected.request
-          ? { ...inspected.request, dryRun: true }
-          : null;
-    if (!body || (!retryFrozen && inspected.structural)) {
-      setError(inspected.structural ?? "JSON chưa hợp lệ.");
-      return;
-    }
-    const started = startIntent(dry, {
-      action: "import-dry",
-      body,
-      expectedRevision: 0,
-      keyFactory: uuidV7,
-    });
-    if (started.blocked || !started.send) {
-      setError(started.blocked ? blockCopy(started.blocked) : "Chưa chạy thử được.");
-      return;
-    }
-    setDry(started.machine);
-    setError(null);
-    try {
-      const response = await api.importQuestions(started.send.key, started.send.body);
-      setReport(response.data);
-      if (!retryFrozen) setSnapshot(text);
-      setDry(settleIntent(started.machine, "acked"));
-    } catch (caught) {
-      setDry(settleIntent(started.machine, unknownTransport(caught) ? "unknown" : "rejected"));
-      setError(isApiError(caught) ? caught.message : "Chưa chạy thử được.");
-    }
-  }
-  async function commit(retryFrozen: boolean) {
-    const body =
-      retryFrozen && commitMachine.frozen
-        ? commitMachine.frozen.body
-        : inspected.request && text === snapshot && report?.valid
-          ? { ...inspected.request, dryRun: false }
-          : null;
-    if (!body) return;
-    const started = startIntent(commitMachine, {
-      action: "import-commit",
-      body,
-      expectedRevision: 0,
-      keyFactory: uuidV7,
-    });
-    if (started.blocked || !started.send) {
-      setError(started.blocked ? blockCopy(started.blocked) : "Chưa ghi được.");
-      return;
-    }
-    setCommitMachine(started.machine);
-    setError(null);
-    try {
-      const response = await api.importQuestions(started.send.key, started.send.body);
-      setReport(response.data);
-      setCommitMachine(settleIntent(started.machine, "acked"));
-      navigate(`/admin/imports/${response.data.id}`, { replace: true });
-    } catch (caught) {
-      setCommitMachine(
-        settleIntent(started.machine, unknownTransport(caught) ? "unknown" : "rejected"),
-      );
-      setError(isApiError(caught) ? caught.message : "Chưa ghi được.");
-    }
-  }
+  const draft = useQuestionImport((id) => navigate(`/admin/imports/${id}`, { replace: true }));
+  const [confirm, setConfirm] = useState(false);
+  const validated = draft.report && draft.text === draft.snapshot;
+  const blocker = useAuthoringNavigation({
+    dirty: !draft.unavailable && (draft.text !== IMPORT_TEMPLATE || Boolean(draft.report)),
+    pending: !draft.unavailable && draft.pending,
+    unknown: draft.unknown,
+    allowNavigation: draft.allowNavigation,
+  });
+  const entries = draft.inspected.request?.questions ?? [];
   return (
     <CapabilityGate permission="catalog.import">
-      <AdminHeading
-        title="Nhập JSON"
-        eyebrow="NGÂN HÀNG CÂU"
-        description="Kiểm tra dữ liệu trước, xác nhận ghi vào ngân hàng sau."
-      />
-      <div className={styles.notice}>
-        <span aria-hidden="true">↥</span>
-        <p>
-          Tệp tối đa 1 MiB · phiên bản JSON 1 · từ 1 đến 100 câu. Kiểm tra dữ liệu chưa ghi ngân
-          hàng.
+      <div className={styles.page}>
+        <p className={styles.breadcrumb}>
+          <Link to="/admin/questions">Ngân hàng câu hỏi</Link> / Nhập JSON
         </p>
-      </div>
-      <p className={styles.muted}>{inspected.bytes} byte UTF-8.</p>
-      {inspected.structural ? <Alert title="JSON chưa hợp lệ">{inspected.structural}</Alert> : null}
-      {inspected.issues.length > 0 ? (
-        <ul>
-          {inspected.issues.map((issue, index) => (
-            <li key={`${issue.clientRef}-${index}`}>
-              {issue.clientRef} · {issue.field}: {issue.message}
-            </li>
-          ))}
-        </ul>
-      ) : null}
-      {error ? <Alert title="Chưa xong">{error}</Alert> : null}
-      {report ? (
-        <Alert
-          tone={report.committed ? "success" : "warning"}
-          title={report.committed ? "Đã ghi ngân hàng" : "Chưa ghi ngân hàng"}
-        >
-          Hợp lệ: {report.valid ? "có" : "không"}. Mã báo cáo {report.id}.
-          {report.issues.map((issue) => (
-            <p key={`${issue.clientRef}-${issue.field}`}>
-              {issue.clientRef}: {issue.message}
-            </p>
-          ))}
-        </Alert>
-      ) : null}
-      <div className={styles.jsonPanel}>
-        <TextArea
-          label="Nội dung JSON"
-          value={text}
-          onChange={(event) => edit(event.target.value)}
-        />
-      </div>
-      <label className={styles.fileField}>
-        Chọn tệp JSON
-        <input
-          aria-label="Chọn tệp JSON"
-          type="file"
-          accept="application/json"
-          onChange={(event) => {
-            const file = event.target.files?.[0];
-            if (!file) return;
-            if (file.size > 1_048_576) {
-              setError("Tệp vượt quá 1 MiB.");
-              return;
-            }
-            void file
-              .text()
-              .then((value) => {
-                setError(null);
-                edit(value);
-              })
-              .catch(() => setError("Không đọc được tệp JSON."));
-          }}
-        />
-      </label>
-      <div className={styles.actionBar}>
-        <Button disabled={busy} onClick={() => void dryRun(false)}>
-          Kiểm tra dữ liệu
-        </Button>
-        {dry.phase === "unknown" ? (
-          <Button disabled={busy} variant="secondary" onClick={() => void dryRun(true)}>
-            Thử kiểm tra lại cùng nội dung
-          </Button>
-        ) : null}
-        <Button
-          disabled={busy || text !== snapshot || !report?.valid || report.committed}
-          onClick={() => setConfirmImport(true)}
-        >
-          Nhập câu hỏi
-        </Button>
-        {commitMachine.phase === "unknown" ? (
-          <Button disabled={busy} variant="secondary" onClick={() => void commit(true)}>
-            Thử ghi lại cùng nội dung
-          </Button>
-        ) : null}
-      </div>
-      {confirmImport ? (
-        <Dialog title="Xác nhận nhập câu hỏi" onClose={() => setConfirmImport(false)}>
-          <p>
-            Ghi {inspected.request?.questions.length ?? 0} câu đã kiểm tra vào ngân hàng. Nội dung
-            phải khớp với lần kiểm tra thành công.
-          </p>
-          <div className={styles.actions}>
-            <Button variant="secondary" onClick={() => setConfirmImport(false)}>
-              Hủy
-            </Button>
-            <Button
-              disabled={busy || text !== snapshot || !report?.valid || report.committed}
-              onClick={() => {
-                setConfirmImport(false);
-                void commit(false);
-              }}
-            >
-              Nhập vào ngân hàng
-            </Button>
+        <header className={styles.heading}>
+          <div>
+            <h1>Nhập JSON</h1>
+            <p>Kiểm tra dữ liệu trước, xác nhận ghi vào ngân hàng sau.</p>
           </div>
-        </Dialog>
-      ) : null}
+        </header>
+        {!draft.unavailable ? (
+          <>
+            <ol className={styles.steps} aria-label="Các bước nhập">
+              <li aria-current={!validated ? "step" : undefined}>Chọn dữ liệu</li>
+              <li aria-current={validated ? "step" : undefined}>Kiểm tra</li>
+              <li>Xác nhận nhập</li>
+            </ol>
+            {draft.error && !draft.unknown ? <ErrorPanel error={draft.error} /> : null}
+            {draft.fileError ? <Alert title="Chưa đọc được tệp">{draft.fileError}</Alert> : null}
+            {draft.unknown ? (
+              <Alert tone="warning" title="Chưa xác nhận được kết quả">
+                <p>
+                  Yêu cầu có thể đã được ghi nhận. Thử lại giữ nguyên nội dung và lần gửi; các thao
+                  tác khác đang khóa.
+                </p>
+                <Button disabled={draft.pending} onClick={() => void draft.retry()}>
+                  Thử lại yêu cầu
+                </Button>
+              </Alert>
+            ) : null}
+            <div className={styles.grid}>
+              <div className={styles.stack}>
+                {validated && draft.report ? (
+                  <ImportValidation report={draft.report} entries={entries} />
+                ) : null}
+                <section className={`${styles.panel} ${styles.json}`}>
+                  <h2>Dữ liệu câu hỏi</h2>
+                  <p className={styles.scope}>
+                    Tối đa 1 MiB UTF-8 · phiên bản JSON 1 · từ 1 đến 100 câu. Kiểm tra chưa ghi ngân
+                    hàng.
+                  </p>
+                  <label className={styles.file}>
+                    Chọn tệp JSON
+                    <input
+                      aria-label="Chọn tệp JSON"
+                      type="file"
+                      accept=".json,application/json"
+                      disabled={draft.locked}
+                      onChange={(event) => {
+                        const file = event.target.files?.[0];
+                        if (file) void draft.readFile(file);
+                        event.target.value = "";
+                      }}
+                    />
+                    {draft.reading ? <span role="status">Đang đọc tệp…</span> : null}
+                  </label>
+                  <a
+                    href={`data:application/json;charset=utf-8,${encodeURIComponent(IMPORT_TEMPLATE)}`}
+                    download="questions-template.json"
+                  >
+                    Tải mẫu JSON
+                  </a>
+                  <TextArea
+                    label="Nội dung JSON"
+                    value={draft.text}
+                    disabled={draft.locked}
+                    onChange={(event) => draft.edit(event.target.value)}
+                  />
+                  <p className={styles.counter}>{draft.inspected.bytes} byte UTF-8</p>
+                  {draft.inspected.structural ? (
+                    <Alert title="JSON chưa hợp lệ">{draft.inspected.structural}</Alert>
+                  ) : null}
+                  {draft.inspected.issues.length ? (
+                    <Alert title="Dữ liệu cần sửa">
+                      <ul>
+                        {draft.inspected.issues.map((issue, index) => (
+                          <li key={index}>
+                            {issue.clientRef} · {issue.field}: {issue.message}
+                          </li>
+                        ))}
+                      </ul>
+                    </Alert>
+                  ) : null}
+                </section>
+              </div>
+              <aside className={styles.panel}>
+                <h2>Trước khi nhập</h2>
+                <p>
+                  Chỉ nhập nội dung đã kiểm tra thành công. Sửa nội dung hoặc chọn tệp khác sẽ yêu
+                  cầu kiểm tra lại.
+                </p>
+                <p>Toàn bộ câu được ghi cùng một lần; không báo thành công từng phần.</p>
+                <p className={styles.scope}>
+                  Báo cáo sau khi nhập cung cấp mã đối chiếu cho từng câu. Đáp án và giải thích
+                  không xuất hiện trong bảng xem trước.
+                </p>
+              </aside>
+            </div>
+            <div className={styles.actionBar}>
+              <p className={styles.scope}>
+                {draft.pending
+                  ? "Đang chờ máy chủ xác nhận…"
+                  : validated
+                    ? "Đã có báo cáo kiểm tra cho nội dung hiện tại"
+                    : "Chưa kiểm tra nội dung hiện tại"}
+              </p>
+              <div className={styles.actions}>
+                <Button
+                  variant="secondary"
+                  disabled={
+                    draft.locked ||
+                    draft.reading ||
+                    Boolean(draft.inspected.structural) ||
+                    draft.inspected.issues.length > 0
+                  }
+                  onClick={() => void draft.dryRun()}
+                >
+                  Kiểm tra dữ liệu
+                </Button>
+                <Button disabled={!draft.canCommit} onClick={() => setConfirm(true)}>
+                  Nhập câu hỏi
+                </Button>
+              </div>
+            </div>
+            {confirm ? (
+              <Dialog
+                title="Xác nhận nhập câu hỏi"
+                onClose={draft.pending ? undefined : () => setConfirm(false)}
+              >
+                <p>
+                  Ghi {entries.length} câu đã kiểm tra vào ngân hàng. Nội dung phải khớp với lần
+                  kiểm tra thành công.
+                </p>
+                {draft.pending ? <p role="status">Đang chờ máy chủ xác nhận…</p> : null}
+                {draft.error && !draft.unknown ? <ErrorPanel error={draft.error} /> : null}
+                {draft.unknown ? (
+                  <p>Chưa biết kết quả lần gửi. Thử lại giữ nguyên yêu cầu.</p>
+                ) : null}
+                <div className={styles.actions}>
+                  <Button
+                    variant="secondary"
+                    disabled={draft.pending}
+                    onClick={() => setConfirm(false)}
+                  >
+                    Hủy
+                  </Button>
+                  <Button
+                    disabled={draft.pending || (!draft.canCommit && !draft.unknown)}
+                    onClick={() => {
+                      if (draft.unknown) void draft.retry();
+                      else void draft.commit();
+                    }}
+                  >
+                    {draft.unknown ? "Thử lại yêu cầu" : "Nhập vào ngân hàng"}
+                  </Button>
+                </div>
+              </Dialog>
+            ) : null}
+            {blocker.state === "blocked" ? (
+              <Dialog title="Rời dữ liệu đang nhập?" onClose={() => blocker.reset()}>
+                <p>
+                  Nội dung và thông tin thử lại chỉ nằm trong phiên làm việc này. Yêu cầu chưa xác
+                  nhận vẫn có thể đã được máy chủ ghi nhận.
+                </p>
+                <div className={styles.actions}>
+                  <Button variant="secondary" onClick={() => blocker.reset()}>
+                    Ở lại
+                  </Button>
+                  <Button
+                    variant="danger"
+                    disabled={draft.pending}
+                    onClick={() => blocker.proceed()}
+                  >
+                    Rời trang
+                  </Button>
+                </div>
+              </Dialog>
+            ) : null}
+          </>
+        ) : (
+          <ErrorPanel error={draft.error} />
+        )}
+      </div>
     </CapabilityGate>
   );
 }

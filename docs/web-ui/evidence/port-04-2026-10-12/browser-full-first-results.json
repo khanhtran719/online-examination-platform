@@ -1,0 +1,1458 @@
+{
+  "config": {
+    "argv": [
+      "/Users/trankhanh/.nvm/versions/node/v24.17.0/bin/node",
+      "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/playwright.config.ts",
+    "rootDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e",
+        "testIgnore": [
+          "**/identity-https/**"
+        ],
+        "testMatch": [
+          "**/*.spec.ts",
+          "**/*.e2e-spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "admin-workflows.e2e-spec.ts",
+      "file": "admin-workflows.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "exam draft keeps editor state, prevents duplicate slots and distinguishes saved publication from local edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1643,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:51:14.109Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c7895a398129aed42af2-6930e55ffac31de60a25",
+          "file": "admin-workflows.e2e-spec.ts",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "question keys use the keyboard and confirm destructive type changes before saving",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1031,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:51:16.047Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c7895a398129aed42af2-e17653755934693fd6ac",
+          "file": "admin-workflows.e2e-spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "import validates first, invalidates a changed file and asks before committing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1630,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:51:17.084Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c7895a398129aed42af2-c5cff596826fe711e5c9",
+          "file": "admin-workflows.e2e-spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "audit restores focus, failed replay stays pending and reviewer capabilities filter the page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2368,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:51:18.720Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c7895a398129aed42af2-19b493d7516f34d40e3d",
+          "file": "admin-workflows.e2e-spec.ts",
+          "line": 123,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "assessment-results.e2e-spec.ts",
+      "file": "assessment-results.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "mobile room saves three native question types before submitting and opening released review",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8119,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:51:21.099Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bf908ee009d9a2eab8e6-a91dfe9ba05d874c8783",
+          "file": "assessment-results.e2e-spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "history and pseudonymous leaderboard remain keyboard scrollable on narrow screens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2958,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:51:29.232Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bf908ee009d9a2eab8e6-731d5a16a81dd93d7e65",
+          "file": "assessment-results.e2e-spec.ts",
+          "line": 58,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "browser.spec.ts",
+      "file": "browser.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "demo",
+          "file": "browser.spec.ts",
+          "line": 41,
+          "column": 6,
+          "specs": [
+            {
+              "title": "public pages at five widths",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4231,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:51:32.246Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fbeac1b2decfba2c3acd-7837389e42e6ad7ce7bc",
+              "file": "browser.spec.ts",
+              "line": 58,
+              "column": 3
+            },
+            {
+              "title": "exam save, conflict, frozen attempt and result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4709,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:51:36.490Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fbeac1b2decfba2c3acd-d3df5f5c92639810abe5",
+              "file": "browser.spec.ts",
+              "line": 87,
+              "column": 3
+            },
+            {
+              "title": "admin permission boundary and honest metrics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4866,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:51:41.209Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fbeac1b2decfba2c3acd-ce53047f16c3126ef22f",
+              "file": "browser.spec.ts",
+              "line": 140,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "live",
+          "file": "browser.spec.ts",
+          "line": 168,
+          "column": 6,
+          "specs": [
+            {
+              "title": "does not fall back to demo data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1203,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:51:46.084Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fbeac1b2decfba2c3acd-a785ae26ccf40d90a93e",
+              "file": "browser.spec.ts",
+              "line": 171,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "foundation.e2e-spec.ts",
+      "file": "foundation.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "public mobile menu closes on Escape and restores trigger focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 255,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:51:47.298Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a0ce50f57533649d8e76-de4733c3180199a6bd76",
+          "file": "foundation.e2e-spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "candidate mobile navigation closes after choosing a route and shows its active link",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 484,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:51:47.558Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a0ce50f57533649d8e76-44f54c3d5b0dc55eee9a",
+          "file": "foundation.e2e-spec.ts",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "admin mobile menu preserves capability filtering and logout",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13088,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Quản trị đề và kết quả', exact: true })\nExpected: visible\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Quản trị đề và kết quả', exact: true }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Quản trị đề và kết quả', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Quản trị đề và kết quả', exact: true })\nExpected: visible\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Quản trị đề và kết quả', exact: true }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Quản trị đề và kết quả', exact: true })\u001b[22m\n\n    at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:73:5",
+                    "location": {
+                      "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts",
+                      "column": 5,
+                      "line": 73
+                    },
+                    "snippet": "  71 |   await expect(\n  72 |     page.getByRole(\"heading\", { name: \"Quản trị đề và kết quả\", exact: true }),\n> 73 |   ).toBeVisible();\n     |     ^\n  74 |   await page.getByRole(\"button\", { name: \"Menu\", exact: true }).click();\n  75 |   await page\n  76 |     .getByRole(\"navigation\", { name: \"Quản trị\", exact: true })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts",
+                        "column": 5,
+                        "line": 73
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Quản trị đề và kết quả', exact: true })\nExpected: visible\nTimeout: 12000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Quản trị đề và kết quả', exact: true }) with timeout 12000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Quản trị đề và kết quả', exact: true })\u001b[22m\n\n\n  71 |   await expect(\n  72 |     page.getByRole(\"heading\", { name: \"Quản trị đề và kết quả\", exact: true }),\n> 73 |   ).toBeVisible();\n     |     ^\n  74 |   await page.getByRole(\"button\", { name: \"Menu\", exact: true }).click();\n  75 |   await page\n  76 |     .getByRole(\"navigation\", { name: \"Quản trị\", exact: true })\n    at /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts:73:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:51:48.049Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/foundation.e2e-spec.ts-adm-b639b-bility-filtering-and-logout-chromium/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/foundation.e2e-spec.ts-adm-b639b-bility-filtering-and-logout-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/test-results/foundation.e2e-spec.ts-adm-b639b-bility-filtering-and-logout-chromium/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/e2e/foundation.e2e-spec.ts",
+                    "column": 5,
+                    "line": 73
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a0ce50f57533649d8e76-c56566c958375700cfb8",
+          "file": "foundation.e2e-spec.ts",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "shared controls support keyboard entry, table scrolling and dialog focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 751,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:01.498Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a0ce50f57533649d8e76-7671156967dd4e4059d1",
+          "file": "foundation.e2e-spec.ts",
+          "line": 94,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "onboarding-catalog.e2e-spec.ts",
+      "file": "onboarding-catalog.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "verification recovery and explicit confirmation remain usable on mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 423,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:02.401Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5383903b7880e974139c-7fbc1c31b7fb7091934c",
+          "file": "onboarding-catalog.e2e-spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "catalog filters, browser Back and detail cancellation preserve navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 753,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:02.829Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5383903b7880e974139c-99a41b7b5206a49e9f8c",
+          "file": "onboarding-catalog.e2e-spec.ts",
+          "line": 26,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "port-01.e2e-spec.ts",
+      "file": "port-01.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "PORT-01 desktop pilots match shared tokens, keep loaded-only filters and keyboard links",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4517,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:03.622Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1d502517c935840a3067-b337556d881803b9f651",
+          "file": "port-01.e2e-spec.ts",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "PORT-01 pilots preserve body width and accessible navigation on narrow screens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2648,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:08.145Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1d502517c935840a3067-e205634cd462e6f7b830",
+          "file": "port-01.e2e-spec.ts",
+          "line": 121,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "port-02.e2e-spec.ts",
+      "file": "port-02.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "PORT-02 creates a structured draft, validates locally and confirms publication/removal/exit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11734,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:10.805Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a303bd2fc3fe62c0f417-602e83d42133974d7ea2",
+          "file": "port-02.e2e-spec.ts",
+          "line": 62,
+          "column": 1
+        },
+        {
+          "title": "PORT-02 compares conflicts, guards reload and retries an unknown write",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4833,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:22.545Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a303bd2fc3fe62c0f417-1d2507df4abd2a788458",
+          "file": "port-02.e2e-spec.ts",
+          "line": 140,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "port-03.e2e-spec.ts",
+      "file": "port-03.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "PORT-03 bank filters loaded questions without keys and fits Web/tablet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2435,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:27.389Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cacb8b98ba504961a37e-6238f47fe1310b065d0d",
+          "file": "port-03.e2e-spec.ts",
+          "line": 62,
+          "column": 1
+        },
+        {
+          "title": "PORT-03 option identity, candidate projection, type conversion and archive remain correct",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:29.829Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cacb8b98ba504961a37e-b7c9ab1db7949ee97b73",
+          "file": "port-03.e2e-spec.ts",
+          "line": 76,
+          "column": 1
+        },
+        {
+          "title": "PORT-03 validates exact import snapshot and recovers an unknown atomic commit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5906,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:40.308Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cacb8b98ba504961a37e-f0f4db6077b175ea9cf6",
+          "file": "port-03.e2e-spec.ts",
+          "line": 142,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "port-04.e2e-spec.ts",
+      "file": "port-04.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "PORT-04 overview, scoped business metrics and unavailable technical providers fit Web/tablet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4500,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:46.226Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb6435bdb42b1b822e2c-9a30dba4b9d2a3d44922",
+          "file": "port-04.e2e-spec.ts",
+          "line": 60,
+          "column": 1
+        },
+        {
+          "title": "PORT-04 monitor and nullable ledger retain their actual scope at four widths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6154,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:50.732Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb6435bdb42b1b822e2c-34261c6133a29af875fb",
+          "file": "port-04.e2e-spec.ts",
+          "line": 79,
+          "column": 1
+        },
+        {
+          "title": "PORT-04 statistics, audit drawer and failed detail match selected layouts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8070,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:52:56.891Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb6435bdb42b1b822e2c-8272758ccf4f330168a0",
+          "file": "port-04.e2e-spec.ts",
+          "line": 100,
+          "column": 1
+        },
+        {
+          "title": "PORT-04 replay confirmation restores focus, retries a frozen request and clears on permission loss",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2957,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:53:04.967Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb6435bdb42b1b822e2c-7d7d58829808771f2487",
+          "file": "port-04.e2e-spec.ts",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "PORT-04 counts multiple selections independently against completed attempts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7545,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:53:07.929Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cb6435bdb42b1b822e2c-acd1e3702c7ea44d4957",
+          "file": "port-04.e2e-spec.ts",
+          "line": 172,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "public-experience.e2e-spec.ts",
+      "file": "public-experience.e2e-spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "public experience demo",
+          "file": "public-experience.e2e-spec.ts",
+          "line": 29,
+          "column": 8,
+          "specs": [
+            {
+              "title": "homepage renders 3D, fits five widths and supports motion pause",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2228,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:53:15.877Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3aa2a55d39385f0f649d-c9b7cbbf8943786f088f",
+              "file": "public-experience.e2e-spec.ts",
+              "line": 32,
+              "column": 5
+            },
+            {
+              "title": "public sample works without business requests and leads to registration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1870,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:53:18.257Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3aa2a55d39385f0f649d-42c2de0aa7586c01f807",
+              "file": "public-experience.e2e-spec.ts",
+              "line": 66,
+              "column": 5
+            },
+            {
+              "title": "fallback and keyboard navigation remain useful",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 389,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:53:20.132Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3aa2a55d39385f0f649d-2a5e03216df77b25692d",
+              "file": "public-experience.e2e-spec.ts",
+              "line": 132,
+              "column": 5
+            },
+            {
+              "title": "3D stops when paused or offscreen and recovers after context loss",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2052,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:53:20.528Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3aa2a55d39385f0f649d-05adc105b3de8b4d4066",
+              "file": "public-experience.e2e-spec.ts",
+              "line": 162,
+              "column": 5
+            }
+          ]
+        },
+        {
+          "title": "public experience live",
+          "file": "public-experience.e2e-spec.ts",
+          "line": 29,
+          "column": 8,
+          "specs": [
+            {
+              "title": "homepage renders 3D, fits five widths and supports motion pause",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2045,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:53:22.584Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3aa2a55d39385f0f649d-6793fd9c957ef89fdc60",
+              "file": "public-experience.e2e-spec.ts",
+              "line": 32,
+              "column": 5
+            },
+            {
+              "title": "public sample works without business requests and leads to registration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2028,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:53:24.634Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3aa2a55d39385f0f649d-ff9e27a1106dc4502d16",
+              "file": "public-experience.e2e-spec.ts",
+              "line": 66,
+              "column": 5
+            },
+            {
+              "title": "fallback and keyboard navigation remain useful",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 298,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:53:26.666Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3aa2a55d39385f0f649d-5cc45db8bb24034254d6",
+              "file": "public-experience.e2e-spec.ts",
+              "line": 132,
+              "column": 5
+            },
+            {
+              "title": "3D stops when paused or offscreen and recovers after context loss",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2134,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-12T15:53:26.969Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3aa2a55d39385f0f649d-db5987085c4b18ff0c7b",
+              "file": "public-experience.e2e-spec.ts",
+              "line": 162,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T15:51:13.671Z",
+    "duration": 135451.03900000002,
+    "expected": 35,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

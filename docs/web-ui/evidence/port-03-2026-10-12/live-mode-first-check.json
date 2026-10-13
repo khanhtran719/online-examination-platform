@@ -1,0 +1,7 @@
+{
+  "checked": "live production JavaScript excludes synthetic demo banner/account/scenario markers",
+  "matches": [
+    "admin-monitor-D_LlCz9G.js"
+  ],
+  "pass": false
+}

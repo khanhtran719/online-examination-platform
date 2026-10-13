@@ -9,6 +9,7 @@ import type {
   Attempt,
   AttemptStatus,
   AuditEntry,
+  BusinessMetrics,
   CandidateQuestion,
   Category,
   Exam,
@@ -255,14 +256,15 @@ export function createDemoServer(options: DemoServerOptions = {}): {
     return response;
   }
 
-  // Synthetic Catalog faults exercise browser recovery; never present in the live adapter.
+  // Synthetic write faults exercise browser recovery; never present in the live adapter.
   async function catalogWrite<T>(
     key: string,
     body: unknown,
     produce: () => T,
     onConflict?: () => void,
+    permission: Permission = "catalog.manage",
   ): Promise<T> {
-    requirePermission("catalog.manage");
+    requirePermission(permission);
     if (receipts.has(key)) return remember(key, body, produce);
     const activeFault = fault;
     if (
@@ -304,7 +306,7 @@ export function createDemoServer(options: DemoServerOptions = {}): {
     const nextOffset = offset + slice.length;
     const next =
       nextOffset < items.length
-        ? `demo.${btoa(JSON.stringify({ offset: nextOffset, filter, pageSize, expiresAt: clock() + 15 * 60 * 1000 }))}`
+        ? `demo.${btoa(JSON.stringify({ offset: nextOffset, filter, pageSize, expiresAt: clock() + (filter.startsWith("active:") ? 60000 : 15 * 60 * 1000) }))}`
         : null;
     return { items: slice, next, pageSize };
   }
@@ -919,7 +921,11 @@ export function createDemoServer(options: DemoServerOptions = {}): {
         status,
         startedAt: iso(started),
         deadline: iso(deadline),
-        submittedAt: input.result ? input.result.completedAt : null,
+        submittedAt: input.result
+          ? input.result.completedAt
+          : status === "FAILED"
+            ? iso(started + 1000)
+            : null,
         expired: false,
         serverNow: iso(),
         canSave: status === "IN_PROGRESS" || status === "CREATED",
@@ -1109,64 +1115,70 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       return ok(candidateExam(publication));
     },
     async startAttempt(examId, key) {
-      return remember(key, { examId }, () => {
-        const user = requirePermission("assessment.take");
-        const exam = exams.find((item) => item.id === examId && item.published && !item.archived);
-        const publication = exam?.publishedVersionId
-          ? publicationFor(exam.publishedVersionId)
-          : undefined;
-        if (!exam || !publication) fail(404, "Not found");
-        if (
-          Date.parse(publication.exam.closeAt) <= clock() ||
-          Date.parse(publication.exam.openAt) > clock()
-        ) {
-          fail(422, "Attempt is closed");
-        }
-        const existing = attempts.find(
-          (item) =>
-            item.ownerId === user.id &&
-            item.attempt.examId === examId &&
-            (item.attempt.status === "IN_PROGRESS" || item.attempt.status === "CREATED"),
-        );
-        if (existing) return ok(projectAttempt(existing), 201);
-        const owned = attempts.filter(
-          (item) => item.ownerId === user.id && item.attempt.examId === examId,
-        );
-        if (owned.length >= publication.exam.attemptLimit) fail(422, "Attempt is closed");
-        const started = clock();
-        const deadline = Math.min(
-          started + publication.exam.durationSeconds * 1000,
-          Date.parse(publication.exam.closeAt),
-        );
-        const record: AttemptRecord = {
-          attempt: {
-            id: uuidV7(clock()),
-            examId,
-            publishedVersionId: publication.versionId,
-            revision: 1,
-            status: "IN_PROGRESS",
-            startedAt: iso(started),
-            deadline: iso(deadline),
-            submittedAt: null,
-            expired: false,
-            serverNow: iso(started),
-            canSave: true,
-            resultAvailable: false,
-            pollAfterSeconds: 0,
-            replayPending: false,
-          },
-          ownerId: user.id,
-          questions: publication.questions.map((question) => structuredClone(question)),
-          answers: new Map(),
-          adminRevision: 1,
-          result: null,
-          submission: null,
-          scoringDueAt: null,
-          frozenTitle: publication.exam.title,
-        };
-        attempts.unshift(record);
-        return ok(record.attempt, 201);
-      });
+      return catalogWrite(
+        key,
+        { examId },
+        () => {
+          const user = requirePermission("assessment.take");
+          const exam = exams.find((item) => item.id === examId && item.published && !item.archived);
+          const publication = exam?.publishedVersionId
+            ? publicationFor(exam.publishedVersionId)
+            : undefined;
+          if (!exam || !publication) fail(404, "Not found");
+          if (
+            Date.parse(publication.exam.closeAt) <= clock() ||
+            Date.parse(publication.exam.openAt) > clock()
+          ) {
+            fail(422, "Attempt is closed");
+          }
+          const existing = attempts.find(
+            (item) =>
+              item.ownerId === user.id &&
+              item.attempt.examId === examId &&
+              (item.attempt.status === "IN_PROGRESS" || item.attempt.status === "CREATED"),
+          );
+          if (existing) return ok(projectAttempt(existing), 201);
+          const owned = attempts.filter(
+            (item) => item.ownerId === user.id && item.attempt.examId === examId,
+          );
+          if (owned.length >= publication.exam.attemptLimit) fail(422, "Attempt is closed");
+          const started = clock();
+          const deadline = Math.min(
+            started + publication.exam.durationSeconds * 1000,
+            Date.parse(publication.exam.closeAt),
+          );
+          const record: AttemptRecord = {
+            attempt: {
+              id: uuidV7(clock()),
+              examId,
+              publishedVersionId: publication.versionId,
+              revision: 1,
+              status: "IN_PROGRESS",
+              startedAt: iso(started),
+              deadline: iso(deadline),
+              submittedAt: null,
+              expired: false,
+              serverNow: iso(started),
+              canSave: true,
+              resultAvailable: false,
+              pollAfterSeconds: 0,
+              replayPending: false,
+            },
+            ownerId: user.id,
+            questions: publication.questions.map((question) => structuredClone(question)),
+            answers: new Map(),
+            adminRevision: 1,
+            result: null,
+            submission: null,
+            scoringDueAt: null,
+            frozenTitle: publication.exam.title,
+          };
+          attempts.unshift(record);
+          return ok(record.attempt, 201);
+        },
+        undefined,
+        "assessment.take",
+      );
     },
     async resumeAttempt(attemptId) {
       const user = requirePermission("assessment.take");
@@ -1507,7 +1519,7 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       return ok(pageOf(questions, query, "bank"));
     },
     async createBankQuestion(key, body) {
-      return remember(key, body, () => {
+      return catalogWrite(key, body, () => {
         requirePermission("catalog.keys.read");
         if (body.expectedRevision !== 0) fail(400, "Invalid request");
         validateQuestion(body);
@@ -1529,25 +1541,36 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       return ok(question);
     },
     async replaceBankQuestion(questionId, key, body) {
-      return remember(key, body, () => {
-        requirePermission("catalog.keys.read");
-        const question = questions.find((item) => item.id === questionId && !item.archived);
-        if (!question) fail(404, "Not found");
-        if (body.expectedRevision !== question.revision) fail(409, "Version conflict");
-        validateQuestion(body);
-        question.type = body.type;
-        question.prompt = body.prompt;
-        question.options = body.options;
-        question.correctOptionPositions = body.correctOptionPositions;
-        question.points = body.points;
-        question.explanation = body.explanation;
-        question.revision += 1;
-        audit("question.replace", "question", question.id, "SUCCESS", ["prompt"]);
-        return ok({ resourceId: question.id, revision: question.revision, acceptedAt: iso() });
-      });
+      return catalogWrite(
+        key,
+        body,
+        () => {
+          requirePermission("catalog.keys.read");
+          const question = questions.find((item) => item.id === questionId && !item.archived);
+          if (!question) fail(404, "Not found");
+          if (body.expectedRevision !== question.revision) fail(409, "Version conflict");
+          validateQuestion(body);
+          question.type = body.type;
+          question.prompt = body.prompt;
+          question.options = body.options;
+          question.correctOptionPositions = body.correctOptionPositions;
+          question.points = body.points;
+          question.explanation = body.explanation;
+          question.revision += 1;
+          audit("question.replace", "question", question.id, "SUCCESS", ["prompt"]);
+          return ok({ resourceId: question.id, revision: question.revision, acceptedAt: iso() });
+        },
+        () => {
+          const current = questions.find((q) => q.id === questionId);
+          if (current) {
+            current.revision += 1;
+            current.points += 1;
+          }
+        },
+      );
     },
     async archiveBankQuestion(questionId, key, body) {
-      return remember(key, body, () => {
+      return catalogWrite(key, body, () => {
         requirePermission("catalog.keys.read");
         const question = questions.find((item) => item.id === questionId);
         if (!question) fail(404, "Not found");
@@ -1558,14 +1581,20 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       });
     },
     async importQuestions(key, body: ImportRequest) {
-      return remember(key, body, () => {
-        requirePermission("catalog.import");
-        const report = buildImport(body);
-        imports.unshift(report);
-        if (report.committed)
-          audit("question.import", "import", report.id, "SUCCESS", ["questions"]);
-        return ok(report, 202);
-      });
+      return catalogWrite(
+        key,
+        body,
+        () => {
+          requirePermission("catalog.import");
+          const report = buildImport(body);
+          imports.unshift(report);
+          if (report.committed)
+            audit("question.import", "import", report.id, "SUCCESS", ["questions"]);
+          return ok(report, 202);
+        },
+        undefined,
+        "catalog.import",
+      );
     },
     async getImportReport(importId) {
       requirePermission("catalog.import");
@@ -1580,7 +1609,9 @@ export function createDemoServer(options: DemoServerOptions = {}): {
         .filter(
           (item) =>
             item.attempt.examId === examId &&
-            (item.attempt.status === "IN_PROGRESS" || item.attempt.status === "CREATED"),
+            item.attempt.status === "IN_PROGRESS" &&
+            Date.parse(item.attempt.startedAt) <= clock() &&
+            Date.parse(item.attempt.deadline) > clock(),
         )
         .map((item) => ({
           candidateId: item.ownerId,
@@ -1589,10 +1620,15 @@ export function createDemoServer(options: DemoServerOptions = {}): {
           startedAt: item.attempt.startedAt,
           deadline: item.attempt.deadline,
         }));
-      return ok(pageOf(rows, query, `active:${examId}`));
+      return ok({ ...pageOf(rows, query, `active:${examId}`), asOf: iso() });
     },
     async listSubmissions(examId, query) {
       requirePermission("reporting.read");
+      if (
+        !exams.some((exam) => exam.id === examId) ||
+        (query.publishedVersionId && publicationFor(query.publishedVersionId)?.exam.id !== examId)
+      )
+        fail(404, "Not found");
       const rows: AdminSubmission[] = attempts
         .filter((item) => item.attempt.examId === examId)
         .filter(
@@ -1628,6 +1664,7 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       requirePermission("assessment.review.admin");
       const record = attempts.find((item) => item.attempt.id === attemptId);
       if (!record) fail(404, "Not found");
+      if (!record.result || record.attempt.status !== "COMPLETED") fail(422, "Attempt is closed");
       audit("attempt.review", "attempt", attemptId, "SUCCESS", []);
       const rows: ReviewQuestion[] = record.questions.map((frozen) => ({
         question: frozen.question,
@@ -1642,23 +1679,33 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       return ok(pageOf(rows, query, `admin-review:${attemptId}`));
     },
     async replayFailedAttempt(attemptId, key, body: ReplayRequest) {
-      return remember(key, body, () => {
-        requirePermission("assessment.replay");
-        const record = attempts.find((item) => item.attempt.id === attemptId);
-        if (!record || record.attempt.status !== "FAILED") fail(422, "Attempt is closed");
-        if (body.expectedRevision !== record.adminRevision) fail(409, "Version conflict");
-        if (!body.reason.trim()) fail(400, "Invalid request");
-        record.adminRevision += 1;
-        record.attempt = {
-          ...record.attempt,
-          replayPending: true,
-          pollAfterSeconds: 2,
-          serverNow: iso(),
-        };
-        record.scoringDueAt = clock() + 1_200;
-        audit("attempt.replay", "attempt", attemptId, "SUCCESS", ["replayPending"]);
-        return ok({ accepted: true } satisfies Accepted, 202);
-      });
+      return catalogWrite(
+        key,
+        body,
+        () => {
+          requirePermission("assessment.replay");
+          const record = attempts.find((item) => item.attempt.id === attemptId);
+          if (!record || record.attempt.status !== "FAILED") fail(422, "Attempt is closed");
+          if (body.expectedRevision !== record.adminRevision) fail(409, "Version conflict");
+          if (
+            Array.from(body.reason.trim()).length < 8 ||
+            Array.from(body.reason.trim()).length > 500
+          )
+            fail(400, "Invalid request");
+          record.adminRevision += 1;
+          record.attempt = {
+            ...record.attempt,
+            replayPending: true,
+            pollAfterSeconds: 2,
+            serverNow: iso(),
+          };
+          record.scoringDueAt = clock() + 1_200;
+          audit("attempt.replay", "attempt", attemptId, "SUCCESS", ["replayPending"]);
+          return ok({ accepted: true } satisfies Accepted, 202);
+        },
+        undefined,
+        "assessment.replay",
+      );
     },
     async getQuestionStatistics(examId, versionId, query) {
       requirePermission("reporting.read");
@@ -1684,6 +1731,7 @@ export function createDemoServer(options: DemoServerOptions = {}): {
         return {
           questionId: frozen.question.id,
           completedAttempts: completed.length,
+          answered: correct + incorrect,
           correct,
           incorrect,
           unanswered,
@@ -1694,6 +1742,53 @@ export function createDemoServer(options: DemoServerOptions = {}): {
         };
       });
       return ok(pageOf(rows, query, `stats:${versionId}`));
+    },
+    async getBusinessMetrics() {
+      requirePermission("reporting.read");
+      const now = clock(),
+        from = now - 86400000;
+      const cohort = attempts.filter(
+        ({ attempt: a }) =>
+          Date.parse(a.startedAt) >= from &&
+          Date.parse(a.startedAt) < now &&
+          a.status !== "CREATED",
+      );
+      const submitted = cohort.filter(({ attempt: a }) =>
+        ["SUBMITTED", "EXPIRED", "PROCESSING", "COMPLETED", "FAILED"].includes(a.status),
+      );
+      const completed = cohort.filter(({ attempt: a }) => a.status === "COMPLETED");
+      const pending = attempts.filter(
+        ({ attempt: a }) =>
+          ["SUBMITTED", "EXPIRED", "PROCESSING"].includes(a.status) ||
+          (a.status === "FAILED" && a.replayPending),
+      );
+      const oldest =
+        pending
+          .map(({ attempt: a }) => a.submittedAt)
+          .filter((s): s is string => s !== null)
+          .sort()[0] ?? null;
+      const metrics: BusinessMetrics = {
+        asOf: iso(now),
+        window: { from: iso(from), to: iso(now), basis: "ATTEMPT_STARTED_AT" },
+        counts: {
+          startedAttempts: cohort.length,
+          activeAttempts: cohort.filter(({ attempt: a }) => a.status === "IN_PROGRESS").length,
+          submittedAttempts: submitted.length,
+          completedAttempts: completed.length,
+          failedAttempts: cohort.filter(({ attempt: a }) => a.status === "FAILED").length,
+          expiredSubmissions: submitted.filter(({ attempt: a }) => a.expired).length,
+          expiredCompletedAttempts: completed.filter(({ attempt: a }) => a.expired).length,
+        },
+        backlog: {
+          pendingAttempts: pending.length,
+          replayPendingAttempts: pending.filter(
+            ({ attempt: a }) => a.status === "FAILED" && a.replayPending,
+          ).length,
+          oldestSubmittedAt: oldest,
+          oldestAgeSeconds: oldest === null ? null : Math.floor((now - Date.parse(oldest)) / 1000),
+        },
+      };
+      return ok(metrics);
     },
     async getSystemBusinessMetrics() {
       requirePermission("system.metrics.read");
@@ -1715,7 +1810,15 @@ export function createDemoServer(options: DemoServerOptions = {}): {
     },
     async getAudit(query) {
       requirePermission("audit.read");
-      return ok(pageOf(audits, query, "audit"));
+      return ok(
+        pageOf(
+          [...audits].sort(
+            (a, b) => b.occurredAt.localeCompare(a.occurredAt) || b.id.localeCompare(a.id),
+          ),
+          query,
+          "audit",
+        ),
+      );
     },
   };
 

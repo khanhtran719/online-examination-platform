@@ -1,0 +1,81 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/catalog/__tests__/exam-start.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/catalog/__tests__/exam-start.unit.spec.tsx (8 tests | 1 failed) 413ms
+   × removes cached detail and start controls after a forbidden refresh 23ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/catalog/__tests__/exam-start.unit.spec.tsx > removes cached detail and start controls after a forbidden refresh
+AssertionError: expected [ Query{ options: { …(11) }, …(5) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   Query {
++     "gcTime": 0,
++     "observers": [],
++     "options": {
++       "_defaulted": true,
++       "_optimisticResults": "optimistic",
++       "enabled": false,
++       "gcTime": 0,
++       "queryFn": [Function queryFn],
++       "queryHash": "[\"catalog\",\"candidate-a\",\"detail\",\"exam-a\"]",
++       "queryKey": [
++         "catalog",
++         "candidate-a",
++         "detail",
++         "exam-a",
++       ],
++       "refetchOnReconnect": true,
++       "refetchOnWindowFocus": false,
++       "retry": false,
++       "throwOnError": false,
++     },
++     "queryHash": "[\"catalog\",\"candidate-a\",\"detail\",\"exam-a\"]",
++     "queryKey": [
++       "catalog",
++       "candidate-a",
++       "detail",
++       "exam-a",
++     ],
++     "state": {
++       "data": undefined,
++       "dataUpdateCount": 0,
++       "dataUpdatedAt": 0,
++       "error": null,
++       "errorUpdateCount": 0,
++       "errorUpdatedAt": 0,
++       "fetchFailureCount": 0,
++       "fetchFailureReason": null,
++       "fetchMeta": null,
++       "fetchStatus": "idle",
++       "isInvalidated": false,
++       "status": "pending",
++     },
++   },
++ ]
+
+ ❯ src/features/catalog/__tests__/exam-start.unit.spec.tsx:167:48
+    165|   await waitFor(() => expect(screen.queryByRole("heading", { name: "Đề…
+    166|   expect(screen.queryByRole("button", { name: "Bắt đầu", exact: true }…
+    167|   expect(view.client.getQueryCache().getAll()).toEqual([]);
+       |                                                ^
+    168| });
+    169|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 passed (8)
+   Start at  23:34:44
+   Duration  1.43s (environment 48%, tests 31%, import 13%, transform 8%)
+

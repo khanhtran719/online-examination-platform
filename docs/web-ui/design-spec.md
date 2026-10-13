@@ -1,5 +1,36 @@
 # Web UI specification — thiết kế và hành vi màn hình
 
+PORT-05C2026-10-13 dùng EP-11/12/13 Results V4 và Cobalt–Apricot tokens chung.
+Status card trắng, state/time có nguồn, CTA theo lifecycle. Result score card và
+hai metric cân hàng; section rows gọn, raw score/percentage một lần. Không bịa
+duration/official conversion. Review main/navigator2:1 desktop; navigator lên
+trên ở tablet<=1100px. Trước/sau gần prompt và focus heading; read-only options,
+filter loaded-only, icon/chữ + current border. “Bạn không chọn” không gán sai
+từng distractor. Render frozen payload, không sinh diagram/reference. Giữ
+Candidate shell hiện có. [Review/limits](port-05c-2026-10-13.md); mẫu gốc giữ nguyên.
+
+PORT-05B2026-10-13 dùng adjusted EP-14 History/EP-15 Leaderboard đã chọn. Hai
+bảng nằm trong surface trắng, header/rail Candidate chung, typography body16px/
+helper14px, Cobalt primary/Apricot processing, badge có chữ/icon và actions theo
+lifecycle. Cột thời gian ghi Giờ Việt Nam UTC+7; board có opt-in notice và link
+hồ sơ. History giữ cột tên38%, scroll nội bộ trên tablet kèm hướng dẫn/phím mũi
+tên; không nén mọi cột hoặc làm tràn body. Số dòng/thang điểm/metadata lấy từ
+contract thật, không chép sáu/mười fixture rows,1000 điểm hoặc semantic version
+trong ảnh. [Review](port-05b-2026-10-13.md) tách local demo khỏi live/production.
+
+Ưu tiên theo người dùng,2026-10-12: Web desktop/tablet trước, mobile design/matrix
+hoãn sang giai đoạn app. Các port mới dùng [kiến trúc frontend](frontend-architecture.md)
+và [Cobalt–Apricot contract đã chọn](templates/codex-desktop-v1/design-contract.md);
+mô tả visual của những đợt cũ bên dưới giữ ngữ cảnh lịch sử. API/behavior contract
+không thay đổi theo kích thước màn hình hoặc visual reference.
+
+PORT-04 uses selected EP-25–32 plus conditional replay confirmation/audit drawer.
+Compact overview snapshot/task tiles, cursor tables, failed/result split, count
+bars and honest business/technical scopes follow Cobalt–Apricot. Tables keep
+readable columns with internal scroll on tablets. Runtime DTO/permissions take
+precedence over illustrated names/IDs/counts. [Port report](port-04-2026-10-12.md)
+records evidence and deliberate differences; Public404/Candidate work is separate.
+
 Status: spec vẫn là hợp đồng hành vi. SPA local đã có trong `apps/web`; dòng này không còn nghĩa là chưa có source. HTTPS, capability live và production acceptance vẫn mở. Đọc [API/state](api-and-state-contract.md) trước khi nối dữ liệu; DTO/product/security là authority. Mục tiêu không phải một landing page đẹp đơn lẻ: người dùng phải đăng ký, xác thực email, thi, biết đáp án đã được lưu hay chưa, nộp bài và xem kết quả; Admin quản lý được nội dung và theo dõi xử lý.
 
 ## 1. Ý tưởng thiết kế
@@ -177,11 +208,18 @@ Desktop list rows hoặc grid2 cột theo content length; mobile1 cột. Mỗi i
 
 Skeleton có cùng chiều cao content. Empty category: “Chưa có đề trong danh mục này”; clearfilterCTA. Error với retry có backoff, không 0results. Giá trị schedule format theo displayTimezone; tooltip UTC khi admin/debug không cần showtechnicaltoCandidate. Schedule badge chỉ là estimate nếu thiếu authoritative server clock; start API vẫn quyết định.
 
+PORT-05A hiện thực Web/tablet: grid hai cột trên850px, một cột ở768px; detail
+main/sidebar gần2:1 trên1100px và xếp dọc ở1024/768px. Dùng shared rail/header
+Cobalt–Apricot đã chốt, không quay lại sidebar rộng của ảnh V4. Tên phần và lịch
+mở/đóng/múi giờ wrap đầy đủ; không chèn latency/proctor/enterprise hoặc thang điểm
+chứng chỉ không có nguồn. Số lượng hiển thị chỉ thuộc các đề đã tải. Mobile/app
+matrix riêng vẫn deferred theo ưu tiên người dùng.
+
 ### CA-03 Detail/start
 
 Main title/category/version, description chỉ khi contract có field (hiện không có), section counts/points, timing/duration/attemptLimit, release policy, scoring exact-match/no partial points. Summary side card chứa CTA. Không preview candidate questions trước owned attempt. Leaderboard link chỉ khienabled, version từpublishedVersionId.
 
-Start confirmation dialog: thời gian danh định, lịch đóng, cảnh báo vào muộn có thể ít thời gian, đáp án nhiều lựa chọn phải đủ đúng mới có điểm, một attempt tiêu thụ quota sau khi accepted, nền tảng tự nộp câu đã lưu khi hết giờ. Checkbox “Tôi đã đọc hướng dẫn” là UX local, không thêm request field. CTA “Bắt đầu làm bài”; chưaPOST thì có thể cancel. Sau accepted không có “hủy để lấy lại lượt”.
+Start confirmation dialog: thời gian danh định, lịch đóng, cảnh báo vào muộn có thể ít thời gian, đáp án nhiều lựa chọn phải đủ đúng mới có điểm, một attempt tiêu thụ quota sau khi accepted, nền tảng tự nộp câu đã lưu khi hết giờ. Checkbox “Tôi đã đọc hướng dẫn” nếu dùng chỉ là UX local, không thêm request field; PORT-05A dùng nút xác nhận rõ ràng và không thêm checkbox. CTA “Bắt đầu làm bài”; chưaPOST thì có thể cancel. Sau accepted không có “hủy để lấy lại lượt”.
 
 422 unavailable/limit/closed: message actionable đúng nguyên nhân safe text; không đoán remaining slots từ history partial. Existing active attempt response dẫn tới resume cùngID. Network timeout start retry giữ đúng key/body, không tạo key mới. Khi deadline từresponse cho ít hơn duration, hiển thị thời gian thực tế và notice ngay trong exam.
 
@@ -306,7 +344,7 @@ Label form luôn hiện; inline error linked aria-describedby, error summary nh�
 | 429/503     | bounded retry/Retry-After, chưa ACK thì chưa Saved            |
 | Unexpected  | safe message/correlationID nếu có, không stack                |
 
-Verify320/390/768/1024/1440px và zoom200%. Không body overflow; table có contained labeled scrolling hoặc mobile rows. Focus ring nhìn rõ; sticky bars không che option/focused element. Keyboard-only hoàn tất auth/exam/submit/admin edit. Label icons và native groups; trạng thái có text/icon ngoài màu. Timer không announce mỗi giây. Reduced motion hoạt động. Xem [W3C reference](https://www.w3.org/WAI/WCAG22/quickref/) và [acceptance](acceptance-checklist.md); chưa có WCAG certification claim.
+Scope hiện hành verify768/1024/1280/1440px và zoom200%; mobile design/matrix hoãn cho giai đoạn app, giữ regression320/390 hiện có. Không body overflow; table có contained labeled scrolling. Focus ring nhìn rõ; sticky bars không che option/focused element. Keyboard-only hoàn tất auth/exam/submit/admin edit. Label icons và native groups; trạng thái có text/icon ngoài màu. Timer không announce mỗi giây. Reduced motion hoạt động. Xem [W3C reference](https://www.w3.org/WAI/WCAG22/quickref/) và [acceptance](acceptance-checklist.md); chưa có WCAG certification claim.
 
 ## 11. Content và fixtures
 

@@ -1,0 +1,94 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/results
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/results/__tests__/review-access.test.tsx (1 test | 1 failed) 38ms
+   × removes released answer keys and explanations from the page and cache after access is revoked 37ms
+ ❯ src/features/results/__tests__/status-page.test.tsx (2 tests | 2 failed) 47ms
+   × clears the previous attempt and result action when navigating to another status route 44ms
+   × checks a stopped failed attempt again only after a manual request 3ms
+ ❯ src/features/results/__tests__/result-review.unit.spec.tsx (12 tests | 1 failed) 394ms
+   × navigates read-only questions and filters only loaded rows without another read 41ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/results/__tests__/result-review.unit.spec.tsx > navigates read-only questions and filters only loaded rows without another read
+Error: expect(element).toHaveFocus()
+
+Expected element with focus:
+  <h2
+  class="_prompt_93a6f8"
+  tabindex="-1"
+>
+  Second prompt
+</h2>
+Received element with focus:
+  <button
+  class="_buttonSecondary_f905bc"
+  disabled=""
+  type="button"
+>
+  Câu sau
+</button>
+ ❯ src/features/results/__tests__/result-review.unit.spec.tsx:270:66
+    268|   await screen.findByRole("heading", { name: "Released prompt" });
+    269|   await userEvent.click(screen.getByRole("button", { name: "Câu sau" }…
+    270|   expect(screen.getByRole("heading", { name: "Second prompt" })).toHav…
+       |                                                                  ^
+    271|   await userEvent.click(screen.getByRole("button", { name: "Chưa đúng …
+    272|   expect(screen.getByRole("button", { name: /Câu 2, Chưa đúng/ })).toH…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/features/results/__tests__/review-access.test.tsx > removes released answer keys and explanations from the page and cache after access is revoked
+Error: Session missing
+ ❯ useSession src/app/session.tsx:204:21
+    202| export function useSession(): SessionValue {
+    203|   const value = useContext(SessionContext);
+    204|   if (!value) throw new Error("Session missing");
+       |                     ^
+    205|   return value;
+    206| }
+ ❯ ReviewPage src/features/results/review-page.tsx:20:15
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:20
+ ❯ renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:22
+ ❯ updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:19
+ ❯ beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:18
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:22
+ ❯ workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:41
+ ❯ renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/features/results/__tests__/status-page.test.tsx > clears the previous attempt and result action when navigating to another status route
+ FAIL  src/features/results/__tests__/status-page.test.tsx > checks a stopped failed attempt again only after a manual request
+Error: Session missing
+ ❯ useSession src/app/session.tsx:204:21
+    202| export function useSession(): SessionValue {
+    203|   const value = useContext(SessionContext);
+    204|   if (!value) throw new Error("Session missing");
+       |                     ^
+    205|   return value;
+    206| }
+ ❯ useAttemptPolling src/features/results/use-attempt-polling.ts:22:15
+ ❯ AttemptStatus src/features/results/status-page.tsx:44:16
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:20
+ ❯ renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:22
+ ❯ updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:19
+ ❯ beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:18
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:22
+ ❯ workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:41
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+
+ Test Files  3 failed | 5 passed (8)
+      Tests  4 failed | 45 passed (49)
+   Start at  08:55:45
+   Duration  2.48s (environment 60%, tests 15%, import 14%, transform 10%)
+
