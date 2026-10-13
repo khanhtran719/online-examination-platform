@@ -1079,15 +1079,46 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       return ok(profile);
     },
     async updateProfile(key, body: ProfileUpdate) {
-      return remember(key, body, () => {
+      const actor = currentUser();
+      const receiptKey = `profile:${actor.id}:${key}`;
+      const produce = () => {
         const user = currentUser();
+        if (user.id !== actor.id) fail(401, "Unauthenticated");
         if (body.expectedRevision !== user.revision) fail(409, "Version conflict");
+        if (
+          [...body.displayName].length < 1 ||
+          [...body.displayName].length > 80 ||
+          /\p{Cc}/u.test(body.displayName)
+        )
+          fail(400, "Invalid request");
         user.displayName = body.displayName;
         user.leaderboardOptIn = body.leaderboardOptIn;
         user.revision += 1;
         audit("profile.update", "profile", user.id, "SUCCESS", ["displayName", "leaderboardOptIn"]);
         return ok({ resourceId: user.id, revision: user.revision, acceptedAt: iso() });
-      });
+      };
+      if (receipts.has(receiptKey)) return remember(receiptKey, body, produce);
+      const activeFault = fault;
+      if (["delay-ack", "lose-ack", "save-429", "save-503", "conflict-save"].includes(activeFault))
+        fault = "none";
+      if (activeFault === "delay-ack") await sleep(5000);
+      const current = currentUser();
+      if (current.id !== actor.id) fail(401, "Unauthenticated");
+      if (activeFault === "save-429") fail(429, "Rate limit exceeded", "Rate limit exceeded", 2);
+      if (activeFault === "save-503") fail(503, "Service unavailable", "Service unavailable", 2);
+      if (activeFault === "conflict-save") {
+        current.displayName = "Lan Nguyễn · bản máy chủ";
+        current.revision += 1;
+      }
+      const response = remember(receiptKey, body, produce);
+      if (activeFault === "lose-ack")
+        throw new ApiError({
+          kind: "network",
+          status: 0,
+          errorCode: "Network",
+          message: "timeout",
+        });
+      return response;
     },
     async browseExams(query) {
       requirePermission("catalog.read");

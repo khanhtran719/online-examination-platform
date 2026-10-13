@@ -1,0 +1,16 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test --grep PORT-05E|PORT-05B fallback
+
+
+Running 5 tests using 1 worker
+
+(node:20519) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/port-05b.e2e-spec.ts:107:1 › PORT-05B fallback and closed boards do not invent titles or unlock on refresh (2.9s)
+  ✓  2 [chromium] › e2e/port-05e.e2e-spec.ts:106:1 › PORT-05E profile normal/edit/save, confirmed fields and privacy fit four Web/tablet widths (5.7s)
+  ✓  3 [chromium] › e2e/port-05e.e2e-spec.ts:136:1 › PORT-05E conflict compares both snapshots and requires a choice before another save (2.3s)
+  ✓  4 [chromium] › e2e/port-05e.e2e-spec.ts:169:1 › PORT-05E lost ACK retains an immutable request, warns on leave and honors rate limit (3.7s)
+  ✓  5 [chromium] › e2e/port-05e.e2e-spec.ts:203:1 › PORT-05E pending/reset/logout/reauth dialogs remain accessible and truthful (7.3s)
+
+  5 passed (23.0s)

@@ -118,7 +118,7 @@ test("PORT-05B fallback and closed boards do not invent titles or unlock on refr
   await capture(page, "leaderboard-fallback-768");
   await page.getByRole("link", { name: "Quản lý tham gia →", exact: true }).click();
   await expect(
-    page.getByRole("checkbox", { name: /Hiện bí danh trên bảng xếp hạng/ }),
+    page.getByRole("checkbox", { name: "Tham gia bảng xếp hạng", exact: true }),
   ).not.toBeChecked();
   await navigate(page, `/exams/${exam}/versions/00000000-0000-4000-8000-000000000999/leaderboard`);
   await expect(page.getByRole("heading", { name: "Bảng xếp hạng không mở" })).toBeVisible();

@@ -1,4 +1,14 @@
-# Active increment2026-10-13: PORT-05D Exam Room / Autosave / Submit
+# Active increment 2026-10-13: PORT-05E Profile / Account
+
+COMPLETE locally: [P1–P5 review](web-ui/port-05e-2026-10-13.md). Web/tablet
+768/1024/1280/1440px; Profile controller, immutable writes, explicit conflict,
+protected clearing và Cobalt–Apricot layout.874 root/53 Chromium PASS;
+strict builds/lint/format/types đạt.25 final captures có font/axe/overflow/
+gutter/dialog checks;5.505 protected files unchanged. [Evidence](web-ui/evidence/port-05e-2026-10-13/README.md).
+Next bounded PORT-05F Identity pages Web/tablet, chưa triển khai. Mobile/app
+deferred; parent PORT-05/roadmap89/217/FE7/32/full live/production còn mở.
+
+# Previous increment2026-10-13: PORT-05D Exam Room / Autosave / Submit
 
 COMPLETE locally: [D1–D5 review](web-ui/port-05d-2026-10-13.md). Web/tablet
 768/1024/1280/1440px; actor/cache/late response fencing, truthful save/submit,

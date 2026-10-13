@@ -1,0 +1,29 @@
+{
+  "scope": "Source and changed documentation at final local delivery",
+  "files": {
+    "apps/web/e2e/port-05b.e2e-spec.ts": "4b2c2955810b5871a71db56609af21e950554b36d1e08a3733388ad33af08603",
+    "apps/web/e2e/port-05e.e2e-spec.ts": "84bc9fe8a2392b9f1e8f213c12d25c5465aa4d3c3e821d3109c6ad9b31d43d17",
+    "apps/web/src/app/__tests__/session-profile.unit.spec.tsx": "5f0930e1880d1e3198f9402dc41e9ccf588b3a31b491e19ca001687e84b3bdbf",
+    "apps/web/src/app/session.tsx": "87092fd974d3640debb0c1a9b8e1f79f2fab483d497bd2819d63be7dc54e7dae",
+    "apps/web/src/app/workspace-frame.tsx": "3ef4179aca839010f107e508a040f7123bd2582bf79279a110622821a6dc6fb2",
+    "apps/web/src/demo/__tests__/profile-faults.unit.spec.ts": "5b22c3a73f76e866fdf0c354b5df6ccd900acc62b668f8465403f4cab451cc5c",
+    "apps/web/src/demo/server.ts": "78eeffa9ebb452f614426556d6fd927966b1db782471299d1178f08048ecb048",
+    "apps/web/src/features/profile/__tests__/profile-page.unit.spec.tsx": "9ecdf9ebc7d64340e5d2f1b28c512f061245b4f783782d32afdea8ceb6f7da3d",
+    "apps/web/src/features/profile/__tests__/use-profile.unit.spec.tsx": "967fca6762e91c09f9ba4572a1642926625347fb841a006dc918594cfc78538e",
+    "apps/web/src/features/profile/profile-dialogs.tsx": "2621930e31e65ecfe2be268fd140893163191e26005abc939bd4047520d51e07",
+    "apps/web/src/features/profile/profile-model.ts": "a734273aee241f3f3718aa9217e9debdd161683a1160c45a94b88878a193772e",
+    "apps/web/src/features/profile/profile-page.tsx": "9f5cf1373ee567bd9e0f7955e5e173b4b5f385b4c8188f62e5163c98def7de66",
+    "apps/web/src/features/profile/profile-settings.tsx": "a1b02f86221fc6912f6c3cf34dba3708232ecbcfa1e2ad591e4be543ab5a2620",
+    "apps/web/src/features/profile/profile.module.css": "8cb55b025e9c0a2a58522a666536f17cbf2ddeb49d6e6977e021705a70ba0fb5",
+    "apps/web/src/features/profile/use-profile.ts": "d92861f03cc568f2c5d18a2a0778b8696b77b16ca48e6133f96a21fc1787cfb7",
+    "docs/implementation-plan.md": "c62fb1e8e4e776843fc05e3c25f8d8b2273659bb7e2a68b359025e18a6968a48",
+    "docs/project-profile.md": "bbb98ebb4b0d1a1a7526c988d8c7ab1f58ad330856c7b4dbd4de89bde242bef0",
+    "docs/web-ui/README.md": "2402808bf2a90f243fee212b553de30ce7aa4cb93385db9f091f5591f46a7222",
+    "docs/web-ui/acceptance-checklist.md": "f48af2b18fd8e2dfe7f4321d211fef76fe5abf35d0c15602491e85d51f198d5b",
+    "docs/web-ui/api-and-state-contract.md": "dd3720036a36178a7c58a8cd680f6044814dcdc8f4138f2663eb36dc76f2086b",
+    "docs/web-ui/design-spec.md": "1b65a438edb2078270165803752a4db0792828de6ae40c256593f7a25a63b754",
+    "docs/web-ui/frontend-architecture.md": "78526de75a3a2f7a527c472a0f2ee006459787d0791205a12d44e74770520697",
+    "docs/web-ui/implementation-tasks.md": "b2d20a1fca6cab7a787c2a7f92454e4b143f8590dc0a387499543afbd2c2d76e",
+    "docs/web-ui/port-05e-2026-10-13.md": "7091f77494724656bdd7fa7c8277d3e977a6688bc9ef49c2b4010e70fcfcbd76"
+  }
+}

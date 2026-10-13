@@ -1,0 +1,225 @@
+.page {
+  width: min(1240px, 100%);
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  display: grid;
+  gap: 24px;
+}
+.heading {
+  display: grid;
+  gap: 8px;
+}
+.heading h1 {
+  font: 600 30px/40px var(--font-heading);
+}
+.heading > p:last-child {
+  color: var(--color-text-muted);
+}
+.eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+.columns {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  align-items: start;
+}
+.identity,
+.settings,
+.session {
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: var(--radius-container);
+  box-shadow: var(--shadow-surface);
+  min-width: 0;
+}
+.identity {
+  display: grid;
+  gap: 24px;
+}
+.identity h2 {
+  font: 600 24px/34px var(--font-heading);
+  overflow-wrap: anywhere;
+}
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+  font: 600 28px/36px var(--font-heading);
+  border-radius: 50%;
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+}
+.verified {
+  color: var(--color-success-text);
+  font-size: 14px;
+}
+.identity dl {
+  margin: 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+  display: grid;
+  gap: 8px;
+}
+.identity dt {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+.identity dd {
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+.identity a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.mainColumn {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+.settings {
+  display: grid;
+  gap: 24px;
+}
+.settings h2,
+.session h2 {
+  font: 600 22px/32px var(--font-heading);
+  margin-bottom: 8px;
+}
+.settings form {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.fieldHelp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+.helper {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+.privacy {
+  display: flex;
+  gap: 16px;
+  align-items: start;
+  margin-top: 8px;
+  padding: 24px;
+  background: var(--color-primary-subtle);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+.privacy input {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  margin: 4px 0 0;
+}
+.privacy > span {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.privacy > span > span {
+  font-size: 14px;
+  line-height: 24px;
+}
+.privacy:has(input:disabled) {
+  cursor: default;
+}
+.privacyStatus {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.session {
+  display: grid;
+  gap: 16px;
+}
+.session button {
+  justify-self: start;
+}
+.conflictBackdrop > [role="dialog"] {
+  width: min(840px, 100%);
+}
+.compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.compare section {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  padding: 24px;
+  background: var(--color-surface-low);
+  min-width: 0;
+}
+.compare section:last-child {
+  border-color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+.compare h3 {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+.compare dl {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.compare dt {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+.compare dd {
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+.note {
+  border-radius: var(--radius-control);
+  background: var(--color-accent-subtle);
+  padding: 16px;
+  font-size: 14px;
+  line-height: 24px;
+}
+@media (max-width: 1100px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .identity {
+    padding: 24px;
+  }
+}
+@media (max-width: 767px) {
+  .page {
+    padding: 24px 16px;
+  }
+  .settings,
+  .session {
+    padding: 24px;
+  }
+  .compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .privacy {
+    padding: 16px;
+  }
+}

@@ -94,7 +94,10 @@ export function WorkspaceFrame({
           title="Đăng xuất khi còn thay đổi chưa xác nhận"
           onClose={() => setConfirming(false)}
         >
-          <p>Một số đáp án chưa được máy chủ xác nhận. Đăng xuất sẽ xóa chúng khỏi trình duyệt.</p>
+          <p>
+            Một số thay đổi chưa được máy chủ xác nhận. Đăng xuất sẽ xóa nội dung đang giữ trên
+            trình duyệt; yêu cầu đã gửi không được hủy.
+          </p>
           <div className={layout.row}>
             <Button variant="secondary" onClick={() => setConfirming(false)}>
               Ở lại

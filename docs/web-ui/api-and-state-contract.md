@@ -1,5 +1,13 @@
 # Web API integration và state contract
 
+PORT-05E 2026-10-13: Profile dùng existing GET/PUT me; immutable name/opt-in/
+expectedRevision/key cho explicit retry. ACK kiểm actor và expectedRevision+1;
+GET lỗi sau ACK chỉ retry GET. Projection giữ revision không lùi và consistency
+tại cùng acknowledged revision.409 giữ draft, fresh compare và explicit adoption
+trước new intent; giữ bản của tôi về form, chưa tự ghi. Protected/session loss
+purge scope, late response không sync principal. Không permissions discovery
+hoặc email/password update mới. [Review](port-05e-2026-10-13.md).
+
 PORT-05D2026-10-13 không đổi endpoint/DTO. Assessment queries bind actor/attempt;
 403/404/malformed purge và latch,401 giữ pending intent cho đúng actor reauth.
 Save ACK kiểm exact captured scope/version; reconnect/reauth giữ server wait.

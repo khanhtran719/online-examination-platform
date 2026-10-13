@@ -1,5 +1,12 @@
 # Web UI specification — thiết kế và hành vi màn hình
 
+PORT-05E 2026-10-13: Profile V4 dùng shared Cobalt–Apricot shell; identity card
+1/3/settings2/3 trên1100px, stack trên tablet. Avatar initials, full email/name
+wrap, verified date read-only; native opt-in có accessible name/description và
+privacy text. Không latency/proctor/Enterprise/certificate/avatar upload. Compare
+dialog dùng text snapshot thật, giữ bản của tôi về form để người dùng bấm lưu;
+reset/leave/logout nói đúng về memory draft và request đã gửi. [Review](port-05e-2026-10-13.md).
+
 PORT-05D2026-10-13 port Exam V3 bằng Cobalt–Apricot shared tokens: white
 toolbar, wordmark local, save status riêng, timer tabular mono, title wrap và
 deadline UTC+7. Main/sidebar2:1 ở desktop; <=1100px dùng question sheet/dialog.

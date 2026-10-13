@@ -1,5 +1,14 @@
 # Project profile
 
+PORT-05E update 2026-10-13: [Profile/Account](web-ui/port-05e-2026-10-13.md)
+P1–P5 COMPLETE locally trên Web/tablet768/1024/1280/1440px. Immutable intent/
+revision/receipt, explicit conflict, actor/session fences, private state clearing
+và safe profile projection sync có regressions.874 root/53 Chromium PASS;
+builds/lint/format/types đạt.25 captures có font/axe/overflow/gutter/dialog checks;
+5.505 protected files unchanged. [Evidence](web-ui/evidence/port-05e-2026-10-13/README.md).
+Next PORT-05F Identity pages. Roadmap89/217, FE7/32, parent PORT-05/live/mobile/
+production vẫn mở; UI Profile mới chưa rerun real HTTPS/PG. Checkpoints dưới là lịch sử.
+
 PORT-05D update 2026-10-13: [Exam Room/Autosave/Submit](web-ui/port-05d-2026-10-13.md)
 D1–D5 COMPLETE locally trên Web/tablet 768/1024/1280/1440px. Read/controller/view
 boundary, actor/attempt fences, exact ACK, explicit conflict, bounded unknown

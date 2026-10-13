@@ -1,5 +1,15 @@
 # Web UI acceptance và scenario catalog
 
+Current checkpoint 2026-10-13: [PORT-05E P1–P5](port-05e-2026-10-13.md)
+COMPLETE locally trên Web/tablet768/1024/1280/1440px.874 root/53 Chromium PASS;
+25 ảnh font loaded, zero automated axe violations, không tràn ngang và content
+gutter nhỏ nhất24px;7 dialog backdrop/căn giữa đạt. Browser checked consent,
+compare/reset/leave/logout dialogs, pending/unknown/429 and controlled reauth.
+Unit checked immutable retries, actor/late-response fencing, receipt-vs-read và
+projection consistency. [Evidence](evidence/port-05e-2026-10-13/README.md). Full
+live Profile của new UI, permission discovery và parent PORT-05/FE7/32 còn mở.
+Mobile/app/production deferred/unaccepted; dưới là checkpoint lịch sử.
+
 Current checkpoint 2026-10-13: [PORT-05D D1–D5](port-05d-2026-10-13.md) COMPLETE
 locally trên Web/tablet 768/1024/1280/1440px. 850 root/49 Chromium PASS;
 26 ảnh có font loaded, zero automated axe violations, không tràn ngang,

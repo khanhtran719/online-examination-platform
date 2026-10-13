@@ -1,0 +1,13 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/profile src/app/__tests__/session-profile.unit.spec.tsx src/demo/__tests__/profile-faults.unit.spec.ts
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+
+ Test Files  4 passed (4)
+      Tests  21 passed (21)
+   Start at  10:49:10
+   Duration  1.39s (environment 77%, import 10%, tests 6%, transform 6%)
+

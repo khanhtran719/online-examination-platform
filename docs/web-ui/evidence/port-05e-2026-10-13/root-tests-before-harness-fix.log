@@ -1,0 +1,177 @@
+
+> online-examination-platform@0.1.0 test
+> npm run test:api && npm run test:tooling && npm run web:test
+
+
+> online-examination-platform@0.1.0 test:api
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand
+
+(node:18795) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Test Suites: 53 passed, 53 total
+Tests:       492 passed, 492 total
+Snapshots:   0 total
+Time:        5.12 s, estimated 6 s
+Ran all test suites.
+
+> online-examination-platform@0.1.0 test:tooling
+> node --test scripts/__tests__/*.unit.spec.mjs
+
+✔ generates latency summary from its own raw run rather than a previous run (1.749125ms)
+✔ absent transaction samples remain not measured and zero-valued evidence is rejected (0.803792ms)
+✔ freezing an existing evidence directory cannot replace its raw sample or summary (76.23525ms)
+✔ compiled aliases resolve static, dynamic, re-export and import-equals without a runtime hook (451.324583ms)
+✔ unresolved aliases fail compilation instead of producing a broken runnable artifact (187.453792ms)
+✔ validates the complete OpenAPI contract and its payload examples (424.154917ms)
+✔ verification is an explicit public POST with a bounded one-use token and final password (1.902458ms)
+✔ signed token contract keeps access and refresh separate and PostgreSQL authoritative (3.607125ms)
+✔ contract checks reject a refresh audience reused for access (1.878791ms)
+✔ email login rejects alternate usernames and Session rejects raw credential fields (0.3795ms)
+✔ email schemas reject non-ASCII identifiers consistently with the PostgreSQL identity policy (0.275875ms)
+✔ accepts a submitted event and rejects answer data anywhere in it (0.444083ms)
+✔ rejects an event for another aggregate, schema version or invalid timestamp (0.121417ms)
+✔ candidate question schema rejects keys and explanation leaks (0.135375ms)
+✔ rejects non-finite timestamps rather than treating them as a manual submission (0.094208ms)
+✔ save contract accepts clearing and rejects duplicate options and oversized batches (0.11275ms)
+✔ rejects an admin operation made public even when the document remains valid OpenAPI (1.338459ms)
+✔ does not allow an admin route to inherit a public operation name (1.202625ms)
+✔ rejects a critical mutation without an idempotency header (3.824125ms)
+✔ rejects unsafe browser operations without Origin or CSRF contract (1.26075ms)
+✔ rejects undocumented owners, acceptance cases and unbounded list pagination (1.136042ms)
+✔ autofix preserves the order of side-effect initialization imports (760.817083ms)
+✔ type-import autofix retains value imports used in Nest decorator metadata (20.39325ms)
+✔ calibrates database UTC to local wall clock with a round-trip uncertainty bound (6.515041ms)
+✔ commit acknowledgement includes persistence delay separately from acceptance lag (0.208583ms)
+✔ does not turn absent observations into zero latency (0.085791ms)
+✔ packages immutable SQL bytes and ordered filenames independently of process cwd (61.696667ms)
+✔ fails build rather than silently packaging missing or symlinked migrations (22.5075ms)
+✔ finds forbidden external, dynamic and re-export imports while ignoring comments (4.555666ms)
+✔ detects module-private and same-module infrastructure access from application (0.743875ms)
+✔ permits a public application capability and infrastructure driver adapter (0.630166ms)
+✔ extracts real local links but excludes fenced examples and external URLs (3.652667ms)
+✔ resolves repeated headings and ignores code-fence pseudo-headings (1.318083ms)
+✔ checks TypeScript import types and import-equals dependencies (10.372458ms)
+✔ rejects Node network imports with or without node prefix (0.259208ms)
+✔ checks technical folder barrel imports without a trailing slash (0.2ms)
+✔ keeps platform technical and presentation independent of infrastructure (0.404708ms)
+✔ keeps domain independent of application orchestration (3.306208ms)
+✔ rejects outer helpers, config and workers in business layers, including barrels and type imports (0.475958ms)
+✔ keeps all global technical roots independent from business modules (0.273958ms)
+✔ permits explicit public capabilities while rejecting private application imports (0.220917ms)
+✔ requires module composition to use explicit public capabilities of another module (0.909791ms)
+✔ permits only reviewed Reporting ranking entry points and preserves private boundaries (8.264584ms)
+✔ rejects legacy placement after normalization closes (0.187292ms)
+✔ prevents business dependencies hidden behind shared root barrels or unsupported aliases (0.6525ms)
+✔ allows only the reviewed Catalog worker composition boundary (2.197084ms)
+✔ resolves configured shared aliases while preserving protected layer boundaries (2.811708ms)
+✔ public facade aliases keep capability and global technical ownership (0.656708ms)
+✔ checks aliased type, export, dynamic, require and import-equals dependencies (0.49775ms)
+✔ rejects unconfigured internal aliases and alias traversal at composition roots (0.288959ms)
+✔ permits outer aliases without treating external scoped packages as source aliases (0.155667ms)
+✔ accepts a fully inventoried reviewed query and physical schema (9.962542ms)
+✔ rejects missing, duplicate and removed query consumers (8.82325ms)
+✔ requires renewed review for a changed query or private port (7.08775ms)
+✔ rejects a query adapter hidden in a nested persistence folder (8.259917ms)
+✔ detects an undeclared physical join even after the source hash is renewed (11.370292ms)
+✔ does not invent physical dependencies from source comments or aliases (8.364709ms)
+✔ rejects a new unreviewed migration and altered or omitted migration receipts (7.593084ms)
+✔ rejects path-like IDs, missing source signatures and malformed schema columns (8.089875ms)
+✔ detects missing, added, renamed, nullable or differently typed physical columns (13.00975ms)
+✔ reports malformed manifest data as a failed check (6.062167ms)
+✔ keeps repository query receipts and source schemas in the checked inventory (36.132625ms)
+✔ Web shared code cannot reach feature/app/adapter code through any import syntax (840.28975ms)
+✔ Web features only use their owner, shared code and explicit app facades (29.234666ms)
+✔ Web live adapter cannot import demo, and shared UI cannot own transport (3.57075ms)
+✔ Web composition remains allowed while internal traversal out of src is rejected (2.880166ms)
+ℹ tests 66
+ℹ suites 0
+ℹ pass 66
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1204.656291
+
+> online-examination-platform@0.1.0 web:test
+> npm --prefix apps/web test
+
+
+> @exam/web@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/profile/__tests__/profile-page.unit.spec.tsx (4 tests | 1 failed) 295ms
+   × does not carry an open discard dialog into another actor's profile 38ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/profile/__tests__/profile-page.unit.spec.tsx > does not carry an open discard dialog into another actor's profile
+AssertionError: expected <div class="_dialog_f905bc" …(4)>…(4)</div> to be null
+
+- Expected:
+null
+
++ Received:
+<div
+  aria-labelledby="_r_2_"
+  aria-modal="true"
+  class="_dialog_f905bc"
+  role="dialog"
+  tabindex="-1"
+>
+  <h2
+    id="_r_2_"
+  >
+    Bỏ thay đổi hồ sơ?
+  </h2>
+  <p>
+    Tên hiển thị và lựa chọn bảng xếp hạng đang sửa sẽ được thay bằng bản đã lưu.
+  </p>
+  <div
+    class="_row_24c302"
+  >
+    <button
+      class="_buttonSecondary_f905bc"
+      type="button"
+    >
+      Tiếp tục sửa
+    </button>
+    <button
+      class="_buttonDanger_f905bc"
+      type="button"
+    >
+      Bỏ thay đổi
+    </button>
+  </div>
+  <button
+    aria-label="Đóng hộp thoại"
+    class="_buttonGhost_f905bc _dialogClose_f905bc"
+    type="button"
+  >
+    ×
+  </button>
+</div>
+
+ ❯ src/features/profile/__tests__/profile-page.unit.spec.tsx:85:40
+     83|     await h.router.navigate("/profile?actor=b");
+     84|   });
+     85|   expect(screen.queryByRole("dialog")).toBeNull();
+       |                                        ^
+     86|   expect(screen.getByLabelText("Tên hiển thị")).toHaveValue("Minh");
+     87| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 59 passed (60)
+      Tests  1 failed | 315 passed (316)
+   Start at  11:02:01
+   Duration  8.47s (environment 57%, tests 26%, import 10%, transform 6%)
+
+Environment  jsdom was created 60 times · 29.41s total, 57% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

@@ -1,0 +1,10 @@
+{
+  "width": 1024,
+  "fontLoaded": true,
+  "viewport": {
+    "width": 1024,
+    "height": 1000
+  },
+  "url": "http://127.0.0.1:4173/admin/metrics",
+  "violations": []
+}

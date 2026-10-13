@@ -1,5 +1,15 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
+**PORT-05E 2026-10-13:** Hồ sơ/Tài khoản hoàn thành cục bộ trên Web/tablet;
+email/xác thực chỉ đọc, tên hiển thị, privacy opt-in, explicit conflict và
+reset/leave/logout dialogs. Controller tách khỏi view; retry giữ nguyên key/body/
+revision, dữ liệu mất quyền bị xóa và late response không đổi actor.874 root/
+53 Chromium PASS;25 ảnh font/axe/overflow/gutter/dialog đạt.
+[Checklist/review](port-05e-2026-10-13.md), [evidence](evidence/port-05e-2026-10-13/README.md),
+[gallery](evidence/port-05e-2026-10-13/gallery.html). P1–P5 COMPLETE locally.
+Next PORT-05F Identity pages Web/tablet. Parent PORT-05/full live/mobile/
+production còn mở; checkpoint dưới giữ phạm vi lịch sử.
+
 **PORT-05D 2026-10-13:** Phòng thi/Autosave/Nộp bài hoàn thành cục bộ trên Web
 và tablet. Có phiếu câu hỏi, ba kiểu đáp án, countdown, đối chiếu xung đột,
 đăng nhập lại và trạng thái chưa xác nhận nộp. Controller tách khỏi view;

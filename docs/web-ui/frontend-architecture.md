@@ -1,5 +1,12 @@
 # Kiến trúc frontend
 
+PORT-05E 2026-10-13: `features/profile/use-profile.ts` sở hữu finite profile
+write/read coordinator, actor scope và immutable intent; page compose settings
+và dialogs. `app/session.syncProfile` chỉ sync same actor/email với revision
+không lùi; không xác thực hoặc reset refresh coordinator như `adoptProfile`.
+Receipt khác current projection; read lỗi sau ACK không POST lại. Local dialogs
+reset theo actor/auth scope. [Review/limits](port-05e-2026-10-13.md).
+
 PORT-05D2026-10-13: `features/assessment/use-room-reads.ts` sở hữu actor/attempt
 queries, retry/focus policy, response/signal fencing và scope cleanup;
 `use-exam-room.ts` sở hữu autosave/submit coordination và exact frozen metadata.

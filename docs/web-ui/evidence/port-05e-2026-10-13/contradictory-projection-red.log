@@ -1,0 +1,34 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/profile/__tests__/use-profile.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/profile/__tests__/use-profile.unit.spec.tsx (16 tests | 1 failed) 40ms
+   × rejects a projection that contradicts the acknowledged fields at the same revision 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/profile/__tests__/use-profile.unit.spec.tsx > rejects a projection that contradicts the acknowledged fields at the same revision
+AssertionError: expected 'Wrong name' to be 'Lan mới' // Object.is equality
+
+Expected: "Lan mới"
+Received: "Wrong name"
+
+ ❯ src/features/profile/__tests__/use-profile.unit.spec.tsx:100:46
+     98|   const h = setup();
+     99|   await act(async () => h.result.current.save());
+    100|   expect(h.result.current.base?.displayName).toBe("Lan mới");
+       |                                              ^
+    101|   expect(h.result.current.readError).toBeInstanceOf(ApiError);
+    102|   expect(h.result.current.phase).toBe("accepted");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 passed (16)
+   Start at  10:49:59
+   Duration  897ms (environment 74%, import 13%, transform 7%, tests 5%)
+

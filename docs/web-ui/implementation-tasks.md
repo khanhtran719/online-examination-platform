@@ -1,5 +1,12 @@
 # Frontend implementation tasks — senior hướng dẫn junior
 
+**Checkpoint PORT-05E 2026-10-13:** [P1–P5 Profile/Account](port-05e-2026-10-13.md)
+COMPLETE locally trên768/1024/1280/1440px.874 root/53 Chromium PASS; builds/
+lint/format/types,25 captures và5.505-file protection đạt. [Evidence](evidence/port-05e-2026-10-13/README.md)
+giữ RED và initial browser failures/harness corrections. FE-11 vẫn PARTIAL
+theo new UI live/permission matrix; FE7/32/roadmap89/217/parent PORT-05 giữ mở.
+Next bounded PORT-05F Identity pages Web/tablet, chưa triển khai.
+
 **Checkpoint PORT-05D 2026-10-13:** [D1–D5 Exam Room/Autosave/Submit](port-05d-2026-10-13.md)
 COMPLETE locally trên 768/1024/1280/1440px. 850 root/49 Chromium PASS;
 strict builds/lint/format/types, 26 captures và 3.219-file protection đạt.
@@ -68,7 +75,7 @@ Mỗi task để lại: files đổi, behavior, tests/checks đã chạy, screen
 - [x] **FE-08** Register/check-email/resend. — PASS local: normalized form/body tests, actual delayed worker SMTP, browser duplicate202/one intent/no session, generic suppressed resend và cooldown. Server integration kiểm tra absent/disabled/verified policies; Retry-After regressions giữ nguyên. Live SES vẫn ID-11.
 - [x] **FE-09** Inert email verification/final password. — PASS local H02/03/04: GET/scanner inert, fragment scrub/reload loses secret, no DOM/URL/referrer/storage leak, explicit anonymous POST, final-owner password, expiry/replay không đổi password hoặc auto login; authenticated context bị từ chối.
 - [x] **FE-10** Login/refresh coordination/logout/reauth. — PASS local H05–09: hai tab shared cookies/Web Locks thật chỉ rotate một lần, restart, disable/logout broadcast, lost ACK không application replay, explicit login reset recovery và profile reauth link. Unit unsupported coordination/late outcome/token-free broadcast và existing draft-preservation checks PASS. Chromium only; broader browser matrix/real Assessment vẫn gate riêng.
-- [ ] **FE-11** Profile/revision và authoritative permission boundary. — PARTIAL. H05/08/10: profile200/409 và lost/stalled-body same-receipt retry chỉ một write PASS trên real HTTPS/PG. Full permission source, cross-actor/frontend cache acceptance và live Admin còn UI-GAP-01.
+- [ ] **FE-11** Profile/revision và authoritative permission boundary. — PARTIAL. H05/08/10 lịch sử: profile200/409 và lost/stalled-body same-receipt retry chỉ một write PASS trên real HTTPS/PG. [PORT-05E](port-05e-2026-10-13.md) có new UI/controller actor/session, receipt/read separation và explicit conflict unit/demo proof; new UI chưa rerun real HTTPS/PG. Full permission source, real cross-actor/session acceptance và live Admin còn UI-GAP-01.
 - [ ] **FE-12** Dashboard/browse/cursor/empty states. — PARTIAL. [Đợt2](onboarding-catalog-implementation-2026-10-07.md) hoàn thiện visual dashboard/browse, scoped recent history, filters/pageSize/Back/empty/long-title và5 widths. Unit bảo vệ partial history/frozen owner, không N+1 hoặc aggregate giả. Cursor hết hạn và live Catalog pagination/error matrix vẫn mở.
 - [ ] **FE-13** Detail/start confirmation/idempotent resume. — PARTIAL. Đợt2 có structure/schedule/start sidebar, version leaderboard link, cancel/Escape/focus và existing start navigation PASS. Browser xác nhận rồi bắt đầu đề Đại học; Networking trả lượt cũ. Lost ACK của start NOT RUN trên browser, giữ keyRef cũ và gate backend Assessment.
 - [ ] **FE-14** Owned question/answer loading và three-type renderer. — PARTIAL. Unit: prompt/option là text, không thành script/img; không suy version 0 khi answer scope chưa đủ. Browser W-14 PASS. Live preview500 câu: trang đầu0 radio,24 lần tải thêm,500 ô phiếu. [Đợt3](assessment-results-implementation-2026-10-07.md): ba loại native controls, keyboard selection, marked filter và focus dialog PASS trên demo; thẻ câu hỏi/navigator kiểm tra5 widths. Live Assessment matrix vẫn mở.

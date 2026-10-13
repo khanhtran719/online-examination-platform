@@ -1,0 +1,75 @@
+
+> @exam/web@0.1.0 test
+> vitest run src/features/profile/__tests__/profile-page.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/profile/__tests__/profile-page.unit.spec.tsx (4 tests | 1 failed) 247ms
+   × does not carry an open discard dialog into another actor's profile 44ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/profile/__tests__/profile-page.unit.spec.tsx > does not carry an open discard dialog into another actor's profile
+AssertionError: expected <div class="_dialog_f905bc" …(4)>…(4)</div> to be null
+
+- Expected:
+null
+
++ Received:
+<div
+  aria-labelledby="_r_4_"
+  aria-modal="true"
+  class="_dialog_f905bc"
+  role="dialog"
+  tabindex="-1"
+>
+  <h2
+    id="_r_4_"
+  >
+    Bỏ thay đổi hồ sơ?
+  </h2>
+  <p>
+    Tên hiển thị và lựa chọn bảng xếp hạng đang sửa sẽ được thay bằng bản đã lưu.
+  </p>
+  <div
+    class="_row_24c302"
+  >
+    <button
+      class="_buttonSecondary_f905bc"
+      type="button"
+    >
+      Tiếp tục sửa
+    </button>
+    <button
+      class="_buttonDanger_f905bc"
+      type="button"
+    >
+      Bỏ thay đổi
+    </button>
+  </div>
+  <button
+    aria-label="Đóng hộp thoại"
+    class="_buttonGhost_f905bc _dialogClose_f905bc"
+    type="button"
+  >
+    ×
+  </button>
+</div>
+
+ ❯ src/features/profile/__tests__/profile-page.unit.spec.tsx:103:40
+    101|   state.profile = { ...state.profile, id: "actor-b", email: "b@example…
+    102|   h.rerenderSession();
+    103|   expect(screen.queryByRole("dialog")).toBeNull();
+       |                                        ^
+    104|   expect(screen.getByLabelText("Tên hiển thị")).toHaveValue("Minh");
+    105| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  11:03:27
+   Duration  1.23s (environment 49%, tests 22%, import 16%, transform 14%)
+

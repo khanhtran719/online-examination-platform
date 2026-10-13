@@ -1,0 +1,14 @@
+{
+  "width": 768,
+  "left": 24,
+  "right": 744,
+  "measurement": "Main wrapper content box, excluding its CSS padding",
+  "fontLoaded": true,
+  "dialog": null,
+  "viewport": {
+    "width": 768,
+    "height": 1100
+  },
+  "url": "http://127.0.0.1:4173/profile",
+  "violations": []
+}

@@ -35,6 +35,7 @@ interface SessionValue {
   setUnconfirmed: (value: boolean) => void;
   reload: (options?: { quiet?: boolean; confirmedLogin?: boolean }) => Promise<boolean>;
   adoptProfile: (profile: Profile) => void;
+  syncProfile: (profile: Profile) => void;
   replaceActor: (profile: Profile) => void;
   logout: () => Promise<void>;
   recover: () => Promise<RecoverResult>;
@@ -108,6 +109,18 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     [memory, queryClient],
   );
 
+  const syncProfile = useCallback((next: Profile) => {
+    // A profile projection refresh cannot authenticate or replace a principal.
+    setProfile((current) =>
+      current &&
+      current.id === next.id &&
+      current.email === next.email &&
+      next.revision >= current.revision
+        ? next
+        : current,
+    );
+  }, []);
+
   useEffect(() => {
     void reload();
   }, [reload]);
@@ -177,12 +190,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setUnconfirmed,
       reload,
       adoptProfile,
+      syncProfile,
       replaceActor,
       logout,
       recover,
     }),
     [
       adoptProfile,
+      syncProfile,
       error,
       hasUnconfirmed,
       logout,

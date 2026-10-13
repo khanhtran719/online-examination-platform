@@ -1,0 +1,10 @@
+
+> @exam/web@0.1.0 lint
+> eslint src *.ts *.mjs
+
+
+/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/src/features/profile/__tests__/use-profile.unit.spec.tsx
+  1:36  error  'waitFor' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 1 problem (1 error, 0 warnings)
+
