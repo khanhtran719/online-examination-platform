@@ -1,5 +1,13 @@
 # Web API integration và state contract
 
+Current review2026-10-13: Identity/Catalog/Assessment/Leaderboard/Reporting có
+implementation backend và HTTP adapter; full Web business integration vẫn chưa
+nghiệm thu. Bảng handoff gốc bên dưới giữ nghĩa lịch sử, không nói hiện chỉ có
+Identity backend. [UI-GAP register](ui-gap.md) phân biệt live Admin/replay blockers,
+safe Candidate presentation limitations và later product scope. Business metrics
+có endpoint riêng; technical providers vẫn thiếu. [Coverage review](web-tablet-coverage-review-2026-10-13.md)
+ghi trạng thái từng nhóm màn và ordered backlog, không đổi public API.
+
 PORT-05E 2026-10-13: Profile dùng existing GET/PUT me; immutable name/opt-in/
 expectedRevision/key cho explicit retry. ACK kiểm actor và expectedRevision+1;
 GET lỗi sau ACK chỉ retry GET. Projection giữ revision không lùi và consistency
@@ -38,7 +46,7 @@ late response fences. Demo/local chưa đóng full live integration. Demo board
 permission preset hiện dùng `catalog.read`; actual endpoint dùng `leaderboard.read`.
 Client không suy grant từ display role; không sửa backend/quyền trong port này.
 
-Document này là hướng dẫn nối frontend, không sửa [OpenAPI](../contracts/openapi.yaml). Thông tin DTO lấy từ contract và chín Identity routes hiện có. Xem [security](../security-and-permissions.md), [product](../product-specification.md), [ADR-003](../adr/003-idempotency-retention.md), [ADR-005](../adr/005-email-verification-and-signed-tokens.md).
+Document này là hướng dẫn nối frontend, không sửa [OpenAPI](../contracts/openapi.yaml). DTO/adapter phải đối chiếu current48 operations và source implementation; chín Identity routes là phạm vi actual browser HTTPS lịch sử, không phải tổng backend hiện có. Xem [security](../security-and-permissions.md), [product](../product-specification.md), [ADR-003](../adr/003-idempotency-retention.md), [ADR-005](../adr/005-email-verification-and-signed-tokens.md).
 
 PORT-04 update2026-10-12: Web adapter đã nối `getBusinessMetrics` tới existing
 GET `/v1/admin/business-metrics`, strict cohort/backlog DTO, `reporting.read`.
@@ -129,7 +137,10 @@ These are backend/product handoff items, not authorization to Grok to edit APIs.
 | UI-GAP-07 | Metrics returns snapshot, not historical timeseries, p99/CPU/RDS/cache/cost                                                    | Render supported values/asOf; unsupported values are unavailable. No fabricated charts/prices, AWS SDK in browser or direct console access                                                                                                                        |
 | UI-GAP-08 | No media attachments/essay/speaking/recovery/magic-link/GitHub endpoints                                                       | Keep v1 question renderer to three types/plain text; omit active controls for later features                                                                                                                                                                      |
 
-Record each gap in the implementation report as BLOCKED LIVE / PROPOSED CONTRACT with source reference. Grok completes demo UI around it but cannot mark full live/production done. Resolve later in the owning backend/product task with updated contracts/tests.
+Classify each gap using the current [register](ui-gap.md): BLOCKED capability,
+safe presentation LIMITATION, PRODUCT CONSTRAINT or LATER. These original handoff
+rows do not imply every Candidate API is blocked. Full live/production remains
+open; resolve actual contract additions in their backend/product owner with tests.
 
 ## 4. HTTP client rules
 

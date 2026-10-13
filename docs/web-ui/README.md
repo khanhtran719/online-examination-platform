@@ -1,5 +1,11 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
+Current coverage review2026-10-13: [REV-01–05](web-tablet-coverage-review-2026-10-13.md)
+map đủ33 families/39 routes. Home/Sample/chrome còn visual gaps; PORT-02 E5 và
+PORT-03 Q5 typography đã reopen IN PROGRESS. Các named delivery/test counts bên
+dưới giữ lịch sử, không là full-state/full-live acceptance. Next bounded PORT-06A
+Public convergence; mobile/app deferred, parent PORT-05/full live/production mở.
+
 > Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 
 PORT-05H2026-10-13 UI checkpoint: [Public How/Help/404](port-05h-2026-10-13.md)

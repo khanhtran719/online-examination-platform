@@ -1,16 +1,32 @@
 # UI-GAP register
 
-Ngày ghi: 2026-10-07. Mọi mục dưới đây là **BLOCKED LIVE**. Demo có thể mô phỏng để xem giao diện. Lỗi live không được đổi sang dữ liệu mẫu. Không bịa field, không giải mã JWT, không cộng tổng từ một trang. Màn hình không in mã `UI-GAP`; người dùng thấy câu trạng thái và hành động tương ứng.
+Rà soát2026-10-13: phân biệt capability bị chặn, presentation fallback an toàn và
+product scope chưa yêu cầu. Không phải mọi gap đều chặn toàn bộ live Candidate.
+Lỗi live không được đổi sang demo; không bịa field/quyền, giải mã JWT hoặc cộng
+tổng từ một trang. Màn hình không in mã `UI-GAP` thay lời hướng dẫn.
 
 | ID | Thiếu ở contract/backend | Cách UI xử lý | Trạng thái |
 | --- | --- | --- | --- |
 | UI-GAP-01 | `GET /v1/me` không trả permissions | Live chặn toàn bộ Admin. Demo chỉ có preset trong bản demo, không có trong artifact live | BLOCKED LIVE |
-| UI-GAP-02 | Attempt/history/result không trả tiêu đề và tên phần đã khóa | Chỉ hiện tiêu đề nếu người dùng đã mở đúng publication trong phiên. Lượt cũ không lấy tiêu đề đề hiện tại | BLOCKED LIVE |
-| UI-GAP-03 | Chi tiết đề không có `serverNow` và số lượt còn lại | Đồng hồ chỉ chạy sau Attempt. Trang chi tiết nói rõ là chưa có số lượt đã dùng | BLOCKED LIVE |
-| UI-GAP-04 | Không có search toàn cục, tổng số trang, danh sách version cũ | Cursor không hiện tổng. Không lọc giả trên một trang rồi gọi là tìm toàn bộ | BLOCKED LIVE |
-| UI-GAP-05 | History không có tiêu đề đề | Dòng lịch sử dùng trạng thái và mã phiên bản, không gọi detail từng dòng | BLOCKED LIVE |
+| UI-GAP-02 | Attempt/history/result thiếu frozen title/tên phần | PORT-05B/C/D/G chỉ dùng metadata memory khớp owning exam + frozen version, không dùng current publication cho old attempt; fallback mã và navigation trên phần đã tải | LIMITATION; richer presentation chưa có contract, không chặn mọi Candidate operation |
+| UI-GAP-03 | Chi tiết đề không có `serverNow` và quota còn lại | Không chạy countdown authoritative trước start; không suy quota từ history. Backend kiểm start và trả deadline/serverNow của attempt | LIMITATION; estimate không là guarantee |
+| UI-GAP-04 | Không global text search/page totals/version directory | Search có nhãn trong phần đã tải, cursor navigation và known authorized version ID; không giả endpoint/tổng | PRODUCT CONSTRAINT, không là backend outage |
+| UI-GAP-05 | History không có exam title; stats thiếu question labels | Fallback ID/version, không per-row Catalog N+1; null score khác0, dữ liệu đã tải khác toàn bộ history | LIMITATION; exact-version metadata projection cần quyết định riêng |
 | UI-GAP-06 | Replay cần revision quản trị; candidate attempt revision không được dùng | Live không gửi replay. Demo lấy revision từ bộ nhớ mẫu của lượt FAILED | BLOCKED LIVE |
-| UI-GAP-07 | Metrics chỉ là snapshot nghiệp vụ, không có p99/CPU/RDS/Redis/chi phí | Những ô thiếu hiện “Chưa có dữ liệu”, không hiện 0 và không vẽ biểu đồ | BLOCKED LIVE |
-| UI-GAP-08 | Chưa có media, essay, magic link, GitHub, reset password | Không có nút giả. Login chỉ email và mật khẩu | BLOCKED LIVE |
+| UI-GAP-07 | Chưa có provider technical metrics/timeseries/cost cho Web | BusinessMetrics có API/adapter riêng và asOf; technical thiếu hiện unavailable. Live Admin vẫn chịu UI-GAP-01 | TECHNICAL PROVIDER MISSING; không gọi business API chưa tồn tại |
+| UI-GAP-08 | Media/essay/reset password chưa có; magic link/GitHub người dùng để sau | Ba loại câu hỏi/plain text; login email/password, verified email. Không active buttons cho chức năng chưa triển khai | LATER / OUT OF CURRENT SCOPE |
 
-Identity local có chín API nghiệp vụ. Catalog, Assessment, Reporting và Admin vẫn là contract. Giao diện live gọi endpoint thật và hiện lỗi khi capability chưa có.
+Identity, Catalog, Assessment/Leaderboard và Reporting đã có controller/service/
+PostgreSQL adapters trong repository; OpenAPI48 operations/445 examples. Không
+đồng nhất “có code/backend local integration” với “browser full live đã nghiệm
+thu”. Identity actual HTTPS10 là evidence lịch sử riêng; WEB-03 trở đi còn mở.
+`useCapability`/AdminLayout vẫn chặn toàn bộ live Admin; replay còn độc lập thiếu
+authorized admin revision. Không dùng Candidate resume để vượt hai gate này.
+
+Nguồn đối chiếu: [Profile/Attempt/History DTO](../../apps/web/src/shared/api/dto.ts),
+[HTTP adapter](../../apps/web/src/live/create-http-api.ts),
+[Admin gate](../../apps/web/src/features/admin/gate.tsx),
+[Replay controller](../../apps/web/src/features/admin/use-attempt-replay.ts),
+[API/state contract](api-and-state-contract.md), [coverage review](web-tablet-coverage-review-2026-10-13.md).
+Các constraints không tự cho phép đổi endpoint/schema; chủ sở hữu backend/product
+phải quyết định projection/permission capability khi thực sự cần.

@@ -1,5 +1,13 @@
 # Danh mục màn hình và phần còn thiếu — 2026-10-12
 
+Current2026-10-13: [Web/tablet coverage review](web-tablet-coverage-review-2026-10-13.md)
+đối chiếu33/33 page families với39 current route patterns. PORT-01–05H có named
+local deliveries; Home/Sample/Public chrome còn selected-template gaps, phần
+typography Editor/Question-Import đang được mở lại để sửa. Các counts/checklists
+phía dưới là inventory thiết kế tại thời điểm ghi, không current port status.
+Mobile/app deferred; full live/production chưa được nghiệm thu. Raw artifacts
+đã [retired](artifact-retention-2026-10-13.md), approved templates giữ nguyên.
+
 **Checkpoint lựa chọn mới nhất:** người dùng đã tạm chốt [ba main references điều chỉnh EP-14/EP-15/EP-19](templates/codex-desktop-adjustments-2026-10-12/selection.md). Hiện33/33 page families có named visual reference,0 main references chờ chọn,0 prompt-only. Bộ35 references trước giữ nguyên, ba ảnh mới nằm trong bundle riêng. Mobile/full variants/states và application port vẫn mở; các counts30/3/0,16/4/13 phía dưới giữ lịch sử.
 
 **Checkpoint mới sau inventory:** [Codex Desktop V1](templates/codex-desktop-v1/README.md) giữ 35 ảnh chọn cuối, gồm 34 frame mới và preflight đã chọn. Registry hiện 30 families có named visual reference/3 main references review chờ chọn/0 prompt-only. [Review và checklist còn lại](templates/codex-desktop-v1/review-2026-10-12.md) ghi rõ mobile, full variants/states và port chưa đóng. Các con số 16/4/13 và thứ tự Stitch bên dưới là lịch sử trước đợt Codex.

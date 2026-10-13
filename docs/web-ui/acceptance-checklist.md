@@ -1,5 +1,11 @@
 # Web UI acceptance và scenario catalog
 
+Current coverage review2026-10-13: [REV-01–05](web-tablet-coverage-review-2026-10-13.md)
+map đủ33 families/39 routes. Home/Sample/chrome còn visual gaps; PORT-02 E5 và
+PORT-03 Q5 typography đã reopen IN PROGRESS. Các named delivery/test counts bên
+dưới giữ lịch sử, không là full-state/full-live acceptance. Next bounded PORT-06A
+Public convergence; mobile/app deferred, parent PORT-05/full live/production mở.
+
 UI artifact cleanup2026-10-13: đã dọn raw UI screenshots/trace/JSON/log/gallery,
 giữ approved templates, source tests và báo cáo thành văn. Các raw visual receipts
 cũ đã retired; test counts bên dưới là historical results, không là current raw
