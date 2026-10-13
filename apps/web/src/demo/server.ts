@@ -1272,34 +1272,42 @@ export function createDemoServer(options: DemoServerOptions = {}): {
       return ok(receipt);
     },
     async submitAttempt(attemptId, key) {
-      return remember(key, { attemptId, submit: true }, () => {
-        const user = requirePermission("assessment.take");
-        const record = ownedAttempt(attemptId, user.id);
-        if (record.submission) return ok(record.submission, 202, true);
-        if (record.attempt.status !== "IN_PROGRESS" && record.attempt.status !== "CREATED")
-          fail(422, "Attempt is closed");
-        const expired = clock() >= Date.parse(record.attempt.deadline);
-        const receipt: SubmitReceipt = {
-          attemptId,
-          submissionId: uuidV7(clock()),
-          acceptedAt: iso(),
-          acceptanceState: expired ? "EXPIRED" : "SUBMITTED",
-          expired,
-        };
-        record.submission = receipt;
-        record.scoringDueAt = clock() + 1_200;
-        record.attempt = {
-          ...record.attempt,
-          status: expired ? "EXPIRED" : "SUBMITTED",
-          submittedAt: receipt.acceptedAt,
-          expired,
-          canSave: false,
-          serverNow: iso(),
-          pollAfterSeconds: 2,
-          resultAvailable: false,
-        };
-        return ok(receipt, 202);
-      });
+      const caller = requirePermission("assessment.take");
+      ownedAttempt(attemptId, caller.id);
+      return catalogWrite(
+        key,
+        { attemptId, submit: true },
+        () => {
+          const user = requirePermission("assessment.take");
+          const record = ownedAttempt(attemptId, user.id);
+          if (record.submission) return ok(record.submission, 202, true);
+          if (record.attempt.status !== "IN_PROGRESS" && record.attempt.status !== "CREATED")
+            fail(422, "Attempt is closed");
+          const expired = clock() >= Date.parse(record.attempt.deadline);
+          const receipt: SubmitReceipt = {
+            attemptId,
+            submissionId: uuidV7(clock()),
+            acceptedAt: iso(),
+            acceptanceState: expired ? "EXPIRED" : "SUBMITTED",
+            expired,
+          };
+          record.submission = receipt;
+          record.scoringDueAt = clock() + 1_200;
+          record.attempt = {
+            ...record.attempt,
+            status: expired ? "EXPIRED" : "SUBMITTED",
+            submittedAt: receipt.acceptedAt,
+            expired,
+            canSave: false,
+            serverNow: iso(),
+            pollAfterSeconds: 2,
+            resultAvailable: false,
+          };
+          return ok(receipt, 202);
+        },
+        undefined,
+        "assessment.take",
+      );
     },
     async getAttemptStatus(attemptId) {
       const user = requirePermission("assessment.take");

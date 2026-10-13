@@ -11,6 +11,7 @@ const typeLabel = {
 
 export function QuestionView({
   question,
+  ordinal = question.position,
   selected,
   marked,
   disabled,
@@ -19,6 +20,7 @@ export function QuestionView({
   onClear,
 }: {
   question: CandidateQuestion;
+  ordinal?: number;
   selected: readonly string[];
   marked: boolean;
   disabled: boolean;
@@ -41,7 +43,7 @@ export function QuestionView({
   return (
     <article className={styles.question} aria-labelledby={`prompt-${question.id}`}>
       <p className={styles.questionMeta}>
-        Câu {question.position} · {typeLabel[question.type]} · {question.points} điểm
+        Câu {ordinal} · {typeLabel[question.type]} · {question.points} điểm
       </p>
       <h2 id={`prompt-${question.id}`} tabIndex={-1} className={styles.prompt}>
         {question.prompt}

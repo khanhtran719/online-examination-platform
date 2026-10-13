@@ -1,0 +1,165 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx (14 tests | 7 failed) 64ms
+   × keeps offline edits in memory and freezes editing at the server deadline 6ms
+   × does not label a batch saved when its receipt omits the captured answer 3ms
+   × stops unknown submit checks after five minutes, including a held request 2ms
+   × does not overlap slow status reconciliation after an unknown submit 2ms
+   × honors Retry-After before reconciling or replaying an unknown submit 2ms
+   × does not accept a submission receipt belonging to a different attempt 2ms
+   × pauses submit reconciliation while the same actor needs reauthentication 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > keeps offline edits in memory and freezes editing at the server deadline
+AssertionError: expected [] to deeply equal [ 'a' ]
+
+- Expected
++ Received
+
+- [
+-   "a",
+- ]
++ []
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:137:71
+    135|   act(() => window.dispatchEvent(new Event("offline")));
+    136|   act(() => hook.result.current.change("q", ["a"], false));
+    137|   expect(viewAnswer(hook.result.current.save, "q").selectedOptionIds).…
+       |                                                                       ^
+    138|   await advance(3_000);
+    139|   expect(hook.result.current.save.editingFrozen).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not label a batch saved when its receipt omits the captured answer
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ ready src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:56:59
+     54| async function ready(hook: ReturnType<typeof setup>) {
+     55|   for (let i = 0; i < 20 && !viewAnswer(hook.result.current.save, "q")…
+     56|   expect(viewAnswer(hook.result.current.save, "q").known).toBe(true);
+       |                                                           ^
+     57| }
+     58| beforeEach(() => {
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:144:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > stops unknown submit checks after five minutes, including a held request
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ ready src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:56:59
+     54| async function ready(hook: ReturnType<typeof setup>) {
+     55|   for (let i = 0; i < 20 && !viewAnswer(hook.result.current.save, "q")…
+     56|   expect(viewAnswer(hook.result.current.save, "q").known).toBe(true);
+       |                                                           ^
+     57| }
+     58| beforeEach(() => {
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:151:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not overlap slow status reconciliation after an unknown submit
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ ready src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:56:59
+     54| async function ready(hook: ReturnType<typeof setup>) {
+     55|   for (let i = 0; i < 20 && !viewAnswer(hook.result.current.save, "q")…
+     56|   expect(viewAnswer(hook.result.current.save, "q").known).toBe(true);
+       |                                                           ^
+     57| }
+     58| beforeEach(() => {
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:159:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > honors Retry-After before reconciling or replaying an unknown submit
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ ready src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:56:59
+     54| async function ready(hook: ReturnType<typeof setup>) {
+     55|   for (let i = 0; i < 20 && !viewAnswer(hook.result.current.save, "q")…
+     56|   expect(viewAnswer(hook.result.current.save, "q").known).toBe(true);
+       |                                                           ^
+     57| }
+     58| beforeEach(() => {
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:167:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not accept a submission receipt belonging to a different attempt
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ ready src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:56:59
+     54| async function ready(hook: ReturnType<typeof setup>) {
+     55|   for (let i = 0; i < 20 && !viewAnswer(hook.result.current.save, "q")…
+     56|   expect(viewAnswer(hook.result.current.save, "q").known).toBe(true);
+       |                                                           ^
+     57| }
+     58| beforeEach(() => {
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:177:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > pauses submit reconciliation while the same actor needs reauthentication
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ ready src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:56:59
+     54| async function ready(hook: ReturnType<typeof setup>) {
+     55|   for (let i = 0; i < 20 && !viewAnswer(hook.result.current.save, "q")…
+     56|   expect(viewAnswer(hook.result.current.save, "q").known).toBe(true);
+       |                                                           ^
+     57| }
+     58| beforeEach(() => {
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:182:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 7 passed (14)
+   Start at  09:39:30
+   Duration  904ms (environment 64%, import 19%, transform 9%, tests 8%)
+

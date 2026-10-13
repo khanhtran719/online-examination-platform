@@ -1,7 +1,8 @@
-import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 
+import { useMemory } from "@web/app/memory";
 import { useRuntime } from "@web/app/runtime";
 import { useSession } from "@web/app/session";
 import type { Answer, Attempt } from "@web/shared/api/dto";
@@ -31,6 +32,7 @@ import {
   setTransport,
 } from "./autosave";
 import { clockMilestone, type ClockSample, remainingMs } from "./clock";
+import { completeConflictAnswers } from "./room-receipts";
 import { advanceSubmitClock } from "./room-tick";
 import {
   beginManualSubmit,
@@ -41,6 +43,7 @@ import {
   retryBlockedSubmit,
   type SubmitState,
 } from "./submit-flow";
+import { useRoomReads, wrongRoomResponse } from "./use-room-reads";
 
 async function readAnswers(api: PlatformApi, attemptId: string): Promise<Answer[]> {
   const rows: Answer[] = [];
@@ -51,16 +54,31 @@ async function readAnswers(api: PlatformApi, attemptId: string): Promise<Answer[
     if (!response.data.next) return rows;
     cursor = response.data.next;
   }
-  return rows;
+  throw wrongRoomResponse();
 }
 
 export function useExamRoom(attemptId: string) {
   const { api } = useRuntime();
   const session = useSession();
+  const setUnconfirmed = session.setUnconfirmed;
+  const memory = useMemory();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const attemptIdRef = useRef(attemptId);
-  attemptIdRef.current = attemptId;
+  const actor = session.profile?.id ?? "";
+  const scope = useMemo(() => ({ actor, attemptId }), [actor, attemptId]);
+  const active = useRef({
+    scope,
+    mounted: true,
+    status: session.status,
+    needsReauth: session.needsReauth,
+  });
+  active.current.scope = scope;
+  active.current.status = session.status;
+  active.current.needsReauth = session.needsReauth;
+  const isCurrent = useCallback(
+    () => active.current.mounted && active.current.scope === scope,
+    [scope],
+  );
   const saveRef = useRef<AutosaveState>(createAutosaveState());
   const [save, setSave] = useState(saveRef.current);
   const submitRef = useRef<SubmitState>(createSubmitState());
@@ -70,6 +88,13 @@ export function useExamRoom(attemptId: string) {
   const activeSend = useRef<string | null>(null);
   const transportStarted = useRef<number | null>(null);
   const posting = useRef(false);
+  const reconciling = useRef(false);
+  const reconcileStarted = useRef<number | null>(null);
+  const submitPosts = useRef(0);
+  const [submitStopped, setSubmitStopped] = useState(false);
+  const stoppedRef = useRef(false);
+  const deniedRef = useRef(false);
+  const [accessError, setAccessError] = useState<unknown>(null);
   const [recovering, setRecovering] = useState(false);
   const reconcileAt = useRef(0);
   const [remaining, setRemaining] = useState<number | null>(null);
@@ -78,70 +103,128 @@ export function useExamRoom(attemptId: string) {
   const [conflictAnswers, setConflictAnswers] = useState<Answer[]>([]);
   const [conflictError, setConflictError] = useState<unknown>(null);
 
-  const commit = useCallback((next: AutosaveState) => {
-    saveRef.current = next;
-    setSave(next);
-  }, []);
-  const setSubmitBoth = useCallback((next: SubmitState) => {
-    submitRef.current = next;
-    setSubmit(next);
-  }, []);
-
-  const attemptQuery = useQuery({
-    queryKey: ["attempt", attemptId],
-    queryFn: () => api.resumeAttempt(attemptId).then((response) => response.data),
-    staleTime: Infinity,
-  });
-  const runnable =
-    attemptQuery.data?.status === "IN_PROGRESS" || attemptQuery.data?.status === "CREATED";
-  const questions = useInfiniteQuery({
-    queryKey: ["attempt-questions", attemptId],
-    enabled: runnable,
-    initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) =>
-      api
-        .getQuestions(attemptId, { pageSize: 20, cursor: pageParam })
-        .then((response) => response.data),
-    getNextPageParam: (last) => last.next ?? undefined,
-    staleTime: Infinity,
-  });
-  const answers = useInfiniteQuery({
-    queryKey: ["attempt-answers", attemptId],
-    enabled: runnable,
-    initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) =>
-      api
-        .getAnswers(attemptId, { pageSize: 20, cursor: pageParam })
-        .then((response) => response.data),
-    getNextPageParam: (last) => last.next ?? undefined,
-    staleTime: Infinity,
+  const commit = useCallback(
+    (next: AutosaveState) => {
+      if (!isCurrent() || deniedRef.current) return;
+      saveRef.current = next;
+      setSave(next);
+    },
+    [isCurrent],
+  );
+  const setSubmitBoth = useCallback(
+    (next: SubmitState) => {
+      if (!isCurrent() || deniedRef.current) return;
+      submitRef.current = next;
+      setSubmit(next);
+    },
+    [isCurrent],
+  );
+  const canAct = useCallback(
+    () =>
+      isCurrent() &&
+      !deniedRef.current &&
+      active.current.status === "authenticated" &&
+      !active.current.needsReauth &&
+      saveRef.current.authenticated,
+    [isCurrent],
+  );
+  const canWork = useCallback(() => canAct() && !saveRef.current.offline, [canAct]);
+  const handleError = useCallback(
+    (error: unknown) => {
+      if (!isCurrent() || !isApiError(error)) return;
+      if (error.status === 401) {
+        commit(holdForReauth(saveRef.current));
+        return;
+      }
+      if (error.status !== 403 && error.status !== 404 && error.kind !== "malformed") return;
+      deniedRef.current = true;
+      sampleRef.current = null;
+      saveRef.current = setTransport(createAutosaveState(), {
+        canSave: false,
+        authenticated: false,
+        editingFrozen: true,
+      });
+      setSave(saveRef.current);
+      setConflictAnswers([]);
+      submitRef.current = createSubmitState();
+      setSubmit(submitRef.current);
+      setNotice(null);
+      setRemaining(null);
+      setAccessError(error);
+      memory.clear();
+      for (const kind of ["attempt", "attempt-questions", "attempt-answers"]) {
+        const queryKey = [kind, actor, attemptId];
+        void queryClient.cancelQueries({ queryKey });
+        queryClient.removeQueries({ queryKey });
+      }
+    },
+    [actor, attemptId, commit, isCurrent, memory, queryClient],
+  );
+  const allowed =
+    session.status === "authenticated" &&
+    !!actor &&
+    !session.needsReauth &&
+    save.authenticated &&
+    !accessError;
+  const onAttempt = useCallback(
+    (attempt: Attempt, sample: ClockSample) => {
+      if (!isCurrent() || deniedRef.current) return;
+      sampleRef.current = sample;
+      commit(
+        setTransport(saveRef.current, {
+          canSave: attempt.canSave && remainingMs(sample, performance.now()) > 0,
+        }),
+      );
+    },
+    [commit, isCurrent],
+  );
+  const readCurrent = useCallback(
+    () =>
+      isCurrent() &&
+      !deniedRef.current &&
+      active.current.status === "authenticated" &&
+      !active.current.needsReauth,
+    [isCurrent],
+  );
+  const { attemptQuery, questions, answers } = useRoomReads({
+    api,
+    actor,
+    attemptId,
+    enabled: allowed,
+    isCurrent: readCurrent,
+    onError: handleError,
+    onAttempt,
   });
 
   useEffect(() => {
+    const current = active.current;
+    active.current.mounted = true;
+    deniedRef.current = false;
+    setAccessError(null);
     saveRef.current = createAutosaveState();
     setSave(saveRef.current);
     submitRef.current = createSubmitState();
     setSubmit(submitRef.current);
     sampleRef.current = null;
     previousRemaining.current = Number.POSITIVE_INFINITY;
-  }, [attemptId]);
-
-  useEffect(() => {
-    const attempt = attemptQuery.data;
-    if (!attempt) return;
-    const mono = performance.now();
-    const sample: ClockSample = {
-      serverNowMs: Date.parse(attempt.serverNow),
-      monotonicAtSample: mono,
-      deadlineMs: Date.parse(attempt.deadline),
-      rttMs: 0,
-      canSave: attempt.canSave,
+    activeSend.current = null;
+    transportStarted.current = null;
+    posting.current = false;
+    reconciling.current = false;
+    reconcileStarted.current = null;
+    reconcileAt.current = 0;
+    submitPosts.current = 0;
+    stoppedRef.current = false;
+    setSubmitStopped(false);
+    setRemaining(null);
+    setMilestone(null);
+    setNotice(null);
+    setConflictAnswers([]);
+    setConflictError(null);
+    return () => {
+      if (current.scope === scope) current.mounted = false;
     };
-    sampleRef.current = sample;
-    commit(
-      setTransport(saveRef.current, { canSave: attempt.canSave && remainingMs(sample, mono) > 0 }),
-    );
-  }, [attemptQuery.data, commit]);
+  }, [scope]);
 
   useEffect(() => {
     const questionIds = (questions.data?.pages ?? []).flatMap((page) =>
@@ -149,8 +232,7 @@ export function useExamRoom(attemptId: string) {
     );
     const observed = (answers.data?.pages ?? []).flatMap((page) => page.items);
     if (questionIds.length === 0 && observed.length === 0) return;
-    const authoritative =
-      questions.isSuccess && !questions.hasNextPage && answers.isSuccess && !answers.hasNextPage;
+    const authoritative = questions.isSuccess && answers.isSuccess && !answers.hasNextPage;
     const next = ingestAnswerPage(saveRef.current, questionIds, observed, { authoritative });
     if (next !== saveRef.current) commit(next);
   }, [
@@ -165,11 +247,11 @@ export function useExamRoom(attemptId: string) {
 
   const transmit = useCallback(
     async (batch: InFlightBatch) => {
-      if (activeSend.current === batch.key) return;
+      if (!canWork() || activeSend.current !== null) return;
       activeSend.current = batch.key;
       transportStarted.current = performance.now();
       try {
-        const response = await api.saveAnswers(attemptIdRef.current, batch.key, {
+        const response = await api.saveAnswers(attemptId, batch.key, {
           answers: batch.answers.map((answer) => ({
             questionId: answer.questionId,
             selectedOptionIds: [...answer.selectedOptionIds],
@@ -177,16 +259,36 @@ export function useExamRoom(attemptId: string) {
             expectedVersion: answer.expectedVersion,
           })),
         });
+        if (!isCurrent() || deniedRef.current) return;
+        if (
+          response.data.attemptId !== attemptId ||
+          response.data.answers.length !== batch.answers.length ||
+          !batch.answers.every((sent) =>
+            response.data.answers.some(
+              (saved) =>
+                saved.questionId === sent.questionId && saved.version === sent.expectedVersion + 1,
+            ),
+          )
+        )
+          throw wrongRoomResponse();
         commit(acknowledge(saveRef.current, response.data, batch.key));
         setNotice(null);
       } catch (caught) {
+        if (!isCurrent() || deniedRef.current) return;
+        handleError(caught);
+        if (deniedRef.current) return;
         const now = performance.now();
         if (isApiError(caught) && caught.status === 409) {
           commit(failConflict(saveRef.current));
+          setConflictAnswers([]);
           try {
-            setConflictAnswers(await readAnswers(api, attemptIdRef.current));
+            const fresh = await readAnswers(api, attemptId);
+            if (!isCurrent() || deniedRef.current) return;
+            setConflictAnswers(completeConflictAnswers(saveRef.current, fresh));
             setConflictError(null);
           } catch (error) {
+            if (!isCurrent() || deniedRef.current) return;
+            handleError(error);
             setConflictError(error);
           }
         } else if (isApiError(caught) && caught.status === 401) {
@@ -243,64 +345,110 @@ export function useExamRoom(attemptId: string) {
           );
         }
       } finally {
-        if (activeSend.current === batch.key) {
+        if (isCurrent() && activeSend.current === batch.key) {
           activeSend.current = null;
           transportStarted.current = null;
         }
       }
     },
-    [api, commit],
+    [api, attemptId, canWork, commit, handleError, isCurrent],
   );
 
   useEffect(() => {
     let alive = true;
+    function current() {
+      return alive && isCurrent() && !deniedRef.current;
+    }
+    function stopChecking() {
+      stoppedRef.current = true;
+      setSubmitStopped(true);
+    }
     async function postSubmit() {
       const key = submitRef.current.key;
-      if (!key || posting.current || submitRef.current.phase !== "posting") return;
+      if (
+        !key ||
+        !canWork() ||
+        posting.current ||
+        stoppedRef.current ||
+        submitRef.current.phase !== "posting"
+      )
+        return;
+      if (submitPosts.current >= 6) {
+        stopChecking();
+        return;
+      }
       posting.current = true;
+      submitPosts.current += 1;
+      reconcileStarted.current ??= performance.now();
       try {
-        const response = await api.submitAttempt(attemptIdRef.current, key);
-        if (!alive) return;
+        const response = await api.submitAttempt(attemptId, key);
+        if (!current() || stoppedRef.current || !canAct()) return;
+        if (response.data.attemptId !== attemptId) throw wrongRoomResponse();
         const accepted = markSubmitAccepted(submitRef.current, response.data);
         setSubmitBoth(accepted);
-        navigate(`/attempts/${attemptIdRef.current}/status`, {
+        navigate(`/attempts/${attemptId}/status`, {
           replace: true,
           state: { unconfirmed: accepted.unconfirmedCount },
         });
       } catch (caught) {
-        if (!alive) return;
-        if (isApiError(caught) && (caught.status === 422 || caught.status === 409)) {
-          navigate(`/attempts/${attemptIdRef.current}/status`, { replace: true });
-          return;
-        }
+        if (!current() || stoppedRef.current) return;
+        handleError(caught);
+        if (deniedRef.current) return;
         setSubmitBoth(markSubmitUnknown(submitRef.current));
-        setNotice("Chưa rõ bài đã được nộp chưa. Cùng khóa nộp sẽ được kiểm tra lại.");
+        const delay = Math.max(
+          2_000 * 2 ** Math.min(submitPosts.current - 1, 3),
+          (isApiError(caught) ? (caught.retryAfterSeconds ?? 0) : 0) * 1_000,
+        );
+        reconcileAt.current = performance.now() + delay;
+        setNotice("Chưa rõ bài đã được nộp chưa. Đang kiểm tra trạng thái trước khi thử nộp lại.");
       } finally {
-        posting.current = false;
+        if (current()) posting.current = false;
       }
     }
     async function reconcile() {
       const key = submitRef.current.key;
-      if (!key) return;
+      if (!key || !canWork() || reconciling.current || stoppedRef.current) return;
+      reconciling.current = true;
       try {
-        const status = await api.getAttemptStatus(attemptIdRef.current);
-        if (!alive) return;
+        const status = await api.getAttemptStatus(attemptId);
+        if (!current() || stoppedRef.current || !canAct()) return;
+        if (status.data.id !== attemptId) throw wrongRoomResponse();
         if (status.data.status !== "IN_PROGRESS" && status.data.status !== "CREATED") {
-          navigate(`/attempts/${attemptIdRef.current}/status`, {
+          navigate(`/attempts/${attemptId}/status`, {
             replace: true,
             state: { unconfirmed: submitRef.current.unconfirmedCount },
           });
           return;
         }
         setSubmitBoth({ ...submitRef.current, phase: "posting" });
-        posting.current = false;
+        if (!canWork()) return;
+        if (submitPosts.current >= 6) {
+          stopChecking();
+          return;
+        }
+        reconcileAt.current =
+          performance.now() + Math.max(2_000, (status.data.pollAfterSeconds ?? 0) * 1000);
         await postSubmit();
-      } catch {
-        if (alive) setNotice("Chưa kiểm tra được trạng thái nộp.");
+      } catch (caught) {
+        if (!current() || stoppedRef.current) return;
+        handleError(caught);
+        reconcileAt.current =
+          performance.now() +
+          Math.max(10_000, (isApiError(caught) ? (caught.retryAfterSeconds ?? 0) : 0) * 1_000);
+        setNotice("Chưa kiểm tra được trạng thái nộp. Bài chưa được xác nhận đã nộp.");
+      } finally {
+        if (current()) reconciling.current = false;
       }
     }
     const timer = window.setInterval(() => {
       const now = performance.now();
+      if (!current()) return;
+      if (
+        reconcileStarted.current !== null &&
+        now - reconcileStarted.current >= 300_000 &&
+        submitRef.current.phase !== "accepted"
+      )
+        stopChecking();
       const sample = sampleRef.current;
       if (sample) {
         const left = remainingMs(sample, now);
@@ -327,8 +475,11 @@ export function useExamRoom(attemptId: string) {
       if (advanced.submit !== submitRef.current) setSubmitBoth(advanced.submit);
       if (advanced.transmit) void transmit(advanced.transmit);
       if (submitRef.current.phase === "posting") void postSubmit();
-      if (submitRef.current.phase === "verifying" && now >= reconcileAt.current) {
-        reconcileAt.current = now + 2_000;
+      if (
+        !document.hidden &&
+        submitRef.current.phase === "verifying" &&
+        now >= reconcileAt.current
+      ) {
         void reconcile();
       }
     }, 250);
@@ -336,52 +487,52 @@ export function useExamRoom(attemptId: string) {
       alive = false;
       window.clearInterval(timer);
     };
-  }, [api, commit, navigate, setSubmitBoth, transmit]);
+  }, [
+    api,
+    attemptId,
+    canAct,
+    canWork,
+    commit,
+    handleError,
+    isCurrent,
+    navigate,
+    setSubmitBoth,
+    transmit,
+  ]);
 
   useEffect(() => {
-    if (!session.needsReauth) return;
+    if (!session.needsReauth && session.status === "authenticated") return;
     commit(holdForReauth(saveRef.current));
-  }, [commit, session.needsReauth]);
+  }, [commit, session.needsReauth, session.status]);
 
   useEffect(() => {
-    const dirty = dirtyCount(save) > 0 || save.inFlight !== null || save.phase === "conflict";
-    session.setUnconfirmed(dirty);
-    return () => session.setUnconfirmed(false);
-  }, [save, session]);
+    const dirty =
+      dirtyCount(save) > 0 ||
+      save.inFlight !== null ||
+      save.phase === "conflict" ||
+      (submit.phase !== "idle" && submit.phase !== "accepted");
+    setUnconfirmed(dirty);
+    return () => setUnconfirmed(false);
+  }, [save, setUnconfirmed, submit.phase]);
 
   useEffect(() => {
     function onLeave(event: BeforeUnloadEvent) {
-      if (dirtyCount(saveRef.current) === 0 && !saveRef.current.inFlight) return;
+      if (
+        dirtyCount(saveRef.current) === 0 &&
+        !saveRef.current.inFlight &&
+        (submitRef.current.phase === "idle" || submitRef.current.phase === "accepted")
+      )
+        return;
       event.preventDefault();
     }
     window.addEventListener("beforeunload", onLeave);
     return () => window.removeEventListener("beforeunload", onLeave);
   }, []);
 
+  const refetchAttempt = attemptQuery.refetch;
   useEffect(() => {
-    async function resync() {
-      try {
-        const response = await api.resumeAttempt(attemptIdRef.current);
-        const mono = performance.now();
-        const sample: ClockSample = {
-          serverNowMs: Date.parse(response.data.serverNow),
-          monotonicAtSample: mono,
-          deadlineMs: Date.parse(response.data.deadline),
-          rttMs: 0,
-          canSave: response.data.canSave,
-        };
-        sampleRef.current = sample;
-        const left = remainingMs(sample, mono);
-        commit(
-          setTransport(saveRef.current, {
-            canSave: response.data.canSave && left > 0,
-            offline: false,
-          }),
-        );
-        queryClient.setQueryData<Attempt>(["attempt", attemptIdRef.current], response.data);
-      } catch (caught) {
-        if (isApiError(caught) && caught.kind === "network") commit(failOffline(saveRef.current));
-      }
+    function resync() {
+      if (canWork()) void refetchAttempt({ cancelRefetch: false });
     }
     function onVisible() {
       if (document.visibilityState === "visible") void resync();
@@ -401,12 +552,46 @@ export function useExamRoom(attemptId: string) {
       window.removeEventListener("online", onOnline);
       window.removeEventListener("offline", onOffline);
     };
-  }, [api, commit, queryClient]);
+  }, [canWork, commit, refetchAttempt]);
+
+  const hidden = !allowed;
+  const conflictReady =
+    save.conflictQuestionIds.length > 0 &&
+    !conflictError &&
+    save.conflictQuestionIds.every((id) =>
+      conflictAnswers.some(
+        (answer) => answer.questionId === id && answer.version >= (save.loaded[id]?.version ?? 0),
+      ),
+    );
+  const attempt = attemptQuery.data;
+  const candidateMeta = attempt ? memory.lookup?.(attempt.publishedVersionId) : null;
+  const frozen =
+    candidateMeta &&
+    attempt &&
+    candidateMeta.examId === attempt.examId &&
+    candidateMeta.publishedVersionId === attempt.publishedVersionId
+      ? candidateMeta
+      : null;
 
   return {
-    attemptQuery,
-    questions,
-    answers,
+    attemptQuery: {
+      ...attemptQuery,
+      data: accessError || session.status !== "authenticated" ? undefined : attemptQuery.data,
+      error: accessError ?? attemptQuery.error,
+    },
+    questions: { ...questions, data: hidden ? undefined : questions.data },
+    answers: { ...answers, data: hidden ? undefined : answers.data },
+    accessError,
+    submitStopped,
+    conflictReady,
+    scope: `${actor}:${attemptId}`,
+    canSubmit: allowed && !save.offline && save.canSave && submit.phase === "idle",
+    canCheckSubmit:
+      canWork() &&
+      !reconciling.current &&
+      !posting.current &&
+      performance.now() >= reconcileAt.current,
+    frozen,
     save,
     remaining,
     milestone,
@@ -415,10 +600,12 @@ export function useExamRoom(attemptId: string) {
     conflictAnswers,
     conflictError,
     loadMore() {
-      void questions.fetchNextPage();
-      void answers.fetchNextPage();
+      if (!canWork() || questions.isFetching || answers.isFetching) return;
+      if (questions.hasNextPage) void questions.fetchNextPage();
+      if (answers.hasNextPage) void answers.fetchNextPage();
     },
     change(questionId: string, selectedOptionIds: readonly string[], marked: boolean) {
+      if (!canAct()) return;
       try {
         commit(
           editAnswer(
@@ -433,10 +620,12 @@ export function useExamRoom(attemptId: string) {
       }
     },
     requestSubmit() {
+      if (!canWork() || !saveRef.current.canSave || submitRef.current.phase !== "idle") return;
       commit(setTransport(saveRef.current, { editingFrozen: true }));
       setSubmitBoth(beginManualSubmit(submitRef.current, dirtyCount(saveRef.current), uuidV7));
     },
     cancelSubmit() {
+      if (!isCurrent() || submitRef.current.phase !== "save-blocked") return;
       commit(setTransport(saveRef.current, { editingFrozen: false }));
       setSubmitBoth(cancelBlockedSubmit(submitRef.current));
     },
@@ -446,6 +635,14 @@ export function useExamRoom(attemptId: string) {
       setSubmitBoth(retryBlockedSubmit(submitRef.current));
     },
     retrySave() {
+      if (
+        !isCurrent() ||
+        deniedRef.current ||
+        !saveRef.current.canSave ||
+        !saveRef.current.authenticated ||
+        active.current.needsReauth
+      )
+        return;
       const now = performance.now();
       const rearmed = rearmExhausted(setTransport(saveRef.current, { offline: false }), now);
       const sent = capture(rearmed, now, uuidV7, { force: true });
@@ -453,24 +650,44 @@ export function useExamRoom(attemptId: string) {
       if (sent.batch) void transmit(sent.batch);
     },
     reloadConflict() {
-      void readAnswers(api, attemptId).then(setConflictAnswers).catch(setConflictError);
+      if (!canWork()) return;
+      setConflictAnswers([]);
+      setConflictError(null);
+      void readAnswers(api, attemptId)
+        .then((fresh) => {
+          if (isCurrent() && !deniedRef.current)
+            setConflictAnswers(completeConflictAnswers(saveRef.current, fresh));
+        })
+        .catch((error: unknown) => {
+          if (!isCurrent()) return;
+          handleError(error);
+          setConflictError(error);
+        });
     },
     resolveServer() {
+      if (!canWork() || !conflictReady) return;
       commit(resolveUseServer(saveRef.current, conflictAnswers));
     },
     resolveMine() {
+      if (!canWork() || !conflictReady) return;
       const kept = resolveKeepMine(saveRef.current, conflictAnswers);
       const sent = capture(kept, performance.now(), uuidV7, { force: true });
       commit(sent.state);
       if (sent.batch) void transmit(sent.batch);
     },
     async reauthenticate(email: string, password: string) {
+      if (!isCurrent() || deniedRef.current) return;
       const previous = session.profile?.email ?? "";
       setRecovering(true);
       try {
         await api.login({ email, password });
+        if (!isCurrent() || deniedRef.current) return;
         const profile = await api.getProfile();
-        if (normalizeEmail(profile.data.email) !== normalizeEmail(previous)) {
+        if (!isCurrent() || deniedRef.current) return;
+        if (
+          profile.data.id !== actor ||
+          normalizeEmail(profile.data.email) !== normalizeEmail(previous)
+        ) {
           session.replaceActor(profile.data);
           navigate("/dashboard", { replace: true });
           return;
@@ -479,8 +696,22 @@ export function useExamRoom(attemptId: string) {
         commit(resumeAuthenticated(saveRef.current, performance.now()));
         setNotice("Đã đăng nhập lại. Lần lưu đang giữ sẽ được gửi với cùng khóa.");
       } finally {
-        setRecovering(false);
+        if (isCurrent()) setRecovering(false);
       }
+    },
+    retryReconcile() {
+      if (
+        !canWork() ||
+        reconciling.current ||
+        posting.current ||
+        performance.now() < reconcileAt.current
+      )
+        return;
+      stoppedRef.current = false;
+      setSubmitStopped(false);
+      reconcileStarted.current = performance.now();
+      submitPosts.current = 0;
+      setSubmitBoth(markSubmitUnknown(submitRef.current));
     },
     recovering,
   };

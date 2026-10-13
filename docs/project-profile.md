@@ -1,5 +1,15 @@
 # Project profile
 
+PORT-05D update 2026-10-13: [Exam Room/Autosave/Submit](web-ui/port-05d-2026-10-13.md)
+D1–D5 COMPLETE locally trên Web/tablet 768/1024/1280/1440px. Read/controller/view
+boundary, actor/attempt fences, exact ACK, explicit conflict, bounded unknown
+submit và paged 120-question flow có regressions. 850 root/49 Chromium PASS;
+strict builds/lint/format/types đạt. 26 final captures có font/axe/overflow/
+gutter/dialog checks; 3.219 protected files unchanged. [Evidence](web-ui/evidence/port-05d-2026-10-13/README.md).
+Next PORT-05E Profile/Account; roadmap89/217, FE7/32, parent PORT-05/full live/
+mobile/production vẫn mở. Seed401 và broader demo receipt audit giữ follow-up.
+Các checkpoint bên dưới là lịch sử.
+
 PORT-05C update2026-10-13: [Status/Result/Released Review](web-ui/port-05c-2026-10-13.md)
 S1–S5 COMPLETE locally. EP-11/12/13 Web/tablet768/1024/1280/1440px; feature read
 controllers, cooldown/cap/actor fences, release/cache clearing và read-only

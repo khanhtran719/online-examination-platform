@@ -124,7 +124,7 @@ test.describe("demo", () => {
     await expect(page.getByRole("dialog", { name: "Phiếu câu hỏi" })).toHaveCount(0);
     await page.setViewportSize({ width: 1024, height: 800 });
     await page.getByRole("link", { name: "mở phòng" }).click();
-    await expect(page.getByText(/Bài làm không kèm tiêu đề đã khóa/)).toBeVisible();
+    await expect(page.getByText(/Chưa có tên của phiên bản này/)).toBeVisible();
     await expect(page.getByText("Version 1 prompt")).toBeVisible();
     await expect(page.getByRole("heading", { level: 1 })).not.toContainText(
       "Networking Fundamentals",

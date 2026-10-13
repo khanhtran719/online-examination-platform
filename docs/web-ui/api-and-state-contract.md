@@ -1,5 +1,15 @@
 # Web API integration và state contract
 
+PORT-05D2026-10-13 không đổi endpoint/DTO. Assessment queries bind actor/attempt;
+403/404/malformed purge và latch,401 giữ pending intent cho đúng actor reauth.
+Save ACK kiểm exact captured scope/version; reconnect/reauth giữ server wait.
+Manual submit flushes receipts, không body answers; unknown status reads serialize,
+pause hidden/offline/reauth, bounded5min/6POST với immutable key và explicit later
+check.409/422 không đồng nghĩa accepted. Clock lấy request/receipt, RTT/2 và
+monotonic elapsed; canSave và deadline server vẫn quyết định. Blank0 chỉ khi
+answer scope đầy đủ, không đòi toàn bộ question pages. Mounted key không persist
+qua reload; full live/multi-tab acceptance còn mở. [Review](port-05d-2026-10-13.md).
+
 PORT-05C2026-10-13: existing status/result/review reads, không endpoint/DTO mới.
 Pending result không phải submit ACK. IDs phải đúng route; status metadata phải
 khớp published version trước khi dùng exam ID cho board/frozen memory. Memory

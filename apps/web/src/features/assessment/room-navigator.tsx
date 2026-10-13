@@ -24,6 +24,7 @@ export function RoomNavigator({
   onMarkedOnly: (value: boolean) => void;
   onPick: (id: string) => void;
 }) {
+  const ordinals = new Map(questions.map((question, index) => [question.id, index + 1]));
   const titles = new Map(sections.map((section) => [section.id, section.title]));
   const grouped: { id: string; title: string; items: typeof questions }[] = [];
   for (const question of questions) {
@@ -116,10 +117,10 @@ export function RoomNavigator({
                   type="button"
                   className={className}
                   aria-current={current ? "true" : undefined}
-                  aria-label={`Câu ${question.position}, ${label}`}
+                  aria-label={`Câu ${ordinals.get(question.id)}, ${label}`}
                   onClick={() => onPick(question.id)}
                 >
-                  {question.position}
+                  {ordinals.get(question.id)}
                   <span className={roomStyles.cellMark} aria-hidden="true">
                     {!view.known
                       ? "?"

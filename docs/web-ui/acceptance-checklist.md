@@ -1,5 +1,14 @@
 # Web UI acceptance và scenario catalog
 
+Current checkpoint 2026-10-13: [PORT-05D D1–D5](port-05d-2026-10-13.md) COMPLETE
+locally trên Web/tablet 768/1024/1280/1440px. 850 root/49 Chromium PASS;
+26 ảnh có font loaded, zero automated axe violations, không tràn ngang,
+gutter nhỏ nhất 24px; 7 dialog có backdrop toàn viewport/căn giữa. Browser dùng
+attempt mới, ba loại đáp án/save/submit/result 6/6 và đề 120 câu chỉ tải trang đầu.
+Faults loss/delay ACK, conflict, 429, reauth và offline có controlled demo proof;
+không thay real multi-tab/network/live lifecycle acceptance. [Evidence](evidence/port-05d-2026-10-13/README.md).
+Parent PORT-05, FE7/32, full live/mobile/production còn mở. Bên dưới là checkpoint cũ.
+
 Current checkpoint2026-10-13: [PORT-05C S1–S5](port-05c-2026-10-13.md) COMPLETE
 locally cho EP-11/12/13 Web/tablet.827 root/44 Chromium PASS; final review
 có full root/full Chromium receipts.20 final captures: font loaded, zero

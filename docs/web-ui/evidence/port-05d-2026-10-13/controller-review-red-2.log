@@ -1,0 +1,52 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx (14 tests | 2 failed) 101ms
+   × keeps offline edits in memory and freezes editing at the server deadline 7ms
+   × does not label a batch saved when its receipt omits the captured answer 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > keeps offline edits in memory and freezes editing at the server deadline
+AssertionError: expected [] to deeply equal [ 'a' ]
+
+- Expected
++ Received
+
+- [
+-   "a",
+- ]
++ []
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:133:71
+    131|   act(() => window.dispatchEvent(new Event("offline")));
+    132|   act(() => hook.result.current.change("q", ["a"], false));
+    133|   expect(viewAnswer(hook.result.current.save, "q").selectedOptionIds).…
+       |                                                                       ^
+    134|   await advance(3_000);
+    135|   expect(hook.result.current.save.editingFrozen).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not label a batch saved when its receipt omits the captured answer
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:142:33
+    140|   const hook = setup(); await advance(50);
+    141|   act(() => hook.result.current.change("q", ["a"], false)); await adva…
+    142|   expect(state.api.saveAnswers).toHaveBeenCalledTimes(1);
+       |                                 ^
+    143|   expect(hook.result.current.save.lastAcceptedAt).toBeNull();
+    144| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 12 passed (14)
+   Start at  09:38:40
+   Duration  1.04s (environment 56%, import 25%, tests 11%, transform 8%)
+

@@ -1,0 +1,39 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx (14 tests | 1 failed) 86ms
+   × keeps offline edits in memory and freezes editing at the server deadline 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > keeps offline edits in memory and freezes editing at the server deadline
+AssertionError: expected [] to deeply equal [ 'a' ]
+
+- Expected
++ Received
+
+- [
+-   "a",
+- ]
++ []
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:133:71
+    131|   act(() => window.dispatchEvent(new Event("offline")));
+    132|   act(() => hook.result.current.change("q", ["a"], false));
+    133|   expect(viewAnswer(hook.result.current.save, "q").selectedOptionIds).…
+       |                                                                       ^
+    134|   await advance(3_000);
+    135|   expect(hook.result.current.save.editingFrozen).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 13 passed (14)
+   Start at  09:37:58
+   Duration  958ms (environment 60%, import 21%, tests 10%, transform 9%)
+

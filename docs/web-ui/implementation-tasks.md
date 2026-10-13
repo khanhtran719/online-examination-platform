@@ -1,5 +1,13 @@
 # Frontend implementation tasks — senior hướng dẫn junior
 
+**Checkpoint PORT-05D 2026-10-13:** [D1–D5 Exam Room/Autosave/Submit](port-05d-2026-10-13.md)
+COMPLETE locally trên 768/1024/1280/1440px. 850 root/49 Chromium PASS;
+strict builds/lint/format/types, 26 captures và 3.219-file protection đạt.
+[Evidence](evidence/port-05d-2026-10-13/README.md) giữ red→green và visual overlay
+regression. FE-14–18 vẫn theo live/state matrix, không tự đóng bằng demo.
+Next bounded PORT-05E Profile/Account Web/tablet, chưa triển khai. FE7/32,
+roadmap89/217, parent PORT-05/full live/mobile/production giữ mở.
+
 **Checkpoint PORT-05C2026-10-13:** [S1–S5 Status/Result/Released Review](port-05c-2026-10-13.md)
 COMPLETE locally trên768/1024/1280/1440px.827 root/44 Chromium PASS; final review
 có full root/full Chromium receipts.20 captures đạt font/axe/overflow/

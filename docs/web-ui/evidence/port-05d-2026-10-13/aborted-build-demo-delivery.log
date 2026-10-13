@@ -1,0 +1,10 @@
+
+> online-examination-platform@0.1.0 web:build:demo
+> npm --prefix apps/web run build:demo
+
+
+> @exam/web@0.1.0 build:demo
+> tsc -p tsconfig.json --noEmit && vite build --mode demo
+
+src/demo/__tests__/submit-faults.unit.spec.ts(28,22): error TS2345: Argument of type '{ email: string; }' is not assignable to parameter of type '{ email: string; displayName: string; password: string; }'.
+  Type '{ email: string; }' is missing the following properties from type '{ email: string; displayName: string; password: string; }': displayName, password

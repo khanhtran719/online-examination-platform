@@ -1,4 +1,16 @@
-# Active increment2026-10-13: PORT-05C Candidate Status / Result / Released Review
+# Active increment2026-10-13: PORT-05D Exam Room / Autosave / Submit
+
+COMPLETE locally: [D1–D5 review](web-ui/port-05d-2026-10-13.md). Web/tablet
+768/1024/1280/1440px; actor/cache/late response fencing, truthful save/submit,
+explicit conflict comparison và selected Cobalt–Apricot room layout. 850 root
+(492 API/66 tooling/292 Web), 49 Chromium PASS; strict builds/lint/format/types
+đạt. 26 captures: font/axe/overflow/gutters và dialog bounds đạt; 3.219 protected
+API/template/prior evidence giữ nguyên. [Evidence](web-ui/evidence/port-05d-2026-10-13/README.md)
+giữ cả failures đã sửa. Next bounded PORT-05E Profile/Account Web/tablet,
+chưa triển khai. Mobile/app hoãn; parent PORT-05, FE7/32, roadmap89/217,
+full live và production giữ mở. Các checkpoint dưới là lịch sử.
+
+# Previous increment2026-10-13: PORT-05C Candidate Status / Result / Released Review
 
 COMPLETE locally: [S1–S5 review](web-ui/port-05c-2026-10-13.md), EP-11/12/13 trên
 Web/tablet768/1024/1280/1440px. Read controllers, bounded polling/server wait,

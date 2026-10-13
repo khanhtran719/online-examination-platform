@@ -1,0 +1,17 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/assessment src/demo
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+
+ Test Files  15 passed (15)
+      Tests  68 passed (68)
+   Start at  10:03:24
+   Duration  2.33s (environment 79%, transform 8%, import 6%, tests 6%)
+
+Environment  jsdom was created 15 times · 10.02s total, 79% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

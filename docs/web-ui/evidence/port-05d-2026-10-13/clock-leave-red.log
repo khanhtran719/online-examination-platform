@@ -1,0 +1,60 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/assessment
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/assessment/__tests__/room-receipts.unit.spec.ts (0 test)
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx (15 tests | 1 failed) 122ms
+   × warns before closing the page while submission remains unconfirmed 6ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/assessment/__tests__/room-receipts.unit.spec.ts [ src/features/assessment/__tests__/room-receipts.unit.spec.ts ]
+Error: Failed to resolve import "../room-receipts" from "src/features/assessment/__tests__/room-receipts.unit.spec.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/src/features/assessment/__tests__/room-receipts.unit.spec.ts:3:53
+  1  |  import { expect, it } from "vitest";
+  2  |  import { clockSample, completeConflictAnswers } from "../room-receipts";
+     |                                                        ^
+  3  |  import { createAutosaveState, ingestAnswerPage } from "../autosave";
+  4  |  import { remainingMs } from "../clock";
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/node.js:8766:39
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/node.js:8763:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/node.js:26593:18
+ ❯ node_modules/vite/dist/node/chunks/node.js:26663:30
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/node.js:26629:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/node.js:8545:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/node.js:20157:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > warns before closing the page while submission remains unconfirmed
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:171:34
+    169|   const event = new Event("beforeunload", { cancelable: true });
+    170|   window.dispatchEvent(event);
+    171|   expect(event.defaultPrevented).toBe(true);
+       |                                  ^
+    172| });
+    173| it("honors Retry-After before reconciling or replaying an unknown subm…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 6 passed (8)
+      Tests  1 failed | 47 passed (48)
+   Start at  09:41:48
+   Duration  1.55s (environment 83%, transform 8%, import 5%, tests 3%)
+

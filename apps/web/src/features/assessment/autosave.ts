@@ -339,7 +339,11 @@ export function resumeOnline(state: AutosaveState, nowMs: number): AutosaveState
   return derive({
     ...state,
     offline: false,
-    inFlight: { ...state.inFlight, retryAtMs: nowMs, exhausted: false },
+    inFlight: {
+      ...state.inFlight,
+      retryAtMs: Math.max(nowMs, state.inFlight.retryAtMs ?? 0),
+      exhausted: false,
+    },
   });
 }
 
@@ -348,7 +352,7 @@ export function holdForReauth(state: AutosaveState): AutosaveState {
   return derive({
     ...state,
     authenticated: false,
-    inFlight: { ...state.inFlight, retryAtMs: null, exhausted: false },
+    inFlight: { ...state.inFlight, exhausted: false },
   });
 }
 
@@ -366,7 +370,11 @@ export function resumeAuthenticated(state: AutosaveState, nowMs: number): Autosa
   return derive({
     ...state,
     authenticated: true,
-    inFlight: { ...state.inFlight, retryAtMs: nowMs, exhausted: false },
+    inFlight: {
+      ...state.inFlight,
+      retryAtMs: Math.max(nowMs, state.inFlight.retryAtMs ?? 0),
+      exhausted: false,
+    },
   });
 }
 

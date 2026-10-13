@@ -1,5 +1,14 @@
 # Web UI specification — thiết kế và hành vi màn hình
 
+PORT-05D2026-10-13 port Exam V3 bằng Cobalt–Apricot shared tokens: white
+toolbar, wordmark local, save status riêng, timer tabular mono, title wrap và
+deadline UTC+7. Main/sidebar2:1 ở desktop; <=1100px dùng question sheet/dialog.
+Native three-type controls, selection icon/text, current outline; body16/helper14.
+Dialog submit nói rõ chỉ ACK xác nhận; unknown/save-blocked/offline/reauth có
+feedback riêng. Conflict so sánh actual choice texts và mark; không auto resolve.
+Đánh số liên tục giữa các section từ thứ tự đã tải; progress chỉ loaded scope.
+Không chép mic/cam/proctoring/latency giả từ ảnh. [Implementation](port-05d-2026-10-13.md).
+
 PORT-05C2026-10-13 dùng EP-11/12/13 Results V4 và Cobalt–Apricot tokens chung.
 Status card trắng, state/time có nguồn, CTA theo lifecycle. Result score card và
 hai metric cân hàng; section rows gọn, raw score/percentage một lần. Không bịa

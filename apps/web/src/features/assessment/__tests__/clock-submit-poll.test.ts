@@ -23,9 +23,11 @@ const sample = {
 
 describe("server clock", () => {
   it("uses monotonic elapsed and ignores a wall-clock jump", () => {
-    expect(remainingMs(sample, 1_000)).toBe(35 * 60 * 1000);
-    expect(remainingMs(sample, 61_000)).toBe(34 * 60 * 1000);
-    expect(remainingMs({ ...sample, monotonicAtSample: 500_000 }, 500_000)).toBe(35 * 60 * 1000);
+    expect(remainingMs(sample, 1_000)).toBe(35 * 60 * 1000 - 200);
+    expect(remainingMs(sample, 61_000)).toBe(34 * 60 * 1000 - 200);
+    expect(remainingMs({ ...sample, monotonicAtSample: 500_000 }, 500_000)).toBe(
+      35 * 60 * 1000 - 200,
+    );
     expect(remainingMs(sample, 1_000 + 36 * 60 * 1000)).toBe(0);
   });
 

@@ -8,7 +8,7 @@ export interface ClockSample {
 
 export function remainingMs(sample: ClockSample, monotonicNow: number): number {
   const elapsed = Math.max(0, monotonicNow - sample.monotonicAtSample);
-  const estimatedServer = sample.serverNowMs + elapsed;
+  const estimatedServer = sample.serverNowMs + Math.max(0, sample.rttMs) / 2 + elapsed;
   return Math.max(0, sample.deadlineMs - estimatedServer);
 }
 

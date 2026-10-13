@@ -1,0 +1,59 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx (14 tests | 2 failed) 92ms
+   × keeps offline edits in memory and freezes editing at the server deadline 7ms
+   × does not label a batch saved when its receipt omits the captured answer 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > keeps offline edits in memory and freezes editing at the server deadline
+AssertionError: expected [] to deeply equal [ 'a' ]
+
+- Expected
++ Received
+
+- [
+-   "a",
+- ]
++ []
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:138:71
+    136|   act(() => window.dispatchEvent(new Event("offline")));
+    137|   act(() => hook.result.current.change("q", ["a"], false));
+    138|   expect(viewAnswer(hook.result.current.save, "q").selectedOptionIds).…
+       |                                                                       ^
+    139|   await advance(3_000);
+    140|   expect(hook.result.current.save.editingFrozen).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not label a batch saved when its receipt omits the captured answer
+AssertionError: expected '2026-10-13T10:01:00Z' to be null
+
+- Expected:
+null
+
++ Received:
+"2026-10-13T10:01:00Z"
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:148:51
+    146|   act(() => hook.result.current.change("q", ["a"], false)); await adva…
+    147|   expect(state.api.saveAnswers).toHaveBeenCalledTimes(1);
+    148|   expect(hook.result.current.save.lastAcceptedAt).toBeNull();
+       |                                                   ^
+    149| });
+    150| it("stops unknown submit checks after five minutes, including a held r…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 12 passed (14)
+   Start at  09:39:51
+   Duration  887ms (environment 61%, import 18%, tests 11%, transform 9%)
+

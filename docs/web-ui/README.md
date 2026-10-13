@@ -1,5 +1,15 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
+**PORT-05D 2026-10-13:** Phòng thi/Autosave/Nộp bài hoàn thành cục bộ trên Web
+và tablet. Có phiếu câu hỏi, ba kiểu đáp án, countdown, đối chiếu xung đột,
+đăng nhập lại và trạng thái chưa xác nhận nộp. Controller tách khỏi view;
+chỉ báo đã lưu sau ACK hợp lệ. Đề 120 câu làm được từ trang đầu 20 câu.
+850 root/49 Chromium PASS; 26 ảnh kiểm font/axe/overflow/gutter/dialog đạt.
+[Checklist/review](port-05d-2026-10-13.md), [evidence](evidence/port-05d-2026-10-13/README.md),
+[gallery](evidence/port-05d-2026-10-13/gallery.html). D1–D5 COMPLETE locally.
+Tiếp theo PORT-05E Hồ sơ/Tài khoản Web/tablet. Parent PORT-05/full live/mobile/
+production còn mở; các checkpoint dưới giữ phạm vi lịch sử.
+
 **PORT-05C2026-10-13:** Đã hoàn thiện Trạng thái bài/Kết quả/Giải thích trên
 Web/tablet. Controller tách khỏi page; polling tôn trọng thời gian chờ máy chủ,
 dừng khi mất quyền; result/review cache xoá đúng scope. Xem lại từng câu, lọc các

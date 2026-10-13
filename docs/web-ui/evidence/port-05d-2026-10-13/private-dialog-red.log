@@ -1,0 +1,111 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/assessment src/demo
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx (16 tests | 1 failed) 477ms
+   × hides the conflict dialog while reauthentication is required 83ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > hides the conflict dialog while reauthentication is required
+AssertionError: expected <div class="_dialog_f905bc" …(4)>…(4)</div> to be null
+
+- Expected:
+null
+
++ Received:
+<div
+  aria-labelledby="_r_0_"
+  aria-modal="true"
+  class="_dialog_f905bc"
+  role="dialog"
+  tabindex="-1"
+>
+  <h2
+    id="_r_0_"
+  >
+    Đáp án đã thay đổi ở nơi khác
+  </h2>
+  <p>
+    Lựa chọn của bạn được giữ trên trang. So sánh với bản mới nhất trước khi quyết định.
+  </p>
+  <ul
+    class="_comparisons_03f3a5"
+  >
+    <li>
+      <h3>
+        Câu 
+        q
+      </h3>
+      <dl>
+        <div>
+          <dt>
+            Lựa chọn của bạn
+          </dt>
+          <dd>
+            Lựa chọn a
+             ·
+             
+            Không đánh dấu
+          </dd>
+        </div>
+        <div>
+          <dt>
+            Bản máy chủ
+          </dt>
+          <dd>
+            Chưa chọn đáp án · Không đánh dấu · Bản 0
+          </dd>
+        </div>
+      </dl>
+    </li>
+  </ul>
+  <div
+    class="_row_24c302"
+  >
+    <button
+      class="_buttonSecondary_f905bc"
+      disabled=""
+      type="button"
+    >
+      Dùng bản máy chủ
+    </button>
+    <button
+      class="_button_f905bc"
+      disabled=""
+      type="button"
+    >
+      Giữ lựa chọn của tôi
+    </button>
+    <button
+      class="_buttonSecondary_f905bc"
+      type="button"
+    >
+      Tải lại bản mới nhất
+    </button>
+  </div>
+</div>
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:317:83
+    315|   state.session.needsReauth = true; hook.rerender({ attemptId: "first"…
+    316|   render(<RoomDialogs room={hook.result.current} progress="1/1" confir…
+    317|   expect(screen.queryByRole("dialog", { name: "Đáp án đã thay đổi ở nơ…
+       |                                                                                   ^
+    318| });
+    319|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 14 passed (15)
+      Tests  1 failed | 65 passed (66)
+   Start at  09:50:57
+   Duration  2.30s (environment 82%, transform 7%, tests 6%, import 5%)
+
+Environment  jsdom was created 15 times · 10.02s total, 82% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

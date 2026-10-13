@@ -1,5 +1,16 @@
 # Kiến trúc frontend
 
+PORT-05D2026-10-13: `features/assessment/use-room-reads.ts` sở hữu actor/attempt
+queries, retry/focus policy, response/signal fencing và scope cleanup;
+`use-exam-room.ts` sở hữu autosave/submit coordination và exact frozen metadata.
+Page compose toolbar/question/navigator/dialog; feedback form giữ local fields.
+Server receipt/deadline/version vẫn authoritative; controllers không tạo score.
+Conflict cần full snapshot và explicit choice, unknown submit bounded serialized
+reconciliation với cùng key. Local page state reset theo actor/attempt. Ordinal
+view liên tục theo cursor order, không sửa DTO position trong từng section.
+Full answer scope đủ để infer absence0 cho loaded questions; không cần eager
+load toàn bộ question pages. [Review và limits](port-05d-2026-10-13.md).
+
 PORT-05C2026-10-13: Status/Result/Released Review thuộc `features/results`; page
 compose controller hooks, shared UI không đọc runtime/session. Poll local state
 có actor/attempt fence; result/review query keys có actor/attempt và cleanup.

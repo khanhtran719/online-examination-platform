@@ -44,7 +44,7 @@ export function RoomToolbar({
           <span aria-hidden="true">
             <ExamGlyph />
           </span>
-          <strong>Phòng thi</strong>
+          <strong>ExamPlatform</strong>
           <Button variant="ghost" onClick={onLeave}>
             Rời phòng thi
           </Button>

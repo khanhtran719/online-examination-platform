@@ -1,27 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 
-import { useMemory } from "@web/app/memory";
 import { useTitle } from "@web/app/use-title";
 import { formatDateTime, shortId } from "@web/shared/format";
-import styles from "@web/shared/styles/layout.module.css";
-import {
-  Alert,
-  Button,
-  Dialog,
-  ErrorPanel,
-  PasswordField,
-  sheetClass,
-  SkeletonLines,
-  TextField,
-} from "@web/shared/ui/ui";
-import { validateLogin } from "@web/shared/validation";
+import layout from "@web/shared/styles/layout.module.css";
+import { Button, Dialog, ErrorPanel, sheetClass, SkeletonLines } from "@web/shared/ui/ui";
 
 import { dirtyCount, viewAnswer } from "./autosave";
 import { progressCopy } from "./progress";
 import { QuestionView } from "./question-view";
-import roomStyles from "./room.module.css";
+import styles from "./room.module.css";
 import { RoomDialogs } from "./room-dialogs";
+import { RoomFeedback } from "./room-feedback";
 import { RoomNavigator } from "./room-navigator";
 import { RoomToolbar } from "./room-toolbar";
 import { useExamRoom } from "./use-exam-room";
@@ -29,7 +19,10 @@ import { useExamRoom } from "./use-exam-room";
 export function ExamRoomPage() {
   const { attemptId = "" } = useParams();
   const room = useExamRoom(attemptId);
-  const memory = useMemory();
+  return <ExamRoomContent key={room.scope} room={room} />;
+}
+
+function ExamRoomContent({ room }: { room: ReturnType<typeof useExamRoom> }) {
   const navigate = useNavigate();
   const attempt = room.attemptQuery.data;
   useTitle(attempt ? "Phòng thi" : "Đang mở bài");
@@ -38,14 +31,12 @@ export function ExamRoomPage() {
   const [sheet, setSheet] = useState(false);
   const [confirmSubmit, setConfirmSubmit] = useState(false);
   const [leave, setLeave] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [reauthError, setReauthError] = useState<string | null>(null);
   const loaded = room.questions.data?.pages.flatMap((page) => page.items) ?? [];
-  const activeId = currentId ?? loaded[0]?.id ?? null;
+  const activeId = loaded.some((question) => question.id === currentId)
+    ? currentId
+    : (loaded[0]?.id ?? null);
   const active = loaded.find((question) => question.id === activeId) ?? null;
-  const frozen = attempt ? memory.lookup(attempt.publishedVersionId) : null;
-  const title = frozen && attempt && frozen.examId === attempt.examId ? frozen.title : null;
+  const title = room.frozen?.title;
   const answered = loaded.filter(
     (question) => viewAnswer(room.save, question.id).selectedOptionIds.length > 0,
   ).length;
@@ -55,28 +46,50 @@ export function ExamRoomPage() {
     document.getElementById(`prompt-${activeId}`)?.focus();
   }, [activeId, activeKnown, room.recovering, room.save.authenticated]);
 
-  if (room.attemptQuery.isLoading) return <SkeletonLines />;
-  if (room.attemptQuery.error || !attempt)
+  if (room.accessError || room.attemptQuery.error)
     return (
-      <ErrorPanel
-        error={room.attemptQuery.error}
-        onRetry={() => void room.attemptQuery.refetch()}
-      />
+      <div className={styles.readState}>
+        <h1>Phòng thi</h1>
+        <ErrorPanel
+          error={room.accessError ?? room.attemptQuery.error}
+          onRetry={room.accessError ? undefined : () => void room.attemptQuery.refetch()}
+        />
+        <Link to="/history">Về lịch sử thi</Link>
+      </div>
     );
-  if (attempt.status !== "IN_PROGRESS" && attempt.status !== "CREATED") {
+  if (!attempt)
+    return (
+      <div className={styles.readState}>
+        <h1>Đang mở bài</h1>
+        <SkeletonLines />
+      </div>
+    );
+  if (attempt.status !== "IN_PROGRESS" && attempt.status !== "CREATED")
     return <Navigate to={`/attempts/${attempt.id}/status`} replace />;
-  }
 
   const view = active ? viewAnswer(room.save, active.id) : null;
   const index = loaded.findIndex((question) => question.id === activeId);
+  const progress = progressCopy({
+    loaded: loaded.length,
+    answered,
+    versionTotal: room.frozen?.questionCount ?? null,
+  });
   function pick(id: string) {
     setCurrentId(id);
     setSheet(false);
   }
+  function previous() {
+    const question = loaded[index - 1];
+    if (question) pick(question.id);
+  }
+  function next() {
+    const question = loaded[index + 1];
+    if (question) pick(question.id);
+  }
   const navigator = (
     <RoomNavigator
       questions={loaded}
-      sections={frozen?.sections ?? []}
+      sections={room.frozen?.sections ?? []}
       currentId={activeId}
       save={room.save}
       markedOnly={markedOnly}
@@ -84,7 +97,10 @@ export function ExamRoomPage() {
       onPick={pick}
     />
   );
-
+  const uncertain =
+    dirtyCount(room.save) > 0 ||
+    room.save.inFlight !== null ||
+    (room.submit.phase !== "idle" && room.submit.phase !== "accepted");
   return (
     <>
       <RoomToolbar
@@ -92,85 +108,28 @@ export function ExamRoomPage() {
         remaining={room.remaining}
         answered={answered}
         loaded={loaded.length}
-        progress={progressCopy({
-          loaded: loaded.length,
-          answered,
-          versionTotal: title ? (frozen?.questionCount ?? null) : null,
-        })}
+        progress={progress}
         milestone={room.milestone}
-        canSubmit={room.submit.phase === "idle" && room.save.canSave}
-        onLeave={() => (dirtyCount(room.save) > 0 ? setLeave(true) : navigate("/dashboard"))}
+        canSubmit={room.canSubmit}
+        onLeave={() => (uncertain ? setLeave(true) : navigate("/dashboard"))}
         onSubmit={() => setConfirmSubmit(true)}
       />
-      <div id="content" className={styles.examScroll}>
+      <main id="content" className={styles.workspace}>
         <div className={styles.room}>
-          <section className={`${styles.stack} ${roomStyles.mainColumn}`}>
-            <h1 className={`${styles.title} ${roomStyles.title}`}>
-              {title ?? `Đề ${shortId(attempt.publishedVersionId)}`}
-            </h1>
-            {!title ? (
-              <p className={styles.muted}>
-                Bài làm không kèm tiêu đề đã khóa. Không dùng tiêu đề đề hiện tại thay cho phiên bản{" "}
-                {shortId(attempt.publishedVersionId)}.
+          <section className={`${layout.stack} ${styles.mainColumn}`}>
+            <div className={styles.heading}>
+              <p className={styles.eyebrow}>LÀM BÀI · PHIÊN BẢN ĐÃ KHÓA</p>
+              <h1>{title ?? `Đề ${shortId(attempt.publishedVersionId)}`}</h1>
+              {!title ? (
+                <p className={styles.helper}>
+                  Chưa có tên của phiên bản này. Mã đề {shortId(attempt.publishedVersionId)}.
+                </p>
+              ) : null}
+              <p className={styles.helper}>
+                Hạn nộp {formatDateTime(attempt.deadline)} · Giờ Việt Nam UTC+7
               </p>
-            ) : null}
-            <p className={styles.muted}>
-              Hạn nộp {formatDateTime(attempt.deadline)} · giờ máy chủ{" "}
-              {formatDateTime(attempt.serverNow)}
-            </p>
-            {!room.save.canSave ? (
-              <Alert tone="warning" title="Đã khóa lưu">
-                Không còn lưu câu trả lời mới. Những câu chưa xác nhận được giữ riêng.
-              </Alert>
-            ) : null}
-            {room.notice ? (
-              <Alert tone="warning" title="Lưu ý">
-                {room.notice}
-              </Alert>
-            ) : null}
-            {room.save.phase === "offline" || room.save.inFlight?.exhausted ? (
-              <Alert
-                tone="warning"
-                title={room.save.phase === "offline" ? "Chưa kết nối" : "Chưa xác nhận được đã lưu"}
-              >
-                <Button onClick={room.retrySave}>Thử lưu lại</Button>
-              </Alert>
-            ) : null}
-            {!room.save.authenticated ? (
-              <form
-                className={styles.card}
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  const parsed = validateLogin({ email, password });
-                  if (!parsed.body) {
-                    setReauthError("Nhập email và mật khẩu.");
-                    return;
-                  }
-                  void room
-                    .reauthenticate(parsed.body.email, parsed.body.password)
-                    .catch((caught: unknown) => {
-                      setReauthError(
-                        caught instanceof Error ? caught.message : "Không đăng nhập lại được.",
-                      );
-                    });
-                }}
-              >
-                <h2>Đăng nhập lại</h2>
-                {reauthError ? <p>{reauthError}</p> : null}
-                <TextField
-                  label="Email"
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                />
-                <PasswordField
-                  label="Mật khẩu"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                />
-                <Button type="submit">Đăng nhập lại</Button>
-              </form>
-            ) : null}
+            </div>
+            <RoomFeedback room={room} />
             {room.questions.isLoading || room.answers.isLoading ? <SkeletonLines /> : null}
             {room.questions.error ? (
               <ErrorPanel
@@ -184,6 +143,7 @@ export function ExamRoomPage() {
             {room.save.authenticated && !room.recovering && active && view?.known ? (
               <QuestionView
                 question={active}
+                ordinal={index + 1}
                 selected={view.selectedOptionIds}
                 marked={view.marked}
                 disabled={
@@ -198,26 +158,20 @@ export function ExamRoomPage() {
             ) : active ? (
               <p>Đang tải đáp án đã lưu của câu này.</p>
             ) : (
-              <p>Chưa có câu nào trong trang đã tải.</p>
+              <p>
+                {room.save.authenticated
+                  ? "Chưa có câu nào trong trang đã tải."
+                  : "Đăng nhập lại để tiếp tục xem câu hỏi."}
+              </p>
             )}
-            <div className={`${styles.row} ${styles.desktopControls}`}>
-              <Button
-                variant="secondary"
-                disabled={index <= 0}
-                onClick={() => {
-                  const previous = loaded[index - 1];
-                  if (previous) pick(previous.id);
-                }}
-              >
+            <div className={styles.controls}>
+              <Button variant="secondary" disabled={index <= 0} onClick={previous}>
                 Câu trước
               </Button>
               <Button
                 variant="secondary"
                 disabled={index < 0 || index >= loaded.length - 1}
-                onClick={() => {
-                  const next = loaded[index + 1];
-                  if (next) pick(next.id);
-                }}
+                onClick={next}
               >
                 Câu sau
               </Button>
@@ -230,7 +184,11 @@ export function ExamRoomPage() {
               </Button>
             </div>
             {room.questions.hasNextPage || room.answers.hasNextPage ? (
-              <Button variant="secondary" onClick={room.loadMore}>
+              <Button
+                variant="secondary"
+                disabled={room.questions.isFetching || room.answers.isFetching}
+                onClick={room.loadMore}
+              >
                 Tải thêm câu
               </Button>
             ) : null}
@@ -243,38 +201,32 @@ export function ExamRoomPage() {
                   : "Đang lưu rồi nộp."}
               </p>
             ) : null}
-            <p className={styles.muted}>
+            <p className={styles.helper}>
+              Chỉ đáp án được máy chủ xác nhận mới được ghi nhận.{" "}
               <Link to={`/attempts/${attempt.id}/status`}>Xem trạng thái xử lý</Link>
             </p>
           </section>
-          <aside
-            className={`${styles.navigator} ${roomStyles.navigator}`}
-            aria-label="Phiếu câu hỏi"
-          >
-            <h2>Phiếu câu hỏi</h2>
+          <aside className={styles.navigator} aria-label="Phiếu câu hỏi">
+            <div className={styles.navigatorHeading}>
+              <h2>Phiếu câu hỏi</h2>
+              <span>{loaded.length} đã tải</span>
+            </div>
             {navigator}
+            <p className={styles.navigatorNote}>
+              Đánh dấu câu bạn muốn xem lại. Lựa chọn chưa được lưu sẽ có ký hiệu ⋯.
+            </p>
           </aside>
         </div>
-      </div>
-      <div className={`${styles.examDock} ${roomStyles.dock}`}>
-        <Button
-          variant="secondary"
-          disabled={index <= 0}
-          onClick={() => {
-            const previous = loaded[index - 1];
-            if (previous) pick(previous.id);
-          }}
-        >
+      </main>
+      <div className={`${layout.examDock} ${styles.dock}`}>
+        <Button variant="secondary" disabled={index <= 0} onClick={previous}>
           Câu trước
         </Button>
-        <p>{active ? `Câu ${active.position}` : "—"}</p>
+        <p>{active ? `Câu ${index + 1}` : "—"}</p>
         <Button
           variant="secondary"
           disabled={index < 0 || index >= loaded.length - 1}
-          onClick={() => {
-            const next = loaded[index + 1];
-            if (next) pick(next.id);
-          }}
+          onClick={next}
         >
           Câu sau
         </Button>
@@ -293,11 +245,7 @@ export function ExamRoomPage() {
       ) : null}
       <RoomDialogs
         room={room}
-        progress={progressCopy({
-          loaded: loaded.length,
-          answered,
-          versionTotal: title ? (frozen?.questionCount ?? null) : null,
-        })}
+        progress={progress}
         confirmSubmit={confirmSubmit}
         leave={leave}
         onCloseSubmit={() => setConfirmSubmit(false)}

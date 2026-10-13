@@ -1,0 +1,472 @@
+
+> @exam/web@0.1.0 test
+> vitest run --run src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx
+
+
+ RUN  v5.0.3 /Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx (11 tests | 11 failed) 61ms
+   × does not read private room data without an authenticated actor 21ms
+   × keys room reads by actor and discards the old actor's cached questions 5ms
+   × ignores a save response from an attempt that is no longer mounted 5ms
+   × clears questions and drafts after a save is denied with 403 3ms
+   × clears questions and drafts after a save is denied with 404 3ms
+   × does not retain partial questions when answer access is forbidden 2ms
+   × does not resolve a conflict from a snapshot missing the conflicted answer 3ms
+   × does not overlap slow status reconciliation after an unknown submit 4ms
+   × honors Retry-After before reconciling or replaying an unknown submit 8ms
+   × does not accept a submission receipt belonging to a different attempt 3ms
+   × pauses submit reconciliation while the same actor needs reauthentication 3ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not read private room data without an authenticated actor
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+
+Number of calls: 1
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:75:39
+     73|   state.session.status = "anonymous";
+     74|   const hook = setup(); await advance(2_000);
+     75|   expect(state.api.resumeAttempt).not.toHaveBeenCalled();
+       |                                       ^
+     76|   expect(hook.result.current.questions.data).toBeUndefined();
+     77| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > keys room reads by actor and discards the old actor's cached questions
+AssertionError: expected { pages: [ { …(2) } ], …(1) } to be undefined
+
+- Expected:
+undefined
+
++ Received:
+{
+  "pageParams": [
+    undefined,
+  ],
+  "pages": [
+    {
+      "items": [
+        {
+          "id": "q",
+          "options": [
+            {
+              "id": "a",
+              "position": 1,
+              "text": "A",
+            },
+            {
+              "id": "b",
+              "position": 2,
+              "text": "B",
+            },
+          ],
+          "points": 2,
+          "position": 1,
+          "prompt": "Private question",
+          "sectionId": "s",
+          "type": "SINGLE_CHOICE",
+        },
+      ],
+      "next": null,
+    },
+  ],
+}
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:83:46
+     81|   state.api.getQuestions.mockImplementation(() => new Promise(() => un…
+     82|   state.session.profile.id = "other"; hook.rerender({ attemptId: "firs…
+     83|   expect(hook.result.current.questions.data).toBeUndefined();
+       |                                              ^
+     84|   await advance(50);
+     85|   expect(state.api.resumeAttempt).toHaveBeenCalledTimes(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > ignores a save response from an attempt that is no longer mounted
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:95:50
+     93|   hook.rerender({ attemptId: "second" }); await advance(50);
+     94|   await act(async () => reject(failure(401)));
+     95|   expect(hook.result.current.save.authenticated).toBe(true);
+       |                                                  ^
+     96|   expect(hook.result.current.save.inFlight).toBeNull();
+     97|   expect(hook.result.current.notice).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > clears questions and drafts after a save is denied with 403
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > clears questions and drafts after a save is denied with 404
+AssertionError: expected { pages: [ { …(2) } ], …(1) } to be undefined
+
+- Expected:
+undefined
+
++ Received:
+{
+  "pageParams": [
+    undefined,
+  ],
+  "pages": [
+    {
+      "items": [
+        {
+          "id": "q",
+          "options": [
+            {
+              "id": "a",
+              "position": 1,
+              "text": "A",
+            },
+            {
+              "id": "b",
+              "position": 2,
+              "text": "B",
+            },
+          ],
+          "points": 2,
+          "position": 1,
+          "prompt": "Private question",
+          "sectionId": "s",
+          "type": "SINGLE_CHOICE",
+        },
+      ],
+      "next": null,
+    },
+  ],
+}
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:103:46
+    101|   const hook = setup(); await advance(50);
+    102|   act(() => hook.result.current.change("q", ["a"], false)); await adva…
+    103|   expect(hook.result.current.questions.data).toBeUndefined();
+       |                                              ^
+    104|   expect(hook.result.current.save.drafts).toEqual({});
+    105|   expect(state.memory.clear).toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not retain partial questions when answer access is forbidden
+AssertionError: expected { pages: [ { …(2) } ], …(1) } to be undefined
+
+- Expected:
+undefined
+
++ Received:
+{
+  "pageParams": [
+    undefined,
+  ],
+  "pages": [
+    {
+      "items": [
+        {
+          "id": "q",
+          "options": [
+            {
+              "id": "a",
+              "position": 1,
+              "text": "A",
+            },
+            {
+              "id": "b",
+              "position": 2,
+              "text": "B",
+            },
+          ],
+          "points": 2,
+          "position": 1,
+          "prompt": "Private question",
+          "sectionId": "s",
+          "type": "SINGLE_CHOICE",
+        },
+      ],
+      "next": null,
+    },
+  ],
+}
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:112:46
+    110|   state.api.getAnswers.mockRejectedValue(failure(403));
+    111|   const hook = setup(); await advance(100);
+    112|   expect(hook.result.current.questions.data).toBeUndefined();
+       |                                              ^
+    113|   expect(hook.result.current.attemptQuery.data).toBeUndefined();
+    114|   expect(state.memory.clear).toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not resolve a conflict from a snapshot missing the conflicted answer
+AssertionError: expected 'clean' to be 'conflict' // Object.is equality
+
+Expected: "conflict"
+Received: "clean"
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:125:42
+    123|   expect(hook.result.current.save.phase).toBe("conflict");
+    124|   act(() => hook.result.current.resolveServer());
+    125|   expect(hook.result.current.save.phase).toBe("conflict");
+       |                                          ^
+    126|   expect(viewAnswer(hook.result.current.save, "q").selectedOptionIds).…
+    127| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not overlap slow status reconciliation after an unknown submit
+AssertionError: expected "vi.fn()" to be called 1 times, but got 8 times
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:133:38
+    131|   act(() => hook.result.current.requestSubmit()); await advance(15_000…
+    132|   expect(state.api.submitAttempt).toHaveBeenCalledTimes(1);
+    133|   expect(state.api.getAttemptStatus).toHaveBeenCalledTimes(1);
+       |                                      ^
+    134|   expect(hook.result.current.submit.phase).toBe("verifying");
+    135| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > honors Retry-After before reconciling or replaying an unknown submit
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 30 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  2nd vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  3rd vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  4th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  5th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  6th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  7th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  8th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  9th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  10th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  11th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  12th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  13th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  14th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  15th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  16th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  17th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  18th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  19th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  20th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  21st vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  22nd vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  23rd vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  24th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  25th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  26th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  27th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  28th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  29th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+  30th vi.fn() call:
+
+    Array [
+      "first",
+    ]
+
+
+Number of calls: 30
+
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:140:42
+    138|   const hook = setup(); await advance(50);
+    139|   act(() => hook.result.current.requestSubmit()); await advance(59_000…
+    140|   expect(state.api.getAttemptStatus).not.toHaveBeenCalled();
+       |                                          ^
+    141|   expect(state.api.submitAttempt).toHaveBeenCalledTimes(1);
+    142| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > does not accept a submission receipt belonging to a different attempt
+AssertionError: expected 'accepted' not to be 'accepted' // Object.is equality
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:150:48
+    148|   const hook = setup(); await advance(50);
+    149|   act(() => hook.result.current.requestSubmit()); await advance(500);
+    150|   expect(hook.result.current.submit.phase).not.toBe("accepted");
+       |                                                ^
+    151| });
+    152| it("pauses submit reconciliation while the same actor needs reauthenti…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/11]⎯
+
+ FAIL  src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx > pauses submit reconciliation while the same actor needs reauthentication
+AssertionError: expected "vi.fn()" to be called 1 times, but got 6 times
+ ❯ src/features/assessment/__tests__/exam-room-controller.unit.spec.tsx:158:35
+    156|   const posts = state.api.submitAttempt.mock.calls.length;
+    157|   await advance(10_000);
+    158|   expect(state.api.submitAttempt).toHaveBeenCalledTimes(posts);
+       |                                   ^
+    159|   expect(state.api.getAttemptStatus).not.toHaveBeenCalled();
+    160| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/11]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  11 failed (11)
+   Start at  09:32:15
+   Duration  1.07s (environment 67%, import 18%, transform 8%, tests 6%)
+
