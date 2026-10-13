@@ -44,7 +44,7 @@ thành văn giữ tính lịch sử; production vẫn NOT ACCEPTED.
 ## Quy trình từ nay
 
 Browser config mặc định ghi screenshots/probe JSON vào `.local/web-evidence/latest`
-(Git ignored). Named PORT-05G/H/06A config dùng local phase folders và giữ tự quản lý
+(Git ignored). Named PORT-05G/H/06A/06B config dùng local phase folders và giữ tự quản lý
 previews. Identity HTTPS outputs tiếp tục local như hiện có. Không xuất raw artifacts
 vào docs để commit khi chạy regression bình thường. `WEB_EVIDENCE_DIR` có thể
 chỉ định thư mục tạm ngoài tracked docs cho visual review; kiểm tra privacy trước
@@ -54,6 +54,10 @@ PORT-06A config đặt cả JSON reporter, captures và Playwright `outputDir` v
 `.local/web-evidence/port-06a`. Full-page capture bắt đầu ở document origin để
 fixed offscreen controls không hiện giả trong ảnh ở vị trí scroll cũ. Giữ source
 test/config và [report](port-06a-2026-10-13.md), dọn raw sau review; không tạo gallery.
+
+PORT-06B dùng cùng isolation tại `.local/web-evidence/port-06b`; [report](port-06b-2026-10-13.md)
+phân biệt full run và affected rerun sau final CSS fix. Retire raw sau kiểm tra,
+không ghi đè historical counts bằng JSON reporter của lần chạy sau.
 
 Trong docs chỉ lưu changes, findings, environment/commands, test counts/limits,
 decisions, remediation và runbook. Templates do người dùng chốt có manifest và

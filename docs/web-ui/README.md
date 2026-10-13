@@ -1,13 +1,14 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
-PORT-06A 2026-10-13: [A1–A5 Public/Sample](port-06a-2026-10-13.md) COMPLETE locally.
-Capsule/light chrome, question-first 2:1, review navigator, helper typography và
-skip link đã sửa. 938 root/75 Chromium PASS; 42 focused observations, full axe
-0 violations gồm 4 Auth routes ở 1440px. 1.458 protected files unchanged; đã dọn
-634 raw artifacts sau review, giữ approved templates/reports. Không actual API/
-PG/HTTPS hoặc AWS acceptance. Next PORT-06B: Admin typography; E5/Q5 còn mở.
-Home RV-04/PORT-06C, parent PORT-05/FE7/32/roadmap89/217/full live/production mở;
-mobile/app deferred. [Coverage review và backlog](web-tablet-coverage-review-2026-10-13.md) giữ findings gốc và closure có ngày.
+PORT-06B 2026-10-13: [B1–B5 Admin typography](port-06b-2026-10-13.md) COMPLETE locally.
+Helper/errors/captions/badges/list metadata ≥14px, bank primary text16px; report
+H1 theo title32/40 tokens. E5/Q5 đã revalidate và restore. 938 root/78 full Chromium
+PASS; sau final bank-title fix, 6 affected cases PASS và 76 final observations
+font/WCAG-tagged axe/overflow đạt. 1.538 protected files unchanged; 1 reviewed CSS
+delta thêm vào scope, không business/API change. Đã dọn 713 raw artifacts, giữ
+approved templates/reports. Next PORT-06C Home (RV-04); RV-06, full live/production,
+parent PORT-05/FE7/32/roadmap89/217 mở; mobile/app deferred.
+[PORT-06A Public/Sample](port-06a-2026-10-13.md) và [coverage/backlog](web-tablet-coverage-review-2026-10-13.md) giữ provenance và findings gốc.
 
 > Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 

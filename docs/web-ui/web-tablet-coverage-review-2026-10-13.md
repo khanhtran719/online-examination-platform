@@ -1,6 +1,14 @@
 # Review coverage Web/tablet — 2026-10-13
 
-Remediation update 2026-10-13: [PORT-06A A1–A5](port-06a-2026-10-13.md) COMPLETE
+Latest remediation 2026-10-13: [PORT-06B B1–B5](port-06b-2026-10-13.md) COMPLETE
+locally. RV-03 Admin typography đã sửa và E5/Q5 revalidated: 938 root/78 full
+Chromium PASS, final 6 affected cases PASS sau bank-title16px fix; 76 final
+observations đạt helper14px/font/WCAG-tagged axe/overflow. RV-03 closure gồm
+Public PORT-06A và Admin PORT-06B. Next PORT-06C/RV-04; RV-06 vẫn backlog.
+Các findings/inventory gốc bên dưới giữ trạng thái tại lúc review, không dùng
+những chữ IN PROGRESS trong bảng lịch sử để ghi đè closure mới này.
+
+Previous remediation 2026-10-13: [PORT-06A A1–A5](port-06a-2026-10-13.md) COMPLETE
 locally; 938 root/75 Chromium PASS, 42 new full-axe/font/overflow observations.
 RV-01/02, phần Public RV-03 và local RV-05 triage/fix đã đóng. RV-03 Admin/E5/Q5
 vẫn PORT-06B; RV-04 vẫn PORT-06C; RV-06 chưa triển khai. Findings/inventory bên
@@ -127,12 +135,11 @@ RV-06 files: `exam-preflight`269, `admin-attempt-page`209, `import-page`214,
    Public RV-03 và local RV-05 fix; 42 new observations, 938 root/75 Chromium PASS.
    Auth-aware destinations/native keyboard, sample score/reload/request budget
    giữ đúng; green 3D exception không đổi. Không API hoặc full production gate.
-2. [ ] **PORT-06B — NEXT: Typography closure.** Owner shared fields/Admin presentation.
-   Sửa RV-03 còn lại; error/helper/section totals/PageEnd/import report≥14px trên
-   768/1024/1280/1440. Regression forms/dialogs/long Vietnamese content; không
-   tăng kích thước icon trang trí như thể là helper text hoặc nới design requirement. Restore PORT-02 E5/PORT-03 Q5
-   chỉ với kiểm thử mới; prior checked command/correctness items vẫn lịch sử.
-3. [ ] **PORT-06C — Home reference closure.** Owner experience. RV-04 sau shared
+2. [x] **PORT-06B — COMPLETE locally 2026-10-13: Typography closure.** Owner
+   shared fields/Admin presentation. [B1–B5 receipts](port-06b-2026-10-13.md): RV-03
+   helpers14px, bank primary16px, report hierarchy; 76 final observations và
+   new regression evidence restore PORT-02 E5/PORT-03 Q5. Prior results giữ lịch sử.
+3. [ ] **PORT-06C — NEXT: Home reference closure.** Owner experience. RV-04 sau shared
    chrome; approved3D/fallback/reduced motion/viewport stop vẫn đạt. Ghi deliberate
    template deltas rõ, không yêu cầu generate lại các templates đã chốt.
 4. [ ] **WEB-03 — Actual Catalog browser integration.** Owner Web Catalog + test

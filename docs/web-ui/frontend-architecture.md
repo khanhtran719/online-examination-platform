@@ -1,5 +1,11 @@
 # Kiến trúc frontend
 
+PORT-06B 2026-10-13: Typography thuần presentation: shared field owns error
+14px/20px; Admin CSS owns section helpers/list metadata/captions/badges và report
+title tokens. Question primary title khai báo 16px/24px ở authoring owner để không
+kế thừa header14px của shared table. Không sửa global table semantics, component
+logic hoặc imports; không thêm style framework/abstraction. [Closure và checks](port-06b-2026-10-13.md).
+
 PORT-06A 2026-10-13: PublicFrame sở hữu capsule chrome/light footer và session-aware
 destinations; shared Navigation chỉ nhận optional CSS slots, không đọc session,
 runtime hoặc transport. SampleNavigator là pure view trong experience, dispatch

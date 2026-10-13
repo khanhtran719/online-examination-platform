@@ -1,4 +1,13 @@
-# Active increment2026-10-13: PORT-06A Public convergence
+# Active increment 2026-10-13: PORT-06B Admin typography
+
+COMPLETE locally: [B1–B5](web-ui/port-06b-2026-10-13.md). Helper/errors/captions/
+badges/list metadata ≥14px, bank primary16px, report title32/40; E5/Q5 restored.
+938 root/78 full Chromium PASS; sau final body-title fix, 6 affected cases và
+76 final observations PASS. 1.538 protected files unchanged + 1 reviewed CSS delta;
+713 raw artifacts dọn sau inspection. CSS presentation only; no business/API change.
+Next bounded PORT-06C Home/RV-04; parent/live/production mở, mobile/app deferred.
+
+# Previous increment2026-10-13: PORT-06A Public convergence
 
 COMPLETE locally: [A1–A5](web-ui/port-06a-2026-10-13.md). Capsule/light Public
 chrome, question-first Sample 2:1, review navigator, heading/helper typography và

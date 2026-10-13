@@ -114,6 +114,8 @@
 
 .field small {
   color: var(--color-danger-text);
+  font-size: var(--type-utility);
+  line-height: 20px;
 }
 
 .password {

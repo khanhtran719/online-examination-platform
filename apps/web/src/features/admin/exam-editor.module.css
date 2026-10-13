@@ -158,6 +158,8 @@
 }
 .sectionList small {
   color: var(--color-text-muted);
+  font-size: var(--type-utility);
+  line-height: 20px;
   white-space: nowrap;
 }
 .notice {

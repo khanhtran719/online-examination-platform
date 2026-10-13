@@ -81,7 +81,7 @@
 }
 .table thead th {
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: var(--type-utility);
   line-height: 22px;
   background: var(--color-surface-low);
 }
@@ -126,7 +126,7 @@
 .schedule time,
 .revision {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: var(--type-utility);
 }
 .status {
   display: grid;
