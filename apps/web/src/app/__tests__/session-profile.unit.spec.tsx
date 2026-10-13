@@ -44,3 +44,80 @@ it("updates only the current profile projection without authenticating another a
   expect(h.result.current.profile).toBeNull();
   expect(h.result.current.status).toBe("anonymous");
 });
+
+it("does not restore the principal from a profile read that completes after logout", async () => {
+  let resolve!: (value: { data: import("../../shared/api/dto").Profile }) => void;
+  input.api.getProfile.mockReturnValue(
+    new Promise((done) => {
+      resolve = done;
+    }),
+  );
+  input.api.logout.mockResolvedValue({ data: { revoked: true } });
+  const client = new QueryClient();
+  const h = renderHook(() => useSession(), {
+    wrapper: ({ children }) => (
+      <QueryClientProvider client={client}>
+        <SessionProvider>{children}</SessionProvider>
+      </QueryClientProvider>
+    ),
+  });
+  await act(async () => h.result.current.logout());
+  await act(async () =>
+    resolve({
+      data: {
+        id: "late-actor",
+        email: "a@example.test",
+        displayName: "Lan",
+        leaderboardOptIn: false,
+        emailVerifiedAt: "2026-10-01T00:00:00Z",
+        revision: 1,
+      },
+    }),
+  );
+  expect(h.result.current.status).toBe("anonymous");
+  expect(h.result.current.profile).toBeNull();
+});
+
+it("finishes anonymous bootstrap when refresh broadcasts reauth without an established principal", async () => {
+  const listeners: { onmessage: ((event: { data: { type: string } }) => void) | null }[] = [];
+  class Channel {
+    onmessage = null;
+    constructor() {
+      listeners.push(this);
+    }
+    postMessage() {}
+    close() {}
+  }
+  vi.stubGlobal("BroadcastChannel", Channel);
+  let reject!: (error: unknown) => void;
+  input.api.getProfile.mockReturnValue(
+    new Promise((_done, fail) => {
+      reject = fail;
+    }),
+  );
+  const client = new QueryClient();
+  const h = renderHook(() => useSession(), {
+    wrapper: ({ children }) => (
+      <QueryClientProvider client={client}>
+        <SessionProvider>{children}</SessionProvider>
+      </QueryClientProvider>
+    ),
+  });
+  act(() =>
+    listeners.find((channel) => channel.onmessage)?.onmessage?.({ data: { type: "reauth" } }),
+  );
+  const { ApiError } = await import("../../shared/api/errors");
+  await act(async () =>
+    reject(
+      new ApiError({
+        kind: "http",
+        status: 401,
+        errorCode: "Unauthenticated",
+        message: "Unauthenticated",
+      }),
+    ),
+  );
+  expect(h.result.current.status).toBe("anonymous");
+  expect(h.result.current.needsReauth).toBe(false);
+  vi.unstubAllGlobals();
+});

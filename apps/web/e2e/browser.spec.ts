@@ -69,7 +69,9 @@ test.describe("demo", () => {
     await page.getByLabel("Email").fill("disabled@example.test");
     await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
     await page.getByRole("button", { name: "Đăng nhập" }).click();
-    await expect(page.getByRole("alert")).toContainText("Email hoặc mật khẩu không đúng.");
+    await expect(page.getByRole("alert")).toContainText(
+      "Không thể đăng nhập. Kiểm tra email, mật khẩu hoặc xác thực email rồi thử lại.",
+    );
     await shot(page, "login-401-390");
     await page.goto("/register");
     await page.getByLabel("Email").fill("person@example.test");
@@ -180,11 +182,14 @@ test.describe("live", () => {
     await expect(page.getByRole("link", { name: "Về trang chủ" })).toBeVisible();
     await shot(page, "live-session-unavailable-1440");
     await page.goto("/login");
-    await page.getByLabel("Email").fill("candidate@example.test");
-    await page.getByRole("textbox", { name: "Mật khẩu", exact: true }).fill("fixture-password-ok");
-    await page.getByRole("button", { name: "Đăng nhập" }).click();
-    await expect(page.getByRole("alert")).toBeVisible();
+    await expect(page.getByText("Chưa kiểm tra được phiên", { exact: true })).toBeVisible();
+    await expect(page.getByLabel("Email")).toHaveCount(0);
+    await expect(page.getByLabel("Mật khẩu", { exact: true })).toHaveCount(0);
+    await expect(
+      page.getByRole("button", { name: "Kiểm tra lại phiên", exact: true }),
+    ).toBeEnabled();
     await expect(page.getByRole("heading", { name: "Bảng làm việc" })).toHaveCount(0);
+    await expect(page.getByText("Dữ liệu mẫu")).toHaveCount(0);
     await shot(page, "live-login-unavailable-1440");
   });
 });

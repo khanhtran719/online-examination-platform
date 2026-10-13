@@ -1,0 +1,366 @@
+{
+  "scope": "Dashboard Web/tablet",
+  "count": 24,
+  "captures": [
+    {
+      "id": "both-denied-1440",
+      "path": "dashboard/both-denied-1440.png",
+      "sha256": "8dcbc986250f9c1e1fcf2d86db7e9198cf8c2472dffd5a8ff285d65924d45b25",
+      "documentWidth": 1440,
+      "left": 116,
+      "right": 1396,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "catalog-stale-1440",
+      "path": "dashboard/catalog-stale-1440.png",
+      "sha256": "d2aa55648b6870f4428d60ec6b6a91a3530cd0d4b75ee31c9121b055f67f7a6a",
+      "documentWidth": 1440,
+      "left": 116,
+      "right": 1396,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "empty-1024",
+      "path": "dashboard/empty-1024.png",
+      "sha256": "cedcb426ca1abeb7cff4ce37e5e6093c2f941ea76470683e1ea957df1dcbaad8",
+      "documentWidth": 1024,
+      "left": 96,
+      "right": 1000,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1024,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "empty-1280",
+      "path": "dashboard/empty-1280.png",
+      "sha256": "f2d15db1387d34ea5a7604163a82a03df628857e86fafecb54257ab675b40cec",
+      "documentWidth": 1280,
+      "left": 96,
+      "right": 1256,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1280,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "empty-1440",
+      "path": "dashboard/empty-1440.png",
+      "sha256": "70381a72e6dd9ab356fef7ecd17402a0f280660af6d85a70ae420b8465574dcc",
+      "documentWidth": 1440,
+      "left": 116,
+      "right": 1396,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "empty-768",
+      "path": "dashboard/empty-768.png",
+      "sha256": "02c39054179a770fd6b566031e56edc1dad50cc0d14ac575dca94538a6b1bd87",
+      "documentWidth": 768,
+      "left": 24,
+      "right": 744,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 768,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "empty-category-1440",
+      "path": "dashboard/empty-category-1440.png",
+      "sha256": "f564d6752b76278930564a6df210c0aa674b8b8f78c546a05fe76d6d86d83c49",
+      "documentWidth": 1440,
+      "left": 116,
+      "right": 1396,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "demo"
+    },
+    {
+      "id": "history-denied-1440",
+      "path": "dashboard/history-denied-1440.png",
+      "sha256": "38a35b42b18adfdf1f0306c63953c8a84bd20b41d1a8d3d04d434fcff90f41ae",
+      "documentWidth": 1440,
+      "left": 116,
+      "right": 1396,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "history-pending-1024",
+      "path": "dashboard/history-pending-1024.png",
+      "sha256": "e3a2a5e1003e0beaac8912d9bf458614838d98730a74b0d2365a9b01ac3958a6",
+      "documentWidth": 1024,
+      "left": 96,
+      "right": 1000,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1024,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "history-rate-limit-1024",
+      "path": "dashboard/history-rate-limit-1024.png",
+      "sha256": "8449aa3aee6ff68ff794305fc9127a7c0072d9ad95cd1096b1462f2c67f11147",
+      "documentWidth": 1024,
+      "left": 96,
+      "right": 1000,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1024,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "history-stale-1024",
+      "path": "dashboard/history-stale-1024.png",
+      "sha256": "64905d34c9393863551188452e9694fba5ad1f98a0dac855024697157f0398ef",
+      "documentWidth": 1024,
+      "left": 96,
+      "right": 1000,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1024,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "history-stale-1280",
+      "path": "dashboard/history-stale-1280.png",
+      "sha256": "63c5f820fa33e030e64deb071a09b6caa3a147181175438e891340b2042d4004",
+      "documentWidth": 1280,
+      "left": 96,
+      "right": 1256,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1280,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "history-stale-1440",
+      "path": "dashboard/history-stale-1440.png",
+      "sha256": "5069107717a4042ed4dea6a4576e4d3e30052cd820436132b75ca3b490f64af9",
+      "documentWidth": 1440,
+      "left": 116,
+      "right": 1396,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "history-stale-768",
+      "path": "dashboard/history-stale-768.png",
+      "sha256": "00045abd590c4c5347395b2889d8fd74761a66015907c1fbcc0cb367582a14b8",
+      "documentWidth": 768,
+      "left": 24,
+      "right": 744,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 768,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "long-frozen-1024",
+      "path": "dashboard/long-frozen-1024.png",
+      "sha256": "fc113625c3b88c339ac484b4192ec13602608ccd55c6f52a71adbd195af8199b",
+      "documentWidth": 1024,
+      "left": 96,
+      "right": 1000,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1024,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "long-frozen-1280",
+      "path": "dashboard/long-frozen-1280.png",
+      "sha256": "60027226d74db42cb3a6c23e47be838355938bff6cd46719c3ccdc1101a71693",
+      "documentWidth": 1280,
+      "left": 96,
+      "right": 1256,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1280,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "long-frozen-1440",
+      "path": "dashboard/long-frozen-1440.png",
+      "sha256": "552e16820ad75cd0261ef4a5f01eb9fa6bc75c856e4442192fe36300e6f322ad",
+      "documentWidth": 1440,
+      "left": 116,
+      "right": 1396,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "long-frozen-768",
+      "path": "dashboard/long-frozen-768.png",
+      "sha256": "1c76d58d93c877af540ede1f5c2781b6a14619f158392e869da651657d164b90",
+      "documentWidth": 768,
+      "left": 24,
+      "right": 744,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 768,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "normal-1024",
+      "path": "dashboard/normal-1024.png",
+      "sha256": "1e756805fb7376f3908d7b8fcdbd03decdaa5c180600d941b1c94b3210008868",
+      "documentWidth": 1024,
+      "left": 96,
+      "right": 1000,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1024,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "demo"
+    },
+    {
+      "id": "normal-1280",
+      "path": "dashboard/normal-1280.png",
+      "sha256": "3be4365828752e12b91bf2e89782fbb260875bae5c1db5de233afa10705bb31c",
+      "documentWidth": 1280,
+      "left": 96,
+      "right": 1256,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1280,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "demo"
+    },
+    {
+      "id": "normal-1440",
+      "path": "dashboard/normal-1440.png",
+      "sha256": "7040b3641b97b6d898ceb1cc2fd4c50b5da0c449d4e1073144aaba50db22f736",
+      "documentWidth": 1440,
+      "left": 116,
+      "right": 1396,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "demo"
+    },
+    {
+      "id": "normal-768",
+      "path": "dashboard/normal-768.png",
+      "sha256": "05f01f416eaf5771e412eff852b2fa301cd5061fc548180e4bf1c976692591f4",
+      "documentWidth": 768,
+      "left": 24,
+      "right": 744,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 768,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "demo"
+    },
+    {
+      "id": "reauth-1024",
+      "path": "dashboard/reauth-1024.png",
+      "sha256": "9245a7724150e0780e6de36d0a98d9185cdee252a535fd983352050d0ea99b9b",
+      "documentWidth": 1024,
+      "left": 96,
+      "right": 1000,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1024,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+    },
+    {
+      "id": "reduced-motion-1440",
+      "path": "dashboard/reduced-motion-1440.png",
+      "sha256": "2c0c2f954350b18bef57d20b42e5f7e46d7bc2d85ccd3844559a7667d5e9769a",
+      "documentWidth": 1440,
+      "left": 116,
+      "right": 1396,
+      "fontLoaded": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "violations": [],
+      "mode": "demo"
+    }
+  ]
+}

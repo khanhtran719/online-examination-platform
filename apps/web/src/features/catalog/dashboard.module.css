@@ -1,4 +1,8 @@
 .dashboard {
+  width: min(var(--content-max), calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  min-width: 0;
   gap: 24px;
 }
 .greeting {
@@ -22,7 +26,9 @@
   line-height: 40px;
 }
 .greeting p:last-child {
-  font-size: 14px;
+  font-size: 16px;
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
 }
 .columns {
   display: grid;
@@ -32,10 +38,12 @@
 }
 .activeSlot {
   display: grid;
-  gap: 16px;
+  gap: 24px;
   min-width: 0;
+  padding: 32px;
+  align-content: start;
 }
-.continue,
+.activeSlot,
 .guide,
 .recent,
 .examCard {
@@ -50,7 +58,7 @@
   grid-template-columns: minmax(0, 1fr) 120px;
   gap: 24px;
   align-items: center;
-  padding: 32px;
+  padding: 0;
 }
 .continueCopy {
   display: grid;
@@ -87,7 +95,7 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 20px;
-  padding: 20px;
+  padding: 24px;
   transform: rotate(5deg);
   box-shadow:
     5px 7px 0 var(--color-primary-subtle),
@@ -143,7 +151,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 20px;
+  gap: 24px;
 }
 .guide li {
   position: relative;
@@ -223,7 +231,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 20px 8px;
+  padding: 24px 8px;
   border-radius: 12px;
   color: var(--color-text);
   text-decoration: none;
@@ -258,6 +266,9 @@
   font-size: 14px;
 }
 .score {
+  text-align: right;
+  max-width: 40%;
+  overflow-wrap: anywhere;
   margin-left: auto;
   flex: none;
   font: 400 14px/24px var(--font-mono);
@@ -301,7 +312,7 @@
 .examCard {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   padding: 24px;
   color: var(--color-text);
   text-decoration: none;
@@ -378,7 +389,34 @@
     flex: 1;
   }
   .score {
+    text-align: right;
+    max-width: 40%;
+    overflow-wrap: anywhere;
     width: calc(100% - 56px);
     margin-left: 56px;
+  }
+}
+
+.catalogActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.filters button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+@media (max-width: 1023px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .dashboard {
+    width: calc(100% - 32px);
+  }
+  .activeSlot {
+    padding: 24px;
   }
 }

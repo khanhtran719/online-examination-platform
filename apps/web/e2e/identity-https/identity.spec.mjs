@@ -140,7 +140,7 @@ async function login(page, account, navigate = true) {
     expect(/; Domain=/i.test(header)).toBe(false);
   }
   if (navigate)
-    await expect(page.getByRole("heading", { name: "Hồ sơ", exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Hồ sơ thí sinh", exact: true })).toBeVisible();
 }
 async function authenticated(page, harness) {
   const account = await register(page, harness);
@@ -245,6 +245,7 @@ test("H02 register, coalesced resend, inert verification, final password and rep
   expect((await context.cookies()).some((c) => /__Host-(access|refresh)/.test(c.name))).toBe(false);
   await register(page, harness, account.email);
   expect((await state(harness, account)).intents).toBe(1);
+  await page.getByLabel("Email cần gửi lại").fill(account.email);
   const resend = responseFor(page, "/v1/auth/email-verification/request", "POST");
   await page.getByRole("button", { name: "Gửi lại hướng dẫn", exact: true }).click();
   expect((await resend).status()).toBe(202);
@@ -308,7 +309,12 @@ test("H02 register, coalesced resend, inert verification, final password and rep
   const wrong = responseFor(page, "/v1/auth/login", "POST");
   await page.getByRole("button", { name: "Đăng nhập", exact: true }).click();
   expect((await wrong).status()).toBe(401);
-  await expect(page.getByText("Email hoặc mật khẩu không đúng.", { exact: true })).toBeVisible();
+  await expect(
+    page.getByText(
+      "Không thể đăng nhập. Kiểm tra email, mật khẩu hoặc xác thực email rồi thử lại.",
+      { exact: true },
+    ),
+  ).toBeVisible();
   await login(page, account);
   const cookieMetadata = (await context.cookies()).map(
     ({ name, secure, httpOnly, sameSite, path, domain }) => ({
@@ -331,7 +337,7 @@ test("H02 register, coalesced resend, inert verification, final password and rep
     });
   }
   await page.reload();
-  await expect(page.getByRole("heading", { name: "Hồ sơ", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Hồ sơ thí sinh", exact: true })).toBeVisible();
   expect(leaked).toBe(false);
   expect(external).toBe(false);
 });
@@ -419,12 +425,12 @@ test("H05 two shared-cookie tabs refresh once, preserve conflicts, survive API r
   const initialRevision = (await state(harness, account)).revision;
   const second = await context.newPage();
   await second.goto("/profile");
-  await expect(second.getByRole("heading", { name: "Hồ sơ", exact: true })).toBeVisible();
+  await expect(second.getByRole("heading", { name: "Hồ sơ thí sinh", exact: true })).toBeVisible();
   await expireAccess(harness, account);
   const from = harness.requests.length;
   await Promise.all([page.reload(), second.reload()]);
-  await expect(page.getByRole("heading", { name: "Hồ sơ", exact: true })).toBeVisible();
-  await expect(second.getByRole("heading", { name: "Hồ sơ", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Hồ sơ thí sinh", exact: true })).toBeVisible();
+  await expect(second.getByRole("heading", { name: "Hồ sơ thí sinh", exact: true })).toBeVisible();
   const refresh = events(harness, from, "/v1/auth/refresh", "POST");
   expect(refresh).toHaveLength(1);
   expect(refresh[0]).toMatchObject({
@@ -440,15 +446,15 @@ test("H05 two shared-cookie tabs refresh once, preserve conflicts, survive API r
   const left = responseFor(page, "/v1/me", "PUT"),
     right = responseFor(second, "/v1/me", "PUT");
   await Promise.all([
-    page.getByRole("button", { name: "Lưu hồ sơ", exact: true }).click(),
-    second.getByRole("button", { name: "Lưu hồ sơ", exact: true }).click(),
+    page.getByRole("button", { name: "Lưu thay đổi", exact: true }).click(),
+    second.getByRole("button", { name: "Lưu thay đổi", exact: true }).click(),
   ]);
   expect([(await left).status(), (await right).status()].sort()).toEqual([200, 409]);
   expect((await state(harness, account)).revision).toBe(initialRevision + 1);
   await harness.restart();
   await Promise.all([page.reload(), second.reload()]);
-  await expect(page.getByRole("heading", { name: "Hồ sơ", exact: true })).toBeVisible();
-  await expect(second.getByRole("heading", { name: "Hồ sơ", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Hồ sơ thí sinh", exact: true })).toBeVisible();
+  await expect(second.getByRole("heading", { name: "Hồ sơ thí sinh", exact: true })).toBeVisible();
   const logout = responseFor(page, "/v1/auth/logout", "POST");
   await page.getByRole("button", { name: "Đăng xuất", exact: true }).click();
   expect((await logout).status()).toBe(200);
@@ -466,21 +472,20 @@ test("H06 lost refresh ACK does not replay, explicit login restores future refre
   harness.dropNext("POST", "/v1/auth/refresh");
   const from = harness.requests.length;
   await page.getByLabel("Tên hiển thị", { exact: true }).fill("After lost refresh");
-  await page.getByRole("button", { name: "Lưu hồ sơ", exact: true }).click();
-  await expect(page.getByText("Chưa lưu được", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Lưu thay đổi", exact: true }).click();
+  await expect(page.getByText("Cần đăng nhập lại", { exact: true })).toBeVisible();
   expect(events(harness, from, "/v1/auth/refresh", "POST")).toHaveLength(1);
   expect((await state(harness, account)).consumed).toBe(1);
   // SPA navigation deliberately keeps the existing coordinator after an uncertain refresh.
   await expect(page.getByRole("link", { name: "Đăng nhập lại", exact: true })).toBeVisible();
   await page.getByRole("link", { name: "Đăng nhập lại", exact: true }).click();
   await login(page, account, false);
-  await page.getByRole("link", { name: "Hồ sơ", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "Hồ sơ", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Hồ sơ thí sinh", exact: true })).toBeVisible();
   await expireAccess(harness, account);
   const afterLogin = harness.requests.length;
   await page.getByLabel("Tên hiển thị", { exact: true }).fill("Recovered new login");
-  await page.getByRole("button", { name: "Lưu hồ sơ", exact: true }).click();
-  await expect(page.getByText("Đã lưu hồ sơ.", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Lưu thay đổi", exact: true }).click();
+  await expect(page.getByText("Đã lưu hồ sơ", { exact: true })).toBeVisible();
   expect(events(harness, afterLogin, "/v1/auth/refresh", "POST")).toHaveLength(1);
   expect((await state(harness, account)).revoked).toBe(0);
 });
@@ -511,11 +516,11 @@ test("H08 committed profile lost ACK retries its receipt without a second write"
   const initialRevision = (await state(harness, account)).revision;
   harness.dropNext("PUT", "/v1/me");
   await page.getByLabel("Tên hiển thị", { exact: true }).fill("Durable profile retry");
-  await page.getByRole("button", { name: "Lưu hồ sơ", exact: true }).click();
-  await expect(page.getByText(/Chưa rõ hồ sơ đã được ghi chưa/)).toBeVisible();
+  await page.getByRole("button", { name: "Lưu thay đổi", exact: true }).click();
+  await expect(page.getByText(/Chưa rõ lần lưu đã được ghi chưa/)).toBeVisible();
   expect((await state(harness, account)).revision).toBe(initialRevision + 1);
-  await page.getByRole("button", { name: "Lưu hồ sơ", exact: true }).click();
-  await expect(page.getByText("Đã lưu hồ sơ.", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Thử lại cùng yêu cầu", exact: true }).click();
+  await expect(page.getByText("Đã lưu hồ sơ", { exact: true })).toBeVisible();
   expect((await state(harness, account)).revision).toBe(initialRevision + 1);
 });
 
@@ -558,12 +563,12 @@ test("H10 response-body stall times out and preserves the committed profile rece
   harness.dropNext("PUT", "/v1/me", "stall");
   await page.getByLabel("Tên hiển thị", { exact: true }).fill("Body timeout candidate");
   const at = Date.now();
-  await page.getByRole("button", { name: "Lưu hồ sơ", exact: true }).click();
-  await expect(page.getByText(/Chưa rõ hồ sơ đã được ghi chưa/)).toBeVisible();
+  await page.getByRole("button", { name: "Lưu thay đổi", exact: true }).click();
+  await expect(page.getByText(/Chưa rõ lần lưu đã được ghi chưa/)).toBeVisible();
   expect(Date.now() - at).toBeGreaterThanOrEqual(9000);
   expect(Date.now() - at).toBeLessThan(12000);
   expect((await state(harness, account)).revision).toBe(revision + 1);
-  await page.getByRole("button", { name: "Lưu hồ sơ", exact: true }).click();
-  await expect(page.getByText("Đã lưu hồ sơ.", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Thử lại cùng yêu cầu", exact: true }).click();
+  await expect(page.getByText("Đã lưu hồ sơ", { exact: true })).toBeVisible();
   expect((await state(harness, account)).revision).toBe(revision + 1);
 });

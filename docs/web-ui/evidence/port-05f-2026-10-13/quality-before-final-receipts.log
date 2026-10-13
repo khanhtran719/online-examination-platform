@@ -1,0 +1,5 @@
+
+> online-examination-platform@0.1.0 quality
+> node scripts/quality.mjs && npm run contracts:check
+
+docs/web-ui/evidence/port-05f-2026-10-13/README.md: missing link source-build-manifest.json

@@ -1,0 +1,18 @@
+{
+  "passed": 2,
+  "failed": 1,
+  "tests": [
+    {
+      "name": "updates only the current profile projection without authenticating another actor or regressing its revision",
+      "status": "passed"
+    },
+    {
+      "name": "does not restore the principal from a profile read that completes after logout",
+      "status": "passed"
+    },
+    {
+      "name": "finishes anonymous bootstrap when refresh broadcasts reauth without an established principal",
+      "status": "failed"
+    }
+  ]
+}

@@ -123,8 +123,17 @@ for (const [mode, baseURL] of [
         .getByRole("navigation", { name: "Chính", exact: true })
         .getByRole("link", { name: "Tạo tài khoản" })
         .click();
-      await expect(page.getByLabel("Email", { exact: true })).toBeVisible();
-      await expect(page.getByLabel("Tên hiển thị")).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Tạo tài khoản", exact: true })).toBeVisible();
+      if (mode === "live") {
+        await expect(page.getByText("Chưa kiểm tra được phiên", { exact: true })).toBeVisible();
+        await expect(page.getByLabel("Email", { exact: true })).toHaveCount(0);
+        await expect(
+          page.getByRole("button", { name: "Kiểm tra lại phiên", exact: true }),
+        ).toBeEnabled();
+      } else {
+        await expect(page.getByLabel("Email", { exact: true })).toBeVisible();
+        await expect(page.getByLabel("Tên hiển thị")).toBeVisible();
+      }
       expect(requests).toEqual([]);
       expect(errors).toEqual([]);
     });

@@ -1,0 +1,14 @@
+{
+  "documentWidth": 1440,
+  "left": 420,
+  "right": 1020,
+  "fontLoaded": true,
+  "passwordInputs": [],
+  "viewport": {
+    "width": 1440,
+    "height": 1100
+  },
+  "route": "/verify-email",
+  "violations": [],
+  "evidenceMode": "demo"
+}

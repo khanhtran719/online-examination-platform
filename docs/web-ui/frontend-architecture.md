@@ -1,5 +1,24 @@
 # Kiến trúc frontend
 
+PORT-05G2026-10-13: Dashboard compose `dashboard-attempts`/`dashboard-catalog`,
+controller chọn bounded first20 history/first3 category catalog. Feature-owned
+snapshot helper scopes resource/actor/epoch/filter; signals reject late reads,
+401/403 latch riêng channel, session loss purge cả hai. Immediate denial/wait
+refs chặn callback trước render, clocks monotonic theo auth scope; no automatic
+retry/focus/reconnect/polling. Stale snapshots có notice, frozen title khớp
+owner/version; pure model map paths/nullable score. [Review/limits](port-05g-2026-10-13.md).
+
+PORT-05F2026-10-13: Identity pages compose finite feature controllers/forms.
+`use-login` tách login ACK và authoritative profile read; explicit GET-only
+recovery phải khớp userId trước `session.replaceActor`. Register/resend generic
+202; Verify explicit anonymous POST và same-body retry trong mounted memory.
+`use-auth-scope` dùng route/session/actor/reauth/local epoch và unmount fence.
+Session reload có read-generation guard; local epoch là UI invalidation, không
+phải token/session authority. Anonymous bootstrap không bị treo bởi refresh
+reauth metadata trước khi có principal. Password/token/email không history/store;
+registration chỉ handoff acceptance metadata. Không vendor client trong feature
+hoặc runtime/session trong shared UI. [Review/evidence](port-05f-2026-10-13.md).
+
 PORT-05E 2026-10-13: `features/profile/use-profile.ts` sở hữu finite profile
 write/read coordinator, actor scope và immutable intent; page compose settings
 và dialogs. `app/session.syncProfile` chỉ sync same actor/email với revision

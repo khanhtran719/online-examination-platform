@@ -1,0 +1,18 @@
+{
+  "passed": 1,
+  "failed": 2,
+  "tests": [
+    {
+      "name": "Dashboard truthful snapshots does not claim more history pages exist when the complete empty snapshot has no cursor",
+      "status": "failed"
+    },
+    {
+      "name": "Dashboard truthful snapshots does not use metadata for a different frozen version even when the owning exam matches",
+      "status": "failed"
+    },
+    {
+      "name": "Dashboard truthful snapshots retains zero score and routes all submitted states to status rather than opening a room",
+      "status": "passed"
+    }
+  ]
+}

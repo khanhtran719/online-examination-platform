@@ -1,0 +1,39 @@
+
+> online-examination-platform@0.1.0 lint
+> npm run lint:api && npm run web:lint
+
+
+> online-examination-platform@0.1.0 lint:api
+> eslint apps/api scripts *.mjs *.cjs && npm run quality
+
+
+> online-examination-platform@0.1.0 quality
+> node scripts/quality.mjs && npm run contracts:check
+
+Quality passed: local Markdown links/anchors, project context/section IDs, source import boundaries, unit-test placement and reviewed Reporting query/migration dependencies. Static checks do not prove runtime consistency.
+
+> online-examination-platform@0.1.0 contracts:check
+> node scripts/contracts.mjs
+
+Contracts passed: 48 operations, 445 examples, event schema and declared boundary metadata. Runtime security/durability/SLO remain unverified.
+
+> online-examination-platform@0.1.0 web:lint
+> npm --prefix apps/web run lint
+
+
+> @exam/web@0.1.0 lint
+> eslint src *.ts *.mjs
+
+
+/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/src/features/auth/auth-pages.tsx
+  6:1  error  Run autofix to sort these exports!  simple-import-sort/exports
+
+/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/src/features/auth/auth-session-state.tsx
+  3:1  error  All imports in the declaration are only used as types. Use `import type`  @typescript-eslint/consistent-type-imports
+
+/Users/trankhanh/MyFolder/ResearchProjects/NestJS/online-examination-platform/apps/web/src/features/auth/use-auth-scope.ts
+  20:13  error  The ref value 'scope.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'scope.current' to a variable inside the effect, and use that variable in the cleanup function  react-hooks/exhaustive-deps
+
+✖ 3 problems (3 errors, 0 warnings)
+  2 errors and 0 warnings potentially fixable with the `--fix` option.
+

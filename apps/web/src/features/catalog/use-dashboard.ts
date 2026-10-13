@@ -1,4 +1,3 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 import { useMemory } from "@web/app/memory";
@@ -6,30 +5,57 @@ import { useRuntime } from "@web/app/runtime";
 import { useSession } from "@web/app/session";
 import type { Category, HistoryItem } from "@web/shared/api/dto";
 
+import { dashboardAttemptTitle } from "./dashboard-model";
+import { useDashboardSnapshot } from "./use-dashboard-snapshot";
+
 export function useDashboard() {
-  const { api } = useRuntime();
-  const { profile } = useSession();
-  const memory = useMemory();
-  const [category, setCategory] = useState<Category>();
-  const history = useInfiniteQuery({
-    queryKey: ["history", "dashboard"],
-    initialPageParam: undefined as string | undefined,
-    queryFn: ({ pageParam }) =>
-      api.getHistory({ pageSize: 20, cursor: pageParam }).then((response) => response.data),
-    getNextPageParam: (last) => last.next ?? undefined,
-  });
-  const catalog = useQuery({
-    queryKey: ["exams", "dashboard", category ?? "*"],
-    queryFn: () => api.browseExams({ pageSize: 3, category }).then((response) => response.data),
-  });
-  const items = history.data?.pages.flatMap((page) => page.items) ?? [];
+  const { api } = useRuntime(),
+    session = useSession(),
+    memory = useMemory();
+  const [category, selectCategory] = useState<Category>();
+  const historyRead = useDashboardSnapshot("history", "recent", () =>
+    api.getHistory({ pageSize: 20 }),
+  );
+  const catalogRead = useDashboardSnapshot("catalog", category ?? "*", () =>
+    api.browseExams({ pageSize: 3, category }),
+  );
+  const items = historyRead.query.data?.items ?? [];
   const current = items.find((item) => item.status === "IN_PROGRESS" || item.status === "CREATED");
   const recent = items.filter((item) => item !== current).slice(0, 3);
-  function titleFor(item: HistoryItem) {
-    const frozen = memory.lookup(item.publishedVersionId);
-    return frozen && frozen.examId === item.examId
-      ? frozen.title
-      : `Phiên bản …${item.publishedVersionId.slice(-6)}`;
+  const visible =
+    session.status === "authenticated" && !!session.profile?.id && !session.needsReauth;
+  function setCategory(value?: Category) {
+    if (
+      !visible ||
+      catalogRead.blockedNow() ||
+      catalogRead.query.isFetching ||
+      catalogRead.remaining > 0
+    )
+      return;
+    selectCategory(value);
   }
-  return { profile, category, setCategory, history, catalog, current, recent, titleFor };
+  function titleFor(item: HistoryItem) {
+    return dashboardAttemptTitle(
+      item,
+      historyRead.hidden ? null : memory.lookup(item.publishedVersionId),
+    );
+  }
+  return {
+    profile: visible ? session.profile : null,
+    session,
+    visible,
+    category,
+    setCategory,
+    history: historyRead.query,
+    catalog: catalogRead.query,
+    historyDenied: historyRead.denied,
+    catalogDenied: catalogRead.denied,
+    historyWait: historyRead.remaining,
+    catalogWait: catalogRead.remaining,
+    retryHistory: historyRead.refresh,
+    retryCatalog: catalogRead.refresh,
+    current,
+    recent,
+    titleFor,
+  };
 }

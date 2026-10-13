@@ -1,4 +1,25 @@
-# Active increment 2026-10-13: PORT-05E Profile / Account
+# Active increment 2026-10-13: PORT-05G Candidate Dashboard
+
+COMPLETE locally: [G1–G5 review](web-ui/port-05g-2026-10-13.md). Web/tablet
+768/1024/1280/1440px.930 root/66 Chromium PASS;24 final captures font/axe/
+overflow/gutters đạt. Query actor/epoch fences, bounded independent snapshots,
+serialized server-wait recovery và exact frozen metadata.6.960 protected files
+unchanged, prior F work retained. [Evidence](web-ui/evidence/port-05g-2026-10-13/README.md).
+No API/dependency/AWS change, no actual live Dashboard acceptance claim.
+Next bounded Public help/how/404; parent PORT-05/FE7/32/roadmap89/217/full live/
+production còn mở, mobile/app deferred. Checkpoints dưới là lịch sử.
+
+# Previous increment 2026-10-13: PORT-05F Identity pages
+
+COMPLETE locally: [F1–F5 review](web-ui/port-05f-2026-10-13.md). Login/Register/
+Check Email/Verify Web/tablet768/1024/1280/1440px.906 root/61 Chromium/10 actual
+HTTPS/PG/SMTP PASS;32 Auth captures font/axe/overflow/gutter đạt.6.398 protected
+files unchanged; no API/dependency/AWS changes. Parent PORT-05/FE7/32/
+roadmap89/217/full live/production remain open, mobile/app deferred. Next bounded
+Candidate Dashboard, rồi Public help/how/404, chưa triển khai. Prior checkpoints
+below are historical. [Evidence](web-ui/evidence/port-05f-2026-10-13/README.md).
+
+# Previous increment 2026-10-13: PORT-05E Profile / Account
 
 COMPLETE locally: [P1–P5 review](web-ui/port-05e-2026-10-13.md). Web/tablet
 768/1024/1280/1440px; Profile controller, immutable writes, explicit conflict,

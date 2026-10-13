@@ -1,0 +1,16 @@
+
+> @exam/web@0.1.0 test:e2e
+> playwright test port-05g.e2e-spec.ts
+
+
+Running 5 tests using 1 worker
+
+(node:41730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/port-05g.e2e-spec.ts:215:1 › PORT-05G Dashboard demo remains usable and fits Web/tablet without a fake timer or score summary (3.5s)
+  ✓  2 [chromium] › e2e/port-05g.e2e-spec.ts:249:1 › PORT-05G long names, exact frozen metadata, zero/null scores and bounded request budget (2.2s)
+  ✓  3 [chromium] › e2e/port-05g.e2e-spec.ts:307:1 › PORT-05G complete empty snapshots have no phantom next page or global statistics (1.7s)
+  ✓  4 [chromium] › e2e/port-05g.e2e-spec.ts:325:1 › PORT-05G history/catalog errors remain independent and stale snapshots are labeled (3.2s)
+  ✓  5 [chromium] › e2e/port-05g.e2e-spec.ts:362:1 › PORT-05G pending history, server wait and reauth hide private Dashboard data (2.2s)
+
+  5 passed (13.6s)

@@ -1,5 +1,28 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
+**PORT-05G2026-10-13:** [PORT-05G G1–G5](port-05g-2026-10-13.md) COMPLETE locally: Candidate Dashboard
+Web/tablet768/1024/1280/1440px.930 root/66 Chromium PASS;24 captures có font/axe/
+overflow/gutters đạt. Actor/epoch cache fences, denial/late-response protection,
+independent snapshots và immediate server-wait guard; no eager history/N+1.
+6.960 protected API/templates/prior evidence/PORT-05F files unchanged.
+[Evidence](evidence/port-05g-2026-10-13/README.md). Actual Dashboard API/PG/HTTPS
+business acceptance chưa chạy; mock HTTP/live-adapter receipts tách real Identity
+proof lịch sử. Parent PORT-05/FE7/32/roadmap89/217/full live/production giữ mở;
+mobile/app deferred. Next bounded Public help/how/404. Dưới là checkpoints cũ.
+
+
+**PORT-05F2026-10-13:** [PORT-05F F1–F5](port-05f-2026-10-13.md) COMPLETE locally: Identity
+Login/Register/Check Email/Verify Web/tablet768/1024/1280/1440px.906 root/61
+Chromium/10 real HTTPS PASS;32 Auth captures font/axe/overflow/gutter đạt.
+Feature controllers, explicit same-body verification retry, login ACK/profile
+GET-only recovery, session/route fencing và anonymous bootstrap repair.
+6.398 protected files unchanged. [Evidence](evidence/port-05f-2026-10-13/README.md).
+Real HTTPS/PG/SMTP xác nhận named Identity và new Profile H05/08/10 flows;
+full live permissions/Admin/Catalog/Assessment/Reporting, mobile/app/AWS/production
+vẫn riêng. Parent PORT-05, FE7/32 và roadmap89/217 giữ mở. Next bounded Candidate
+Dashboard, rồi Public help/how/404 theo selected references. Dưới là lịch sử.
+
+
 **PORT-05E 2026-10-13:** Hồ sơ/Tài khoản hoàn thành cục bộ trên Web/tablet;
 email/xác thực chỉ đọc, tên hiển thị, privacy opt-in, explicit conflict và
 reset/leave/logout dialogs. Controller tách khỏi view; retry giữ nguyên key/body/

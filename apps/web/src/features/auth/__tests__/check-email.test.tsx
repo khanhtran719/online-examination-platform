@@ -13,6 +13,9 @@ const request = vi.hoisted(() => vi.fn());
 vi.mock("@web/app/runtime", () => ({
   useRuntime: () => ({ api: { requestEmailVerification: request }, demo: null }),
 }));
+vi.mock("@web/app/session", () => ({
+  useSession: () => ({ status: "anonymous", profile: null, needsReauth: false, epoch: 0 }),
+}));
 afterEach(() => {
   cleanup();
   request.mockReset();
@@ -50,6 +53,7 @@ describe("email resend feedback", () => {
         <CheckEmailPage />
       </MemoryRouter>,
     );
+    await userEvent.type(screen.getByLabelText("Email cần gửi lại"), "person@example.test");
     await userEvent.click(screen.getByRole("button", { name: "Gửi lại hướng dẫn" }));
     expect(await screen.findByText("Hãy chờ trước khi gửi lại")).toBeInTheDocument();
     expect(screen.queryByText("Đã nhận yêu cầu")).toBeNull();

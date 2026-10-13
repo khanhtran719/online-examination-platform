@@ -27,6 +27,7 @@ export type SessionStatus = "loading" | "anonymous" | "authenticated" | "unavail
 
 interface SessionValue {
   status: SessionStatus;
+  epoch: number;
   profile: Profile | null;
   error: unknown;
   logoutError: string | null;
@@ -47,20 +48,34 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const { api, transport, bindRecovery } = useRuntime();
   const memory = useMemory();
   const queryClient = useQueryClient();
+  const [epoch, setEpoch] = useState(0);
+  const generation = useRef(0);
+  const readGeneration = useRef(0);
+  const invalidate = useCallback(() => {
+    generation.current += 1;
+    readGeneration.current += 1;
+    setEpoch(generation.current);
+  }, []);
   const [status, setStatus] = useState<SessionStatus>("loading");
   const [profile, setProfile] = useState<Profile | null>(null);
   const [error, setError] = useState<unknown>(null);
   const [logoutError, setLogoutError] = useState<string | null>(null);
   const [hasUnconfirmed, setUnconfirmed] = useState(false);
   const [needsReauth, setNeedsReauth] = useState(false);
+  const establishedPrincipal = useRef(false);
+  establishedPrincipal.current = profile !== null;
   const coordinatorRef = useRef<SessionCoordinator | null>(null);
   const channelRef = useRef<BroadcastChannel | null>(null);
 
   const reload = useCallback(
     async (options?: { quiet?: boolean; confirmedLogin?: boolean }) => {
+      const scope = generation.current;
+      const read = ++readGeneration.current;
+      const current = () => scope === generation.current && read === readGeneration.current;
       if (!options?.quiet) setStatus("loading");
       try {
         const response = await api.getProfile();
+        if (!current()) return false;
         if (options?.confirmedLogin) coordinatorRef.current?.confirmLogin();
         setProfile(response.data);
         setStatus("authenticated");
@@ -68,6 +83,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setError(null);
         return true;
       } catch (caught) {
+        if (!current()) return false;
         if (options?.quiet) {
           setError(caught);
           return false;
@@ -86,17 +102,22 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     [api],
   );
 
-  const adoptProfile = useCallback((next: Profile) => {
-    // Used after an explicit reauth login and its authoritative profile read.
-    coordinatorRef.current?.confirmLogin();
-    setProfile(next);
-    setStatus("authenticated");
-    setNeedsReauth(false);
-    setError(null);
-  }, []);
+  const adoptProfile = useCallback(
+    (next: Profile) => {
+      // Used after an explicit reauth login and its authoritative profile read.
+      invalidate();
+      coordinatorRef.current?.confirmLogin();
+      setProfile(next);
+      setStatus("authenticated");
+      setNeedsReauth(false);
+      setError(null);
+    },
+    [invalidate],
+  );
 
   const replaceActor = useCallback(
     (next: Profile) => {
+      invalidate();
       coordinatorRef.current?.confirmLogin();
       queryClient.clear();
       memory.clear();
@@ -106,7 +127,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setNeedsReauth(false);
       setError(null);
     },
-    [memory, queryClient],
+    [invalidate, memory, queryClient],
   );
 
   const syncProfile = useCallback((next: Profile) => {
@@ -138,8 +159,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       channel.onmessage = (event: MessageEvent<SessionSignal>) => {
         if (!event.data) return;
         if (event.data.type === "session-epoch") coordinator.noteExternalEpoch(event.data.epoch);
-        if (event.data.type === "reauth") setNeedsReauth(true);
+        // Anonymous bootstrap may itself broadcast a failed refresh. There is
+        // no established principal to invalidate until its authoritative read finishes.
+        if (event.data.type === "reauth" && establishedPrincipal.current) {
+          invalidate();
+          setNeedsReauth(true);
+        }
         if (event.data.type === "logout") {
+          invalidate();
           queryClient.clear();
           memory.clear();
           setProfile(null);
@@ -153,9 +180,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       channel?.close();
       channelRef.current = null;
     };
-  }, [bindRecovery, memory, queryClient, transport]);
+  }, [bindRecovery, invalidate, memory, queryClient, transport]);
 
   const logout = useCallback(async () => {
+    invalidate();
     setLogoutError(null);
     try {
       await api.logout();
@@ -171,7 +199,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setUnconfirmed(false);
     setNeedsReauth(false);
     setStatus("anonymous");
-  }, [api, memory, queryClient]);
+  }, [api, invalidate, memory, queryClient]);
 
   const recover = useCallback(async () => {
     const coordinator = coordinatorRef.current;
@@ -181,6 +209,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<SessionValue>(
     () => ({
+      epoch,
       status,
       profile,
       error,
@@ -198,6 +227,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     [
       adoptProfile,
       syncProfile,
+      epoch,
       error,
       hasUnconfirmed,
       logout,

@@ -1,5 +1,21 @@
 # Roadmap triển khai có đánh dấu
 
+PORT-05G2026-10-13 UI checkpoint: [Candidate Dashboard](web-ui/port-05g-2026-10-13.md)
+G1–G5 COMPLETE locally;930 root/66 Chromium PASS,24 Web/tablet captures.
+6.960 API/template/prior evidence/PORT-05F files unchanged. No API/schema/
+dependency/AWS change. Actual Dashboard/Assessment/Catalog live acceptance
+chưa chạy; synthetic HTTP proof không là PostgreSQL/TLS/SLO/cost acceptance.
+Roadmap89/217/FE7/32/parent PORT-05 unchanged; production NOT ACCEPTED.
+Next bounded Public help/how/404; mobile/app deferred. Prior checkpoints follow.
+
+PORT-05F2026-10-13 UI checkpoint: [Identity review](web-ui/port-05f-2026-10-13.md)
+COMPLETE locally,906 root/61 Chromium/10 real HTTPS/PG/SMTP PASS,32 Web/tablet
+captures.6.398 API/template/prior evidence files unchanged. Named Identity and
+Profile receipt/restart/two-tab flows verified on new UI; no full permission/
+Admin/Catalog/Assessment/Reporting/AWS/cost/SLO acceptance. **89/217 checked**,
+FE7/32/parent PORT-05 unchanged; production NOT ACCEPTED. Next bounded Candidate
+Dashboard/Public help/how/404; mobile/app deferred. Historical checkpoints follow.
+
 Import normalization update2026-10-12: [IMP-01–06](import-normalization-2026-10-12.md)
 COMPLETE locally; BOOT-11 added/closed, **89/217 checked,128 pending**. Shared
 ESLint import/type/duplicate policy, bounded API aliases and separate Web alias,

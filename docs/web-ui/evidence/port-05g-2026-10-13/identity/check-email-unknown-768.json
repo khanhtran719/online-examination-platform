@@ -1,0 +1,14 @@
+{
+  "documentWidth": 768,
+  "left": 84,
+  "right": 684,
+  "fontLoaded": true,
+  "passwordInputs": [],
+  "viewport": {
+    "width": 768,
+    "height": 1100
+  },
+  "route": "/check-email",
+  "violations": [],
+  "evidenceMode": "synthetic HTTP responses in live adapter; not HTTPS acceptance"
+}

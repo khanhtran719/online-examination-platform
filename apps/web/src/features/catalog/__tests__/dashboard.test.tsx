@@ -15,9 +15,14 @@ vi.mock("@web/app/runtime", () => ({
   }),
 }));
 vi.mock("@web/app/session", () => ({
-  useSession: () => ({ profile: { displayName: "Lan Nguyễn" } }),
+  useSession: () => ({
+    status: "authenticated",
+    needsReauth: false,
+    epoch: 0,
+    profile: { id: "actor", displayName: "Lan Nguyễn" },
+  }),
 }));
-vi.mock("@web/app/memory", () => ({ useMemory: () => ({ lookup: state.lookup }) }));
+vi.mock("@web/app/memory", () => ({ useMemory: () => ({ lookup: state.lookup, clear: vi.fn() }) }));
 beforeEach(() => {
   state.browse.mockResolvedValue({ data: { items: [], next: null } });
 });

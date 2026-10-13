@@ -1,5 +1,13 @@
 # Project profile
 
+PORT-05G2026-10-13 UI checkpoint: [Candidate Dashboard](web-ui/port-05g-2026-10-13.md)
+G1–G5 COMPLETE locally;930 root/66 Chromium PASS,24 Web/tablet captures.
+6.960 API/template/prior evidence/PORT-05F files unchanged. No API/schema/
+dependency/AWS change. Actual Dashboard/Assessment/Catalog live acceptance
+chưa chạy; synthetic HTTP proof không là PostgreSQL/TLS/SLO/cost acceptance.
+Roadmap89/217/FE7/32/parent PORT-05 unchanged; production NOT ACCEPTED.
+Next bounded Public help/how/404; mobile/app deferred. Prior checkpoints follow.
+
 PORT-05E update 2026-10-13: [Profile/Account](web-ui/port-05e-2026-10-13.md)
 P1–P5 COMPLETE locally trên Web/tablet768/1024/1280/1440px. Immutable intent/
 revision/receipt, explicit conflict, actor/session fences, private state clearing

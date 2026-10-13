@@ -1,5 +1,28 @@
 # Frontend implementation tasks — senior hướng dẫn junior
 
+**Checkpoint PORT-05G2026-10-13:** [PORT-05G G1–G5](port-05g-2026-10-13.md) COMPLETE locally: Candidate Dashboard
+Web/tablet768/1024/1280/1440px.930 root/66 Chromium PASS;24 captures có font/axe/
+overflow/gutters đạt. Actor/epoch cache fences, denial/late-response protection,
+independent snapshots và immediate server-wait guard; no eager history/N+1.
+6.960 protected API/templates/prior evidence/PORT-05F files unchanged.
+[Evidence](evidence/port-05g-2026-10-13/README.md). Actual Dashboard API/PG/HTTPS
+business acceptance chưa chạy; mock HTTP/live-adapter receipts tách real Identity
+proof lịch sử. Parent PORT-05/FE7/32/roadmap89/217/full live/production giữ mở;
+mobile/app deferred. Next bounded Public help/how/404. Dưới là checkpoints cũ.
+
+
+**Checkpoint PORT-05F2026-10-13:** [PORT-05F F1–F5](port-05f-2026-10-13.md) COMPLETE locally: Identity
+Login/Register/Check Email/Verify Web/tablet768/1024/1280/1440px.906 root/61
+Chromium/10 real HTTPS PASS;32 Auth captures font/axe/overflow/gutter đạt.
+Feature controllers, explicit same-body verification retry, login ACK/profile
+GET-only recovery, session/route fencing và anonymous bootstrap repair.
+6.398 protected files unchanged. [Evidence](evidence/port-05f-2026-10-13/README.md).
+Real HTTPS/PG/SMTP xác nhận named Identity và new Profile H05/08/10 flows;
+full live permissions/Admin/Catalog/Assessment/Reporting, mobile/app/AWS/production
+vẫn riêng. Parent PORT-05, FE7/32 và roadmap89/217 giữ mở. Next bounded Candidate
+Dashboard, rồi Public help/how/404 theo selected references. Dưới là lịch sử.
+
+
 **Checkpoint PORT-05E 2026-10-13:** [P1–P5 Profile/Account](port-05e-2026-10-13.md)
 COMPLETE locally trên768/1024/1280/1440px.874 root/53 Chromium PASS; builds/
 lint/format/types,25 captures và5.505-file protection đạt. [Evidence](evidence/port-05e-2026-10-13/README.md)
@@ -75,7 +98,7 @@ Mỗi task để lại: files đổi, behavior, tests/checks đã chạy, screen
 - [x] **FE-08** Register/check-email/resend. — PASS local: normalized form/body tests, actual delayed worker SMTP, browser duplicate202/one intent/no session, generic suppressed resend và cooldown. Server integration kiểm tra absent/disabled/verified policies; Retry-After regressions giữ nguyên. Live SES vẫn ID-11.
 - [x] **FE-09** Inert email verification/final password. — PASS local H02/03/04: GET/scanner inert, fragment scrub/reload loses secret, no DOM/URL/referrer/storage leak, explicit anonymous POST, final-owner password, expiry/replay không đổi password hoặc auto login; authenticated context bị từ chối.
 - [x] **FE-10** Login/refresh coordination/logout/reauth. — PASS local H05–09: hai tab shared cookies/Web Locks thật chỉ rotate một lần, restart, disable/logout broadcast, lost ACK không application replay, explicit login reset recovery và profile reauth link. Unit unsupported coordination/late outcome/token-free broadcast và existing draft-preservation checks PASS. Chromium only; broader browser matrix/real Assessment vẫn gate riêng.
-- [ ] **FE-11** Profile/revision và authoritative permission boundary. — PARTIAL. H05/08/10 lịch sử: profile200/409 và lost/stalled-body same-receipt retry chỉ một write PASS trên real HTTPS/PG. [PORT-05E](port-05e-2026-10-13.md) có new UI/controller actor/session, receipt/read separation và explicit conflict unit/demo proof; new UI chưa rerun real HTTPS/PG. Full permission source, real cross-actor/session acceptance và live Admin còn UI-GAP-01.
+- [ ] **FE-11** Profile/revision và authoritative permission boundary. — PARTIAL. PORT-05F đã chạy lại H05/08/10 trên new UI: profile200/409 và lost/stalled-body same-receipt retry chỉ một write PASS trên real HTTPS/PG. [PORT-05E](port-05e-2026-10-13.md) có new UI/controller actor/session, receipt/read separation và explicit conflict unit/demo proof; Named receipt/restart/two-tab checks đã rerun real HTTPS/PG trong [PORT-05F](port-05f-2026-10-13.md); không thay full permission gate. Full permission source, real cross-actor/session acceptance và live Admin còn UI-GAP-01.
 - [ ] **FE-12** Dashboard/browse/cursor/empty states. — PARTIAL. [Đợt2](onboarding-catalog-implementation-2026-10-07.md) hoàn thiện visual dashboard/browse, scoped recent history, filters/pageSize/Back/empty/long-title và5 widths. Unit bảo vệ partial history/frozen owner, không N+1 hoặc aggregate giả. Cursor hết hạn và live Catalog pagination/error matrix vẫn mở.
 - [ ] **FE-13** Detail/start confirmation/idempotent resume. — PARTIAL. Đợt2 có structure/schedule/start sidebar, version leaderboard link, cancel/Escape/focus và existing start navigation PASS. Browser xác nhận rồi bắt đầu đề Đại học; Networking trả lượt cũ. Lost ACK của start NOT RUN trên browser, giữ keyRef cũ và gate backend Assessment.
 - [ ] **FE-14** Owned question/answer loading và three-type renderer. — PARTIAL. Unit: prompt/option là text, không thành script/img; không suy version 0 khi answer scope chưa đủ. Browser W-14 PASS. Live preview500 câu: trang đầu0 radio,24 lần tải thêm,500 ô phiếu. [Đợt3](assessment-results-implementation-2026-10-07.md): ba loại native controls, keyboard selection, marked filter và focus dialog PASS trên demo; thẻ câu hỏi/navigator kiểm tra5 widths. Live Assessment matrix vẫn mở.

@@ -1,5 +1,11 @@
 # Identity trên browser HTTPS local
 
+PORT-05F2026-10-13 cập nhật selectors theo Identity/Profile UI đã chuẩn hóa;
+không đổi TLS/cookie/CSRF/PostgreSQL/mail fixtures hoặc giảm assertions. H06
+reauth chuyển thẳng về return route; H08/H10 dùng CTA explicit same-request
+retry của Profile mới. [Kết quả/ràng buộc](../web-ui/port-05f-2026-10-13.md).
+Auth runner vẫn không archive raw form DOM/traces/cookies/email links.
+
 Runbook cho ID-07/WEB-02. Dùng live SPA và API thật; không cần domain hoặc AWS account. [Evidence](../evidence/identity-https-2026-10-07/README.md) phân biệt local acceptance với public PKI/SES/AWS.
 
 ## Chạy suite

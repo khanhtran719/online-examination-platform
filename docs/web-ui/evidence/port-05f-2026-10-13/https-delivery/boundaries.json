@@ -1,0 +1,4498 @@
+{
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/ready",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "unmatched",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 404,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/request",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 400,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/logout",
+      "originMatches": false,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 403,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/logout",
+      "originMatches": true,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 403,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/logout",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 403,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/request",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 403,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 403,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/me",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/me",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 409,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/logout",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/me",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 200,
+      "dropped": true,
+      "held": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/me",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/me",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/logout",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 200,
+      "dropped": true,
+      "held": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/logout",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/me",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": true,
+      "held": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/me",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/register",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 202,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/email-verification/confirm",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": null,
+      "status": 401,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/me",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false,
+      "held": true
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/csrf",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/me",
+      "originMatches": true,
+      "csrfHeader": true,
+      "contentType": "application/json",
+      "status": 200,
+      "dropped": false
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "originMatches": false,
+      "csrfHeader": false,
+      "contentType": null,
+      "status": 200,
+      "dropped": false
+    }
+  ],
+  "httpLogs": [
+    {
+      "event": "http.completed",
+      "correlationId": "eb65442b-7661-4765-b37a-f0520ade51b8",
+      "method": "GET",
+      "route": "/ready",
+      "status": 200,
+      "durationMs": 11.833208000000013
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ebc93a33-e096-44ed-9b82-cf4f95d36abc",
+      "method": "GET",
+      "route": "unmatched",
+      "status": 404,
+      "durationMs": 0.4959160000000793
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "b166b81e-403b-4ec5-83fc-437c63b48a57",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.7386249999999563
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4f3e27ea-2ec4-4ad0-bdb9-bf6503f13135",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.2925839999998061
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6355e929-323a-40d7-bb8c-390ae512fb50",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 8.299415999999837
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "925112fd-b887-465d-a624-e16f0cf25e50",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 3.0632080000000315
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e6b4de8b-193f-4951-8cbc-2e63c213db06",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.967416999999841
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "adf83751-58a3-4668-8c15-26bf4563066a",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 45.517125000000306
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "cf521c4a-fa89-4315-ae23-30a5b29dee92",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.8125
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "28204881-9c4f-48af-a445-f5a64ca44758",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.34262500000022555
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "fbbc11f8-fa7d-4d8e-91b3-cb377c3729bf",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.439958999999817
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "a5520d1e-a722-4f16-bd15-854202edfcf6",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.9062920000001213
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e14efd6b-f8f9-4446-a5cc-9c4b676c5824",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.8861249999999927
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "eca39037-2027-4d05-8bbc-eb97a6a37c99",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 28.18333399999983
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "01025267-c750-47d5-b9a7-54263a7aa4de",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.763666999999714
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "b81f09fe-26bd-407f-abf4-8d5a60f282ae",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/request",
+      "status": 202,
+      "durationMs": 14.903582999999799
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "2af1d1d1-41e3-46e9-b440-353512bbba13",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.24141700000018318
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "34c9af86-87d3-44d3-a66c-af5a23d10895",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1930829999996604
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "af524237-0b74-4a51-8d6f-18c6b2ca5148",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 1.8829580000001442
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "59078f25-cb2b-40ba-8339-56e743e773e9",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.3415829999999005
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "406598ea-0375-4467-9508-3aeeed834978",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.26862500000015643
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "fc93997d-dec9-4716-8beb-c32c65d26b5d",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.18045799999981682
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ac11d38c-053f-42b9-9ba4-00d7ddc5c310",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.568374999999833
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8f9e739c-ae8f-4489-886a-94091461cd2d",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.23345800000015515
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "a5d95b4f-fa5d-4133-934f-754de0ad4708",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1955830000001697
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "a1853a6d-6617-4edb-949e-95b5a06c9c14",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.6731249999998
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "abbf01be-6002-4202-a769-d9577b9a1c60",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 3.87441600000011
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ffb92941-b239-4e6d-b94e-164ac470a511",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.5626250000000255
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6e8cf046-aafa-43e9-9a3e-60d8a899cae4",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 200,
+      "durationMs": 38.38591600000018
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "679923b0-3379-4a9c-80cf-df3716bc0967",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.21062499999970896
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "bc590594-c4af-432d-8e4a-0c2fe772f5e5",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.19420800000034433
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "b62a58a5-9d90-4032-b74f-27bfbee4e5fd",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.086749999999938
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "09c54dc6-aa7e-4612-9570-1df3d485aefa",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.655917000000045
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6a382c7b-a52f-4e3a-b739-09eed892a9a9",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.4545419999999467
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "700e87bf-0dd4-4186-9213-cff2b1c0202b",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 200,
+      "durationMs": 44.83100000000013
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "3fa593c8-0288-46fc-bce9-d0b5357f1335",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 23.253708000000188
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7bc0c948-0c01-499f-93e7-34b124db3554",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.2325829999999769
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ae2f3e94-3a30-4694-b7e3-bceac8f5316a",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 25.567790999999943
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ead7eec2-0c18-4851-a001-b4c786deac31",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.8739170000003469
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "d8e45b32-e0a6-433f-8c62-32a844f55f30",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.7567079999998896
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "57473695-d951-4581-b829-60859c81f7b3",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 401,
+      "durationMs": 34.36216700000023
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "a83088c7-6b8b-4f1c-a7a4-8487875fdb12",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.20041700000001583
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f9e6af23-d7de-4b72-af30-5f8497205d55",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.18095799999991868
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "1d516a2f-22d7-4457-823f-c280f48ed8e4",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.119332999999642
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f841b466-aa54-42d9-acee-3ee84026aa7a",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 2.5065420000000813
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "3cdf8b6c-a1dd-4a3e-ba9b-2b2a947f432a",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.7723329999998896
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f6a20fa3-46ef-4a15-9d1f-53f2ae820448",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 200,
+      "durationMs": 46.76758299999983
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ca6bee9d-c71c-48ba-af74-9135782273e7",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 4.846750000000611
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8e6848de-4066-42a9-9e90-004a7bf39456",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 3.485250000000633
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e90f01d7-6819-4307-90f5-cab6d97a6f50",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.39129200000024866
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4a83bfa6-a260-4382-8d05-0278ed53802b",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.30587500000001455
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "fcd4ecb9-6ea4-41c4-8e69-cb51e49d99ed",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.3707910000002812
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "75c72b6f-9b6f-478c-9a77-495303333ab8",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.002792000000227
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ff431264-4454-4c33-973f-d235d872f49b",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1955419999994774
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4ac4444f-08b2-49b1-8f38-cd0bf9b12fe2",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1336249999994834
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e81e810b-4e87-4b1a-af2b-a6570df18518",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.581791000000521
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f260aa71-0a5f-44d4-a2c4-eec74fbc52bc",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.5953330000002097
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0327bf82-1da0-45fc-b293-294cf5bf241d",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.0313749999995707
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4902a6a8-aa85-453b-b91a-c09562764816",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 35.78679199999988
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "5c4873ff-6ca4-4981-9567-1636cacd2c99",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.24879200000032142
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "c71ff842-92b0-4c1a-b8ba-5aed5c48280e",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.17374999999992724
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "da5e1317-a8da-45f0-ace3-c1f89b7a779d",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.962874999999258
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "02819e3c-bd8e-4bca-a22d-9b4f843c3c90",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.4283329999998386
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "32d22a33-d33d-4c08-a470-b7ba4ab33edc",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.3218750000005457
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "844b3e54-0f71-4598-838f-fb5493b36a26",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 400,
+      "durationMs": 27.32341699999961
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "16deaacc-118b-4380-b3e2-ac1749592922",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.33470800000031886
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6b0c80d2-c98f-4177-93af-405e9d7be55c",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.208625000000211
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "3d23aa72-55f7-4146-a498-19f0a0f65950",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.435583999999835
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "76d323d6-94c3-413b-8d69-c7942a7ec20d",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 4.252749999999651
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "5cc2df2e-598a-4e2b-be3a-37c8497d4b08",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.5552080000006754
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8d5840bf-5e4e-475b-8d5b-02863a44ca3b",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 38.66833399999996
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "61d6c724-29d8-4a37-a903-425525a55540",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1837919999998121
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "14ba9061-1ef8-4ee1-a702-d00689736c59",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.16845800000010058
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "02b4f540-9b59-47ef-94ce-0f451320f295",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.9515410000003612
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f39f218b-010b-483a-86a7-32aaa6e67168",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.4312920000002123
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "1e9a617e-5337-4fc1-8932-de7c6ea8fe87",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.569583000000421
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "d04050cd-611f-4219-bc53-e653849c9058",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 200,
+      "durationMs": 36.142541999999594
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "24deecb3-c777-4413-ac11-6e18fa0ae0e3",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.2104589999999007
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0bf889c9-43fa-488a-87ec-adbdb47375c8",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.15449999999964348
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "162cd142-abb1-4931-9749-ad7bcf086741",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.853041999999732
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "279e421e-f5e6-46e1-8375-0dd20d560239",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 4.578916999999819
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "74fb1916-7e21-4001-bf02-2b818971952b",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.811916999999994
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4a0a8548-12a0-4f86-8b44-0d9167b38aed",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 200,
+      "durationMs": 39.322290999999495
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f84c2d01-b859-40b1-ad6f-f38f927854d5",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 3.7087499999997817
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "bfcfc29e-a27d-492e-844f-62f854348f0a",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 8.245750000000044
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8a3f9fe4-a717-4ca1-8c1c-548c18ee8be0",
+      "method": "POST",
+      "route": "/v1/auth/logout",
+      "status": 403,
+      "durationMs": 0.2347089999993841
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8b57a8e1-31b5-407a-9852-fb5032a7e14b",
+      "method": "POST",
+      "route": "/v1/auth/logout",
+      "status": 403,
+      "durationMs": 0.17033300000002782
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "95a0d5d7-f010-4b71-8edf-6a3cf92b035e",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.478917000000365
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "d312c5e1-f7bd-44a6-a1bf-a92f93efee8b",
+      "method": "POST",
+      "route": "/v1/auth/logout",
+      "status": 403,
+      "durationMs": 0.152791000000434
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "d6244ea0-0090-48c4-8792-ee71c06d45e7",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.271458999999595
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "cd19409d-c2cf-4173-b269-3346537a1e6d",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/request",
+      "status": 403,
+      "durationMs": 1.3976659999998446
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "aa644150-4bf8-471c-bf67-1133edfc3113",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.0150000000003274
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "62353d12-4dff-4392-b309-5977a7651fae",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 403,
+      "durationMs": 1.3039579999995112
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f532c953-70e3-41d4-bc9b-a0df215c957e",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 4.984166999999616
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0347d139-a042-4b37-bbd2-2fdda350e450",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.28337499999997817
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "63d83663-4f73-4159-b1bc-517a12e4542a",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1858329999995476
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "a24f336d-8892-4f57-b561-df564d5de236",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.663875000000189
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "516cd2ef-3fb2-4600-8887-334bf5955468",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 3.362583000000086
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "2e4cd8a4-3909-4533-a466-3c531237a8ea",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.0510000000003856
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "49c50bc7-51f9-4ad5-9459-9950580d4da8",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 34.014500000000226
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4b90a662-ad96-4678-a354-ff895da785af",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.21145800000067538
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "45851d20-a1bf-4bc4-ae11-546c5a24d840",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.4081670000005033
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "aa0167d5-f2ce-411b-843f-d2e22bd31780",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 1.9261249999999563
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f4da88d8-1a23-44f9-9592-bf9428ce08ec",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.2919169999995574
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "9c446259-0065-4883-9e9f-68620a3df554",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.8902500000003783
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8fdab046-9d59-4d2d-99fe-34a4a30a9fb1",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 200,
+      "durationMs": 35.17491699999937
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "a79fbd3e-fd77-4289-a976-fcce5f7ee3ed",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1882499999992433
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f557a152-162b-4746-9dd9-2b7bbd0190fb",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1470419999996011
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ad507b32-b9c6-4958-b02e-29352cb54edb",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.1610829999999623
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "987801df-a8e3-4606-b16d-38beff2c6300",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 2.039708999999675
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0fc4e8d7-f5cc-4857-bfe8-fe5f93496080",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.424917000000278
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7400b380-87f9-4c7a-ad09-639ab3c3366f",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 200,
+      "durationMs": 42.29191700000047
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "9c76143b-51f7-42fc-8321-6366b8100e4e",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 4.322125000000597
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "1e16e518-5b43-4337-8c1f-271d3faf1e98",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 9.100542000000132
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0f2f5880-9bcd-4f5d-badf-33f7676ad4b4",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 5.81616699999995
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6fbe36f3-a5ab-4dc1-9ea8-b6f38df9789c",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 1.8273750000007567
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0bc1e085-f73b-426c-b284-81550cac66e6",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 1.7752080000000205
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "85bdc07e-855d-423c-afaf-25adfa70e58e",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.788749999999709
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4d262cbe-50fb-41eb-9ee0-13b9b03e5f50",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 200,
+      "durationMs": 6.694625000000087
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "d87d4840-93a8-4613-b902-fe435e027cf7",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 2.428208000000268
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "62776d2d-789f-463a-b6ed-7e4f9184c9fa",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 2.6815409999999247
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e748991f-2e7d-449b-b4a1-ddab819ebd64",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 4.627124999999978
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "fb3e0079-35bc-4e0a-a0bb-5d35c5d83009",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 7.263457999999446
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0310e52f-5d94-4703-9246-f1c81fce963e",
+      "method": "PUT",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 12.893791999999848
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f3730a76-c824-4b32-8d8e-06ca815813e8",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.078207999999904
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "437d1770-b2e3-419e-bdd7-17d37e375900",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 18.5
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ec1085ca-62cd-4e3e-ae15-fa63df164567",
+      "method": "PUT",
+      "route": "/v1/me",
+      "status": 409,
+      "durationMs": 15.900332999999591
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "d1f61019-a764-41f2-8eed-b2b48eba9b82",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 5.714291999999659
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "99b5cccb-79df-4ede-af0f-865fcf5b11a2",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 17.522249999999985
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "b33abe6e-e4fc-40cc-9425-c666c74ae1f9",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 2.8100830000003043
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f2b4fadd-d89b-45dc-bd4d-c98f189b7271",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 8.943916000000172
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7b3a6fd2-b69d-45b6-9b10-127e7256e3ac",
+      "method": "POST",
+      "route": "/v1/auth/logout",
+      "status": 200,
+      "durationMs": 8.473082999998951
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "75071d53-1e0d-4442-bf57-30642e081d40",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.589125000000422
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "de170277-ee9a-429d-8850-68a8e61bee23",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.22925000000032014
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "c61b9f5e-b22b-4cf0-9709-ec2ec80ce2c5",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.101915999999619
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8a9c7dda-ce46-444c-96f5-17bd1cf87195",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.6750000000010914
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "478e6a1a-d79c-4112-9bf3-b8f28f3786a8",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.2520000000004075
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "650f9253-5aee-4c93-a0ac-01162cf46e84",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 36.909207999999126
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "b3ae9858-a104-4786-a86b-7fbc154d83e8",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.2086669999989681
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "81c216a2-6910-4f79-bd21-311702b9bd0a",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.196749999999156
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "eb0fd20f-99d3-4a29-845d-d49373898c8b",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 1.9265419999992446
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "5f880d3c-445e-41a5-a9cd-4a1e65bc3252",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.4712500000005093
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e444db41-239d-4056-875c-b3e461cfd25f",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.766458000000057
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "27f267ab-0b30-4cc8-af98-9acf07d9ba55",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 200,
+      "durationMs": 35.804041999999754
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "dc77fd8b-cec1-437d-8981-fedca247b12c",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.21220800000082818
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "89b70d7e-c54f-4804-8c4c-8cd5c92bd09f",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.28104199999870616
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "a58d5dbd-602d-4f98-8d15-d779bd17f8a3",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.917750000000524
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7515e6d6-a7f4-47cc-b812-a5e86a03f530",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 3.4150419999987207
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "2cffd1a3-6626-40a8-9699-ff87eba8ede2",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.318208000000595
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "211b19d6-6e93-4bd2-896d-3686544d25a7",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 200,
+      "durationMs": 43.58245799999895
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "052d1f3a-3a0e-4f24-8e18-998f5299bc36",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 4.398583000000144
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "83121228-1c2a-4762-898e-939b6eb54adb",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.798166000000492
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6b5f5e47-1933-4f89-9f1e-f98d03ef9b6d",
+      "method": "PUT",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 2.818333999999595
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "95b1cfb2-d95b-473d-a17c-ed76f6f636b6",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 1.7292499999985012
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4de0587b-8886-4e0e-a130-cd441645295c",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.7049580000002607
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "17c922c7-fc92-4673-928f-c235228666d8",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 200,
+      "durationMs": 6.455249999999069
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "25cabf5c-cf1b-4fb3-9194-56e7991d9b05",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.741500000000087
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "68f6bf63-0c63-4060-8189-7425cdcfd8de",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 200,
+      "durationMs": 41.57587500000045
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "aa0a42c8-afa5-4ba7-a31b-1ef01d5b3e31",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 4.758750000000873
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "84fd5db5-a929-4d49-88f8-3da31ac140d3",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 6.089500000000044
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0bf662f9-6881-4dde-8b73-99ee932cfb85",
+      "method": "PUT",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 2.512750000001688
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "b9c5e58d-e69e-4082-ba5e-738372facec9",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 1.870333999999275
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "55fba6a2-f52a-46de-ba11-65086d272804",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.681249999999636
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "36cb1bcd-e278-46f2-94ee-816630ad7e74",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 200,
+      "durationMs": 14.749582999998893
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "18afa903-df8d-44a9-a1d9-e0a6b89c993a",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.241041999999652
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ce5a489f-1835-4740-93ce-17014abe6a53",
+      "method": "PUT",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 9.490540999999212
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0627eb8c-ffd1-4048-953d-5f1e16679370",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 2.8172080000003916
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f7ebb4ef-1b74-4b60-a060-8dde6c4915ed",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.29866600000059407
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7877692c-ea58-4466-8e2d-a9c0a3ee698d",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1869169999990845
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "c5839d38-87af-4e61-b2a4-0589687b40be",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.5902920000007725
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "26bb4a0c-aa94-495b-b676-4f9b791aed7f",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 2.59966600000007
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "b836db20-a603-4274-b92e-ddc4339eb753",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.085791999999856
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "a9e47022-af5c-4a84-8338-63da9201bf06",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 39.648333000001
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7e848038-1ffb-4244-b15e-176b6919cb75",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.18250000000080036
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "2b1d4da2-ee77-4e22-b540-350f2532d343",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.3100000000013097
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "5af818ae-0780-46f5-84d3-44c4c7375dbd",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.4183329999996204
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7016762b-0534-4678-9837-e17d9dece93c",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.3905000000013388
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "351b7ddc-b7c6-422f-9ff8-1cf3b47fc3da",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.4859159999996336
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "ae21d533-7fcf-4022-8f2e-0f2fd5d794c3",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 200,
+      "durationMs": 39.8862079999999
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f4994e96-c98a-4e4a-a9a2-57c6f5c94685",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.2267919999994774
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "14d2cebc-2614-4772-8243-aae223d2fbbe",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.17124999999941792
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "eb7c7832-6c12-460f-baf0-40a14816871f",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 1.8374579999999696
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "46ca07f0-3e6a-4977-a8b4-e0d6dc4d5950",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.1817919999994047
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "c3e332bb-b080-4515-9383-d17d11317beb",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.398834000001443
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "bb78d395-f467-434b-9ce3-03096ceb067f",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 200,
+      "durationMs": 38.75495799999953
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "2997df99-12e1-433d-b24d-9b7473400940",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 3.599208000001454
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "21f7d0e4-544e-44b2-bbe0-451045ebd30f",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.58849999999984
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "20ad0766-9b36-407d-b387-50bc29ce12b2",
+      "method": "POST",
+      "route": "/v1/auth/logout",
+      "status": 200,
+      "durationMs": 9.465874999999869
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "cfa8c725-0e7d-4205-957e-e0f7bbe2fa05",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.0588750000006257
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "021f9b5c-105d-48f9-aebe-3e52b171e74e",
+      "method": "POST",
+      "route": "/v1/auth/logout",
+      "status": 200,
+      "durationMs": 6.1965000000000146
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e12724c1-eb56-4087-8dfe-e1e38daf127d",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.2193329999990965
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "2524f8dd-794f-46a5-973a-6c823eff42bf",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.19691600000078324
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6e002cad-2ffe-498a-a6a4-d41726ce9bdc",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.5261669999999867
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "35b336ba-2b93-4445-9c56-c1043ab4401f",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 2.292583000000377
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "fca71642-6e81-4417-a1a2-bffe2929320c",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.82208300000093
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "32d065ef-1985-482a-a403-4c58f7f8727f",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 32.111000000000786
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "650eb2ea-f430-4ea5-bd23-e3ef5eecbf39",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.18916600000011385
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e8f0c4cd-c306-435f-8fe7-d9aa6cced8ea",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.4931670000005397
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7d809054-d700-4a42-9173-f9071bff548a",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 1.8252079999983835
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "cd424a3a-0968-45f9-adbd-51fa9174a852",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.2157920000008744
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "34f0d5bb-c567-4890-8545-4dcb34b4d818",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.78204199999891
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "241e282b-3608-4b9c-9761-da26ffa6a8f4",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 200,
+      "durationMs": 34.048790999999255
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "358c83aa-643d-4cf2-b7e3-e28834165e44",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.22299999999995634
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e268ba6b-56a7-476a-a92e-19709e1a781d",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1610000000000582
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6023f347-a82a-428e-89d7-a5605425b0c6",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.576666999999361
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8fef4d1e-abe6-4b2a-a4ee-8c9b6befeaad",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 3.35491699999875
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "1a0d1703-1349-422a-837c-12c445110ebc",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.24529099999927
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "9a789336-261c-4233-8ee9-fdf6153c1424",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 200,
+      "durationMs": 42.45183399999951
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "1188268d-9caa-4b9d-a320-2373c8ec96d7",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 3.988666999999623
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "eee2ecd4-a99a-42e8-ae66-cd153b014fad",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.632499999999709
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "bfe39942-1575-49e4-886c-2c45ce8da5b8",
+      "method": "PUT",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 10.259084000001167
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "b0964827-186c-4ba9-bcf7-f9d3d03cacc4",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.5929159999996045
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "9156f57b-c71c-4ddb-8135-03b204ab21d6",
+      "method": "PUT",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 10.035250000000815
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "04f8dcc9-ec2d-4e61-868b-1a84a0709dfd",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 3.6967919999988226
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "73e43be2-fb9a-4cf8-8070-31b95ac0ba44",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1736670000009326
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7773b883-da4c-4eaf-885d-42e6f4951566",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.32070800000110466
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "55d0ee11-ffdb-4bbb-97b6-e84b54a7d098",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.841583999999784
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "5fe165ea-52d1-4226-95b3-9575f04dfebc",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 2.83995799999866
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "3160aac2-455c-4205-b518-d4d0ac86f83d",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.36895800000093
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "058a5109-35c4-46fb-9b7c-5028ada8a816",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 38.12024999999994
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "52ca45f0-2f61-4aad-8fcd-3b095a3dff9a",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1941660000011325
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "069e229a-b3ed-4ca9-9fdd-36b96034c44f",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.2710000000006403
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "bc98a681-2aec-4714-bd04-cfddd672522c",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 1.9231669999990118
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "99778c4a-6380-4219-abe8-9e17c93b5275",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.2501250000004802
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "dfbde586-1cd3-4533-9a99-ad3a1b51b775",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.659125000000131
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6c9a82e9-c491-4e38-afe6-ff1aefeda1b8",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 200,
+      "durationMs": 40.1294170000001
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "b29c3160-90af-4001-94ed-d7c56861556a",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.2179999999989377
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "47e41749-fa87-48c8-937a-d5e67d8e491c",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.13637500000004366
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "24117ead-fb57-46ab-8ace-70d6db4e3ab6",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.493583999999828
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "928018d7-f60c-4b71-928e-20e36752673c",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 5.890166999999565
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "30e149f8-5268-4878-bb3f-0f540dfc46e2",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.57995899999878
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "5ba6836e-4039-4e6c-b41a-1468d0d16a5d",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 200,
+      "durationMs": 42.26041699999951
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "82eefd08-7205-4625-ab26-57264fffe314",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 3.986665999998877
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "00d93ee3-fc41-49ec-ab52-00bbacb46636",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 3.0207080000000133
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4717c28b-4b27-403a-8a78-b3a2f5c76d94",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 2.3607909999991534
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "5fdaef13-cce9-4f54-a56c-58234963cb64",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 2.113083000000188
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8b0d2627-28e5-42ce-ad79-9b9160d3bf53",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.2983750000003056
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "195526af-7319-4cfd-91c4-fb23dab52d34",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 6.479917000000569
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "41507f11-efa1-431a-971b-e3a3c9049fd9",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 5.693041999998968
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "8371a605-a966-4412-90f9-f7d1361227fe",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 401,
+      "durationMs": 28.968125000001237
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "5b553f84-c11d-458c-8d79-2e9ce7ea9742",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.33183400000052643
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "f061f969-999d-437f-8974-35af3b85d8d8",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1674590000002354
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "29205cdf-64a7-45ca-9840-5d9e89f65c10",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.79241600000023
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "201be465-f674-4e39-b3d2-16a957f8958f",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 3.251625000000786
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4870b5f9-147a-4d9f-98b4-f2ac769dd909",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.0791669999998703
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "4cbb2e0b-b9d3-4a1d-b7f1-6d0f619a2d7c",
+      "method": "POST",
+      "route": "/v1/auth/register",
+      "status": 202,
+      "durationMs": 34.77904200000012
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "d5766e94-68a8-4f7f-9ca3-368fee832405",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.18829200000072888
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "0b962dbf-a43f-412c-a157-9ca9ab124b15",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.16508299999986775
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e8baffda-7af8-4c7b-900a-39cc8a14236e",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.669917000001078
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "34d880c6-a158-48ec-a55b-7ae3a6a5981c",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 1.5350409999991825
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "a247af5f-f01a-4575-b8d6-784c9b50fa68",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 4.842208000000028
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "829ed4d3-3f58-405b-90f6-43c9efe41847",
+      "method": "POST",
+      "route": "/v1/auth/email-verification/confirm",
+      "status": 200,
+      "durationMs": 37.226291999999376
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "c2f65c40-dbcb-4386-b989-d0a5de686e63",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.18354199999885168
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "7cc8dc08-557d-4bc1-bad0-9616b7e66c85",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 401,
+      "durationMs": 0.1430419999996957
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "6a5fe63a-a15a-4b26-a120-3f56ee4c5ce3",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.742583999999624
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "cc620d5d-a957-436f-88f6-20366352182c",
+      "method": "POST",
+      "route": "/v1/auth/refresh",
+      "status": 401,
+      "durationMs": 2.2357500000016444
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e5b7f193-ba21-490d-9e0b-868e3c488992",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 2.8505829999994603
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "353a9bd7-4606-4a3c-b76d-900f72811040",
+      "method": "POST",
+      "route": "/v1/auth/login",
+      "status": 200,
+      "durationMs": 35.7103330000009
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "e079bfaf-b753-4ebc-888a-d7c654fb5ae9",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 3.5967919999984588
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "cef0dfe4-4a7b-48b3-9ed2-a76921ecfaf9",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 3.787417000001369
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "708648cd-0955-430d-8063-7496881d27bd",
+      "method": "PUT",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 10.48754100000042
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "672d5ac3-78ad-4aa7-9d34-30a43ad69f4c",
+      "method": "GET",
+      "route": "/v1/auth/csrf",
+      "status": 200,
+      "durationMs": 13.680041999999958
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "2461408a-4e34-4bce-b157-10855cded031",
+      "method": "PUT",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 12.875
+    },
+    {
+      "event": "http.completed",
+      "correlationId": "770c5823-fe90-4e08-ba74-94d41d31898e",
+      "method": "GET",
+      "route": "/v1/me",
+      "status": 200,
+      "durationMs": 3.7612499999995634
+    }
+  ]
+}

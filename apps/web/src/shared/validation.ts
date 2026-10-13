@@ -5,6 +5,17 @@ export interface FieldErrors {
   [field: string]: string;
 }
 
+export function emailIssue(input: string): string | undefined {
+  const email = normalizeEmail(input);
+  return email.length >= 3 &&
+    email.length <= 254 &&
+    !/[^\x20-\x7e]/.test(email) &&
+    /^\S+@[^\s@]+\.[^\s@]+$/.test(email) &&
+    email.split("@").length === 2
+    ? undefined
+    : "Nhập email hợp lệ.";
+}
+
 export function validateRegister(input: {
   email: string;
   displayName: string;
@@ -13,9 +24,10 @@ export function validateRegister(input: {
 }): { errors: FieldErrors; body: { email: string; displayName: string; password: string } | null } {
   const errors: FieldErrors = {};
   const email = normalizeEmail(input.email);
-  if (!/^[^\s@]+@[^\s@]+$/.test(email) || email.length > 254) errors.email = "Nhập email hợp lệ.";
+  const emailError = emailIssue(email);
+  if (emailError) errors.email = emailError;
   const displayName = input.displayName.trim();
-  if (displayName.length < 1 || displayName.length > 80)
+  if ([...displayName].length < 1 || [...displayName].length > 80 || /\p{Cc}/u.test(displayName))
     errors.displayName = "Tên hiển thị từ 1 đến 80 ký tự.";
   if ([...input.password].length < 15 || [...input.password].length > 128) {
     errors.password = "Mật khẩu từ 15 đến 128 ký tự.";
@@ -32,8 +44,10 @@ export function validateLogin(input: { email: string; password: string }): {
 } {
   const errors: FieldErrors = {};
   const email = normalizeEmail(input.email);
-  if (!email || email.length > 254) errors.email = "Nhập email.";
-  if (input.password.length < 1 || input.password.length > 128) errors.password = "Nhập mật khẩu.";
+  const emailError = emailIssue(email);
+  if (emailError) errors.email = emailError;
+  if ([...input.password].length < 1 || [...input.password].length > 128)
+    errors.password = "Nhập mật khẩu.";
   if (Object.keys(errors).length > 0) return { errors, body: null };
   return { errors, body: { email, password: input.password } };
 }

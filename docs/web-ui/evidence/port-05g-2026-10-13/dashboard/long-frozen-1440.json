@@ -1,0 +1,12 @@
+{
+  "documentWidth": 1440,
+  "left": 116,
+  "right": 1396,
+  "fontLoaded": true,
+  "viewport": {
+    "width": 1440,
+    "height": 1100
+  },
+  "violations": [],
+  "mode": "synthetic HTTP in live adapter; not actual business/HTTPS acceptance"
+}

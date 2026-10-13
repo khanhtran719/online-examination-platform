@@ -1,0 +1,90 @@
+{
+  "passed": 21,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "dashboard actor and protected-read fences hides and purges actor A snapshots before actor B's pending reads finish",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences rejects late actor A history and catalog responses after the actor changes",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences hides and purges both snapshots when the session becomes anonymous",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences hides and purges both snapshots when the session becomes loading",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences hides and purges both snapshots when the session becomes unavailable",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences hides and purges both snapshots when the session becomes reauth",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences removes cached attempts and latches history denial after 401",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences removes cached attempts and latches history denial after 403",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences removes cached catalog and latches catalog denial after 401",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences removes cached catalog and latches catalog denial after 403",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences does not recreate private query data from responses arriving after unmount",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences retains the loaded history after a transient read error with a truthful snapshot notice",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences serializes explicit retries independently for the two read channels",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences overrides automatic retry even when the QueryClient defaults enable it",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard actor and protected-read fences does not refresh the loaded dashboard automatically on window focus",
+      "status": "passed"
+    },
+    {
+      "name": "Dashboard truthful snapshots does not claim more history pages exist when the complete empty snapshot has no cursor",
+      "status": "passed"
+    },
+    {
+      "name": "Dashboard truthful snapshots does not use metadata for a different frozen version even when the owning exam matches",
+      "status": "passed"
+    },
+    {
+      "name": "Dashboard truthful snapshots retains zero score and routes all submitted states to status rather than opening a room",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard history scope loads the catalog independently and sends the selected category to the API",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard history scope shows loaded results without declaring the complete history empty or computing totals",
+      "status": "passed"
+    },
+    {
+      "name": "dashboard history scope only uses a cached title for the exact version and owning exam",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "width": 1280,
+  "left": 24,
+  "right": 1256,
+  "fontLoaded": true,
+  "dialog": {
+    "left": 220,
+    "width": 840,
+    "backdropLeft": 0,
+    "backdropWidth": 1280,
+    "backdropHeight": 1100
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 1100
+  },
+  "url": "http://127.0.0.1:4173/attempts/01a133ab-59f6-7b97-b96c-74fc68c2d70c",
+  "violations": []
+}
