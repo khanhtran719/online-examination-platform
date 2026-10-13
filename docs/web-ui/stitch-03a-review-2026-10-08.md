@@ -1,5 +1,7 @@
 # Review 03A — Trạng thái, Kết quả, Xem lại bài desktop — 2026-10-08
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Nguồn: [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955), đối chiếu [Prompt 03A](stitch-page-prompts-v3/03a-results-desktop.md), [Dashboard V2](templates/dashboard-v2/README.md), [Catalog/Profile V4](templates/catalog-profile-v4/README.md), design spec CA-05–07 và DTO Result/ReviewQuestion. Phạm vi chỉ đọc và lưu review; không gửi generation/refinement hoặc sửa ứng dụng.
 
 ## Kết luận
@@ -48,4 +50,4 @@ Tại thời điểm review ban đầu, ba page 03A chuyển từ prompt_prepare
 
 ## Bằng chứng và validation
 
-[PNG gốc và IDs](evidence/stitch-03a-review-2026-10-08/README.md), [manifest/SHA-256](evidence/stitch-03a-review-2026-10-08/manifest.json), [inventory tại thời điểm lấy 03A](evidence/stitch-03a-review-2026-10-08/inventory.json). Đã xem cả ba PNG và crop nguyên tỷ lệ các vùng quan trọng; xác minh dimensions/hash, snapshot delta, 17 template cũ, registry/links/JSON và `git diff --check`. Không chạy test ứng dụng vì không sửa source. Entry EP-11 thiếu ảnh vẫn được ghi riêng, không bỏ khỏi inventory hoặc tự chọn/xóa trên Stitch.
+[PNG gốc và IDs](evidence/stitch-03a-review-2026-10-08/README.md), [Đã thu hồi — manifest/SHA-256](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — inventory tại thời điểm lấy 03A](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Đã xem cả ba PNG và crop nguyên tỷ lệ các vùng quan trọng; xác minh dimensions/hash, snapshot delta, 17 template cũ, registry/links/JSON và `git diff --check`. Không chạy test ứng dụng vì không sửa source. Entry EP-11 thiếu ảnh vẫn được ghi riêng, không bỏ khỏi inventory hoặc tự chọn/xóa trên Stitch.

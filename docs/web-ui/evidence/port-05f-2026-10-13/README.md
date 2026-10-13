@@ -1,5 +1,7 @@
 # PORT-05F evidence — Identity Web/tablet
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Ngày2026-10-13. Named scope Login/Register/Check Email/Verify tại
 768/1024/1280/1440px. [Plan/review](../../port-05f-2026-10-13.md).
 Mobile/app/AWS/production không được đóng từ evidence này.
@@ -45,10 +47,10 @@ Root unit/tooling/Web: `root-tests-delivery.log`. Static/boundaries/contracts:
 demo build `build-demo-delivery.log`. Runtime receipt ghi Node/Playwright/Chromium/
 OS thực, không suy viewport từ ảnh mẫu.
 
-`identity/` chỉ capture actual current state, không boards. [Gallery](gallery.html),
-[manifest](captures.json) ghi viewport, font, axe ID count, document overflow,
+`identity/` chỉ capture actual current state, không boards. [Đã thu hồi — Gallery](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi),
+[Đã thu hồi — manifest](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) ghi viewport, font, axe ID count, document overflow,
 frame gutter và password empty/masked metadata; không input values hoặc token
-URLs. [Source/build hashes](source-build-manifest.json) gắn bản code với artifact.
+URLs. [Đã thu hồi — Source/build hashes](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) gắn bản code với artifact.
 `SHA256SUMS` bảo vệ toàn bộ evidence hiện tại. Full-suite captures của các feature
 cũ vào thư mục riêng trong increment này, không ghi đè prior phase evidence.
 

@@ -1,5 +1,7 @@
 # Review 03B — Lịch sử thi và Bảng xếp hạng desktop — 2026-10-08
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Nguồn: [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955), đối chiếu [prompt 03B](stitch-page-prompts-v3/03b-history-ranking-desktop.md), [Dashboard V2](templates/dashboard-v2/README.md), design spec CA-08/09 và HistoryItem/LeaderboardEntry trong OpenAPI. Phạm vi: đọc ảnh, ghi review, lưu 03A theo đồng ý của người dùng và chuẩn bị nhóm Public desktop. Không sửa ứng dụng hoặc gửi lệnh tạo/chỉnh trên Stitch.
 
 ## Kết luận
@@ -42,4 +44,4 @@ Mobile và loading/empty/error/disabled/forbidden chưa nằm trong hai frame n�
 
 Registry sau lượt này: 33 page families, **13 có template thị giác**, **2 desktop đã review chờ chọn** và **18 chưa có coverage được kiểm chứng**. Các con số không xác nhận đủ mobile/states hoặc triển khai xong.
 
-[Ảnh và IDs](evidence/stitch-03b-review-2026-10-08/README.md), [manifest/SHA-256](evidence/stitch-03b-review-2026-10-08/manifest.json), [inventory](evidence/stitch-03b-review-2026-10-08/inventory.json). Kiểm tra dimensions/hash của hai ảnh 03B và ba template 03A, các manifest template hiện có, delta inventory, JSON/registry/local links và `git diff --check`. Không chạy test ứng dụng vì không sửa source; review giới hạn ở ảnh tĩnh.
+[Ảnh và IDs](evidence/stitch-03b-review-2026-10-08/README.md), [Đã thu hồi — manifest/SHA-256](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — inventory](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Kiểm tra dimensions/hash của hai ảnh 03B và ba template 03A, các manifest template hiện có, delta inventory, JSON/registry/local links và `git diff --check`. Không chạy test ứng dụng vì không sửa source; review giới hạn ở ảnh tĩnh.

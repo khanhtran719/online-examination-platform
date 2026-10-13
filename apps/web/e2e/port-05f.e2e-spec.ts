@@ -3,13 +3,13 @@ import { release } from "node:os";
 import path from "node:path";
 
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "playwright/test";
+import { expect, type Page, test } from "playwright/test";
 
 // Auth artifacts deliberately exclude raw traces, videos, failure DOM and credential values.
 process.env.PLAYWRIGHT_NO_COPY_PROMPT = "1";
 test.use({ trace: "off", screenshot: "off", video: "off" });
 const evidence = path.resolve(
-  process.env.WEB_EVIDENCE_DIR ?? "../../docs/web-ui/evidence/port-05f-2026-10-13",
+  process.env.WEB_EVIDENCE_DIR ?? "../../.local/web-evidence/latest",
   "identity",
 );
 const actor = "019a7450-0000-7000-8000-000000000001";

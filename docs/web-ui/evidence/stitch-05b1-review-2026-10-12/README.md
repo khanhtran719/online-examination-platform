@@ -1,14 +1,16 @@
 # Evidence — Review05B-1, 2026-10-12
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 [Báo cáo/findings](../../stitch-05b1-review-2026-10-12.md). Browser Chrome, project Stitch `18257628123124303955`; đọc DOM và chụp canvas. Không gửi prompt generation/refinement hoặc click CTA Lưu/Phát hành của mockup.
 
 | Màn | Logical iframe | DOM evidence | Canvas capture |
 | --- | --- | --- | --- |
-| Ready `bef67930ab4e4b5e93f17f82d06d7193` | 1280×1482 | [Text/buttons/styles](preflight-ready-dom.json) | [Ảnh toàn frame ở khoảng47%](preflight-ready-fit-canvas.jpg) |
-| Confirmation `8bdb6a1a0a4c4814a9017994e6f05355` | 1280×1024 | [Text/background/buttons/styles](publish-confirmation-dom.json) | [Ảnh centered ở khoảng69%](publish-confirmation-centered-canvas.jpg) |
-| Validation `3a591de37dfc4248b3151e7ffe17725d` | 1280×1492 | [Text/disabled controls/styles](validation-blocked-dom.json) | [Ảnh toàn frame ở khoảng47%](validation-blocked-fit-canvas.jpg) |
+| Ready `bef67930ab4e4b5e93f17f82d06d7193` | 1280×1482 | [Đã thu hồi — Text/buttons/styles](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) | [Đã thu hồi — Ảnh toàn frame ở khoảng47%](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) |
+| Confirmation `8bdb6a1a0a4c4814a9017994e6f05355` | 1280×1024 | [Đã thu hồi — Text/background/buttons/styles](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) | [Đã thu hồi — Ảnh centered ở khoảng69%](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) |
+| Validation `3a591de37dfc4248b3151e7ffe17725d` | 1280×1492 | [Đã thu hồi — Text/disabled controls/styles](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) | [Đã thu hồi — Ảnh toàn frame ở khoảng47%](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) |
 
-[Capture metadata Ready/Validation](fit-capture-metadata.json), [capture metadata Confirmation](confirmation-centered-capture-metadata.json), [canvas context](review-canvas-context.jpg), [primary control metrics ở2 frame đọc được](visual-metrics-visible-frames.json), [manifest/SHA-256](manifest.json). Ảnh là browser screenshots, không phải PNG nguồn được export. Các exploratory capture bị che/cắt được chuyển vào `.local`, không dùng làm evidence chính.
+[Đã thu hồi — Capture metadata Ready/Validation](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — capture metadata Confirmation](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — canvas context](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — primary control metrics ở2 frame đọc được](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — manifest/SHA-256](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Ảnh là browser screenshots, không phải PNG nguồn được export. Các exploratory capture bị che/cắt được chuyển vào `.local`, không dùng làm evidence chính.
 
 Body text đọc bằng DOM bao gồm background sau backdrop; nó xác nhận dialog foreground và background thuộc hai fixture khác nhau. Logical width1280px không có nghĩa ảnh canvas ở độ phân giải1:1. Metadata nêu zoom và bounds; phần typography/interaction chưa được nghiệm thu từ các ảnh này.
 

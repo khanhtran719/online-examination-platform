@@ -1,5 +1,0 @@
-{
-  "passed": 1,
-  "failed": 2,
-  "reason": "adjacent label/count spans lacked whitespace in accessible name; explicit count-derived aria-label added before root validation"
-}

@@ -6,7 +6,7 @@ Ngày 2026-10-12. Phạm vi: chỉnh ảnh từ template Stitch đã review, kh�
 
 ## Nguồn, mục tiêu và giới hạn dữ liệu
 
-- Edit target: [History V4](../../../evidence/stitch-03b-review-2026-10-08/history-desktop-v4-34514bb3.png).
+- Edit target: [Đã thu hồi — History V4](../../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 - Style reference: [Preflight retained](../../codex-desktop-v1/images/preflight-ready-v1.png); chỉ lấy shell/palette/typography, không lấy nội dung Admin.
 - [Design contract](../../codex-desktop-v1/design-contract.md), [tokens](../../dashboard-v2/tokens.json), [review03B](../../../stitch-03b-review-2026-10-08.md), [prompt gốc](../../../stitch-page-prompts-v3/03b-history-ranking-desktop.md).
 - Đã đọc `apps/web/src/features/results/history-page.tsx`, `apps/web/src/shared/api/dto.ts`, `apps/web/src/shared/format.ts` và schema HistoryItem trong `docs/contracts/openapi.yaml`.

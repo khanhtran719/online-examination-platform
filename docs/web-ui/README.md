@@ -1,5 +1,7 @@
 # Bộ bàn giao Web UI cho Grok 4.7
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 PORT-05H2026-10-13 UI checkpoint: [Public How/Help/404](port-05h-2026-10-13.md)
 H1–H5 COMPLETE locally;933 root/70 Chromium PASS,28 Web/tablet captures.
 Guide5 bước/13 FAQ theo4 chủ đề/safe404; Public pages thuộc experience,
@@ -39,7 +41,7 @@ reset/leave/logout dialogs. Controller tách khỏi view; retry giữ nguyên ke
 revision, dữ liệu mất quyền bị xóa và late response không đổi actor.874 root/
 53 Chromium PASS;25 ảnh font/axe/overflow/gutter/dialog đạt.
 [Checklist/review](port-05e-2026-10-13.md), [evidence](evidence/port-05e-2026-10-13/README.md),
-[gallery](evidence/port-05e-2026-10-13/gallery.html). P1–P5 COMPLETE locally.
+[Đã thu hồi — gallery](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). P1–P5 COMPLETE locally.
 Next PORT-05F Identity pages Web/tablet. Parent PORT-05/full live/mobile/
 production còn mở; checkpoint dưới giữ phạm vi lịch sử.
 
@@ -49,7 +51,7 @@ và tablet. Có phiếu câu hỏi, ba kiểu đáp án, countdown, đối chi�
 chỉ báo đã lưu sau ACK hợp lệ. Đề 120 câu làm được từ trang đầu 20 câu.
 850 root/49 Chromium PASS; 26 ảnh kiểm font/axe/overflow/gutter/dialog đạt.
 [Checklist/review](port-05d-2026-10-13.md), [evidence](evidence/port-05d-2026-10-13/README.md),
-[gallery](evidence/port-05d-2026-10-13/gallery.html). D1–D5 COMPLETE locally.
+[Đã thu hồi — gallery](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). D1–D5 COMPLETE locally.
 Tiếp theo PORT-05E Hồ sơ/Tài khoản Web/tablet. Parent PORT-05/full live/mobile/
 production còn mở; các checkpoint dưới giữ phạm vi lịch sử.
 
@@ -59,7 +61,7 @@ dừng khi mất quyền; result/review cache xoá đúng scope. Xem lại từn
 câu đã tải, trước/sau và keyboard focus.827 root/44 Chromium PASS; final review
 có full root/full Chromium receipts;20 captures font/axe/overflow/gutter đạt.
 [Checklist/review](port-05c-2026-10-13.md), [evidence](evidence/port-05c-2026-10-13/README.md),
-[gallery](evidence/port-05c-2026-10-13/gallery.html). S1–S5 COMPLETE locally.
+[Đã thu hồi — gallery](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). S1–S5 COMPLETE locally.
 Next PORT-05D Exam Room/Autosave/Submit Web/tablet. Parent PORT-05/full live/mobile/
 production giữ mở; các checkpoint dưới giữ scope lịch sử.
 
@@ -67,7 +69,7 @@ production giữ mở; các checkpoint dưới giữ scope lịch sử.
 đã chốt cho Web/tablet. Controller tách khỏi page, cache theo tài khoản/phiên bản,
 refresh từ đầu, dữ liệu ẩn/xóa khi mất quyền và bỏ phản hồi đến muộn.799 root/
 41 Chromium PASS;11 ảnh font/axe/overflow/gutter đạt. [Checklist/review](port-05b-2026-10-13.md),
-[evidence](evidence/port-05b-2026-10-13/README.md), [gallery](evidence/port-05b-2026-10-13/gallery.html).
+[evidence](evidence/port-05b-2026-10-13/README.md), [Đã thu hồi — gallery](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 H1–H5 COMPLETE locally; lint/format/quality/types/builds PASS. Parent PORT-05/full live/mobile/production còn mở.
 Tiếp theo Status/Result/Released Review. Các checkpoint dưới giữ scope lịch sử.
 
@@ -80,7 +82,7 @@ trên Web/tablet; controller tách khỏi UI, tìm trong các đề đã tải, 
 từ đầu và dữ liệu xóa khi mất quyền/phiên. Chặn nhấn đúp; mất xác nhận giữ nguyên
 yêu cầu, phản hồi cũ không điều hướng. [Checklist/review](port-05a-2026-10-12.md),
 [bằng chứng](evidence/port-05a-2026-10-12/README.md),
-[17 ảnh](evidence/port-05a-2026-10-12/gallery.html):779 root/39 Chromium PASS;
+[Đã thu hồi — 17 ảnh](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):779 root/39 Chromium PASS;
 lint/types/builds/format/contracts đạt; font/axe/overflow/gutter đạt ở bốn target
 widths. API/template/bằng chứng PORT-01–04 giữ nguyên. Roadmap89/217, FE7/32 không
 đổi; parent PORT-05/live/production còn mở. Tiếp theo History/Leaderboard theo

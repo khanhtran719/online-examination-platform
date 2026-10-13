@@ -6,7 +6,7 @@ import { expect, type Page, test } from "playwright/test";
 
 test.use({ trace: "off", screenshot: "off", video: "off" });
 const evidence = path.resolve(
-  process.env.WEB_EVIDENCE_DIR ?? "../../docs/web-ui/evidence/port-05h-2026-10-13",
+  process.env.WEB_EVIDENCE_DIR ?? "../../.local/web-evidence/latest",
   "public-guides",
 );
 const widths = [768, 1024, 1280, 1440];

@@ -8,7 +8,7 @@ template, chưa port vào ứng dụng. Chỉ sửa nhóm ảnh này; giữ nguy
 
 ## Nguồn và mục tiêu
 
-- [Ảnh gốc](../../../evidence/stitch-05a-review-2026-10-08/exam-list-desktop-v4.png): edit target.
+- [Đã thu hồi — Ảnh gốc](../../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): edit target.
 - [Review 05A](../../../stitch-05a-review-2026-10-08.md): 05A-02, 05A-07.
 - [Style tham chiếu](../../codex-desktop-v1/images/preflight-ready-v1.png) và
   [quy định chung](../../codex-desktop-v1/design-contract.md).

@@ -1,5 +1,7 @@
 # Web UI đợt4 — Quản trị
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 ## Phạm vi và kế hoạch
 
 Tiếp tục sau đợt3 theo yêu cầu user: Admin overview, exam list/editor, question bank/editor, JSON import/report, monitor index/exam, submissions/attempt, statistics, metrics và audit. Kế thừa bộ mẫu secondary-pages và hướng “Không gian nổi”; không đổi Identity/Candidate/exam-room hoặc backend work đang có trong workspace. Baseline HEAD80710f5 cộng các thay đổi đợt2/3 và Assessment core chưa commit.
@@ -43,11 +45,11 @@ Files chính nằm trong `apps/web/src/features/admin`: các file cũ là barrel
 | Runtime capture |0 page errors,0 external requests |
 | Reduced motion + CSS zoom200% |overview/editor/metrics không running animation và không tràn; CSS zoom không phải browser zoom |
 
-Self-review theo R-58/R-59 và workflow47/48: owner browser Admin; dùng read/write contracts hiện có. Không có thay đổi API/schema/migration/transaction/event, không thêm dependency hoặc client-side permission source. [Manifest](evidence/admin-2026-10-07/manifest.json) so sánh AST:11 command/poll blocks giữ nguyên; question archive chỉ thêm null guard khi tách hook, UI confirmation đứng trước callback. `gate.tsx`, intent machine và tất cả source ngoài Admin giữ SHA từ đợt3. Backend dirty work và các đợt UI trước được giữ.
+Self-review theo R-58/R-59 và workflow47/48: owner browser Admin; dùng read/write contracts hiện có. Không có thay đổi API/schema/migration/transaction/event, không thêm dependency hoặc client-side permission source. [Đã thu hồi — Manifest](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) so sánh AST:11 command/poll blocks giữ nguyên; question archive chỉ thêm null guard khi tách hook, UI confirmation đứng trước callback. `gate.tsx`, intent machine và tất cả source ngoài Admin giữ SHA từ đợt3. Backend dirty work và các đợt UI trước được giữ.
 
 ## Bàn giao và phần còn mở
 
-[Evidence đầy đủ](evidence/admin-2026-10-07/README.md), [overview](evidence/admin-2026-10-07/screenshots/overview-1440.png), [editor desktop](evidence/admin-2026-10-07/screenshots/exam-information-1440.png), [question mobile](evidence/admin-2026-10-07/screenshots/question-multiple-390.png), [metrics](evidence/admin-2026-10-07/screenshots/metrics-1440.png).
+[Evidence đầy đủ](evidence/admin-2026-10-07/README.md), [Đã thu hồi — overview](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — editor desktop](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — question mobile](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — metrics](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 
 Preview demo local `http://127.0.0.1:4173/login?return=%2Fadmin`: dùng `candidate@example.test` / `fixture-password-ok`, mở “Kịch bản mẫu” và chọn “Quản trị”. Dữ liệu chỉ trong bộ nhớ demo, reload mất phiên. Live Admin vẫn bị chặn theo UI-GAP-06 vì chưa có authoritative permissions/replay revision. Identity HTTPS10 và PostgreSQL integration không chạy lại trong đợt này. Firefox/WebKit, Admin browser lost-ACK/conflict matrix, keyboard option reorder, full WCAG/CWV và production/AWS acceptance còn mở trong FE tasks.
 

@@ -7,7 +7,7 @@ Ngày 2026-10-12. Phạm vi: một ảnh desktop Loaded dựa trên template hi�
 ## Mục tiêu và nguồn
 
 - Route `/exams/:examId/versions/:versionId/leaderboard`, actor Candidate đã đăng nhập, quyền `leaderboard.read`; read-side exact frozen version, không mutation/transaction/event mới.
-- [Edit target](../../../evidence/stitch-03b-review-2026-10-08/leaderboard-desktop-v4-b91abc13.png), [review 03B](../../../stitch-03b-review-2026-10-08.md), [prompt gốc 03B](../../../stitch-page-prompts-v3/03b-history-ranking-desktop.md).
+- [Đã thu hồi — Edit target](../../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [review 03B](../../../stitch-03b-review-2026-10-08.md), [prompt gốc 03B](../../../stitch-page-prompts-v3/03b-history-ranking-desktop.md).
 - [Style reference](../../codex-desktop-v1/images/preflight-ready-v1.png), [design contract](../../codex-desktop-v1/design-contract.md), [Dashboard V2 tokens](../../dashboard-v2/tokens.json).
 - Nguồn đọc: [LeaderboardPage](../../../../../apps/web/src/features/results/leaderboard-page.tsx), [OpenAPI](../../../../../docs/contracts/openapi.yaml) `getLeaderboard` và `LeaderboardEntry`.
 

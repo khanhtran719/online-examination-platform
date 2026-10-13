@@ -1,5 +1,11 @@
 # Roadmap triển khai có đánh dấu
 
+UI artifact cleanup2026-10-13: đã dọn raw UI screenshots/trace/JSON/log/gallery,
+giữ approved templates, source tests và báo cáo thành văn. Các raw visual receipts
+cũ đã retired; test counts bên dưới là historical results, không là current raw
+acceptance. [Retention/impact](web-ui/artifact-retention-2026-10-13.md) ghi scope,
+regeneration/local output và giới hạn Git history. Production vẫn NOT ACCEPTED.
+
 PORT-05H2026-10-13 UI checkpoint: [Public How/Help/404](web-ui/port-05h-2026-10-13.md)
 H1–H5 COMPLETE locally;933 root/70 Chromium PASS,28 Web/tablet captures.
 Guide5 bước/13 FAQ theo4 chủ đề/safe404; Public pages thuộc experience,

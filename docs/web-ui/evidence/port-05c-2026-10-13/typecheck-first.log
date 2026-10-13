@@ -1,9 +1,0 @@
-
-> online-examination-platform@0.1.0 web:typecheck
-> npm --prefix apps/web run typecheck
-
-
-> @exam/web@0.1.0 typecheck
-> tsc -p tsconfig.json --noEmit
-
-src/features/results/review-page.tsx(65,270): error TS1005: ',' expected.

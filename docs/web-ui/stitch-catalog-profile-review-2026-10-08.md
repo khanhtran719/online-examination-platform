@@ -1,5 +1,7 @@
 # Review UI Danh sách đề, Chi tiết đề và Hồ sơ — 2026-10-08
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Dự án [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955). Phạm vi: sáu ảnh gốc desktop/mobile của EP-08–10, đối chiếu [Prompt 02](stitch-page-prompts-v3/02-catalog-profile.md), [design spec](design-spec.md) CA-02/03/10 và frontend hiện hành. Đây là review; chưa chọn nhóm này làm template và chưa sửa ứng dụng hay gửi refinement lên Stitch.
 
 ## Kết luận
@@ -42,8 +44,8 @@ Giữ cả sáu ảnh làm bằng chứng review, trạng thái **chờ quyết 
 
 ## Bằng chứng và kiểm chứng
 
-[Sáu ảnh gốc/screen IDs](evidence/stitch-catalog-profile-review-2026-10-08/README.md), [manifest](evidence/stitch-catalog-profile-review-2026-10-08/manifest.json). Đã xem đủ sáu PNG; xác minh kích thước/hash và liên kết tài liệu, đối chiếu registry với router. Không chạy test ứng dụng vì chỉ lưu bằng chứng và ghi review, không thay source.
+[Sáu ảnh gốc/screen IDs](evidence/stitch-catalog-profile-review-2026-10-08/README.md), [Đã thu hồi — manifest](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Đã xem đủ sáu PNG; xác minh kích thước/hash và liên kết tài liệu, đối chiếu registry với router. Không chạy test ứng dụng vì chỉ lưu bằng chứng và ghi review, không thay source.
 
 Giới hạn: review từ screenshot; chưa xác minh click, focus/keyboard, responsive thực, contrast bằng đo đạc, sticky behavior hay animation. Việc nhìn thấy button/switch không xác nhận tính năng hoạt động. Ảnh được lưu nguyên bản; ảnh tổng quan chỉ ghép và thu nhỏ để so sánh.
 
-![Ba bản mobile Catalog/Profile](evidence/stitch-catalog-profile-review-2026-10-08/mobile-overview.png)
+[Đã thu hồi — Ba bản mobile Catalog/Profile](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)

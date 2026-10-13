@@ -1,5 +1,7 @@
 # Evidence giao diện web — 2026-10-07
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 **Bằng chứng dưới đây là lần bàn giao trước review.** [Review độc lập cùng ngày](review-2026-10-07/README.md) chạy lại bốn browser smoke đạt nhưng thêm bốn ca contract FAIL; FE-15/32 đã mở lại. Không dùng số PASS bên dưới để đóng findings trong [report](../review-2026-10-07.md). Lần sửa sau review nằm ở [fix evidence](fix-2026-10-07/README.md) và không viết đè artifact RED.
 
 Môi trường: macOS, Node theo `apps/web` (`>=24 <25`), Playwright 1.63.0, Chromium 153.0.8010.12. Preview demo `http://127.0.0.1:4173`, live `http://127.0.0.1:4174`. Không có backend Identity trong lần live này. Không đo LCP/CLS. Không phải p75 production.

@@ -1,12 +1,14 @@
 # Prompt tiếp theo — chốt UI trên Stitch trước khi triển khai
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Theo yêu cầu người dùng ngày 2026-10-08: **ưu tiên thiết kế và duyệt UI trên Stitch; dừng sửa code cho đến khi người dùng chốt UI**. Các diff frontend đã có được giữ nguyên tại local, chưa được coi là UI đã duyệt cuối cùng.
 
 Project: [ExamPlatform UI/UX Redesign](https://stitch.withgoogle.com/projects/11777231516922865355), ID `11777231516922865355`. Design system gốc `assets/fc11c9370fdb41e5b12e4b4ed727d8b3`.
 
 ## Phần đã có và phần cần tạo
 
-Inventory MCP mới nhất trả 26 resources: **25 mẫu trang desktop + một prototype**. Trong 25 mẫu: Public 4, Identity 4, Candidate 10, Admin nội dung 7. Chưa xác nhận đủ mobile/state variants hoặc chất lượng từng mẫu. [Danh sách IDs thực tế](evidence/stitch-port-2026-10-08/stitch-inventory.json).
+Inventory MCP mới nhất trả 26 resources: **25 mẫu trang desktop + một prototype**. Trong 25 mẫu: Public 4, Identity 4, Candidate 10, Admin nội dung 7. Chưa xác nhận đủ mobile/state variants hoặc chất lượng từng mẫu. [Đã thu hồi — Danh sách IDs thực tế](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 
 Request tạo Admin nội dung trả lỗi dịch vụ, nhưng kiểm tra inventory sau đó xác nhận cả bảy mẫu đã xuất hiện. Không gửi lại nhóm đó để tránh trùng.
 

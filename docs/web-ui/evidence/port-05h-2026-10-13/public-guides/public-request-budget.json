@@ -1,8 +1,0 @@
-{
-  "requests": [
-    "/v1/me",
-    "/v1/me"
-  ],
-  "pageOwnedBusinessRequests": 0,
-  "scope": "synthetic session-unavailable HTTP; app bootstrap only"
-}

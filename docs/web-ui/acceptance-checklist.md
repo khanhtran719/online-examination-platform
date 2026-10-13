@@ -1,5 +1,11 @@
 # Web UI acceptance và scenario catalog
 
+UI artifact cleanup2026-10-13: đã dọn raw UI screenshots/trace/JSON/log/gallery,
+giữ approved templates, source tests và báo cáo thành văn. Các raw visual receipts
+cũ đã retired; test counts bên dưới là historical results, không là current raw
+acceptance. [Retention/impact](artifact-retention-2026-10-13.md) ghi scope,
+regeneration/local output và giới hạn Git history. Production vẫn NOT ACCEPTED.
+
 PORT-05H2026-10-13 UI checkpoint: [Public How/Help/404](port-05h-2026-10-13.md)
 H1–H5 COMPLETE locally;933 root/70 Chromium PASS,28 Web/tablet captures.
 Guide5 bước/13 FAQ theo4 chủ đề/safe404; Public pages thuộc experience,
@@ -247,7 +253,7 @@ Chạy Chromium/Firefox/WebKit representative flows khi có environment;feature-
 
 - [x] Runbook install/dev/build/preview/test, origin/TLS, public env, data modes. Xem [runbook](runbook.md). HTTPS vẫn BLOCKED.
 - [x] Route/action inventory, demo scenarios, live capability map/UI-GAP statuses. Xem [ui-gap](ui-gap.md).
-- [x] Screenshots 320/390/768/1024/1440, errors/conflicts. Thư mục [evidence/screenshots](evidence/screenshots) và [fix screenshots](evidence/fix-2026-10-07/screenshots). Layout viewport 720 và 384 không tràn trang. CSS zoom 2 trên viewport 320 cố định cắt dock và không phải browser zoom. Empty cursor vẫn NOT RUN.
+- [x] Historical screenshot review 320/390/768/1024/1440, errors/conflicts; raw receipts đã [thu hồi](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Layout viewport 720 và 384 không tràn trang ở lần kiểm tra cũ. CSS zoom 2 trên viewport 320 cố định cắt dock và không phải browser zoom. Empty cursor vẫn NOT RUN; phải rerun nếu cần current visual acceptance.
 - [x] Component/coordinator/browser results với lệnh, mode và PASS/FAIL/BLOCKED/NOT RUN. Xem [evidence](evidence/README.md) và [fix evidence](evidence/fix-2026-10-07/README.md).
 - [x] Bundle numbers với máy và profile. Đề 500 câu đã tải trên live preview. LCP/CLS vẫn NOT RUN, không bịa.
 - [x] Security/cache/fragment/key/mode isolation findings và remaining live gates. Fragment browser NOT RUN.

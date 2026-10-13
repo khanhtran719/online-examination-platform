@@ -1141,6 +1141,24 @@ State exactly what was not run and why.
 
 Never claim a validation passed if it was not executed.
 
+### Browser review artifact retention
+
+Store normal browser screenshots, traces, probe JSON, raw logs and galleries in
+Git-ignored `.local/`, `test-results/` or CI artifacts, rather than historical
+`docs/` evidence folders. Keep authored findings, decisions, safe result summaries,
+remediation and runbooks in Markdown. Keep user-approved design templates separate.
+For Online Examination Platform, browser outputs and local cleanup/reproduction
+commands follow [UI artifact retention](../docs/web-ui/artifact-retention-2026-10-13.md).
+
+Do not silently delete or rewrite archived evidence. An explicit user request to
+retire UI check artifacts authorizes cleanup within that scope: inventory first,
+record the loss of raw visual receipts, preserve historical result statements,
+repair affected links and verify unchanged application/source/templates. Such
+retirement does not authorize deleting migrations, security/DB/benchmark evidence,
+rewriting Git history or declaring fresh/production acceptance from old reports.
+Tests must still exercise their assertions; changing artifact retention must not
+skip a test or weaken an accessibility/correctness threshold.
+
 ---
 
 ## 36. Architecture Self-Review

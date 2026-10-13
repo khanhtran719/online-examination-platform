@@ -1,5 +1,7 @@
 # Evidence — nền tảng Web UI đợt1, 2026-10-07
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Scope: [kế hoạch/review](../../foundation-implementation-2026-10-07.md), triển khai trên `main` sau merge tại `e9606f0`. Shared primitives/Brand/Navigation và Candidate/Admin WorkspaceFrame trong `apps/web`; không đổi API/DTO/scoring/quyền/session coordinator hoặc schema. Không runtime dependency mới.
 
 ## Kết quả
@@ -19,7 +21,7 @@ Các log trước đó và reproduction giữ riêng:
 
 ## Ảnh
 
-[Candidate desktop](screenshots/catalog-1440.png), [Candidate mobile/menu](screenshots/catalog-menu-390.png), [Admin desktop](screenshots/admin-exams-1440.png), [Admin mobile/menu](screenshots/admin-exams-menu-390.png), [Controls desktop](screenshots/controls-1440.png), [Controls mobile](screenshots/controls-390.png), [Login mobile](screenshots/login-390.png), [Zoom200%](screenshots/controls-zoom-200.png).
+[Đã thu hồi — Candidate desktop](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — Candidate mobile/menu](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — Admin desktop](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — Admin mobile/menu](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — Controls desktop](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — Controls mobile](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — Login mobile](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — Zoom200%](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 
 `regression/` và `public-experience/` chứa ảnh cuối của existing browser suites. `first-regression-images/` giữ ảnh lần chạy đầu; ảnh lịch sử ở evidence “Vào nhịp thi” được giữ byte-identical theo merge baseline. `WEB_EVIDENCE_DIR` chỉ đổi nơi lưu ảnh, không đổi assertion.
 

@@ -1,5 +1,10 @@
 # Identity browser HTTPS — 2026-10-07
 
+> Cleanup2026-10-13: hai screenshot verification desktop/mobile đã được thu hồi
+> theo yêu cầu người dùng; security/HTTPS/DB receipts còn lại giữ nguyên. Mô tả
+> screenshot và digests trong manifest là lịch sử, không xác nhận ảnh còn trong
+> checkout. [Artifact retention](../../web-ui/artifact-retention-2026-10-13.md).
+
 Scope: ID-07/WEB-02 local browser acceptance sau source normalization/pg decision. Live static React client gọi actual Nest AppModule, PostgreSQL17 với restricted API/mail roles và8 immutable migrations; actual verification worker gửi SMTP tới Mailpit. Không route fulfillment/mock business backend. [Runbook](../../runbooks/identity-https.md) và npm run test:identity:https tái lập môi trường; không domain/AWS account cần cho local run.
 
 Môi trường: Node24.17.0, macOS ARM64, Playwright1.63.0/Chromium153.0.8010.12. Certificate/key tạm, CA/SAN kiểm tra bằng Node; Chromium pin một leaf SPKI, ignoreHTTPSErrors=false, không sửa OS trust. Local secure transport là proof cho cookie/Origin/Web Locks; public PKI, AWS edge/origin TLS và private RDS TLS chưa được chấp nhận.

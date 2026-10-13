@@ -1,5 +1,7 @@
 # Review bốn dialog Catalog/Profile V4 — 2026-10-08
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Nguồn: [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955). Review bốn frame mới theo [Prompt 02A](stitch-page-prompts-v3/02a-catalog-profile-dialogs.md), đối chiếu [Normal V4 đã chọn](templates/catalog-profile-v4/README.md) và [design spec](design-spec.md) CA-03/10. Phạm vi chỉ đọc Stitch, lưu ảnh và ghi review; không sửa ứng dụng hoặc gửi refinement.
 
 **Quyết định sau review:** người dùng yêu cầu giữ bản mới và chờ preview 02B. Đã lưu bốn dialog nguyên bản vào [template Catalog/Profile V4](templates/catalog-profile-v4/README.md); DLG-01–04 vẫn mở để xử lý khi code. Không gửi generation/refinement trong lượt lưu này.
@@ -39,12 +41,12 @@ Start confirmation là nhóm hoàn thiện hơn: đủ tên/version, thời lư�
 
 ## Bước tiếp theo
 
-Đề xuất giữ hướng bốn dialog và đi tiếp [Prompt 02B](stitch-page-prompts-v3/02b-catalog-profile-states.md), gửi từng nhóm nhỏ: Danh sách đề mobile, Chi tiết đề mobile, Hồ sơ mobile; review xong mới tạo desktop đối ứng. Với trạng thái start/conflict cần dùng các frame ID mới trong [manifest](evidence/stitch-dialog-review-2026-10-08/manifest.json), không tạo lại dialog ready.
+Đề xuất giữ hướng bốn dialog và đi tiếp [Prompt 02B](stitch-page-prompts-v3/02b-catalog-profile-states.md), gửi từng nhóm nhỏ: Danh sách đề mobile, Chi tiết đề mobile, Hồ sơ mobile; review xong mới tạo desktop đối ứng. Với trạng thái start/conflict cần dùng các frame ID mới trong [Đã thu hồi — manifest](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), không tạo lại dialog ready.
 
 CP-V4-01 đã có tiến triển: bốn dialog được tạo, review và được người dùng chọn, nhưng các states còn lại và kiểm chứng thao tác chưa hoàn tất nên checklist tổng vẫn mở. Trạng thái page-family vẫn là template đã chọn; thêm bốn dialog không tăng page-family count. Theo yêu cầu mới nhất, chờ preview 02B trước khi tiếp tục review.
 
 ## Bằng chứng và validation
 
-[Ảnh gốc/IDs](evidence/stitch-dialog-review-2026-10-08/README.md), [manifest/SHA-256](evidence/stitch-dialog-review-2026-10-08/manifest.json), [inventory 40 screen](evidence/stitch-dialog-review-2026-10-08/inventory.json). Đã xem đủ bốn PNG, xác minh dimensions/hash, liên kết tài liệu, các source Normal IDs và registry. Sáu ảnh template Normal cục bộ vẫn khớp hash. Không chạy test ứng dụng vì không thay source.
+[Ảnh gốc/IDs](evidence/stitch-dialog-review-2026-10-08/README.md), [Đã thu hồi — manifest/SHA-256](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — inventory 40 screen](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Đã xem đủ bốn PNG, xác minh dimensions/hash, liên kết tài liệu, các source Normal IDs và registry. Sáu ảnh template Normal cục bộ vẫn khớp hash. Không chạy test ứng dụng vì không thay source.
 
 Review từ ảnh tĩnh; chưa xác minh click, network/persistence, keyboard/focus, responsive thực, contrast được đo hoặc animation. Screenshot nhìn đúng không xác nhận hành vi backend đúng.

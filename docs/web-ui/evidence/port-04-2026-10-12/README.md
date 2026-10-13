@@ -1,5 +1,7 @@
 # PORT-04 local Web/tablet evidence — 2026-10-12
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Scope: [Operations/Reporting port](../../port-04-2026-10-12.md), selected EP-25–32,
 replay confirmation and audit drawer. New visual targets are768/1024/1280/1440px.
 Mobile design/matrix is deferred to the future app phase. Existing narrow-screen
@@ -8,21 +10,21 @@ and visibly labeled; live Admin permission/revision discovery remains blocked.
 
 ## Executed checks
 
-- [Root tests](root-test-final.log): **760 PASS**,492 API/66 tooling/202 Web,
+- [Đã thu hồi — Root tests](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): **760 PASS**,492 API/66 tooling/202 Web,
   no skips.31 new Web regressions over the171-test PORT-03 checkpoint. These are
   unit/tooling checks, not real database integration acceptance.
-- [Lint/quality/contracts](lint-final.log): PASS,48 operations/445 examples,
-  architecture/import/Reporting dependency guards. [Source format](format-final.log)
-  and [changed E2E format](e2e-format-final.log): PASS.
-- Strict Web TypeScript and [live](build-live-final.log)/[demo](build-demo-final.log)
+- [Đã thu hồi — Lint/quality/contracts](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): PASS,48 operations/445 examples,
+  architecture/import/Reporting dependency guards. [Đã thu hồi — Source format](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)
+  and [Đã thu hồi — changed E2E format](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): PASS.
+- Strict Web TypeScript and [Đã thu hồi — live](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)/[Đã thu hồi — demo](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)
   production builds: PASS. No dependency or backend/migration change.
 - Final full Chromium: **36/36 PASS**,0 skipped/retried/flaky,126.2s.
-  [Log](browser-accepted.log), [JSON](browser-accepted-results.json). Existing tests
+  [Đã thu hồi — Log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — JSON](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Existing tests
   retain their assertions; retries are disabled.
-- [Visual scans](visual-check.json): **45 final PORT-04 captures**, zero automated
+- [Đã thu hồi — Visual scans](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): **45 final PORT-04 captures**, zero automated
   WCAG-tagged axe violations, all fonts loaded and no document/body overflow.
   Images/per-capture JSON are in `verified-browser/operations-reporting/`.
-- [Live artifact marker check](live-mode-check.json): no exact synthetic banner,
+- [Đã thu hồi — Live artifact marker check](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): no exact synthetic banner,
   demo credentials or fault-control markers in live JavaScript. Static marker
   scans do not establish full live integration.
 - Final documentation/link/contracts and whitespace checks are recorded in
@@ -80,17 +82,17 @@ acceptance is inferred from retained old regressions.
 
 ## Retained intermediate outcomes
 
-- [Contract red](contracts-red.log):7 expected failures exposed missing/wrong
-  Web reporting DTO/API parsing; [green](contracts-green.log) follows correction.
-  [Operations red](operations-red.log) and [green](operations-green-2.log) cover
+- [Đã thu hồi — Contract red](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):7 expected failures exposed missing/wrong
+  Web reporting DTO/API parsing; [Đã thu hồi — green](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) follows correction.
+  [Đã thu hồi — Operations red](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) and [Đã thu hồi — green](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) cover
   protected result/filter/replay behavior. The first green fixture omitted new
   business metrics and is retained in `operations-green.log`.
 - `report-controllers-first.log` has2 assertions checking before batched query
   notifications. The green tests wait for the observable state, preserving cursor/
   permission assertions. Replay/access final focused checks are in `replay-green.log`
   and `report-access-first.log`.
-- [Audit order red](audit-order-red.log)/[green](audit-order-green.log) and
-  [completed replay red](completed-replay-red.log)/[green](completed-replay-green.log)
+- [Đã thu hồi — Audit order red](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)/[Đã thu hồi — green](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) and
+  [Đã thu hồi — completed replay red](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)/[Đã thu hồi — green](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)
   precede their fixes. Formatter/lint/build iterations remain distinct from final
   passing logs. `format-final-copy.log` records an intermediate formatting issue.
 - `browser-counts.log` initially resumed an existing frozen Networking attempt,
@@ -105,11 +107,11 @@ acceptance is inferred from retained old regressions.
   not UI evidence. Later runs own both preview PIDs, check readiness and stop them
   on exit in the same shell.
 - Two full runs (`browser-public-keyboard-first.log`, `browser-final.log`) passed
-  35/36. Trace [diagnosis](public-keyboard-diagnosis.json) shows the URL had changed
+  35/36. Trace [Đã thu hồi — diagnosis](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) shows the URL had changed
   to `/experience` while the homepage's embedded sample DOM was still mounted;
   keyboard focus matched that disappearing radio. The test now waits for both
   destination URL and its level-1 heading, then uses the same Space/Enter/focus
-  assertions. [Focused repeated check](public-keyboard-green.log):6/6 PASS,
+  assertions. [Đã thu hồi — Focused repeated check](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):6/6 PASS,
   demo/live each repeated3 times. Both failed runs retain JSON/trace/context/PNG.
 
 No failed log is relabeled or overwritten as a pass. Final screenshot/scan artifacts
@@ -117,13 +119,13 @@ are separated from earlier directories; protected historical evidence is retaine
 
 ## Acceptance limits and next scope
 
-[Before hashes](protected-before.json) cover **1,371 files**: API source, selected
+[Đã thu hồi — Before hashes](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) cover **1,371 files**: API source, selected
 templates and PORT-01–03 evidence. Both pre-status checks found zero changes.
-[Final protection](protected-final.json) verifies1,370 files byte-for-byte and
+[Đã thu hồi — Final protection](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) verifies1,370 files byte-for-byte and
 allows one current template checklist line closing PORT-04. Its exact replacement
-is recorded in [template receipt](template-review-changes.json); the original
+is recorded in [Đã thu hồi — template receipt](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi); the original
 bytes remain in `template-review-before.txt`. No applied migration/old PNG/prompt
-or prior port evidence changed. [Artifact manifest](artifact-manifest.json)
+or prior port evidence changed. [Đã thu hồi — Artifact manifest](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)
 records hashes for the45 final screenshot/scan pairs. Preview processes owned
 by the accepted browser run were stopped on exit; no infrastructure was deployed.
 

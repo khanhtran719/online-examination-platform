@@ -1,11 +1,12 @@
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
+
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "playwright/test";
+import { expect, type Page, test } from "playwright/test";
 
 const evidence = process.env.WEB_EVIDENCE_DIR
   ? path.resolve(process.env.WEB_EVIDENCE_DIR, "public-experience")
-  : path.resolve(process.cwd(), "../../docs/web-ui/evidence/vao-nhip-thi-2026-10-07");
+  : path.resolve(process.cwd(), "../../.local/web-evidence/latest");
 test.use({ launchOptions: { args: ["--enable-unsafe-swiftshader"] } });
 
 async function screenshot(page: Page, name: string) {

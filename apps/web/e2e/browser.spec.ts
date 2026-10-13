@@ -1,11 +1,12 @@
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
+
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "playwright/test";
+import { expect, type Page, test } from "playwright/test";
 
 const shotDir = process.env.WEB_EVIDENCE_DIR
   ? path.resolve(process.env.WEB_EVIDENCE_DIR, "regression")
-  : path.resolve(process.cwd(), "../../docs/web-ui/evidence/vao-nhip-thi-2026-10-07/regression");
+  : path.resolve(process.cwd(), "../../.local/web-evidence/latest/regression");
 const widths = [320, 390, 768, 1024, 1440] as const;
 
 async function shot(page: Page, name: string): Promise<void> {

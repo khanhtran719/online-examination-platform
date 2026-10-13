@@ -1,5 +1,7 @@
 # PORT-05G evidence — Candidate Dashboard
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Ngày2026-10-13. Named Web/tablet768/1024/1280/1440px scope.
 [Plan/review](../../port-05g-2026-10-13.md). Parent/mobile/app/live/AWS/production
 không được đóng từ screenshots hoặc synthetic HTTP.
@@ -31,14 +33,14 @@ evidence directory để dễ tái hiện; base config/old browser tests/API unc
 riêng. Managed preview proxy ECONNREFUSED trong live-no-API cases là expected
 fixture, không là production outage hoặc bị bỏ qua bởi tests.
 
-`dashboard/` có24 captures; [gallery](gallery.html), [manifest](captures.json),
+`dashboard/` có24 captures; [Đã thu hồi — gallery](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — manifest](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi),
 font loaded/axe/overflow/gutters và runtime Node/Chromium metadata. Synthetic
 HTTP fixture zero/null scores, long names/frozen metadata, complete empty,
 partial errors, stale, denied, pending, Retry-After và reauth được ghi đúng scope.
 `dashboard/request-budget.json` ghi bounded query requests, không latency/RPS/
 CPU/cost benchmark. Explicit detail navigation khác automatic per-row lookup.
 
-[Source/build hashes](source-build-manifest.json) và `SHA256SUMS` gắn artifacts
+[Đã thu hồi — Source/build hashes](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) và `SHA256SUMS` gắn artifacts
 với bản code. `protected-before.json`/`protected-check.json`:6.960 API/templates/
 prior evidence/PORT-05F source files unchanged, dirty authorized F work retained.
 Full-suite captures của feature khác vào current directory, không overwrite

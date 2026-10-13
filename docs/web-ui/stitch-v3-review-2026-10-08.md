@@ -1,12 +1,14 @@
 # Review Stitch — Visual Refinement V3
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Ngày: 2026-10-08. Dự án: [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955), ID `18257628123124303955`.
 
 ## Phạm vi và bằng chứng
 
 Review thị giác theo [prompt V3](stitch-visual-refinement-v3-prompt-2026-10-08.md) và [mẫu Dashboard V2](templates/dashboard-v2/README.md). Không điều chỉnh thiết kế trên Stitch hoặc code ứng dụng; không review nội dung/semantics/API trong lượt này.
 
-Đã đọc inventory và lấy ảnh gốc qua Stitch MCP. Có 16 mục: 9 mục trước và 7 mục V3 mới, gồm 5 màn chính, bản phòng thi mobile mở bảng câu hỏi và tài liệu handoff. [Manifest](evidence/stitch-v3-review-2026-10-08/manifest.json) ghi ID, kích thước ảnh thật và SHA-256. Ảnh desktop rộng 2560px, mobile 780px; quan sát ở tỷ lệ thiết kế tương ứng 1280px/390px. Các crop chỉ phục vụ review, ảnh gốc được giữ nguyên.
+Đã đọc inventory và lấy ảnh gốc qua Stitch MCP. Có 16 mục: 9 mục trước và 7 mục V3 mới, gồm 5 màn chính, bản phòng thi mobile mở bảng câu hỏi và tài liệu handoff. [Đã thu hồi — Manifest](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) ghi ID, kích thước ảnh thật và SHA-256. Ảnh desktop rộng 2560px, mobile 780px; quan sát ở tỷ lệ thiết kế tương ứng 1280px/390px. Các crop chỉ phục vụ review, ảnh gốc được giữ nguyên.
 
 **Quyết định tiếp theo của người dùng:** tạm hoãn sửa lỗi, dùng V3 để thiết kế các page còn lại trước. [Template hiện hành](templates/stitch-v3/README.md) giữ các ảnh được chọn; [implementation notes](templates/stitch-v3/implementation-notes.md) ghi những việc cần sửa khi code. Sau review, người dùng yêu cầu dọn ảnh cũ: ảnh so sánh V2 không được chọn và crop thừa đã xóa; manifest giữ hash/metadata và trạng thái xóa, ảnh được chọn chuyển vào thư mục template. Kết luận review dưới đây là kết quả lịch sử tại thời điểm kiểm tra, không chặn quyết định tiếp tục này.
 
@@ -81,7 +83,7 @@ Có header tên trang riêng, hàng tên đề/timer/nộp, hàng trạng thái 
 
 Chỉnh: hợp nhất header trang vào thanh phòng thi; cỡ chữ đưa vào tiện ích; đáp án căn trái với checkbox cùng một vị trí; nút bảng câu hỏi dùng nhãn ngắn đủ rõ và không bị cắt. Những thay đổi nội dung hoặc tính năng phát sinh trong V3 để dành lượt review riêng, không coi là đã được chấp thuận trong review thị giác.
 
-![Các điểm chồng lớp](evidence/stitch-v3-review-2026-10-08/layout-findings-v3.png)
+[Đã thu hồi — Các điểm chồng lớp](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)
 
 ## Đề xuất chốt theo phần
 

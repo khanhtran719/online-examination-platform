@@ -1,5 +1,7 @@
 # Review 05A — Quản lý đề và hai bước editor desktop — 2026-10-08
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Nguồn: [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955), đối chiếu [prompt 05A](stitch-page-prompts-v3/05a-admin-exams-desktop.md), [Dashboard V2](templates/dashboard-v2/README.md), [design spec AD-02/AD-03](design-spec.md), [OpenAPI](../contracts/openapi.yaml) và editor/picker/draft trong `apps/web/src/features/admin`. Phạm vi: đọc ảnh gốc, ghi đánh giá và lưu bằng chứng review. Không sửa ứng dụng, tạo/chỉnh frame trên Stitch hoặc chọn template thay người dùng.
 
 ## Kết luận
@@ -47,4 +49,4 @@ Registry có **33 page families: 16 đã giữ template, 4 đã review chờ ch�
 
 ## Validation và giới hạn
 
-[Bằng chứng/ba PNG gốc](evidence/stitch-05a-review-2026-10-08/README.md), [manifest/SHA-256](evidence/stitch-05a-review-2026-10-08/manifest.json), [inventory](evidence/stitch-05a-review-2026-10-08/inventory.json). Đã kiểm tra dimensions/hash, đúng ba ID mới, metadata delta 56→59, fixture totals/counter, JSON/registry/local links và whitespace diff. Không chạy test ứng dụng vì source không đổi. Ảnh tĩnh không chứng minh component DOM, prototype, accessibility, responsive, network, persistence hoặc motion đang hoạt động.
+[Bằng chứng/ba PNG gốc](evidence/stitch-05a-review-2026-10-08/README.md), [Đã thu hồi — manifest/SHA-256](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — inventory](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Đã kiểm tra dimensions/hash, đúng ba ID mới, metadata delta 56→59, fixture totals/counter, JSON/registry/local links và whitespace diff. Không chạy test ứng dụng vì source không đổi. Ảnh tĩnh không chứng minh component DOM, prototype, accessibility, responsive, network, persistence hoặc motion đang hoạt động.

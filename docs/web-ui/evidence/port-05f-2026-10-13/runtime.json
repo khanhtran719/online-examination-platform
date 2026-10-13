@@ -1,8 +1,0 @@
-{
-  "node": "v24.17.0",
-  "platform": "darwin",
-  "arch": "arm64",
-  "osRelease": "25.5.0",
-  "playwright": "1.63.0",
-  "chromium": "153.0.8010.12"
-}

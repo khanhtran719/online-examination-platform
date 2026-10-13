@@ -1,8 +1,10 @@
 # PORT-05B evidence —2026-10-13
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 PASS locally. [Review/checklist](../../port-05b-2026-10-13.md),
-[gallery11 captures](gallery.html), [manifest](capture-manifest.json),
-[machine summary](summary.json), [runtime](runtime.json).
+[Đã thu hồi — gallery11 captures](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — manifest](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi),
+[Đã thu hồi — machine summary](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — runtime](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 
 ## Validation
 

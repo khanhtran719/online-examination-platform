@@ -1,4 +1,14 @@
-# Active increment 2026-10-13: PORT-05H Public How / Help / 404
+# Active increment2026-10-13: UI artifact cleanup
+
+COMPLETE locally: [plan/retention](web-ui/artifact-retention-2026-10-13.md). Người dùng
+xác nhận giữ template, dọn artifacts kiểm thử.7.532 artifacts/636,21MiB removed;
+reports retained và487 raw-file/directory links retired. Test outputs chuyển về
+ignored local folders, source/API/template images giữ nguyên. 4 focused Chromium PASS,70+10 test discovery,
+quality/contracts/lint/format/types và807 protected hashes PASS. Outputs chuyển về
+local, đã dọn58 raw outputs sau kiểm tra. Các checkpoint dưới là kết quả lịch sử;
+raw UI evidence đã retired, không dùng để giả current visual/production proof.
+
+# Previous increment 2026-10-13: PORT-05H Public How / Help / 404
 
 COMPLETE locally: [H1–H5 review](web-ui/port-05h-2026-10-13.md). Web/tablet
 768/1024/1280/1440px.933 root/70 Chromium PASS;28 captures font/axe/overflow/

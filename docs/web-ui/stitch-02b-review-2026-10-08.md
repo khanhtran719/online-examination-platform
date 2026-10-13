@@ -1,5 +1,7 @@
 # Review 02B — Danh sách đề mobile V4 — 2026-10-08
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Nguồn: [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955), đối chiếu nhóm 1 của [Prompt 02B](stitch-page-prompts-v3/02b-catalog-profile-states.md), [Normal V4](templates/catalog-profile-v4/README.md) và design spec CA-02. Phạm vi chỉ đọc, tải ảnh và ghi review; không gửi generation/refinement hoặc sửa ứng dụng.
 
 **Quyết định sau review:** người dùng đã chọn cả bảy frame làm template và yêu cầu note lỗi để sửa khi code. Ảnh đã chuyển nguyên bytes vào [bộ template](templates/catalog-profile-v4/README.md), tổng 17 ảnh. Findings 02B-01–05 vẫn mở. Theo ưu tiên mới, làm đủ các trang desktop còn thiếu trước; prompt kế tiếp là [03A — Trạng thái/Kết quả/Xem lại](stitch-page-prompts-v3/03a-results-desktop.md), sau đó [03B — Lịch sử/Xếp hạng](stitch-page-prompts-v3/03b-history-ranking-desktop.md). Các states 02B chưa tạo giữ trong backlog, chưa bắt đầu port frontend.
@@ -45,4 +47,4 @@ Bốn dialog 02A là mẫu đã chọn riêng, không được tính thay cho 14
 
 ## Bằng chứng và validation
 
-[Bảy PNG gốc/IDs](evidence/stitch-02b-review-2026-10-08/README.md), [manifest/SHA-256](evidence/stitch-02b-review-2026-10-08/manifest.json), [inventory 47 screen](evidence/stitch-02b-review-2026-10-08/inventory.json). Đã xem toàn bộ bảy ảnh và crop nguyên tỷ lệ các footer/sheet; đối chiếu Normal. Kiểm tra kích thước/hash bảy PNG, hash mười template đã chọn, JSON/coverage/links và `git diff --check`. Không chạy test ứng dụng vì không sửa source. Review ảnh tĩnh, chưa nghiệm thu responsive thật, click/network/persistence, motion hoặc accessibility.
+[Bảy PNG gốc/IDs](evidence/stitch-02b-review-2026-10-08/README.md), [Đã thu hồi — manifest/SHA-256](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — inventory 47 screen](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Đã xem toàn bộ bảy ảnh và crop nguyên tỷ lệ các footer/sheet; đối chiếu Normal. Kiểm tra kích thước/hash bảy PNG, hash mười template đã chọn, JSON/coverage/links và `git diff --check`. Không chạy test ứng dụng vì không sửa source. Review ảnh tĩnh, chưa nghiệm thu responsive thật, click/network/persistence, motion hoặc accessibility.

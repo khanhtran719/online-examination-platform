@@ -1,5 +1,7 @@
 # PORT-05H evidence — Public How / Help / 404
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Ngày2026-10-13. Web/tablet768/1024/1280/1440px.
 [Plan/review](../../port-05h-2026-10-13.md). H1–H5 COMPLETE locally. Parent/full live/mobile/app/AWS/production không đóng.
 
@@ -24,7 +26,7 @@ historical evidence; không chạy real Identity HTTPS suite hoặc AWS.
   retries0. Managed previews stopped.
 - `root-tests-delivery.log`:933 PASS (492 API/66 tooling/375 Web).
   Lint/format/types/build-live/build-demo logs là receipts riêng.
-- `public-guides/`:28 final captures; [gallery](gallery.html), [manifest](captures.json).
+- `public-guides/`:28 final captures; [Đã thu hồi — gallery](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — manifest](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
   Font/axe/body overflow/content gutters/44px control checks kèm từng ảnh.
   Keyboard mở cả13 FAQ, reset topic/reload, Enter/Space, reduced-motion,
   safe links/route guards/404 private-URL nonreflection và live `/dev/ui` gate.

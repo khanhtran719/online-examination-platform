@@ -1,5 +1,0 @@
-
-> @exam/web@0.1.0 typecheck
-> tsc -p tsconfig.json --noEmit
-
-src/features/results/__tests__/history-board.unit.spec.tsx(162,17): error TS2741: Property 'pageSize' is missing in type '{ items: (LeaderboardEntry | HistoryItem)[]; next: null; }' but required in type 'Page<LeaderboardEntry | HistoryItem>'.

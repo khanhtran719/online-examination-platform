@@ -1,5 +1,7 @@
 # Review Catalog/Profile V4 — 2026-10-08
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Dự án [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955). Review sáu screen V4 mới của Danh sách đề, Chi tiết đề và Hồ sơ, đối chiếu [V3](stitch-catalog-profile-review-2026-10-08.md), [prompt refinement](stitch-page-prompts-v3/02-catalog-profile-refinement.md) và [design spec](design-spec.md) CA-02/03/10. Chỉ đọc Stitch, lưu bằng chứng và ghi review; không sửa ứng dụng, không gửi lệnh tạo/chỉnh thiết kế.
 
 **Quyết định sau review:** người dùng đồng ý theo đề xuất, giữ sáu Normal làm [template Catalog/Profile V4](templates/catalog-profile-v4/README.md). Các findings CP-V4-01–07 vẫn mở trong [checklist triển khai](templates/catalog-profile-v4/implementation-notes.md). Chuẩn bị prompt bổ sung riêng dialog/states; chưa gửi lên Stitch và chưa nghiệm thu interactions/capabilities từ việc chọn hình thức thiết kế.
@@ -52,6 +54,6 @@ Giữ V4 làm hướng tham khảo tốt hơn cho card/form. Ưu tiên [bốn fr
 
 ## Bằng chứng và giới hạn
 
-[Sáu screenshot gốc và IDs](evidence/stitch-catalog-profile-v4-review-2026-10-08/README.md), [manifest/hash](evidence/stitch-catalog-profile-v4-review-2026-10-08/manifest.json), [inventory 36 screen](evidence/stitch-catalog-profile-v4-review-2026-10-08/inventory.json). Đã xem đủ sáu PNG và crop kiểm tra list mobile, xác minh dimensions/SHA-256, liên kết tài liệu và cập nhật registry trỏ review V4 trong khi giữ link review V3. Không chạy test ứng dụng vì không đổi source.
+[Sáu screenshot gốc và IDs](evidence/stitch-catalog-profile-v4-review-2026-10-08/README.md), [Đã thu hồi — manifest/hash](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — inventory 36 screen](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Đã xem đủ sáu PNG và crop kiểm tra list mobile, xác minh dimensions/SHA-256, liên kết tài liệu và cập nhật registry trỏ review V4 trong khi giữ link review V3. Không chạy test ứng dụng vì không đổi source.
 
 Review từ ảnh tĩnh; chưa xác minh click, focus/keyboard, responsive thực, điều kiện dữ liệu, sticky behavior hoặc animation. Nút/switch nhìn đúng không xác nhận backend và tương tác đã đúng.

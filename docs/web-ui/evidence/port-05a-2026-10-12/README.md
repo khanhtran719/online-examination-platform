@@ -1,29 +1,31 @@
 # PORT-05A — Candidate Catalog evidence
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 2026-10-12. EP-08 list, EP-09 detail and start confirmation on Web/tablet
 768/1024/1280/1440px. C1–C5 COMPLETE locally; final Chromium39/39 PASS without skips/retries/flaky
 cases. [Scope/checklist](../../port-05a-2026-10-12.md). Existing PORT-03/04
 workspace changes were present before this increment; Git diff alone includes
-those earlier changes. [Workspace baseline](workspace-before.txt).
+those earlier changes. [Đã thu hồi — Workspace baseline](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 
 ## Checks and receipts
 
-- [Root tests](tests.log):492 API/66 tooling/221 Web =779 PASS. After the page
-  gutter fix, [Web tests](web-final.log):221 PASS again.
-- [Focused controllers](controllers-green.log):19 PASS —12 detail/start, six
+- [Đã thu hồi — Root tests](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):492 API/66 tooling/221 Web =779 PASS. After the page
+  gutter fix, [Đã thu hồi — Web tests](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):221 PASS again.
+- [Đã thu hồi — Focused controllers](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):19 PASS —12 detail/start, six
   browse and one synthetic lost-ACK receipt test.
-- [Root lint](lint-final.log), [format](format-check-final.log), strict
-  [live](build-live.log)/[demo](build-demo.log) builds PASS. Lint includes
+- [Đã thu hồi — Root lint](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — format](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), strict
+  [Đã thu hồi — live](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)/[Đã thu hồi — demo](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) builds PASS. Lint includes
   architecture guards, quality and48 operations/445 contract examples.
-- [Focused Chromium](browser-focused-green.log):3/3 PASS after gutter/contrast
-  fixes, no skips/retries. [Raw result](browser-focused-results.json).
-- [Final Chromium](browser-accepted.log):39/39 PASS in136.1s.
-  [Raw result](browser-accepted-results.json). [Gallery](gallery.html) and
-  [manifest](capture-manifest.json):17 Catalog captures, zero automated axe
+- [Đã thu hồi — Focused Chromium](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):3/3 PASS after gutter/contrast
+  fixes, no skips/retries. [Đã thu hồi — Raw result](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+- [Đã thu hồi — Final Chromium](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):39/39 PASS in136.1s.
+  [Đã thu hồi — Raw result](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). [Đã thu hồi — Gallery](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) and
+  [Đã thu hồi — manifest](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):17 Catalog captures, zero automated axe
   violations/document overflow, loaded font and content gutters>=16px.
-- [Protection receipt](protected-summary.json):1,862 baseline API source,
+- [Đã thu hồi — Protection receipt](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):1,862 baseline API source,
   templates and PORT-01–04 evidence files byte-identical, none added/removed.
-  [Before](protected-before.json), [after](protected-after.json).
+  [Đã thu hồi — Before](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — after](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 
 Chromium demo validates synthetic UI flows. The full suite also retains the live
 mode gate that rejects unavailable business capabilities; it does not prove live

@@ -1,5 +1,8 @@
 import { defineConfig, devices } from "playwright/test";
 
+// Review artifacts are local outputs; only authored reports belong in docs.
+process.env.WEB_EVIDENCE_DIR ??= "../../.local/web-evidence/latest";
+
 export default defineConfig({
   testDir: "./e2e",
   testMatch: ["**/*.spec.ts", "**/*.e2e-spec.ts"],

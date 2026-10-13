@@ -1,5 +1,7 @@
 # PORT-01 evidence
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Local frontend foundation and Dashboard/Admin exam-list pilot, 2026-10-12.
 [Plan/review](../../port-01-2026-10-12.md), [frontend architecture](../../frontend-architecture.md).
 Synthetic data is visibly labeled; these files do not prove live business or AWS
@@ -7,12 +9,12 @@ production acceptance. Historical template PNGs and benchmark evidence remain in
 
 ## Executed checks
 
-- [Root tests](unit-tests.log):663 PASS =492 API +66 tooling +105 Web.
-- [Lint/quality/contracts](lint.log):PASS,48 operations/445 examples.
-- [Format](format.log):PASS.
-- [Live build](live-build.log) and [demo build](demo-build.log):PASS, both include
+- [Đã thu hồi — Root tests](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):663 PASS =492 API +66 tooling +105 Web.
+- [Đã thu hồi — Lint/quality/contracts](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):PASS,48 operations/445 examples.
+- [Đã thu hồi — Format](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):PASS.
+- [Đã thu hồi — Live build](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) and [Đã thu hồi — demo build](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):PASS, both include
   strict TypeScript checking. Static output remains separate from API dist.
-- [Full Chromium log](browser.log) and [raw result](full-browser-results.json):26/26 PASS,
+- [Đã thu hồi — Full Chromium log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) and [Đã thu hồi — raw result](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):26/26 PASS,
   Candidate/Admin/exam/public, keyboard, native controls, dialog focus/escape,
   save/conflict/submit/review, permissions/logout and live-without-demo fallback.
 - Final pilot evidence is in `final/pilot`:loaded captures and matching JSON
@@ -39,9 +41,9 @@ the final focused capture explicitly waits for table and loaded count. Use the
 latest `final/pilot` images as the current visual evidence. Both full26 and final
 focused2 results are retained separately. No historical evidence is rewritten.
 
-[Final focused log](final-pilot.log), [raw focused results](final-pilot-results.json),
-[final Web tests](final-web-tests.log), [final Web lint](final-web-lint.log) and
-[capture hashes/review checks](review-checks.json) record the post-hint verification.
+[Đã thu hồi — Final focused log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — raw focused results](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi),
+[Đã thu hồi — final Web tests](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — final Web lint](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) and
+[Đã thu hồi — capture hashes/review checks](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) record the post-hint verification.
 
 ## Intentional differences and open gates
 

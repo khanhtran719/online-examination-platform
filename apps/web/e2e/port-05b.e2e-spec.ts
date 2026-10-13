@@ -2,10 +2,10 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "playwright/test";
+import { expect, type Page, test } from "playwright/test";
 
 const evidence = path.resolve(
-  process.env.WEB_EVIDENCE_DIR ?? "../../docs/web-ui/evidence/port-05b-2026-10-13",
+  process.env.WEB_EVIDENCE_DIR ?? "../../.local/web-evidence/latest",
   "history-leaderboard",
 );
 const exam = "00000000-0000-4000-8000-000000000102";

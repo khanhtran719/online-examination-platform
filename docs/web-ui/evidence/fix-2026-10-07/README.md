@@ -1,5 +1,7 @@
 # Evidence sửa Web UI sau review — 2026-10-07
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Bằng chứng này đứng cạnh [review RED](../review-2026-10-07/README.md). Artifact review không bị sửa để thành xanh. Không phải production acceptance, không phải proof HTTPS, và không đóng Catalog/Assessment/Reporting live.
 
 Môi trường: macOS, Node theo `apps/web` (`>=24 <25`), Playwright 1.63.0, Chromium. Preview demo `http://127.0.0.1:4173`, live `http://127.0.0.1:4174`. Live preview là HTTP fixture, không có backend TLS.
@@ -11,8 +13,8 @@ Môi trường: macOS, Node theo `apps/web` (`>=24 <25`), Playwright 1.63.0, Chr
 | `eslint src` và `vitest run` trong `apps/web` | PASS, 60 test. Gồm room-tick và autosave |
 | `npm run build` và `npm run build:demo` trong `apps/web` | PASS trước lần đo bundle bên dưới. `tsc` nằm trong Vite build |
 | Playwright config tạm `/tmp/web-ui-fix-20261007/playwright.config.mjs` | 7 PASS, 2 FAIL. Không chạy config review gốc vì output của nó ghi đè artifact RED |
-| Script trình duyệt `/tmp/web-ui-fix-20261007/browser-regressions.mjs` | PASS. Kết quả [browser.json](browser.json) |
-| Probe CSRF/Retry-After, bản `/tmp` | [state-probes.json](state-probes.json): lastStatus 200, delay 10000 ms |
+| Script trình duyệt `/tmp/web-ui-fix-20261007/browser-regressions.mjs` | PASS. Kết quả [Đã thu hồi — browser.json](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) |
+| Probe CSRF/Retry-After, bản `/tmp` | [Đã thu hồi — state-probes.json](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): lastStatus 200, delay 10000 ms |
 | Root `npm run quality` | PASS: link/anchor/boundary/test placement, rồi 46 operations và 425 examples. Lỗi placement persistence không xuất hiện |
 
 ## Review Playwright trên preview đã build
@@ -32,7 +34,7 @@ W-16 đạt trên bundle phòng thi trước lần rebuild chỉ đổi brand. A
 
 ## Trình duyệt bổ sung
 
-[browser.json](browser.json) ghi PASS cho:
+[Đã thu hồi — browser.json](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) ghi PASS cho:
 
 - Trang chủ không tràn ngang ở 320, 390, 768, 1024, 1440. Có “Exam Platform”, “Minh họa” và “Ba bước”.
 - Phòng thi 320 không tràn ngang. Ô radio đang focus không nằm dưới dock.
@@ -40,7 +42,7 @@ W-16 đạt trên bundle phòng thi trước lần rebuild chỉ đổi brand. A
 - Layout viewport 720 và 384, tương đương 1440 và 768 ở zoom 200%, không tràn ngang.
 - Đề live 500 câu: trang đầu 0 radio, 24 lần “Tải thêm câu”, 500 ô phiếu, 2 radio, 2221 ms. Viewport 1280×800 nên phiếu nhìn thấy. Sau đó 2,5 giây không có PUT khi phòng còn sạch.
 
-Ảnh: [screenshots](screenshots). `exam-zoom-200-320.png` là CSS `zoom: 2` trên viewport 320 cố định; dock bị cắt. Đó không phải browser zoom reflow và không được tính là lỗi sản phẩm của ca layout 320 không zoom. `exam-layout-384.png` là ca layout viewport.
+Ảnh cũ đã [thu hồi](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). `exam-zoom-200-320.png` từng ghi CSS `zoom: 2` trên viewport 320 cố định; dock bị cắt. Đó không phải browser zoom reflow và không được tính là lỗi sản phẩm của ca layout 320 không zoom. `exam-layout-384.png` từng là ca layout viewport.
 
 Đăng nhập bằng bàn phím: Tab đầu tiên dừng ở “Kịch bản mẫu” của bản demo, rồi script focus ô email. Đây không phải thứ tự Tab thuần từ đầu trang.
 

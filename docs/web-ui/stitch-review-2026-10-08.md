@@ -1,8 +1,10 @@
 # Review Stitch — ExamPlatform UI/UX Redesign
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Ngày: 2026-10-08. Dự án: [ExamPlatform UI/UX Redesign](https://stitch.withgoogle.com/projects/11777231516922865355). Project ID: `11777231516922865355`.
 
-**Cập nhật sau generation:** inventory mới nhất có **25 mẫu desktop + một prototype** (26 resources): Public 4, Identity 4, Candidate 10, Admin nội dung 7. Còn bảy mẫu Admin giám sát/báo cáo AD-07A/07B/08/09/10/11/12; mobile/states chưa xác nhận đủ. [Inventory IDs](evidence/stitch-port-2026-10-08/stitch-inventory.json), [prompt đúng phần còn thiếu](stitch-next-pages-prompts-2026-10-08.md). Các bảng 3/32 và 29 thiếu bên dưới ghi snapshot **trước khi bổ sung**, không phải số hiện tại. Người dùng yêu cầu chốt UI trên Stitch trước khi sửa code tiếp; mẫu mới có resource chưa đồng nghĩa đã được duyệt.
+**Cập nhật sau generation:** inventory mới nhất có **25 mẫu desktop + một prototype** (26 resources): Public 4, Identity 4, Candidate 10, Admin nội dung 7. Còn bảy mẫu Admin giám sát/báo cáo AD-07A/07B/08/09/10/11/12; mobile/states chưa xác nhận đủ. [Đã thu hồi — Inventory IDs](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [prompt đúng phần còn thiếu](stitch-next-pages-prompts-2026-10-08.md). Các bảng 3/32 và 29 thiếu bên dưới ghi snapshot **trước khi bổ sung**, không phải số hiện tại. Người dùng yêu cầu chốt UI trên Stitch trước khi sửa code tiếp; mẫu mới có resource chưa đồng nghĩa đã được duyệt.
 
 ## Phạm vi và quyết định người dùng
 

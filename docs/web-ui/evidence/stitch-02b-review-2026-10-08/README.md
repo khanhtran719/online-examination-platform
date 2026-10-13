@@ -1,5 +1,7 @@
 # Bằng chứng review 02B — EP-08 mobile
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Ngày 2026-10-08, đọc từ [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955). Inventory 47 screen, tăng bảy so với review dialog. Chỉ EP-08 mobile có states mới; EP-09/10 mobile và desktop đối ứng chưa có. Không gửi generation/refinement trong lượt review.
 
 | State | PNG gốc | Screen ID |
@@ -12,6 +14,6 @@ Ngày 2026-10-08, đọc từ [ExamPlatform UI Design](https://stitch.withgoogle
 | Load more error | [PNG](../../templates/catalog-profile-v4/states/exam-list-load-more-error-mobile-v4.png) | `8def7bf52098434bbfbb0faa339323fe` |
 | Filter sheet | [PNG](../../templates/catalog-profile-v4/states/exam-list-filter-sheet-mobile-v4.png) | `8234d78b01bd456c843aa8890f117ca2` |
 
-[Manifest](manifest.json) ghi dimensions, SHA-256 và nguồn từng PNG. [Inventory](inventory.json) chỉ giữ metadata screen, không lưu credentials hoặc URL tải ảnh. Ảnh gốc chưa chỉnh sửa; crop QA nằm trong thư mục tạm. Sau review, người dùng chọn cả bảy frame làm template. Các PNG đã chuyển nguyên bytes vào `templates/catalog-profile-v4/states/`; bảng/manifest tham chiếu đến cùng file, không lưu trùng. Các mẫu Normal/dialog được giữ và findings 02B-01–05 vẫn mở để xử lý khi code.
+[Đã thu hồi — Manifest](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) ghi dimensions, SHA-256 và nguồn từng PNG. [Đã thu hồi — Inventory](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) chỉ giữ metadata screen, không lưu credentials hoặc URL tải ảnh. Ảnh gốc chưa chỉnh sửa; crop QA nằm trong thư mục tạm. Sau review, người dùng chọn cả bảy frame làm template. Các PNG đã chuyển nguyên bytes vào `templates/catalog-profile-v4/states/`; bảng/manifest tham chiếu đến cùng file, không lưu trùng. Các mẫu Normal/dialog được giữ và findings 02B-01–05 vẫn mở để xử lý khi code.
 
 [Báo cáo review](../../stitch-02b-review-2026-10-08.md). Giới hạn: screenshot tĩnh; chưa xác minh tương tác, motion, responsive và accessibility.

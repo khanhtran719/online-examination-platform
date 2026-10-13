@@ -1,5 +1,7 @@
 # PORT-05D local evidence
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Ngày 2026-10-13. [Plan/review](../../port-05d-2026-10-13.md) COMPLETE locally.
 Historical logs không phải final acceptance. No AWS/production claim.
 
@@ -17,62 +19,62 @@ Historical logs không phải final acceptance. No AWS/production claim.
   submit lost ACK:3 FAIL; đã sửa, không thay live adapter.
 - `private-dialog-red.log`: conflict vẫn lộ local selection khi reauth; đã ẩn.
 - `submit-owner-red.log`: synthetic receipt bị đọc bởi candidate khác. Green
-  [submit-owner-green.log](submit-owner-green.log) xác nhận permission/ownership
+  [Đã thu hồi — submit-owner-green.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) xác nhận permission/ownership
   trước replay. Fixture registration được bổ sung đủ fields sau TS check.
 - `paged-room-red.log`: loaded question không editable nếu còn question cursor
-  dù answer scope đã đầy đủ. [final-review-green.log](final-review-green.log):
+  dù answer scope đã đầy đủ. [Đã thu hồi — final-review-green.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):
   68 Assessment/demo tests PASS sau sửa. Final root còn có đầy đủ regression khác.
-- [browser-initial.log](browser-initial.log):44 PASS/4 FAIL. Findings:
+- [Đã thu hồi — browser-initial.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):44 PASS/4 FAIL. Findings:
   old fallback copy, section positions lặp ordinal, Alert không phải heading,
   offline status selector trùng. Context/screenshot/trace trong
   `browser-initial-failures/`; retained raw report `playwright-initial.json`.
 - `aborted-build-*-delivery.log`: fixture thiếu displayName/password làm TS
   reject. `aborted-browser-delivery.log`, `playwright-aborted.json` và
   `browser-aborted-stale-build/` là lượt bị dừng exit130 vì assets cũ; **excluded**.
-- [browser-before-paged-fix.log](browser-before-paged-fix.log):47 PASS/1 FAIL;
+- [Đã thu hồi — browser-before-paged-fix.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):47 PASS/1 FAIL;
   score thực tế6/6 đúng, test tìm text nguyên khối trong khi markup có whitespace
   và đơn vị. Đã scope assertion vào region điểm và normalize whitespace; không
   hạ kỳ vọng điểm. Raw trace/context trong `browser-before-paged-fix-failures/`.
-- [browser-paged-selector.log](browser-paged-selector.log):48 PASS/1 FAIL;
+- [Đã thu hồi — browser-paged-selector.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):48 PASS/1 FAIL;
   selector đề 120 câu giả định UUID có prefix của seed, trong khi UUID mới là V7.
   Sửa locator theo link đề được tạo; không đổi ứng dụng để khớp giả định test.
-  [browser-paged-probe.log](browser-paged-probe.log) xác nhận flow dài PASS.
-- [browser-before-overlay-fix.log](browser-before-overlay-fix.log):49 PASS,
+  [Đã thu hồi — browser-paged-probe.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) xác nhận flow dài PASS.
+- [Đã thu hồi — browser-before-overlay-fix.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):49 PASS,
   nhưng visual review phát hiện backdrop xung đột bị giới hạn 840px ở viewport
   1280px. Bộ kiểm tra trước đó chưa kiểm bounds của backdrop. Thêm assertion
-  cho toàn viewport và dialog căn giữa: [browser-overlay-red.log](browser-overlay-red.log)
+  cho toàn viewport và dialog căn giữa: [Đã thu hồi — browser-overlay-red.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)
   tái hiện FAIL. Sửa selector CSS vào dialog con, giữ backdrop toàn màn hình.
   Trace/context/screenshot RED ở `browser-overlay-red-failures/`.
 
 ## Bằng chứng cuối
 
-- [root-tests-delivery-final.log](root-tests-delivery-final.log): **850 PASS**,
+- [Đã thu hồi — root-tests-delivery-final.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): **850 PASS**,
   gồm 492 API, 66 tooling, 292 Web. Focused Assessment/demo: 68 PASS.
-- [browser-overlay-green.log](browser-overlay-green.log): focused overlay
-  regression PASS sau sửa CSS; [browser-delivery.log](browser-delivery.log) và
-  [playwright-delivery.json](playwright-delivery.json): **49 Chromium PASS**,
+- [Đã thu hồi — browser-overlay-green.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): focused overlay
+  regression PASS sau sửa CSS; [Đã thu hồi — browser-delivery.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) và
+  [Đã thu hồi — playwright-delivery.json](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): **49 Chromium PASS**,
   0 skipped/unexpected/flaky, retries=0, 204,756ms toàn suite. Đây không phải
   API latency/load benchmark.
-- [build-live-overlay-final.log](build-live-overlay-final.log),
-  [build-demo-overlay-final.log](build-demo-overlay-final.log): strict builds
-  PASS sau CSS cuối. [lint-delivery.log](lint-delivery.log),
-  [format-delivery.log](format-delivery.log),
-  [extra-format-overlay-final.log](extra-format-overlay-final.log),
-  [typecheck-final.log](typecheck-final.log): PASS.
-- [Gallery](gallery.html), [captures.json](captures.json): **26 ảnh final**
+- [Đã thu hồi — build-live-overlay-final.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi),
+  [Đã thu hồi — build-demo-overlay-final.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): strict builds
+  PASS sau CSS cuối. [Đã thu hồi — lint-delivery.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi),
+  [Đã thu hồi — format-delivery.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi),
+  [Đã thu hồi — extra-format-overlay-final.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi),
+  [Đã thu hồi — typecheck-final.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): PASS.
+- [Đã thu hồi — Gallery](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — captures.json](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): **26 ảnh final**
   thuộc `browser-delivery/exam-room/`, đủ 4 widths và fault states. Font loaded,
   zero automated axe violations, không tràn document, gutter nhỏ nhất 24px.
   7 dialog có backdrop đúng toàn viewport và căn giữa. Các thư mục browser cũ
   chỉ giữ lịch sử, không chọn ảnh lỗi cho gallery final.
-- [runtime.json](runtime.json): Node 24.17.0/macOS ARM64/Playwright 1.63.0/
-  Chromium 153.0.8010.12. [protected-check.json](protected-check.json):
+- [Đã thu hồi — runtime.json](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): Node 24.17.0/macOS ARM64/Playwright 1.63.0/
+  Chromium 153.0.8010.12. [Đã thu hồi — protected-check.json](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):
   **3.219 file API/template/prior PORT evidence không đổi bytes**;
   baseline/hash sau ở `protected-before.json` và `protected-after.json`.
-- [SHA256SUMS](SHA256SUMS) gồm final ảnh/JSON, manifest/gallery, report/runtime,
+- [Đã thu hồi — SHA256SUMS](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) gồm final ảnh/JSON, manifest/gallery, report/runtime,
   protection và receipts đã chọn. Historical failures giữ nguyên, không overwrite
-  template hoặc evidence cũ. [quality-delivery.log](quality-delivery.log) PASS
+  template hoặc evidence cũ. [Đã thu hồi — quality-delivery.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) PASS
   sau cập nhật docs: links/anchors/boundaries, 48 operations và 445 examples.
-  [diff-check.log](diff-check.log) PASS, không có whitespace error.
+  [Đã thu hồi — diff-check.log](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) PASS, không có whitespace error.
 
 Root/backend tests và Chromium demo không thay full live integration. Offline
 event và BroadcastChannel là injection cùng một browser; không chứng minh real

@@ -1,10 +1,12 @@
 # Review UI Auth V3 — 2026-10-08
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Dự án [ExamPlatform UI Design](https://stitch.withgoogle.com/projects/18257628123124303955). Phạm vi: review 8 ảnh gốc desktop/mobile của EP-04–07 theo [Prompt Auth](stitch-page-prompts-v3/01-auth.md) và hướng thị giác [Dashboard V2 / V3](templates/stitch-v3/README.md). Không sửa ứng dụng, không gửi refinement lên Stitch.
 
 **Quyết định sau review:** người dùng đồng ý lưu nhóm này làm [template Auth V3](templates/auth-v3/README.md), hoãn các lỗi sang giai đoạn code và tiếp tục Prompt 02. [Checklist triển khai](templates/auth-v3/implementation-notes.md) giữ các mục còn mở; không suy ra chức năng hay tương tác đã được nghiệm thu từ việc chọn style.
 
-**Kiểm tra lại theo yêu cầu tiếp theo:** Stitch hiện có 30 screen; nhóm Auth vẫn đúng 8 screen ID đã lưu, tên/kích thước và nguồn screenshot không đổi so với lần lấy trước. [Inventory recheck](evidence/stitch-auth-review-2026-10-08/inventory-recheck.json) ghi đối chiếu metadata; không tải lại bytes ảnh và không coi đây là kiểm chứng tương tác. Kết luận và AUTH-01–09 giữ nguyên. Sáu màn mới thuộc EP-08–10 (Danh sách đề/Chi tiết đề/Hồ sơ), chưa được review trong phạm vi Auth này.
+**Kiểm tra lại theo yêu cầu tiếp theo:** Stitch hiện có 30 screen; nhóm Auth vẫn đúng 8 screen ID đã lưu, tên/kích thước và nguồn screenshot không đổi so với lần lấy trước. [Đã thu hồi — Inventory recheck](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) ghi đối chiếu metadata; không tải lại bytes ảnh và không coi đây là kiểm chứng tương tác. Kết luận và AUTH-01–09 giữ nguyên. Sáu màn mới thuộc EP-08–10 (Danh sách đề/Chi tiết đề/Hồ sơ), chưa được review trong phạm vi Auth này.
 
 ## Kết luận
 
@@ -41,6 +43,6 @@ Tiếp tục [Prompt 02 — Catalog/Profile](stitch-page-prompts-v3/02-catalog-p
 
 ## Bằng chứng và giới hạn
 
-[Bản lưu ảnh gốc và screen IDs](evidence/stitch-auth-review-2026-10-08/README.md), [manifest/hash](evidence/stitch-auth-review-2026-10-08/manifest.json). Đã kiểm tra đủ 8 ảnh PNG, kích thước đúng metadata Stitch và hash đúng bản lưu. Review dựa trên ảnh: chưa kiểm tra click, keyboard/focus, responsive thực, contrast được đo hoặc motion. Các URL HTML export chuyển sang Google sign-in nên phản hồi đó đã bị loại bỏ; không coi chúng là source của thiết kế.
+[Bản lưu ảnh gốc và screen IDs](evidence/stitch-auth-review-2026-10-08/README.md), [Đã thu hồi — manifest/hash](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Đã kiểm tra đủ 8 ảnh PNG, kích thước đúng metadata Stitch và hash đúng bản lưu. Review dựa trên ảnh: chưa kiểm tra click, keyboard/focus, responsive thực, contrast được đo hoặc motion. Các URL HTML export chuyển sang Google sign-in nên phản hồi đó đã bị loại bỏ; không coi chúng là source của thiết kế.
 
-![Bốn bản mobile Auth V3](evidence/stitch-auth-review-2026-10-08/mobile-overview.png)
+[Đã thu hồi — Bốn bản mobile Auth V3](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi)

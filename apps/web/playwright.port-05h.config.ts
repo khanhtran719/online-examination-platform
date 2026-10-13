@@ -2,7 +2,7 @@ import { defineConfig } from "playwright/test";
 
 import base from "./playwright.config";
 
-process.env.WEB_EVIDENCE_DIR = "../../docs/web-ui/evidence/port-05h-2026-10-13";
+process.env.WEB_EVIDENCE_DIR = "../../.local/web-evidence/port-05h";
 process.env.PLAYWRIGHT_NO_COPY_PROMPT = "1";
 
 export default defineConfig(base, {
@@ -22,9 +22,6 @@ export default defineConfig(base, {
   ],
   reporter: [
     ["list"],
-    [
-      "json",
-      { outputFile: "../../docs/web-ui/evidence/port-05h-2026-10-13/playwright-delivery.json" },
-    ],
+    ["json", { outputFile: "../../.local/web-evidence/port-05h/playwright-delivery.json" }],
   ],
 });

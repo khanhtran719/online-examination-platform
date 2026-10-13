@@ -1,5 +1,11 @@
 # Runbook giao diện web
 
+Artifact policy2026-10-13: raw screenshots/trace/probe/log chỉ lưu local/CI,
+không commit vào docs. Default browser output `.local/web-evidence/latest`;
+named PORT-05G/H output `.local/web-evidence/port-05g`/`port-05h`. Cấu hình vẫn
+tự bật/dừng previews khi dùng named config. Xem [retention và cleanup](artifact-retention-2026-10-13.md)
+về báo cáo lịch sử, template và cách tái kiểm tra khi raw receipts đã thu hồi.
+
 Ngày 2026-10-07. SPA tĩnh React19.3.0/TypeScript5.9.2/Vite8.3.3 trong `apps/web`, không SSR. HTTP preview dưới đây không chứng minh cookie Secure; bộ [HTTPS Identity riêng](../runbooks/identity-https.md) đã chạy actual API/PG/SMTP, không phải AWS/public PKI acceptance.
 
 ## Cài và lệnh

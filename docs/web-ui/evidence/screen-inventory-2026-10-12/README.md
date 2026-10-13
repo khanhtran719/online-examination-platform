@@ -1,11 +1,13 @@
 # Evidence — Screen inventory 2026-10-12
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 [Báo cáo đầy đủ](../../screen-inventory-2026-10-12.md). Kiểm tra repository và tab Chrome của project Stitch `18257628123124303955`, không gửi prompt/chỉnh canvas/click CTA nghiệp vụ. User tab được giữ nguyên.
 
-- [Canvas overview](stitch-overview.jpg): screenshot viewport hiện tại, zoom26%, không phải PNG nguồn từng frame hoặc visual acceptance.
-- [Các node quan sát qua DOM](stitch-observed-nodes.json):63 canvas nodes gồm59 screen IDs đã biết,3 preview mới và1 style asset board. Không phải service/API inventory; placeholder “Generating Screen...” không chứng minh trạng thái generator.
-- [Heading/button của3 preview05B-1](publish-preview-observations.json): iframe riêng1280px, đọc trực tiếp DOM. Các nút không được click; chưa kiểm tra interactive behavior hoặc lưu template.
-- [Kết quả kiểm tra file/route](verification.json):33 page families,39 normalized routes, trạng thái16/4/13,38 PNG retained khớp SHA-256,5 review references tồn tại; danh sách node mới so với inventory05A cũ.
+- [Đã thu hồi — Canvas overview](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): screenshot viewport hiện tại, zoom26%, không phải PNG nguồn từng frame hoặc visual acceptance.
+- [Đã thu hồi — Các node quan sát qua DOM](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):63 canvas nodes gồm59 screen IDs đã biết,3 preview mới và1 style asset board. Không phải service/API inventory; placeholder “Generating Screen...” không chứng minh trạng thái generator.
+- [Đã thu hồi — Heading/button của3 preview05B-1](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi): iframe riêng1280px, đọc trực tiếp DOM. Các nút không được click; chưa kiểm tra interactive behavior hoặc lưu template.
+- [Đã thu hồi — Kết quả kiểm tra file/route](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi):33 page families,39 normalized routes, trạng thái16/4/13,38 PNG retained khớp SHA-256,5 review references tồn tại; danh sách node mới so với inventory05A cũ.
 
 ## Checks
 

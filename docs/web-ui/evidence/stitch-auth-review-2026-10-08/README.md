@@ -1,5 +1,7 @@
 # Ảnh review Auth V3
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Ngày 2026-10-08, đọc từ Stitch MCP trong dự án `18257628123124303955`. Giữ nguyên bytes ảnh gốc; người dùng đã chọn làm template thị giác ngày 2026-10-08; các vấn đề triển khai vẫn để mở. Ảnh gốc nằm trong [template Auth V3](../../templates/auth-v3/README.md). [Kết quả review](../../stitch-auth-review-2026-10-08.md).
 
 | Page | Desktop | Mobile |
@@ -9,4 +11,4 @@ Ngày 2026-10-08, đọc từ Stitch MCP trong dự án `18257628123124303955`. 
 | EP-06 — Kiểm tra email | [Ảnh gốc](../../templates/auth-v3/check-email-desktop-v3.png) | [Ảnh gốc](../../templates/auth-v3/check-email-mobile-v3.png) |
 | EP-07 — Xác thực email | [Ảnh gốc](../../templates/auth-v3/verify-email-desktop-v3.png) | [Ảnh gốc](../../templates/auth-v3/verify-email-mobile-v3.png) |
 
-[Manifest](manifest.json) có screen IDs, nguồn file, kích thước và SHA-256. [Overview mobile](mobile-overview.png) chỉ ghép các ảnh để tiện so sánh; không chỉnh thiết kế. Các HTML tải về là trang Google sign-in, đã bỏ và không dùng làm bằng chứng giao diện hay tương tác.
+[Đã thu hồi — Manifest](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) có screen IDs, nguồn file, kích thước và SHA-256. [Đã thu hồi — Overview mobile](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) chỉ ghép các ảnh để tiện so sánh; không chỉnh thiết kế. Các HTML tải về là trang Google sign-in, đã bỏ và không dùng làm bằng chứng giao diện hay tương tác.

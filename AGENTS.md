@@ -62,6 +62,8 @@ For import/alias changes, also read conventions §§82–85 and the [import norm
 
 For frontend work, also read [frontend architecture](docs/web-ui/frontend-architecture.md), [ADR-007](docs/adr/007-web-ui-implementation-direction.md), the owning feature/tests and the selected [design contract](docs/web-ui/templates/codex-desktop-v1/design-contract.md). Web lint enforces feature/shared/adapter boundaries; keep remote state in controllers and reusable UI independent of runtime/session/transport implementations. Visual references do not authorize unsupported API capabilities or close live/mobile/production gates.
 
+For browser review/artifact cleanup, also read [UI artifact retention](docs/web-ui/artifact-retention-2026-10-13.md) and workflow §35. Raw browser outputs belong in ignored local/CI artifact storage; docs retain authored reports/runbooks, and approved design templates have a separate lifecycle. Explicitly retired visual receipts are historical reports, not current raw acceptance evidence.
+
 For examination lifecycle work, also read architecture §§77–79 and rules R-64–R-65. For AWS/performance/FinOps work, read architecture §§80–85, rules R-66–R-75 and [performance protocol](docs/performance.md). For any production acceptance task, read [acceptance ledger](docs/production-acceptance.md). Existing Invoice/POS snippets are historical teaching examples; use [examination module guide](docs/examination-module-guide.md) for this project.
 
 ## Work loop

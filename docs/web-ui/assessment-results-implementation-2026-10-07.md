@@ -1,5 +1,7 @@
 # Web UI đợt 3 — Làm bài và kết quả
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 ## Phạm vi và kế hoạch
 
 User yêu cầu tiếp tục sau đợt2. Baseline HEAD `80710f5` cùng các thay đổi đợt2 chưa commit; giữ nguyên đợt2 và tài liệu ngoài Web UI đang có trong workspace. Phạm vi6 pages: phòng thi, trạng thái xử lý, kết quả, giải thích, lịch sử và bảng xếp hạng theo bộ mẫu secondary-pages.
@@ -34,7 +36,7 @@ Các thay đổi backend Assessment và tài liệu dự án do increment song s
 
 ## Validation
 
-[Evidence và ảnh](evidence/assessment-results-2026-10-07/README.md), [manifest](evidence/assessment-results-2026-10-07/manifest.json).
+[Evidence và ảnh](evidence/assessment-results-2026-10-07/README.md), [Đã thu hồi — manifest](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
 
 | Kiểm tra                       | Kết quả quan sát                                                                                                                                   |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -47,9 +49,9 @@ Các thay đổi backend Assessment và tài liệu dự án do increment song s
 | Visual                         | 17 states ×5 widths320/390/768/1024/1440 =85 probes;34 axe scans;0 serious/critical,0 document horizontal overflow,0 page errors/external requests |
 | Room motion/zoom               | 0 running animations khi reduced-motion; CSS zoom200% không tràn ngang                                                                             |
 
-Ảnh chính: [phòng thi desktop](evidence/assessment-results-2026-10-07/screenshots/room-selected-1440.png), [multiple choice mobile](evidence/assessment-results-2026-10-07/screenshots/room-multiple-390.png), [kết quả](evidence/assessment-results-2026-10-07/screenshots/result-1440.png), [giải thích](evidence/assessment-results-2026-10-07/screenshots/review-390.png), [status failed](evidence/assessment-results-2026-10-07/screenshots/status-failed-390.png), [history](evidence/assessment-results-2026-10-07/screenshots/history-1440.png), [leaderboard](evidence/assessment-results-2026-10-07/screenshots/leaderboard-1440.png). Có thêm frozen-title gap, conflict,120-câu paged room, long prompt, locked review và denied board.
+Ảnh chính: [Đã thu hồi — phòng thi desktop](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — multiple choice mobile](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — kết quả](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — giải thích](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — status failed](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — history](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi), [Đã thu hồi — leaderboard](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Có thêm frozen-title gap, conflict,120-câu paged room, long prompt, locked review và denied board.
 
-Root run ban đầu gặp một test Assessment policy RED khi backend còn chỉnh song song; [log ban đầu](evidence/assessment-results-2026-10-07/tests.log) được giữ. [Log cuối](evidence/assessment-results-2026-10-07/tests-final.log) PASS sau cập nhật backend. Các lỗi selector trong hai browser tests mới được chỉnh theo tên native controls; bộ20 ca trên final application build đều PASS.
+Root run ban đầu gặp một test Assessment policy RED khi backend còn chỉnh song song; [Đã thu hồi — log ban đầu](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) được giữ. [Đã thu hồi — Log cuối](artifact-retention-2026-10-13.md#artifact-đã-thu-hồi) PASS sau cập nhật backend. Các lỗi selector trong hai browser tests mới được chỉnh theo tên native controls; bộ20 ca trên final application build đều PASS.
 
 ## Giới hạn và bước sau
 

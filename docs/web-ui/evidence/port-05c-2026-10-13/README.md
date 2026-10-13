@@ -1,8 +1,10 @@
 # PORT-05C evidence —2026-10-13
 
+> Artifact retirement 2026-10-13: raw UI screenshots/trace/JSON/log/gallery đã được dọn theo yêu cầu người dùng. Nội dung bên dưới là báo cáo lịch sử; raw visual receipts không còn trong checkout. [Phạm vi và cách tái kiểm tra](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi).
+
 Local Status/Result/Released Review on Web/tablet768/1024/1280/1440px.
-[Scope/review](../../port-05c-2026-10-13.md), [gallery](gallery.html),
-[20 PNG manifest/SHA-256](captures.json). Synthetic demo data only.
+[Scope/review](../../port-05c-2026-10-13.md), [Đã thu hồi — gallery](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi),
+[Đã thu hồi — 20 PNG manifest/SHA-256](../../artifact-retention-2026-10-13.md#artifact-đã-thu-hồi). Synthetic demo data only.
 
 ## Final checks
 
