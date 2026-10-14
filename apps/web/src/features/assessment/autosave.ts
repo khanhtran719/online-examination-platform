@@ -299,19 +299,19 @@ export function failRetryable(
   const schedule = RETRY_DELAYS_MS[state.inFlight.attempt];
   const exhausted =
     !input.allowRetry || schedule === undefined || nextAttempt > RETRY_DELAYS_MS.length;
+  const serverMinimum = Math.max(0, input.retryAfterSeconds ?? 0) * 1000;
   if (exhausted) {
     return derive({
       ...state,
       inFlight: {
         ...state.inFlight,
         exhausted: true,
-        retryAtMs: null,
+        retryAtMs: serverMinimum > 0 ? input.nowMs + serverMinimum : null,
         attempt: state.inFlight.attempt,
       },
     });
   }
   const jittered = Math.round(schedule * (0.8 + 0.4 * input.random));
-  const serverMinimum = Math.max(0, input.retryAfterSeconds ?? 0) * 1000;
   const retryAtMs = input.nowMs + Math.max(jittered, serverMinimum);
   return derive({
     ...state,
@@ -342,7 +342,6 @@ export function resumeOnline(state: AutosaveState, nowMs: number): AutosaveState
     inFlight: {
       ...state.inFlight,
       retryAtMs: Math.max(nowMs, state.inFlight.retryAtMs ?? 0),
-      exhausted: false,
     },
   });
 }
@@ -352,7 +351,7 @@ export function holdForReauth(state: AutosaveState): AutosaveState {
   return derive({
     ...state,
     authenticated: false,
-    inFlight: { ...state.inFlight, exhausted: false },
+    inFlight: state.inFlight,
   });
 }
 
@@ -361,7 +360,11 @@ export function rearmExhausted(state: AutosaveState, nowMs: number): AutosaveSta
   return derive({
     ...state,
     offline: false,
-    inFlight: { ...state.inFlight, exhausted: false, retryAtMs: nowMs },
+    inFlight: {
+      ...state.inFlight,
+      exhausted: false,
+      retryAtMs: Math.max(nowMs, state.inFlight.retryAtMs ?? 0),
+    },
   });
 }
 
@@ -373,7 +376,6 @@ export function resumeAuthenticated(state: AutosaveState, nowMs: number): Autosa
     inFlight: {
       ...state.inFlight,
       retryAtMs: Math.max(nowMs, state.inFlight.retryAtMs ?? 0),
-      exhausted: false,
     },
   });
 }

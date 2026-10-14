@@ -1,5 +1,16 @@
 # Frontend implementation tasks — senior hướng dẫn junior
 
+WEB-05 2026-10-14: [S1–S5 Autosave HTTPS](web-05-autosave-https-2026-10-14.md) COMPLETE locally.
+Actual autosave7 PASS; clean0 PUT/debounce613ms,20+3 batches, held ACK/new intent,
+actual503/429/409 và offline recovery. Fixed consumed retry budget/server minimum
+in pure Assessment reducer; independent RED5/7→GREEN7. Root965/UI81 PASS,
+Assessment HTTPS8/Catalog7/Identity10 regressions PASS; lint/contracts/format/
+API/live/demo builds PASS.1.867 protected files unchanged; fixture DB/roles/temp0,
+raw outputs retired. Product92/217 checked,125 pending; FE7/32 unchanged.
+Next bounded WEB-06 actual immutable/lost ACK and two-tab conflicts; full submit/
+deadline/scoring/live Admin/AWS/SLO/cost/production remain open. Web/tablet first,
+mobile/app deferred. Prior checkpoints retain their original historical scopes.
+
 WEB-04 2026-10-13: [A1–A5 Assessment HTTPS](web-04-assessment-https-2026-10-13.md) COMPLETE locally.
 Actual HTTPS/API/PG8 cases PASS; native three types/mark/clear/empty and reload at
 768/1024/1280/1440, explicit20→23 question pages, active/replay start, API restart,
@@ -159,7 +170,7 @@ Mỗi task để lại: files đổi, behavior, tests/checks đã chạy, screen
 - [ ] **FE-12** Dashboard/browse/cursor/empty states. — PARTIAL. [WEB-03](web-03-catalog-https-2026-10-13.md) đóng phần actual Catalog browse/detail/category/pageSize/cursor-expiry/empty/401/403/429/503 trên HTTPS/API/PG. [PORT-05G](port-05g-2026-10-13.md) giữ local Dashboard/controllers evidence; actual Dashboard history/Catalog independent-fault matrix vẫn riêng. Không tick full FE-12 từ Catalog gate.
 - [ ] **FE-13** Detail/start confirmation/idempotent resume. — PARTIAL. [WEB-03](web-03-catalog-https-2026-10-13.md) xác nhận actual detail/publication replacement và server not-open/closed/limit422/no extra attempts. [PORT-05A](port-05a-2026-10-12.md) giữ demo lost-start-ACK/immutable retry evidence. [WEB-04](web-04-assessment-https-2026-10-13.md) verifies actual start success/active resume/replay/reload/API restart; lost start ACK remains WEB-06, so full FE-13 stays open.
 - [ ] **FE-14** Owned question/answer loading và three-type renderer. — PARTIAL. Unit: prompt/option là text, không thành script/img; không suy version 0 khi answer scope chưa đủ. Browser W-14 PASS. Live preview500 câu: trang đầu0 radio,24 lần tải thêm,500 ô phiếu. [Đợt3](assessment-results-implementation-2026-10-07.md): ba loại native controls, keyboard selection, marked filter và focus dialog PASS trên demo; thẻ câu hỏi/navigator kiểm tra5 widths. [WEB-04](web-04-assessment-https-2026-10-13.md) verifies actual owned reads/three types/mark/clear/empty/paging/frozen version and401/403/404. Broader read-fault/session/late-response matrix stays open; full FE-14 not ticked.
-- [ ] **FE-15** Autosave coordinator với immutable in-flight batches. — PARTIAL, chưa tick. Probe Retry-After giữ 10000 ms. Reducer: jitter không rút Retry-After, một in-flight, nút thử lại dùng lại key/body đã hết lượt. Phòng 500 câu sạch không gửi PUT trong 2,5 giây. HAR lịch lưu khi đang dirty NOT RUN. Bằng chứng RED cũ giữ ở [review](review-2026-10-07.md).
+- [ ] **FE-15** Autosave coordinator với immutable in-flight batches. — PARTIAL. [WEB-05](web-05-autosave-https-2026-10-14.md) verifies actual clean/debounce20+3/single-flight/held ACK/new edit/503/429/offline and basic409 presentation on HTTPS/API/PG. Final retry minimum and exhausted rearm fixed with independent7 regressions. Actual timeout/deadline and wider mutation races remain WEB-06/07; do not tick full FE-15. Historical RED receipts remain [review](review-2026-10-07.md).
 - [ ] **FE-16** Conflict/old ACK/multiple-tab reconciliation. — PARTIAL. Reducer và browser đã chọn “Dùng bản máy chủ”, không tự ghi đè. Hai tab trình duyệt NOT RUN.
 - [ ] **FE-17** Server countdown/reconnect/resume/deadline. — PARTIAL. Unit: đồng hồ monotonic, không kéo dài khi nhảy giờ tường. Browser thấy đồng hồ chạy. Drift/ẩn tab NOT RUN trên browser.
 - [ ] **FE-18** Manual/deadline submit/unknown outcome. — PARTIAL. Unit: hết giờ không gửi lại save trong10 giây cuối và không cho retry reset đồng hồ transport. Browser W-16: một POST submit sau save bị giữ. Đợt3: nộp thủ công sau ACK ba loại đáp án → status → kết quả6/6 PASS trên demo. Lost ACK trên browser và chạy lại diagnostic W-16 trên build đợt3 vẫn mở.

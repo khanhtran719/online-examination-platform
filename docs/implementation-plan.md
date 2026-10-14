@@ -1,4 +1,18 @@
-# Active increment 2026-10-13: WEB-04 Assessment HTTPS
+# Active increment 2026-10-14: WEB-05 Autosave HTTPS
+
+COMPLETE locally: [S1–S5](web-ui/web-05-autosave-https-2026-10-14.md).
+7 actual autosave HTTPS/API/PG cases;965 root/81 UI PASS, Assessment8/Catalog7/
+Identity10 regressions PASS. Clean/debounce/batch/single flight/ACK/new intent/
+503/429/409/offline verified. Fixed final server minimum and consumed automatic
+retry budget in pure Assessment reducer; independent RED5/7→GREEN7,61 Assessment
+unit cases PASS. No backend/dependency/schema/API/resource changes.1.867 protected
+files unchanged, raw outputs retired; fixture DB/roles/temp0 and compose stopped.
+92/217 product checked,125 pending; FE7/32/parent PORT-05 unchanged. Next bounded
+WEB-06 immutable/lost ACK and actual two-tab conflict decisions, not started.
+Full deadline/submit/worker/result/live Admin/AWS/production remain open.
+Web/tablet first, mobile/app deferred. Prior checkpoints retain historical scope.
+
+# Previous increment 2026-10-13: WEB-04 Assessment HTTPS
 
 COMPLETE locally: [A1–A5](web-ui/web-04-assessment-https-2026-10-13.md).
 8 actual HTTPS/API/PG cases and958 root PASS. Three native question types/mark/

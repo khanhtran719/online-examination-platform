@@ -1,5 +1,16 @@
 # Production acceptance ledger
 
+WEB-05 2026-10-14: [S1–S5 Autosave HTTPS](web-ui/web-05-autosave-https-2026-10-14.md) COMPLETE locally.
+Actual autosave7 PASS; clean0 PUT/debounce613ms,20+3 batches, held ACK/new intent,
+actual503/429/409 và offline recovery. Fixed consumed retry budget/server minimum
+in pure Assessment reducer; independent RED5/7→GREEN7. Root965/UI81 PASS,
+Assessment HTTPS8/Catalog7/Identity10 regressions PASS; lint/contracts/format/
+API/live/demo builds PASS.1.867 protected files unchanged; fixture DB/roles/temp0,
+raw outputs retired. Product92/217 checked,125 pending; FE7/32 unchanged.
+Next bounded WEB-06 actual immutable/lost ACK and two-tab conflicts; full submit/
+deadline/scoring/live Admin/AWS/SLO/cost/production remain open. Web/tablet first,
+mobile/app deferred. Prior checkpoints retain their original historical scopes.
+
 WEB-04 2026-10-13: [A1–A5 Assessment HTTPS](web-ui/web-04-assessment-https-2026-10-13.md) COMPLETE locally.
 Actual HTTPS/API/PG8 cases PASS; native three types/mark/clear/empty and reload at
 768/1024/1280/1440, explicit20→23 question pages, active/replay start, API restart,

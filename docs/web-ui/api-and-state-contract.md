@@ -1,5 +1,13 @@
 # Web API integration và state contract
 
+[WEB-05 actual gate](web-05-autosave-https-2026-10-14.md) verifies bounded autosave:
+clean0 writes, debounce/20+3, actual ACK/new intent and503/429/409/offline. No DTO/
+endpoint changes. Exhausted automatic retries require explicit rearm; online or
+same-actor reauth does not reset the budget. Last server wait still gates explicit
+retry with the same captured key/body. Test proxy adds Retry-After to actual
+429/PG503 for this check; current API does not emit that advice. Timeout/deadline/
+full two-tab reconciliation remain WEB-06/07, not accepted by these cases.
+
 [WEB-04 actual gate](web-04-assessment-https-2026-10-13.md) verifies existing contracts
 with HTTPS/API/PG: start201/replay resumes same active attempt, read pages20 bounded
 by actor/attempt/collection/pageSize, ACKed choice/mark/clear survives reload/restart,

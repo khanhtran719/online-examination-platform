@@ -43,6 +43,13 @@ thành văn giữ tính lịch sử; production vẫn NOT ACCEPTED.
 
 ## Quy trình từ nay
 
+WEB-05 uses ignored `.local/web-evidence/web-05` for redacted autosave observations
+and separate UI regression output; actual suites run serially with fixture cleanup.
+[S1–S5 report/runbook](web-05-autosave-https-2026-10-14.md) retains exact run scopes,
+fault/clock limits and reproduction. Inspected and retired762 raw files/54.746.777
+bytes (327 PNG/435 JSON), plus5 validation support files/267.340 bytes. Templates/
+source/prior reports retained; historical counts remain, no current raw gallery.
+
 WEB-04 Assessment HTTPS uses ignored `.local/web-evidence/web-04` for redacted
 summary/boundaries/observations only, with screenshots/traces/video disabled.
 [A1–A5 report/runbook](web-04-assessment-https-2026-10-13.md) retains exact8-case

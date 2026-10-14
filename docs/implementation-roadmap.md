@@ -1,5 +1,16 @@
 # Roadmap triển khai có đánh dấu
 
+WEB-05 2026-10-14: [S1–S5 Autosave HTTPS](web-ui/web-05-autosave-https-2026-10-14.md) COMPLETE locally.
+Actual autosave7 PASS; clean0 PUT/debounce613ms,20+3 batches, held ACK/new intent,
+actual503/429/409 và offline recovery. Fixed consumed retry budget/server minimum
+in pure Assessment reducer; independent RED5/7→GREEN7. Root965/UI81 PASS,
+Assessment HTTPS8/Catalog7/Identity10 regressions PASS; lint/contracts/format/
+API/live/demo builds PASS.1.867 protected files unchanged; fixture DB/roles/temp0,
+raw outputs retired. Product92/217 checked,125 pending; FE7/32 unchanged.
+Next bounded WEB-06 actual immutable/lost ACK and two-tab conflicts; full submit/
+deadline/scoring/live Admin/AWS/SLO/cost/production remain open. Web/tablet first,
+mobile/app deferred. Prior checkpoints retain their original historical scopes.
+
 WEB-04 2026-10-13: [A1–A5 Assessment HTTPS](web-ui/web-04-assessment-https-2026-10-13.md) COMPLETE locally.
 Actual HTTPS/API/PG8 cases PASS; native three types/mark/clear/empty and reload at
 768/1024/1280/1440, explicit20→23 question pages, active/replay start, API restart,
@@ -427,7 +438,7 @@ WEB-01 PARTIAL: ADR-007/[handoff](web-ui/README.md) đã chốt React/TypeScript
 - [x] **WEB-02** Register/duplicate202, actual local verification mail, inert landing/scrub/reload/final password/replay, resend cooldown, login/logout/refresh/reauth và cookie/CSRF policy đã kiểm chứng trên Chromium HTTPS với API/PG thật. [Evidence](evidence/identity-https-2026-10-07/README.md). Magic link/GitHub sau ID-12/13; SES/AWS/browser matrix vẫn riêng.
 - [x] **WEB-03** Browse/detail/category/pageSize/cursor/empty/publication và401/403/429/PG503; open/close/attempt-limit422 rõ, không tạo extra attempt. [W1–W5 local closure](web-ui/web-03-catalog-https-2026-10-13.md):7 actual HTTPS/API/PG cases +1 affected rerun,10 Identity HTTPS,957 root/81 UI regression PASS. Feature read cooldown có13 meaningful regressions; no backend/schema/dependency change. WEB-04+ full exam/live Admin/AWS/production riêng.
 - [x] **WEB-04** Start/load questions/answer/mark, section navigation và answer-empty UX. [A1–A5 local closure](web-ui/web-04-assessment-https-2026-10-13.md):8 actual Chromium HTTPS/API/PG cases,4 widths, durable reload/restart/frozen version/ownership;958 root PASS. Full autosave/fault/submit/scoring remains WEB-05+.
-- [ ] **WEB-05** Autosave debounce/batching theo query/write budget; hiển thị saving/saved/conflict/failure.
+- [x] **WEB-05** Autosave debounce/batching theo query/write budget; hiển thị saving/saved/conflict/failure. [S1–S5 local closure](web-ui/web-05-autosave-https-2026-10-14.md):7 actual HTTPS/API/PG cases,965 root/81 UI PASS; bounded20+3, clean0 writes, ACK/new intent,503/429/409/offline. Fixed server minimum/exhausted retry recovery. Full mutation races/timeout/deadline remain WEB-06/07; DB saturation/cost benchmarks riêng.
 - [ ] **WEB-06** Retry dùng lại mutation key, tránh duplicate submits; giải quyết stale answer/multiple-tab conflict.
 - [ ] **WEB-07** Countdown đồng bộ server/deadline, reconnect/resume, manual/auto-submit UX.
 - [ ] **WEB-08** Bounded/backoff/jitter result polling; processing/failed/result/explanation/history/leaderboard views.

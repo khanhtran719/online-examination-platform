@@ -89,6 +89,40 @@ export async function startIdentityHttps() {
     requests = [],
     drops = new Map();
   const saved = new Map();
+  async function setActorLimit(scope, actorId, limited) {
+    const subject = createHmac("sha256", config.rateKey).update(`${scope}\0${actorId}`).digest();
+    if (!limited) {
+      await fixture.query(
+        `
+        DELETE FROM
+          platform.request_limits
+        WHERE
+          scope = $2
+          AND subject_hash = $1
+        `,
+        [subject, scope],
+      );
+      return;
+    }
+    await fixture.query(
+      `
+      INSERT INTO
+        platform.request_limits (scope, subject_hash, theoretical_at, expires_at)
+      VALUES
+        (
+          $2,
+          $1,
+          clock_timestamp() + interval '1 minute',
+          clock_timestamp() + interval '1 hour'
+        )
+      ON CONFLICT (scope, subject_hash) DO UPDATE
+      SET
+        theoretical_at = EXCLUDED.theoretical_at,
+        expires_at = EXCLUDED.expires_at
+      `,
+      [subject, scope],
+    );
+  }
   async function stopApi() {
     if (!api) return;
     const current = api;
@@ -358,41 +392,8 @@ export async function startIdentityHttps() {
           .digest("base64url");
         return `${encoded}.${mac}`;
       },
-      async setActorReadLimit(actorId, limited) {
-        const subject = createHmac("sha256", config.rateKey)
-          .update(`actor.read\0${actorId}`)
-          .digest();
-        if (!limited) {
-          await fixture.query(
-            `
-            DELETE FROM platform.request_limits
-            WHERE
-              scope = 'actor.read'
-              AND subject_hash = $1
-          `,
-            [subject],
-          );
-          return;
-        }
-        await fixture.query(
-          `
-          INSERT INTO
-            platform.request_limits (scope, subject_hash, theoretical_at, expires_at)
-          VALUES
-            (
-              'actor.read',
-              $1,
-              clock_timestamp() + interval '1 minute',
-              clock_timestamp() + interval '1 hour'
-            )
-          ON CONFLICT (scope, subject_hash) DO UPDATE
-          SET
-            theoretical_at = EXCLUDED.theoretical_at,
-            expires_at = EXCLUDED.expires_at
-        `,
-          [subject],
-        );
-      },
+      setActorReadLimit: (actorId, limited) => setActorLimit("actor.read", actorId, limited),
+      setActorWriteLimit: (actorId, limited) => setActorLimit("actor.write", actorId, limited),
       restart: async () => {
         await stopApi();
         await startApi();

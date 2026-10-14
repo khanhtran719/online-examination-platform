@@ -1,5 +1,14 @@
 # Test inventory
 
+Current2026-10-14: [WEB-05](web-ui/web-05-autosave-https-2026-10-14.md) records965 root
+PASS =492 API/53 suites +70 tooling +403 Web/71 files;61 Assessment subset PASS,
+including7 new retry-bound regressions (independent pre-fix5 FAIL/2 PASS). Actual
+HTTPS autosave7/Assessment8/Catalog7/Identity10 and full UI81 PASS, no retries/skips.
+No backend SQL/migration change;427 PG integration cases were not rerun. Readiness/
+AWS/performance/cost acceptance remains open. Raw outputs retired after inspection;
+authored report and reproducible source tests/config retained. Prior counts below
+are historical, not additional cases in965.
+
 Current2026-10-13: [WEB-04](web-ui/web-04-assessment-https-2026-10-13.md) records958
 root PASS (492 API/53 suites,70 tooling,396 Web/70 files) and8 actual Assessment
 Chromium HTTPS/API/PG cases PASS.4 native-control/mark/clear/reload widths plus
