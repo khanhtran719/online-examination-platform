@@ -33,7 +33,7 @@ export function BrowsePage() {
         </div>
         <Button
           variant="secondary"
-          disabled={hidden || query.isFetching}
+          disabled={hidden || c.waiting || query.isFetching}
           onClick={() => void c.refresh()}
         >
           Tải lại
@@ -61,7 +61,7 @@ export function BrowsePage() {
           <SelectField
             label="Số dòng mỗi trang"
             value={c.pageSize}
-            disabled={hidden}
+            disabled={hidden || c.waiting}
             onChange={(e) => c.setPageSize(Number(e.target.value))}
           >
             <option value={20}>20</option>
@@ -69,7 +69,7 @@ export function BrowsePage() {
           </SelectField>
           <Button
             variant="secondary"
-            disabled={hidden || (!c.category && !c.search && !c.invalid)}
+            disabled={hidden || c.waiting || (!c.category && !c.search && !c.invalid)}
             onClick={() => c.choose()}
           >
             Xóa bộ lọc
@@ -81,7 +81,7 @@ export function BrowsePage() {
         <div className={styles.chips}>
           <Button
             variant={!c.category ? "primary" : "secondary"}
-            disabled={hidden}
+            disabled={hidden || c.waiting}
             aria-pressed={!c.category}
             onClick={() => c.choose()}
           >
@@ -91,7 +91,7 @@ export function BrowsePage() {
             <Button
               key={category}
               variant={c.category === category ? "primary" : "secondary"}
-              disabled={hidden}
+              disabled={hidden || c.waiting}
               aria-pressed={c.category === category}
               onClick={() => c.choose(category)}
             >
@@ -104,13 +104,19 @@ export function BrowsePage() {
       {expired ? (
         <Alert tone="warning" title="Con trỏ không còn dùng được">
           <p>Cần tải lại danh sách từ đầu.</p>
-          <Button disabled={hidden || query.isFetching} onClick={() => void c.refresh()}>
+          <Button
+            disabled={hidden || c.waiting || query.isFetching}
+            onClick={() => void c.refresh()}
+          >
             Tải lại từ đầu
           </Button>
         </Alert>
       ) : null}
       {query.error && !expired ? (
-        <ErrorPanel error={query.error} onRetry={hidden ? undefined : () => void c.refresh()} />
+        <ErrorPanel
+          error={query.error}
+          onRetry={hidden || c.waiting ? undefined : () => void c.refresh()}
+        />
       ) : null}
       {query.error && c.loaded.length ? (
         <p role="status">Đang giữ các đề đã tải trước; danh sách có thể đã thay đổi.</p>
@@ -173,7 +179,11 @@ export function BrowsePage() {
         ))}
       </ul>
       {!hidden && query.hasNextPage ? (
-        <Button variant="secondary" disabled={query.isFetching} onClick={() => void c.more()}>
+        <Button
+          variant="secondary"
+          disabled={c.waiting || query.isFetching}
+          onClick={() => void c.more()}
+        >
           {query.isFetchingNextPage ? "Đang tải…" : "Tải thêm"}
         </Button>
       ) : !hidden && query.isSuccess ? (

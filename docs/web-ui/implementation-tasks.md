@@ -1,5 +1,36 @@
 # Frontend implementation tasks — senior hướng dẫn junior
 
+WEB-04 2026-10-13: [A1–A5 Assessment HTTPS](web-04-assessment-https-2026-10-13.md) COMPLETE locally.
+Actual HTTPS/API/PG8 cases PASS; native three types/mark/clear/empty and reload at
+768/1024/1280/1440, explicit20→23 question pages, active/replay start, API restart,
+frozen republish and401/403/404 privacy verified. Root958 PASS (492/70/396),
+lint/contracts/format/API/live builds PASS. No runtime app/dependency/schema/API/
+resource change.1.861 protected files unchanged; fixture DB/roles/temp keys cleaned,
+raw artifacts retired. Product91/217 checked,126 pending; FE7/32 remains partial.
+Next bounded WEB-05 actual autosave batching/write budget/status/failure recovery;
+full multi-tab/submit/scoring/live Admin/AWS/SLO/cost/production remain open.
+Web/tablet first; mobile/app deferred. Prior checkpoints retain historical scope.
+
+WEB-03 2026-10-13: [W1–W5 Catalog HTTPS](web-03-catalog-https-2026-10-13.md) COMPLETE locally.
+Actual Catalog HTTPS7 + affected browse1, Identity HTTPS10, root957 và full UI81
+PASS. Browse/detail/cursor/publication/errors và open/close/limit guards verified;
+Catalog read cooldown fixed with13 regressions, no backend/schema/dependency/API
+change.1.514 protected files unchanged; fixture DB/roles/temp keys cleaned.
+Product checklist90/217 checked,127 pending; FE7/32/parent PORT-05 unchanged.
+Next bounded WEB-04 start/questions/answers/mark on actual HTTPS/API/PG; full
+mutation recovery/worker/release/live Admin/AWS/production remain open. Web/tablet
+first, mobile/app deferred. Prior checkpoints below retain historical scope.
+
+PORT-06C 2026-10-13: [C1–C5 Home convergence](port-06c-2026-10-13.md) COMPLETE locally.
+Home section order, equal-height desktop cards/tablet stack, compact guide và4
+native FAQ; approved green3D/inline sample retained. Home-owned pure sections/CSS,
+Public chrome preserved. 941 root/81 full Chromium PASS;25 Home font/full-axe/
+overflow probes đạt,1.543 protected files unchanged. Đã inspect rồi dọn744 raw
+artifacts, giữ templates/source tests/Markdown reports. Next WEB-03 actual Catalog
+same-origin HTTPS/API/PG integration; chưa triển khai. RV-06, parent PORT-05/FE7/32/
+roadmap89/217/full live/production giữ mở, mobile/app deferred.
+Prior checkpoints bên dưới giữ historical scope/status và không ghi đè current closure.
+
 PORT-06B 2026-10-13: [B1–B5 Admin typography](port-06b-2026-10-13.md) COMPLETE locally.
 Helper/errors/captions/badges/list metadata ≥14px, bank primary text16px; report
 H1 theo title32/40 tokens. E5/Q5 đã revalidate và restore. 938 root/78 full Chromium
@@ -125,9 +156,9 @@ Mỗi task để lại: files đổi, behavior, tests/checks đã chạy, screen
 - [x] **FE-09** Inert email verification/final password. — PASS local H02/03/04: GET/scanner inert, fragment scrub/reload loses secret, no DOM/URL/referrer/storage leak, explicit anonymous POST, final-owner password, expiry/replay không đổi password hoặc auto login; authenticated context bị từ chối.
 - [x] **FE-10** Login/refresh coordination/logout/reauth. — PASS local H05–09: hai tab shared cookies/Web Locks thật chỉ rotate một lần, restart, disable/logout broadcast, lost ACK không application replay, explicit login reset recovery và profile reauth link. Unit unsupported coordination/late outcome/token-free broadcast và existing draft-preservation checks PASS. Chromium only; broader browser matrix/real Assessment vẫn gate riêng.
 - [ ] **FE-11** Profile/revision và authoritative permission boundary. — PARTIAL. PORT-05F đã chạy lại H05/08/10 trên new UI: profile200/409 và lost/stalled-body same-receipt retry chỉ một write PASS trên real HTTPS/PG. [PORT-05E](port-05e-2026-10-13.md) có new UI/controller actor/session, receipt/read separation và explicit conflict unit/demo proof; Named receipt/restart/two-tab checks đã rerun real HTTPS/PG trong [PORT-05F](port-05f-2026-10-13.md); không thay full permission gate. Full permission source, real cross-actor/session acceptance và live Admin còn UI-GAP-01.
-- [ ] **FE-12** Dashboard/browse/cursor/empty states. — PARTIAL. [Đợt2](onboarding-catalog-implementation-2026-10-07.md) hoàn thiện visual dashboard/browse, scoped recent history, filters/pageSize/Back/empty/long-title và5 widths. Unit bảo vệ partial history/frozen owner, không N+1 hoặc aggregate giả. Cursor hết hạn và live Catalog pagination/error matrix vẫn mở.
-- [ ] **FE-13** Detail/start confirmation/idempotent resume. — PARTIAL. Đợt2 có structure/schedule/start sidebar, version leaderboard link, cancel/Escape/focus và existing start navigation PASS. Browser xác nhận rồi bắt đầu đề Đại học; Networking trả lượt cũ. Lost ACK của start NOT RUN trên browser, giữ keyRef cũ và gate backend Assessment.
-- [ ] **FE-14** Owned question/answer loading và three-type renderer. — PARTIAL. Unit: prompt/option là text, không thành script/img; không suy version 0 khi answer scope chưa đủ. Browser W-14 PASS. Live preview500 câu: trang đầu0 radio,24 lần tải thêm,500 ô phiếu. [Đợt3](assessment-results-implementation-2026-10-07.md): ba loại native controls, keyboard selection, marked filter và focus dialog PASS trên demo; thẻ câu hỏi/navigator kiểm tra5 widths. Live Assessment matrix vẫn mở.
+- [ ] **FE-12** Dashboard/browse/cursor/empty states. — PARTIAL. [WEB-03](web-03-catalog-https-2026-10-13.md) đóng phần actual Catalog browse/detail/category/pageSize/cursor-expiry/empty/401/403/429/503 trên HTTPS/API/PG. [PORT-05G](port-05g-2026-10-13.md) giữ local Dashboard/controllers evidence; actual Dashboard history/Catalog independent-fault matrix vẫn riêng. Không tick full FE-12 từ Catalog gate.
+- [ ] **FE-13** Detail/start confirmation/idempotent resume. — PARTIAL. [WEB-03](web-03-catalog-https-2026-10-13.md) xác nhận actual detail/publication replacement và server not-open/closed/limit422/no extra attempts. [PORT-05A](port-05a-2026-10-12.md) giữ demo lost-start-ACK/immutable retry evidence. [WEB-04](web-04-assessment-https-2026-10-13.md) verifies actual start success/active resume/replay/reload/API restart; lost start ACK remains WEB-06, so full FE-13 stays open.
+- [ ] **FE-14** Owned question/answer loading và three-type renderer. — PARTIAL. Unit: prompt/option là text, không thành script/img; không suy version 0 khi answer scope chưa đủ. Browser W-14 PASS. Live preview500 câu: trang đầu0 radio,24 lần tải thêm,500 ô phiếu. [Đợt3](assessment-results-implementation-2026-10-07.md): ba loại native controls, keyboard selection, marked filter và focus dialog PASS trên demo; thẻ câu hỏi/navigator kiểm tra5 widths. [WEB-04](web-04-assessment-https-2026-10-13.md) verifies actual owned reads/three types/mark/clear/empty/paging/frozen version and401/403/404. Broader read-fault/session/late-response matrix stays open; full FE-14 not ticked.
 - [ ] **FE-15** Autosave coordinator với immutable in-flight batches. — PARTIAL, chưa tick. Probe Retry-After giữ 10000 ms. Reducer: jitter không rút Retry-After, một in-flight, nút thử lại dùng lại key/body đã hết lượt. Phòng 500 câu sạch không gửi PUT trong 2,5 giây. HAR lịch lưu khi đang dirty NOT RUN. Bằng chứng RED cũ giữ ở [review](review-2026-10-07.md).
 - [ ] **FE-16** Conflict/old ACK/multiple-tab reconciliation. — PARTIAL. Reducer và browser đã chọn “Dùng bản máy chủ”, không tự ghi đè. Hai tab trình duyệt NOT RUN.
 - [ ] **FE-17** Server countdown/reconnect/resume/deadline. — PARTIAL. Unit: đồng hồ monotonic, không kéo dài khi nhảy giờ tường. Browser thấy đồng hồ chạy. Drift/ẩn tab NOT RUN trên browser.

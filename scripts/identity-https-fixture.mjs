@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import {
   createHash,
+  createHmac,
   generateKeyPairSync,
   randomBytes,
   randomUUID,
@@ -13,6 +14,8 @@ import { createRequire } from "node:module";
 import { tmpdir } from "node:os";
 import { dirname, extname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import { httpsRouteLabel } from "./https-route-label.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -58,18 +61,6 @@ const mime = {
   ".woff": "font/woff",
   ".svg": "image/svg+xml",
 };
-const routes = new Set([
-  "/v1/auth/csrf",
-  "/v1/auth/register",
-  "/v1/auth/login",
-  "/v1/auth/email-verification/request",
-  "/v1/auth/email-verification/confirm",
-  "/v1/auth/refresh",
-  "/v1/auth/logout",
-  "/v1/me",
-  "/ready",
-  "/live",
-]);
 
 /** Disposable integration boundary. All addresses and secrets belong to this local test run. */
 export async function startIdentityHttps() {
@@ -229,7 +220,7 @@ export async function startIdentityHttps() {
         url.pathname.startsWith("/v1/") ||
         ["/ready", "/live"].includes(url.pathname)
       ) {
-        const path = routes.has(url.pathname) ? url.pathname : "unmatched";
+        const path = httpsRouteLabel(url.pathname);
         const observation = {
           method: request.method,
           path,
@@ -358,6 +349,50 @@ export async function startIdentityHttps() {
       buildProvenance,
       fixture,
       close,
+      expiredCatalogCursor(token) {
+        const body = JSON.parse(Buffer.from(token.split(".")[0], "base64url").toString());
+        body.expires = Date.now() - 1000;
+        const encoded = Buffer.from(JSON.stringify(body)).toString("base64url");
+        const mac = createHmac("sha256", config.csrfKey)
+          .update(`catalog.cursor.v1\0${encoded}`)
+          .digest("base64url");
+        return `${encoded}.${mac}`;
+      },
+      async setActorReadLimit(actorId, limited) {
+        const subject = createHmac("sha256", config.rateKey)
+          .update(`actor.read\0${actorId}`)
+          .digest();
+        if (!limited) {
+          await fixture.query(
+            `
+            DELETE FROM platform.request_limits
+            WHERE
+              scope = 'actor.read'
+              AND subject_hash = $1
+          `,
+            [subject],
+          );
+          return;
+        }
+        await fixture.query(
+          `
+          INSERT INTO
+            platform.request_limits (scope, subject_hash, theoretical_at, expires_at)
+          VALUES
+            (
+              'actor.read',
+              $1,
+              clock_timestamp() + interval '1 minute',
+              clock_timestamp() + interval '1 hour'
+            )
+          ON CONFLICT (scope, subject_hash) DO UPDATE
+          SET
+            theoretical_at = EXCLUDED.theoretical_at,
+            expires_at = EXCLUDED.expires_at
+        `,
+          [subject],
+        );
+      },
       restart: async () => {
         await stopApi();
         await startApi();

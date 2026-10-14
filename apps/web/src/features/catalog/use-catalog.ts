@@ -9,6 +9,8 @@ import { CATEGORIES } from "@web/shared/api/dto";
 import { isApiError } from "@web/shared/api/errors";
 import { useProtectedAccess } from "@web/shared/protected-access";
 
+import { useCatalogWait } from "./use-catalog-wait";
+
 export function useBrowse() {
   const { api } = useRuntime(),
     session = useSession(),
@@ -24,17 +26,26 @@ export function useBrowse() {
   const scope = ["catalog", session.profile?.id ?? "anonymous", "browse"],
     key = [...scope, category ?? "*", pageSize];
   const allowed = session.status === "authenticated" && !session.needsReauth;
+  const readScope = JSON.stringify([scope, session.status, session.needsReauth ?? false]);
+  const wait = useCatalogWait(readScope);
   const query = useInfiniteQuery({
     queryKey: key,
     enabled: allowed && !blocked,
     retry: false,
     refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
     initialPageParam: undefined as string | undefined,
     queryFn: async ({ pageParam, signal }) => {
       signal.throwIfAborted();
-      const r = await api.browseExams({ pageSize, cursor: pageParam, category });
-      signal.throwIfAborted();
-      return r.data;
+      if (wait.blocked()) throw wait.error();
+      try {
+        const r = await api.browseExams({ pageSize, cursor: pageParam, category });
+        signal.throwIfAborted();
+        return r.data;
+      } catch (caught) {
+        if (!signal.aborted) wait.accept(caught, readScope);
+        throw caught;
+      }
     },
     getNextPageParam: (last) => last.next ?? undefined,
   });
@@ -57,7 +68,7 @@ export function useBrowse() {
   }, [hidden, client, scopeName, memory]);
   const busy = useRef(false);
   async function refresh() {
-    if (hidden || busy.current || query.isFetching) return;
+    if (hidden || wait.blocked() || busy.current || query.isFetching) return;
     busy.current = true;
     try {
       client.setQueryData<typeof query.data>(key, (data) =>
@@ -69,7 +80,7 @@ export function useBrowse() {
     }
   }
   async function more() {
-    if (hidden || busy.current || query.isFetching || !query.hasNextPage) return;
+    if (hidden || wait.blocked() || busy.current || query.isFetching || !query.hasNextPage) return;
     busy.current = true;
     try {
       await query.fetchNextPage({ cancelRefetch: false });
@@ -78,7 +89,7 @@ export function useBrowse() {
     }
   }
   function choose(value?: string) {
-    if (hidden) return;
+    if (hidden || wait.blocked()) return;
     const next = new URLSearchParams(params);
     if (value) next.set("category", value);
     else next.delete("category");
@@ -97,7 +108,10 @@ export function useBrowse() {
     category,
     choose,
     pageSize,
-    setPageSize,
+    setPageSize: (value: number) => {
+      if (!hidden && !wait.blocked()) setPageSize(value);
+    },
+    waiting: wait.waiting,
     search,
     setSearch,
     loaded,
@@ -115,16 +129,26 @@ export function useExamDetail(examId: string) {
   const [blocked, setBlocked] = useState(false);
   const key = ["catalog", session.profile?.id ?? "anonymous", "detail", examId];
   const allowed = session.status === "authenticated" && !session.needsReauth;
+  const readScope = JSON.stringify([key, session.status, session.needsReauth ?? false]);
+  const wait = useCatalogWait(readScope);
+  const busy = useRef(false);
   const query = useQuery({
     queryKey: key,
     enabled: allowed && !blocked,
     retry: false,
     refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
     queryFn: async ({ signal }) => {
       signal.throwIfAborted();
-      const response = await api.getExam(examId);
-      signal.throwIfAborted();
-      return response.data;
+      if (wait.blocked()) throw wait.error();
+      try {
+        const response = await api.getExam(examId);
+        signal.throwIfAborted();
+        return response.data;
+      } catch (caught) {
+        if (!signal.aborted) wait.accept(caught, readScope);
+        throw caught;
+      }
     },
   });
   const unauthorized = isApiError(query.error) && query.error.status === 401;
@@ -147,5 +171,14 @@ export function useExamDetail(examId: string) {
   useEffect(() => {
     if (data) memory.remember(data);
   }, [data, memory]);
-  return { query, hidden, data };
+  async function refresh() {
+    if (hidden || wait.blocked() || busy.current || query.isFetching) return;
+    busy.current = true;
+    try {
+      await query.refetch({ cancelRefetch: false });
+    } finally {
+      busy.current = false;
+    }
+  }
+  return { query, hidden, data, refresh, waiting: wait.waiting };
 }

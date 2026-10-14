@@ -20,6 +20,19 @@ User-approved visual increment, 2026-10-07: the public homepage uses the “Vào
 
 ## Consequences and gates
 
+### Home presentation convergence, 2026-10-13
+
+PORT-06C composes feature-owned Home sections with separate Home CSS; Public
+chrome remains unchanged through extraction. Order is hero, inline sample,
+categories, benefits, compact guide, FAQ and existing closing CTA. The compact
+guide links to the current five-step How route rather than duplicating template
+steps that omit email verification. Native FAQ disclosures explain server
+deadline, acknowledged saves and asynchronous results without claiming unsupported
+capabilities. The approved green scene and local sample logic remain unchanged;
+Home alone owns the equal-height desktop cards and tablet stacking override.
+No remote query, state framework, backend abstraction, dependency or AWS resource
+is introduced. [Local evidence and acceptance limits](../web-ui/port-06c-2026-10-13.md).
+
 ### Public convergence, 2026-10-13
 
 PORT-06A aligns Public chrome with the selected Cobalt–Apricot references:
@@ -29,7 +42,8 @@ the earlier “public marketing retains its separate palette” decision applies
 that artwork, not to all Public navigation/surfaces. Sample uses question-first
 DOM order and a presentation-only navigator with the existing local reducer.
 No new framework, store, API capability, backend layer or AWS resource is added.
-Home section reconciliation remains PORT-06C; Admin typography is PORT-06B.
+This checkpoint left Home reconciliation for PORT-06C and Admin typography for
+PORT-06B; their subsequent reports record implementation and closure separately.
 [Implementation and measured local checks](../web-ui/port-06a-2026-10-13.md).
 
 ### Approved frontend increment, 2026-10-12

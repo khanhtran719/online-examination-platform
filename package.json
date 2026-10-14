@@ -43,7 +43,9 @@
     "web:test": "npm --prefix apps/web test",
     "web:build": "npm --prefix apps/web run build",
     "web:build:demo": "npm --prefix apps/web run build:demo",
-    "test:identity:https": "node scripts/identity-https.mjs"
+    "test:identity:https": "node scripts/identity-https.mjs",
+    "test:catalog:https": "node scripts/catalog-https.mjs",
+    "test:assessment:https": "node scripts/assessment-https.mjs"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "^13.1.0",

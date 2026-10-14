@@ -1,5 +1,35 @@
 # Kiến trúc frontend
 
+WEB-04 2026-10-13: [A1–A5 Assessment HTTPS](web-04-assessment-https-2026-10-13.md) COMPLETE locally.
+Actual HTTPS/API/PG8 cases PASS; native three types/mark/clear/empty and reload at
+768/1024/1280/1440, explicit20→23 question pages, active/replay start, API restart,
+frozen republish and401/403/404 privacy verified. Root958 PASS (492/70/396),
+lint/contracts/format/API/live builds PASS. No runtime app/dependency/schema/API/
+resource change.1.861 protected files unchanged; fixture DB/roles/temp keys cleaned,
+raw artifacts retired. Product91/217 checked,126 pending; FE7/32 remains partial.
+Next bounded WEB-05 actual autosave batching/write budget/status/failure recovery;
+full multi-tab/submit/scoring/live Admin/AWS/SLO/cost/production remain open.
+Web/tablet first; mobile/app deferred. Prior checkpoints retain historical scope.
+
+WEB-03 2026-10-13: Catalog controller owns monotonic mounted read cooldown via
+`use-catalog-wait`; queryFn và synchronous refresh/more/filter/pageSize handlers
+không gửi sớm sau429 hoặc503 có Retry-After. Thiếu/invalid advice trên429 dùng60s;
+expiry chỉ cho explicit retry, reconnect/focus retry tắt. Local search không gọi
+API. Detail page gọi finite `refresh()` thay raw query.refetch. Actor/auth scope
+và aborted-read checks loại late cooldown, không grant permissions hoặc thay
+backend limiter. Không global store/framework/repository mới. Actual HTTPS/API/PG
+và independent unit RED/GREEN ghi trong [WEB-03](web-03-catalog-https-2026-10-13.md);
+mounted wait chưa là cross-tab/route coordination guarantee.
+
+PORT-06C 2026-10-13: Home page compose feature-owned pure `home-sections` và
+`home-guidance`, giữ `useSession` facade ở page cho CTA. Home layout/tokens thuộc
+`home.module.css`; Public chrome thuộc `public.module.css`, base và responsive
+chrome được giữ qua extraction. Native details/summary quản lý FAQ; compact guide
+link tới How/Help hiện có, không thêm store/query hoặc duplicate guide controller.
+Scoped hero stretch chỉ ở Home owner; approved green scene, lazy load/fallback/
+disposal và sample reducer giữ bytes. Không thêm framework/repository/backend
+layers. [Plan, local checks và giới hạn](port-06c-2026-10-13.md).
+
 PORT-06B 2026-10-13: Typography thuần presentation: shared field owns error
 14px/20px; Admin CSS owns section helpers/list metadata/captions/badges và report
 title tokens. Question primary title khai báo 16px/24px ở authoring owner để không

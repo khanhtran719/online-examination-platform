@@ -43,8 +43,22 @@ thành văn giữ tính lịch sử; production vẫn NOT ACCEPTED.
 
 ## Quy trình từ nay
 
+WEB-04 Assessment HTTPS uses ignored `.local/web-evidence/web-04` for redacted
+summary/boundaries/observations only, with screenshots/traces/video disabled.
+[A1–A5 report/runbook](web-04-assessment-https-2026-10-13.md) retains exact8-case
+scope and reproduction/cleanup. Inspected and retired4 raw files/252.855 bytes
+plus5 validation support files/274.726 bytes; templates/prior reports unchanged.
+No current raw gallery or production acceptance follows from this local report.
+
+WEB-03 Catalog HTTPS giữ redacted summary/boundaries ở `.local/web-evidence/web-03`;
+không screenshots/traces/video/auth snapshots. Named web03 regression config giữ
+raw UI outputs ở `regression` subfolder. Identity HTTPS giữ local path riêng hiện
+có. [WEB-03 report/runbook](web-03-catalog-https-2026-10-13.md) ghi exact scopes,
+full7/affected1/Identity10/UI81 riêng và interruption cleanup; raw retired sau
+inspection, không xóa production/benchmark evidence hoặc approved templates.
+
 Browser config mặc định ghi screenshots/probe JSON vào `.local/web-evidence/latest`
-(Git ignored). Named PORT-05G/H/06A/06B config dùng local phase folders và giữ tự quản lý
+(Git ignored). Named PORT-05G/H/06A/06B/06C config dùng local phase folders và giữ tự quản lý
 previews. Identity HTTPS outputs tiếp tục local như hiện có. Không xuất raw artifacts
 vào docs để commit khi chạy regression bình thường. `WEB_EVIDENCE_DIR` có thể
 chỉ định thư mục tạm ngoài tracked docs cho visual review; kiểm tra privacy trước
@@ -58,6 +72,11 @@ test/config và [report](port-06a-2026-10-13.md), dọn raw sau review; không t
 PORT-06B dùng cùng isolation tại `.local/web-evidence/port-06b`; [report](port-06b-2026-10-13.md)
 phân biệt full run và affected rerun sau final CSS fix. Retire raw sau kiểm tra,
 không ghi đè historical counts bằng JSON reporter của lần chạy sau.
+
+PORT-06C dùng `.local/web-evidence/port-06c`; [report](port-06c-2026-10-13.md)
+ghi initial geometry failures, focused GREEN và full regression riêng. Giữ Home
+test/config và Markdown, inspect rồi dọn screenshot/probes/reporter; approved
+templates và backend/performance evidence không nằm trong cleanup scope.
 
 Trong docs chỉ lưu changes, findings, environment/commands, test counts/limits,
 decisions, remediation và runbook. Templates do người dùng chốt có manifest và

@@ -1,6 +1,35 @@
 # Review coverage Web/tablet — 2026-10-13
 
-Latest remediation 2026-10-13: [PORT-06B B1–B5](port-06b-2026-10-13.md) COMPLETE
+WEB-04 2026-10-13: [A1–A5 Assessment HTTPS](web-04-assessment-https-2026-10-13.md) COMPLETE locally.
+Actual HTTPS/API/PG8 cases PASS; native three types/mark/clear/empty and reload at
+768/1024/1280/1440, explicit20→23 question pages, active/replay start, API restart,
+frozen republish and401/403/404 privacy verified. Root958 PASS (492/70/396),
+lint/contracts/format/API/live builds PASS. No runtime app/dependency/schema/API/
+resource change.1.861 protected files unchanged; fixture DB/roles/temp keys cleaned,
+raw artifacts retired. Product91/217 checked,126 pending; FE7/32 remains partial.
+Next bounded WEB-05 actual autosave batching/write budget/status/failure recovery;
+full multi-tab/submit/scoring/live Admin/AWS/SLO/cost/production remain open.
+Web/tablet first; mobile/app deferred. Prior checkpoints retain historical scope.
+
+WEB-03 2026-10-13: [W1–W5 Catalog HTTPS](web-03-catalog-https-2026-10-13.md) COMPLETE locally.
+Actual Catalog HTTPS7 + affected browse1, Identity HTTPS10, root957 và full UI81
+PASS. Browse/detail/cursor/publication/errors và open/close/limit guards verified;
+Catalog read cooldown fixed with13 regressions, no backend/schema/dependency/API
+change.1.514 protected files unchanged; fixture DB/roles/temp keys cleaned.
+Product checklist90/217 checked,127 pending; FE7/32/parent PORT-05 unchanged.
+Next bounded WEB-04 start/questions/answers/mark on actual HTTPS/API/PG; full
+mutation recovery/worker/release/live Admin/AWS/production remain open. Web/tablet
+first, mobile/app deferred. Prior checkpoints below retain historical scope.
+
+Latest remediation 2026-10-13: [PORT-06C C1–C5](port-06c-2026-10-13.md) COMPLETE
+locally. RV-04 Home closure: section order/two-card hero/compact guide/native FAQ,
+approved green3D/sample retained. 941 root/81 full Chromium PASS;25 Home probes
+font/full-axe/overflow đạt,1.543 protected files unchanged. Raw artifacts dọn sau
+inspection; next WEB-03 actual Catalog HTTPS/API/PG integration. RV-06 và parent/
+full live/production gates giữ mở; mobile/app deferred. Các findings gốc bên dưới
+giữ trạng thái lúc review, không ghi đè closure mới.
+
+Previous remediation 2026-10-13: [PORT-06B B1–B5](port-06b-2026-10-13.md) COMPLETE
 locally. RV-03 Admin typography đã sửa và E5/Q5 revalidated: 938 root/78 full
 Chromium PASS, final 6 affected cases PASS sau bank-title16px fix; 76 final
 observations đạt helper14px/font/WCAG-tagged axe/overflow. RV-03 closure gồm
@@ -139,17 +168,20 @@ RV-06 files: `exam-preflight`269, `admin-attempt-page`209, `import-page`214,
    shared fields/Admin presentation. [B1–B5 receipts](port-06b-2026-10-13.md): RV-03
    helpers14px, bank primary16px, report hierarchy; 76 final observations và
    new regression evidence restore PORT-02 E5/PORT-03 Q5. Prior results giữ lịch sử.
-3. [ ] **PORT-06C — NEXT: Home reference closure.** Owner experience. RV-04 sau shared
-   chrome; approved3D/fallback/reduced motion/viewport stop vẫn đạt. Ghi deliberate
-   template deltas rõ, không yêu cầu generate lại các templates đã chốt.
-4. [ ] **WEB-03 — Actual Catalog browser integration.** Owner Web Catalog + test
-   harness. Nối existing same-origin HTTPS/API/PG, authoritative verified actor,
-   browse/detail/category/pageSize/cursor/empty/error,401/403/429 và publication
-   unavailable/republish. Không tạo Admin grants trong Web. Giữ frozen metadata
-   exact ownership; không N+1. Cần provision dataset/roles trong local test harness,
-   cleanup fixture và kiểm no-store/SPA `/v1` separation bằng host thật.
-5. [ ] **WEB-04–09 — Actual exam workflow theo increment.** Start/lost ACK,
-   questions/answers, concurrent save/submit, deadline/autosave, worker status/result,
+3. [x] **PORT-06C — COMPLETE locally 2026-10-13: Home reference closure.** Owner
+   experience. [C1–C5 checks/deltas](port-06c-2026-10-13.md): RV-04 section order,
+   equal desktop cards/tablet stack, compact guide/native FAQ;941 root/81 Chromium
+   PASS. Approved3D/fallback/reduced motion/viewport stop retained,25 full-axe/font/
+   overflow probes đạt. Không generate/sửa approved templates hoặc mở full live gate.
+4. [x] **WEB-03 — COMPLETE locally2026-10-13: Actual Catalog integration.**
+   [W1–W5](web-03-catalog-https-2026-10-13.md):7 actual HTTPS/API/PG +1 affected
+   browse rerun,10 Identity HTTPS,957 root/81 UI regressions PASS. Cursor/error/
+   publication/401/403/429/503/start guards, no-store/API-vs-SPA verified. Fixed
+   mounted read wait without backend/permission changes; fixture cleanup confirmed.
+5. [ ] **WEB-05–09 — NEXT: Remaining actual exam workflow theo increment.**
+   WEB-04 locally complete: [A1–A5](web-04-assessment-https-2026-10-13.md).
+   Remaining: lost start/save/submit ACK, read faults, concurrent save/submit,
+   deadline/autosave, worker status/result,
    policy release và leaderboard privacy. Chia các named gates; không tick hết từ
    một happy path. Độc lập FE UI port và backend correctness ledger.
 6. [ ] **Live Admin handoff.** Identity authoritative permission DTO/capability

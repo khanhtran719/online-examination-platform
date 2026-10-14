@@ -16,7 +16,7 @@ export function ExamDetailPage() {
 }
 function ExamDetail({ examId }: { examId: string }) {
   useTitle("Chi tiết đề");
-  const { query, hidden, data: detail } = useExamDetail(examId);
+  const { query, hidden, data: detail, refresh, waiting } = useExamDetail(examId);
   const start = useExamStart(examId, Boolean(detail) && !hidden);
   return (
     <div className={`${layout.wrap} ${styles.page}`}>
@@ -26,8 +26,8 @@ function ExamDetail({ examId }: { examId: string }) {
         </Link>
         <Button
           variant="secondary"
-          disabled={hidden || query.isFetching || start.phase !== "idle"}
-          onClick={() => void query.refetch()}
+          disabled={hidden || waiting || query.isFetching || start.phase !== "idle"}
+          onClick={() => void refresh()}
         >
           Tải lại
         </Button>
@@ -39,7 +39,10 @@ function ExamDetail({ examId }: { examId: string }) {
         </Alert>
       ) : null}
       {query.error ? (
-        <ErrorPanel error={query.error} onRetry={hidden ? undefined : () => void query.refetch()} />
+        <ErrorPanel
+          error={query.error}
+          onRetry={hidden || waiting ? undefined : () => void refresh()}
+        />
       ) : null}
       {detail ? (
         <>

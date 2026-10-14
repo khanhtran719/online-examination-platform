@@ -19,7 +19,9 @@ tổng từ một trang. Màn hình không in mã `UI-GAP` thay lời hướng d
 Identity, Catalog, Assessment/Leaderboard và Reporting đã có controller/service/
 PostgreSQL adapters trong repository; OpenAPI48 operations/445 examples. Không
 đồng nhất “có code/backend local integration” với “browser full live đã nghiệm
-thu”. Identity actual HTTPS10 là evidence lịch sử riêng; WEB-03 trở đi còn mở.
+thu”. [WEB-03](web-03-catalog-https-2026-10-13.md) đóng local Catalog browse/detail/
+cursor/errors/start guards bằng actual HTTPS/API/PG; Identity HTTPS10 đã rerun.
+[WEB-04](web-04-assessment-https-2026-10-13.md) verifies actual start/owned questions/answers/mark/pagination/frozen version and privacy. WEB-05+ remaining autosave/fault/submit/results/business integration stays open. UI-GAP-02 fallback was verified on real reload; richer metadata remains absent.
 `useCapability`/AdminLayout vẫn chặn toàn bộ live Admin; replay còn độc lập thiếu
 authorized admin revision. Không dùng Candidate resume để vượt hai gate này.
 

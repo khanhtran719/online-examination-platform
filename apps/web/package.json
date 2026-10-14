@@ -17,7 +17,9 @@
     "lint": "eslint src *.ts *.mjs",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "test:identity:https": "playwright test --config playwright.identity-https.config.ts"
+    "test:identity:https": "playwright test --config playwright.identity-https.config.ts",
+    "test:catalog:https": "playwright test --config playwright.catalog-https.config.ts",
+    "test:assessment:https": "playwright test --config playwright.assessment-https.config.ts"
   },
   "dependencies": {
     "@fontsource/be-vietnam-pro": "5.3.0",

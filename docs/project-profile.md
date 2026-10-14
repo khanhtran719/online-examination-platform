@@ -1,5 +1,36 @@
 # Project profile
 
+WEB-04 2026-10-13: [A1–A5 Assessment HTTPS](web-ui/web-04-assessment-https-2026-10-13.md) COMPLETE locally.
+Actual HTTPS/API/PG8 cases PASS; native three types/mark/clear/empty and reload at
+768/1024/1280/1440, explicit20→23 question pages, active/replay start, API restart,
+frozen republish and401/403/404 privacy verified. Root958 PASS (492/70/396),
+lint/contracts/format/API/live builds PASS. No runtime app/dependency/schema/API/
+resource change.1.861 protected files unchanged; fixture DB/roles/temp keys cleaned,
+raw artifacts retired. Product91/217 checked,126 pending; FE7/32 remains partial.
+Next bounded WEB-05 actual autosave batching/write budget/status/failure recovery;
+full multi-tab/submit/scoring/live Admin/AWS/SLO/cost/production remain open.
+Web/tablet first; mobile/app deferred. Prior checkpoints retain historical scope.
+
+WEB-03 2026-10-13: [W1–W5 Catalog HTTPS](web-ui/web-03-catalog-https-2026-10-13.md) COMPLETE locally.
+Actual Catalog HTTPS7 + affected browse1, Identity HTTPS10, root957 và full UI81
+PASS. Browse/detail/cursor/publication/errors và open/close/limit guards verified;
+Catalog read cooldown fixed with13 regressions, no backend/schema/dependency/API
+change.1.514 protected files unchanged; fixture DB/roles/temp keys cleaned.
+Product checklist90/217 checked,127 pending; FE7/32/parent PORT-05 unchanged.
+Next bounded WEB-04 start/questions/answers/mark on actual HTTPS/API/PG; full
+mutation recovery/worker/release/live Admin/AWS/production remain open. Web/tablet
+first, mobile/app deferred. Prior checkpoints below retain historical scope.
+
+PORT-06C 2026-10-13: [C1–C5 Home convergence](web-ui/port-06c-2026-10-13.md) COMPLETE locally.
+Home section order, equal-height desktop cards/tablet stack, compact guide và4
+native FAQ; approved green3D/inline sample retained. Home-owned pure sections/CSS,
+Public chrome preserved. 941 root/81 full Chromium PASS;25 Home font/full-axe/
+overflow probes đạt,1.543 protected files unchanged. Đã inspect rồi dọn744 raw
+artifacts, giữ templates/source tests/Markdown reports. Next WEB-03 actual Catalog
+same-origin HTTPS/API/PG integration; chưa triển khai. RV-06, parent PORT-05/FE7/32/
+roadmap89/217/full live/production giữ mở, mobile/app deferred.
+Prior checkpoints bên dưới giữ historical scope/status và không ghi đè current closure.
+
 PORT-06B 2026-10-13: [B1–B5 Admin typography](web-ui/port-06b-2026-10-13.md) COMPLETE locally.
 Helper/errors/captions/badges/list metadata ≥14px, bank primary text16px; report
 H1 theo title32/40 tokens. E5/Q5 đã revalidate và restore. 938 root/78 full Chromium

@@ -1,4 +1,40 @@
-# Active increment 2026-10-13: PORT-06B Admin typography
+# Active increment 2026-10-13: WEB-04 Assessment HTTPS
+
+COMPLETE locally: [A1–A5](web-ui/web-04-assessment-https-2026-10-13.md).
+8 actual HTTPS/API/PG cases and958 root PASS. Three native question types/mark/
+clear/empty, section navigation/reload at4 widths; bounded pages, active/replay
+start, restart, frozen republish and401/403/404 privacy verified. Harness assumptions
+corrected; no application defect/change.1.861 protected files unchanged; raw
+artifacts retired; fixture DB/roles/temp folders0 and compose stopped.91/217
+product checked,126 pending; FE7/32/parent PORT-05 unchanged. Next bounded WEB-05
+actual autosave batching/write budget/status/failure recovery, not started.
+Full multi-tab/submit/deadline/worker/result/live Admin/AWS/production remain open.
+Web/tablet first, mobile/app deferred. Prior checkpoints retain historical scope.
+
+# Previous increment 2026-10-13: WEB-03 actual Catalog HTTPS
+
+COMPLETE locally: [W1–W5](web-ui/web-03-catalog-https-2026-10-13.md). Actual Catalog
+HTTPS7 + affected browse1, Identity HTTPS10, root957 và UI regression81 PASS.
+Browse/detail/category/pageSize/cursor/empty/publication,401/403/429/PG503 và
+open/close/attempt-limit guards verified. Fixed feature-owned read cooldown;
+no backend/dependency/schema/API/resource change.1.514 protected files unchanged,
+including existing uncommitted PORT-06C. Fixture DB/roles/temp keys all cleaned.
+WEB-03 checked;90/217 product items,127 pending. Next bounded WEB-04 actual
+start/load/questions/answers/mark flow; full mutation recovery/worker/release
+and live Admin/AWS/production remain separate. Web/tablet only, mobile/app deferred.
+
+# Previous increment 2026-10-13: PORT-06C Home convergence
+
+COMPLETE locally: [C1–C5](web-ui/port-06c-2026-10-13.md). Home V3 section order,
+equal-height desktop hero cards/tablet stack, compact guide và4 native FAQ;
+giữ approved green3D/inline sample. Pure feature views/Home-owned CSS, Public
+chrome retained; no API/business/dependency change. 941 root/81 full Chromium PASS,
+25 Home font/full-axe/overflow probes đạt;1.543 protected files unchanged.
+744 raw artifacts dọn sau inspection. Next bounded WEB-03 actual Catalog
+same-origin HTTPS/API/PG integration, chưa triển khai. Web/tablet only;
+RV-06/parent PORT-05/FE7/32/roadmap89/217/full live/production mở, mobile/app deferred.
+
+# Previous increment 2026-10-13: PORT-06B Admin typography
 
 COMPLETE locally: [B1–B5](web-ui/port-06b-2026-10-13.md). Helper/errors/captions/
 badges/list metadata ≥14px, bank primary16px, report title32/40; E5/Q5 restored.

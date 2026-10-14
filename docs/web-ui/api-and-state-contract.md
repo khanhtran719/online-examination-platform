@@ -1,5 +1,22 @@
 # Web API integration và state contract
 
+[WEB-04 actual gate](web-04-assessment-https-2026-10-13.md) verifies existing contracts
+with HTTPS/API/PG: start201/replay resumes same active attempt, read pages20 bounded
+by actor/attempt/collection/pageSize, ACKed choice/mark/clear survives reload/restart,
+and old publication remains frozen after republish. Attempt still lacks exact
+title/section labels: direct reload intentionally shows version/section-ID fallback,
+never current Catalog metadata for an old attempt. No API/DTO changes; full write
+fault/retry/submit/deadline/scoring gate remains WEB-05+. JSON property order is
+not an idempotency contract; compare replayed DTO values/receipt identity.
+
+WEB-03 2026-10-13: existing Catalog browse/detail adapter đã kiểm actual same-origin
+HTTPS/API/PG: category/pageSize/cursor/empty/publication and401/403/429/PG503.
+Server kiểm open/close/quota khi start, không suy từ local history. Mounted Catalog
+read controller chờ Retry-After hoặc60s fallback trên429, chỉ explicit retry sau
+expiry; no focus/reconnect retry. API hiện không gửi Retry-After cho429 (header
+declared optional), nên fallback đã kiểm thực tế. Không endpoint/DTO/permission
+contract change. [WEB-03 results/limits](web-03-catalog-https-2026-10-13.md).
+
 Current review2026-10-13: Identity/Catalog/Assessment/Leaderboard/Reporting có
 implementation backend và HTTP adapter; full Web business integration vẫn chưa
 nghiệm thu. Bảng handoff gốc bên dưới giữ nghĩa lịch sử, không nói hiện chỉ có

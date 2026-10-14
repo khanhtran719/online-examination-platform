@@ -1,5 +1,25 @@
 # Test inventory
 
+Current2026-10-13: [WEB-04](web-ui/web-04-assessment-https-2026-10-13.md) records958
+root PASS (492 API/53 suites,70 tooling,396 Web/70 files) and8 actual Assessment
+Chromium HTTPS/API/PG cases PASS.4 native-control/mark/clear/reload widths plus
+pagination, start/replay/API restart, frozen republish/privacy and mounted403.
+One new sanitized route-label tooling case (RED then GREEN); no runtime application
+change. Full81 UI/Identity10/Catalog7 and427 PG integrations were not rerun here;
+their earlier receipts retain historical scope. Raw outputs retired after review;
+source tests/config and authored report retained. Production remains NOT ACCEPTED.
+
+Current2026-10-13: [WEB-03](web-ui/web-03-catalog-https-2026-10-13.md) records957 root
+PASS (492 API/53 suites,69 tooling,396 Web/70 files);81 UI Chromium PASS and7 actual
+Catalog HTTPS/API/PG cases plus1 affected browse rerun PASS. Identity HTTPS10 also
+rerun PASS. New source tests:3 safe route-label tooling and13 Catalog mounted
+backpressure/controller cases, with pre-fix RED9/11 and final GREEN. Existing full
+427 PG integration/24 suites is historical, not rerun by WEB-03. No backend/migration
+change; full exam/live Admin/browser-engine/AWS/SLO/cost/production gates remain.
+Raw browser outputs retired per retention; current proof is authored report plus
+reproducible source tests/config, not a retained raw gallery. Earlier counts below
+retain their original scopes.
+
 Current2026-10-12: [import normalization](import-normalization-2026-10-12.md) records
 **653 root tests** (492 API/53 suites,62 tooling,99 Web/24 files), **427 integration
 cases/24 suites** and **10 real Chromium HTTPS cases**, all PASS. New tooling:
